@@ -58,9 +58,9 @@
 	<select id="findAll" resultMap="BaseResultMap, apppubServerRecordCounts" resultType="java.lang.Object">
 		SELECT
 		SQL_CALC_FOUND_ROWS
-		las.`id`,las.`ip`,las.`desc`,las.`name`,las.`port`,  ld.`name` depart_name
-		FROM lsblj_apppub_server las LEFT JOIN `lsblj_department` ld
-		ON las.`department` = ld.id
+		las.`id`,las.`ip`,las.`desc`,las.`name`,las.`port`,las.`department`,ld.`name` depart_name
+		FROM lsblj_apppub_server las
+		LEFT JOIN `lsblj_department` ld ON las.`department` = ld.id
 		WHERE 1
 		<if test="type==1">AND(
 			las.`name` like CONCAT('%',#{sname},'%')

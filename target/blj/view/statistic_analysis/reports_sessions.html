@@ -177,8 +177,10 @@
                     <table id="B-table-device" class="table table-hover">
                     <thead>
                      <tr>
+                       <th><span>时间</span></th>
                        <th><span>设备名称</span></th>
                        <th><span>设备地址</span></th>
+                       <th><span>协议</span></th>
                        <th><span>时长(秒)</span></th>
                      </tr>
                     </thead>
@@ -188,8 +190,10 @@
                     <table id="B-table-user" class="table table-hover hide">
                     <thead>
                      <tr>
+                       <th><span>时间</span></th>
                        <th><span>用户名</span></th>
-                       <th><span>真实姓名</span></th>
+                       <th><span>姓名</span></th>
+                       <th><span>协议</span></th>
                        <th><span>时长</span></th>
                      </tr>
                     </thead>
@@ -229,8 +233,9 @@
                 <table id="C-table" class="table table-hover">
                   <thead>
                   <tr>
+                  <th><span>时间</span></th>
                   <th><span>命令</span></th>
-                  <th><span>时长</span></th>
+                  <th><span>次数</span></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -290,8 +295,9 @@
                                 <thead>
                                 <tr>
                                     <th><span>时间</span></th>
-                                    <th><span>系统</span></th>
-                                    <th><span>ssh</span></th>
+                                    <th><span>高</span></th>
+                                    <th><span>中</span></th>
+                                    <th><span>低</span></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -434,13 +440,10 @@
                               <table id="user_table" class="table table-bordered table-hover">
                                   <thead>
                                   <tr>
-                                      <td style=""><span>时间</span></td>
-                                      <td><span>来源地址</span></td>
                                       <td><span>用户名</span></td>
                                       <td><span>姓名</span></td>
-                                      <td><span>协议</span></td>
-                                      <td><span>结果</span></td>
-                                      <td><span>描述</span></td>
+                                      <td><span>资产名称</span></td>
+                                      <td><span>资产账号</span></td>
                                   </tr>
                                   </thead>
                                   <tbody>
@@ -471,13 +474,13 @@
                               <table id="device_table" class="table table-bordered table-hover">
                                   <thead>
                                   <tr>
-                                      <td style=""><span>时间</span></td>
+                                      <td style=""><span>设备名称</span></td>
+                                      <td><span>设备地址</span></td>
+                                      <td><span>协议</span></td>
+                                      <td><span>设备账号</span></td>
                                       <td><span>来源地址</span></td>
                                       <td><span>用户名</span></td>
                                       <td><span>姓名</span></td>
-                                      <td><span>协议</span></td>
-                                      <td><span>结果</span></td>
-                                      <td><span>描述</span></td>
                                   </tr>
                                   </thead>
                                   <tbody>
@@ -508,13 +511,12 @@
                               <table id="app_table" class="table table-bordered table-hover">
                                   <thead>
                                   <tr>
-                                      <td style=""><span>时间</span></td>
-                                      <td><span>来源地址</span></td>
-                                      <td><span>用户名</span></td>
+                                      <td style=""><span>应用名称</span></td>
+                                      <td><span>应用程序</span></td>
+                                      <td><span>应用账号</span></td>
+                                      <td><span>来源IP</span></td>
+                                      <td><span>运维用户</span></td>
                                       <td><span>姓名</span></td>
-                                      <td><span>协议</span></td>
-                                      <td><span>结果</span></td>
-                                      <td><span>描述</span></td>
                                   </tr>
                                   </thead>
                                   <tbody>
@@ -524,6 +526,116 @@
                           <br>
                           <div class="modal-footer">
                               <input type="hidden" id="app_id">
+                              <button type="button" class="btn newaddbtn" data-dismiss="modal">关闭</button>
+                          </div>
+                      </div>
+                      <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+              </div>
+          </div>
+          <div class="modal modal-hides" id="modal-session">
+              <div class="modal-dialog" style="width: 850px;">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                          <span class="modal-title">统计数据</span>
+                      </div>
+                      <div class="modal-body">
+                          <div class="box-body" style="margin-bottom: -50px;">
+                              <table id="session_table" class="table table-bordered table-hover">
+                                  <thead>
+                                  <tr>
+                                      <td><span>设备名称</span></td>
+                                      <td><span>设备地址</span></td>
+                                      <td><span>协议</span></td>
+                                      <td><span>设备账号</span></td>
+                                      <td><span>来源地址</span></td>
+                                      <td><span>用户名</span></td>
+                                      <td><span>姓名</span></td>
+                                      <td><span>起止时间</span></td>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  </tbody>
+                              </table><br>
+                          </div>
+                          <br>
+                          <div class="modal-footer">
+                              <input type="hidden" id="session_id">
+                              <button type="button" class="btn newaddbtn" data-dismiss="modal">关闭</button>
+                          </div>
+                      </div>
+                      <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+              </div>
+          </div>
+          <div class="modal modal-hides" id="modal-command">
+              <div class="modal-dialog" >
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                          <span class="modal-title">统计数据</span>
+                      </div>
+                      <div class="modal-body">
+                          <div class="box-body" style="margin-bottom: -50px;">
+                              <table id="command_table" class="table table-bordered table-hover">
+                                  <thead>
+                                  <tr>
+                                      <td><span>时间</span></td>
+                                      <td><span>命令</span></td>
+                                      <td><span>次数</span></td>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  </tbody>
+                              </table><br>
+                          </div>
+                          <br>
+                          <div class="modal-footer">
+                              <input type="hidden" id="command_id">
+                              <button type="button" class="btn newaddbtn" data-dismiss="modal">关闭</button>
+                          </div>
+                      </div>
+                      <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+              </div>
+          </div>
+          <div class="modal modal-hides" id="modal-Level">
+              <div class="modal-dialog" style="width: 850px;">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                          <span class="modal-title">统计数据</span>
+                      </div>
+                      <div class="modal-body">
+                          <div class="box-body" style="margin-bottom: -50px;">
+                              <table id="level_table" class="table table-bordered table-hover">
+                                  <thead>
+                                  <tr>
+                                      <td><span>时间</span></td>
+                                      <td><span>来源地址</span></td>
+                                      <td><span>用户名</span></td>
+                                      <td><span>设备地址</span></td>
+                                      <td><span>设备账号</span></td>
+                                      <td><span>协议</span></td>
+                                      <td><span>告警内容</span></td>
+                                      <td><span>触发策略</span></td>
+                                      <td><span>事件级别</span></td>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  </tbody>
+                              </table><br>
+                          </div>
+                          <br>
+                          <div class="modal-footer">
+                              <input type="hidden" id="level_id">
                               <button type="button" class="btn newaddbtn" data-dismiss="modal">关闭</button>
                           </div>
                       </div>

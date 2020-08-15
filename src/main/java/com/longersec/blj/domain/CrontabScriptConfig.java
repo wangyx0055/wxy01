@@ -1,7 +1,5 @@
 package com.longersec.blj.domain;
 
-import java.util.Date;
-
 public class CrontabScriptConfig {
 
 	private Integer id;
@@ -27,6 +25,18 @@ public class CrontabScriptConfig {
 	private String command;
 
 	private String searchAll;
+
+	private Integer status;
+
+	private String script_name;
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
 	public String getSearchAll() {
 		return searchAll;
@@ -128,6 +138,14 @@ public class CrontabScriptConfig {
 		this.end_datetime = end_datetime;
 	}
 
+	public String getScript_name() {
+		return script_name;
+	}
+
+	public void setScript_name(String script_name) {
+		this.script_name = script_name;
+	}
+
 	@Override
 	public String toString() {
 		return "CrontabScriptConfig{" +
@@ -143,6 +161,8 @@ public class CrontabScriptConfig {
 				", description='" + description + '\'' +
 				", command='" + command + '\'' +
 				", searchAll='" + searchAll + '\'' +
+				", status=" + status +
+				", script_name='" + script_name + '\'' +
 				'}';
 	}
 }

@@ -3,8 +3,8 @@ $(function() {
     $('#operateporteditbtn').click(function() {
         document.getElementById("operate_id1").value = document.getElementById("operate_id").value;
         $("#operate_ssh_sftp").val(document.getElementById("operate_ssh_sftp1").innerHTML);
-        $("#operate_rdp").val(document.getElementById("operate_rdp1").innerHTML);
-   /*     $("#operate_ftp").val(document.getElementById("operate_ftp1").innerHTML);*/
+      /*  $("#operate_rdp").val(document.getElementById("operate_rdp1").innerHTML);*/
+        $("#operate_ftp").val(document.getElementById("operate_ftp1").innerHTML);
         $("#VPort_ssh_sftp").text("");
         $("#VPort_rdp").text("");
         $("#VPort_ftp").text("");
@@ -30,22 +30,22 @@ $(function() {
             $('#VPort_ssh_sftp').html("请输入1-65535之间的数字");
             flag = false;
         }
-        var ad_operate_rdp = $('#operate_rdp').val();
+        /*var ad_operate_rdp = $('#operate_rdp').val();
         if(ad_operate_rdp==""){
             $('#VPort_rdp').html("请输入端口号");
             flag = false;
         } else if (ad_operate_rdp > 65535 || ad_operate_rdp <1||!p2.test(ad_operate_rdp)) {
             $('#VPort_rdp').html("请输入1-65535之间的数字");
             flag = false;
-        }
-       /* var ad_operate_ftp = $('#operate_ftp').val();
+        }*/
+        var ad_operate_ftp = $('#operate_ftp').val();
         if(ad_operate_ftp == ""){
             $('#VPort_ftp').html("请输入端口号");
             flag = false;
         }else if (ad_operate_ftp > 65535 || ad_operate_ftp <1||!p2.test(ad_operate_ftp)) {
             $('#VPort_ftp').html("请输入1-65535之间的数字");
             flag = false;
-        }*/
+        }
         return flag;
     }
     function CheckWc() {
@@ -83,8 +83,8 @@ $(function() {
             data: {
                 id: $('#operate_id').val(),
                 ssh_sftp: $('#operate_ssh_sftp').val(),
-                rdp: $('#operate_rdp').val(),
-               /* ftp: $('#operate_ftp').val(),*/
+                /*rdp: $('#operate_rdp').val(),*/
+                ftp: $('#operate_ftp').val(),
             },
             success: function(data) {
                 if (data.success) {
@@ -219,6 +219,7 @@ $("#operate_ssh_sftp").focus(function () {
     $('#VPort_ssh_sftp').html("");
 });
 
+/*
 $("#operate_rdp").blur(function () {
     var operate_rdp = $('#operate_rdp').val();
     var p1=/^\d{1,65535}$/;
@@ -231,6 +232,7 @@ $("#operate_rdp").blur(function () {
 $("#operate_rdp").focus(function () {
     $('#VPort_rdp').html("");
 });
+*/
 
 $("#operate_ftp").blur(function () {
     var ad_operate_ftp = $('#operate_ftp').val();

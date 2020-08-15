@@ -28,25 +28,24 @@ function resetC(){
     $("#Vedit_desc").text('');
 }
 var regexp = {
-    name:/^([A-Za-z]|[\u4e00-\u9fa5]|\-|\@|\_|[0-9]){0,32}$/,
+    name:/^([A-Za-z0-9]|[\u4e00-\u9fa5]|@|_){0,64}$/,
     length:/^\S{0,32}$/,
     length_des:/^\S{0,64}$/,
 }
 //失去焦点，移出输入框
 $('#edit_name').blur(function(){
     //组名的验证规则
-
     //获取输入的名字
     let username = $('#edit_name').val();
     //判断是否符合规则
     if (!regexp.name.test(username)){
         //不符合
         if (username==""){
-            $('#Vname').text('组名不能为空');
+            $('#Vname').text('请输入组名');
         }else{
             $('#Vname').text('组名格式不正确');
             if (!regexp.length.test(username)){
-                $('#Vname').text("最长32个字符")
+                $('#Vname').text("最长64个字符")
             }
         }
     }else {
@@ -204,7 +203,7 @@ $('#editButton').click(function(){
     setTimeout(()=>{
         if ($('#edit_name').val()==""|| $('#Vname').text()!="") {
             if ($('#edit_name').val() == "") {
-                $('#Vname').text('组名不能为空');
+                $('#Vname').text('请输入组名');
             }
             a=false
         }

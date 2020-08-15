@@ -61,7 +61,7 @@
         <div class="col-md-9">
             <!--   <span class="glyphicon glyphicon-list"></span>
               <span>应用管理</span> -->
-                <div class="box-title" style="padding:15px;" > 
+                <div class="box-title" style="padding:15px;" >
              <span class="new-header">应用管理</span>
              </div>
           <div class="nav-tabs-custom">
@@ -129,7 +129,7 @@
                    </div>
                    <div class="new-add-style">
                        <button type="button" class="btn newaddbtn" data-dismiss="modal"  data-toggle="modal"  data-target="#modal-editserver">新建</button>
-                       <button type="button" class="btn btn-default  newaddbtn2" data-dismiss="modal"  data-toggle="modal"  data-target="#modal-default3">导入</button>
+                       <button type="button" class="btn btn-default  newaddbtn2" data-dismiss="modal"  data-toggle="modal"  data-target="#modal-default1">导入</button>
                        <button type="button" class="btn btn-default  newaddbtn2"  data-dismiss="modal" data-toggle="modal" data-target="#modal-default2">导出</button>
                    </div>
                   <table id="appserver" class="table table-hover">
@@ -166,11 +166,15 @@
                         </div>
                         <div>
                 <span style="font-size: 12px;">下载模板:
-                <button type="button" class="btn newaddbtn pull-right">点击下载</button></span>
+                    <a th:href="@{/downTemplate/apppubserver}" id="downClick"></a>
+                <button type="button" class="btn newaddbtn pull-right" id="downTemplate">点击下载</button></span>
                         </div>
                         <div>
                 <span style="font-size: 12px;">上传文件:
-                <button type="button" class="btn newaddbtn pull-right">点击上传</button></span>
+                <button type="button" class="btn newaddbtn pull-right" onclick="openFile()">点击上传</button></span>
+                    <span id='Vfile' style="color:red;font-size: 12px;"></span>
+                    <span id="filename"></span>
+                    <input type="file" id="btn_file" style="display:none" accept=".csv">
                         </div>
                         <div>
                             <span style="font-size: 12px;">更多选项:</span>
@@ -261,9 +265,9 @@
                                     <textarea align="left" id="edit_ser_desc"></textarea>
                                     <span style="color: red;font-size: 12px;display: inline-block"
                                           id="judge_desc"></span>
-                                </p>
+                                </p>s
                             </div>
-                            <p>长度为0-64个汉字或字符,可以有数字</p>
+                            <p>长度为0-128个汉字或字符,可以有数字</p>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal"
                                         style="cursor: pointer">取消
@@ -453,14 +457,18 @@
                         </div>
                         <div class="u-download" style="margin-left: 100px; margin-top: 25px;font-size: 12px;">
                 <span>下载模板:
+                    <a th:href="@{/downTemplate/apppubAccount}" id="downClick1"></a>
                 <button type="button" class="btn newaddbtn pull-right"
-                        style="margin-right: 360px;height: 30px;margin-top: -5px;">点击下载</button></span>
+                        style="margin-right: 360px;height: 30px;margin-top: -5px;" id="downTemplate1">点击下载</button></span>
                         </div>
                         <br>
                         <div class="u-upload" style="margin-left: 100px; margin-top: 25px;font-size: 12px;">
                 <span>上传文件:
                 <button type="button" class="btn newaddbtn pull-right"
-                        style="margin-right: 360px;height: 30px;margin-top: -5px;">点击上传</button></span>
+                        style="margin-right: 360px;height: 30px;margin-top: -5px;" onclick="openFile()">点击上传</button></span>
+                        <span id='Vfile1' style="color:red;font-size: 12px;"></span>
+                        <span id="filename1"></span>
+                        <input type="file" id="btn_file1" style="display:none" accept=".csv">
                         </div>
                         <br>
                         <div class="modal-footer">

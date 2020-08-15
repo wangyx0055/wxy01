@@ -184,7 +184,7 @@ $(function () {
                             +data
                             + '</div>';
                     }},
-                {"data": "port","render":function (data) {
+                {"data": "desc","render":function (data) {
                         return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
                 }},
                 {
@@ -250,7 +250,7 @@ $(function () {
                 { "data": "appservername" },
                 { "data": "depart_name" ,
                     "render" : function(data, type,row, mata) {
-                        return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
+                        return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'
                             +data
                             + '</div>';
                     }},
@@ -327,13 +327,32 @@ $('#modal-editserver').on('show.bs.modal', function (event) {
     }
 });
 
+//应用程序下载模版
 $('#downTemplate').click(function(){
     $('#downClick')[0].click();
-
+});
+//发布应用下载模板
+$('#downTemplate1').click(function(){
+    $('#downClick1')[0].click();
 });
 
+//发布应用上传点击事件
+function openFile1() {
+    $('#Vfile1').text();
+    $('#btn_file1').click();
 
-//上传点击事件
+    $('#btn_file1').change(function(){
+        var file = $("#btn_file1").val();
+        var fileName = getFileName(file);
+        function getFileName(o){
+            var pos=o.lastIndexOf("\\");
+            return o.substring(pos+1);
+        }
+        $("#filename1").html(fileName);
+    })
+}
+
+//应用程序上传点击事件
 function openFile() {
   $('#Vfile').text();
   $('#btn_file').click();
@@ -347,7 +366,6 @@ function openFile() {
       }
       $("#filename").html(fileName);
   })
-
 }
 
 $("#upload").on("click", function () {
@@ -530,7 +548,7 @@ let regexp_1 = {
     password: /^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!#$%*+,=_?$]){0,32}$/,
     username:  /^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!#$%*+,=_?$]){0,32}$/,
     ip:  /^(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])$/,
-    desc: /(^$)|(^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!#$%*+,=_?$]){0,64}$)/
+    desc: /^.{0,128}$/
 };
 
 // 获取焦点，重新输入
@@ -749,7 +767,9 @@ $('#modal-editapp').on('show.bs.modal', function (event) {
         $('#edit_password').val("******");
         $('#edit_password1').val("******");
     }else{
-        $('.modal-title').text('新增应用发布');
+        $('.modal-title').text('添加应用发布');
+        $('#apppub_depart_name').val(topNode.text);
+        $('#apppub_depart_id').val(topNode.id);
         $('#apppub_edit_id').val('');
         $('#apppub_edit_ser_name option:first').prop("selected");
         $('#apppub_depart_name').val('');

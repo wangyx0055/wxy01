@@ -14,6 +14,8 @@
 		<result column="su" jdbcType="INTEGER" property="su"/>
 		<result column="description" jdbcType="VARCHAR" property="description"/>
 		<result column="command" jdbcType="VARCHAR" property="command"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="script_name" jdbcType="INTEGER" property="script_name"/>
 	</resultMap>
 
 	<resultMap id="crontabScriptConfigRecordCounts" type="java.lang.Long">
@@ -65,13 +67,15 @@
 		<foreach collection="list" item="item" separator=",">
 		#{item}
 		</foreach>
-		,0)
+		,0);
+		DELETE FROM `lsblj_crontab_script_config_group` WHERE device_account_id NOT IN (SELECT id FROM `lsblj_crontab_script_config`);
+		DELETE FROM lsblj_crontab_script_config_device WHERE device_account_id NOT IN (SELECT id FROM `lsblj_crontab_script_config`);
 	</delete>
 
-	<select id="findAll" resultMap="BaseResultMap, crontabScriptConfigRecordCounts">
-		SELECT 
-		SQL_CALC_FOUND_ROWS 
-		lsblj_crontab_script_config.*,lsblj_crontab_script.*
+	<select id="findAll" resultMap="BaseResultMap, crontabScriptConfigRecordCounts" resultType="java.lang.Object">
+		SELECT
+		SQL_CALC_FOUND_ROWS
+		lsblj_crontab_script_config.*,lsblj_crontab_script.name AS script_name,lsblj_crontab_script.`file_path`,lsblj_crontab_script.`type`,lsblj_crontab_script.`upload_time`,lsblj_crontab_script.`desc`
 		FROM lsblj_crontab_script_config
 		LEFT JOIN lsblj_crontab_script ON lsblj_crontab_script_config.file_id=lsblj_crontab_script.id
 		where 1
@@ -91,9 +95,9 @@
 	<select id="selectAll" resultType="com.longersec.blj.domain.CrontabScriptConfig">
 		select * from lsblj_crontab_script_config;
 	</select>
-	<!--<select id="selectName" resultType="java.lang.String">
+	<select id="selectName" resultType="java.lang.String">
 		select name from lsblj_crontab_script_config where id!=#{id} and name=#{name} limit 1;
-	</select>-->
+	</select>
 	<select id="checkname" resultType="com.longersec.blj.domain.CrontabScriptConfig">
 		select * from lsblj_crontab_script_config where name = #{name} limit 1;
 	</select>

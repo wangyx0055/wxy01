@@ -17,14 +17,10 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -174,7 +170,7 @@ public class UploadFileController {
 			response.setHeader("content-disposition","attachment;fileName="+crontabScript.getName());
             InputStream stream = new FileInputStream(file);
             ServletOutputStream out = response.getOutputStream();
-            byte buff[] = new byte[1024];
+            byte[] buff = new byte[1024];
             int length = 0;
             while ((length = stream.read(buff)) > 0) {
                 out.write(buff,0,length);
@@ -185,6 +181,5 @@ public class UploadFileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return ;
     }
 }

@@ -57,6 +57,7 @@ public class Device {
 	private String groupname;
 
 	private String protocolname;
+
 	private String typename;
 
 	public Integer getId() {

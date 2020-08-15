@@ -189,7 +189,6 @@ public class DeviceAccountController {
 				}
 			}
 		}
-
 		return result;
 	}
 

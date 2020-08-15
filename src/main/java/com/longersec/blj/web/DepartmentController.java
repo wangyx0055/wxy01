@@ -169,7 +169,7 @@ public class DepartmentController {
 			}
 			//操作日志
 			OperatorLog operatorLog = Operator_log.log(request, session);
-			operatorLog.setModule("部门");
+			operatorLog.setModule("部门管理");
 			operatorLog.setDetails("增加部门"+"["+name+"],"+"上级部门为["+stringBuilder.substring(0,stringBuilder.length()-1)+"]");
 			operatorLog.setContent("添加");
 			boolean addDepartment = departmentService.addDepartment(department);
@@ -231,7 +231,7 @@ public class DepartmentController {
 			}
 			//操作日志
 			OperatorLog operatorLog = Operator_log.log(request, session);
-			operatorLog.setModule("部门");
+			operatorLog.setModule("部门管理");
 			operatorLog.setDetails("编辑部门["+department2.getName()+"为"+name+"],"+"上级部门为["+stringBuilder.substring(0,stringBuilder.length()-1)+"]");
 			operatorLog.setContent("编辑");
 			//编辑部门
@@ -266,7 +266,7 @@ public class DepartmentController {
 		List<Integer> _ids =  Arrays.asList(ids);
 		//操作日志
 		OperatorLog operatorLog = Operator_log.log(request, session);
-		operatorLog.setModule("部门");
+		operatorLog.setModule("部门管理");
 		operatorLog.setContent("删除");
 		if(_ids.isEmpty()) {
 			result.put("success", false);

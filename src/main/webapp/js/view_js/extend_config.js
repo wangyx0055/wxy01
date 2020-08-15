@@ -56,7 +56,7 @@ $(function() {
                 }
             });
             for(let item of data) {
-                $('#log_link').append( '<a href="'+item.log_manage+'"  target="_blank" style="font-size: 14px;color:rgb(0, 178, 236);font-weight: 700;margin-right: 5px;" >'+item.name+'</a>');
+                $('#log_link').append( '<a href="'+item.log_manage+'"  target="_blank" style="font-size: 14px;color:#0c6cbfc9;font-weight: 700;margin-right: 5px;" >'+item.name+'</a>');
             };
         }
     });

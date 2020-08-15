@@ -7,8 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.longersec.blj.domain.Device;
-import com.longersec.blj.domain.User;
+import com.longersec.blj.domain.*;
 import com.longersec.blj.service.DepartmentService;
 import com.longersec.blj.utils.Validator;
 import org.apache.commons.collections.CollectionUtils;
@@ -23,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.longersec.blj.domain.ApppubServer;
-import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.service.ApppubServerService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.utils.Operator_log;
@@ -45,6 +42,7 @@ public class ApppubServerController {
 	private ApppubServerService apppubServerService;
 	@Autowired
 	private DepartmentService departmentService;
+
 	@RequestMapping("/listApppubServer")
 	@ResponseBody
 	public JSONObject listApppubServer(ApppubServer apppubServer,
@@ -64,6 +62,14 @@ public class ApppubServerController {
 			apppubServers = (ArrayList<ApppubServer>)resultApppubServers.get(0);
 			total = ((ArrayList<Long>) resultApppubServers.get(1)).get(0);
 		}
+//		for (ApppubServer apppubServer1 : apppubServers) {
+//			List<String> allParentName = departmentService.findAllParentName(apppubServer1.getDepartment());
+//			StringBuilder stringBuilder = new StringBuilder();
+//			for (Object strings : allParentName) {
+//				stringBuilder.append(strings).append("/");
+//			}
+//			apppubServer1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
+//		}
 		JSONArray jsonArray = JSONArray.fromObject(apppubServers);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
@@ -88,15 +94,15 @@ public class ApppubServerController {
 		Map<String, Object> resultMap = Validator.fieldValidate(errorResult);
 		//操作日志
 		OperatorLog operatorLog =Operator_log.log(request, session);
-		operatorLog.setModule("应用服务");
+		operatorLog.setModule("应用管理");
 		if(apppubServerService.checkip(apppubServer.getIp(), apppubServer.getId())!=null) {
 			result.put("success", false);
 			result.put("msg", "服务器地址重复");
 			operatorLog.setResult("失败");
 		}else {
 			if (apppubServer.getId()==null){
-				operatorLog.setDetails("增加应用服务");
-				operatorLog.setContent("add");
+				operatorLog.setDetails("增加应用服务器["+apppubServer.getName()+"]");
+				operatorLog.setContent("添加");
 				if(resultMap == null){
 					r = apppubServerService.addApppubServer(apppubServer);
 					if (r){
@@ -111,8 +117,8 @@ public class ApppubServerController {
 					operatorLog.setResult("失败");
 				}
 			}else{
-				operatorLog.setDetails("编辑应用服务");
-				operatorLog.setContent("edit");
+				operatorLog.setDetails("编辑应用服务器["+apppubServer.getName()+"]");
+				operatorLog.setContent("编辑");
 				if (resultMap == null){
 					r = apppubServerService.editApppubServer(apppubServer);
 					if (r){
@@ -139,11 +145,11 @@ public class ApppubServerController {
 		JSONObject result = new JSONObject();
 		List<Integer> _ids =  Arrays.asList(ids);
 		result.accumulate("success", true);
-        //操作日志
+		//操作日志
 		OperatorLog operatorLog =Operator_log.log(request, session);
-		operatorLog.setModule("应用服务");
-		operatorLog.setDetails("删除应用服务");
-		operatorLog.setContent("delete");
+		operatorLog.setModule("应用管理");
+		operatorLog.setDetails("删除应用服务器");
+		operatorLog.setContent("删除");
 		//是否操作成功
 		if(_ids.isEmpty()) {
 			result.accumulate("success", false);

@@ -424,7 +424,15 @@ var _scripts_table= function (field,value){
                     return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
                 }},
             {"data": "status","render":function (data) {
-            	return data==1?'是':'否';
+            	// return data==0?'否':'是';
+                    if(data==0){
+                        status='否';
+                    }else{
+                        status='是';
+                    }
+                    return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+status+'">'
+                        +status
+                        + '</div>';
             }},
             {"data": "exec_method","render":function (data, type, row, meta) {
             /*	return data==0?'手动执行':(data==1?'定时执行,时间:'+row.exec_datetime:'定期执行,周期:'+exec_cycle(data));*/
@@ -584,10 +592,13 @@ $('#modal-primary8').on('show.bs.modal', function (event) {
             $('#reservation1').val($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].exec_datetime);
         }
         $('#typeName').val($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].file_id);
+        $('#file_id').val($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].file_id);
         showSSHKEY1($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].file_id);
         fileInput($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].file_id);
         $('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].su==0?$('#edit_su').prop("checked",false):$('#edit_su').prop("checked",true);
         $('#edit_desc').val($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].description);
+        $('#down').css("display",'block');
+        $(".file-caption-name").val($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].script_name);
     }else{
         $('.modal-title').text('添加执行任务');
         $('#editButton1').css("display","none");
@@ -595,6 +606,7 @@ $('#modal-primary8').on('show.bs.modal', function (event) {
         $('#edit_id').val('');
         $('#judge_name').text('');
         $('#div10').css("display","block");
+        $('#down').css("display","none");
         $('#command').val('');
         $('#typeName').val(0);
         $('#judge_desc').text('');
@@ -873,6 +885,9 @@ function init() {
         }
     );
 };
+$('#down').click(function(){
+    window.location.href="../../file/down?file_id="+$('#file_id').val()
+});
 var fileInput = function(file_id){
     $("#scriptfile-input").fileinput({
         uploadUrl: "../../file/uploadScript",
@@ -889,7 +904,7 @@ var fileInput = function(file_id){
         showPreview: false,
         initialPreviewAsData: true,
         overwriteInitial: false,
-        initialPreviewDownloadUrl:true,
+        initialPreviewDownloadUrl:false,
         theme: 'fas',
         deleteUrl: "../../file/deleteFile?file_id="+file_id
     }).on('fileuploaded', function(event, previewId, index, fileId) {

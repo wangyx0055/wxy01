@@ -22,12 +22,20 @@ $(function () {
                             if ($('#searchId').val().match("成功")){
                                 value=1;
                                 field="exec_status";
-                            }else{
+                            }else if($('#searchId').val().match("失败")){
                                 value=0;
                                 field="exec_status";
+                            }else if($('#searchId').val()===''){
+                                value='';
+                            }else{
+                                if(field === "searchAll"){
+                                    value=$('#searchId').val();
+                                }else if(field === "exec_status"){
+                                    value=3;
+                                }
                             }
                         }
-                        if (field === "searchAll" || field === "config_method"){
+                        if (field === "searchAll" || field === "config_method"|| field === "exec_status"){
                             if ($('#searchId').val().match("手")||$('#searchId').val().match("动")||$('#searchId').val().match("手动")||$('#searchId').val().match("手动执行")){
                                 value=0;
                                 field="config_method";

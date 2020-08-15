@@ -28,7 +28,7 @@ public interface ApppubAccountService {
 	
 	public List<Map<String, Integer>> totalByProgram();
 
-	public String checkName( String name);
+	public String checkName(Integer id, String name);
 
 	public String selectName(Integer id, String name);
 

@@ -71,9 +71,13 @@
 		SELECT * FROM lsblj_device_type;
 	</select>
     <select id="checkname" resultType="com.longersec.blj.domain.DeviceType">
-		select * from lsblj_device_type where name = #{name} limit 1;
+		select * from lsblj_device_type where  name = #{name}
+		limit 1;
 	</select>
-
+	<select id="checOsType" resultType="java.lang.Integer">
+		select id from lsblj_device_type where  name = #{name}
+		limit 1;
+	</select>
 	<select id="checknameById" resultType="java.lang.String">
 		select name from lsblj_device_type where id = #{id} limit 1;
 	</select>

@@ -61,4 +61,9 @@ public class DeviceTypeServiceImpl implements DeviceTypeService{
 	public DeviceType checkname(String name) {
 		return DeviceTypeDao.checkname(name);
 	}
+
+	@Override
+	public int checOsType(String name) {
+		return DeviceTypeDao.checOsType(name);
+	}
 }

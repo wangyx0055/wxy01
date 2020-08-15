@@ -163,9 +163,7 @@ $(function() {
 
             });
     var _hostsessions = function(field, value, where) {
-        $('#hostsessions')
-            .DataTable(
-                {
+        $('#hostsessions').DataTable({
                     'paging' : true,
                     'lengthChange' : true,
                     "lengthMenu" : [

@@ -120,6 +120,22 @@ public class ExportTemplateController {
         }
     }
 
+    @RequestMapping("/apppubAccount")
+    public void apppubAccount( HttpServletResponse response) throws IOException{
+        Date t = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            //创建临时csv文件
+            File tempFile = exportTemplateService.createTempFile_apppubAccount();
+            String filename = "downApppubAccount-"+formatter.format(t)+".csv";
+            //输出csv流文件，提供给浏览器下载
+            outCsvStream(response, tempFile,filename);
+            //删除临时文件
+            deleteFile(tempFile);
+        } catch (IOException e) {
+            System.out.println("导出失败");
+        }
+    }
 
 
 

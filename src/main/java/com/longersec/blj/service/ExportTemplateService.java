@@ -15,4 +15,6 @@ public interface ExportTemplateService {
     File createTempFile_operation()throws IOException;
 
 	File createTempFile_apppubserver() throws IOException;
+
+    File createTempFile_apppubAccount() throws IOException;
 }

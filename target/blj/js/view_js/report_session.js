@@ -126,7 +126,7 @@ $(function() {
 				document.getElementById('hide_'+$(this).val()).src=url;
 			}
 		})
-	})
+	});
 	
     var _AChart = function(_data) {
         var myChart = echarts.init(document
@@ -327,18 +327,30 @@ $(function() {
     	if(name=="device"){
         	var columns =  [ {
                 "data" : "device_name"
+            },  {
+                "data" : "device_name"
             }, {
                 "data" : "device_ip"
             }, {
                 "data" : "total"
+            },  {
+                "data" : "total", "render": function(data,type,row,meta){
+                    return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-session" style="cursor:pointer;">'+data+'</a>';
+                }
             }];
     	}else{
-        	var columns =  [ {
+        	var columns =  [  {
+                "data" : "username"
+            }, {
                 "data" : "username"
             }, {
                 "data" : "realname"
-            }, {
+            },  {
                 "data" : "total"
+            }, {
+                "data" : "total", "render": function(data,type,row,meta){
+                    return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-session" style="cursor:pointer;">'+data+'</a>';
+                }
             }];
     	}
     	$('#B-table-user').addClass('hide');
@@ -469,9 +481,13 @@ $(function() {
                     }
                 },
                 "columns" : [ {
+                    "data" : "total"
+                }, {
                     "data" : "command"
                 }, {
-                    "data" : "total"
+                    "data" : "total", "render": function(data,type,row,meta){
+            return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-command" style="cursor:pointer;">'+data+'</a>';
+                 }
                 }],
                 "initComplete" : function(settings, json) {
                     $('#C div').tooltip();
@@ -586,16 +602,24 @@ $(function() {
                 "columns" : [ {
                     "data" : "interval"
                 }, {
-                    "data" : "system"
+                    "data" : "system", "render": function(data,type,row,meta){
+                        return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
+                    }
                 }, {
-                    "data" : "ssh"
+                    "data" : "ssh", "render": function(data,type,row,meta){
+                        return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
+                    }
+                }, {
+                    "data" : "system", "render": function(data,type,row,meta){
+                        return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
+                    }
                 }],
                 "initComplete" : function(settings, json) {
                     $('#D div').tooltip();
                     _DChart(json.data);
                 }
             })
-    }
+    };
 
     $('#A .rs-time .mr-nav-like li button').click(
         function() {
@@ -636,7 +660,7 @@ $(function() {
                 _D("day", "", "");
             }
         })
-    })
+    });
     
     _A("day", "", "");
     $(window).resize(function() {
@@ -651,3 +675,89 @@ $(function() {
     });
 	init();
 });
+//用户
+$('#user_table').DataTable({
+    'paging': true,
+    'lengthChange': true,
+    "lengthMenu": [
+        [10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+    ],
+    'dom': 't<"bottom"lifp<"clear">>',
+    'searching': false,
+    'ordering': true,
+    'info': true,
+    'autoWidth': false,
+    "serverSide": true,
+    'destroy': true,
+    "ajax": {
+        "url": "../../loginLog/listLoginLog",
+    },
+    "columns": [
+        {"data": "realname"},
+        {"data": "protocol"},
+        {
+            "data": "status",
+            "render": function (data, type, row, mata) {
+                if (data == 0)
+                    return '失败';
+                else
+                    return '成功';
+            }
+        },
+        {"data": "details"},
+
+    ],
+    "fnDrawCallback": function( settings, json ) {
+        $('#loginlog div').tooltip();
+    }
+});
+
+//设备
+
+
+//应用
+$('#app_table').DataTable({
+    'paging'      : true,
+    'lengthChange': true,
+    "lengthMenu": [
+        [10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+    ],
+    'dom'         :'t<"bottom"lifp<"clear">>',
+    'searching'   : false,
+    'ordering'    : true,
+    'info'        : true,
+    'autoWidth'   : false,
+    "serverSide"	: true,
+    "destroy" : true,
+    "ajax": {
+        "url":"../../apppubRecord/listApppubRecord",
+/*        "data": function (d) {
+            for(var key in d){
+                if(key.indexOf("columns")==0||key.indexOf("order")==0||key.indexOf("search")==0){ //以columns开头的参数删除
+                    delete d[key];
+                }
+            }
+            eval('d.' + field + '="' + value + '"');
+            if(where!=null){
+                for(k in where){
+                    d[k]=where[k];
+                }
+            }
+        }*/
+    },
+    "columns": [
+        { "data": "name" },
+        { "data": "program" },
+        { "data": "apppub_account_id" },
+        { "data": "client_ip" },
+        { "data": "username" },
+        { "data": "realname" },
+    ],
+    "fnDrawCallback": function( settings, json ) {
+        $('#apppubsessions div').tooltip();
+    }
+});
+
+//会话
+//命令
+//告警

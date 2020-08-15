@@ -29,7 +29,6 @@ public class ApppubAccount {
 
 	private String url;
 
-	@Pattern(regexp = "(^$)|([A-Za-z]|[\\u4e00-\\u9fa5]|\\-|[0-9]|[;%&'@!#$%*+,=_?$]){0,64}")
 	private String desc;
 
 	private Integer apppub;
@@ -41,6 +40,16 @@ public class ApppubAccount {
 	private String appprogramname;
 	
 	private String searchAll;
+
+	private String topName;
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
+	}
 
 	public Integer getFavorite_id() {
 		return favorite_id;
@@ -176,21 +185,28 @@ public class ApppubAccount {
 	public void setSearchAll(String searchAll) {
 		this.searchAll = searchAll;
 	}
+
+
 	@Override
 	public String toString() {
 		return "ApppubAccount{" +
 				"id=" + id +
 				", name='" + name + '\'' +
 				", username='" + username + '\'' +
-				", department='" + department + '\'' +
-				", depart_name='" + depart_name + '\'' +
 				", password='" + password + '\'' +
 				", apppub_program_id=" + apppub_program_id +
+				", apppub_server_id=" + apppub_server_id +
+				", department=" + department +
+				", depart_name='" + depart_name + '\'' +
+				", favorite_id=" + favorite_id +
 				", url='" + url + '\'' +
 				", desc='" + desc + '\'' +
 				", apppub=" + apppub +
+				", appserverip='" + appserverip + '\'' +
+				", appservername='" + appservername + '\'' +
+				", appprogramname='" + appprogramname + '\'' +
+				", searchAll='" + searchAll + '\'' +
+				", topName='" + topName + '\'' +
 				'}';
 	}
-
-
 }

@@ -29,7 +29,7 @@ public interface ApppubAccountDao {
     
     public List<Map<String, Integer>> totalByProgram();
 
-	public String checkName(@Param("name") String name);
+	public String checkName(@Param("id") Integer id,@Param("name") String name);
 
 	public String selectName(@Param("id") Integer id,@Param("name") String name);
 

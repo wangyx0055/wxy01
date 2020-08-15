@@ -32,10 +32,19 @@ public class ApppubServer {
 
 	private String depart_name;
 
-
 	private String account;
 	
 	private String password;
+
+	private String topName;
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
+	}
 
 	public String getAccount() {
 		return account;
@@ -143,13 +152,14 @@ public class ApppubServer {
 				", name='" + name + '\'' +
 				", domain='" + domain + '\'' +
 				", desc='" + desc + '\'' +
-				", port=" + port +'\'' +
+				", port=" + port +
 				", adport=" + adport +
 				", type=" + type +
 				", department=" + department +
 				", depart_name='" + depart_name + '\'' +
 				", account='" + account + '\'' +
 				", password='" + password + '\'' +
+				", topName='" + topName + '\'' +
 				'}';
 	}
 }

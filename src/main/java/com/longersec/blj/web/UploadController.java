@@ -6,10 +6,10 @@ import com.longersec.blj.service.*;
 import com.longersec.blj.utils.MultipartFileToFile;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import net.sf.json.JSONObject;
+import org.apache.commons.io.FileUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,6 +38,8 @@ public class UploadController {
     private DepartmentService departmentService;
     @Autowired
     private ApppubServerService apppubserverService;
+    @Autowired
+    private DeviceTypeService deviceTypeService;
 
     @RequestMapping("/group")
     @ResponseBody
@@ -271,14 +273,14 @@ public class UploadController {
                 String[] temp1 = list.get(i).split(",");
                 String[] temp = insert(temp1, " ", " ");
                 Device device = new Device();
-                Map<String, Object> checkDeviceExport = DeviceController.checkDeviceExport(deviceService, temp[0], temp[1], Integer.parseInt(temp[2]), temp[5], temp[6], temp[7], Integer.parseInt(temp[8]), Integer.parseInt(temp[9]), Integer.parseInt(temp[10]));
+                Map<String, Object> checkDeviceExport = DeviceController.checkDeviceExport(deviceService,deviceTypeService, temp[0], temp[1], temp[2], temp[5], temp[6], temp[7], Integer.parseInt(temp[8]), Integer.parseInt(temp[9]), Integer.parseInt(temp[10]));
                 Map<String, Object> checkDepartmentExport = DepartmentController.checkDepartmentExport(departmentService, temp[3], temp[4]);
                 if (checkDeviceExport.get("success").equals(true) && checkDepartmentExport.get("success").equals(true)) {
                     Department department1 = departmentService.selectByname(temp[3]);
                     device.setDepartment(department1.getId());
                     device.setName(temp[0]);
                     device.setIp(temp[1]);
-                    device.setOs_type(Integer.parseInt(temp[2]));
+                    device.setOs_type((Integer) checkDeviceExport.get("ostype"));
                     device.setDescription(temp[5]);
                     if ("".equals(temp[6]) || "".equals(temp[7])) {
                         device.setLogin_method(1);
@@ -408,12 +410,20 @@ public class UploadController {
         return tmp; // 返回拼接完成的字符串数组
     }
 
-    public static List<String> importCsv(File file){
+    public static List<String> importCsv(File file) throws IOException {
+        InputStream ins= new FileInputStream(file);
         List<String> data = new ArrayList<String>();
         BufferedReader br = null;
         InputStreamReader isr = null;
+        byte[] b = new byte[3];
+        ins.read(b);
+        ins.close();
         try {
-            isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+            if (b[0] == -17 && b[1] == -69 && b[2] == -65){
+                isr = new InputStreamReader(new FileInputStream(file),"UTF-8");
+            }else{
+                isr = new InputStreamReader(new FileInputStream(file),"GBK");
+            }
             br = new BufferedReader(isr);
             String line = "";
             while((line = br.readLine()) != null){
@@ -428,7 +438,6 @@ public class UploadController {
                 System.out.println("CSVUtils.importCsv close BufferedReader error:"+e);
             }
         }
-
         return data;
     }
 }

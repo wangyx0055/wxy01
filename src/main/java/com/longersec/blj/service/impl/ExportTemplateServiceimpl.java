@@ -114,13 +114,13 @@ class ExportTemplateServiceImpl implements ExportTemplateService {
         File tempFile = File.createTempFile("vehicle", ".csv");
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
-        String[] headers = {"设备名(必填)","设备地址（必填）","系统类型（Linux[45] Windows[51] HuaWei[32] H3C[46] AIX[44] MAC[26])（必填）","部门名称(必填)",
+        String[] headers = {"设备名(必填)","设备地址（必填）","系统类型（Linux Windows....)（必填）","部门名称(必填)",
                 "上级部门(必填)","描述","账号","密码","协议类型(SSH[1] RDP[2] TELNET[3] VNC[4] FTP[5] SFTP[6])（必填）","端口(必填)","SSHKey(0:是 1:否)(必填)"};
         csvWriter.writeRecord(headers);
         Device data = new Device();
         data.setName("test");
         data.setIp("0.0.0.0");
-        data.setOs_type(45);
+        data.setTypename("Linux");
         data.setDepart_name("华中大区");
         data.setTopName("伟大的久安世纪科技集团公司");
         data.setDescription("描述");
@@ -132,7 +132,7 @@ class ExportTemplateServiceImpl implements ExportTemplateService {
         //这里如果数据不是String类型，请进行转换
         csvWriter.write(data.getName());
         csvWriter.write(data.getIp());
-        csvWriter.write(data.getOs_type().toString());
+        csvWriter.write(data.getTypename());
         csvWriter.write(data.getDepart_name());
         csvWriter.write(data.getTopName());
         csvWriter.write(data.getDescription());
@@ -166,6 +166,34 @@ class ExportTemplateServiceImpl implements ExportTemplateService {
         csvWriter.write(data.getPort().toString());
         csvWriter.write(data.getAccount());
         csvWriter.write(data.getPassword());
+        csvWriter.write(data.getDesc());
+        csvWriter.endRecord();
+        csvWriter.close();
+        return tempFile;
+    }
+
+    @Override
+    public File createTempFile_apppubAccount() throws IOException {
+        File tempFile = File.createTempFile("vehicle", ".csv");
+        CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
+        // 写表头
+        String[] headers = {"服务器名称(必填)","应用名称（必填）","应用程序（必填）","用户名","密码","访问参数","描述"};
+        csvWriter.writeRecord(headers);
+        ApppubAccount data = new ApppubAccount();
+        data.setAppservername("test");
+        data.setName("test");
+        data.setAppprogramname("Git");
+        data.setUsername("administrator");
+        data.setPassword("1@3");
+        data.setUrl("198.162.1.1");
+        data.setDesc("描述");
+        //这里如果数据不是String类型，请进行转换
+        csvWriter.write(data.getAppservername());
+        csvWriter.write(data.getName());
+        csvWriter.write(data.getAppprogramname());
+        csvWriter.write(data.getUsername());
+        csvWriter.write(data.getPassword());
+        csvWriter.write(data.getUrl());
         csvWriter.write(data.getDesc());
         csvWriter.endRecord();
         csvWriter.close();

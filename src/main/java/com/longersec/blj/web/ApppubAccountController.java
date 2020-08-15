@@ -7,7 +7,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.longersec.blj.domain.Group;
 import com.longersec.blj.domain.OperatorLog;
+import com.longersec.blj.service.DepartmentService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.utils.Operator_log;
 import com.longersec.blj.utils.Validator;
@@ -35,6 +37,8 @@ public class ApppubAccountController {
 	private OperatorLogService operatorLogService;
 	@Autowired
 	private ApppubAccountService apppubAccountService;
+	@Autowired
+	private DepartmentService departmentService;
 
 	@RequestMapping("/listApppubAccount")
 	@ResponseBody
@@ -52,6 +56,16 @@ public class ApppubAccountController {
 			apppubAccounts = (ArrayList<ApppubAccount>)resultApppubAccounts.get(0);
 			total = ((ArrayList<Long>) resultApppubAccounts.get(1)).get(0);
 		}
+//		for (ApppubAccount apppubAccount1 : apppubAccounts) {
+//			if(apppubAccount1.getDepartment()!=0) {
+//				List<String> allParentName = departmentService.findAllParentName(apppubAccount1.getDepartment());
+//				StringBuilder stringBuilder = new StringBuilder();
+//				for (Object strings : allParentName) {
+//					stringBuilder.append(strings).append("/");
+//				}
+//				apppubAccount1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
+//			}
+//		}
 		JSONArray jsonArray = JSONArray.fromObject(apppubAccounts);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
@@ -63,23 +77,32 @@ public class ApppubAccountController {
 
 	@RequestMapping("/addApppubAccount")
 	@ResponseBody
-	public JSONObject addApppubAccount(@Validated ApppubAccount apppubAccount, BindingResult errorResult,HttpServletRequest request, HttpSession session) {
-		return this.editApppubAccount(apppubAccount,errorResult,request,session);
+	public JSONObject addApppubAccount(@Validated ApppubAccount apppubAccount, BindingResult errorResult,
+									   @RequestParam(value = "id",required = false)Integer id,
+									   HttpServletRequest request, HttpSession session) {
+		return this.editApppubAccount(apppubAccount,errorResult,id,request,session);
 	}
 
 	@RequestMapping("/editApppubAccount")
 	@ResponseBody
-	public JSONObject editApppubAccount(@Validated ApppubAccount apppubAccount, BindingResult errorResult, HttpServletRequest request, HttpSession session) {
+	public JSONObject editApppubAccount(@Validated ApppubAccount apppubAccount, BindingResult errorResult,
+										@RequestParam(value = "id")Integer id,
+										HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		result.put("success", true);
 		Boolean r = false;
 		Map<String, Object> resultMap = Validator.fieldValidate(errorResult);
 		//操作日志
 		OperatorLog operatorLog =Operator_log.log(request, session);
 		operatorLog.setModule("应用发布");
-		String isexitU = apppubAccountService.checkName(apppubAccount.getName());
+		String isexitU = " ";
+		if (id == null) {
+			isexitU= apppubAccountService.checkName(0,apppubAccount.getName());
+		} else {
+			isexitU = apppubAccountService.checkName(id,apppubAccount.getName());
+		}
+
 		if (apppubAccount.getId() == null){
-			operatorLog.setDetails("添加应用发布");
+			operatorLog.setDetails("添加应用发布["+apppubAccount.getName()+"]");
 			operatorLog.setContent("添加");
 			if(resultMap == null && isexitU == null){
 				r = apppubAccountService.addApppubAccount(apppubAccount);
@@ -94,9 +117,9 @@ public class ApppubAccountController {
 				result.put("success", false);
 			}
 		}else{
-			operatorLog.setDetails("编辑应用发布");
+			operatorLog.setDetails("编辑应用发布["+apppubAccount.getName()+"]");
 			operatorLog.setContent("编辑");
-			if (resultMap == null && isexitU == null){
+			if (resultMap == null){
 				r = apppubAccountService.editApppubAccount(apppubAccount);
 				if (r){
 					operatorLog.setResult("成功");

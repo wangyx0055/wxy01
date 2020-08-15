@@ -17,5 +17,7 @@ public interface DeviceTypeService {
     public ArrayList<DeviceType> listType();
 
     DeviceType checkname(String name);
+
+	int checOsType(String name);
 }
 

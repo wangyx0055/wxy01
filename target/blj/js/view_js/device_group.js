@@ -106,7 +106,7 @@ $('#editButton').click(function(){
         flag = true;
         if ($('#edit_name').val()==""|| $('#Vname').text()!="" || $('#Vedit_desc').text()!=""){
             if ($('#edit_name').val()==""){
-                $('#Vname').text('组名不能为空');
+                $('#Vname').text('请输入组名');
             }
             flag = false;
         }
@@ -352,14 +352,14 @@ function resetC(){
 $('#edit_name').blur(function(){
     //组名的验证规则
     var regexp = {
-        name:/^([A-Za-z]|[\u4e00-\u9fa5]|\-|\@|\_|[0-9]){1,32}$/,
+        name:/^([A-Za-z0-9]|[\u4e00-\u9fa5]|\@|\_){1,32}$/,
     }
     //获取输入的名字
     var username = $('#edit_name').val();
     //判断是否符合规则
     if (!regexp.name.test(username)){
         //不符合
-        $('#Vname').text('格式不正确');
+        $('#Vname').text('组名格式不正确');
     }else {
         //进行重复判断
         checkusername();

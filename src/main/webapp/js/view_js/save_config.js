@@ -4,7 +4,7 @@
         /*var p1 = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/g;*/
         var p1=/^(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])$/;
         var p3=/^(http(s)?:\/\/)?(www\.)?[a-zA-Z][-a-zA-Z]{0,62}(\.[a-zA-Z][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/;
-        var path=/^(http(s)?:\/\/)?(www\.)?([\\\/a-zA-Z0-9][-a-zA-Z]{0,62})+(\.[a-zA-Z0-9][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/;
+        var path=/^(http(s)?:\/\/)?(www\.)?([\/a-zA-Z0-9][-a-zA-Z]{0,62})+(\.[a-zA-Z0-9][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/;
         var _session_backup_time = $('#session_backup_time').val();
         if (_session_backup_time=="") {
             $('#VSave_session_backup_time').html("请输入备份时间");
@@ -142,7 +142,7 @@
   });
   $('#session_backup_path').blur(function () {
       var _session_backup_path = $('#session_backup_path').val();
-      var path=/^(http(s)?:\/\/)?(www\.)?([\\\/a-zA-Z0-9][-a-zA-Z]{0,62})+(\.[a-zA-Z0-9][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/;
+      var path=/^(http(s)?:\/\/)?(www\.)?([\/a-zA-Z0-9][-a-zA-Z]{0,62})+(\.[a-zA-Z0-9][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/;
       if (_session_backup_path=="") {
           $('#VSave_session_backup_path').html("请输入备份路径");
       }else if(!path.test(_session_backup_path)){

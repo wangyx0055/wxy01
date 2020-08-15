@@ -490,9 +490,10 @@ $('#edit_account_protocol').change(function () {
     }
 
 });
-/*$("#edit_account_protocol").focus(function () {
-    $('#Vedit_account_port').text('');
-});*/
+//协议改变端口错误提示消失
+  $("#edit_device_protocol").change(function () {
+    $('#Vport').text('');
+});
 
 // 失去焦点
 $('#edit_device_port').blur(function(){

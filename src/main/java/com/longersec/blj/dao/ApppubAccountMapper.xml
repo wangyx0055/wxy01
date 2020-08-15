@@ -59,7 +59,8 @@
 		<foreach collection="list" item="item" separator=",">
 			#{item}
 		</foreach>
-		)
+		);
+		DELETE  FROM `lsblj_access_policy_apppub_account` WHERE apppub_account_id NOT IN (SELECT id FROM `lsblj_apppub_account`)
 	</delete>
 	
 	<select id="findAll" resultMap="BaseResultMap, apppubAccountRecordCounts" resultType="java.lang.Object">
@@ -119,7 +120,7 @@
     </select>
 
 	<select id="checkName" resultType="java.lang.String">
-		select name from lsblj_apppub_account where name=#{name} limit 1;
+		select id from lsblj_apppub_account where id!=#{id} and name=#{name} limit 1;
 	</select>
 
 	<select id="selectName" resultType="java.lang.String">

@@ -141,8 +141,8 @@ $('#emailedit').click(function() {
 	   $("#outbound_send").css("overflow-y","scroll");
        // $("#telephone").val("");
        $("#telephone2").val("");
-       /*$("#type_message input[name=sex]")[0].checked=true;
-       $("#selfDe1").hide();*/
+       $("#type_message input[name=sex]")[0].checked=true;
+       /*$("#selfDe1").hide();*/
        $("#Vaip_Id").text("");
        $("#Vsign").text("");
        $("#Vapi_Secret").text("");

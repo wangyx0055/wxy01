@@ -76,10 +76,13 @@
 		<if test="crontabCommandLog.config_name != null"> AND c.`name` like CONCAT('%',#{crontabCommandLog.config_name},'%')</if>
 		<if test="crontabCommandLog.command != null"> AND l.`command` like CONCAT('%',#{crontabCommandLog.command},'%')</if>
 		<if test="crontabCommandLog.config_method != null"> AND c.`exec_method` like CONCAT('%',#{crontabCommandLog.config_method},'%')</if>
+		<if test="crontabCommandLog.exec_status != null"> AND l.`exec_status` like CONCAT('%',#{crontabCommandLog.exec_status},'%')</if>
 		<if test="crontabCommandLog.searchAll != null">   AND (
 			c.`name` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
 			or l.`command` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
 			or c.`exec_method` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
+			or l.`exec_status` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
+
         )</if>
 
 <!--		<if test="crontabCommandLog.device_ip != null"> AND l.`device_ip` like CONCAT('%',#{crontabCommandLog.device_ip},'%')</if>-->

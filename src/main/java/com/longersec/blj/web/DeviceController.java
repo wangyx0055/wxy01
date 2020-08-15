@@ -30,11 +30,6 @@ import com.longersec.blj.utils.Validator;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
-
-/**
- * 
- */
 @Controller
 @RequestMapping(value = "/device")
 public class DeviceController {
@@ -52,7 +47,7 @@ public class DeviceController {
 	@Autowired
 	private DeviceAccountService deviceAccountService;
 	@Autowired
-	private AccessPolicyDeviceAccountService accessPolicyDeviceAccountService;
+	private DeviceTypeService deviceTypeService;
 	@Autowired
 	private DepartmentService departmentService;
 	private String ip;
@@ -292,11 +287,9 @@ public class DeviceController {
 		return result;
 	}
 
-	public static Map<String, Object> checkDeviceExport(DeviceService deviceService, String name, String ip, int osType, String description,
+	public static Map<String, Object> checkDeviceExport(DeviceService deviceService,DeviceTypeService deviceTypeService, String name, String ip, String osType, String description,
 	                                                    String account,String password,int protocolId, int port, int sshKey){
 		Map<String, Object> errorMap = new HashMap<>(16);
-		ArrayList<Integer> list = new ArrayList<Integer>(10);
-		list.add(26);list.add(32);list.add(44);list.add(45);list.add(46);list.add(51);
 		Device checkName = deviceService.checkname(name);
 		if (checkName != null) {
 			errorMap.put("info",name+":用户名已经存在");
@@ -308,10 +301,13 @@ public class DeviceController {
 			errorMap.put("success", false);
 			return errorMap;
 		}
-		if(!list.contains(osType)) {
+		int checOsType = deviceTypeService.checOsType(osType);
+		if(checOsType == 0) {
 			errorMap.put("info",  osType+":系统类型不存在");
 			errorMap.put("success", false);
 			return errorMap;
+		} else {
+			errorMap.put("ostype",checOsType);
 		}
 		Device checkip = deviceService.checkip(ip);
 		if (checkip != null) {

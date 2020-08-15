@@ -73,8 +73,8 @@ public class ApppubAccountServiceImpl implements ApppubAccountService{
 	}
 
 	@Override
-	public String checkName(String name) {
-		return ApppubAccountDao.checkName(name);
+	public String checkName(Integer id,String name) {
+		return ApppubAccountDao.checkName(id,name);
 	}
 
 	@Override

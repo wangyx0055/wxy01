@@ -287,7 +287,7 @@ $(function() {
                     _dateVisitChart(json.data);
                 }
             })
-    }
+    };
 
     var _userVisitChart = function(_data) {
         var myChart = echarts.init(document
@@ -419,6 +419,8 @@ $(function() {
                 },
                 "columns" : [ {
                     "data" : "username"
+                },{
+                    "data" : "username"
                 }, {
                     "data" : "realname"
                 }, {
@@ -434,7 +436,10 @@ $(function() {
                 }, {
                     "data" : "web"
                 }, {
-                    "data" : "total"
+                    "data" : "total",
+                    "render": function(data,type,row,meta){
+                        return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-default4" style="cursor:pointer;">'+data+'</a>';
+                    }
                 } ],
                 "initComplete" : function(settings, json) {
                     $('#userVisit div').tooltip();
@@ -566,14 +571,14 @@ $(function() {
                 }, {
                     "data" : "users"
                 }, {
-                    "data" : "total"
-                }, {
                     "data" : "successes"
                 }, {
                     "data" : "fails"
                 }, {
                     "data" : "sourceips"
-                } ],
+                } , {
+                    "data" : "total"
+                }, ],
                 "initComplete" : function(settings, json) {
                     $('#dateSuccessFail div').tooltip();
                     _dateSuccessFailChart(json.data);
