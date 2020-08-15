@@ -1,0 +1,1 @@
+¹ 2javaX!hr0src/main/java/com/longersec/blj/domain/Role.java

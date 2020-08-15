@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>主机运维</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- my css -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <script src="../../js/html5shiv.min.js"></script>
+  <script src="../../js/respond.min.js"></script>
+  <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini ho" >
+<div class="wrapper" >
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+  <div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content" >
+      <div class="row" >
+        <!-- /.col -->
+        <div class="col-md-9">
+          <!--   <div>
+              <span class="glyphicon glyphicon-list"></span>
+              <span>主机运维</span>
+            </div> -->
+            <div class="box-title" style="padding:15px;" > 
+             <span class="new-header">主机运维</span>
+             </div>
+						<div class="nav-tabs-custom">
+							<ul class="nav nav-tabs" style="margin-left: 27px !important;">
+								<li data-item='all' class="active"><a href="#activity" data-toggle="tab">设备列表</a></li>
+								<li data-item='graph'><a href="#activity" data-toggle="tab">图形设备</a></li>
+								<li data-item='text'><a href="#activity" data-toggle="tab">字符设备</a></li>
+								<li data-item='favorite'><a href="#activity" data-toggle="tab">我的收藏</a></li>
+								<li data-item='history'><a href="#activity" data-toggle="tab">最近常用</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="active tab-pane" id="activity">
+
+									<!-- Post -->
+									<div class="box-body pad" style="margin-top: -5px;">
+										<div class="input-group margin">
+											 <select class="form-control" id="Distinguish">
+												<option value="searchAll">自动识别</option>
+												<option value="device_name">设备名称</option>
+												<option value="device_ip">设备地址</option>
+												<option value="username">设备账号</option>
+												<option value="protocol">协议</option>
+							                    </select>
+							                     <input type="text" class="form-control" id="searchId">
+							                      <span	class="input-group-btn"> <i
+												class="glyphicon glyphicon-search"> <span
+													class="glyphicon glyphicon-search"></span></i>
+												<button type="button" class="btn newaddbtn pull-left" id="search">搜索</button>
+											</span>
+										</div>
+										<table id="devices" class="table table-hover">
+											<thead>
+												<tr>
+                                                    <td style="width: 30px"><span>选择</span></td>
+													<td><span>设备名称</span></td>
+													<td><span>设备地址</span></td>
+													<td><span>协议</span></td>
+													<td><span>设备账号</span></td>
+													<td><span>连接测试</span></td>
+													<td><span>登录</span></td>
+													<td><span>收藏</span></td>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+										<!--<form>
+											<input type="checkbox" onclick="sel('chk[]')">
+											<button type="button" class="btn newaddbtn">登录</button>
+										</form>-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+              </div>
+        <div class="modal modal-hides" id="modal-ftp-login">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-left: 80px;width: 500px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">登录</span>
+                </div>
+                <div id="div12" style="margin-top: 20px;">
+                    <div style="margin-left: 50px;margin-top: 30px;">
+                        <span style="font-size: 20px;vertical-align: -20%;color: red;">*</span>
+                        <span style="font-size: 12px;color: #505050">请打开ftp/sftp工具，输入以下信息即可登录运维</span>
+                    </div>
+                    <div style="margin-left: 50px;margin-top: 30px;">
+                        <span style="font-size: 12px;color: #505050">服务器IP：</span>
+                            <span id='ftp_ip' style="color:red;font-size: 12px;"></span>
+                            
+                    </div>
+                    <div style="margin-left: 74px;margin-bottom: 20px;margin-top: 20px;">
+                        <span style="font-size: 12px;color: #505050;">端口：</span>
+                        <span id='ftp_port' style="color:red;font-size: 12px;"></span>
+                    </div>
+                    <div style="margin-left: 74px;margin-top: 30px;">
+                        <span style="font-size: 12px;color: #505050">账号：</span>
+                        <span id='ftp_username' style="color:red;font-size: 12px;"></span>
+                            
+                    </div>
+                    <div style="margin-left: 74px;margin-bottom: 20px;margin-top: 20px;">
+                        <span style="font-size: 12px;color: #505050;">密码：</span>
+                        <span id='ftp_password' style="color:red;font-size: 12px;"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+        <div class="modal modal-info" id="modal-success">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 220px;height: 90px;margin-left: 200px;border-radius: 4px;margin-top: 140px;">
+                    <div><img th:src="@{/images/success.png}" style="width: 40px;height: 40px; margin: 40px;margin-right: 0px;margin-left: 45px;margin-top: 25px;" ></div>
+                    <div class="modal-body" style="font-family: NotoSansHans-Regular;float:left;font-size: 16px;color: rgba(0,0,0,0.65)!important;padding: 0px;background-color: white!important;margin-left: 100px;margin-top: -72px">
+                        <p style="color: black">连接成功！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="modal modal-hides" id="modal-login">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-left: 80px;width: 500px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">登录</span>
+                </div>
+                <div id="div12" style="margin-top: 20px;">
+                    <div style="margin-left: 50px;margin-top: 30px;">
+                        <span style="font-size: 20px;vertical-align: -20%;color: red;">*</span>
+                        <span style="font-size: 12px;color: #505050">登陆账号：
+                            <input id="_edit_device_super_account" type="text" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;"></span><span id='_Vsuper_account' style="color:red;font-size: 12px;"></span>
+                            <!-- <input  class="input" type="checkbox" style="margin-left:70px;margin-top: 0px"/>&nbsp;<span style="font-size: 12px">特权账号</span> -->
+                    </div>
+                    <div style="margin-left: 74px;margin-bottom: 20px;margin-top: 20px;">
+                        <span style="font-size: 20px;vertical-align: -20%;color: red">*</span>
+                        <span style="font-size: 12px;color: #505050;">密码：
+                            <input id="_edit_device_password" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;"></span><span id='_Vdevice_password' style="color:red;font-size: 12px;"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button" id="delButton" class="btn newaddbtn"  >确定</button>
+                    <input type="hidden" id="del_id" />
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- <footer class="main-footer">
+      <div th:replace="view/common/footer :: footer"></div>
+  </footer> -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- AdminLTE App -->
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- date-range-picker -->
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../bower_components/plugins/iCheck/icheck.min.js"></script>
+
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<script src="../../bower_components/dist/js/checkAll.js"></script>
+<!--js-->
+<script src="../../js/common/modal.js"></script>
+<script src="../../js/view_js/host_operation.js"></script>
+</body>
+</html>

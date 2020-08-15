@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ResourceUserDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ResourceUser">
+		<result column="userid" jdbcType="INTEGER" property="userid"/>
+		<result column="resource_id" jdbcType="INTEGER" property="resource_id"/>
+	</resultMap>
+
+	<resultMap id="resourceUserRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addResourceUser" parameterType="com.longersec.blj.domain.ResourceUser">
+		INSERT INTO lsblj_resource_user
+		<set>
+		userid=#{userid},
+		resource_id=#{resource_id},
+		</set>
+	</insert>
+
+	<update id="editResourceUser" parameterType="com.longersec.blj.domain.ResourceUser">
+		UPDATE lsblj_resource_user
+		<set>
+		<if test="userid != null">userid=#{userid},</if>
+		<if test="resource_id != null">resource_id=#{resource_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delResourceUser" parameterType="java.util.List">
+		DELETE FROM lsblj_resource_user
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, resourceUserRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_resource_user 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

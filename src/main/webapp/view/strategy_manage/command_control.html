@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <title>命令控制</title>
+  <!-- my css -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini cc">
+<div class="wrapper" >
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+    <div class="content-wrapper" >
+      <!-- Content Header (Page header) -->
+      <!-- Main content -->
+      <section class="content" >
+        <div class="row" >
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div >
+                <div class="box-title" style="padding:15px;background-color:white" > 
+             <span class="new-header">命令控制策略</span>
+             </div>
+            </div>
+            <div class="nav-tabs-custom">
+               <ul class="nav nav-tabs">
+                <li class="active"><a href="#activity" data-toggle="tab">策略列表</a></li>
+                <li><a href="#timeline" data-toggle="tab">命令集</a></li>
+               </ul>
+              <div class="tab-content">
+                <div class="active tab-pane" id="activity">
+                 <div class="box-body pad" style="margin-top: -5px;">
+                     <div class="input-group margin">
+                         <select class="form-control" id="Distinguish">
+                             <option value="1" selected>自动识别</option>
+                             <option value="2" >策略名称</option>
+                             <option value="3" >描述</option>
+                             <option value="4" >执行动作</option>
+                             <option value="5" >状态</option>
+                         </select>
+                         <input type="text" class="form-control" id="searchId">
+                         <span class="input-group-btn">
+                    <button type="button" class="btn newaddbtn" id="search">搜索</button>
+                  </span>
+                     </div>
+                     <div class="new-add-style">
+                         <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-default" id="clearN" >新建</button>
+<!--                         <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal"  data-target="#modal-default2">导入</button>-->
+<!--                         <button type="button" class="btn btn-default newaddbtn2" value="Export to Excel" data-dismiss="modal"  data-toggle="modal"  data-target="#modal-default4">导出</button>-->
+                     </div>
+                    <table id="example2" class="table table-hover">
+                      <thead>
+                         <tr>
+                             <td style="width:55px;padding-right: 0px;"><span>选择</span></td>
+                             <td style="width: 15%"><span>策略名称</span></td>
+                             <td style="width: 25%"><span>描述</span></td>
+                             <td style="width: 21%"><span>执行动作</span></td>
+                             <td style="width: 10%"><span>状态</span></td>
+                             <td><span>操作</span></td>
+                         </tr>
+                      </thead>
+                      <tbody id="sortable">
+                      </tbody>
+                    </table>
+                    <form>
+                        <input type="checkbox" onclick="sel('chk[]')">
+                      <button type="button" class="btn btn-default pull-left newaddbtn2"  data-toggle="modal"  data-target="#modal-control">删除</button>
+                    </form>                         
+                 </div>
+                </div>
+                <div class="tab-pane" id="timeline">
+                 <div class="box-body pad">
+                     <div class="input-group margin">
+                         <select class="form-control" id="Distinguish1">
+                             <option value="1" selected>自动识别</option>
+                             <option value="2">命令集名称</option>
+                             <option value="3">命令/参数</option>
+                         </select>
+                         <input type="text" class="form-control" id="searchId1">
+                         <span class="input-group-btn">
+                    <button type="button" class="btn  pull-left newaddbtn" id="search1">搜索</button>
+                  </span>
+                     </div>
+                     <div class="new-add-style">
+                         <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-default3" id="clearT" >新建</button>
+<!--                         <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal"  data-target="#modal-default22">导入</button>-->
+<!--                         <button type="button" class="btn btn-default  newaddbtn2" value="Export to Excel" data-dismiss="modal"  data-toggle="modal"  data-target="#modal-default44">导出</button>-->
+                     </div>
+                 <!-- 命令集表 -->
+                    <table id="example3" class="table table-hover">
+                      <thead>
+                         <tr>
+                             <td style="width: 50px"><span>选择</span></td>
+                             <td><span>命令集名称</span></td>
+                             <td style="width: 50%"><span>命令/参数</span></td>
+                             <td ><span>操作</span></td>
+                         </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                    <form>
+                      <input type="checkbox" onclick="sel('chk1[]')">
+                      <button type="button" class="btn btn-default pull-left newaddbtn2"  data-toggle="modal"  data-target="#modal-control2">删除</button>
+                   </form>                      
+               </div>
+              </div>
+        </div>
+
+        <!-- add -->
+        <!--  命令集里的新建 -->
+      <div class="modal modal-hides" id="modal-default3">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">新建命令集</span>
+                </div>
+         <div class="modal-body">
+           <div style="margin-left: 55px;">
+          <!--   <input type="hidden" id="add_id" />-->
+               <span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;margin-left: -5px;">*</span>
+              <span>命令集名称：
+              <input type="text" id="add_name" size="30px">
+             </span>
+            <span style="color: red;font-size: 12px" id="Vaddname"></span>
+           </div>
+
+           <p>长度1-64个汉字或字符，允许输入英文字母、数字、或“-_”</p>
+             <span style="display: inline-block;vertical-align: top;">
+            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+             <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>
+           </span>
+             <textarea  id="add_cmd" maxlength="128" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>
+             <span style="color: red;font-size: 12px;" id="Vaddcmd" ></span>
+             <p>支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
+         </div>
+         <br>
+             <div class="modal-footer">
+                 <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                 <button id="addButton1" type="button" class="btn newaddbtn" >确定</button>
+             </div>
+
+              </div>
+            </div>
+      </div>
+        <!-- first -->
+        <!-- 新建策略里的新建  -->
+      <div class="modal modal-hides" id="modal-default">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <span class="modal-title">新建命令控制策略</span>
+                </div>
+                <div class="modal-body"> 
+                  <div class="cc-policy-name">
+                      <span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;margin-left: -9px;">*</span>
+                    <span>策略名称：
+                    <input id="add_name2" type="text"><span id="Vname" style="color: red;font-size:12px;"></span></span>
+                  </div>
+                   <p class="cc-policy-namedesc">长度1-64个汉字或字符，允许输入英文字母、数字、或“-”</p>
+                  <div class="cc-policy-action">
+                      <span>执行动作：</span>
+                      <select id="add_execute_action2" name="lo"> 
+                        <option value="1" selected>&nbsp;&nbsp;断开连接</option>
+                        <option value="2">&nbsp;&nbsp;拒绝执行</option>
+                        <!-- <option value="3">&nbsp;&nbsp;动态授权</option>
+                        <option value="4">&nbsp;&nbsp;允许执行</option> -->
+                      </select>
+                  </div>
+                    <div class="cc-policy-action">
+                        <span>告警级别：</span>
+                        <select style="width: 45px;padding-left: 6px;" id="alertLevel">
+                            <option value="1" selected>低</option>
+                            <option value="2">中</option>
+                            <option value="3">高</option>
+                        </select>
+                        <span style="margin-left: 15px;">告警方式：</span>
+                        <input type="hidden" id="alertMethods">
+                        <input type="checkbox" style="margin: 0;cursor: pointer;" id="alertMessage"> <span>消息</span>
+                        <input type="checkbox" style="margin: 0 0 0 10px;cursor: pointer;" id="alertEmail"> <span>邮件</span>
+                        <input type="checkbox" style="margin: 0 0 0 10px;cursor: pointer;" id="alertShort"> <span>短信</span>
+                    </div>
+                  <div class="cc-policy-time">
+                    <span>有效期：</span>
+                    <div class="input-group-addon">
+                       <i class="fa fa-calendar" style="color:#a1a6a1b5"></i>
+                    </div>
+                    <div>-</div> 
+                    <input type="text" class="form-control" id="reservation">
+                    <input type="text" class="form-control" id="reservation2">
+                    <input id="add_long2" type="checkbox" checked="checked">
+                    <span>永久有效</span>
+                 </div>
+                   <div class="cc-policy-desc">
+                      <span>描述:</span>
+                      <textarea id="add_desc2"></textarea><span style="color: red;font-size: 12px" id="Vadddesc"></span>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default newaddbtn2 " data-dismiss="modal">取消</button>
+                  <button type="button" class="btn newaddbtn"  data-toggle="modal"  id="next" onclick="checkNull()">下一步</button>
+                </div>    
+              </div>
+            </div>
+          </div> 
+        <!-- delete -->
+        <!--  新建策略里的删除 -->
+                <div class="modal modal-hides" id="modal-default1">
+                    <div class="modal-dialog">
+                        <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <span class="modal-title">提示</span>
+                            </div>
+                            <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                                <p style="margin-left:-15px;">您确定要删除该命令控制策略吗？</p>
+                            </div><br>
+                            <div class="modal-footer">
+                                <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                                <button id="table-del" type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+                                <input type="hidden" id="del_id"/>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal modal-hides" id="modal-control">
+                    <div class="modal-dialog">
+                        <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <span class="modal-title">提示</span>
+                            </div>
+                            <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                                <p style="margin-top: 20px;">您确定要删除所选命令控制策略吗？</p>
+                            </div><br>
+                            <div class="modal-footer">
+                                <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                                <button id="delAllButton1" type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+        <!-- 命令集的删除 -->
+      <div class="modal modal-hides" id="modal-default11">
+            <div class="modal-dialog">
+                <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">提示</span>
+                    </div>
+                    <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                    <p>您确定要删除该命令集吗？</p>
+                  </div><br>
+                  <div class="modal-footer">
+                      <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                      <button id="delButton" type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+                      <input type="hidden" id="del_id11"/>
+                  </div>
+              </div>
+            </div>
+      </div>
+                <div class="modal modal-hides" id="modal-control2">
+                    <div class="modal-dialog">
+                        <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <span class="modal-title">提示</span>
+                            </div>
+                            <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                                <p>您确定要删除所选命令集吗？</p>
+                            </div><br>
+                            <div class="modal-footer">
+                                <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                                <button id="delAllButton2" type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <!-- 新建策略里的关联用户   关联用户组  -->
+      <div class="modal modal-hides" id="modal-primary33">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">新建命令控制策略</span>
+            </div>
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#a" data-toggle="tab">关联用户</a></li>
+                  <li><a href="#b" data-toggle="tab">关联用户组</a></li>
+                </ul>
+            </div>
+              <div class="tab-content">
+                 <div class="active tab-pane" id="a">
+                    <div class="modal-body">
+                      <div class="common-relative-left">
+                        <div>
+                        <span>可选择的用户</span>
+                        </div>
+                        <div >
+                            <div>
+                                <input type="text" class="form-control" id="list_user">
+                                <img src="../../images/big.svg" id="search_user">
+                            </div>
+                            <!--dataleft  -->
+                            <div class="data-left" id="add_user">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- add and romove  -->
+                    <div class="add-remove">
+                        <button class="btn btn-default " disabled="true"  id="remove"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <button class="btn btn-default " disabled="true"  id="add"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                    <!-- selectall -->
+                    <div class="select-left-all">
+                        <input type="checkbox" id="left-checked">
+                        <span>全选</span>
+                    </div>
+                    <div class="select-right-all" >
+                        <input type="checkbox" id="right-checked">
+                        <span>全选</span>
+                    </div>
+                    <div class="common-relative-right">
+                        <div>
+                        <span>已选择的用户</span>
+                        </div>
+                        <div>
+                            <div style="position: relative;height: 30px;">
+                                <input type="text" class="form-control">
+                                <img src="../../images/big.svg">
+                            </div>
+                            <!-- dataright -->
+                            <div class="data-right" id="add_user1">
+                               
+                            </div>
+                    </div>
+                  </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-default" data-dismiss="modal">上一步</button>
+                        <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary55" data-dismiss="modal">下一步</button>
+                    </div>   
+                 </div>
+                 <div class="tab-pane" id="b">
+                    <div class="modal-body">
+                          <div class="common-relative-left">
+                        <div><span>可选择的用户组</span></span>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" class="form-control" placeholder="根据关键词搜索" id="list_usergroup">
+                                <img src="../../images/big.svg" id="search_usergroup">
+                            </div>
+                            <!--dataleft  -->
+                            <div class="data-left1" id="add_group">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- add and romove  -->
+                    <div class="add-remove">
+                        <button class="btn btn-default " disabled="true"  id="remove1"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <button class="btn btn-default " disabled="true"  id="add1"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                    <!-- selectall -->
+                    <div class="select-left-all">
+                        <input type="checkbox" id="left-checked1">
+                        <span>全选</span>
+                    </div>
+                    <div class="select-right-all" >
+                        <input type="checkbox" id="right-checked1">
+                        <span>全选</span>
+                    </div>
+                    <div class="common-relative-right">
+                        <div><span>已选择的用户组</span></span>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" class="form-control">
+                                <img src="../../images/big.svg">
+                            </div>
+                            <!-- dataright -->
+                            <div class="data-right1" id="add_group1">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-default" data-dismiss="modal">上一步</button>
+                    <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary55" data-dismiss="modal">下一步</button>
+                </div>
+            </div>
+              </div>
+          </div>
+        </div>            
+      </div>
+        <!--新建策略里的关联设备   关联设备组  -->
+      <div class="modal modal-hides" id="modal-primary55">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #f7f7f7">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title" style="font-size:18px">新建命令控制策略</span>
+            </div>
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#c" data-toggle="tab">关联设备</a></li>
+                  <li><a href="#d" data-toggle="tab">关联设备组</a></li>
+                </ul>
+            </div>
+              <div class="tab-content">
+                 <div class="active tab-pane" id="c">
+                    <div class="modal-body">
+                       <div class="common-relative-left">
+                        <div><span>可选择的设备</span>
+                        </div>
+                        <div >
+                            <div>
+                                <input type="text" class="form-control"  placeholder="根据关键词搜索"  id="list_deviceAccount">
+                                <img src="../../images/big.svg" id="search_deviceAccount">
+                            </div>
+                            <!--dataleft  -->
+                            <div class="data-left2" id="add_device">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- add and romove  -->
+                    <div class="add-remove">
+                        <button class="btn btn-default " disabled="true"  id="remove2"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <button class="btn btn-default " disabled="true"  id="add2"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                    <!-- selectall -->
+                    <div class="select-left-all">
+                        <input type="checkbox" id="left-checked2">
+                        <span>全选</span>
+                    </div>
+                    <div class="select-right-all" >
+                        <input type="checkbox" id="right-checked2">
+                        <span>全选</span>
+                    </div>
+                    <div class="common-relative-right">
+                        <div><span>已选择的设备</span>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" class="form-control">
+                                <img src="../../images/big.svg">
+                            </div>
+                            <!-- dataright -->
+                            <div class="data-right2" id="add_device1">
+                               
+                            </div>
+                    </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                     <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                     <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary33" data-dismiss="modal">上一步</button>
+                     <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary44" data-dismiss="modal">下一步</button>
+                    </div>   
+                 </div>
+                  <div class="tab-pane" id="d">
+                    <div class="modal-body">
+                          <div class="common-relative-left">
+                        <div><span>可选择的设备组</span>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_devicegroup">
+                                <img src="../../images/big.svg" id="search_devicegroup">
+                            </div>
+                            <!--dataleft  -->
+                            <div class="data-left3" id="add_devicegroup">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- add and romove  -->
+                    <div class="add-remove">
+                        <button class="btn btn-default " disabled="true"  id="remove3"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <button class="btn btn-default " disabled="true"  id="add3"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                    <!-- selectall -->
+                    <div class="select-left-all">
+                        <input type="checkbox" id="left-checked3">
+                        <span>全选</span>
+                    </div>
+                    <div class="select-right-all" >
+                        <input type="checkbox" id="right-checked3">
+                        <span>全选</span>
+                    </div>
+                    <div class="common-relative-right">
+                        <div><span>已选择的设备组</span>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" class="form-control" >
+                                <img src="../../images/big.svg">
+                            </div>
+                            <!-- dataright -->
+                            <div class="data-right3" id="add_devicegroup1">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary33" data-dismiss="modal">上一步</button>
+                    <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary44" data-dismiss="modal">下一步</button>
+                </div>
+            </div>
+              </div>
+          </div>
+        </div>            
+      </div>
+        <!--新建策略里的关联命令  关联命令集  -->
+      <div class="modal modal-hides" id="modal-primary44">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #f7f7f7">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title" style="font-size:18px">新建命令控制策略</span>
+            </div>
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#f" data-toggle="tab">关联命令</a></li>
+                  <li><a href="#g" data-toggle="tab">关联命令集</a></li>
+                </ul>
+            </div>
+              <div class="tab-content">
+                 <div class="active tab-pane" id="f">
+                  <div class="modal-body">
+                <div>
+                   <p><span>命令/参数：</span>
+                  <div>
+                  <textarea id="add_cmd2"></textarea>&nbsp;&nbsp;<span id="Vadd_cmd2" class="sign_red ">vsshsd</span>
+                  </div>
+                    <div>
+                    <p>支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
+                    </div>
+                </div>
+                <br> 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" >取消</button>
+                  <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary55" data-dismiss="modal">上一步</button>
+                  <button type="button" class="btn newaddbtn add-cmdpolicy" data-dismiss="modal" >确定</button>
+                </div>   
+                 </div>
+                 <div class="tab-pane" id="g">
+                    <div class="modal-body">
+                        <div class="common-relative-left">
+                        <div><span>可选择的命令集</span>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_cmdgroup">
+                                <img src="../../images/big.svg" id="search_cmdgroup">
+                            </div>
+                            <!--dataleft  -->
+                            <div class="data-left4" id="add_cmdgroup">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- add and romove  -->
+                    <div class="add-remove">
+                        <button class="btn btn-default " disabled="true"  id="remove4"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                        <button class="btn btn-default " disabled="true"  id="add4"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                    <!-- selectall -->
+                    <div class="select-left-all">
+                        <input type="checkbox" id="left-checked4">
+                        <span>全选</span>
+                    </div>
+                    <div class="select-right-all" >
+                        <input type="checkbox" id="right-checked4">
+                        <span>全选</span>
+                    </div>
+                    <div class="common-relative-right">
+                        <div><span>已选择的命令集</span>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" class="form-control">
+                                <img src="../../images/big.svg">
+                            </div>
+                            <!-- dataright -->
+                            <div class="data-right4" id="add_cmdgroup1">
+                               
+                            </div>
+                    </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary55" data-dismiss="modal">上一步</button>
+                        <button type="button" class="btn newaddbtn add-cmdpolicy"  data-dismiss="modal">确定</button>
+                    </div>   
+                 </div>
+              </div>
+          </div>
+        </div>            
+      </div>
+      <!-- default-->
+       <!-- 新建策略里的关联命令 -->
+    <div class="modal modal-hides" id="modal-primary1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+              <input type="hidden" id="primary1_id">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">关联命令</span>
+              </div>
+              <div class="modal-body">
+              <div>
+                  <p><span style="display: inline-block;vertical-align: top">命令/参数：</span>
+                  <textarea id="edit_cmdname" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>&nbsp;&nbsp;<span id="Vedit_cmdname" class="sign_red">sdhb</span>
+                  <div  style="width: 370px;">
+                  <p style="color:#a4abb5;margin-left: 65px;">支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
+                  </div>
+              </div>
+              <br>
+              </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button id="relevance-cmd"  class="btn newaddbtn">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+    </div>
+  <!-- 新建策略里的关联命令集 -->
+  <div class="modal modal-hides" id="modal-primary2">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <input type="hidden" id="primary2_id">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">关联命令集</span>
+              </div>
+              <div class="nav-tabs-custom">
+                  <div class="tab-content">
+                      <div class="active tab-pane">
+                          <div class="modal-body">
+                              <div class="common-relative-left">
+                                  <div><span>可选择的命令集</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_cmdgroup">
+                                          <img src="../../images/big.svg" id="search_ac_cmdgroup">
+                                      </div>
+                                      <!--dataleft  -->
+                                      <div class="data-left9" id="edit_cmdgroup">
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- add and romove  -->
+                              <div class="add-remove">
+                                  <button class="btn btn-default " disabled="true"  id="remove9"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                  <button class="btn btn-default " disabled="true"  id="add9"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                              </div>
+                              <!-- selectall -->
+                              <div class="select-left-all">
+                                  <input type="checkbox" id="left-checked9">
+                                  <span>全选</span>
+                              </div>
+                              <div class="select-right-all" >
+                                  <input type="checkbox" id="right-checked9">
+                                  <span>全选</span>
+                              </div>
+                              <div  class="common-relative-right">
+                                  <div><span>已选择的命令集</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_cmdgroup1">
+                                          <img src="../../images/big.svg" id="search_ac_cmdgroup1">
+                                      </div>
+                                      <!-- dataright -->
+                                      <div class="data-right9" id="edit_cmdgroup1">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                              <button id="relevance-cmdgroup" type="button" class="btn newaddbtn">确定</button>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- three1 -->
+  <!-- 新建策略里的关联用户 -->
+  <div class="modal modal-hides" id="modal-primary3">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <input type="hidden" id="primary3_id">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">关联用户</span>
+              </div>
+              <div class="nav-tabs-custom">
+                  <div class="tab-content">
+                      <div class="active tab-pane">
+                          <div class="modal-body">
+                              <div class="common-relative-left">
+                                  <div><span>可选择的用户</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_edituser">
+                                          <img src="../../images/big.svg" id="search_ac_edituser">
+                                      </div>
+                                      <!--dataleft  -->
+                                      <div class="data-left5" id="edit_user">
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- add and romove  -->
+                              <div class="add-remove">
+                                  <button class="btn btn-default " disabled="true"  id="remove5"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                  <button class="btn btn-default " disabled="true"  id="add5"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                              </div>
+                              <!-- selectall -->
+                              <div class="select-left-all">
+                                  <input type="checkbox" id="left-checked5">
+                                  <span>全选</span>
+                              </div>
+                              <div class="select-right-all" >
+                                  <input type="checkbox" id="right-checked5">
+                                  <span>全选</span>
+                              </div>
+                              <div class="common-relative-right">
+                                  <div><span>已选择的用户</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_edituser1">
+                                          <img src="../../images/big.svg" id="search_ac_edituser1">
+                                      </div>
+                                      <!-- dataright -->
+                                      <div class="data-right5" id="edit_user1">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                              <button id="relevance-user" type="button" class="btn newaddbtn pull-right">确定</button>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- four1 -->
+  <!-- 新建策略里的关联用户组 -->
+  <div class="modal modal-hides" id="modal-primary4">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">关联用户组</span>
+                  <input type="hidden" id="primary4_id">
+              </div>
+              <div class="nav-tabs-custom" style="margin-top: 1px">
+                  <div class="tab-content">
+                      <div class="active tab-pane" style="height: 100%">
+                          <div class="modal-body">
+                              <div class="common-relative-left">
+                                  <div><span>可选择的用户组</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_editusergroup" >
+                                          <img src="../../images/big.svg" id="search_ac_editusergroup">
+                                      </div>
+                                      <!--dataleft  -->
+                                      <div class="data-left6" id="edit_usergroup">
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- add and romove  -->
+                              <div class="add-remove">
+                                  <button class="btn btn-default " disabled="true"  id="remove6"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                  <button class="btn btn-default " disabled="true"  id="add6"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                              </div>
+                              <!-- selectall -->
+                              <div class="select-left-all">
+                                  <input type="checkbox" id="left-checked6">
+                                  <span>全选</span>
+                              </div>
+                              <div class="select-right-all" >
+                                  <input type="checkbox" id="right-checked6">
+                                  <span>全选</span>
+                              </div>
+                              <div class="common-relative-right">
+                                  <div><span>已选择的用户组</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_editusergroup1" >
+                                          <img src="../../images/big.svg" id="search_ac_editusergroup1">
+                                      </div>
+                                      <!-- dataright -->
+                                      <div class="data-right6" id="edit_usergroup1">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button  type="button" class="btn btn-default newaddbtn2"data-dismiss="modal">取消</button>
+                              <button id="relevance-usergroup"  type="button" class="btn newaddbtn" >确定</button>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- five1 -->
+  <!-- 新建策略里的关联设备 -->
+  <div class="modal modal-hides" id="modal-primary5">
+      <div class="modal-dialog">
+          <div class="modal-content" draggable="true">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">关联设备</span>
+                  <input type="hidden" id="primary5_id">
+              </div>
+              <div class="nav-tabs-custom">
+                  <div class="tab-content">
+                      <div class="active tab-pane">
+                          <div class="modal-body">
+                              <div class="common-relative-left">
+                                  <div><span>可选择的设备</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_editdeviceaccount">
+                                          <img src="../../images/big.svg" id="search_ac_editdeviceaccount">
+                                      </div>
+                                      <!--dataleft  -->
+                                      <div class="data-left7" id="edit_device">
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- add and romove  -->
+                              <div class="add-remove">
+                                  <button class="btn btn-default " disabled="true"  id="remove7"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                  <button class="btn btn-default " disabled="true"  id="add7"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                              </div>
+                              <!-- selectall -->
+                              <div class="select-left-all">
+                                  <input type="checkbox" id="left-checked7">
+                                  <span>全选</span>
+                              </div>
+                              <div class="select-right-all" >
+                                  <input type="checkbox" id="right-checked7">
+                                  <span>全选</span>
+                              </div>
+                              <div class="common-relative-right">
+                                  <div><span>已选择的设备</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_editdeviceaccount1">
+                                          <img src="../../images/big.svg" id="search_ac_editdeviceaccount1">
+                                      </div>
+                                      <!-- dataright -->
+                                      <div class="data-right7" id="edit_device1">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                              <button id="relevance-device" type="button" class="btn newaddbtn" >确定</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- 新建策略里的关联设备组 -->
+  <div class="modal modal-hides" id="modal-primary6">
+      <div class="modal-dialog">
+          <div class="modal-content" draggable="true">
+              <div class="modal-header">
+                  <input type="hidden" id="primary6_id">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">关联设备组</span>
+              </div>
+              <div class="nav-tabs-custom">
+                  <div class="tab-content">
+                      <div class="active tab-pane">
+                          <div class="modal-body">
+                              <div class="common-relative-left">
+                                  <div><span>可选择的设备组</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_editdevicegroup" >
+                                          <img src="../../images/big.svg" id="search_ac_editdevicegroup">
+                                      </div>
+                                      <!--dataleft  -->
+                                      <div class="data-left8" id="edit_devicegroup">
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- add and romove  -->
+                              <div class="add-remove">
+                                  <button class="btn btn-default " disabled="true"  id="remove8"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                  <button class="btn btn-default " disabled="true"  id="add8"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                              </div>
+                              <!-- selectall -->
+                              <div class="select-left-all">
+                                  <input type="checkbox" id="left-checked8">
+                                  <span>全选</span>
+                              </div>
+                              <div class="select-right-all" >
+                                  <input type="checkbox" id="right-checked8">
+                                  <span>全选</span>
+                              </div>
+                              <div class="common-relative-right">
+                                  <div><span>已选择的设备组</span>
+                                  </div>
+                                  <div>
+                                      <div>
+                                          <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_ac_editdevicegroup1" >
+                                          <img src="../../images/big.svg" id="search_ac_editdevicegroup1">
+                                      </div>
+                                      <!-- dataright -->
+                                      <div class="data-right8" id="edit_devicegroup1">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                              <button id="relevance-devicegroup" type="button" class="btn newaddbtn" >确定</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- new2 -->
+    <!-- 新建策略里的编辑  -->
+    <div class="modal modal-hides" id="modal-default777">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <span class="modal-title">编辑命令控制策略</span>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="edit_id777" />
+            <div class="cc-policy-name">
+                <span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;margin-left: -8px;">*</span>
+                <span>策略名称：<input type="text" id="edit_name777" size="30px"></span><span id="Ename" style="color: red;font-size:12px;"></span>
+            </div>
+            <p class="cc-policy-namedesc">长度1-64个汉字或字符，允许输入英文字母、数字、或“-”</p>
+            <div class="cc-policy-action">
+            <span>执行动作：</span>
+            <select name="lo" id="edit_execute_action777">
+              <option style="font-size: 13px" value="1" name="type777">&nbsp;&nbsp;断开连接</option>
+              <option style="font-size: 13px" value="2" name="type777">&nbsp;&nbsp;拒绝执行</option>
+              <!-- <option style="font-size: 13px" value="3" name="type777">&nbsp;&nbsp;动态授权</option>
+              <option style="font-size: 13px" value="4" name="type777">&nbsp;&nbsp;允许执行</option> -->
+               </select>
+             </div>
+              <div class="cc-policy-action">
+                  <span>告警级别：</span>
+                  <select style="width: 45px;padding-left: 6px;" id="alertLevel1">
+                      <option value="1">低</option>
+                      <option value="2">中</option>
+                      <option value="3">高</option>
+                  </select>
+                  <span style="margin-left: 15px;">告警方式：</span>
+                  <input type="checkbox" style="margin: 0;cursor: pointer;" id="alertMessage1"> <span>消息</span>
+                  <input type="checkbox" style="margin: 0 0 0 10px;cursor: pointer;" id="alertEmail1"> <span>邮件</span>
+                  <input type="checkbox" style="margin: 0 0 0 10px;cursor: pointer;" id="alertShort1"> <span>短信</span>
+              </div>
+            <div class="cc-policy-time">
+                 <span>有效期：</span>
+                    <div class="input-group-addon">
+                       <i class="fa fa-calendar" style="color:#a1a6a1b5"></i>
+                   </div>
+                    <div>-</div>
+                    <input type="text" class="form-control" id="reservation1">
+                    <input type="text" class="form-control" id="reservation3">
+                    <input id="edit_long777" type="checkbox" checked="checked">
+                    <span>永久有效</span>
+               </div>
+            <div class="cc-policy-desc">
+                  <span>描述:</span>
+                  <textarea id="edit_desc777" style="margin-top: 25px;margin-left: 90px;"></textarea><span id="Veditdesc" style="color: red;font-size:12px;"></span>
+                </div>
+          </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+            <button type="button" id="editButton777" class="btn newaddbtn" >确定</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <!-- 命令集里的编辑 -->
+    <div class="modal modal-hides" id="modal-default99">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <span class="modal-title">编辑命令集</span>
+      </div>
+      <div class="modal-body">
+        <div>
+            <span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;margin-left: -9px;">*</span>
+          <span>命令集名称：
+          <input type="text" id="edit_name1" size="30px"><span id="Veditname" style="color: red;font-size:12px;"></span></span></span>
+      </div>
+      <p>长度1-64个汉字或字符，允许输入英文字母、数字、或“-”</p>
+          <span style="display: inline-block;vertical-align: top;">
+            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+             <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>
+           </span>
+          <textarea  id="edit_cmd1" maxlength="128" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>
+          <span style="color: red;font-size: 12px;display: inline-block;vertical-align: top;" id="Vedit_cmd1" ></span>
+          <p>支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+          <input type="hidden" id="edit_id1" />
+        <button type="button" id="editButton1" class="btn newaddbtn">确定</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+     <!-- 导入导出 -->
+    <div class="modal modal-hides" id="modal-default4">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">导出命令控制策略</span>
+                </div>
+                <div class="modal-body" >
+                    <div style="margin-top: 20px;margin-left: 80px;">
+                        <p><span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;">*</span>
+                            <span style="font-size: 12px;color: #505050;">用户密码：</span>
+                            <input type="password" placeholder="&nbsp;&nbsp;&nbsp;请输入用户密码" id="queryPsw" style="margin-top: -10px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;"><span style="font-size: 12px;color: red;" id="PswRep"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button"  class="btn newaddbtn"  id="export">确定</button>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+    <div class="modal modal-hides" id="modal-default2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">导入命令控制策略</span>
+                </div>
+                <div class="u-download" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>下载模板:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击下载</button></span>
+                </div><br>
+                <div class="u-upload" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>上传文件:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击上传</button></span>
+                </div><br>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button"  class="btn newaddbtn"  data-dismiss="modal">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+        <!-- 命令集-->
+        <div class="modal modal-hides" id="modal-default44">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">导出命令集</span>
+                    </div>
+                    <div class="modal-body" >
+                        <div style="margin-top: 20px;margin-left: 80px;">
+                            <p><span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;">*</span>
+                                <span style="font-size: 12px;color: #505050;">用户密码：</span>
+                                <input type="password" placeholder="&nbsp;&nbsp;&nbsp;请输入用户密码" id="queryPsw1" style="margin-top: -10px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;"><span style="color: red;font-size: 12px;" id="PswRep1"></span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button"  class="btn newaddbtn"  id="export1">确定</button>
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </div>
+        <div class="modal modal-hides" id="modal-default22">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">导入命令集</span>
+                    </div>
+                    <div class="u-download" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>下载模板:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击下载</button></span>
+                    </div><br>
+                    <div class="u-upload" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>上传文件:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击上传</button></span>
+                    </div><br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button"  class="btn newaddbtn"  data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+     <footer class="main-footer">
+        <div th:replace="view/common/footer :: footer"></div>
+    </footer>
+    <div class="control-sidebar-bg"></div>
+  </div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- date-range-picker -->
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../bower_components/plugins/iCheck/icheck.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<!-- my js -->
+<script src="../../js/view_js/commandControl.js"></script>
+<script src="../../js/common/relative.js"></script>
+<script src="../../js/common/timepicker.js"></script>
+<script src="../../js/common/modal.js"></script>
+</body>
+</html>

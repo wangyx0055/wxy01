@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigDisksessionDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigDisksession">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="disk_config_enable" jdbcType="INTEGER" property="disk_config_enable"/>
+		<result column="disk_max_persent" jdbcType="INTEGER" property="disk_max_persent"/>
+		<result column="disk_write_type" jdbcType="INTEGER" property="disk_write_type"/>
+		<result column="session_backup_enable" jdbcType="INTEGER" property="session_backup_enable"/>
+		<result column="session_backup_time" jdbcType="TIME" property="session_backup_time"/>
+		<result column="session_backup_type" jdbcType="INTEGER" property="session_backup_type"/>
+		<result column="session_backup_host" jdbcType="VARCHAR" property="session_backup_host"/>
+		<result column="session_backup_port" jdbcType="VARCHAR" property="session_backup_port"/>
+		<result column="session_backup_username" jdbcType="VARCHAR" property="session_backup_username"/>
+		<result column="session_backup_password" jdbcType="BLOB" property="session_backup_password"/>
+		<result column="session_backup_path" jdbcType="VARCHAR" property="session_backup_path"/>
+		<result column="session_backup_iscompress" jdbcType="INTEGER" property="session_backup_iscompress"/>
+	</resultMap>
+
+	<resultMap id="configDisksessionRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addConfigDisksession" parameterType="com.longersec.blj.domain.ConfigDisksession">
+		INSERT INTO lsblj_config_disksession
+		<set>
+		
+		<if test="disk_config_enable != null">`disk_config_enable`=#{disk_config_enable},</if>
+		<if test="disk_max_persent != null">`disk_max_persent`=#{disk_max_persent},</if>
+		<if test="disk_write_type != null">`disk_write_type`=#{disk_write_type},</if>
+		<if test="session_backup_enable != null">`session_backup_enable`=#{session_backup_enable},</if>
+		<if test="session_backup_time != null">`session_backup_time`=#{session_backup_time},</if>
+		<if test="session_backup_type != null">`session_backup_type`=#{session_backup_type},</if>
+		<if test="session_backup_host != null">`session_backup_host`=#{session_backup_host},</if>
+		<if test="session_backup_port != null">`session_backup_port`=#{session_backup_port},</if>
+		<if test="session_backup_username != null">`session_backup_username`=#{session_backup_username},</if>
+		<if test="session_backup_password != null">`session_backup_password`=AES_ENCRYPT(#{session_backup_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="session_backup_path != null">`session_backup_path`=#{session_backup_path},</if>
+		<if test="session_backup_iscompress != null">`session_backup_iscompress`=#{session_backup_iscompress},</if>
+		</set>
+	</insert>
+
+	<update id="editConfigDisksession" parameterType="com.longersec.blj.domain.ConfigDisksession">
+		UPDATE lsblj_config_disksession
+		<set>
+		<if test="disk_config_enable != null">`disk_config_enable`=#{disk_config_enable},</if>
+		<if test="disk_max_persent != null">`disk_max_persent`=#{disk_max_persent},</if>
+		<if test="disk_write_type != null">`disk_write_type`=#{disk_write_type},</if>
+		<if test="session_backup_enable != null">`session_backup_enable`=#{session_backup_enable},</if>
+		<if test="session_backup_time != null">`session_backup_time`=#{session_backup_time},</if>
+		<if test="session_backup_type != null">`session_backup_type`=#{session_backup_type},</if>
+		<if test="session_backup_host != null">`session_backup_host`=#{session_backup_host},</if>
+		<if test="session_backup_port != null">`session_backup_port`=#{session_backup_port},</if>
+		<if test="session_backup_username != null">`session_backup_username`=#{session_backup_username},</if>
+		<if test="session_backup_password != null">`session_backup_password`=AES_ENCRYPT(#{session_backup_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="session_backup_path != null">`session_backup_path`=#{session_backup_path},</if>
+		<if test="session_backup_iscompress != null">`session_backup_iscompress`=#{session_backup_iscompress},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delConfigDisksession" parameterType="java.util.List">
+		DELETE FROM lsblj_config_disksession
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, configDisksessionRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		'' session_backup_password,lsblj_config_disksession.* FROM lsblj_config_disksession 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="get" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_config_disksession limit 1
+	</select>
+</mapper>

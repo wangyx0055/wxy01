@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.CrontabCommandLogDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.CrontabCommandLog">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="command" jdbcType="VARCHAR" property="command"/>
+		<result column="exec_datetime" jdbcType="VARCHAR" property="exec_datetime"/>
+		<result column="result" jdbcType="CLOB" property="result"/>
+		<result column="device_name" jdbcType="VARCHAR" property="device_name"/>
+		<result column="device_ip" jdbcType="VARCHAR" property="device_ip"/>
+		<result column="device_port" jdbcType="INTEGER" property="device_port"/>
+		<result column="device_username" jdbcType="VARCHAR" property="device_username"/>
+		<result column="exec_status" jdbcType="INTEGER" property="exec_status"/>
+		<result column="end_datetime" jdbcType="VARCHAR" property="end_datetime"/>
+		<result column="config_id" jdbcType="INTEGER" property="config_id"/>
+		<result column="config_name" jdbcType="INTEGER" property="config_name" />
+	</resultMap>
+
+	<resultMap id="crontabCommandLogRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addCrontabCommandLog" parameterType="com.longersec.blj.domain.CrontabCommandLog">
+		INSERT INTO lsblj_crontab_command_log
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="exec_datetime != null">`exec_datetime`=#{exec_datetime},</if>
+		<if test="result != null">`result`=#{result},</if>
+		<if test="device_name != null">`device_name`=#{device_name},</if>
+		<if test="device_ip != null">`device_ip`=#{device_ip},</if>
+		<if test="device_port != null">`device_port`=#{device_port},</if>
+		<if test="device_username != null">`device_username`=#{device_username},</if>
+		<if test="exec_status != null">`exec_status`=#{exec_status},</if>
+		<if test="end_datetime != null">`end_datetime`=#{end_datetime},</if>
+		<if test="config_id != null">`config_id`=#{config_id},</if>
+		</set>
+	</insert>
+
+	<update id="editCrontabCommandLog" parameterType="com.longersec.blj.domain.CrontabCommandLog">
+		UPDATE lsblj_crontab_command_log
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="exec_datetime != null">`exec_datetime`=#{exec_datetime},</if>
+		<if test="result != null">`result`=#{result},</if>
+		<if test="device_name != null">`device_name`=#{device_name},</if>
+		<if test="device_ip != null">`device_ip`=#{device_ip},</if>
+		<if test="device_port != null">`device_port`=#{device_port},</if>
+		<if test="device_username != null">`device_username`=#{device_username},</if>
+		<if test="exec_status != null">`exec_status`=#{exec_status},</if>
+		<if test="end_datetime != null">`end_datetime`=#{end_datetime},</if>
+		<if test="config_id != null">`config_id`=#{config_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delCrontabCommandLog" parameterType="java.util.List">
+		DELETE FROM lsblj_crontab_command_log
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	
+	<select id="findAll" resultMap="BaseResultMap, crontabCommandLogRecordCounts">
+		SELECT
+		SQL_CALC_FOUND_ROWS
+		l.id,l.result,l.device_name,l.device_ip,l.device_port,l.device_username,l.exec_status,l.config_id,DATE_FORMAT(l.exec_datetime,'%Y-%m-%d %H:%i:%s') exec_datetime,DATE_FORMAT(l.end_datetime,'%Y-%m-%d %H:%i:%s') end_datetime,
+		c.name config_name,l.command,c.exec_method config_method,c.exec_cycle config_cycle
+		FROM lsblj_crontab_command_log l
+		LEFT JOIN lsblj_crontab_script_config c ON l.config_id=c.id
+		where 1
+		<if test="crontabCommandLog.config_name != null"> AND c.`name` like CONCAT('%',#{crontabCommandLog.config_name},'%')</if>
+		<if test="crontabCommandLog.command != null"> AND l.`command` like CONCAT('%',#{crontabCommandLog.command},'%')</if>
+		<if test="crontabCommandLog.config_method != null"> AND c.`exec_method` like CONCAT('%',#{crontabCommandLog.config_method},'%')</if>
+		<if test="crontabCommandLog.searchAll != null">   AND (
+			c.`name` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
+			or l.`command` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
+			or c.`exec_method` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
+        )</if>
+
+<!--		<if test="crontabCommandLog.device_ip != null"> AND l.`device_ip` like CONCAT('%',#{crontabCommandLog.device_ip},'%')</if>-->
+<!--		<if test="crontabCommandLog.device_port != null"> AND l.`device_port` like CONCAT('%',#{crontabCommandLog.device_port})</if>-->
+<!--		<if test="crontabCommandLog.device_username != null"> AND l.`device_username` like CONCAT('%',#{crontabCommandLog.device_username})</if>-->
+<!--		<if test="crontabCommandLog.command != null"> AND l.`command` like CONCAT('%',#{crontabCommandLog.command})</if>-->
+<!--		<if test="crontabCommandLog.exec_datetime != null"> AND l.`exec_datetime` like CONCAT('%',#{crontabCommandLog.exec_datetime})</if>-->
+<!--		<if test="crontabCommandLog.device_username != null"> AND l.`end_datetime` like CONCAT('%',#{crontabCommandLog.end_datetime})</if>-->
+<!--		<if test="crontabCommandLog.searchAll != null"> AND  (-->
+<!--			l.`device_ip` like CONCAT('%',#{crontabCommandLog.searchAll },'%')-->
+<!--			or l.`device_port` like CONCAT('%',#{crontabCommandLog.searchAll },'%')-->
+<!--			or l.`device_username` like CONCAT('%',#{crontabCommandLog.searchAll },'%')-->
+<!--			or l.`command` like CONCAT('%',#{crontabCommandLog.searchAll },'%')-->
+<!--			or l.`exec_datetime` like CONCAT('%',#{crontabCommandLog.searchAll },'%')-->
+<!--			or l.`end_datetime` like CONCAT('%',#{crontabCommandLog.searchAll },'%')-->
+<!--			)</if>-->
+		 ORDER BY l.exec_datetime DESC 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="getCrontabCommandLog" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_crontab_command_log where id=#{id}
+	</select>
+
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_crontab_command_log where id=#{id}
+	</select>
+</mapper>

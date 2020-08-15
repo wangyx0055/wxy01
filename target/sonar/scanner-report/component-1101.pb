@@ -1,0 +1,1 @@
+Í 2webX»hr9src/main/webapp/view/auto_operation/operational_task.html

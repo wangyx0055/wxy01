@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigSyslogDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigSyslog">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+	</resultMap>
+
+	<resultMap id="configSyslogRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addConfigSyslog" parameterType="com.longersec.blj.domain.ConfigSyslog">
+		INSERT INTO lsblj_config_syslog
+		<set>
+		
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="status != null">`status`=#{status},</if>
+		</set>
+	</insert>
+
+	<update id="editConfigSyslog" parameterType="com.longersec.blj.domain.ConfigSyslog">
+		UPDATE lsblj_config_syslog
+		<set>
+		
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="status != null">`status`=#{status},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delConfigSyslog" parameterType="java.util.List">
+		DELETE FROM lsblj_config_syslog
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, configSyslogRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_config_syslog 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

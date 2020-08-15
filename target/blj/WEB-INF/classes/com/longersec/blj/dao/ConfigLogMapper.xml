@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigLogDao">
+<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigLog">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="log_manage" jdbcType="VARCHAR" property="log_manage"/>
+    <result column="sort" jdbcType="INTEGER" property="sort"/>
+</resultMap>
+
+<resultMap id="configLogRecordCounts" type="java.lang.Long">
+    <result column="recordCounts" jdbcType="BIGINT"/>
+</resultMap>
+
+<insert id="addConfigLog" parameterType="com.longersec.blj.domain.ConfigLog">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO lsblj_config_logpara
+    <set>
+        <if test="name != null">`name`=#{name},</if>
+        <if test="log_manage != null">`log_manage`=#{log_manage},</if>
+        <if test="sort != null">`sort`=#{sort},</if>
+    </set>
+</insert>
+
+<update id="editConfigLog" parameterType="com.longersec.blj.domain.ConfigLog">
+    UPDATE lsblj_config_logpara
+    <set>
+        <if test="name != null">`name`=#{name},</if>
+        <if test="log_manage != null">`log_manage`=#{log_manage},</if>
+        <if test="sort != null">`sort`=#{sort},</if>
+    </set>
+    where id=#{id}
+</update>
+
+<delete id="delConfigLog" parameterType="java.util.List">
+    DELETE FROM lsblj_config_logpara
+    where id IN (
+    <foreach collection="list" item="item" separator=",">
+        #{item},
+    </foreach>
+    0)
+</delete>
+<select id="findAll" resultMap="BaseResultMap, configLogRecordCounts" resultType="java.lang.Object">
+    SELECT
+    SQL_CALC_FOUND_ROWS
+    * FROM lsblj_config_logpara
+    ORDER BY sort ASC
+    <if test="page_start != null and page_length != null">
+        LIMIT #{page_start},#{page_length}
+    </if>
+    ;SELECT found_rows() AS recordCounts;
+</select>
+
+<select id="selectCount" resultType="java.lang.Integer">
+    SELECT count(*) FROM lsblj_config_logpara where id is not null;
+</select>
+
+<select id="checkname" resultType="java.lang.Integer">
+    SELECT count(*) FROM lsblj_config_logpara where id !=#{id} and name = #{name};
+</select>
+</mapper>

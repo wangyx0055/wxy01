@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.AccessPolicyGroupDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.AccessPolicyGroup">
+		<id column="policy_id" jdbcType="INTEGER" property="policy_id"/>
+		<id column="group_id" jdbcType="INTEGER" property="group_id"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+	</resultMap>
+
+	<resultMap id="accessPolicyGroupRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+	<resultMap id="UserGroup" type="com.longersec.blj.domain.DTO.UserGroup">
+		<id column="id" jdbcType="INTEGER" property="group_id"/>
+		<result column="group_name" jdbcType="VARCHAR" property="group_name"/>
+	</resultMap>
+	<resultMap id="DeviceGroup" type="com.longersec.blj.domain.DTO.DeviceGroup">
+		<id column="dgroup_id" jdbcType="INTEGER" property="dgroup_id"/>
+		<result column="dgroup_name" jdbcType="VARCHAR" property="dgroup_name"/>
+	</resultMap>
+
+	<insert id="addAccessPolicyGroup" parameterType="com.longersec.blj.domain.AccessPolicyGroup">
+		INSERT INTO lsblj_access_policy_group(policy_id, group_id, type) values
+		<foreach collection="groups" item="item" separator=",">
+		(#{policy_id},#{item},0)
+		</foreach>
+	</insert>
+
+	<insert id="addAccessPolicyDeviceGroup" parameterType="com.longersec.blj.domain.AccessPolicyGroup">
+		INSERT INTO lsblj_access_policy_group(policy_id, group_id, type) values
+		<foreach collection="devicegroup" item="item" separator=",">
+			(#{policy_id},#{item},1)
+		</foreach>
+	</insert>
+
+	<insert id="editAccessPolicyGroup" parameterType="com.longersec.blj.domain.AccessPolicyGroup">
+		INSERT INTO lsblj_access_policy_group(policy_id, group_id, type) values
+		<foreach collection="groups" item="item" separator=",">
+		(#{policy_id},#{item},0)
+		</foreach>
+	</insert>
+	
+	<insert id="editAccessPolicyDeviceGroup" parameterType="com.longersec.blj.domain.AccessPolicyGroup">
+		INSERT INTO lsblj_access_policy_group(policy_id, group_id, type) values
+		<foreach collection="devicegroup" item="item" separator=",">
+		(#{policy_id},#{item},1)
+		</foreach>
+	</insert>
+
+	<delete id="delAccessPolicyGroup" parameterType="java.util.List">
+		DELETE FROM lsblj_access_policy_group
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, accessPolicyGroupRecordCounts" resultType="java.lang.Object">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_access_policy_group 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="selectById" resultMap="UserGroup">
+		SELECT
+		p.group_id,u.name as group_name FROM lsblj_access_policy_group p,lsblj_group u
+		where policy_id = #{policy_id} and p.type = #{type} and u.type=0
+		and p.group_id=u.id;
+	</select>
+	<select id="selectBydIdDevice" resultMap="DeviceGroup">
+		SELECT
+		p.group_id as dgroup_id,u.name as dgroup_name FROM lsblj_access_policy_group p,lsblj_group u
+		where policy_id = #{policy_id} and p.type = #{type} and u.type=1
+		and p.group_id=u.id;
+	</select>
+	
+	<delete id="deleteBypolicy_id" parameterType="integer">
+		DELETE FROM lsblj_access_policy_group
+		where policy_id = #{policy_id} and type =#{type}
+	</delete>
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.CrontabScriptConfigDeviceDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.CrontabScriptConfigDevice">
+		<id column="config_id" jdbcType="INTEGER" property="config_id"/>
+		<id column="device_account_id" jdbcType="INTEGER" property="device_id"/>
+	</resultMap>
+
+	<resultMap id="crontabScriptConfigDeviceRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<resultMap id="devices" type="com.longersec.blj.domain.DTO.Deviceaccess">
+		<id column="device_account_id" jdbcType="INTEGER" property="device_account_id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
+		<result column="device_name" jdbcType="VARCHAR" property="device_name"/>
+	</resultMap>
+
+	<insert id="addCrontabScriptConfigDevice" parameterType="com.longersec.blj.domain.CrontabScriptConfigDevice">
+		INSERT INTO lsblj_crontab_script_config_device(config_id,device_account_id) values
+		<foreach collection="device" item="item" separator=",">
+			(#{config_id},#{item})
+		</foreach>
+	</insert>
+
+	<insert id="editCrontabScriptConfigDevice" parameterType="com.longersec.blj.domain.CrontabScriptConfigDevice">
+		INSERT INTO lsblj_crontab_script_config_device(config_id, device_account_id) values
+		<foreach collection="list" item="item" separator=",">
+			(#{config_id},#{item})
+		</foreach>
+	</insert>
+
+	<delete id="delCrontabScriptConfigDevice" parameterType="java.util.List">
+		DELETE FROM lsblj_crontab_script_config_device
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, crontabScriptConfigDeviceRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_crontab_script_config_device 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="selectAll" resultType="com.longersec.blj.domain.CrontabScriptConfigDevice">
+		SELECT * FROM lsblj_crontab_script_config_device;
+	</select>
+	<select id="selectById" resultMap="devices">
+		SELECT
+		p.device_account_id device_account_id,u.username username,d.protocol_id protocol_id, d.name device_name
+		FROM lsblj_crontab_script_config_device p,lsblj_device_account u,lsblj_device d
+		WHERE config_id = #{config_id}
+		AND p.device_account_id=u.id
+		AND d.id=u.device_id;
+	</select>
+	<delete id="deleteByid" parameterType="integer">
+		DELETE FROM lsblj_crontab_script_config_device
+		where config_id = #{config_id}
+	</delete>
+</mapper>

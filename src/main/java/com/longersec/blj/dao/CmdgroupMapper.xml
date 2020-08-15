@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.CmdgroupDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.Cmdgroup">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="cmd" jdbcType="VARCHAR" property="cmd"/>
+	</resultMap>
+
+	<resultMap id="cmdgroupRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+	
+	<resultMap id="cmdgroup" type="com.longersec.blj.domain.DTO.PolicyCmdGroup">
+		<id column="cmdgroup_id" jdbcType="INTEGER" property="cmdgroup_id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+	</resultMap>
+
+	<insert id="addCmdgroup" parameterType="com.longersec.blj.domain.Cmdgroup">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            <!-- SELECT LAST_INSERT_ID()：得到刚insert到数据表中的记录的主键值，只适用于自增主键 -->  
+            SELECT LAST_INSERT_ID()  
+        </selectKey>
+		INSERT INTO lsblj_cmdgroup
+		<set>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="cmd != null">`cmd`=#{cmd},</if>
+		</set>
+	</insert>
+
+	<update id="editCmdgroup" parameterType="com.longersec.blj.domain.Cmdgroup">
+		UPDATE lsblj_cmdgroup
+		<set>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="cmd != null">`cmd`=#{cmd},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delCmdgroup" parameterType="java.util.List">
+		DELETE FROM lsblj_cmdgroup
+		where id IN (
+		<foreach collection="list" item="item" >
+		#{item},
+		</foreach>
+		0);
+		DELETE  FROM lsblj_cmd_policy_cmdgroup WHERE cmdgroup_id NOT IN (SELECT id FROM lsblj_cmdgroup);
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, cmdgroupRecordCounts" resultType="java.lang.Object">
+		SELECT 
+		SQL_CALC_FOUND_ROWS
+		g.id,g.name, GROUP_CONCAT(c.command SEPARATOR '\n') cmd FROM lsblj_cmdgroup g LEFT JOIN lsblj_cmdgroup_cmd c ON g.id=c.group_id
+		where 1
+		<if test="type==1">AND (
+			g.`name` like CONCAT('%',#{sname},'%')
+			or g.`cmd` like CONCAT('%',#{sname},'%')
+			)
+		</if>
+		<if test="type==2">AND g.`name` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==3">AND `cmd` like CONCAT('%',#{sname},'%')</if>
+		GROUP BY g.id 
+		ORDER BY g.name ASC 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectNameAndId" resultMap="cmdgroup">
+		SELECT id as cmdgroup_id,name  FROM lsblj_cmdgroup;
+	</select>
+
+	<select id="checkname" resultType="com.longersec.blj.domain.Cmdgroup">
+		SELECT *  FROM lsblj_cmdgroup where name=#{name};
+	</select>
+</mapper>

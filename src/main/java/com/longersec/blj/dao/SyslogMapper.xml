@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.SyslogDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.Syslog">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="user_id" jdbcType="VARCHAR" property="user_id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="client_ip" jdbcType="VARCHAR" property="client_ip"/>
+		<result column="code" jdbcType="INTEGER" property="code"/>
+		<result column="log_time" jdbcType="INTEGER" property="log_time"/>
+		<result column="message" jdbcType="VARCHAR" property="message"/>
+		<result column="detail" jdbcType="CLOB" property="detail"/>
+	</resultMap>
+
+	<resultMap id="syslogRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addSyslog" parameterType="com.longersec.blj.domain.Syslog">
+		INSERT INTO lsblj_syslog
+		<set>
+		
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="client_ip != null">`client_ip`=#{client_ip},</if>
+		<if test="code != null">`code`=#{code},</if>
+		<if test="log_time != null">`log_time`=#{log_time},</if>
+		<if test="message != null">`message`=#{message},</if>
+		<if test="detail != null">`detail`=#{detail},</if>
+		</set>
+	</insert>
+
+	<update id="editSyslog" parameterType="com.longersec.blj.domain.Syslog">
+		UPDATE lsblj_syslog
+		<set>
+		
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="client_ip != null">`client_ip`=#{client_ip},</if>
+		<if test="code != null">`code`=#{code},</if>
+		<if test="log_time != null">`log_time`=#{log_time},</if>
+		<if test="message != null">`message`=#{message},</if>
+		<if test="detail != null">`detail`=#{detail},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delSyslog" parameterType="java.util.List">
+		DELETE FROM lsblj_syslog
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, syslogRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_syslog 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

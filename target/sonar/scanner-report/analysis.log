@@ -1,0 +1,202 @@
+Environment variables:
+  - =::=::\
+  - =C:=C:\Users\Administrator\Desktop\堡垒机\code\blj_new
+  - =ExitCode=00000001
+  - ALLUSERSPROFILE=C:\ProgramData
+  - APPDATA=C:\Users\Administrator\AppData\Roaming
+  - CATALINA_HOME=D:\Tomcat\apache-tomcat-8.5.46
+  - CATALINA_HOME2=D:\开发工具\apache-tomcat-9.0.29
+  - CLASSPATH=,;D:\Java\jdk1.8.0_201\bin;D:\Java\jdk1.8.0_201\lib\dt.jar;D:\Java\jdk1.8.0_201\lib\tools.jar;
+  - CLASSWORLDS_JAR="D:\开发工具\apache-maven-3.5.4\bin\..\boot\plexus-classworlds-2.5.2.jar"
+  - CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
+  - COMPUTERNAME=王星宇
+  - ChocolateyInstall=C:\ProgramData\chocolatey
+  - ChocolateyLastPathUpdate=132162657179775504
+  - ComSpec=C:\WINDOWS\system32\cmd.exe
+  - CommonProgramFiles=C:\Program Files\Common Files
+  - CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+  - CommonProgramW6432=C:\Program Files\Common Files
+  - DEVMGR_SHOW_DETAILS=1
+  - DriverData=C:\Windows\System32\Drivers\DriverData
+  - ERROR_CODE=0
+  - EXEC_DIR=C:\Users\Administrator\Desktop\堡垒机\code\blj_new
+  - FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+  - FPS_BROWSER_USER_PROFILE_STRING=Default
+  - GRADLE_HOME=D:\开发工具\gradle-4.10.2
+  - HOMEDRIVE=C:
+  - HOMEPATH=\Users\Administrator
+  - IDEA_INITIAL_DIRECTORY=C:\Users\Administrator\Desktop
+  - IntelliJ IDEA=D:\IDEA\IntelliJ IDEA 2019.3.3\bin;
+  - JAVACMD=D:\Java\jdk1.8.0_201\bin\java.exe
+  - JAVA_HOME=D:\Java\jdk1.8.0_201
+  - JETBRAINS_LICENSE_SERVER=http://fls.jetbrains-agent.com
+  - LOCALAPPDATA=C:\Users\Administrator\AppData\Local
+  - LOGONSERVER=\\王星宇
+  - MAVEN_CMD_LINE_ARGS=sonar:sonar  -Dsonar.projectKey=blj_new -Dsonar.host.url=http://localhost:9000  -Dsonar.login=c9a0eac4d16e08931b0b38718dec41780df4cf04 -X
+  - MAVEN_HOME=D:\开发工具\apache-maven-3.5.4\bin\..
+  - MAVEN_PROJECTBASEDIR=C:\Users\Administrator\Desktop\堡垒机\code\blj_new
+  - NODE_PATH=D:\开发工具
+  - NUMBER_OF_PROCESSORS=4
+  - OS=Windows_NT
+  - OneDrive=C:\Users\Administrator\OneDrive
+  - PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+  - PROCESSOR_ARCHITECTURE=AMD64
+  - PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
+  - PROCESSOR_LEVEL=6
+  - PROCESSOR_REVISION=5e03
+  - PROMPT=$P$G
+  - PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;D:\开发工具\svn\PowerShellModules
+  - PUBLIC=C:\Users\Public
+  - Path=D:\开发工具\;D:\app\Administrator\product\11.2.0\dbhome_2\bin;%Sy;temRoot%\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Java\jdk1.8.0_201\bin;D:\Java\jdk1.8.0_201\jre\bin;C:\WINDOWS\System32\OpenSSH\;E:\压;Git\cmd;E:\压缩\Git\cmd;C;\Program Files\Git\cmd;C:\Pr;gramData\chocolatey\bin;D:\开发工具\apache-maven-3.5.4\bin;D:\environment\mysql-5.7.31-winx64\bin\;D:\bin;D:\开发工具\svn\bin;C:\Program Files\Git\cmd;D:\开发工具\gradle-4.10.2\bin;D:\开发工具;C:\Windows\System32;C:\Program Files\MongoDB\Server\4.2\bin;D:\开发工具\Retional-rose\common;D:\environment\sonar-scanner-2.8\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;"D:\Microsoft VS Code\bin;C:\Program Files\Git\cmd";D:\Python\PyCharm Community Edition 2019.1.3\bin;D:\IDEA\IntelliJ IDEA 2019.2.4\bin;D:\Microsoft VS Code\bin;D:\开发工具\Filder抓包\Fiddler;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;D:\IDEA\IntelliJ IDEA 2019.3.3\bin;
+  - ProgramData=C:\ProgramData
+  - ProgramFiles=C:\Program Files
+  - ProgramFiles(x86)=C:\Program Files (x86)
+  - ProgramW6432=C:\Program Files
+  - PyCharm Community Edition=D:\Python\PyCharm Community Edition 2019.1.3\bin;
+  - SESSIONNAME=Console
+  - SYBASE=C:\SAP
+  - SYBROOT=C:\SAP
+  - SystemDrive=C:
+  - SystemRoot=C:\WINDOWS
+  - TEMP=C:\Users\ADMINI~1\AppData\Local\Temp
+  - TERMINAL_EMULATOR=JetBrains-JediTerm
+  - TMP=C:\Users\ADMINI~1\AppData\Local\Temp
+  - USERDOMAIN=王星宇
+  - USERDOMAIN_ROAMINGPROFILE=王星宇
+  - USERNAME=Administrator
+  - USERPROFILE=C:\Users\Administrator
+  - VBOX_MSI_INSTALL_PATH=C:\Program Files\Oracle\VirtualBox\
+  - VISUALSVN_SERVER=D:\开发工具\svn\
+  - WDIR=C:\
+  - WebStorm=D:\WebstormBIN\WebStorm 2019.2.3\bin;
+  - __INTELLIJ_COMMAND_HISTFILE__=C:\Users\Administrator\.IntelliJIdea2019.3\config\terminal\history\history-14
+  - jvmConfig=\.mvn\jvm.config
+  - windir=C:\WINDOWS
+System properties:
+  - awt.toolkit=sun.awt.windows.WToolkit
+  - classworlds.conf=D:\开发工具\apache-maven-3.5.4\bin\..\bin\m2.conf
+  - file.encoding=GBK
+  - file.encoding.pkg=sun.io
+  - file.separator=\
+  - guice.disable.misplaced.annotation.check=true
+  - java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+  - java.awt.printerjob=sun.awt.windows.WPrinterJob
+  - java.class.path=D:\开发工具\apache-maven-3.5.4\bin\..\boot\plexus-classworlds-2.5.2.jar
+  - java.class.version=52.0
+  - java.endorsed.dirs=D:\Java\jdk1.8.0_201\jre\lib\endorsed
+  - java.ext.dirs=D:\Java\jdk1.8.0_201\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+  - java.home=D:\Java\jdk1.8.0_201\jre
+  - java.io.tmpdir=C:\Users\ADMINI~1\AppData\Local\Temp\
+  - java.library.path=D:\Java\jdk1.8.0_201\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\开发工具\;D:\app\Administrator\product\11.2.0\dbhome_2\bin;%Sy;temRoot%\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Java\jdk1.8.0_201\bin;D:\Java\jdk1.8.0_201\jre\bin;C:\WINDOWS\System32\OpenSSH\;E:\压;Git\cmd;E:\压缩\Git\cmd;C;\Program Files\Git\cmd;C:\Pr;gramData\chocolatey\bin;D:\开发工具\apache-maven-3.5.4\bin;D:\environment\mysql-5.7.31-winx64\bin\;D:\bin;D:\开发工具\svn\bin;C:\Program Files\Git\cmd;D:\开发工具\gradle-4.10.2\bin;D:\开发工具;C:\Windows\System32;C:\Program Files\MongoDB\Server\4.2\bin;D:\开发工具\Retional-rose\common;D:\environment\sonar-scanner-2.8\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;"D:\Microsoft VS Code\bin;C:\Program Files\Git\cmd";D:\Python\PyCharm Community Edition 2019.1.3\bin;D:\IDEA\IntelliJ IDEA 2019.2.4\bin;D:\Microsoft VS Code\bin;D:\开发工具\Filder抓包\Fiddler;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;D:\IDEA\IntelliJ IDEA 2019.3.3\bin;;.
+  - java.runtime.name=Java(TM) SE Runtime Environment
+  - java.runtime.version=1.8.0_201-b09
+  - java.specification.name=Java Platform API Specification
+  - java.specification.vendor=Oracle Corporation
+  - java.specification.version=1.8
+  - java.vendor=Oracle Corporation
+  - java.vendor.url=http://java.oracle.com/
+  - java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+  - java.version=1.8.0_201
+  - java.vm.info=mixed mode
+  - java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+  - java.vm.specification.name=Java Virtual Machine Specification
+  - java.vm.specification.vendor=Oracle Corporation
+  - java.vm.specification.version=1.8
+  - java.vm.vendor=Oracle Corporation
+  - java.vm.version=25.201-b09
+  - library.jansi.path=D:\开发工具\apache-maven-3.5.4\bin\..\lib\jansi-native
+  - line.separator=
+
+  - maven.conf=D:\开发工具\apache-maven-3.5.4\bin\../conf
+  - maven.home=D:\开发工具\apache-maven-3.5.4\bin\..
+  - maven.multiModuleProjectDirectory=C:\Users\Administrator\Desktop\堡垒机\code\blj_new
+  - org.slf4j.simpleLogger.defaultLogLevel=debug
+  - os.arch=amd64
+  - os.name=Windows 10
+  - os.version=10.0
+  - path.separator=;
+  - sun.arch.data.model=64
+  - sun.boot.class.path=D:\Java\jdk1.8.0_201\jre\lib\resources.jar;D:\Java\jdk1.8.0_201\jre\lib\rt.jar;D:\Java\jdk1.8.0_201\jre\lib\sunrsasign.jar;D:\Java\jdk1.8.0_201\jre\lib\jsse.jar;D:\Java\jdk1.8.0_201\jre\lib\jce.jar;D:\Java\jdk1.8.0_201\jre\lib\charsets.jar;D:\Java\jdk1.8.0_201\jre\lib\jfr.jar;D:\Java\jdk1.8.0_201\jre\classes
+  - sun.boot.library.path=D:\Java\jdk1.8.0_201\jre\bin
+  - sun.cpu.endian=little
+  - sun.cpu.isalist=amd64
+  - sun.desktop=windows
+  - sun.io.unicode.encoding=UnicodeLittle
+  - sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher sonar:sonar -Dsonar.projectKey=blj_new -Dsonar.host.url=http://localhost:9000 -Dsonar.login=c9a0eac4d16e08931b0b38718dec41780df4cf04 -X
+  - sun.java.launcher=SUN_STANDARD
+  - sun.jnu.encoding=GBK
+  - sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+  - sun.os.patch.level=
+  - sun.stderr.encoding=ms936
+  - sun.stdout.encoding=ms936
+  - user.country=CN
+  - user.dir=C:\Users\Administrator\Desktop\堡垒机\code\blj_new
+  - user.home=C:\Users\Administrator
+  - user.language=zh
+  - user.name=Administrator
+  - user.script=
+  - user.timezone=Asia/Shanghai
+  - user.variant=
+SonarQube plugins:
+  - SonarPython 1.13.0.2922 (python)
+  - Chinese Pack 1.19 (l10nzh)
+  - SonarCSS 1.0.3.724 (cssfamily)
+  - JaCoCo 1.0.1.143 (jacoco)
+  - SonarGo 1.1.0.1612 (go)
+  - SonarKotlin 1.5.0.315 (kotlin)
+  - Svn 1.9.0.1295 (scmsvn)
+  - SonarJS 5.1.1.7506 (javascript)
+  - SonarRuby 1.5.0.315 (ruby)
+  - SonarScala 1.5.0.315 (sonarscala)
+  - SonarC# 7.11.0.8083 (csharp)
+  - SonarJava 5.11.0.17289 (java)
+  - LDAP 2.2.0.608 (ldap)
+  - SonarHTML 3.1.0.1615 (web)
+  - Git 1.8.0.1574 (scmgit)
+  - SonarFlex 2.4.0.1222 (flex)
+  - SonarXML 2.0.1.2020 (xml)
+  - SonarPHP 3.0.0.4537 (php)
+  - SonarTS 1.9.0.3766 (typescript)
+  - Checkstyle 4.26 (checkstyle)
+  - SonarVB 7.11.0.8083 (vbnet)
+Global server settings:
+  - sonar.core.id=EFC42A08-AXObJrAwUpkopP6G7G5a
+  - sonar.core.startTime=2020-08-13T14:23:44+0800
+  - sonar.scm.disabled=true
+  - sonar.svn.password.secured=******
+  - sonar.svn.username=18955007261
+Project server settings:
+Project scanner properties:
+  - sonar.binaries=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\target\classes
+  - sonar.groovy.binaries=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\target\classes
+  - sonar.host.url=http://localhost:9000
+  - sonar.java.binaries=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\target\classes
+  - sonar.java.libraries=E:\maven\apache-maven-3.5.4\repository\org\apache\httpcomponents\httpclient\4.5.10\httpclient-4.5.10.jar,E:\maven\apache-maven-3.5.4\repository\org\apache\httpcomponents\httpcore\4.4.12\httpcore-4.4.12.jar,E:\maven\apache-maven-3.5.4\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar,E:\maven\apache-maven-3.5.4\repository\org\json\json\20190722\json-20190722.jar,E:\maven\apache-maven-3.5.4\repository\cn\hutool\hutool-all\4.0.9\hutool-all-4.0.9.jar,E:\maven\apache-maven-3.5.4\repository\net\java\dev\jna\jna\4.5.0\jna-4.5.0.jar,E:\maven\apache-maven-3.5.4\repository\net\java\dev\jna\jna-platform\4.5.0\jna-platform-4.5.0.jar,E:\maven\apache-maven-3.5.4\repository\com\github\oshi\oshi-json\3.6.1\oshi-json-3.6.1.jar,E:\maven\apache-maven-3.5.4\repository\com\github\oshi\oshi-core\3.6.1\oshi-core-3.6.1.jar,E:\maven\apache-maven-3.5.4\repository\org\threeten\threetenbp\1.3.6\threetenbp-1.3.6.jar,E:\maven\apache-maven-3.5.4\repository\org\glassfish\javax.json\1.0.4\javax...
+  - sonar.java.source=1.8
+  - sonar.java.target=1.8
+  - sonar.java.test.binaries=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\target\test-classes
+  - sonar.java.test.libraries=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\target\classes,E:\maven\apache-maven-3.5.4\repository\org\apache\httpcomponents\httpclient\4.5.10\httpclient-4.5.10.jar,E:\maven\apache-maven-3.5.4\repository\org\apache\httpcomponents\httpcore\4.4.12\httpcore-4.4.12.jar,E:\maven\apache-maven-3.5.4\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar,E:\maven\apache-maven-3.5.4\repository\org\json\json\20190722\json-20190722.jar,E:\maven\apache-maven-3.5.4\repository\cn\hutool\hutool-all\4.0.9\hutool-all-4.0.9.jar,E:\maven\apache-maven-3.5.4\repository\net\java\dev\jna\jna\4.5.0\jna-4.5.0.jar,E:\maven\apache-maven-3.5.4\repository\net\java\dev\jna\jna-platform\4.5.0\jna-platform-4.5.0.jar,E:\maven\apache-maven-3.5.4\repository\com\github\oshi\oshi-json\3.6.1\oshi-json-3.6.1.jar,E:\maven\apache-maven-3.5.4\repository\com\github\oshi\oshi-core\3.6.1\oshi-core-3.6.1.jar,E:\maven\apache-maven-3.5.4\repository\org\threeten\threetenbp\1.3.6\threetenbp-1.3.6.jar,E:\maven\apa...
+  - sonar.jdbc.driver=com.mysql.jdbc.Driver
+  - sonar.jdbc.password=******
+  - sonar.jdbc.url=jdbc:mysql://localhost:3307/sonar?useUnicode=true&characterEncoding=utf8
+  - sonar.jdbc.username=sonar
+  - sonar.libraries=E:\maven\apache-maven-3.5.4\repository\org\apache\httpcomponents\httpclient\4.5.10\httpclient-4.5.10.jar,E:\maven\apache-maven-3.5.4\repository\org\apache\httpcomponents\httpcore\4.4.12\httpcore-4.4.12.jar,E:\maven\apache-maven-3.5.4\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar,E:\maven\apache-maven-3.5.4\repository\org\json\json\20190722\json-20190722.jar,E:\maven\apache-maven-3.5.4\repository\cn\hutool\hutool-all\4.0.9\hutool-all-4.0.9.jar,E:\maven\apache-maven-3.5.4\repository\net\java\dev\jna\jna\4.5.0\jna-4.5.0.jar,E:\maven\apache-maven-3.5.4\repository\net\java\dev\jna\jna-platform\4.5.0\jna-platform-4.5.0.jar,E:\maven\apache-maven-3.5.4\repository\com\github\oshi\oshi-json\3.6.1\oshi-json-3.6.1.jar,E:\maven\apache-maven-3.5.4\repository\com\github\oshi\oshi-core\3.6.1\oshi-core-3.6.1.jar,E:\maven\apache-maven-3.5.4\repository\org\threeten\threetenbp\1.3.6\threetenbp-1.3.6.jar,E:\maven\apache-maven-3.5.4\repository\org\glassfish\javax.json\1.0.4\javax...
+  - sonar.links.ci=
+  - sonar.links.homepage=http://maven.apache.org
+  - sonar.links.issue=
+  - sonar.links.scm=
+  - sonar.links.scm_dev=
+  - sonar.login=******
+  - sonar.moduleKey=blj_new:com.longersec:blj
+  - sonar.projectBaseDir=C:\Users\Administrator\Desktop\堡垒机\code\blj_new
+  - sonar.projectBuildDir=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\target
+  - sonar.projectKey=blj_new
+  - sonar.projectName=blj Maven Webapp
+  - sonar.projectVersion=0.0.1-SNAPSHOT
+  - sonar.scanner.app=ScannerMaven
+  - sonar.scanner.appVersion=3.7.0.1746/3.5.4
+  - sonar.sourceEncoding=GBK
+  - sonar.sources=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\src\main\webapp,C:\Users\Administrator\Desktop\堡垒机\code\blj_new\pom.xml,C:\Users\Administrator\Desktop\堡垒机\code\blj_new\src\main\java
+  - sonar.tests=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\src\test\java
+  - sonar.verbose=true
+  - sonar.working.directory=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\target\sonar

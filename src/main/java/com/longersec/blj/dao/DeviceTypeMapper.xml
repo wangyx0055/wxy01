@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.DeviceTypeDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.DeviceType">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="param" jdbcType="VARCHAR" property="param"/>
+		<result column="os_type" jdbcType="INTEGER" property="os_type"/>
+		<result column="description" jdbcType="VARCHAR" property="description"/>
+	</resultMap>
+
+	<resultMap id="deviceTypeRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addDeviceType" parameterType="com.longersec.blj.domain.DeviceType">
+		INSERT INTO lsblj_device_type
+		<set>
+		
+		<if test="name != null">`name`=#{name},</if>
+		<if test="param != null">`param`=#{param},</if>
+		<if test="os_type != null">`os_type`=#{os_type},</if>
+		<if test="description != null">`description`=#{description},</if>
+		</set>
+	</insert>
+
+	<update id="editDeviceType" parameterType="com.longersec.blj.domain.DeviceType">
+		UPDATE lsblj_device_type
+		<set>
+
+			<if test="name != null">`name`=#{name},</if>
+			<if test="param != null">`param`=#{param},</if>
+			<if test="os_type != null">`os_type`=#{os_type},</if>
+			<if test="description != null">`description`=#{description},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delDeviceType" parameterType="java.util.List">
+		DELETE FROM lsblj_device_type
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item}
+		</foreach>
+		,0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, deviceTypeRecordCounts" resultType="java.lang.Object">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_device_type
+		where 1
+		<if test="deviceType.name!=null">AND name like CONCAT('%',#{deviceType.name},'%')</if>
+		<if test="deviceType.param!=null">AND param like CONCAT('%',#{deviceType.param},'%')</if>
+		<if test="deviceType.searchAll!=null">
+			AND(
+			name like CONCAT('%',#{deviceType.searchAll},'%')
+			or param like CONCAT('%',#{device.searchAll},'%')
+			)
+		</if>
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="listType" resultType="com.longersec.blj.domain.DeviceType">
+		select * from lsblj_device_type;
+	</select>
+	<select id="selectAll" resultType="com.longersec.blj.domain.DeviceType">
+		SELECT * FROM lsblj_device_type;
+	</select>
+    <select id="checkname" resultType="com.longersec.blj.domain.DeviceType">
+		select * from lsblj_device_type where name = #{name} limit 1;
+	</select>
+
+	<select id="checknameById" resultType="java.lang.String">
+		select name from lsblj_device_type where id = #{id} limit 1;
+	</select>
+</mapper>

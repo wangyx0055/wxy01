@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.CmdPolicyDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.CmdPolicy">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="valid_datetime_start" jdbcType="VARCHAR" property="valid_datetime_start"/>
+		<result column="valid_datetime_end" jdbcType="VARCHAR" property="valid_datetime_end"/>
+		<result column="longtime" jdbcType="INTEGER" property="longtime"/>
+		<result column="department_id" jdbcType="INTEGER" property="department_id"/>
+		<result column="execute_action" jdbcType="INTEGER" property="execute_action"/>
+		<result column="timelimit_ban_monday" jdbcType="VARCHAR" property="timelimit_ban_monday"/>
+		<result column="timelimit_ban_tuesday" jdbcType="VARCHAR" property="timelimit_ban_tuesday"/>
+		<result column="timelimit_ban_wednesday" jdbcType="VARCHAR" property="timelimit_ban_wednesday"/>
+		<result column="timelimit_ban_thursday" jdbcType="VARCHAR" property="timelimit_ban_thursday"/>
+		<result column="timelimit_ban_friday" jdbcType="VARCHAR" property="timelimit_ban_friday"/>
+		<result column="timelimit_ban_saturday" jdbcType="VARCHAR" property="timelimit_ban_saturday"/>
+		<result column="timelimit_ban_sunday" jdbcType="VARCHAR" property="timelimit_ban_sunday"/>
+		<result column="allow_ip" jdbcType="VARCHAR" property="allow_ip"/>
+		<result column="ban_ip" jdbcType="VARCHAR" property="ban_ip"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="cmd" jdbcType="VARCHAR" property="cmd"/>
+		<result column="desc" jdbcType="VARCHAR" property="desc"/>
+		<result column="alert_methods" jdbcType="VARCHAR" property="alert_methods"/>
+		<result column="alert_level" jdbcType="VARCHAR" property="alert_level"/>
+	</resultMap>
+
+	<resultMap id="cmdPolicyRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addCmdPolicy" parameterType="com.longersec.blj.domain.CmdPolicy">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">  
+            <!-- SELECT LAST_INSERT_ID()：得到刚insert到数据表中的记录的主键值，只适用于自增主键 -->  
+            SELECT LAST_INSERT_ID()  
+        </selectKey>
+		INSERT INTO lsblj_cmd_policy
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="valid_datetime_start != null">`valid_datetime_start`=#{valid_datetime_start},</if>
+		<if test="valid_datetime_end != null">`valid_datetime_end`=#{valid_datetime_end},</if>
+		<if test="longtime != null">`longtime`=#{longtime},</if>
+		<if test="department_id != null">`department_id`=#{department_id},</if>
+		<if test="execute_action != null">`execute_action`=#{execute_action},</if>
+		<if test="timelimit_ban_monday != null">`timelimit_ban_monday`=#{timelimit_ban_monday},</if>
+		<if test="timelimit_ban_tuesday != null">`timelimit_ban_tuesday`=#{timelimit_ban_tuesday},</if>
+		<if test="timelimit_ban_wednesday != null">`timelimit_ban_wednesday`=#{timelimit_ban_wednesday},</if>
+		<if test="timelimit_ban_thursday != null">`timelimit_ban_thursday`=#{timelimit_ban_thursday},</if>
+		<if test="timelimit_ban_friday != null">`timelimit_ban_friday`=#{timelimit_ban_friday},</if>
+		<if test="timelimit_ban_saturday != null">`timelimit_ban_saturday`=#{timelimit_ban_saturday},</if>
+		<if test="timelimit_ban_sunday != null">`timelimit_ban_sunday`=#{timelimit_ban_sunday},</if>
+		<if test="allow_ip != null">`allow_ip`=#{allow_ip},</if>
+		<if test="ban_ip != null">`ban_ip`=#{ban_ip},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="desc != null">`desc`=#{desc},</if>
+		<if test="cmd != null">`cmd`=#{cmd},</if>
+		<if test="alert_methods != null">`alert_methods`=#{alert_methods},</if>
+		<if test="alert_level != null">`alert_level`=#{alert_level},</if>
+		</set>
+	</insert>
+
+	<update id="editCmdPolicy" parameterType="com.longersec.blj.domain.CmdPolicy">
+		UPDATE lsblj_cmd_policy
+		<set>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="valid_datetime_start != null">`valid_datetime_start`=#{valid_datetime_start},</if>
+		<if test="valid_datetime_end != null">`valid_datetime_end`=#{valid_datetime_end},</if>
+		<if test="longtime != null">`longtime`=#{longtime},</if>
+		<if test="department_id != null">`department_id`=#{department_id},</if>
+		<if test="execute_action != null">`execute_action`=#{execute_action},</if>
+		<if test="timelimit_ban_monday != null">`timelimit_ban_monday`=#{timelimit_ban_monday},</if>
+		<if test="timelimit_ban_tuesday != null">`timelimit_ban_tuesday`=#{timelimit_ban_tuesday},</if>
+		<if test="timelimit_ban_wednesday != null">`timelimit_ban_wednesday`=#{timelimit_ban_wednesday},</if>
+		<if test="timelimit_ban_thursday != null">`timelimit_ban_thursday`=#{timelimit_ban_thursday},</if>
+		<if test="timelimit_ban_friday != null">`timelimit_ban_friday`=#{timelimit_ban_friday},</if>
+		<if test="timelimit_ban_saturday != null">`timelimit_ban_saturday`=#{timelimit_ban_saturday},</if>
+		<if test="timelimit_ban_sunday != null">`timelimit_ban_sunday`=#{timelimit_ban_sunday},</if>
+		<if test="allow_ip != null">`allow_ip`=#{allow_ip},</if>
+		<if test="ban_ip != null">`ban_ip`=#{ban_ip},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="cmd != null">`cmd`=#{cmd},</if>
+		<if test="desc != null">`desc`=#{desc},</if>
+		<if test="alert_methods != null">`alert_methods`=#{alert_methods},</if>
+		<if test="alert_level != null">`alert_level`=#{alert_level},</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+
+	<update id="editStatus" parameterType="com.longersec.blj.domain.CmdPolicy">
+		UPDATE lsblj_cmd_policy
+		<set>
+			<if test="status != null">`status`=#{status}</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	<insert id="addCmdPolicyCmd" parameterType="com.longersec.blj.domain.CmdPolicyCmd">
+		INSERT lsblj_cmd_policy_cmd
+		<set>
+			<if test="command != null">`command`=#{command},</if>
+			<if test="policy_id != null">`policy_id`=#{policy_id},</if>
+		</set>
+	</insert>
+	
+	<delete id="clearCmdPolicyCmd" parameterType="com.longersec.blj.domain.CmdPolicyCmd">
+		delete FROM lsblj_cmd_policy_cmd where policy_id=#{policy_id}
+	</delete>
+
+	<delete id="delCmdPolicy" parameterType="java.util.List">
+		DELETE FROM lsblj_cmd_policy
+		where id IN (
+		<foreach collection="list" item="item"  >
+			#{item},
+		</foreach>
+		0);
+		DELETE FROM lsblj_cmd_policy_user WHERE policy_id NOT IN(SELECT id FROM lsblj_cmd_policy );
+		DELETE FROM lsblj_cmd_policy_group WHERE policy_id NOT IN(SELECT id FROM lsblj_cmd_policy);
+		DELETE FROM lsblj_cmd_policy_device_account WHERE policy_id NOT IN(SELECT id FROM lsblj_cmd_policy);
+		DELETE FROM lsblj_cmd_policy_apppub WHERE policy_id NOT IN(SELECT id FROM lsblj_cmd_policy);
+		DELETE FROM lsblj_cmd_policy_cmd WHERE policy_id NOT IN(SELECT id FROM lsblj_cmd_policy);
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, cmdPolicyRecordCounts" resultType="java.lang.Object">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		GROUP_CONCAT(c.command order by p.id asc SEPARATOR '\n') cmd,p.* FROM lsblj_cmd_policy p
+		LEFT JOIN lsblj_cmd_policy_cmd c ON p.id=c.policy_id
+		where 1
+		<if test="type==1">AND (
+			p.`name` like CONCAT('%',#{sname},'%')
+			or p.`desc` like CONCAT('%',#{sname},'%')
+			or p.`status` like CONCAT('%',#{stat},'%')
+			or p.`execute_action` like CONCAT('%',#{cot},'%')
+			)
+		</if>
+		<if test="type==2">AND p.`name` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==3">AND p.`desc` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==5">AND p.`status` like CONCAT('%',#{stat},'%')</if>
+		<if test="type==4">AND p.`execute_action` like CONCAT('%',#{cot},'%')</if>
+		GROUP BY p.id 
+		ORDER BY p.name ASC
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="checkName" resultType="com.longersec.blj.domain.CmdPolicy">
+		select * from lsblj_cmd_policy where name=#{name};
+	</select>
+	
+	<select id="getCommandsByDeviceAndUser" resultType="String">
+		SELECT  
+			CONCAT('-',p.id,'-',p.alert_level,'-',p.alert_methods,'-',p.execute_action,'-',c.command) cmd FROM lsblj_cmd_policy_cmd c
+			LEFT JOIN lsblj_cmd_policy p ON p.id=c.policy_id AND p.id IS NOT NULL 
+			WHERE p.id IS NOT NULL AND policy_id IN(
+				SELECT policy_id FROM lsblj_cmd_policy_user where user_id=#{user_id}
+				UNION 
+				SELECT policy_id FROM lsblj_cmd_policy_group where group_id=#{group_id}
+			) 
+			AND policy_id IN(
+				SELECT policy_id FROM lsblj_cmd_policy_device_account WHERE device_account_id=#{device_account_id}
+			)
+			 AND longtime=1 OR ( longtime=0 AND NOW() &gt;=concat(valid_datetime_start," 00:00:00") AND NOW() &lt;=concat(valid_datetime_end," 23:59:59") )
+		UNION DISTINCT 
+			SELECT  
+			CONCAT('-',p.id,'-',p.alert_level,'-',p.alert_methods,'-',p.execute_action,'-',c.command) cmd FROM lsblj_cmd_policy_cmdgroup pc
+			LEFT JOIN lsblj_cmd_policy p ON p.id=pc.policy_id AND p.id IS NOT NULL 
+			LEFT JOIN lsblj_cmdgroup_cmd c ON c.group_id = pc.cmdgroup_id  
+			WHERE p.id IS NOT NULL AND policy_id IN(
+					SELECT policy_id FROM lsblj_cmd_policy_user where user_id=#{user_id}
+					UNION 
+					SELECT policy_id FROM lsblj_cmd_policy_group where group_id=#{group_id}
+					
+			) 
+			AND policy_id IN(
+				SELECT policy_id FROM lsblj_cmd_policy_device_account WHERE device_account_id=#{device_account_id}
+			)
+			AND longtime=1 OR ( longtime=0 AND NOW() &gt;=concat(valid_datetime_start," 00:00:00") AND NOW() &lt;=concat(valid_datetime_end," 23:59:59") )
+		
+	</select>
+	
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_cmd_policy WHERE id = #{id}
+	</select>
+	
+</mapper>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="double_config">
+    <style>
+        .modal-title{font-size: 16px}
+    </style>
+    <!--双机配置-->
+    <div class="box" style="box-shadow: none;border-top: none;width: 100%">
+        <div class="box-body">
+            <!--  -->
+            <div class="double_body">
+                <!--<div style="float: left;position: relative;top: 50%;margin-top: -11px;border-radius: 1px;margin-right: 7px;width: 3px;height: 17px;background-color: rgb(0, 152, 252);vertical-align: middle;"></div>-->
+                <span class="new-font-color">双机设备配置</span>
+                <button type="button" id="double_edit" class="btn newaddbtn" data-toggle="modal" data-target="#modal-default1">编辑</button>
+            </div>
+            <!-- 文字下面的蓝条条 -->
+            <div class="new-line-color double_line"></div>
+            <hr class="double_hr1">
+            <div class="double_body2">
+                <div>
+                    <span>HA状态：</span>
+                    <span id="hastatus"></span>
+                    <!-- <span style="font-size: 14px;float: left;margin-top: 2px"><button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#modal-default1" style="height: 20px;font-size: 12px;width: auto;line-height:1px;margin-left: 14px">启用</button></span> -->
+                </div><br>
+                <div>
+                    <span>热备初始角色：</span>
+                    <span id="state"></span>
+                </div><br>
+                <div>
+                    <span >浮动IP地址：</span>
+                    <span id="virtual_ipaddressinput1"></span>
+                </div><br>
+
+                <div>
+                    <span>节点IP地址：</span>
+                    <span id="mcast_src_ipinput1"></span>
+                </div><br>
+
+                <div>
+                    <span>浮动IP网口：</span>
+                    <span id="interfaceinput1"></span>
+                </div><br>
+            </div>
+            <hr class="double_hr3">
+        </div>
+    </div>
+    <!--双机设备配置编辑-->
+    <div class="modal modal-hides in" id="modal-default1" style="padding-right: 16px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #f7f7f7">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <span class="modal-title" >双机设备配置</span>
+                </div>
+
+                <div class="modal-body">
+                    <div>
+                        <span  id="roleHa">热备初始角色：</span>
+                        <input type="radio" id="masterinput" name="ia" value="主节点" selected="selected" /><span style="font-size: 12px">&nbsp;&nbsp;主节点</span>
+                        <input type="radio" id="backupinput"  name="ia" value="备节点" /><span style="font-size: 12px;">&nbsp;&nbsp;备节点</span>
+                    </div>
+                    <div>
+                        <p><span><span>*</span>HA秘钥：</span>
+                            <input id="mariadbkey" type="password" placeholder="&nbsp;&nbsp;&nbsp;ldxm22nr2">&nbsp;&nbsp;<span id="Vmariadbkey" class="sign_red"></span>
+                            <br><span class="ha_sign">请输入8-20位的有效数字或字母</span></p>
+                    </div>
+                    <div>
+                        <p><span><span>*</span>节点IP地址：</span>
+                            <input id="mcast_src_ipinput" type="text" placeholder="&nbsp;&nbsp;&nbsp;" >&nbsp;&nbsp;<span id="Vmcast_src_ipinput" class="sign_red"></span>
+                        </p>
+                    </div>
+                    <div>
+                        <p><span><span>*</span>浮动IP地址：</span>
+                            <input id="virtual_ipaddressinput" type="text">&nbsp;&nbsp;<span id="Vvirtual_ipaddressinput" class="sign_red"></span>
+                        </p>
+                           <span class="virtual_sign1">IP地址，例如：192.168.1.100<br></span>
+                            <span class="virtual_sign2">请使用与主（备）节点在同一网段且未使用的IP地址</span>
+                    </div>
+                    <div>
+                        <p><span><span>*</span>浮动IP网口：</span>
+                            <input id="interfaceinput" type="text">&nbsp;&nbsp;<span id="Vinterfaceinput" class="sign_red"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn newaddbtn pull-right" id="keepaliveSubmit" style="height: 30px;color: #fff;font-size: 12px;margin-left: 10px">确定</button>
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px">取消</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="../../js/view_js/double_config.js"></script>
+</body>
+</html>

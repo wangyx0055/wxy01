@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigEmailDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigEmail">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="ssl" jdbcType="INTEGER" property="ssl"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="password" jdbcType="BLOB" property="password"/>
+	</resultMap>
+
+	<resultMap id="configEmailRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addConfigEmail" parameterType="com.longersec.blj.domain.ConfigEmail">
+		INSERT INTO lsblj_config_email
+		<set>
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="ssl != null">`ssl`=#{ssl},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		</set>
+	</insert>
+
+	<update id="editConfigEmail" parameterType="com.longersec.blj.domain.ConfigEmail">
+		UPDATE lsblj_config_email
+		<set>
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="ssl != null">`ssl`=#{ssl},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delConfigEmail" parameterType="java.util.List">
+		DELETE FROM lsblj_config_email
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, configEmailRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		'' password,lsblj_config_email.* FROM lsblj_config_email 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

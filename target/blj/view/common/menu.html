@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<aside class="main-sidebar menu-side" th:fragment="menu">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <!--  <div class="user-panel"> -->
+        <!-- <div class="pull-down image">
+            <img th:src="@{/bower_components/dist/img/avatar5.png}" class="img-circle" alt="User Image">
+        </div> -->
+        <!-- <div class="pull-down info">
+            <p><shiro:principal property="username"/></p>
+            <a href="#"><i class="fa fa-circle text-success"></i> <shiro:principal property="realname"/></a>
+        </div>
+    </div> -->
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+
+            <!--   <li><a href="/view/index"><i class="fa fa-book"></i><span>全景概览</span></a></li> -->
+            <li shiro:hasPermission="index">
+                <a th:href="@{/view/index}"><img src="../../bower_components/dist/img/overview.png" class="menu-overview" style="margin-right: 14px;" />
+                    <span>全景概览</span>
+                </a>
+            </li>
+            <li shiro:hasPermission="common-department">
+                <a th:href="@{/view/common/department}">
+                    <img th:src="@{/images/department.png}" class="menu-overview" style="margin-right: 15px;width: 14.5px;height: 16px;" /> <span>部门管理</span>
+                </a>
+            </li>
+            <li class="treeview" shiro:hasPermission="user">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/user.png" class="menu-overview" style="margin-right: 15px;" />
+                    <span>用户管理</span>
+                    <span class="pull-right-container">
+              <!-- <span class="label label-primary pull-right">4</span> -->
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu" >
+                    <li shiro:hasPermission="user-user"><a th:href="@{/view/user/user}"><i class="fa"></i>用户列表</a></li>
+                    <li shiro:hasPermission="user-user_group"><a th:href="@{/view/user/user_group}"><i class="fa"></i>用户分组</a></li>
+                    <li shiro:hasPermission="user-role_manage"><a th:href="@{/view/user/role_manage}"><i class="fa"></i>角色管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview  asset_treeview" shiro:hasPermission="asset_manage">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/device.png" class="menu-overview" style="margin-right: 15px;" />
+                    <span>资产管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="asset_manage-hosts"><a th:href="@{/view/asset_manage/hosts}"><i class="fa"></i>设备列表</a></li>
+                    <li shiro:hasPermission="asset_manage-device_group"><a th:href="@{/view/asset_manage/device_group}"><i class="fa"></i>设备分组</a></li>
+                    <li shiro:hasPermission="asset_manage-system_Type"><a th:href="@{/view/asset_manage/system_Type}"><i class="fa"></i>系统类型</a></li>
+                    <li class="fa_asset" shiro:hasPermission="asset_manage-apppub_manage"><a th:href="@{/view/asset_manage/apppub_manage}"><i class="fa"></i>应用管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview" shiro:hasPermission="strategy_manage">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/policy.png" class="menu-overview" style="margin-right: 15px;" />
+                    <span>策略管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="strategy_manage-access_control"><a th:href="@{/view/strategy_manage/access_control}"><i class="fa"></i>访问控制</a></li>
+                    <li shiro:hasPermission="strategy_manage-command_control"><a th:href="@{/view/strategy_manage/command_control}"><i class="fa"></i>命令控制</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview" shiro:hasPermission="auto_operation">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/auto.png" class="menu-overview" style="margin-right: 15px;" /> <span>自动运维</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="auto_operation-rapid_operation"><a th:href="@{/view/auto_operation/rapid_operation}"><i class="fa"></i> 执行任务</a></li>
+                    <li shiro:hasPermission="auto_operation-operational_task"><a th:href="@{/view/auto_operation/operational_task}"><i class="fa"></i> 执行日志</a></li>
+                </ul>
+            </li>
+            <li class="treeview" shiro:hasPermission="audit_manage">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/audit.png" class="menu-overview" style="margin-right: 15px;" /> <span>审计管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="audit_manage-host_sessions"><a th:href="@{/view/audit_manage/host_sessions}"><i class="fa"></i>主机审计</a></li>
+                    <li shiro:hasPermission="audit_manage-apppub_sessions"><a th:href="@{/view/audit_manage/apppub_sessions}"><i class="fa"></i>应用审计</a></li>
+                    <li shiro:hasPermission="audit_manage-sessions_online"><a th:href="@{/view/audit_manage/sessions_online}"><i class="fa"></i>实时会话</a></li>
+                    <li shiro:hasPermission="audit_manage-logs_system"><a th:href="@{/view/audit_manage/logs_system}"><i class="fa"></i>系统日志</a></li>
+                    <li shiro:hasPermission="audit_manage-log_manage"><a th:href="@{/view/audit_manage/log_manage}"><i class="fa"></i>日志删除</a></li>
+                </ul>
+            </li>
+            <li class="treeview" shiro:hasPermission="statistic_analysis">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/statistic.png" class="menu-overview" style="margin-right: 15px;" /> <span>统计分析</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="statistic_analysis-reports_login"><a th:href="@{/view/statistic_analysis/reports_login}"><i class="fa"></i>登录报表</a></li>
+                    <li shiro:hasPermission="statistic_analysis-reports_sessions"><a th:href="@{/view/statistic_analysis/reports_sessions}"><i class="fa"></i>运维报表</a></li>
+                    <li shiro:hasPermission="statistic_analysis-reports"><a th:href="@{/view/statistic_analysis/reports}"><i class="fa"></i>权限报表</a></li>
+                </ul>
+            </li>
+            <li class="treeview" shiro:hasPermission="system_manage">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/system.png" class="menu-overview" style="margin-right: 15px;" /> <span>系统管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="system_manage-config_system"><a th:href="@{/view/system_manage/config_system}"><i class="fa"></i>系统配置</a></li>
+                    <li shiro:hasPermission="system_manage-config_network"><a th:href="@{/view/system_manage/config_network}"><i class="fa"></i>网络配置</a></li>
+                    <li shiro:hasPermission="system_manage-config_system_parameter"><a th:href="@{/view/system_manage/config_system_parameter}"><i class="fa"></i>系统维护</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview" shiro:hasPermission="operation_manage">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/operate.png" class="menu-overview" style="margin-right: 15px;" /> <span>操作运维</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="operation_manage-host_operation"><a th:href="@{/view/operation_manage/host_operation}"><i class="fa"></i>主机运维</a></li>
+                    <li shiro:hasPermission="operation_manage-app_operation"><a th:href="@{/view/operation_manage/app_operation}"><i class="fa"></i>应用运维</a></li>
+                </ul>
+            </li>
+            <li class="treeview" shiro:hasPermission="password_manage">
+                <a href="#">
+                    <img src="../../bower_components/dist/img/password.png" class="menu-overview" style="margin-right: 15px;" /> <span>密码管理</span>
+                    <span class="pull-right-container">
+                         <i class="fa fa-angle-down pull-up" style="margin-right: 10px;"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li shiro:hasPermission="password_manage-password_management"><a th:href="@{/view/password_manage/password_management}"><i class="fa"></i>密码查看</a></li>
+                    <li shiro:hasPermission="password_manage-secret_change_strategy"><a th:href="@{/view/password_manage/secret_change_strategy}"><i class="fa"></i>改密策略</a></li>
+                    <li shiro:hasPermission="password_manage-password_modify_logs"><a th:href="@{/view/password_manage/password_modify_logs}"><i class="fa"></i>改密日志</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a th:href="@{/view/operation_manage/self}">
+                    <img th:src="@{/images/selficon.png}" class="menu-overview" style="margin-right: 15px;" /> <span>个人中心</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+    <script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+
+    <script type="text/javascript">
+        /*      function getFilename(url){
+                    return url.substring(url.lastIndexOf('/') + 1, url.length);
+                }*/
+        //let script_file = getFilename(window.location.pathname);
+        /* if(script_file=="apppub.html"){
+             script_file = "apppub_manage.html";
+         }*/
+        /*       $('.sidebar-menu a').each(function(){
+                    if(script_file===getFilename($(this).attr('href'))){
+                        $(this).parent().addClass('active');
+                        $(this).parent().parent().parent().addClass('active menu-open');
+                     /!*   $(this).parent().parent().siblings().children('i').addClass('fa-angle-up');
+                        $(this).parent().parent().siblings().children('i').removeClass('fa-angle-down');*!/
+                    }
+                });*/
+
+        /*
+                  var $btn=$(".treeview");
+                  if ($btn.hasClass("active menu-open")){
+                      $(this).click(function () {
+                          $(this).find("a i:first-child").removeClass("fa-angle-down");
+                          $(this).find("a i:first-child").addClass("fa-angle-up");
+                      });
+                  };*/
+
+        function getFilename(url){
+            return url.substring(url.lastIndexOf('/') + 1, url.length);
+        }
+        var script_file = getFilename(window.location.pathname);
+        if(script_file=="apppub.jsp"){
+            script_file = "apppub_manage.jsp";
+        }
+        $('.sidebar-menu a').each(function(){
+            if(script_file==getFilename($(this).attr('href'))){
+                $(this).parent().addClass('active');
+                $(this).parent().parent().parent().addClass('active menu-open');
+               /* let activeLi= $(this).parent().parent().parent().find("i")[0];
+                activeLi.style.transform="rotateZ(180deg)";*/
+            }
+        })
+        //点击菜单时箭头样式
+      /*  let treeView = document.getElementsByClassName("treeview");
+        let last=document;
+        for (let i = 0; i <treeView.length ; i++) {
+            treeView[i].addEventListener("click",function(){
+                let that =  treeView[i];
+                if (that.classList.contains("menu-open")){//已经开的走这步
+                    last.getElementsByTagName("i")[0].style.transform="rotateZ(180deg)";
+                    that.getElementsByTagName("i")[0].style.transform="rotateZ(0deg)";
+                    that.getElementsByTagName("i")[0].style.transition="0.5s";
+                }else{
+                    last.getElementsByTagName("i")[0].style.transform="rotateZ(0deg)";
+                    that.getElementsByTagName("i")[0].style.transform="rotateZ(180deg)";
+                    that.getElementsByTagName("i")[0].style.transition="0.5s";
+                }
+                last = that;
+            })
+        }*/
+    </script>
+</aside>
+</body>
+</html>

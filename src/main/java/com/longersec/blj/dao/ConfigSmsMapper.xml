@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigSmsDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigSms">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="access_key_id" jdbcType="VARCHAR" property="access_key_id"/>
+		<result column="access_key_secret" jdbcType="VARCHAR" property="access_key_secret"/>
+<!--		<result column="parameter" jdbcType="VARCHAR" property="parameter"/>-->
+		<result column="sign_name" jdbcType="VARCHAR" property="sign_name"/>
+		<result column="domain" jdbcType="VARCHAR" property="domain"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+		<result column="product" jdbcType="VARCHAR" property="product"/>
+		<result column="template_code" jdbcType="VARCHAR" property="template_code"/>
+<!--		<result column="url" jdbcType="VARCHAR" property="url"/>-->
+	</resultMap>
+
+	<resultMap id="configSmsRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addConfigSms" parameterType="com.longersec.blj.domain.ConfigSms">
+		INSERT INTO lsblj_config_sms
+		<set>
+		<if test="access_key_id != null">`access_key_id`=#{access_key_id},</if>
+		<if test="access_key_secret != null">`access_key_secret`=#{access_key_secret},</if>
+		<if test="sign_name != null">`sign_name`=#{sign_name},</if>
+		<if test="product != null">`product`=#{product},</if>
+		<if test="domain != null">`domain`=#{domain},</if>
+		<if test="type != null">`type`=#{type},</if>
+		<if test="template_code != null">`template_code`=#{template_code},</if>
+<!--		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>-->
+<!--		<if test="url != null">`url`=#{url},</if>-->
+		</set>
+	</insert>
+
+	<update id="editConfigSms" parameterType="com.longersec.blj.domain.ConfigSms">
+		UPDATE lsblj_config_sms
+		<set>
+		<if test="access_key_id != null">`access_key_id`=#{access_key_id},</if>
+		<if test="access_key_secret != null">`access_key_secret`=#{access_key_secret},</if>
+		<if test="sign_name != null">`sign_name`=#{sign_name},</if>
+		<if test="product != null">`product`=#{product},</if>
+		<if test="type != null">`type`=#{type},</if>
+		<if test="domain != null">`domain`=#{domain},</if>
+		<if test="template_code != null">`template_code`=#{template_code},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delConfigSms" parameterType="java.util.List">
+		DELETE FROM lsblj_config_sms
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, configSmsRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_config_sms 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ResourceHostAccountDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ResourceHostAccount">
+		<result column="resource_id" jdbcType="INTEGER" property="resource_id"/>
+		<result column="device_username_id" jdbcType="INTEGER" property="device_username_id"/>
+		<result column="host_type" jdbcType="INTEGER" property="host_type"/>
+	</resultMap>
+
+	<resultMap id="resourceHostAccountRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addResourceHostAccount" parameterType="com.longersec.blj.domain.ResourceHostAccount">
+		INSERT INTO lsblj_resource_device_username
+		<set>
+		resource_id=#{resource_id},
+		device_username_id=#{device_username_id},
+		host_type=#{host_type},
+		</set>
+	</insert>
+
+	<update id="editResourceHostAccount" parameterType="com.longersec.blj.domain.ResourceHostAccount">
+		UPDATE lsblj_resource_device_username
+		<set>
+		<if test="resource_id != null">resource_id=#{resource_id},</if>
+		<if test="device_username_id != null">device_username_id=#{device_username_id},</if>
+		<if test="host_type != null">host_type=#{host_type},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delResourceHostAccount" parameterType="java.util.List">
+		DELETE FROM lsblj_resource_device_username
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, resourceHostAccountRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_resource_device_username 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

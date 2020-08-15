@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ChangePasswordPolicyGroupDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ChangePasswordPolicyGroup">
+		<id column="policy_id" jdbcType="INTEGER" property="policy_id"/>
+		<id column="group_id" jdbcType="VARCHAR" property="group_id"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+	</resultMap>
+
+	<resultMap id="changePasswordPolicyGroupRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+    <resultMap id="DeviceGroup" type="com.longersec.blj.domain.DTO.DeviceGroup">
+		<id column="dgroup_id" jdbcType="INTEGER" property="dgroup_id"/>
+		<result column="dgroup_name" jdbcType="VARCHAR" property="dgroup_name"/>
+	</resultMap>
+
+	
+	<insert id="addChangePasswordPolicyGroup" parameterType="com.longersec.blj.domain.ChangePasswordPolicyGroup">
+		INSERT INTO lsblj_change_password_policy_group(policy_id, group_id, type) values
+		<foreach collection="devicegroup" item="item" separator=",">
+			(#{policy_id},#{item},1)
+		</foreach>
+	</insert>
+
+	<update id="editChangePasswordPolicyGroup" parameterType="com.longersec.blj.domain.ChangePasswordPolicyGroup">
+		UPDATE lsblj_change_password_policy_group
+		<set>
+		<if test="policy_id != null">`policy_id`=#{policy_id},</if>
+		<if test="group_id != null">`group_id`=#{group_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delChangePasswordPolicyGroup" parameterType="java.util.List">
+		DELETE FROM lsblj_change_password_policy_group
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, changePasswordPolicyGroupRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_change_password_policy_group 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

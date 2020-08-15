@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.SessionHanddeleteDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.SessionHanddelete">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="table" jdbcType="VARCHAR" property="table"/>
+		<result column="department_id" jdbcType="CLOB" property="department_id"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="start_datetime" jdbcType="INTEGER" property="start_datetime"/>
+		<result column="end_datetime" jdbcType="INTEGER" property="end_datetime"/>
+	</resultMap>
+
+	<resultMap id="sessionHanddeleteRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addSessionHanddelete" parameterType="com.longersec.blj.domain.SessionHanddelete">
+		INSERT INTO lsblj_session_handdelete
+		<set>
+		
+		<if test="name != null">`name`=#{name},</if>
+		<if test="table != null">`table`=#{table},</if>
+		<if test="department_id != null">`department_id`=#{department_id},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="start_datetime != null">`start_datetime`=#{start_datetime},</if>
+		<if test="end_datetime != null">`end_datetime`=#{end_datetime},</if>
+		</set>
+	</insert>
+
+	<update id="editSessionHanddelete" parameterType="com.longersec.blj.domain.SessionHanddelete">
+		UPDATE lsblj_session_handdelete
+		<set>
+		
+		<if test="name != null">`name`=#{name},</if>
+		<if test="table != null">`table`=#{table},</if>
+		<if test="department_id != null">`department_id`=#{department_id},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="start_datetime != null">`start_datetime`=#{start_datetime},</if>
+		<if test="end_datetime != null">`end_datetime`=#{end_datetime},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delSessionHanddelete" parameterType="java.util.List">
+		DELETE FROM lsblj_session_handdelete
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, sessionHanddeleteRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_session_handdelete 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.DeviceAccountDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.DeviceAccount">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="password" jdbcType="BLOB" property="password"/>
+		<result column="device_id" jdbcType="INTEGER" property="device_id"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
+		<result column="is_super" jdbcType="INTEGER" property="is_super"/>
+		<result column="ssh_key" jdbcType="INTEGER" property="ssh_key"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="login_method" jdbcType="INTEGER" property="login_method"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="device_name" jdbcType="VARCHAR" property="device_name"/>
+		<result column="groupname" jdbcType="VARCHAR" property="groupname"/>
+		<result column="typename" jdbcType="VARCHAR" property="typename"/>
+		<result column="protocolname" jdbcType="VARCHAR" property="protocolname"/>
+	</resultMap>
+	
+	
+	<resultMap id="DevlistMap" type="com.longersec.blj.domain.DeviceListForOperator">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="protocol" jdbcType="VARCHAR" property="protocol"/>
+		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
+		<result column="favorite_id" jdbcType="INTEGER" property="favorite_id"/>
+	</resultMap>
+
+	<resultMap id="deviceAccountRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addDeviceAccount" parameterType="com.longersec.blj.domain.DeviceAccount">
+		INSERT INTO lsblj_device_account
+		<set>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="password != null and password != ''">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
+		<if test="is_super != null">`is_super`=#{is_super},</if>
+		<if test="ssh_key != null">`ssh_key`=#{ssh_key},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="login_method != null">`login_method`=#{login_method},</if>
+		</set>
+	</insert>
+
+	<update id="editDeviceAccount" parameterType="com.longersec.blj.domain.DeviceAccount">
+		UPDATE lsblj_device_account
+		<set>
+		
+		<if test="username != null">`username`=#{username},</if>
+		<if test="password != null and password != ''">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
+		<if test="is_super != null">`is_super`=#{is_super},</if>
+		<if test="ssh_key != null">`ssh_key`=#{ssh_key},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="login_method != null">`login_method`=#{login_method},</if>
+		</set>
+		where id=#{id};
+	</update>
+	<update id="editDeviceAccountList" parameterType="com.longersec.blj.domain.DeviceAccount">
+		<foreach collection="ArrayList" item="item" index="index">
+			UPDATE lsblj_device_account
+			<set>
+				<if test="item.super_account != null">`username`=#{item.super_account},</if>
+				<if test="item.super_password != null and item.super_password != ''">`password`=#{item.super_password},</if>
+				<if test="item.port != null">`port`=#{item.port},</if>
+				<if test="item.protocol_id != null">`protocol_id`=#{item.protocol_id},</if>
+				<if test="item.ssh_key != null">`ssh_key`=#{item.ssh_key},</if>
+				<if test="item.login_method != null">`login_method`=#{item.login_method},</if>
+			</set>
+			where `device_id`=(select id from lsblj_device where name=#{item.name} LIMIT 1);
+		</foreach>
+
+	</update>
+
+
+	<delete id="delDeviceAccount" parameterType="java.util.List">
+		DELETE FROM lsblj_device_account
+		where id IN(
+		<foreach collection="list" item="item" >
+			#{item},
+		</foreach>
+		0);
+		DELETE  FROM lsblj_group_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_access_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_cmd_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+	</delete>
+
+	<delete id="delByDevice" parameterType="java.util.List">
+		DELETE FROM lsblj_device_account
+		where device_id IN(
+		<foreach collection="list" item="item" >
+			#{item},
+		</foreach>
+		0);
+		DELETE  FROM lsblj_group_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_access_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_cmd_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+	</delete>
+	
+	<select id="findAll" resultMap="BaseResultMap, deviceAccountRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		'' password ,a.*,d.ip,d.name device_name,g.name groupname,t.name typename, p.name protocolname,'' password FROM lsblj_device_account a LEFT JOIN lsblj_device d ON a.device_id=d.id LEFT JOIN lsblj_group g ON d.groupid=g.id LEFT JOIN lsblj_device_type t ON d.os_type=t.id  LEFT JOIN lsblj_protocol p ON a.protocol_id=p.id   
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="queryByDeviceId" resultMap="BaseResultMap, deviceAccountRecordCounts">
+		SELECT
+		SQL_CALC_FOUND_ROWS
+		id,username,'' password,device_id,port,protocol_id,is_super,ssh_key,status,login_method FROM lsblj_device_account
+		<where>
+			device_id = #{device_id}
+		</where>
+		<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="getDeviceAccountByPolicies" resultMap="DevlistMap, deviceAccountRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS 
+			a.id,a.username,a.port,l.id protocol_id,l.name protocol,s.ip,s.name,IFNULL(f.id,0) favorite_id 
+			
+			FROM lsblj_device_account a LEFT JOIN lsblj_device s ON a.device_id=s.id 
+			LEFT  JOIN lsblj_protocol l ON a.protocol_id=l.id 
+			LEFT JOIN lsblj_user_favorite f ON a.id=f.device_id 
+			<if test="where.history != null">
+			LEFT JOIN (
+				SELECT device_account_id,count(*) ct FROM lsblj_user_visit v WHERE add_time > UNIX_TIMESTAMP()-7*24*3600 AND v.type=0 AND user_id=#{userid} GROUP BY device_account_id
+			) tv ON a.id=tv.device_account_id
+			</if>
+			
+			where (a.id IN(
+					SELECT device_account_id FROM lsblj_access_policy_device_account WHERE policy_id IN(
+						
+							<foreach collection="policy_ids" item="item" separator=",">
+							#{item} 
+							</foreach>
+						,0)
+				)
+				OR a.device_id IN(
+					SELECT id FROM lsblj_device WHERE groupid IN(
+						SELECT group_id FROM lsblj_access_policy_group WHERE policy_id IN(
+							<foreach collection="policy_ids" item="item" separator=",">
+							#{item}
+							</foreach>
+						,0)
+					)
+				))
+			<if test="where.searchall != null and where.searchall != ''">
+			 AND (s.ip like CONCAT('%',#{where.searchall},'%') OR s.name like CONCAT('%',#{where.searchall},'%') OR a.username like CONCAT('%',#{where.searchall},'%') OR l.name like CONCAT('%',#{where.searchall},'%'))
+			</if>
+			<if test="where.device_name != null and where.device_name != ''">
+			 AND (s.name like CONCAT('%',#{where.device_name},'%'))
+			</if>
+			<if test="where.device_ip != null and where.device_ip != ''">
+			 AND (s.ip like CONCAT('%',#{where.device_ip},'%') )
+			</if>
+			<if test="where.username != null and where.username != ''">
+			 AND (a.username like CONCAT('%',#{where.username},'%'))
+			</if>
+			<if test="where.protocol != null and where.protocol != ''">
+			 AND (l.name like CONCAT('%',#{where.protocol},'%'))
+			</if>
+			<if test="where.protocol_id != null">
+			 AND l.id IN(
+				<foreach collection="where.protocol_id" item="item" separator=",">
+							#{item,jdbcType=INTEGER}
+				</foreach>
+			 	)
+			</if>
+			<if test="where.favorite != null">
+			 AND f.id IS NOT NULL 
+			</if>
+			<if test="where.history != null">
+			 AND tv.device_account_id IS NOT NULL 
+			</if>
+			
+			ORDER BY 
+			<if test="where.history != null">
+			tv.ct DESC,
+			</if>
+			s.name ASC 
+			<if test="page_start != null and page_length != null">
+				LIMIT #{page_start},#{page_length}
+			</if>
+			
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT id,username,CAST(AES_DECRYPT(password,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) password,device_id,port,protocol_id,is_super,ssh_key,status,login_method 
+		  FROM lsblj_device_account WHERE id = #{id}
+	</select>
+	
+	<resultMap id="devices" type="com.longersec.blj.domain.DTO.Deviceaccess">
+		<id column="device_account_id" jdbcType="VARCHAR" property="device_account_id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="protocol_id" jdbcType="VARCHAR" property="protocol_id"/>
+		<result column="device_name" jdbcType="VARCHAR" property="device_name"/>
+		<result column="login" jdbcType="VARCHAR" property="login"/>
+		<result column="protocol_name" jdbcType="VARCHAR" property="protocol_name"/>
+	</resultMap>
+	
+	<select id="selectNameAndId" resultMap="devices">
+		SELECT da.id as device_account_id ,da.username,d.protocol_id as protocol_id,d.name device_name,p.name protocol_name 
+		FROM lsblj_device_account da ,lsblj_device d , lsblj_protocol p
+		WHERE da.device_id=d.id AND da.protocol_id=p.id
+	</select>
+	
+    <select id="total" resultType="java.lang.Integer">
+            select count(*) count from lsblj_device_account;
+    </select>
+
+
+	<select id="selectBydevice" resultType="java.lang.Integer">
+            select id from lsblj_device_account where device_id=#{item};
+    </select>
+
+	<select id="editstatus" parameterType="com.longersec.blj.domain.DeviceAccount" resultType="java.lang.Boolean">
+		UPDATE lsblj_device_account
+		<set>
+			<if test="status != null">`status`=#{status},</if>
+		</set>
+		where id=#{id}
+    </select>
+	<select id="checkaccountname" resultType="com.longersec.blj.domain.DeviceAccount">
+            select *  from lsblj_device_account where username = #{username} and protocol_id=#{protocol_id} and device_id=#{device_id};
+    </select>
+<!--	(#{item.super_account},#{AES_ENCRYPT(#{item.super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1))},#{select id from lsblj_device where ip=#{item.name} LIMIT 1 },#{item.port},#{item.protocol_id},#{item.ssh_key},#{item.login_method})-->
+<!--	INSERT INTO lsblj_device_account (username  , password,device_id,port,protocol_id,ssh_key,login_method)-->
+<!--	values-->
+	<insert id="insertMore">
+
+		<foreach collection="ArrayList" item="item" index="index" >
+			INSERT INTO lsblj_device_account
+			<set>
+				`username`=#{item.super_account},
+				`password`=#{item.super_password},
+				`device_id`=(select id from lsblj_device where name=#{item.name} LIMIT 1),
+				`port`=#{item.port},
+				`protocol_id`=#{item.protocol_id},
+				`ssh_key`=#{item.ssh_key},
+				`login_method`=#{item.login_method};
+			</set>
+		</foreach>
+	</insert>
+	
+	
+
+	<resultMap id="UserDeviceAccountMap" type="java.util.Map">
+		<result property="username" column="username" jdbcType="VARCHAR"/>
+		<result property="realname" column="realname" jdbcType="VARCHAR"/>
+		<result property="port" column="port" jdbcType="INTEGER"/>
+		<result property="device_username" column="device_username" jdbcType="VARCHAR"/>
+		<result property="protocol" column="protocol" jdbcType="VARCHAR"/>
+		<result property="ip" column="ip" jdbcType="VARCHAR"/>
+		<result property="name" column="name" jdbcType="VARCHAR"/>
+		<result property="user_id" column="user_id" jdbcType="INTEGER"/>
+		<result property="device_account_id" column="device_account_id" jdbcType="INTEGER"/>
+		<result property="policyname" column="policyname" jdbcType="VARCHAR"/>
+	</resultMap> 
+	
+	<select id="getUserDeviceAccount" resultMap="UserDeviceAccountMap, deviceAccountRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS 
+			a.id,a.username device_username,a.port,l.name protocol,s.ip,s.name,user_device_account.* ,p.name policyname  
+			FROM lsblj_device_account a LEFT JOIN lsblj_device s ON a.device_id=s.id LEFT  JOIN lsblj_protocol l ON a.protocol_id=l.id 
+			LEFT JOIN (
+				SELECT user.id user_id,user.username,user.realname,pda.device_account_id,pu.policy_id 
+					FROM lsblj_access_policy_user pu
+						LEFT JOIN lsblj_access_policy_device_account pda ON pda.policy_id=pu.policy_id 
+						LEFT JOIN lsblj_user user ON pu.user_id=user.id where user.id is not null
+				UNION DISTINCT
+				SELECT user.id user_id,user.username,user.realname,pda.device_account_id,pg.policy_id
+					FROM lsblj_access_policy_group pg
+						LEFT JOIN lsblj_access_policy_device_account pda ON pda.policy_id=pg.policy_id 
+						LEFT JOIN lsblj_user user ON pg.group_id=user.groupid where user.id is not null
+			) user_device_account ON user_device_account.device_account_id=a.id 
+			LEFT JOIN lsblj_access_policy p ON p.id=user_device_account.policy_id 
+			WHERE user_device_account.device_account_id is not null  and p.id is not null 
+			<if test="deviceAccount.searchAll !=null and deviceAccount.searchAll != ''">
+			 AND (s.ip like CONCAT('%',#{deviceAccount.searchAll},'%') OR s.name like CONCAT('%',#{deviceAccount.searchAll},'%') OR user_device_account.username like CONCAT('%',#{deviceAccount.searchAll},'%') OR a.username like CONCAT('%',#{deviceAccount.searchAll},'%'))
+			</if>
+			<if test="deviceAccount.device_name !=null and deviceAccount.device_name != ''">
+			 AND (s.name like CONCAT('%',#{deviceAccount.device_name},'%') OR s.name like CONCAT('%',#{deviceAccount.device_name},'%'))
+			 </if>
+			<if test="deviceAccount.ip !=null and deviceAccount.ip != ''">
+			 AND (s.ip like CONCAT('%',#{deviceAccount.device_ip},'%') OR s.ip like CONCAT('%',#{deviceAccount.device_ip},'%'))
+			 </if>
+			<if test="deviceAccount.device_username !=null and deviceAccount.device_username != ''">
+			 AND (a.username like CONCAT('%',#{deviceAccount.username},'%') OR a.username like CONCAT('%',#{deviceAccount.username},'%'))
+			</if>
+			<if test="deviceAccount.username !=null and deviceAccount.username != ''">
+			 AND (user_device_account.username like CONCAT('%',#{deviceAccount.username},'%') OR user_device_account.username like CONCAT('%',#{deviceAccount.username},'%'))
+			</if>
+			<if test="page_start != null and page_length != null">
+				LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+
+
+</mapper>

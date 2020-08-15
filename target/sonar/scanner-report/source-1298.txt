@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.GroupDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.Group">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="desc" jdbcType="VARCHAR" property="desc"/>
+		<result column="count" jdbcType="INTEGER" property="count"/>
+		<result column="creator_id" jdbcType="INTEGER" property="creator_id"/>
+		<result column="create_time" jdbcType="INTEGER" property="create_time"/>
+	</resultMap>
+
+	<resultMap id="groupRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+	<resultMap id="UserGroup" type="com.longersec.blj.domain.DTO.UserGroup">
+		<id column="group_id" jdbcType="INTEGER" property="group_id"/>
+		<result column="group_name" jdbcType="VARCHAR" property="group_name"/>
+	</resultMap>
+	<resultMap id="DeviceGroup" type="com.longersec.blj.domain.DTO.DeviceGroup">
+		<id column="dgroup_id" jdbcType="INTEGER" property="dgroup_id"/>
+		<result column="dgroup_name" jdbcType="VARCHAR" property="dgroup_name"/>
+	</resultMap>
+
+	<insert id="addGroup" parameterType="com.longersec.blj.domain.Group">
+		INSERT INTO lsblj_group
+		<set>
+		
+		<if test="type != null">`type`=#{type},</if>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="department != null">`department`=#{department},</if>
+		<if test="desc != null">`desc`=#{desc},</if>
+		<if test="count != null">`count`=#{count},</if>
+		<if test="creator_id != null">`creator_id`=#{creator_id},</if>
+		<if test="create_time != null">`create_time`=#{create_time},</if>
+		</set>
+	</insert>
+
+	<update id="editGroup" parameterType="com.longersec.blj.domain.Group">
+		UPDATE lsblj_group
+		<set>
+		
+		<if test="type != null">`type`=#{type},</if>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="department != null">`department`=#{department},</if>
+		<if test="desc != null">`desc`=#{desc},</if>
+		<if test="count != null">`count`=#{count},</if>
+		<if test="creator_id != null">`creator_id`=#{creator_id},</if>
+		<if test="create_time != null">`create_time`=#{create_time},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delGroup" parameterType="java.util.List">
+		DELETE FROM lsblj_group
+		where id IN(
+		<foreach collection="list" item="item" >
+		#{item},
+		</foreach>
+		0);
+		DELETE  FROM lsblj_access_policy_group WHERE group_id NOT IN (SELECT id FROM lsblj_group);
+		DELETE  FROM lsblj_cmd_policy_group WHERE group_id NOT IN (SELECT id FROM lsblj_group);
+	</delete>
+
+	<update id="updateGroupCount">
+		update `lsblj_group` set `count` = #{count} where id = #{group_id};
+	</update>
+
+	<select id="findAll" resultMap="BaseResultMap, groupRecordCounts" resultType="java.lang.Object">
+		SELECT
+		SQL_CALC_FOUND_ROWS
+		g.*,lsblj_department.name depart_name FROM lsblj_group g
+		LEFT JOIN lsblj_department ON g.department=lsblj_department.id
+		where type=#{group.type}
+		<if test="group.name != null"> AND `name` like CONCAT('%',#{group.name},'%')</if>
+		<if test="group.searchAll != null">
+			AND (`name` like CONCAT('%',#{group.searchAll},'%') or `desc` like CONCAT('%',#{group.searchAll},'%'))
+		</if>
+		<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="selectNameAndId" resultMap="UserGroup">
+		SELECT id as group_id,name as group_name FROM lsblj_group where type =0;
+	</select>
+	
+	<select id="selectNameAnddId" resultMap="DeviceGroup">
+		SELECT id as dgroup_id,name as dgroup_name FROM lsblj_group where type =1;
+	</select>
+	
+	<select id="checkname" resultType="com.longersec.blj.domain.Group">
+		SELECT * FROM lsblj_group where type =#{group.type} and name=#{group.name};
+	</select>
+
+	<select id="select_two" resultMap="UserGroup">
+		SELECT id as group_id,name as group_name FROM lsblj_group where type = #{type};
+	</select>
+
+
+	<select id="listByType" resultType="com.longersec.blj.domain.Group">
+		SELECT * FROM lsblj_group where type = #{type};
+	</select>
+
+	<select id="selectById" resultType="java.lang.String">
+		SELECT name FROM lsblj_group where id=#{groupid};
+	</select>
+
+	<update id="updateCountdown">
+		UPDATE lsblj_group set count = count-1 where id=#{group_id}
+	</update>
+
+	<insert id="insertMore">
+		<foreach collection="ArrayList" item="item" index="index">
+			INSERT INTO lsblj_group
+			<set>
+				<if test="item.type != null">`type`=#{item.type},</if>
+				<if test="item.name != null">`name`=#{item.name},</if>
+				<if test="item.desc != null">`desc`=#{item.desc};</if>
+			</set>
+		</foreach>
+	</insert>
+
+	<select id="selectByname" resultType="com.longersec.blj.domain.Group">
+		select * from lsblj_group where name=#{name} and type = #{type} LIMIT 1;
+	</select>
+
+	<update id="editGroupList" >
+		<foreach collection="ArrayList" item="item" index="index">
+			UPDATE lsblj_group
+				<set>
+					<if test="item.desc != null">`desc`=#{item.desc},</if>
+				</set>
+			where id=#{item.id};
+		</foreach>
+	</update>
+
+</mapper>

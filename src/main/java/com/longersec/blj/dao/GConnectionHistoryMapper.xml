@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.GConnectionHistoryDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.GConnectionHistory">
+		<id column="history_id" jdbcType="INTEGER" property="history_id"/>
+		<result column="user_id" jdbcType="INTEGER" property="user_id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="remote_host" jdbcType="VARCHAR" property="remote_host"/>
+		<result column="connection_id" jdbcType="INTEGER" property="connection_id"/>
+		<result column="connection_name" jdbcType="VARCHAR" property="connection_name"/>
+		<result column="sharing_profile_id" jdbcType="INTEGER" property="sharing_profile_id"/>
+		<result column="sharing_profile_name" jdbcType="VARCHAR" property="sharing_profile_name"/>
+		<result column="start_date" jdbcType="DATE" property="start_date"/>
+		<result column="end_date" jdbcType="DATE" property="end_date"/>
+	</resultMap>
+
+	<resultMap id="gConnectionHistoryRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addGConnectionHistory" parameterType="com.longersec.blj.domain.GConnectionHistory">
+		INSERT INTO lsblj_g_connection_history
+		<set>
+		<if test="history_id != null">`history_id`=#{history_id},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="remote_host != null">`remote_host`=#{remote_host},</if>
+		<if test="connection_id != null">`connection_id`=#{connection_id},</if>
+		<if test="connection_name != null">`connection_name`=#{connection_name},</if>
+		<if test="sharing_profile_id != null">`sharing_profile_id`=#{sharing_profile_id},</if>
+		<if test="sharing_profile_name != null">`sharing_profile_name`=#{sharing_profile_name},</if>
+		<if test="start_date != null">`start_date`=#{start_date},</if>
+		<if test="end_date != null">`end_date`=#{end_date},</if>
+		</set>
+	</insert>
+
+	<update id="editGConnectionHistory" parameterType="com.longersec.blj.domain.GConnectionHistory">
+		UPDATE lsblj_g_connection_history
+		<set>
+		<if test="history_id != null">`history_id`=#{history_id},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="remote_host != null">`remote_host`=#{remote_host},</if>
+		<if test="connection_id != null">`connection_id`=#{connection_id},</if>
+		<if test="connection_name != null">`connection_name`=#{connection_name},</if>
+		<if test="sharing_profile_id != null">`sharing_profile_id`=#{sharing_profile_id},</if>
+		<if test="sharing_profile_name != null">`sharing_profile_name`=#{sharing_profile_name},</if>
+		<if test="start_date != null">`start_date`=#{start_date},</if>
+		<if test="end_date != null">`end_date`=#{end_date},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delGConnectionHistory" parameterType="java.util.List">
+		DELETE FROM lsblj_g_connection_history
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, gConnectionHistoryRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_g_connection_history 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

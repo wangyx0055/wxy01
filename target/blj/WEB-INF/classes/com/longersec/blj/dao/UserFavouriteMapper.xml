@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.UserFavouriteDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.UserFavourite">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="device_id" jdbcType="INTEGER" property="device_id"/>
+		<result column="user_id" jdbcType="INTEGER" property="user_id"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+		<result column="add_time" jdbcType="INTEGER" property="add_time"/>
+	</resultMap>
+
+	<resultMap id="userFavouriteRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addUserFavourite" parameterType="com.longersec.blj.domain.UserFavourite">
+		INSERT INTO lsblj_user_favorite
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="type != null">`type`=#{type},</if>
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="add_time != null">`add_time`=#{add_time},</if>
+		add_time=UNIX_TIMESTAMP(),
+		</set>
+	</insert>
+ 
+	<update id="editUserFavourite" parameterType="com.longersec.blj.domain.UserFavourite">
+		UPDATE lsblj_user_favorite
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="type != null">`type`=#{type},</if>
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="add_time != null">`add_time`=#{add_time},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delUserFavourite" parameterType="java.util.List">
+		DELETE FROM lsblj_user_favorite
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+
+	<delete id="delUserFavouriteByDeviceId" parameterType="java.util.List">
+		DELETE FROM lsblj_user_favorite
+		where device_id IN (
+		<foreach collection="ids" item="item" separator=",">
+		#{item},
+		</foreach>
+		0) 
+		AND user_id=#{user_id} 
+	</delete>
+	
+	<select id="findAll" resultMap="BaseResultMap, userFavouriteRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_user_favorite 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_user_favorite where id=#{id}
+	</select>
+</mapper>

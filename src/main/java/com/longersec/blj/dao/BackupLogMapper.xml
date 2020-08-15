@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.BackupLogDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.BackupLog">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="filesize" jdbcType="INTEGER" property="filesize"/>
+		<result column="filepath" jdbcType="VARCHAR" property="filepath"/>
+		<result column="backup_datetime" jdbcType="INTEGER" property="backup_datetime"/>
+	</resultMap>
+
+	<resultMap id="backupLogRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addBackupLog" parameterType="com.longersec.blj.domain.BackupLog">
+		INSERT INTO lsblj_backup_log
+		<set>
+		
+		<if test="name != null">`name`=#{name},</if>
+		<if test="filesize != null">`filesize`=#{filesize},</if>
+		<if test="filepath != null">`filepath`=#{filepath},</if>
+		<if test="backup_datetime != null">`backup_datetime`=#{backup_datetime},</if>
+		</set>
+	</insert>
+
+	<update id="editBackupLog" parameterType="com.longersec.blj.domain.BackupLog">
+		UPDATE lsblj_backup_log
+		<set>
+		
+		<if test="name != null">`name`=#{name},</if>
+		<if test="filesize != null">`filesize`=#{filesize},</if>
+		<if test="filepath != null">`filepath`=#{filepath},</if>
+		<if test="backup_datetime != null">`backup_datetime`=#{backup_datetime},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delBackupLog" parameterType="java.util.List">
+		DELETE FROM lsblj_backup_log
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, backupLogRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_backup_log 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

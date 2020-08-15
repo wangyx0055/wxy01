@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.RecordCommandDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.RecordCommand">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="record_id" jdbcType="INTEGER" property="record_id"/>
+		<result column="start" jdbcType="INTEGER" property="start"/>
+		<result column="is_apppub" jdbcType="INTEGER" property="is_apppub"/>
+		<result column="command" jdbcType="VARCHAR" property="command"/>
+		<result column="_time" jdbcType="VARCHAR" property="_time"/>
+		<result column="relatime" jdbcType="VARCHAR" property="relatime"/>
+		<result column="cmddanger_id" jdbcType="INTEGER" property="cmddanger_id"/>
+	</resultMap>
+
+	<resultMap id="recordCommandRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addRecordCommand" parameterType="com.longersec.blj.domain.RecordCommand">
+		INSERT INTO lsblj_record_command
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="record_id != null">`record_id`=#{record_id},</if>
+		<if test="start != null">`start`=#{start},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="is_apppub != null">`is_apppub`=#{is_apppub},</if>
+		<if test="cmddanger_id != null">`cmddanger_id`=#{cmddanger_id},</if>
+		</set>
+	</insert>
+
+	<update id="editRecordCommand" parameterType="com.longersec.blj.domain.RecordCommand">
+		UPDATE lsblj_record_command
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="record_id != null">`record_id`=#{record_id},</if>
+		<if test="start != null">`start`=#{start},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="is_apppub != null">`is_apppub`=#{is_apppub},</if>
+		<if test="cmddanger_id != null">`cmddanger_id`=#{cmddanger_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delRecordCommand" parameterType="java.util.List">
+		DELETE FROM lsblj_record_command
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	
+	<select id="findAll" resultMap="BaseResultMap, recordCommandRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS a.id,record_id,
+		FROM_UNIXTIME(LEFT(a.start,10)) _time,a.command,LEFT(a.start,10) start,(a.start - b.start*1000) relatime,IF(filepath='','','1') filepath FROM lsblj_record_command a 
+		
+		<if test="recordCommand.is_apppub == 0">
+		LEFT JOIN lsblj_device_record b ON a.record_id=b.id WHERE a.record_id=#{recordCommand.record_id} 
+		</if>
+		<if test="recordCommand.is_apppub == 1">
+		LEFT JOIN lsblj_apppub_record b ON a.record_id=b.id WHERE a.record_id=#{recordCommand.record_id} 
+		</if>
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_record_command where id=#{id}
+	</select>
+</mapper>

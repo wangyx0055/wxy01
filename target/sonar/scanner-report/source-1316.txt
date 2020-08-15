@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.LoginLogDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.LoginLog">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="source_ip" jdbcType="VARCHAR" property="source_ip"/>
+		<result column="user_id" jdbcType="INTEGER" property="user_id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="realname" jdbcType="VARCHAR" property="realname"/>
+		<result column="department" jdbcType="VARCHAR" property="department"/>
+		<result column="protocol" jdbcType="VARCHAR" property="protocol"/>
+		<result column="device_ip" jdbcType="VARCHAR" property="device_ip"/>
+		<result column="os" jdbcType="VARCHAR" property="os"/>
+		<result column="browser" jdbcType="VARCHAR" property="browser"/>
+		<result column="login_datetime" jdbcType="INTEGER" property="login_datetime"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="result" jdbcType="CLOB" property="result"/>
+		<result column="details" jdbcType="VARCHAR" property="details"/>
+	</resultMap>
+	
+	
+	<resultMap id="reportMap" type="java.util.Map">
+		<result property="interval" column="interval" jdbcType="VARCHAR"/>
+		<result property="total" column="total" jdbcType="INTEGER"/>
+		<result property="successes" column="successes" jdbcType="INTEGER"/>
+		<result property="fails" column="fails" jdbcType="INTEGER"/>
+		<result property="sourceips" column="sourceips" jdbcType="INTEGER"/>
+		<result property="users" column="users" jdbcType="INTEGER"/>
+	</resultMap> 
+	
+	
+
+	<resultMap id="dateProtocolMap" type="java.util.Map">
+		<result property="interval" column="interval" jdbcType="VARCHAR"/>
+		<result property="total" column="total" jdbcType="INTEGER"/>
+		<result property="ssh" column="ssh" jdbcType="INTEGER"/>
+		<result property="rdp" column="rdp" jdbcType="INTEGER"/>
+		<result property="telnet" column="telnet" jdbcType="INTEGER"/>
+		<result property="vnc" column="vnc" jdbcType="INTEGER"/>
+		<result property="web" column="web" jdbcType="INTEGER"/>
+	</resultMap> 
+
+	<resultMap id="userMap" type="java.util.Map">
+		<result property="username" column="username" jdbcType="VARCHAR"/>
+		<result property="realname" column="realname" jdbcType="VARCHAR"/>
+		<result property="total" column="total" jdbcType="INTEGER"/>
+		<result property="ssh" column="ssh" jdbcType="INTEGER"/>
+		<result property="rdp" column="rdp" jdbcType="INTEGER"/>
+		<result property="telnet" column="telnet" jdbcType="INTEGER"/>
+		<result property="vnc" column="vnc" jdbcType="INTEGER"/>
+		<result property="web" column="web" jdbcType="INTEGER"/>
+	</resultMap> 
+	
+	<resultMap id="loginLogRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addLoginLog" parameterType="com.longersec.blj.domain.LoginLog">
+		INSERT INTO lsblj_login_log
+		<set>
+		
+		<if test="source_ip != null">`source_ip`=#{source_ip},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="realname != null">`realname`=#{realname},</if>
+		<if test="department != null">`department`=#{department},</if>
+		<if test="protocol != null">`protocol`=#{protocol},</if>
+		<if test="device_ip != null">`device_ip`=#{device_ip},</if>
+		<if test="os != null">`os`=#{os},</if>
+		<if test="browser != null">`browser`=#{browser},</if>
+		<if test="login_datetime != null">`login_datetime`=#{login_datetime},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="result != null">`result`=#{result},</if>
+		<if test="details != null">`details`=#{details},</if>
+		</set>
+	</insert>
+
+	<update id="editLoginLog" parameterType="com.longersec.blj.domain.LoginLog">
+		UPDATE lsblj_login_log
+		<set>
+		
+		<if test="source_ip != null">`source_ip`=#{source_ip},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="realname != null">`realname`=#{realname},</if>
+		<if test="department != null">`department`=#{department},</if>
+		<if test="protocol != null">`protocol`=#{protocol},</if>
+		<if test="device_ip != null">`device_ip`=#{device_ip},</if>
+		<if test="os != null">`os`=#{os},</if>
+		<if test="browser != null">`browser`=#{browser},</if>
+		<if test="login_datetime != null">`login_datetime`=#{login_datetime},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="result != null">`result`=#{result},</if>
+		<if test="details != null">`details`=#{details},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delLoginLog" parameterType="java.util.List">
+		DELETE FROM lsblj_login_log
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, loginLogRecordCounts">
+		SELECT
+		SQL_CALC_FOUND_ROWS
+		DATE_FORMAT(FROM_UNIXTIME(login_datetime),'%Y-%m-%d %H:%i:%s') login_datetime,lsblj_login_log.* FROM lsblj_login_log
+		where 1
+		<if test="loginLog.source_ip != null"> AND source_ip like CONCAT('%',#{loginLog.source_ip},'%')</if>
+		<if test="loginLog.username != null"> AND `username` like CONCAT('%',#{loginLog.username},'%')</if>
+		<if test="loginLog.realname != null"> AND `realname` like CONCAT('%',#{loginLog.realname},'%')</if>
+		<if test="loginLog.protocol != null"> AND `protocol` like CONCAT('%',#{loginLog.protocol},'%')</if>
+		<if test="loginLog.status != null"> AND `status` like CONCAT('%',#{loginLog.status},'%')</if>
+		<if test="loginLog.searchAll != null"> AND  (
+		 `source_ip` like CONCAT('%',#{loginLog.searchAll },'%')
+		 or `username` like CONCAT('%',#{loginLog.searchAll },'%')
+		 or `realname` like CONCAT('%',#{loginLog.searchAll },'%')
+		 or `protocol` like CONCAT('%',#{loginLog.searchAll },'%')
+		 or `status` like CONCAT('%',#{loginLog.searchAll },'%')
+		 )</if>
+		 ORDER BY login_datetime DESC 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="selectAll" resultType="com.longersec.blj.domain.LoginLog">
+		 SELECT FROM_UNIXTIME(lsblj_login_log.login_datetime) login_datetime,lsblj_login_log.*
+		 FROM lsblj_login_log
+		 ORDER BY login_datetime DESC
+	</select>
+	
+	<select id="selectLast7Day" resultType="Map">
+		SELECT  date_format(FROM_UNIXTIME(login_datetime), "%e") day, count(*) ct
+			FROM lsblj_login_log 
+			WHERE login_datetime>(UNIX_TIMESTAMP()-6*24*3600) 
+			GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%d")
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%d") ASC
+	</select>
+	
+	<select id="selectByUser" resultType="java.util.Map">
+		SELECT username, realname, count(*) ct
+			FROM lsblj_login_log 
+			WHERE user_id IN(SELECT id FROM lsblj_user)
+			GROUP BY username
+			ORDER BY ct DESC LIMIT 12
+	</select>
+	
+	<select id="selectByHour" resultMap="reportMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m-%d %H") `interval`, count(*) total,count(IF(status=1,1,null)) successes,count(IF(status=0,1,null)) fails
+				,count(distinct source_ip) sourceips,count(distinct username) users 
+			FROM lsblj_login_log 
+			WHERE 1 
+			<if test="start_date != null and start_date != ''">
+				AND login_datetime &gt;= #{start_date}
+			</if>
+			<if test="end_date != null and end_date != '' ">
+				AND login_datetime &lt;= #{end_date} 
+			</if>
+			 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d%H")
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d%H") ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectByDay" resultMap="reportMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m-%d") `interval`, count(*) total,count(IF(status=1,1,null)) successes,count(IF(status=0,1,null)) fails
+				,count(distinct source_ip) sourceips,count(distinct username) users 
+			FROM lsblj_login_log 
+			WHERE 1 
+			<if test="start_date != null and start_date != ''">
+				AND login_datetime &gt;= #{start_date}
+			</if>
+			<if test="end_date != null and end_date != '' ">
+				AND login_datetime &lt;= #{end_date} 
+			</if>
+			 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d")
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d") ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectByWeek" resultMap="reportMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%v") `interval`, count(*) total,count(IF(status=1,1,null)) successes,count(IF(status=0,1,null)) fails
+				,count(distinct source_ip) sourceips,count(distinct username) users 
+			FROM lsblj_login_log 
+			WHERE 1 
+			<if test="start_date != null and start_date != ''">
+				AND login_datetime &gt;= #{start_date}
+			</if>
+			<if test="end_date != null and end_date != '' ">
+				AND login_datetime &lt;= #{end_date} 
+			</if>
+			 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%v")
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%v") ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectByMonth" resultMap="reportMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m") `interval`, count(*) total,count(IF(status=1,1,null)) successes,count(IF(status=0,1,null)) fails
+				,count(distinct source_ip) sourceips,count(distinct username) users 
+			FROM lsblj_login_log 
+			WHERE 1 
+			<if test="start_date != null and start_date != ''">
+				AND login_datetime &gt;= #{start_date}
+			</if>
+			<if test="end_date != null and end_date != '' ">
+				AND login_datetime &lt;= #{end_date} 
+			</if>
+			 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m")
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m") ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	
+	<select id="selectProtocolByUser" resultMap="dateProtocolMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS username,realname, count(*) total,count(IF(protocol='web',1,null)) web,count(IF(protocol='ssh',1,null)) ssh,count(IF(protocol='rdp',1,null)) rdp
+		,count(IF(protocol='telnet',1,null)) telnet,count(IF(protocol='vnc',1,null)) vnc,count(IF(protocol='apppub',ct,null)) apppub
+			FROM (
+				select 'web' protocol,count(*)ct, username, realname from lsblj_login_log
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND login_datetime &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND login_datetime &lt;= #{end_date} 
+				</if>
+				 GROUP BY username
+				 UNION 
+				select p.name,count(*)ct, username, realname from lsblj_device_record dr left join lsblj_protocol p on dr.protocol_id=p.id 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY username
+				  UNION 
+				select 'apppub',count(*)ct, username, realname from lsblj_apppub_record 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY username
+			) t
+			
+			 GROUP BY username 
+			ORDER BY username ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectProtocolByHour" resultMap="dateProtocolMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m-%d %H") `interval`,username,realname, count(*) total,count(IF(protocol='web',1,null)) web,count(IF(protocol='ssh',1,null)) ssh,count(IF(protocol='rdp',1,null)) rdp
+		,count(IF(protocol='telnet',1,null)) telnet,count(IF(protocol='vnc',1,null)) vnc,count(IF(protocol='apppub',ct,null)) apppub
+			FROM (
+				select 'web' protocol,count(*)ct, username, realname, login_datetime from lsblj_login_log
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND login_datetime &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND login_datetime &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d%H"),username
+				 UNION 
+				select p.name,count(*)ct, username, realname, `start` from lsblj_device_record dr left join lsblj_protocol p on dr.protocol_id=p.id 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%m%d%H"),username
+				  UNION 
+				select 'apppub',count(*)ct, username, realname, `start` from lsblj_apppub_record 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%m%d%H"),username
+			) t 
+			 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d%H"),username
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d%H") ASC,username ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectProtocolByDay" resultMap="dateProtocolMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m-%d") `interval`,username,realname, count(*) total,count(IF(protocol='web',ct,null)) web,count(IF(protocol='ssh',ct,null)) ssh,count(IF(protocol='rdp',ct,null)) rdp
+		,count(IF(protocol='telnet',ct,null)) telnet,count(IF(protocol='vnc',ct,null)) vnc,count(IF(protocol='apppub',ct,null)) apppub
+			FROM (
+				select 'web' protocol,count(*)ct, username, realname, login_datetime from lsblj_login_log
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND login_datetime &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND login_datetime &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d"),username
+				 UNION 
+				select p.name,count(*)ct, username, realname, `start` from lsblj_device_record dr left join lsblj_protocol p on dr.protocol_id=p.id 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%m%d"),username
+				  UNION 
+				select 'apppub',count(*)ct, username, realname, `start` from lsblj_apppub_record 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%m%d"),username
+			) t
+			GROUP BY date_format(FROM_UNIXTIME(`login_datetime`),"%Y%m%d"),username
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m%d") ASC,username ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="selectProtocolByWeek" resultMap="dateProtocolMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%v") `interval`,username,realname, count(*) total,count(IF(protocol='web',1,null)) web,count(IF(protocol='ssh',1,null)) ssh,count(IF(protocol='rdp',1,null)) rdp
+		,count(IF(protocol='telnet',1,null)) telnet,count(IF(protocol='vnc',1,null)) vnc,count(IF(protocol='apppub',ct,null)) apppub
+			FROM (
+				select 'web' protocol,count(*)ct, username, realname, login_datetime from lsblj_login_log
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND login_datetime &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND login_datetime &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%v"),username
+				 UNION 
+				select p.name,count(*)ct, username, realname, `start` from lsblj_device_record dr left join lsblj_protocol p on dr.protocol_id=p.id 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%v"),username
+				  UNION 
+				select 'apppub',count(*)ct, username, realname, `start` from lsblj_apppub_record 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%v"),username
+			) t 
+			 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%v"),username
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%v") ASC,username ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectProtocolByMonth" resultMap="dateProtocolMap, loginLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m") `interval`,username,realname, count(*) total,count(IF(protocol='web',1,null)) web,count(IF(protocol='ssh',1,null)) ssh,count(IF(protocol='rdp',1,null)) rdp
+		,count(IF(protocol='telnet',1,null)) telnet,count(IF(protocol='vnc',1,null)) vnc,count(IF(protocol='apppub',ct,null)) apppub
+			FROM (
+				select 'web' protocol,count(*)ct, username, realname, login_datetime from lsblj_login_log
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND login_datetime &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND login_datetime &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m"),username
+				 UNION 
+				select p.name,count(*)ct, username, realname, `start` from lsblj_device_record dr left join lsblj_protocol p on dr.protocol_id=p.id 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%m"),username
+				  UNION 
+				select 'apppub',count(*)ct, username, realname, `start` from lsblj_apppub_record 
+				WHERE 1 
+				<if test="start_date != null and start_date != ''">
+					AND `start` &gt;= #{start_date}
+				</if>
+				<if test="end_date != null and end_date != '' ">
+					AND `start` &lt;= #{end_date} 
+				</if>
+				 GROUP BY date_format(FROM_UNIXTIME(`start`),"%Y%m"),username
+			) t 
+			GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m"),username
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%Y%m") ASC,username ASC
+			<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+			</if>
+			;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

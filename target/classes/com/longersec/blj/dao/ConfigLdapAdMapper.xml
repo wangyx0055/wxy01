@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigLdapAdDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigLdapAd">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="domain" jdbcType="VARCHAR" property="domain"/>
+		<result column="basedn" jdbcType="VARCHAR" property="basedn"/>
+		<result column="administrator" jdbcType="VARCHAR" property="administrator"/>
+		<result column="password" jdbcType="BLOB" property="password"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+		<result column="ssl" jdbcType="INTEGER" property="ssl"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="filter_department" jdbcType="VARCHAR" property="filter_department"/>
+		<result column="filter_username" jdbcType="VARCHAR" property="filter_username"/>
+		<result column="filter_loginname" jdbcType="VARCHAR" property="filter_loginname"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="realname" jdbcType="VARCHAR" property="realname"/>
+		<result column="email" jdbcType="VARCHAR" property="email"/>
+		<result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+		<result column="async" jdbcType="INTEGER" property="async"/>
+		<result column="department_id" jdbcType="INTEGER" property="department_id"/>
+		<result column="cover" jdbcType="INTEGER" property="cover"/>
+		<result column="add_department" jdbcType="INTEGER" property="add_department"/>
+	</resultMap>
+
+	<resultMap id="configLdapAdRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addConfigLdapAd" parameterType="com.longersec.blj.domain.ConfigLdapAd">
+		INSERT INTO lsblj_config_ldap_ad
+		<set>
+		
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="domain != null">`domain`=#{domain},</if>
+		<if test="basedn != null">`basedn`=#{basedn},</if>
+		<if test="administrator != null">`administrator`=#{administrator},</if>
+		<if test="password != null">`password`=#{password},</if>
+		<if test="type != null">`type`=#{type},</if>
+		<if test="ssl != null">`ssl`=#{ssl},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="filter_department != null">`filter_department`=#{filter_department},</if>
+		<if test="filter_username != null">`filter_username`=#{filter_username},</if>
+		<if test="filter_loginname != null">`filter_loginname`=#{filter_loginname},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="realname != null">`realname`=#{realname},</if>
+		<if test="email != null">`email`=#{email},</if>
+		<if test="mobile != null">`mobile`=#{mobile},</if>
+		<if test="async != null">`async`=#{async},</if>
+		<if test="department_id != null">`department_id`=#{department_id},</if>
+		<if test="cover != null">`cover`=#{cover},</if>
+		<if test="add_department != null">`add_department`=#{add_department},</if>
+		</set>
+	</insert>
+
+	<update id="editConfigLdapAd" parameterType="com.longersec.blj.domain.ConfigLdapAd">
+		UPDATE lsblj_config_ldap_ad
+		<set>
+		
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="domain != null">`domain`=#{domain},</if>
+		<if test="basedn != null">`basedn`=#{basedn},</if>
+		<if test="administrator != null">`administrator`=#{administrator},</if>
+		<if test="password != null">`password`=#{password},</if>
+		<if test="type != null">`type`=#{type},</if>
+		<if test="ssl != null">`ssl`=#{ssl},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="filter_department != null">`filter_department`=#{filter_department},</if>
+		<if test="filter_username != null">`filter_username`=#{filter_username},</if>
+		<if test="filter_loginname != null">`filter_loginname`=#{filter_loginname},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="realname != null">`realname`=#{realname},</if>
+		<if test="email != null">`email`=#{email},</if>
+		<if test="mobile != null">`mobile`=#{mobile},</if>
+		<if test="async != null">`async`=#{async},</if>
+		<if test="department_id != null">`department_id`=#{department_id},</if>
+		<if test="cover != null">`cover`=#{cover},</if>
+		<if test="add_department != null">`add_department`=#{add_department},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delConfigLdapAd" parameterType="java.util.List">
+		DELETE FROM lsblj_config_ldap_ad
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, configLdapAdRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		'' password,lsblj_config_ldap_ad.* FROM lsblj_config_ldap_ad 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

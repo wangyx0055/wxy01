@@ -1,0 +1,1 @@
+Á 2webX¿hr-src/main/webapp/view/asset_manage/apppub.html

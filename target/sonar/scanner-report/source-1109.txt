@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>全景概览</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  	<link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" th:href="@{/bower_components/Ionicons/css/ionicons.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/bower_components/dist/css/AdminLTE.min.css}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" th:href="@{/bower_components/dist/css/skins/_all-skins.min.css}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js"></script>
+    <script src="../../js/respond.min.js"></script>
+    <![endif]-->
+    <script src="../../js/echarts.min.js"></script>
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        .box{
+            border-top: none !important;
+        }
+        .box-header.with-border {
+            border-bottom: 1px solid #E8E8E8;
+        }
+        .box-header{
+            margin-left: 22px;
+            margin-right: 22px;
+        }
+        .box .nav-stacked>li:last-of-type{
+            border-bottom: 1px solid #f4f4f4;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini index_body">
+<div class="wrapper">
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+        <div th:replace="/view/common/menu :: menu"></div>
+        <!-- /.sidebar -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12" style="position: relative">
+                    <span class="info_line"></span>
+                    <a href="../../view/user/user">
+                    <div class="info-box" style="background-color:#0EC752">
+                        <span class="info-box-icon" style="background-color:#0EC752"><img th:src="@{/images/user.png}" class="info_img" > </span>
+                        <div class="info-box-content" >
+                           <span class="info-box-text">用户</span>
+                            <span class="info-box-number"  id="userct">0<small></small></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    </a>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12" style="position: relative">
+                    <span class="info_line"></span>
+                    <a href="../../view/asset_manage/hosts">
+                    <div class="info-box" style="background-color:#00C0A5 ">
+                        <span class="info-box-icon" style="background-color:#00C0A5 "><img th:src="@{/images/device.png}" class="info_img" > </span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">设备</span>
+                            <span class="info-box-number"  id="devicect">0</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    </a>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+
+                <!-- fix for small devices only -->
+                <div class="clearfix visible-sm-block"></div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12" style="position: relative">
+                    <span class="info_line"></span>
+                 <a href="../../view/asset_manage/apppub_manage">
+                    <div class="info-box" style="background-color:#448AFF ">
+                        <span class="info-box-icon" style="background-color:#448AFF "><img th:src="@{/images/app.png}" class="info_img" > </span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">应用</span>
+                            <span class="info-box-number"  id="apppubct">0</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    </a>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12" style="position: relative">
+                    <span class="info_line" ></span>
+                    <a href="../../view/audit_manage/logs_system#alertslog">
+                    <div class="info-box" style="background-color:#FA6F44">
+                        <span class="info-box-icon" style="background-color:#FA6F44"><img th:src="@{/images/alarm.png}" class="info_img" > </span>
+                        <div class="info-box-content" >
+                            <span class="info-box-text">告警</span>
+                            <span class="info-box-number" id="alertct">0</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    </a>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header with-border">
+                           <span class="box-title new-header" >系统状态</span>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="margin-top: 0px !important;">
+                            <div class="row">
+                                <div class="col-md-8" id="salesChart" style="height:230px;">
+                                </div>
+                                <!-- /.col -->
+                        <div class="col-md-4">
+                            <p class="text-center" style="color: rgba(0,0,0,0.65);">
+                              使用情况
+                            </p>
+                            <div class="progress-group" id="cpuinfo">
+                                <span>CPU</span>
+                                <span class="progress-number">0%</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" ></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group" id="memoryinfo">
+                                <span>内存</span>
+                                <span class="progress-number">0G/0G</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" ></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group" id="diskinfo">
+                                <span>硬盘</span>
+                                <span class="progress-number">0T/0T</span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" ></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group" id="networkinfo">
+                                <span>吞吐量</span>
+                                <span class="progress-number">0KB/KB</span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                <!-- /.row -->
+            </div>
+                        <!-- /box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row 12-->
+
+            <!-- Main row -->
+            <div class="row">
+                <!-- Left col -->
+                <div class="col-md-8">
+                    <!-- MAP & BOX PANE -->
+                    
+                    <div class="box">
+                        <div class="box-header with-border">
+                              <span class="box-title new-header">用户累计访问量TOP10</span>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-8">
+                                    <div class="pad">
+                                        <!-- Map will be created here -->
+                                        <div id="bar-chart" style="width: 100%; height: 325px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+        <!-- /.用户累计访问量TOP10 -->
+          <div class="row">
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border" style="margin-top: 0px !important;">
+                        <span class="box-title new-header">系统类型</span>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="margin-top: 0px !important;">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="chart-responsive">
+                                    <canvas id="pieChart" height="150"></canvas>
+                                </div>
+                                <!-- /chart-responsive -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-4">
+                                <ul class="chart-legend clearfix" id="devicesByTypeName">
+                                </ul>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer no-padding" style="height: 163px;">
+                        <ul class="nav nav-pills nav-stacked" id="devicesByTypeValue">
+                        </ul>
+                    </div>
+                    <!-- /.footer -->
+                </div>
+                <!-- DIRECT CHAT -->
+
+                <!--/.direct-chat -->
+            </div>
+            <!-- /资产类型 -->
+            <div class="col-md-6">
+                <!-- USERS LIST -->
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                          <span class="box-title new-header">应用类型</span>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="margin-top: 0px !important;">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="chart-responsive">
+                                    <canvas id="pieChart2" height="150"></canvas>
+                                </div>
+                                <!-- /chart-responsive -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-4">
+                                <ul class="chart-legend clearfix" id="apppubByTypeName">
+                                </ul>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer no-padding" style="height: 163px;" >
+                        <ul class="nav nav-pills nav-stacked" id="apppubByTypeValue">
+                        </ul>
+                    </div>
+                    <!-- /.footer -->
+                </div>
+                <!--/.box -->
+            </div>
+        <!-- 应用类型  -->
+            <!-- /.col -->
+        </div>
+                    <!-- /.row小 -->
+                    <!-- TABLE: LATEST ORDERS -->
+                    <!-- /.box -->
+                </div>
+                <!--col-md-8 -->
+                <div class="col-md-4">
+                    <!-- Info Boxes Style 2 -->
+                     <div class="box box-default">
+                    <div class="box_visit">
+                   <div>
+                   <img th:src="@{/images/tupian.png}">
+                   <div>
+                   <span>图形访问 30天增长   &nbsp<span id="graph30increatepercent">0</span></span><br>
+                   <span id="graph30increate">0</span>
+                   </div>
+                   </div>
+                   <hr class="visit_hr">
+                   <br>
+                   <div>
+                   <img th:src="@{/images/code.png}">
+                   <div>
+                   <span>字符访问 30天增长   &nbsp<span id="text30increatepercent">0</span></span><br>
+                   <span id="text30increate">0</span>
+                   </div>
+                   </div>
+                   <hr class="visit_hr">
+                   <br>
+                   <div>
+                   <img th:src="@{/images/APPm.png}">
+                   <div>
+                   <span>应用操作 30天增长   &nbsp<span id="apppub30increatepercent">0</span></span><br>
+                   <span  id="apppub30increate">0</span>
+                   </div>
+                   </div>
+                   <hr class="visit_hr">
+                   <br>
+                   <div style="height: 88px;margin-top: -10px;">
+                   <img th:src="@{/images/file.png}" >
+                   <div>
+                   <span>文件传输 30天增长   &nbsp<span id="filetransfer30increatepercent">0</span></span><br>
+                   <span id="filetransfer30increate">0</span>
+                   </div>
+                   </div>
+                   </div>
+                   </div>
+                 <!-- 图片 -->
+                  <div class="box box-default">
+                <div style="background-color:white;border-radius: 3px;">
+                 <div class="box-header with-border">
+                                <span class="box-title new-header" >当前在线用户</span>
+                             <!--    <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div> -->
+                            </div>
+                            <div class="box-body" style="height: 365px;">
+                                <ul class="products-list product-list-in-box">
+                                	<li class="item" style="margin-top: 10px;display:none;" id="onlineuser1">
+                                        <div class="product-img">
+                                            <img id="onlineuser1image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser1name">admin</span>
+                                                  <span class="product-time"  id="onlineuser1time">2019/12/01 23:53:01</span></span></a>
+                                            <span class="product-description"  id="onlineuser1info">test1 127.0.0.1</span>
+                                        </div>
+                                    </li>
+                                      <li class="item" style="margin-top: 10px;display:none;" id="onlineuser2">
+                                        <div class="product-img">
+                                            <img id="onlineuser2image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser2name">admin</span>
+                                                  <span class="product-time"  id="onlineuser2time">2019/12/01 23:53:01</span></span></a>
+                                            <span class="product-description"  id="onlineuser2info">test1 127.0.0.1</span>
+                                        </div>
+                                    </li><li class="item" style="margin-top: 10px;display:none;" id="onlineuser3">
+                                        <div class="product-img">
+                                            <img id="onlineuser3image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser3name">admin</span>
+                                                  <span class="product-time"   id="onlineuser3time">2019/12/01 23:53:01</span></span></a>
+                                            <span class="product-description"  id="onlineuser3info">test1 127.0.0.1</span>
+                                        </div>
+                                    </li><li class="item" style="margin-top: 10px;display:none;" id="onlineuser4">
+                                        <div class="product-img">
+                                            <img id="onlineuser4image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser4name">admin</span>
+                                                  <span class="product-time"  id="onlineuser4time">2019/12/01 23:53:01</span></span></a>
+                                            <span class="product-description"  id="onlineuser4info">test1 127.0.0.1</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                </div>
+                  <!-- /.box-body -->
+                    <!-- <div class="box-footer">
+                  <button style="height: 30px;width: 130px;background-color: white;border-radius: 3px;float: right;font-size: 13px;border: 1px solid #ccc;">查看访问记录>></button>
+                     </div>-->
+                     <!-- /.box-footer -->
+                </div>
+               <!--  用户 -->
+                    <!-- /.box -->
+                </div>
+                <!-- /.col md-4-->
+            </div>
+            <!-- /.row 大-->
+            </div>
+            <div class="box">
+                <div class="box-header with-border">
+                <span class="box-title new-header">实时会话</span>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive" style="margin-top:10px">
+                        <table class="table no-margin" id="deviceonline">
+                            <thead>
+                            <tr>
+                                <th>设备名称</th>
+                                <th>设备地址</th>
+                                <th>协议</th>
+                                <th>设备账号</th>
+                                <th>来源地址</th>
+                                <th>运维用户</th>
+                                <th>姓名</th>
+                                <th>开始时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+            </div>
+        </section>
+    </div>
+    <div th:replace="/view/common/controlside :: controlside"></div>
+</div> 
+<!-- /wrapper -->
+
+<!-- jQuery 3 -->
+<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<script src="../../js/common/common.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+
+<!-- AdminLTE App -->
+<script th:src="@{/bower_components/dist/js/adminlte.min.js}"></script>
+
+<!-- jvectormap  -->
+<script th:src="@{/bower_components/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js}"></script>
+<script th:src="@{/bower_components/plugins/jvectormap/jquery-jvectormap-world-mill-en.js}"></script>
+
+<!-- ChartJS -->
+<script th:src="@{/bower_components/chart.js/Chart.js}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script th:src="@{/bower_components/dist/js/pages/dashboard2.js}" defer></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/bower_components/dist/js/demo.js}"></script>
+<script th:src="@{/bower_components/datatables.net/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
+<script>
+</script>
+</body>
+</html>

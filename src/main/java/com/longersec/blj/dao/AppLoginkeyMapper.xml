@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.AppLoginkeyDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.AppLoginkey">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="loginkey" jdbcType="VARCHAR" property="loginkey"/>
+		<result column="userid" jdbcType="INTEGER" property="userid"/>
+		<result column="logintime" jdbcType="INTEGER" property="logintime"/>
+	</resultMap>
+
+	<resultMap id="appLoginkeyRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addAppLoginkey" parameterType="com.longersec.blj.domain.AppLoginkey">
+		INSERT INTO lsblj_app_loginkey
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="loginkey != null">`loginkey`=#{loginkey},</if>
+		<if test="userid != null">`userid`=#{userid},</if>
+		<if test="logintime != null">`logintime`=#{logintime},</if>
+		</set>
+	</insert>
+
+	<update id="editAppLoginkey" parameterType="com.longersec.blj.domain.AppLoginkey">
+		UPDATE lsblj_app_loginkey
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="loginkey != null">`loginkey`=#{loginkey},</if>
+		<if test="userid != null">`userid`=#{userid},</if>
+		<if test="logintime != null">`logintime`=#{logintime},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delAppLoginkey" parameterType="java.util.List">
+		DELETE FROM lsblj_app_loginkey
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, appLoginkeyRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_app_loginkey 
+		WHERE 1 
+		<if test="appLoginkey.id != null"> AND `id`=#{appLoginkey.id} </if>
+		<if test="appLoginkey.loginkey != null"> AND `loginkey`=#{appLoginkey.loginkey} </if>
+		<if test="appLoginkey.userid != null"> AND `userid`=#{appLoginkey.userid} </if>
+		<if test="appLoginkey.logintime != null"> AND `logintime`=#{appLoginkey.logintime} </if>
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_app_loginkey where id=#{id}
+	</select>
+</mapper>

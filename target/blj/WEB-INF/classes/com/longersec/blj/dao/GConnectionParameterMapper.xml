@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.GConnectionParameterDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.GConnectionParameter">
+		<result column="connection_id" jdbcType="INTEGER" property="connection_id"/>
+		<result column="parameter_name" jdbcType="VARCHAR" property="parameter_name"/>
+		<result column="parameter_value" jdbcType="VARCHAR" property="parameter_value"/>
+	</resultMap>
+
+	<resultMap id="gConnectionParameterRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addGConnectionParameter" parameterType="com.longersec.blj.domain.GConnectionParameter">
+		INSERT INTO lsblj_g_connection_parameter
+		<set>
+		<if test="connection_id != null">`connection_id`=#{connection_id},</if>
+		<if test="parameter_name != null">`parameter_name`=#{parameter_name},</if>
+		<if test="parameter_value != null">`parameter_value`=#{parameter_value},</if>
+		</set>
+	</insert>
+
+	<update id="editGConnectionParameter" parameterType="com.longersec.blj.domain.GConnectionParameter">
+		UPDATE lsblj_g_connection_parameter
+		<set>
+		<if test="connection_id != null">`connection_id`=#{connection_id},</if>
+		<if test="parameter_name != null">`parameter_name`=#{parameter_name},</if>
+		<if test="parameter_value != null">`parameter_value`=#{parameter_value},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delGConnectionParameter" parameterType="java.util.List">
+		DELETE FROM lsblj_g_connection_parameter
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, gConnectionParameterRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_g_connection_parameter 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

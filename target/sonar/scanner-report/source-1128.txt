@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>界面配置</title>
+     <!-- my css -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+  <!-- daterangepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <!-- Google Font -->
+  <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body>
+<!--界面配置-->
+<div class="box" style="box-shadow: none;border-top: none;width: 100%">
+    <div class="box-body">
+        <div style="height: 26px;margin-top: 25px;margin-left: 7px">
+            <span  class="new-font-color">语言配置</span>
+        </div>
+        <!-- 文字下面的蓝条条 -->
+        <div class="new-line-color" style="width: 56px;margin-left: 7px;position: absolute;margin-top: -1px;"></div>
+        <hr style="border: 0;border-bottom:1px solid #E8E8E8;width: 100%;margin-left: 7px;margin-top: 0px">
+        <div style="margin-top: 50px;margin-left: 81px;font-size: 14px">
+            <div style="margin-top: 10px">
+                <span style="font-size: 14px;float: left">系统语言：</span>
+                <span style="font-size: 14px;float: left;margin-left:32px">简体中文</span>
+            </div><br>
+        </div>
+        <br><br>
+       <!-- <hr style="border: 0;border-bottom:1px solid #E8E8E8;width: 103%;margin-left: -10px;margin-top: 8px">-->
+        <div style="height: 26px;background-color: white;margin-left: 7px">
+            <!--<div style="float: left;position: relative;top: 50%;margin-top: -11px;border-radius: 1px;margin-right: 7px;width: 3px;height: 17px;background-color: rgb(0, 152, 252);vertical-align: middle;"></div>-->
+            <span  class="new-font-color">图标配置</span>
+            <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#002"  style="float:right;margin-top:-7px;height: 30px;color: #fff;font-size: 12px;">编辑</button>
+        </div>
+        <!-- 文字下面的蓝条条 -->
+        <div  class="new-line-color" style="width: 56px;margin-left: 7px;position: absolute;"></div>
+        <hr style="border: 0;border-bottom:1px solid #E8E8E8;width: 100%;margin-left: 7px;margin-top: 1px">
+        <div style="margin-left: -40px">
+       
+        <div>
+          <span class="description" style="font-size:14px;color:black;margin-left: 120px;margin-top: 3px">系统图标：</span>
+          <div class="" style="width: 200px; height: 83px;background:#f2f1f1cc;margin-left: 190px;margin-top:-15px;"><img src="#" alt="">
+          </div>
+          <ul  style="float:right;list-style:none;margin-top:-80px;position: absolute;margin-left: 370px;">
+           <li style="margin-bottom:5px"><button type="button" class="btn btn-default"style="height:30px;line-height: 2px;font-size: 12px;">添加图片</button></li>
+          <li><span>88*28像素的透明底PNG图片</span></li>
+         </ul>
+           </div>
+           <div>
+          <div class="" style="width: 70px; height: 70px;background:#f2f1f1cc;margin-left: 190px;margin-top:15px;"><img src="#" alt=""></div><br>
+               <span class="description" style="font-size:14px;color:black;margin-left: 90px;margin-top: 3px"></span><br>
+             <ul  style="float:right;list-style:none;margin-top:-108px;position: absolute;margin-left: 370px;">
+              <li style="margin-bottom:5px"><button type="button" class="btn btn-default"style="height:30px;line-height: 2px;font-size: 12px;">添加图片</button></li>
+              <li><span>28*28像素的透明底PNG图片</span></li>
+              </ul>
+              </div>
+          <div>  
+          <span class="description" style="font-size:14px;color:black;margin-left: 120px;margin-top: 3px">公司图标：</span> 
+           <div class="" style="width: 200px; height: 200px;background:#f2f1f1cc;margin-left: 190px;margin-top:-15px;margin-bottom:20px;"><img src="#" alt="">
+           </div>
+             <ul  style="float:right;list-style:none;margin-top:-220px;position: absolute;margin-left: 370px;">
+             <li style="margin-bottom:5px"><button type="button" class="btn btn-default"style="height:30px;line-height: 2px;font-size: 12px;">添加图片</button></li>
+              <li><span>256*256像素的透明底PNG图片</span></span></li>
+            </ul>
+             </div>
+             <div style="margin-left:-30px;">
+            <p class="description" style="font-size:14px;color:black;margin-left: 148px;margin-top: 3px">恢复默认：
+            <button type="button" class="btn btn-default"style="width:70px;height: 30px;line-height: 2px;margin-left: 1px;font-size: 12px"><span style="margin-left: -1px">恢复默认</span></button>
+            </p>
+            </div>
+        </div>
+        <!--<hr style="border: 0;border-bottom:1px solid #E8E8E8;width: 103%;margin-left: -10px;margin-top: 4px">-->
+    </div>
+</div>
+
+<!--图标配置编辑-->
+<div class="modal modal-hides in" id="002" style="padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #f7f7f7">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" style="font-size:16px">图标配置</h4>
+            </div>
+       <div class="modal-body" style="margin-left: -60px">
+       
+       
+        <div>
+          <span class="description" style="font-size:14px;color:black;margin-left: 120px;margin-top: 3px">系统图标：</span>
+          <div class="" style="width: 176px; height: 70px;background:#f2f1f1cc;margin-left: 190px;margin-top:-15px;"><img src="#" alt="">
+          </div>
+          <ul  style="float:right;list-style:none;margin-top:-69px;margin-right:80px">
+           <li style="margin-bottom:5px"><button type="button" class="btn btn-default"style="height:30px;line-height: 2px;font-size: 12px;">添加图片</button></li>
+          <li><span>88*28像素的透明底PNG图片</span></li>
+         </ul>
+           </div>
+           
+
+           <div>
+          <div class="" style="width: 56px; height: 56px;background:#f2f1f1cc;margin-left: 190px;margin-top:15px;"><img src="#" alt=""></div><br>
+           <span class="description" style="font-size:14px;color:black;margin-left: 90px;margin-top: 3px"><br>
+             <ul  style="float:right;list-style:none;margin-top:-95px;margin-right:80px">
+              <li style="margin-bottom:5px"><button type="button" class="btn btn-default"style="height:30px;line-height: 2px;font-size: 12px;">添加图片</button></li>
+              <li><span>28*28像素的透明底PNG图片</span></span></li>
+              </ul>
+              </div>
+                  
+              
+          <div>  
+          <span class="description" style="font-size:14px;color:black;margin-left: 120px;margin-top: 3px">公司图标：</span> 
+           <div class="" style="width: 180px; height: 160px;background:#f2f1f1cc;margin-left: 190px;margin-top:-15px;margin-bottom:20px;"><img src="#" alt="">
+           </div>
+             <ul  style="float:right;list-style:none;margin-top:-180px;margin-right:66px">
+             <li style="margin-bottom:5px"><button type="button" class="btn btn-default"style="height:30px;line-height: 2px;font-size: 12px;">添加图片</button></li>
+              <li><span>256*256像素的透明底PNG图片</span></span></li>
+            </ul>
+             </div>
+             
+             
+             
+            <div class="modal-footer" style="margin-left: 45px">
+              <button type="button" class="btn newaddbtn pull-right" data-dismiss="modal" style="height: 30px;color: #fff;font-size: 12px;margin-left: 10px">确定</button>
+              <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px">取消</button>
+
+          </div>
+      </div>
+  </div>
+  <!-- /.modal-content -->
+    </div>
+</div>
+</body>
+</html>

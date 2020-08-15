@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box"  style="box-shadow: none;border-top: none;width: 100%">
+    <div class="box-body" >
+        <div style="height: 26px;margin-top: 25px;margin-left: 7px;">
+            <!-- 文字前面的蓝条条 -->
+            <!--<div style="float: left;position: relative;top: 50%;margin-top: -11px;border-radius: 1px;margin-right: 7px;width: 3px;height: 17px;background-color: rgb(0, 152, 252);vertical-align: middle;"></div>-->
+            <span class="new-font-color">日志管理扩展配置</span>
+            <button type="button" style="margin-top: -7px;float: right;height: 30px;" id="editLog"  class="btn newaddbtn" data-toggle="modal" data-target="#edit_log">新建</button>
+        </div>
+        <div class="new-line-color extend_line" style="width: 112px;margin-left: 8px;position: absolute"></div>
+        <hr class="extend_hr1" style="border: 0;border-bottom: 1px solid #E8E8E8;width: 100%;margin-left: 8px;margin-top: 0px;">
+       <!-- <div style="margin-left: 160px;margin-top: 40px;">
+            <span style="font-size: 14px;">日志管理参数：&nbsp;<span id="log_manage1">http://117.40.114.186:5611</span></span>
+        </div>-->
+        <table id="extendList" style="margin-left: 15px;" class="table table-hover">
+            <thead>
+            <tr>
+                <td style="width: 20%"><span>链接名称</span></td>
+                <td style="width: 25%"><span>链接地址</span></td>
+                <td style="width: 20%"><span>排序</span></td>
+                <td><span>操作</span></td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+</div>
+<!--日志编辑-->
+<div class="modal modal-hides in" id="edit_log" style="padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #f7f7f7">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <span class="modal-title" style="font-size:16px">日志管理编辑</span>
+            </div>
+            <div class="modal-body">
+                <div style="margin-left: 40px;">
+                    <div style="margin: 20px;margin-left: 70px;">
+                        <span style="font-size: 20px;color: red;vertical-align: -20%">*</span>
+                        <span style="font-size: 14px;">链接名称：</span>
+                        <input id="log_name" style="font-size: 12px;padding-left: 8px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-right: 5px"><span id="Vlog_name" class="sign_red"></span>
+                    </div>
+                    <div style="margin: 20px;margin-left: 70px;">
+                        <span style="font-size: 20px;color: red;vertical-align: -20%">*</span>
+                        <span style="font-size: 14px;">链接地址：</span>
+                        <input id="log_manage" style="font-size: 12px;padding-left: 8px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-right: 5px"><span id="Vlog_manage" class="sign_red"></span>
+                    </div>
+                    <div style="margin: 20px;margin-left: 98px;">
+                      <span style="font-size: 20px;color: red;vertical-align: -20%">*</span>
+                        <span style="font-size: 14px;">排序：</span>
+                        <input id="log_sort" style="font-size: 12px;padding-left: 8px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-right: 5px"><span id="Vlog_sort" class="sign_red"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn newaddbtn pull-right" id="log_sure" style="height: 30px;color: #fff;font-size: 12px;margin-left: 10px">确定</button>
+                <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px">取消</button>
+                <input type="hidden" id="log_id"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-hides" id="modal-delLog">
+        <div class="modal-dialog">
+            <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">提示</span>
+                </div>
+                <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                    <p>您确定要删除所选链接吗？</p>
+                </div><br>
+                <div class="modal-footer">
+                    <button type="button" class="btn newaddbtn pull-right" id="delLog"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
+                    <input type="hidden" id="del_log" />
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+<script src="../../js/view_js/extend_config.js"></script>
+</body>
+<script>
+</script>
+</html>

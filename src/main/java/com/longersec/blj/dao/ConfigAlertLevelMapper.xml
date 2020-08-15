@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigAlertLevelDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigAlertLevel">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="cpu_max" jdbcType="INTEGER" property="cpu_max"/>
+		<result column="disk_max" jdbcType="INTEGER" property="disk_max"/>
+		<result column="memory_max" jdbcType="INTEGER" property="memory_max"/>
+		<result column="swap_max" jdbcType="INTEGER" property="swap_max"/>
+		<result column="cpu_max_msg" jdbcType="VARCHAR" property="cpu_max_msg"/>
+		<result column="disk_max_msg" jdbcType="VARCHAR" property="disk_max_msg"/>
+		<result column="memory_max_msg" jdbcType="VARCHAR" property="memory_max_msg"/>
+		<result column="swap_max_msg" jdbcType="VARCHAR" property="swap_max_msg"/>
+		<result column="cpu_max_level" jdbcType="INTEGER" property="cpu_max_level"/>
+		<result column="disk_max_level" jdbcType="INTEGER" property="disk_max_level"/>
+		<result column="memory_max_level" jdbcType="INTEGER" property="memory_max_level"/>
+		<result column="swap_max_level" jdbcType="INTEGER" property="swap_max_level"/>
+		<result column="web_max" jdbcType="INTEGER" property="web_max"/>
+		<result column="ssh_max" jdbcType="INTEGER" property="ssh_max"/>
+		<result column="rdp_max" jdbcType="INTEGER" property="rdp_max"/>
+		<result column="app_max" jdbcType="INTEGER" property="app_max"/>
+		<result column="telnet_max" jdbcType="INTEGER" property="telnet_max"/>
+		<result column="vnc_max" jdbcType="INTEGER" property="vnc_max"/>
+		<result column="web_max_msg" jdbcType="VARCHAR" property="web_max_msg"/>
+		<result column="ssh_max_msg" jdbcType="VARCHAR" property="ssh_max_msg"/>
+		<result column="rdp_max_msg" jdbcType="VARCHAR" property="rdp_max_msg"/>
+		<result column="app_max_msg" jdbcType="VARCHAR" property="app_max_msg"/>
+		<result column="telnet_max_msg" jdbcType="VARCHAR" property="telnet_max_msg"/>
+		<result column="vnc_max_msg" jdbcType="VARCHAR" property="vnc_max_msg"/>
+		<result column="web_max_level" jdbcType="INTEGER" property="web_max_level"/>
+		<result column="ssh_max_level" jdbcType="INTEGER" property="ssh_max_level"/>
+		<result column="rdp_max_level" jdbcType="INTEGER" property="rdp_max_level"/>
+		<result column="app_max_level" jdbcType="INTEGER" property="app_max_level"/>
+		<result column="telnet_max_level" jdbcType="INTEGER" property="telnet_max_level"/>
+		<result column="vnc_max_level" jdbcType="INTEGER" property="vnc_max_level"/>
+	</resultMap>
+
+	<resultMap id="configAlertLevelRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addConfigAlertLevel" parameterType="com.longersec.blj.domain.ConfigAlertLevel">
+		INSERT INTO lsblj_config_alert_level
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="cpu_max != null">`cpu_max`=#{cpu_max},</if>
+		<if test="disk_max != null">`disk_max`=#{disk_max},</if>
+		<if test="memory_max != null">`memory_max`=#{memory_max},</if>
+		<if test="swap_max != null">`swap_max`=#{swap_max},</if>
+		<if test="cpu_max_msg != null">`cpu_max_msg`=#{cpu_max_msg},</if>
+		<if test="disk_max_msg != null">`disk_max_msg`=#{disk_max_msg},</if>
+		<if test="memory_max_msg != null">`memory_max_msg`=#{memory_max_msg},</if>
+		<if test="swap_max_msg != null">`swap_max_msg`=#{swap_max_msg},</if>
+		<if test="cpu_max_level != null">`cpu_max_level`=#{cpu_max_level},</if>
+		<if test="disk_max_level != null">`disk_max_level`=#{disk_max_level},</if>
+		<if test="memory_max_level != null">`memory_max_level`=#{memory_max_level},</if>
+		<if test="swap_max_level != null">`swap_max_level`=#{swap_max_level},</if>
+		<if test="web_max != null">`web_max`=#{web_max},</if>
+		<if test="ssh_max != null">`ssh_max`=#{ssh_max},</if>
+		<if test="rdp_max != null">`rdp_max`=#{rdp_max},</if>
+		<if test="telnet_max != null">`telnet_max`=#{telnet_max},</if>
+		<if test="vnc_max != null">`vnc_max`=#{vnc_max},</if>
+		<if test="web_max_msg != null">`web_max_msg`=#{web_max_msg},</if>
+		<if test="ssh_max_msg != null">`ssh_max_msg`=#{ssh_max_msg},</if>
+		<if test="rdp_max_msg != null">`rdp_max_msg`=#{rdp_max_msg},</if>
+		<if test="app_max_msg != null">`app_max_msg`=#{app_max_msg},</if>
+		<if test="telnet_max_msg != null">`telnet_max_msg`=#{telnet_max_msg},</if>
+		<if test="vnc_max_msg != null">`vnc_max_msg`=#{vnc_max_msg},</if>
+		<if test="web_max_level != null">`web_max_level`=#{web_max_level},</if>
+		<if test="ssh_max_level != null">`ssh_max_level`=#{ssh_max_level},</if>
+		<if test="rdp_max_level != null">`rdp_max_level`=#{rdp_max_level},</if>
+		<if test="app_max_level != null">`app_max_level`=#{app_max_level},</if>
+		<if test="telnet_max_level != null">`telnet_max_level`=#{telnet_max_level},</if>
+		<if test="vnc_max_level != null">`vnc_max_level`=#{vnc_max_level},</if>
+		</set>
+	</insert>
+
+	<update id="editConfigAlertLevel" parameterType="com.longersec.blj.domain.ConfigAlertLevel">
+		UPDATE lsblj_config_alert_level
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="cpu_max != null">`cpu_max`=#{cpu_max},</if>
+		<if test="disk_max != null">`disk_max`=#{disk_max},</if>
+		<if test="memory_max != null">`memory_max`=#{memory_max},</if>
+		<if test="swap_max != null">`swap_max`=#{swap_max},</if>
+		<if test="cpu_max_msg != null">`cpu_max_msg`=#{cpu_max_msg},</if>
+		<if test="disk_max_msg != null">`disk_max_msg`=#{disk_max_msg},</if>
+		<if test="memory_max_msg != null">`memory_max_msg`=#{memory_max_msg},</if>
+		<if test="swap_max_msg != null">`swap_max_msg`=#{swap_max_msg},</if>
+		<if test="cpu_max_level != null">`cpu_max_level`=#{cpu_max_level},</if>
+		<if test="disk_max_level != null">`disk_max_level`=#{disk_max_level},</if>
+		<if test="memory_max_level != null">`memory_max_level`=#{memory_max_level},</if>
+		<if test="swap_max_level != null">`swap_max_level`=#{swap_max_level},</if>
+		<if test="web_max != null">`web_max`=#{web_max},</if>
+		<if test="ssh_max != null">`ssh_max`=#{ssh_max},</if>
+		<if test="rdp_max != null">`rdp_max`=#{rdp_max},</if>
+		<if test="app_max != null">`app_max`=#{rdp_max},</if>
+		<if test="telnet_max != null">`telnet_max`=#{telnet_max},</if>
+		<if test="vnc_max != null">`vnc_max`=#{vnc_max},</if>
+		<if test="web_max_msg != null">`web_max_msg`=#{web_max_msg},</if>
+		<if test="ssh_max_msg != null">`ssh_max_msg`=#{ssh_max_msg},</if>
+		<if test="rdp_max_msg != null">`rdp_max_msg`=#{rdp_max_msg},</if>
+		<if test="app_max_msg != null">`app_max_msg`=#{app_max_msg},</if>
+		<if test="telnet_max_msg != null">`telnet_max_msg`=#{telnet_max_msg},</if>
+		<if test="vnc_max_msg != null">`vnc_max_msg`=#{vnc_max_msg},</if>
+		<if test="web_max_level != null">`web_max_level`=#{web_max_level},</if>
+		<if test="ssh_max_level != null">`ssh_max_level`=#{ssh_max_level},</if>
+		<if test="rdp_max_level != null">`rdp_max_level`=#{rdp_max_level},</if>
+		<if test="app_max_level != null">`app_max_level`=#{app_max_level},</if>
+		<if test="telnet_max_level != null">`telnet_max_level`=#{telnet_max_level},</if>
+		<if test="vnc_max_level != null">`vnc_max_level`=#{vnc_max_level},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delConfigAlertLevel" parameterType="java.util.List">
+		DELETE FROM lsblj_config_alert_level
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, configAlertLevelRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_config_alert_level 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_config_alert_level where id=#{id}
+	</select>
+</mapper>

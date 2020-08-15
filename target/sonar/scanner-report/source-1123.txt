@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:divth="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>系统配置</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <!-- my css -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        body{
+            padding-right: 0px!important;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini cs_con">
+<div class="wrapper">
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+  <div class="content-wrapper" style="min-height: auto;">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content" >
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-md-9"  >
+          <div class="con_body">
+           <!--  <div style="float: left">
+              <span style="margin-left: 16px" class="glyphicon glyphicon-list"></span>
+            <span  style="margin-left: 4px;font-size: 16px;line-height: 54px">系统配置</span>
+          </div> -->
+          <div class="box-title" style="padding:15px;" > 
+             <span class="new-header">系统配置</span>
+             </div>
+          </div>
+           <div class="nav-tabs-custom">
+             <ul class="nav nav-tabs">
+              <li class="active"><a href="#activity" data-toggle="tab">系统时间</a></li>
+			  <li><a href="#G" data-toggle="tab">认证配置</a></li>
+              <!-- <li><a href="#H" data-toggle="tab">动态口令卡</a></li> -->
+              <li><a href="#A" data-toggle="tab">外发设置</a></li>
+              <li><a href="#B" data-toggle="tab">安全配置</a></li>
+              <li><a href="#C" data-toggle="tab">双机配置</a></li>
+			  <li><a href="#D" data-toggle="tab">端口配置</a></li>
+			 <!-- <li><a href="#E" data-toggle="tab">界面配置</a></li>-->
+			  <li><a href="#L" data-toggle="tab">告警配置</a></li>
+			  <li><a href="#M" data-toggle="tab">存储配置</a></li>			  
+			  <li><a href="#N" data-toggle="tab">扩展配置</a></li>
+             </ul>
+             <div class="tab-content">
+             <div class="active tab-pane" id="activity" >
+               <div class="box">
+                  <div class="box-body">
+				        <div>
+                        <span>系统时间：&nbsp;</span>
+                             <input id="navbar_time"/>
+				              <button type="button" id="setDatetime" class="btn newaddbtn">设置时间</button>
+                         </div>
+				        <div>
+				        	<span>时间服务器：&nbsp;</span>
+                             <select id="timeserver">
+                                <option value="time.windows.com" slected="slected">time.windows.com</option>
+                                <option value="time.nist.gov">time.nist.gov</option>
+                               </select>
+				              <button type="button" id="updateServer" class="btn newaddbtn">同步时间</button>
+		               </div>
+		               </div>
+		               </div>
+		               </div>
+				<!-- 认证配置 -->
+    <div class="tab-pane" id="G" style="height: 100%">
+        <div th:replace="/view/system_manage/confirm_config.html"></div>
+    </div>
+			<!-- 外发设置 -->
+    <div class="tab-pane" id="A" style="height: 100%">
+        <div th:replace="/view/system_manage/outbound_config.html"></div>
+	</div>
+			<!--安全配置-->
+    <div class="tab-pane" id="B" style="height: 100%">
+        <div th:replace="/view/system_manage/security_config.html"></div>
+	</div>
+			  <!-- 端口配置 -->         
+    <div class="tab-pane" id="D" style="height: 100%">
+        <div th:replace="/view/system_manage/port_config.html"></div>
+    </div>
+			
+			<!--双机配置 -->
+    <div class="tab-pane" id="C" style="height: 100%">
+        <div th:replace="/view/system_manage/double_config.html"></div>
+    </div>		
+			<!--界面配置 -->
+    <div class="tab-pane" id="E" style="height: 100%">
+        <div th:include="/view/system_manage/interface_config.html"></div>
+    </div>
+
+			<!-- 告警配置 -->
+    <div class="tab-pane" id="L" style="height: 100%">
+<!--        <div th:include="/view/system_manage/alert_config :: alert_config">-->
+        <div th:include="/view/system_manage/alert_config.html"></div>
+	</div>
+	    <!--   存储配置 -->
+	<div class="tab-pane" id="M" style="height: 100%">
+<!--        <div th:include="/view/system_manage/save_config :: save_config">-->
+        <div th:include="/view/system_manage/save_config.html"></div>
+    </div>
+     <div class="tab-pane" id="N" style="height: 100%">
+         <!--        <div th:include="/view/system_manage/save_config :: save_config">-->
+         <div th:include="/view/system_manage/extend_config.html"></div>
+     </div>
+           <!-- content -->
+             </div>
+           <!--  nav  -->
+             </div>
+      
+      <!--  col  -->   
+       </div>
+        <!--   row   --> 
+       </div>
+</section>
+</div>
+<!-- ./wrapper -->
+  <footer class="main-footer">
+        <div th:replace="view/common/footer :: footer"></div>
+    </footer>
+    <div class="control-sidebar-bg"></div>
+</div>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<!-- page script -->
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/view_js/config_system.js"></script>
+<script src="../../js/common/modal.js"></script>
+<script></script>
+</body>
+</html>

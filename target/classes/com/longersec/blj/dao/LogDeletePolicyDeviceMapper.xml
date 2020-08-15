@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.LogDeletePolicyDeviceDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.LogDeletePolicyDevice">
+		<id column="policy_id" jdbcType="INTEGER" property="policy_id"/>
+		<id column="device_id" jdbcType="VARCHAR" property="device_id"/>
+	</resultMap>
+
+	<resultMap id="logDeletePolicyDeviceRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addLogDeletePolicyDevice" parameterType="com.longersec.blj.domain.LogDeletePolicyDevice">
+		INSERT INTO lsblj_log_delete_policy_device
+		<set>
+		<if test="policy_id != null">`policy_id`=#{policy_id},</if>
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		</set>
+	</insert>
+
+	<update id="editLogDeletePolicyDevice" parameterType="com.longersec.blj.domain.LogDeletePolicyDevice">
+		UPDATE lsblj_log_delete_policy_device
+		<set>
+		<if test="policy_id != null">`policy_id`=#{policy_id},</if>
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delLogDeletePolicyDevice" parameterType="java.util.List">
+		DELETE FROM lsblj_log_delete_policy_device
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, logDeletePolicyDeviceRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_log_delete_policy_device 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

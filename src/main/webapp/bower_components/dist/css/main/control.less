@@ -1,0 +1,302 @@
+/*关联 模态框 关联用户 设备 等样式*/
+.relative-style(){
+  .data-left,
+  .data-left1,
+  .data-left2,
+  .data-left3,
+  .data-left4,
+  .data-left5,
+  .data-left6,
+  .data-left7,
+  .data-left8,
+  .data-left9,
+  .data-right,
+  .data-right1,
+  .data-right2,
+  .data-right3,
+  .data-right4,
+  .data-right5,
+  .data-right6,
+  .data-right7,
+  .data-right8,
+  .data-right9{
+    border-top:1px solid #d1dbe5;
+    width: 188px;
+    height: 268px;
+    border: 1px solid #d1dbe5;
+    border-left: none;
+    border-right:none;
+    overflow:auto;
+  }
+  .data-left div,
+  .data-left1 div,
+  .data-left2 div,
+  .data-left3 div,
+  .data-left4 div,
+  .data-left5 div,
+  .data-left6 div,
+  .data-left7 div,
+  .data-left8 div,
+  .data-left9 div,
+  .data-right div,
+  .data-right1 div,
+  .data-right2 div,
+  .data-right3 div,
+  .data-right4 div,
+  .data-right5 div,
+  .data-right6 div,
+  .data-right7 div,
+  .data-right8 div,
+  .data-right9 div{
+    height: 30px;
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .data-left div::before,
+  .data-left1 div::before,
+  .data-left2 div::before,
+  .data-left3 div::before,
+  .data-left4 div::before,
+  .data-left5 div::before,
+  .data-left6 div::before,
+  .data-left7 div::before,
+  .data-left8 div::before,
+  .data-left9 div::before,
+  .data-right div::before,
+  .data-right1 div::before,
+  .data-right2 div::before,
+  .data-right3 div::before,
+  .data-right4 div::before,
+  .data-right5 div::before,
+  .data-right6 div::before,
+  .data-right7 div::before,
+  .data-right8 div::before,
+  .data-right9 div::before{
+    content: "____________________________";
+    color: #DBDBDB;
+    left: 11px;
+    position: absolute;
+    bottom: -9px;
+  }
+  .data-left div:hover,
+  .data-left1 div:hover,
+  .data-left2 div:hover,
+  .data-left3 div:hover,
+  .data-left4 div:hover,
+  .data-left5 div:hover,
+  .data-left6 div:hover,
+  .data-left7 div:hover,
+  .data-left8 div:hover,
+  .data-left9 div:hover,
+  .data-right div:hover,
+  .data-right1 div:hover,
+  .data-right2 div:hover,
+  .data-right3 div:hover,
+  .data-right4 div:hover,
+  .data-right5 div:hover,
+  .data-right6 div:hover,
+  .data-right7 div:hover,
+  .data-right8 div:hover,
+  .data-right9 div:hover{
+    background-color:#e4e8f1;
+  }
+  .data-left div input,
+  .data-right div input,
+  .data-left1 div input,
+  .data-right1 div input,
+  .data-left2 div input,
+  .data-right2 div input,
+  .data-left3 div input,
+  .data-right3 div input,
+  .data-left4 div input,
+  .data-right4 div input,
+  .data-left5 div input,
+  .data-right5 div input,
+  .data-left6 div input,
+  .data-right6 div input,
+  .data-left7 div input,
+  .data-right7 div input,
+  .data-left8 div input,
+  .data-right8 div input,
+  .data-left9 div input,
+  .data-right9 div input{
+    cursor: pointer;
+    top: -2px;
+    left: 10px;
+  }
+  .data-left div span,
+  .data-right div span,
+  .data-left1 div span,
+  .data-right1 div span,
+  .data-left2 div span,
+  .data-right2 div span,
+  .data-left3 div span,
+  .data-right3 div span,
+  .data-left4 div span,
+  .data-right4 div span,
+  .data-left5 div span,
+  .data-right5 div span,
+  .data-left6 div span,
+  .data-right6 div span,
+  .data-left7 div span,
+  .data-right7 div span,
+  .data-left8 div span,
+  .data-right8 div span,
+  .data-left9 div span,
+  .data-right9 div span{
+    position: absolute;
+    left: 24px;
+    top: 0px;
+    left: 28px;
+  }
+  #left-checked,
+  #right-checked,
+  #left-checked1,
+  #right-checked1,
+  #left-checked2,
+  #right-checked2,
+  #left-checked3,
+  #right-checked3,
+  #left-checked4,
+  #right-checked4,
+  #left-checked5,
+  #right-checked5,
+  #left-checked6,
+  #right-checked6,
+  #left-checked7,
+  #right-checked7,
+  #left-checked8,
+  #right-checked8,
+  #left-checked9,
+  #right-checked9{
+    width:13px;
+    height:13px;
+  }
+  .add-remove{
+    width: 80px;
+    height: 100px;
+    position: absolute;
+    left: 254px;
+    top: 160px;
+  }
+  .add-remove button{
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+  }
+  .add-remove button:nth-of-type(2){
+    margin-top: 2px;
+  }
+  .select-left-all{
+    position: absolute;
+    bottom: 14px;
+    border: 1px solid #d1dbe5;
+    width: 190px;
+    height: 23px;
+    left: 55px;
+    font-size:12px;
+    border-top: none;
+  }
+  .select-left-all input,
+  .select-right-all input{
+    margin-left: 10px !important;
+    width: 16px;
+    height: 16px;
+  }
+  .select-left-all span,
+  .select-right-all span{
+  position: absolute;
+      top: 4px;
+      left: 28px;
+  }
+  .select-right-all{ 
+    position: absolute;
+    width: 190px;
+    height: 23px;
+    bottom: 14px;
+    border: 1px solid #d1dbe5;
+    right: 45px;
+    border-top: none;
+    font-size:12px;
+  }
+}
+ /*登录时间限制 访问控制和命令控制的选区域和时间*/
+.regist-limit(){
+  .login-limit-layout{
+    width: 510px;
+    height: 190px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .login-limit-layout .login-title-layout{
+      margin-top: 6px;
+      margin-left: 31px;
+      font-size: 12px;
+  }
+  .login-limit-layout .login-layout-desc{
+    width: 510px;
+    height: 16px;
+    font-size: 12px;
+    position: absolute;
+    display: flex;
+    left: 117px;
+    top:0;
+  }
+  .login-limit-layout .login-layout-desc span{
+    margin-left: 4px;
+  }
+  .login-limit-layout .login-layout-desc div:nth-of-type(1){
+    width: 12px;
+    height: 12px;
+    margin-left: 10px;
+    margin-top: 2px;
+    background-color: #1494F7;
+  }
+  .login-limit-layout .login-layout-desc div:nth-of-type(2){
+    width: 12px;
+    height: 12px;
+    margin-left: 15px;
+    margin-top: 2px;
+    border: 1px solid #e0e6ed;
+  }
+  .login-limit-layout .login-limit-content{
+    width: 482px;
+    position: absolute;
+    left: 103px;
+    font-size: 12px;
+  }
+  .login-limit-layout .login-limit-content .login-limit-week{
+    margin-top: 10px;
+  }
+  .login-limit-layout .login-limit-content .login-limit-week div{
+    display: flex;
+  }
+  .login-limit-layout .login-limit-content .login-limit-week .login-limit-table-row-cell1{
+    font-size: 10px;
+  }
+  .login-limit-layout .login-limit-content .login-limit-week .login-limit-table-row-cell{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #e0e6ed;
+    display: flex;
+    flex-direction: column;
+  }
+  .blue-background{
+    background-color: #1494F7;
+  }
+  .gray-background{
+    background-color: #fbfbfb;
+  }
+  .login-limit-layout .login-limit-content .login-limit-hours{
+    display: flex;
+    font-size: 13px;
+    margin-left: 20px;
+  }
+  .login-limit-layout .login-limit-content .login-limit-hours .login-limit-bottom-tips{
+    width: 18px;
+    height:18px;
+    line-height: 18px;
+    text-align: center;
+  }
+}

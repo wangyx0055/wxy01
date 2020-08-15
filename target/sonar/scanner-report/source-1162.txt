@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.AccessPolicyApppubDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.AccessPolicyApppub">
+		<id column="policy_id" jdbcType="INTEGER" property="policy_id"/>
+		<id column="apppub_account_id" jdbcType="INTEGER" property="apppub_account_id"/>
+	</resultMap>
+
+	<resultMap id="accessPolicyApppubRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+	
+	<resultMap id="app" type="com.longersec.blj.domain.DTO.App">
+		<id column="apppub_id" jdbcType="INTEGER" property="apppub_id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="apppubserver" jdbcType="VARCHAR" property="apppubserver"/>
+	</resultMap>
+	
+
+	<insert id="addAccessPolicyApppub" parameterType="com.longersec.blj.domain.AccessPolicyApppub">
+		INSERT INTO lsblj_access_policy_apppub_account(policy_id, apppub_account_id) values
+		<foreach collection="app" item="item" separator=",">
+		(#{policy_id},#{item})
+		</foreach>
+	</insert>
+
+	<insert id="editAccessPolicyApppub" parameterType="com.longersec.blj.domain.AccessPolicyApppub">
+		INSERT INTO lsblj_access_policy_apppub_account(policy_id, apppub_account_id) values
+		<foreach collection="app" item="item" separator=",">
+		(#{policy_id},#{item})
+		</foreach>
+	</insert>
+
+	<delete id="delAccessPolicyApppub" parameterType="java.util.List">
+		DELETE FROM lsblj_access_policy_apppub_account
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	
+	<select id="findAll" resultMap="BaseResultMap, accessPolicyApppubRecordCounts" resultType="java.lang.Object">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_access_policy_apppub_account 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectById" resultMap="app">
+		SELECT
+		p.apppub_account_id,u.name,s.name apppubserver FROM lsblj_access_policy_apppub_account p,lsblj_apppub_account u, lsblj_apppub_server s 
+		where policy_id = #{policy_id}
+		and p.apppub_account_id=u.id and u.apppub_server_id=s.id;
+	</select>
+	
+	<delete id="deleteBypolicy_id" parameterType="java.util.List">
+		DELETE FROM lsblj_access_policy_apppub_account
+		where policy_id = #{policy_id}
+	</delete>
+</mapper>

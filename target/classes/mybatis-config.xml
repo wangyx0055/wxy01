@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "classpath:mybatis-3-config.dtd">
+<configuration>
+	<settings>
+        <!--打印日志可以看执行的sql语句-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!-- 设置实体别名 -->
+    <typeAliases>
+        <package name="com.longersec.blj.domain" />
+    </typeAliases>
+</configuration>

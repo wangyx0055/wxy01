@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 启动自动扫描 -->
+    <context:component-scan base-package="com.longersec.blj.web" />
+
+    <!-- 注册MVC注解驱动 -->
+    <mvc:annotation-driven />
+
+    <!-- 静态资源可访问的设置方式 -->
+    <mvc:default-servlet-handler />
+
+    <!--定时器-->
+    <task:executor id="executor" pool-size="5" />
+    <task:scheduler id="scheduler" pool-size="10" />
+    <task:annotation-driven executor="executor" scheduler="scheduler" />
+    <context:component-scan base-package="com.longersec.blj.*" />
+
+    <bean id="templateResolver"
+          class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".html"/>
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="order" value="1"/>
+        <property name="templateMode" value="HTML5"/>
+        <property name="cacheable" value="false"/>
+    </bean>
+
+    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine"/>
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
+    <bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver" />
+        <!-- 支持html页面的shiro标签 -->
+        <property name="additionalDialects">
+            <set>
+                <bean class="at.pollux.thymeleaf.shiro.dialect.ShiroDialect"/>
+            </set>
+        </property>
+    </bean>
+	
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/><!-- 默认编码ISO-8859-1 -->
+        <property name="maxInMemorySize" value="10240"/><!-- 最大内存 10M -->
+        <property name="maxUploadSize" value="-1" /><!-- 最大文件，-1不限制 -->
+    </bean>
+    
+    <!-- 配置hibernate-validator -->
+    <mvc:annotation-driven validator="validator"/>
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+       <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+     </bean>
+</beans>

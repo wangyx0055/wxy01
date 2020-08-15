@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.IpGroupIpDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.IpGroupIp">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="ip_group" jdbcType="INTEGER" property="ip_group"/>
+	</resultMap>
+
+	<resultMap id="ipGroupIpRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addIpGroupIp" parameterType="com.longersec.blj.domain.IpGroupIp">
+		INSERT INTO lsblj_ip_group_ip
+		<set>
+		
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="ip_group != null">`ip_group`=#{ip_group},</if>
+		</set>
+	</insert>
+
+	<update id="editIpGroupIp" parameterType="com.longersec.blj.domain.IpGroupIp">
+		UPDATE lsblj_ip_group_ip
+		<set>
+		
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="ip_group != null">`ip_group`=#{ip_group},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delIpGroupIp" parameterType="java.util.List">
+		DELETE FROM lsblj_ip_group_ip
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, ipGroupIpRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_ip_group_ip 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

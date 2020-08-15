@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.CrontabScriptConfigUserDao">
+    <resultMap id="BaseResultMap" type="com.longersec.blj.domain.CrontabScriptConfigUser">
+        <id column="config_id" jdbcType="INTEGER" property="config_id"/>
+        <id column="user_id" jdbcType="INTEGER" property="user_id"/>
+    </resultMap>
+
+    <resultMap id="crontabScriptConfigGroupRecordCounts" type="java.lang.Long">
+        <result column="recordCounts" jdbcType="BIGINT"/>
+    </resultMap>
+    <resultMap id="users" type="com.longersec.blj.domain.DTO.Users">
+        <id column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="realname" jdbcType="VARCHAR" property="realname"/>
+    </resultMap>
+
+    <insert id="addCrontabScriptConfigUser" parameterType="com.longersec.blj.domain.CrontabScriptConfigUser">
+        INSERT INTO lsblj_crontab_script_config_user(config_id, user_id) values
+        <foreach collection="users" item="item" separator=",">
+            (#{config_id},#{item})
+        </foreach>
+    </insert>
+
+    <select id="selectById" resultMap="users">
+		SELECT
+		p.user_id,u.username ,u.realname
+		FROM lsblj_crontab_script_config_user p, lsblj_user u
+		where config_id = #{config_id}
+		and p.user_id=u.id;
+	</select>
+
+    <delete id="deleteByid" parameterType="integer">
+		DELETE FROM lsblj_crontab_script_config_user
+		where config_id = #{config_id}
+	</delete>
+
+    <insert id="editCrontabScriptconfigUse" parameterType="com.longersec.blj.domain.CrontabScriptConfigUser">
+        INSERT INTO lsblj_crontab_script_config_user(config_id, user_id) values
+        <foreach collection="users" item="item" separator=",">
+            (#{config_id},#{item})
+        </foreach>
+    </insert>
+
+</mapper>

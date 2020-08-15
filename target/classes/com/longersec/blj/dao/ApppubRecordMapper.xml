@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ApppubRecordDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ApppubRecord">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="client_ip" jdbcType="VARCHAR" property="client_ip"/>
+		<result column="server_ip" jdbcType="VARCHAR" property="server_ip"/>
+		<result column="start" jdbcType="INTEGER" property="start"/>
+		<result column="end" jdbcType="INTEGER" property="end"/>
+		<result column="log_file" jdbcType="VARCHAR" property="log_file"/>
+		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
+		<result column="user_id" jdbcType="INTEGER" property="user_id"/>
+		<result column="apppub_account_id" jdbcType="INTEGER" property="apppub_account_id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="program" jdbcType="VARCHAR" property="program"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="realname" jdbcType="VARCHAR" property="realname"/>
+		<result column="apppub_username" jdbcType="VARCHAR" property="apppub_username"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="time_length" jdbcType="INTEGER" property="time_length"/>
+		<result column="access_parameter" jdbcType="INTEGER" property="access_parameter"/>
+		<result column="log_file_size" jdbcType="DOUBLE" property="log_file_size"/>
+		<result column="client_mac" jdbcType="VARCHAR" property="client_mac"/>
+		<result column="auth_type" jdbcType="VARCHAR" property="auth_type"/>
+	</resultMap>
+
+	<resultMap id="apppubRecordRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addApppubRecord" parameterType="com.longersec.blj.domain.ApppubRecord">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">  
+            <!-- SELECT LAST_INSERT_ID()：得到刚insert到数据表中的记录的主键值，只适用于自增主键 -->  
+            SELECT LAST_INSERT_ID()  
+        </selectKey>
+		INSERT INTO lsblj_apppub_record
+		<set>
+		
+		<if test="client_ip != null">`client_ip`=#{client_ip},</if>
+		<if test="server_ip != null">`server_ip`=#{server_ip},</if>
+		<if test="start != null">`start`=#{start},</if>
+		<if test="end != null">`end`=#{end},</if>
+		<if test="log_file != null">`log_file`=#{log_file},</if>
+		<if test="video_file != null">`video_file`=#{video_file},</if>
+		<if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="apppub_account_id != null">`apppub_account_id`=#{apppub_account_id},</if>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="program != null">`program`=#{program},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="realname != null">`realname`=#{realname},</if>
+		<if test="apppub_username != null">`apppub_username`=#{apppub_username},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="time_length != null">`time_length`=#{time_length},</if>
+		<if test="access_parameter != null">`access_parameter`=#{access_parameter},</if>
+		<if test="log_file_size != null">`log_file_size`=#{log_file_size},</if>
+		<if test="client_mac != null">`client_mac`=#{client_mac},</if>
+		</set>
+	</insert>
+
+	<update id="editApppubRecord" parameterType="com.longersec.blj.domain.ApppubRecord">
+		UPDATE lsblj_apppub_record
+		<set>
+		
+		<if test="client_ip != null">`client_ip`=#{client_ip},</if>
+		<if test="server_ip != null">`server_ip`=#{server_ip},</if>
+		<if test="start != null">`start`=#{start},</if>
+		<if test="end != null">`end`=#{end},</if>
+		<if test="log_file != null">`log_file`=#{log_file},</if>
+		<if test="video_file != null">`video_file`=#{video_file},</if>
+		<if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
+		<if test="user_id != null">`user_id`=#{user_id},</if>
+		<if test="apppub_account_id != null">`apppub_account_id`=#{apppub_account_id},</if>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="program != null">`program`=#{program},</if>
+		<if test="username != null">`username`=#{username},</if>
+		<if test="realname != null">`realname`=#{realname},</if>
+		<if test="apppub_username != null">`apppub_username`=#{apppub_username},</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="time_length != null">`time_length`=#{time_length},</if>
+		<if test="access_parameter != null">`access_parameter`=#{access_parameter},</if>
+		<if test="log_file_size != null">`log_file_size`=#{log_file_size},</if>
+		<if test="client_mac != null">`client_mac`=#{client_mac},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delApppubRecord" parameterType="java.util.List">
+		DELETE FROM lsblj_apppub_record
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, apppubRecordRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		FROM_UNIXTIME(start) start,FROM_UNIXTIME(end) end,lsblj_apppub_record.* FROM lsblj_apppub_record
+		where 1 
+		<if test="apppubRecord.name != null"> AND `name` like concat('%',#{apppubRecord.name},'%') </if>
+		<if test="apppubRecord.program != null"> AND `program` like concat('%',#{apppubRecord.program},'%') </if>
+		<if test="apppubRecord.apppub_username != null"> AND `apppub_username` like concat('%',#{apppubRecord.apppub_username},'%') </if>
+		<if test="apppubRecord.client_ip != null"> AND `client_ip` like concat('%',#{apppubRecord.client_ip},'%') </if>
+		<if test="apppubRecord.username != null"> AND `username` like concat('%',#{apppubRecord.username},'%') </if>
+		<if test="apppubRecord.searchAll != null">AND (`name` like concat('%',#{apppubRecord.searchAll},'%') or `name` like concat('%',#{apppubRecord.searchAll},'%') or `program` like concat('%',#{apppubRecord.searchAll},'%') or `apppub_username` like concat('%',#{apppubRecord.searchAll},'%') or `client_ip` like concat('%',#{apppubRecord.searchAll},'%') or `username` like concat('%',#{apppubRecord.searchAll},'%') ) </if>
+		ORDER BY `start` DESC, `name` ASC  
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectAll" resultType="com.longersec.blj.domain.ApppubRecord">
+		select * from lsblj_apppub_record;
+	</select>
+	
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT DATE_FORMAT(FROM_UNIXTIME(start),'%Y-%m-%d %H:%i:%s') start,DATE_FORMAT(FROM_UNIXTIME(end),'%Y-%m-%d %H:%i:%s') end,lsblj_apppub_record.* FROM lsblj_apppub_record where id=#{id}
+	</select>
+	
+	<select id="getEarlyRecord" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_apppub_record where log_file!="" and log_file_size &gt; 0 and  video_file!="" and video_file_size &gt; 0 ORDER BY `start` desc LIMIT 20
+	</select>
+	
+	<select id="getApppubRecordTotal" resultType="java.lang.Integer">
+		SELECT count(*) count FROM lsblj_apppub_record  
+	</select>
+	
+	<select id="get30DayIncrease" resultType="java.lang.Integer">
+		SELECT count(*) count FROM lsblj_apppub_record WHERE start &gt;=UNIX_TIMESTAMP()-30*24*3600 
+	</select>
+	
+</mapper>
