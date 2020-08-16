@@ -250,6 +250,10 @@
         select <include refid="zd"/> from lsblj_user where username = #{username} and id!=#{id} limit 1
     </select>
 
+	<select id="checkADUsername" resultType="com.longersec.blj.domain.User" >
+		select <include refid="zd"/> from lsblj_user where username = #{username} limit 1
+	</select>
+
 	<select id="checkMobile" resultType="com.longersec.blj.domain.User" >
         select <include refid="zd"/> from lsblj_user where mobile = #{mobile} and id!=#{id} limit 1
     </select>

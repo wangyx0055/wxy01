@@ -1,37 +1,24 @@
 package com.longersec.blj.web;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.longersec.blj.domain.DeviceType;
+import com.longersec.blj.domain.CrontabScriptConfig;
 import com.longersec.blj.domain.OperatorLog;
-
+import com.longersec.blj.service.*;
+import com.longersec.blj.utils.Operator_log;
+import com.longersec.blj.utils.SystemCommandUtil;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.longersec.blj.domain.CrontabScriptConfig;
-import com.longersec.blj.service.ConfigService;
-import com.longersec.blj.service.CrontabScriptConfigDeviceService;
-import com.longersec.blj.service.CrontabScriptConfigGroupService;
-import com.longersec.blj.service.CrontabScriptConfigService;
-import com.longersec.blj.service.CrontabScriptConfigUserService;
-import com.longersec.blj.service.OperatorLogService;
-import com.longersec.blj.utils.Operator_log;
-import com.longersec.blj.utils.SystemCommandUtil;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -73,20 +60,11 @@ public class CrontabScriptConfigController {
 		return result;
 	}
 
-	/*
-	 * @RequestMapping("/addCrontabScriptConfig")
-	 * 
-	 * @ResponseBody public JSONObject addCrontabScriptConfig(CrontabScriptConfig
-	 * crontabScriptConfig, HttpServletRequest request, HttpSession session) {
-	 * JSONObject result = new JSONObject(); result.accumulate("success", true);
-	 * if(result.getBoolean("success")) { Boolean r =
-	 * crontabScriptConfigService.addCrontabScriptConfig(crontabScriptConfig);
-	 * result.accumulate("success", r?true:false); } return result; }
-	 */
 	@RequestMapping("/addCrontabScriptConfig")
 	@ResponseBody
-	public JSONObject addCrontabScriptConfig(@RequestParam(value="devicegroup[]", required=false) Integer[] _devicegroup,@RequestParam(value="device[]", required=false) Integer[] _device, HttpServletRequest request, HttpSession session, CrontabScriptConfig crontabScriptConfig) {
-		List<Integer> device 		=  	_device==null?null:Arrays.asList(_device);		
+	public JSONObject addCrontabScriptConfig(@RequestParam(value="devicegroup[]", required=false) Integer[] _devicegroup,
+	                                         @RequestParam(value="devices[]", required=false) Integer[] _device, HttpServletRequest request, HttpSession session, CrontabScriptConfig crontabScriptConfig) {
+		List<Integer> device 		=  	_device==null?null:Arrays.asList(_device);
 		List<Integer> devicegroup 	= 	_devicegroup==null?null:Arrays.asList(_devicegroup);	
 		JSONObject result = new JSONObject();
         //操作日志
@@ -106,7 +84,7 @@ public class CrontabScriptConfigController {
 		if(result.getBoolean("success")) {
 			operatorLog.setResult("成功");			
 			crontabScriptConfigService.addCrontabScriptConfig(crontabScriptConfig);
-			if(device!=null) {
+			if(device != null) {
 			crontabScriptConfigDeviceService.addCrontabScriptConfigDevice(crontabScriptConfig.getId(), device);
 			}
 			if(devicegroup!=null) {
@@ -140,15 +118,12 @@ public class CrontabScriptConfigController {
 	public JSONObject delCrontabScriptConfig(@RequestParam(value = "ids[]") Integer[] ids, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
 		List<Integer> _ids =  Arrays.asList(ids);
-		result.accumulate("success", true);
 		if(_ids.isEmpty()) {
-			result.accumulate("success", false);
+			result.put("success", false);
 			result.accumulate("msg", "id不能为空");
 		}
-		if(result.getBoolean("success")) {
-			Boolean r = crontabScriptConfigService.delCrontabScriptConfig(_ids);
-			result.accumulate("success", r);
-		}
+		boolean r = crontabScriptConfigService.delCrontabScriptConfig(_ids);
+		result.put("success", r);
 		return result;
 	}
 	

@@ -12,7 +12,7 @@ public interface CrontabScriptConfigDao {
 
 	public boolean addCrontabScriptConfig(CrontabScriptConfig crontabScriptConfig);
 
-	public boolean delCrontabScriptConfig(List<Integer> ids);
+	boolean delCrontabScriptConfig(List<Integer> ids);
 
 	public List<Object> findAll(@Param("crontabScriptConfig")CrontabScriptConfig crontabScriptConfig, @Param("page_start")int page_start, @Param("page_length")int page_length);
 

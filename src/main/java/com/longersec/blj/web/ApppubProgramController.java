@@ -8,6 +8,7 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.longersec.blj.domain.*;
 import com.longersec.blj.utils.Validator;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -23,11 +24,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import com.longersec.blj.domain.ApppubProgram;
-import com.longersec.blj.domain.DeviceType;
-import com.longersec.blj.domain.OperatorLog;
-import com.longersec.blj.domain.User;
 import com.longersec.blj.service.ApppubProgramService;
+import com.longersec.blj.service.ApppubServerService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.utils.Operator_log;
 
@@ -46,6 +44,9 @@ public class ApppubProgramController {
 	private ApppubProgramService apppubProgramService;
 	@Autowired
 	private OperatorLogService operatorLogService;
+	@Autowired
+	private ApppubServerService apppubServerservice;
+	
 	@RequestMapping("/listApppubProgram")
 	@ResponseBody
 	public JSONObject listApppubProgram(ApppubProgram apppubProgram,
@@ -200,4 +201,50 @@ public class ApppubProgramController {
 		operatorLogService.addOperatorLog(operatorLog);
 		return result;
 	}
+
+	@RequestMapping("/queryApppubProgramById")
+	@ResponseBody
+	public JSONObject queryApppubProgramById(@RequestParam(value = "apppub_server_id") Integer apppub_server_id,ApppubProgram apppubProgram,
+											 HttpServletRequest request, HttpSession session) {
+		int page_start = Integer.parseInt(request.getParameter("start"));
+		int page_length = Integer.parseInt(request.getParameter("length"));
+		ArrayList<Object> resultApppubPrograms = new ArrayList<Object>();
+		ArrayList<ApppubProgram> apppubPrograms  = new ArrayList<ApppubProgram>();
+		long total = 0;
+		resultApppubPrograms = (ArrayList<Object>)apppubProgramService.queryApppubProgramById(apppub_server_id,apppubProgram,page_start, page_length);
+		if(CollectionUtils.isNotEmpty(resultApppubPrograms)) {
+			apppubPrograms = (ArrayList<ApppubProgram>)resultApppubPrograms.get(0);
+			total = ((ArrayList<Long>) resultApppubPrograms.get(1)).get(0);
+		}
+		JSONArray jsonArray = JSONArray.fromObject(apppubPrograms);
+		JSONObject result = new JSONObject();
+		result.accumulate("success", true);
+		result.accumulate("recordsTotal", total);
+		result.accumulate("recordsFiltered", total);
+		result.accumulate("data", jsonArray);
+		return result;
+	}
+
+	@RequestMapping("/fetchApps")
+	@ResponseBody
+	public JSONObject fetchApps(ApppubServer apppubServer, HttpServletRequest request, HttpSession session) {
+		JSONObject result = new JSONObject();
+		result.accumulate("success", true);
+		apppubServer = apppubServerservice.getById(apppubServer.getId());
+		String res = com.longersec.blj.utils.httpClient.doGetResStr("http://"+apppubServer.getIp()+":20616/getallapps.php");
+		JSONArray apps = JSONArray.fromObject(res.substring(res.indexOf("[{")));
+		for(int i=0; i<apps.size(); i++) {
+			JSONObject app = apps.getJSONObject(i);
+			ApppubProgram apppubProgram = new ApppubProgram();
+			if(apppubProgramService.checkAppName(app.getString("name"))==null) {
+				apppubProgram.setApppub_server_id(apppubServer.getId());
+				apppubProgram.setName(app.getString("name"));
+				apppubProgram.setPath(app.getString("alias"));
+				apppubProgramService.addApppubProgram(apppubProgram);
+			}
+		}
+		System.out.println(apps);
+		return result;
+	}
+
 }

@@ -23,23 +23,23 @@ public interface GroupDao {
 
 	boolean updateGroupCount(@Param("count") int count, @Param("group_id") int group_id);
 	
-	public List<UserGroup> selectNameAndId();
+	List<UserGroup> selectNameAndId();
 	
-	public List<DeviceGroup> selectNameAnddId();
+	List<DeviceGroup> selectNameAnddId();
 
-    public Group checkname(@Param("group")Group group);
+	Group checkname(@Param("group")Group group);
 
-    public List<UserGroup> select_two(@Param("type") int type);
+	List<UserGroup> select_two(@Param("type") int type);
 
-	public ArrayList<Group> listByType(Integer type);
+    ArrayList<Group> listByType(Integer type);
 
-    public String selectById(@Param("groupid") Integer groupid, @Param("type") int type);
+	String selectById(@Param("groupid") Integer groupid, @Param("type") int type);
 
-	public boolean updateCountdown(Integer groupid);
+    boolean updateCountdown(Integer groupid);
 
-    public boolean insertMore(@Param("ArrayList") ArrayList<Group> listGroup);
+	boolean insertMore(Group group);
 
-	public Group selectByname(@Param("name")String name, @Param("type") Integer type);
+	Group selectByname(@Param("name")String name, @Param("type") Integer type);
 
     boolean editGroupList(@Param("ArrayList")ArrayList<Group> updatelistGroup);
 }

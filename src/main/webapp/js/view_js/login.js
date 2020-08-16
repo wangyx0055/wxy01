@@ -25,24 +25,24 @@ $(function () {
 	        success:function(data){
 	            if(data.success){
 	                if(data.hasOwnProperty("sms_auth")){
-						$('#login_method').val(4)
+						$('#login_type').val(4)
                 		$('#mspassword').focus();
                 		$('#smsmsg').text('已绑定手机，后四位:'+data.mobile);
 	                }else if(data.hasOwnProperty("dynamic_auth")){
-						$('#login_method').val(1)
+						$('#login_type').val(1)
 	                	//if(t==null){
 	                		$('#dpassword').focus();
 	                	//}
 	                }else if(data.hasOwnProperty("finger_auth")){
-						$('#login_method').val(3)
+						$('#login_type').val(3)
 						
 					}else if(data.hasOwnProperty("local_finger_auth")){
-						$('#login_method').val(2)
+						$('#login_type').val(2)
 						
 					}else{
-						$('#login_method').val(0)
+						$('#login_type').val(0)
 					}
-					$("#login_method").change();
+					$("#login_type").change();
 	            }else{
             		$('#smsmsg').text(data.msg);
 	            }
@@ -122,29 +122,29 @@ $(function () {
 		qrcodeInfo();
 	});
 	
-	$("#login_method").change(function(){
+	$("#login_type").change(function(){
 		$(".login_sign").text("");
-	/* 	$("#login_method").css("border","1px solid #E5E5E5 !important"); */
+	/* 	$("#login_type").css("border","1px solid #E5E5E5 !important"); */
 		console.log("hhhhhhh");
-		var login_method = $("#login_method").find("option:selected").val();
-		if(login_method==0){
+		var login_type = $("#login_type").find("option:selected").val();
+		if(login_type==0){
 			  $("#password_login").css("display","block");
 			  $("#message_login").css("display","none");
 			  $("#token_login").css("display","none");
 			  $("#finger_login").css("display","none");
-		}else if(login_method==1){
+		}else if(login_type==1){
 			  $("#password_login").css("display","none");
 			  $("#message_login").css("display","none");
 			  $("#token_login").css("display","block");
 			  $("#finger_login").css("display","none");
-		}else if(login_method==2){
+		}else if(login_type==2){
 			  $("#password_login").css("display","none");
 			  $("#message_login").css("display","none");
 			  $("#token_login").css("display","none");
 			  $("#finger_div").css("display","block");
 			  $("#finger_login").css("display","block");
 	 		  _version();
-		}else if(login_method==3){
+		}else if(login_type==3){
 			  $("#password_login").css("display","none");
 			  $("#message_login").css("display","none");
 			  $("#token_login").css("display","none");

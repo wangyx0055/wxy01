@@ -239,12 +239,12 @@ $(function() {
                         "render": function(data,type,row,meta){
                             return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-device" style="cursor:pointer;">'+data+'</a>';
                         }},
-                    {"data" : "deviceips"},
-                    {"data" : "deviceips",
+                    {"data" : "device_ip"},
+                    {"data" : "serverips",
                         "render": function(data,type,row,meta){
                             return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-app" style="cursor:pointer;">'+data+'</a>';
                         }},
-                    {"data" : "deviceips",
+                    {"data" : "server_ip",
                     }],
                 "initComplete" : function(settings, json) {
                     $('#A div').tooltip();
@@ -326,13 +326,13 @@ $(function() {
     	//var name = $('#B .rs-time .newaddbtn').attr('data-interval');
     	if(name=="device"){
         	var columns =  [ {
-                "data" : "device_name"
+                "data" : "interval"
             },  {
                 "data" : "device_name"
             }, {
                 "data" : "device_ip"
             }, {
-                "data" : "total"
+                "data" : "protocol_name"
             },  {
                 "data" : "total", "render": function(data,type,row,meta){
                     return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-session" style="cursor:pointer;">'+data+'</a>';
@@ -340,13 +340,13 @@ $(function() {
             }];
     	}else{
         	var columns =  [  {
-                "data" : "username"
+                "data" : "interval"
             }, {
                 "data" : "username"
             }, {
                 "data" : "realname"
             },  {
-                "data" : "total"
+                "data" : "protocol_name"
             }, {
                 "data" : "total", "render": function(data,type,row,meta){
                     return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-session" style="cursor:pointer;">'+data+'</a>';
@@ -481,7 +481,7 @@ $(function() {
                     }
                 },
                 "columns" : [ {
-                    "data" : "total"
+                    "data" : "start"
                 }, {
                     "data" : "command"
                 }, {
@@ -602,15 +602,15 @@ $(function() {
                 "columns" : [ {
                     "data" : "interval"
                 }, {
-                    "data" : "system", "render": function(data,type,row,meta){
+                    "data" : "3", "render": function(data,type,row,meta){
                         return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
                     }
                 }, {
-                    "data" : "ssh", "render": function(data,type,row,meta){
+                    "data" : "2", "render": function(data,type,row,meta){
                         return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
                     }
                 }, {
-                    "data" : "system", "render": function(data,type,row,meta){
+                    "data" : "1", "render": function(data,type,row,meta){
                         return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
                     }
                 }],

@@ -31,6 +31,17 @@ public class LoginLog {
 	private String details;
 
 	private String searchAll;
+	
+	private String login_type;
+	
+
+	public String getLogin_type() {
+		return login_type;
+	}
+
+	public void setLogin_type(String login_type) {
+		this.login_type = login_type;
+	}
 
 	public Integer getDepartment() {
 		return department;
@@ -149,32 +160,21 @@ public class LoginLog {
 		this.details = details;
 	}
 
-	@Override
-	public String toString() {
-		return "LoginLog{ "+
-			",id=" + id +
-			",source_ip=" + source_ip +
-			",user_id=" + user_id +
-			",username=" + username +
-			",realname=" + realname +
-			",department=" + department +
-			",protocol=" + protocol +
-			",device_ip=" + device_ip +
-			",os=" + os +
-			",browser=" + browser +
-			",login_datetime=" + login_datetime +
-			",status=" + status +
-			",result=" + result +
-			",details=" + details +
-			"";
-	}
-
 	public String getSearchAll() {
 		return searchAll;
 	}
 
 	public void setSearchAll(String searchAll) {
 		this.searchAll = searchAll;
+	}
+
+	@Override
+	public String toString() {
+		return "LoginLog [id=" + id + ", source_ip=" + source_ip + ", user_id=" + user_id + ", username=" + username
+				+ ", realname=" + realname + ", department=" + department + ", protocol=" + protocol + ", device_ip="
+				+ device_ip + ", os=" + os + ", browser=" + browser + ", login_datetime=" + login_datetime + ", status="
+				+ status + ", result=" + result + ", details=" + details + ", searchAll=" + searchAll + ", login_type="
+				+ login_type + "]";
 	}
 	
 }

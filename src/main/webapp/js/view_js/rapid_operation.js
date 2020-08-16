@@ -559,6 +559,7 @@ $('#newadd').click(function () {
     $('#reservation1').val();
     $('#edit_cycle').val("minute");
     document.getElementById("div7").style.display = "none";
+    listAll();
     document.getElementById("div8").style.display = "none";
 });
 //添加编辑的回显
@@ -617,7 +618,6 @@ $('#modal-primary8').on('show.bs.modal', function (event) {
 
 //添加
 $('.add-policy').click(function(){
-    //user
     //device
     let selecteddevice = [];
     $('#add_device1 input').each(function () {

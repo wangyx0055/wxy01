@@ -65,6 +65,7 @@ $(function () {
                 {"data": "username"},
                 {"data": "realname"},
                 {"data": "protocol"},
+                {"data": "login_type"},
                 {
                 "data": "status",
                     "render": function (data, type, row, mata) {

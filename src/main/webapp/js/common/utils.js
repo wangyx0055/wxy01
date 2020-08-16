@@ -18,3 +18,20 @@ function UpperFirstLetter(str)
    return word.substring(0,1).toUpperCase( ) +  word.substring(1);  
  });  
 }
+
+function _protocol(data) {
+
+    if (data == 1) {
+        return "SSH";
+    } else if (data == 2) {
+        return "RDP";
+    } else if (data == 3) {
+        return "TELNET";
+    } else if (data == 4) {
+        return "VNC";
+    } else if (data == 5) {
+        return "FTP";
+    } else if (data == 6) {
+        return "SFTP";
+    }
+}

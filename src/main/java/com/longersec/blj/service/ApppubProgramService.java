@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.longersec.blj.domain.ApppubAccount;
 import com.longersec.blj.domain.ApppubProgram;
+import org.apache.ibatis.annotations.Param;
 
 public interface ApppubProgramService {
 
@@ -14,6 +15,10 @@ public interface ApppubProgramService {
 	public boolean delApppubProgram(List<Integer> ids);
 
 	public List<Object> findAll(ApppubProgram apppubProgram,String sname,Integer type, int page_start, int page_length);
+
+//	public List<Object> queryApppubProgramById(Integer apppub_server_id);
+
+	public List<Object> queryApppubProgramById(Integer apppub_server_id, ApppubProgram apppubProgram, int page_start,int page_length);
 	
 	public int total();
 	

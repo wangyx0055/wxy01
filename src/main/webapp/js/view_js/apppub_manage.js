@@ -189,7 +189,8 @@ $(function () {
                 }},
                 {
                     "data": "id", "render": function (data, type, row, meta) {
-                        return '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-editserver" class="newcss1" style="margin-left: 20px;cursor:pointer;">编辑</a>' +
+                        return '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-default4" class="newcss1" style="margin-left:0px;cursor:pointer;" onclick="apppubProgram('+row.id+')">程序列表</a>'+
+                        '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-editserver" class="newcss1" style="margin-left: 20px;cursor:pointer;">编辑</a>' +
                             '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-delserver" class="newcss2" style="margin-left: 20px;cursor:pointer;">删除</a>';
                     }
                 }
@@ -924,6 +925,72 @@ $('#export1').click(function(){
         }
     })
 });
+
+//应用程序
+function apppubProgram(apppub_server_id) {
+    // $('#_edit_device_id').val(apppub_program_id);
+    $('#modal-default4 .modal-title').text('应用服务器');
+    $('#deviceaccount').DataTable({
+        'paging': true,
+        "iDisplayLength": 10,
+        'lengthChange': true,
+        "lengthMenu": [
+            [10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+        ],
+        'dom': 't<"bottom"lifp<"clear">>',
+        'searching': false,
+        'ordering': true,
+        'info': true,
+        'autoWidth': false,
+        "serverSide": true,
+        "destroy": true,
+        "ajax": {
+            "url": "../../apppubProgram/queryApppubProgramById",
+            "type": "POST",
+            "data": {
+                "apppub_server_id":apppub_server_id
+            },
+        },
+        "columns": [
+            { "data": "id" },
+            { "data": "name" },
+            { "data": "path" },
+            // { "data": "parameter" },
+            // { "data": "desc" },
+        ]
+    });
+}
+
+function synchronizerApp(){
+
+        $("#modal-upload .modal-title").text('状态');
+        $("#modal-upload .modal-body").text('正在同步...');
+        $("#modal-upload").modal();
+        $.ajax({
+            url:"../../apppubProgram/fetchApps?id=77",
+            type:"POST",
+            success:function(data){
+                if(data.success){
+                        $('#modal-editdeviceaccount').modal('hide');
+                        $("#modal-upload").modal('hide');
+                        $("#modal-success .modal-title").text('成功');
+                        $("#modal-success .modal-body").text('同步成功!');
+                        $("#modal-success").modal();
+                        loadAJAX('#deviceaccount');
+                }
+                else{
+                        $('#modal-editdeviceaccount').modal('hide');
+                        $("#modal-upload").modal('hide');
+                        $("#modal-danger .modal-title").text('失败');
+                        $("#modal-danger .modal-body").text('同步失败!');
+                        $("#modal-danger").modal();
+                        loadAJAX('#deviceaccount');
+                    }
+            },
+            error:function(){
+            }
+        })
+}
 
 //获取服务器列表
 $.ajax({

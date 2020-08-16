@@ -39,4 +39,9 @@ public class ConfigLdapAdServiceImpl implements ConfigLdapAdService{
 		return ConfigLdapAdDao.findAll(configLdapAd, page_start, page_length);
 	}
 
+	@Override
+	public ConfigLdapAd getConfigLdapById(int id) {
+		return ConfigLdapAdDao.getConfigLdapById(id);
+	}
+
 }

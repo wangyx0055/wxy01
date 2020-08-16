@@ -49,5 +49,7 @@ public interface UserService {
     boolean editUserList(ArrayList<User> update_users);
 
     ArrayList<Users> finduserGroup(int i);
+
+    public User checkADUsername(String username);
 }
 

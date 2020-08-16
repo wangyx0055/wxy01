@@ -16,7 +16,7 @@ public class DeleteDepartmentQuartz {
 	private DepartmentService departmentService;
 
 	/** 每天9点执行定时清理无用部门信息 **/
-	@Scheduled(cron = "0 46 15 * * ?")
+	@Scheduled(cron = "0 46 0 * * ?")
 	public void deleteDepartment() {
 		//删除无用的部门
 		while (true) {

@@ -65,6 +65,9 @@ public class DepartmentController {
 	public JSONObject findParentName(@RequestParam(value = "parent_id") int parent_id) {
 		result = new JSONObject();
 		Department department = departmentService.findParentName(parent_id);
+/*		//自动更新部门用户和设备数量
+		UpdateDepartmentCount.AutoUpdateDepartmentDeviceCounts(departmentService);
+		UpdateDepartmentCount.AutoUpdateDepartmentUserCounts(departmentService);*/
 		result.put("name",department.getParent_name());
 		return result;
 	}
@@ -409,5 +412,16 @@ public class DepartmentController {
 		}
 		errorMap.put("success", true);
 		return errorMap;
+	}
+
+	@RequestMapping("/update")
+	@ResponseBody
+	public JSONObject checkDepartmentName(){
+		result = new JSONObject();
+		//自动更新部门用户和设备数量
+		UpdateDepartmentCount.AutoUpdateDepartmentDeviceCounts(departmentService);
+		UpdateDepartmentCount.AutoUpdateDepartmentUserCounts(departmentService);
+		result.put("success",true);
+		return result;
 	}
 }

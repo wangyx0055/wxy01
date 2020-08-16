@@ -297,20 +297,24 @@ $("#upload").off().on("click", function () {
         contentType: false,
         success: function (data) {
             if (data.success){
-                console.log("hahahahahh");
                 $("#modal-upload").modal('hide');
                 $("#modal-success .modal-title").text('成功');
-                $("#modal-success .modal-body").text('导入成功!');
+                $("#modal-success .modal-body").text(data.msg);
                 $("#modal-success").modal();
-                loadAJAX('#user_group_list');
-
+                $('#modal-default').modal('hide');
             }else {
                 $("#modal-upload").modal('hide');
                 $("#modal-danger .modal-title").text('失败');
                 $("#modal-danger .modal-body").text('导入失败!');
                 $("#modal-danger").modal();
-                loadAJAX('#user_group_list');
             }
+            loadAJAX('#user_group_list');
+            setTimeout(function () {
+                if (data.errorInfo.length !== 0) {
+                    $("#modal-uploadInfo").modal();
+                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                }
+            },1500)
         },
         error: function () {
 

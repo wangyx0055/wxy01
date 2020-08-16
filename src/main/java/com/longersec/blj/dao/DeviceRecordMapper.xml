@@ -25,7 +25,7 @@
 		<result column="video_file" jdbcType="VARCHAR" property="video_file"/>
 		<result column="video_file_size" jdbcType="INTEGER" property="video_file_size"/>
 		<result column="client_mac" jdbcType="VARCHAR" property="client_mac"/>
-		<result column="auth_type" jdbcType="INTEGER" property="auth_type"/>
+		<result column="auth_type" jdbcType="VARCHAR" property="auth_type"/>
 	</resultMap>
 
 	<resultMap id="deviceRecordRecordCounts" type="java.lang.Long">
@@ -171,7 +171,7 @@
 	</resultMap>
 	
 	<select id="selectTimeByHour" resultMap="reportMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m-%d %H") `interval`, count(distinct device_ip) deviceips,count(distinct username) users 
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m-%d %H") `interval`,device_ip,server_ip,client_ip,count(distinct server_ip) serverips,count(distinct device_ip) deviceips,count(distinct username) users
 			FROM lsblj_device_record 
 			WHERE 1 
 			<if test="start_date != null and start_date != ''">
@@ -189,7 +189,7 @@
 	</select>
 	
 	<select id="selectTimeByDay" resultMap="reportMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m-%d") `interval`, count(distinct device_ip) deviceips,count(distinct username) users 
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m-%d") `interval`,device_ip,server_ip,client_ip, count(distinct client_ip) clientips,count(distinct server_ip) serverips, count(distinct device_ip) deviceips,count(distinct username) users
 			FROM lsblj_device_record 
 			WHERE 1 
 			<if test="start_date != null and start_date != ''">
@@ -199,7 +199,7 @@
 				AND date_format(FROM_UNIXTIME(start),"%Y-%m-%d") &lt;= #{end_date} 
 			</if>
 			 GROUP BY date_format(FROM_UNIXTIME(start),"%Y%m%d")
-			ORDER BY date_format(FROM_UNIXTIME(start),"%Y%m%d") ASC
+			 ORDER BY date_format(FROM_UNIXTIME(start),"%Y%m%d") ASC
 			<if test="page_start != null and page_length != null">
 			LIMIT #{page_start},#{page_length}
 			</if>
@@ -207,7 +207,7 @@
 	</select>
 	
 	<select id="selectTimeByWeek" resultMap="reportMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%v") `interval`, count(distinct device_ip) deviceips,count(distinct username) users 
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%v") `interval`,device_ip,server_ip,client_ip,count(distinct client_ip) clientips,count(distinct server_ip) serverips,count(distinct device_ip) deviceips,count(distinct username) users
 			FROM lsblj_device_record 
 			WHERE 1 
 			<if test="start_date != null and start_date != ''">
@@ -225,7 +225,7 @@
 	</select>
 	
 	<select id="selectTimeByMonth" resultMap="reportMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m") `interval`, count(distinct device_ip) deviceips,count(distinct username) users 
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m") `interval`, device_ip,server_ip,client_ip, count(distinct client_ip) clientips,count(distinct server_ip) serverips,count(distinct device_ip) deviceips,count(distinct username) users
 			FROM lsblj_device_record 
 			WHERE 1 
 			<if test="start_date != null and start_date != ''">
@@ -257,8 +257,9 @@
 	</resultMap> 
 	
 	<select id="selectTimeLongByDevice" resultMap="timeLongDeviceMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS device_ip, device_name, sum(time_length) total 
-			FROM lsblj_device_record 
+		   SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m") `interval`,  device_ip, protocol_id,device_name, sum(time_length) total,lsblj_protocol.name protocol_name
+	 	   FROM lsblj_device_record
+		   LEFT JOIN lsblj_protocol on lsblj_device_record.protocol_id=lsblj_protocol.id
 			WHERE 1 
 			<if test="start_date != null and start_date != ''">
 				AND date_format(FROM_UNIXTIME(start),"%Y-%m-%d") &gt;= #{start_date}
@@ -266,8 +267,10 @@
 			<if test="end_date != null and end_date != '' ">
 				AND date_format(FROM_UNIXTIME(start),"%Y-%m-%d") &lt;= #{end_date} 
 			</if>
-			GROUP BY device_ip 
-			ORDER BY sum(time_length) DESC
+			<!--GROUP BY device_ip
+			ORDER BY sum(time_length) DESC-->
+		    GROUP BY date_format(FROM_UNIXTIME(start),"%Y%m")
+		    ORDER BY date_format(FROM_UNIXTIME(start),"%Y%m") ASC
 			<if test="page_start != null and page_length != null">
 			LIMIT #{page_start},#{page_length}
 			</if>
@@ -275,8 +278,9 @@
 	</select>
 	
 	<select id="selectTimeLongByUser" resultMap="timeLongUserMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS username, realname, sum(time_length) total 
-			FROM lsblj_device_record 
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(start),"%Y-%m") `interval`, username, realname,protocol_id, sum(time_length) total,lsblj_protocol.name protocol_name
+			FROM lsblj_device_record
+		    LEFT JOIN lsblj_protocol on lsblj_device_record.protocol_id=lsblj_protocol.id
 			WHERE 1 
 			<if test="start_date != null and start_date != ''">
 				AND date_format(FROM_UNIXTIME(start),"%Y-%m-%d") &gt;= #{start_date}
@@ -284,8 +288,10 @@
 			<if test="end_date != null and end_date != '' ">
 				AND date_format(FROM_UNIXTIME(start),"%Y-%m-%d") &lt;= #{end_date} 
 			</if>
-			GROUP BY username 
-			ORDER BY sum(time_length) DESC
+		<!--	GROUP BY username
+			ORDER BY sum(time_length) DESC-->
+		    GROUP BY date_format(FROM_UNIXTIME(start),"%Y%m")
+	     	ORDER BY date_format(FROM_UNIXTIME(start),"%Y%m") ASC
 			<if test="page_start != null and page_length != null">
 			LIMIT #{page_start},#{page_length}
 			</if>
@@ -293,12 +299,13 @@
 	</select>
 	
 	<resultMap id="commandMap" type="java.util.Map">
+		<result property="start" column="start" jdbcType="INTEGER"/>
 		<result property="command" column="command" jdbcType="VARCHAR"/>
 		<result property="total" column="total" jdbcType="INTEGER"/>
 	</resultMap> 
 
 	<select id="selectCommandReport" resultMap="timeLongUserMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS command, count(*) total 
+		SELECT SQL_CALC_FOUND_ROWS start, command, count(*) total
 			FROM lsblj_record_command 
 			WHERE command!=''  
 			<if test="start_date != null and start_date != ''">
@@ -307,8 +314,10 @@
 			<if test="end_date != null and end_date != '' ">
 				AND date_format(FROM_UNIXTIME(start),"%Y-%m-%d") &lt;= #{end_date} 
 			</if>
-			GROUP BY command  
+		    GROUP BY command
 			ORDER BY count(*) DESC
+			<!--GROUP BY date_format(FROM_UNIXTIME(start),"%Y%m")
+			ORDER BY date_format(FROM_UNIXTIME(start),"%Y%m") ASC-->
 			<if test="page_start != null and page_length != null">
 			LIMIT #{page_start},#{page_length}
 			</if>
@@ -322,7 +331,7 @@
 	</resultMap> 
 	
 	<select id="selectAlertByHour" resultMap="alertMap, sessionRecordCounts">
-		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(operate_datetime),"%Y%m%d %H") `interval`, sum(if(protocol='ssh',1,0)) ssh, sum(if(protocol!='ssh',1,0)) system
+		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(operate_datetime),"%Y%m%d %H") `interval`, count(IF(dangerlevel='1',1,null)) 1,count(IF(dangerlevel='2',1,null)) 2,count(IF(dangerlevel='3',1,null)) 3
 			FROM lsblj_alert_log 
 			WHERE 1 
 			<if test="start_date != null and start_date != ''">

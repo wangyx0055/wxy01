@@ -135,13 +135,12 @@
                   <table id="appserver" class="table table-hover">
                     <thead>
                        <tr>
-                        <td style="width: 50px"><span>选择</span></td>
-                        <td style="width: 20%"><span>服务器名称</span></td>
-                        <td style="width: 20%"><span>服务器地址</span></td>
+                        <td style="width: 55px"><span>选择</span></td>
+                        <td><span>服务器名称</span></td>
+                        <td><span>服务器地址</span></td>
                         <td><span>部门</span></td>
                         <td><span>描述</span></td>
                         <td><span>操作</span></td>
-
                        </tr>
                     </thead>
                     <tbody>
@@ -155,6 +154,52 @@
               </div>
            </div>
           </div>
+            <!--应用程序列表-->
+            <div class="modal modal-hides" id="modal-default4">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#f7f7f7;width: 598px;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title" >应用服务器</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="box-header" style="margin-top:-10px;">
+                                <input type="hidden" id="device_id">
+                                <ul class="mr-nav-like" style="margin-left: -30px;">
+                                    <li><div><span class="new-header">程序列表</span></div></li>
+                                    <li><button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-editdeviceaccount"  onclick="synchronizerApp()">同步程序</button></li>
+                                </ul>
+                            </div>
+                            <div class="box-body">
+                                <table id="deviceaccount" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+<!--                                        <td style="width: 30px;padding-right: 10px;"><span>选择</span></td>-->
+                                        <td><span>序号</span></td>
+                                        <td><span>程序名称</span></td>
+                                        <td><span>别名</span></td>
+<!--                                        <td><span>参数</span></td>-->
+<!--                                        <td><span>描述</span></td>-->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table><br>
+<!--                                <form style="margin-top:-60px;">-->
+<!--                                    <input type="checkbox" class="禁用 解禁 删除" onclick="sel('chk_[]')">-->
+<!--                                    <button type="button" class="btn btn-default pull-left newaddbtn2"  data-toggle="modal" data-target="#modal-del2" style="margin-left: 30px;">删除</button>-->
+<!--                                </form>-->
+                                <!--                 <div class="modal-footer" style="margin-top: 20px;">-->
+                                <!--                   <button type="button" class="btn pull-left newaddbtn" data-dismiss="modal">完成</button></div>-->
+                                <!--                 </div>-->
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
             <!--新建和编辑应用服务器-->
             <div class="modal modal-hides" id="modal-default1">
                 <div class="modal-dialog">
@@ -265,7 +310,7 @@
                                     <textarea align="left" id="edit_ser_desc"></textarea>
                                     <span style="color: red;font-size: 12px;display: inline-block"
                                           id="judge_desc"></span>
-                                </p>s
+                                </p>
                             </div>
                             <p>长度为0-128个汉字或字符,可以有数字</p>
                             <div class="modal-footer">

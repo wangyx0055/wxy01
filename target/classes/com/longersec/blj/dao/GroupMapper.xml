@@ -95,7 +95,8 @@
 	</select>
 	
 	<select id="checkname" resultType="com.longersec.blj.domain.Group">
-		SELECT * FROM lsblj_group where type =#{group.type} and name=#{group.name};
+		SELECT * FROM lsblj_group where type =#{group.type} and name=#{group.name}
+		<if test="group.id != null"> and id != #{group.id}</if>;
 	</select>
 
 	<select id="select_two" resultMap="UserGroup">
@@ -121,15 +122,13 @@
 	</update>
 
 	<insert id="insertMore">
-		<foreach collection="ArrayList" item="item" index="index">
-			INSERT INTO lsblj_group
-			<set>
-				<if test="item.type != null">`type`=#{item.type},</if>
-				<if test="item.name != null">`name`=#{item.name},</if>
-				<if test="item.department != null">`department`=#{item.department},</if>
-				<if test="item.desc != null">`desc`=#{item.desc};</if>
-			</set>
-		</foreach>
+		INSERT INTO lsblj_group
+		<set>
+			<if test="type != null">`type`=#{type},</if>
+			<if test="name != null">`name`=#{name},</if>
+			<if test="department != null">`department`=#{department},</if>
+			<if test="desc != null">`desc`=#{desc};</if>
+		</set>
 	</insert>
 
 	<select id="selectByname" resultType="com.longersec.blj.domain.Group">

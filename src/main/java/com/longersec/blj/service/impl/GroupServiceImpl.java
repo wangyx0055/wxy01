@@ -67,8 +67,8 @@ public class GroupServiceImpl implements GroupService{
 	}
 
 	@Override
-	public boolean insertMore(ArrayList<Group> listGroup) {
-		return GroupDao.insertMore(listGroup);
+	public boolean insertMore(Group group) {
+		return GroupDao.insertMore(group);
 	}
 
 	@Override

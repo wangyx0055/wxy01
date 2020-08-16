@@ -12,7 +12,7 @@
 	</resultMap>
 	
 	<resultMap id="app" type="com.longersec.blj.domain.DTO.App">
-		<id column="apppub_id" jdbcType="INTEGER" property="apppub_id"/>
+		<id column="apppub_id" jdbcType="INTEGER" property="apppub_account_id"/>
 		<result column="name" jdbcType="VARCHAR" property="name"/>
 		<result column="apppubserver" jdbcType="VARCHAR" property="apppubserver"/>
 	</resultMap>

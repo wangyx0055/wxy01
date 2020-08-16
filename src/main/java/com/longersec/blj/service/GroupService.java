@@ -30,7 +30,7 @@ public interface GroupService {
 
 	public ArrayList<Group> listByType(Integer type);
 
-    boolean insertMore(ArrayList<Group> listGroup);
+    boolean insertMore(Group group);
 
 	Group selectByname( String name,Integer type);
 

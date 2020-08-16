@@ -398,20 +398,25 @@ $.ajax({
 });
 
 function asyncUser(id) {
+    $("#modal-upload .modal-title").text('状态');
+    $("#modal-upload .modal-body").text('正在同步...');
+    $("#modal-upload").modal();
     $.ajax({
         url: "../../configLdapAd/asyncUser",
         type: "POST",
         data: {
-            ids: new Array($('#delid').val())
+            ids: id
         },
         success: function(data) {
             if (data.success) {
                 reload();
+                $("#modal-upload").modal("hide");
                 $("#modal-delldapad").modal("hide");
                 $("#modal-success .modal-title").text('成功');
                 $("#modal-success .modal-body").text('同步成功!');
                 $("#modal-success").modal();
             } else {
+                $("#modal-upload").modal("hide");
                 $("#modal-danger .modal-title").text('失败');
                 $("#modal-danger .modal-body").text("同步失败!");
                 $("#modal-danger").modal();

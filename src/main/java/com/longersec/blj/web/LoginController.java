@@ -89,6 +89,7 @@ public class LoginController {
     	String dpassword = request.getParameter("dpassword");
     	String fingerpassword = request.getParameter("fingerpassword");
     	String dynamiccode = request.getParameter("dynamiccode");
+    	String login_type = request.getParameter("login_type");
     	if(request.getParameter("logintoken")==null) {
     		try {
     			response.setContentType("multipart/form-data");
@@ -111,7 +112,7 @@ public class LoginController {
     	}
     	User user= userService.checkLogin(username);
     	if(user==null) {
-            model.addAttribute("msg","无此账号");
+            model.addAttribute("msg","用户不存在");
             return "/login";
     	}
     	if(user.getDynamic_auth()==1) {
@@ -148,6 +149,27 @@ public class LoginController {
     	loginlog.setRealname(user.getRealname());
     	loginlog.setProtocol("web");
     	loginlog.setLogin_datetime(Long.toString(System.currentTimeMillis()/1000));
+    	if(login_type!=null) {
+    		switch (Integer.valueOf(login_type)) {
+			case 0:
+				loginlog.setLogin_type("静态密码");
+				break;
+			case 1:
+				loginlog.setLogin_type("动态口令");
+				break;
+			case 2:
+				loginlog.setLogin_type("密码+指纹");
+				break;
+			case 3:
+				loginlog.setLogin_type("指纹认证");
+				break;
+			case 4:
+				loginlog.setLogin_type("短信认证");
+				break;
+			default:
+				break;
+			}
+    	}
   		
   		resultConfigLogins = (ArrayList<Object>)configLoginService.findAll(configLogin, 0, 1);
     	if(CollectionUtils.isNotEmpty(resultConfigLogins)) {
@@ -244,7 +266,7 @@ public class LoginController {
 				if(user.getLocal_auth()==1) {
 					result = fingerpassword.equals(db_password);
 					if(!result) {
-						this.setLoginFail(configLogin, user, model, "密码", loginlog, request);
+						this.setLoginFail(configLogin, user, model, "静态密码", loginlog, request);
 			    		model.addAttribute("finger_auth","1");
 			            return "/login";
 					}
@@ -294,6 +316,7 @@ public class LoginController {
 				session.setAttribute("login_smscode", null);
 				session.setAttribute("userid", Integer.toString(user.getId()));
 				session.setAttribute("logintime", (int)(System.currentTimeMillis()/1000));
+				session.setAttribute("login_type", loginlog.getLogin_type());
 				//封装用户的登陆数据
 		        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 				subject.login(token);
@@ -347,7 +370,7 @@ public class LoginController {
     	userService.editUser(user);
 		loginlog.setStatus(0);
 		loginlog.setResult("失败");
-		loginlog.setDetails(msg);
+		loginlog.setDetails(msg+"错误");
 		loginLogService.addLoginLog(loginlog);
     }
     

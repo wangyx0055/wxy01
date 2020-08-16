@@ -81,7 +81,13 @@
 	<select id="getById" resultMap="BaseResultMap">
 		SELECT * FROM lsblj_apppub_program WHERE id = #{id};
 	</select>
-	
+
+	<select id="queryApppubProgramById" resultMap="BaseResultMap,apppubProgramRecordCounts" resultType="java.lang.Object">
+		SELECT 	SQL_CALC_FOUND_ROWS
+		* FROM lsblj_apppub_program WHERE apppub_server_id = #{apppub_server_id};
+		SELECT found_rows() AS recordCounts;
+	</select>
+
     <select id="total" resultType="java.lang.Integer">
             select count(*) count from lsblj_apppub_program;
     </select>

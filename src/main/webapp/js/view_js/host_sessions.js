@@ -57,18 +57,6 @@ function back() {
 var title = "";
 var current_record_id = 0;
 var i=0;
-function _protocol(data) {
-
-    if (data == 1) {
-        return "SSH";
-    } else if (data == 2) {
-        return "RDP";
-    } else if (data == 3) {
-        return "TELNET";
-    } else if (data == 4) {
-        return "VNC";
-    }
-}
 
 $(function() {
 
@@ -78,15 +66,12 @@ $(function() {
             function(event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 i = button.data('row');
-                var auth_type = $('#hostsessions').DataTable()
-                    .row('#' + i).nodes(i).data()[i].auth_type;
-                var auth_type_new = showC_T(auth_type);
                 $('#device_name2')
                     .html(
                         $('#hostsessions').DataTable()
                             .row('#' + i).nodes(i)
                             .data()[i].device_name);
-                $('#protocol')
+                $('#protocol2')
                     .html(
                         _protocol($('#hostsessions')
                             .DataTable().row(
@@ -128,6 +113,11 @@ $(function() {
                         $('#hostsessions').DataTable()
                             .row('#' + i).nodes(i)
                             .data()[i].user);
+				$('#realname2')
+                    .html(
+                        $('#hostsessions').DataTable()
+                            .row('#' + i).nodes(i)
+                            .data()[i].realname);
                 $('#client_ip2')
                     .html(
                         $('#hostsessions').DataTable()
@@ -159,7 +149,8 @@ $(function() {
                         $('#hostsessions').DataTable()
                             .row('#' + i).nodes(i)
                             .data()[i].time_length);
-                $('#auth_type').html(auth_type_new);
+                $('#auth_type').html($('#hostsessions').DataTable()
+                    .row('#' + i).nodes(i).data()[i].auth_type);
 
             });
     var _hostsessions = function(field, value, where) {
@@ -365,25 +356,6 @@ $('#_export').click(function() {
 
 })
 
-function showC_T(auth_type) {
-    if (auth_type == 0)
-        return '密码';
-    else if (auth_type == 1)
-        return '生物指纹';
-    else if (auth_type == 2)
-        return '密码+动态口令';
-    else if (auth_type == 3)
-        return '短信';
-    else if (auth_type == 4)
-        return 'AD域';
-    else if (auth_type == 5)
-        return 'RADIUS';
-    else if (auth_type == 6)
-        return 'LDAP';
-    else
-        return 'email';
-
-};
 
 /*
 $("#clear").click (function () {

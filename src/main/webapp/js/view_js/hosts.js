@@ -1117,7 +1117,7 @@ $("#upload").on("click", function (){
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看日志");
+                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
                 }
             },1500);
         }

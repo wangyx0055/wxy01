@@ -109,7 +109,7 @@ a, a:link {
             text-align: center;
             background: url("./images/login-success.png") no-repeat center center;
         }*/
-#login_method {
+#login_type {
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -125,19 +125,19 @@ a, a:link {
 	outline: none
 }
 
-/* #login_method:focus {
+/* #login_type:focus {
 	border: 1px solid #929a9a52 !important;
 	border-left: none;
 	outline: none
 }
 
-#login_method:active {
+#login_type:active {
 	border: 1px solid #929a9a52 !important;
 	border-left: none;
 	outline: none
 } */
 
-/* #login_method>option[value]{
+/* #login_type>option[value]{
 	background-color: #adabab0d;
 }
  */
@@ -182,7 +182,7 @@ a, a:link {
 				style="width: 22px; height: 23px;"></span>
 			<input type="text" class="form-control" id="username" autocomplete="off" placeholder="请在此输入账号名称"
 				  style="width: 152px; padding-right: 0px;vertical-align: bottom;height: 41px; border: 1px solid #929a9a52; border-radius: 0px; display: inline; background-color: #adabab0d; color: black; margin-left: 60px;" name="username">
-			<select class="toggle" id="login_method">
+			<select class="toggle" id="login_type" name="login_type">
 				<option value="0">静态密码</option>
                 <option value="1">动态口令</option>
                 <option value="4">短信认证</option>

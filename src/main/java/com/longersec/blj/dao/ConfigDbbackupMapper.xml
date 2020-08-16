@@ -17,6 +17,9 @@
 		INSERT INTO lsblj_config_dbbackup 
 		<set>
 		`backup_time`=UNIX_TIMESTAMP(),
+		<if test="backup_time != null">`backup_time`=#{backup_time},</if>
+		<if test="filesize != null">`filesize`=#{filesize},</if>
+		<if test="filepath != null">`filepath`=#{filepath},</if>
 		<if test="desc != null">`desc`=#{desc},</if>
 		</set>
 	</insert>

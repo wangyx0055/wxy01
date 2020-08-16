@@ -1,3 +1,4 @@
+/*$('select').selectpicker();*/
 jQuery(function($){
     // 备份jquery的ajax方法  
     var _ajax=$.ajax;
@@ -7,7 +8,7 @@ jQuery(function($){
         var _opt = $.extend(opt, {
 			success: function (xhr, textStatus) {
 				try {
-					if(xhr.responseText.indexOf('用户登录')>0){
+					if(xhr.indexOf('用户登录')>0){
 						window.location = '/login'
 					}
 				} catch (e) {
@@ -22,4 +23,7 @@ jQuery(function($){
         });
         _ajax(_opt);
     };
+    //防止xss注入
+	$('input').attr("onblur",'this.value=this.value.replace("<script>",'+'"$ltscript&gt")');
+	$('textarea').attr("onblur",'this.value=this.value.replace("<script>",'+'"$ltscript&gt")');
 });

@@ -9,7 +9,7 @@ if($('#uploadLicenseInput').val()=="") {
 $('#loadingModal').modal({backdrop: 'static', keyboard: false});
 formObj.submit();
 }
-function dbrecover(formObj){
+function dbrecover(){
 $('#modal-recoverupload').modal('hide');
 if($('#recoverfileInput').val()=="") {
     $("#modal-danger .modal-title").text('失败');
@@ -18,9 +18,9 @@ if($('#recoverfileInput').val()=="") {
     return ;
 }
 $('#loadingModal').modal({backdrop: 'static', keyboard: false});
-formObj.submit();
+$('#recoverfileForm').submit();
 }
-function doupgrade(formObj){
+function doupgrade(){
     $('#modal-upgrade').modal('hide');
     if($('#upgradeInput').val()=="") {
         $("#modal-danger .modal-title").text('失败');
@@ -29,23 +29,35 @@ function doupgrade(formObj){
         return ;
     }
     $('#loadingModal').modal({backdrop: 'static', keyboard: false});
-    formObj.submit();
+    $('#upgradeForm').submit();
 }
 
 $(function () {
-    $('#upgradeButton').click(function(){
-        $('#upgradeButton')[0].disabled = true;
-        $('#upgradeInput').click();
+	$('#upgradeBtn').click(function(){
+		$('#upgradeInput').val('');
+		$('#upgradeInput').click();
+	})
+	$('#upgradeInput').change(function(){
+		$('#modal-upgrade').modal('show');
+	})
+    $('#doUpgradeButton').click(function(){
+		doupgrade();
     })
+	$('#recoverBtn').click(function(){
+		$('#recoverfileInput').val('');
+		$('#recoverfileInput').click();
+	})
+	$('#recoverfileInput').change(function(){
+		$('#modal-recoverupload').modal('show');
+	})
     $('#recoveruploadButton').click(function(){
-        $('#recoveruploadButton')[0].disabled = true;
-        $('#recoverfileInput').click();
+        dbrecover();
     });
     $('#uploadLicenseBtn').click(function(){
         $('#uploadLicenseBtn')[0].disabled = true;
         $('#uploadLicenseInput').click();
     })
-    $('#recoverButton').click(function(){
+    $('#doRecoverButton').click(function(){
         $('#modal-recover').modal('hide');
         $('#loadingModal').modal({backdrop: 'static', keyboard: false});
         $.ajax({
@@ -74,15 +86,10 @@ $(function () {
         })
     });
     $('#modal-upgrade').on('show.bs.modal', function (event) {
-        $('#upgradeButton')[0].disabled = false;
+        $('#doUpgradeButton')[0].disabled = false;
     });
     $('#modal-recoverupload').on('show.bs.modal', function (event) {
         $('#recoveruploadButton')[0].disabled = false;
-    });
-    $('#modal-recover').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        i = button.data('row');
-        $('#backupid').val($('#backuplist').DataTable().row('#' + i).nodes(i).data()[i].id);
     });
     $('#modal-recover').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -94,6 +101,9 @@ $(function () {
         i = button.data('row');
         $('#backupid').val($('#backuplist').DataTable().row('#' + i).nodes(i).data()[i].id);
     });
+	$('#modal-addbackup').on('show.bs.modal', function (event){
+		$('#backupdesc').val('');
+	});
     function executeCmd(cmd){
         $.ajax({
             url:"../../configDbbackup/"+cmd,
@@ -205,6 +215,8 @@ $(function () {
         })
     })
     $("#addbackupbtn").click(function(){
+		$('#modal-addbackup').modal('hide');
+    	$('#loadingModal').modal({backdrop: 'static', keyboard: false});
         $.ajax({
             url:"../../configDbbackup/addConfigDbbackup",
             type:"POST",
@@ -212,6 +224,7 @@ $(function () {
                 desc:$("#backupdesc").val()
             },
             success:function(data){
+				$('#loadingModal').modal('hide');
                 if(data.success){
                     loadAJAX('#backuplist');
                     $("#modal-addbackup").modal("hide");
@@ -271,7 +284,9 @@ $(function () {
                 { "data": "filepath" ,"render":function(data,type,row,meta){
                         return data!=""?"正常":"备份中";
                     }},
-                { "data": "filesize" },
+                { "data": "filesize","render":function(data){
+							return renderSize(data);
+					} },
                 { "data": "id","render":function(data,type,row,meta){
                         return '<a class="newcss1" data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-recover" style="line-height: 2px;cursor:pointer;">还原</a>'
                             + '&nbsp;&nbsp;<a class="newcss1" href="../../configDbbackup/download?id='+data+'" target="hide" style="line-height: 2px;margin-left: 3px;cursor:pointer;">下载</a>'
@@ -285,9 +300,6 @@ $(function () {
     }
     _backuplist();
     
-    
-
-	
     
    function _cpuUsageChart(data,datetitle,interval){
   	  labels = [];

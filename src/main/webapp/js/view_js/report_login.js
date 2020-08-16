@@ -418,7 +418,7 @@ $(function() {
                     }
                 },
                 "columns" : [ {
-                    "data" : "username"
+                    "data" : "total"
                 },{
                     "data" : "username"
                 }, {

@@ -68,7 +68,7 @@
                   <div class="box" >
                    <div>
                      <span>当前版本版本信息:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V2.0</span>  <br>
-                     <button type="button" data-toggle="modal" data-target="#modal-upgrade" class="btn newaddbtn pull-right"><span>升级</span></button>
+                     <button type="button" id="upgradeBtn" class="btn newaddbtn pull-right"><span>升级</span></button>
                      
                     </div>
                   </div>
@@ -266,7 +266,7 @@
                       <table id="backuplist" class="table  table-hover" >
                         <thead>
                             <tr>
-                       <td width="150px"><span>日期</span></td>
+                       <td width="150px"><span>备份时间</span></td>
                        <td style="width: 200px;"><span>描述</span></td>
                        <td width="50"><span>状态</span></td>
                        <td width="70"><span>文件大小</span></td>
@@ -287,7 +287,7 @@
          <hr class="para_hr5">
            <div class="para_body5">
              <span>上传文件：</span>
-             <button type="button" data-toggle="modal" data-target="#modal-recoverupload" class="btn newaddbtn pull-left"><span>点击上传</span></button>
+             <button type="button" id="recoverBtn" class="btn newaddbtn pull-left"><span>点击上传</span></button>
              <span>请在还原系统配置前先进行配置备份，并确保上传的配置文件完整</span>
          </div><br>
        </div>
@@ -329,10 +329,10 @@
                 </div><br>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-default newaddbtn2"  data-dismiss="modal">取消</button>
-                      <button type="button" id="upgradeButton" class="btn newaddbtn" >确定</button>
+                      <button type="button" id="doUpgradeButton" class="btn newaddbtn" >确定</button>
                   </div>
-                      <form action="../../configDbbackup/upgrade" target="hide"  method="post" enctype="multipart/form-data" style="display:none;">
-	                	<input type="file" name="upgradefile" accept="application/zip" id="upgradeInput" onchange="doupgrade(this.form);" />
+                      <form action="../../configDbbackup/upgrade" id="upgradeForm" target="hide"  method="post" enctype="multipart/form-data" style="display:none;">
+	                	<input type="file" name="upgradefile" accept="application/zip" id="upgradeInput"  />
 	                  </form>
             </div>
             <!-- /.modal-content -->
@@ -353,8 +353,8 @@
                   <div class="modal-footer">
                       <button type="button" class="btn btn-default newaddbtn2"  data-dismiss="modal">取消</button>
                       <button type="button" id="recoveruploadButton" class="btn newaddbtn" >确定</button>
-                      <form action="../../configDbbackup/recoverFile" target="hide"  method="post" enctype="multipart/form-data" style="display:none;">
-	                	<input type="file" name="recoverfile" id="recoverfileInput" onchange="dbrecover(this.form);" />
+                      <form action="../../configDbbackup/recoverFile" id="recoverfileForm" target="hide"  method="post" enctype="multipart/form-data" style="display:none;">
+	                	<input type="file" name="recoverfile" id="recoverfileInput" />
 	                  </form>
                   </div>
             </div>
@@ -375,7 +375,7 @@
                 </div><br>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-default newaddbtn2"  data-dismiss="modal">取消</button>
-                      <button type="button" id="recoverButton" class="btn newaddbtn" >确定</button>
+                      <button type="button" id="doRecoverButton" class="btn newaddbtn" >确定</button>
                   </div>
                   <input type="hidden" id="backupid" />
             </div>
@@ -415,7 +415,7 @@
               </div>
               <div class="modal-body">
                  <div style="margin-top: 20px;margin-left: 100px;display: flex;align-items: center;">
-                  <span style="font-size: 14px;color: #505050;">备份名称：</span>
+                  <span style="font-size: 14px;color: #505050;">描述：</span>
                   <textarea id="backupdesc" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;resize: none;"></textarea>
                  </div>
                  <p style="font-size: 12px;margin-left: 174px;color: #a4abb5;margin-top: 0px">备注最长128个汉字或字符</p>
@@ -606,6 +606,7 @@
 <script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!--js-->
 <script src="../../js/common/modal.js"></script>
+<script src="../../js/common/utils.js"></script>
 <script src="../../js/echarts.min.js"></script>
 <script src="../../js/view_js/config_system_parameter.js"></script>
 <iframe name="hide" src="" style="height:0;width:0"></iframe>

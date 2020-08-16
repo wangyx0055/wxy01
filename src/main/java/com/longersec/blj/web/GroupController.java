@@ -1,9 +1,6 @@
 package com.longersec.blj.web;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -120,7 +117,9 @@ public class GroupController {
 
 	@RequestMapping("/editGroup")
 	@ResponseBody
-	public JSONObject editGroup(@Validated Group group,BindingResult errorResult, @RequestParam("type")Integer type,HttpServletRequest request, HttpSession session) {
+	public JSONObject editGroup(@Validated Group group,BindingResult errorResult,
+	                            @RequestParam(value = "id",required = false)Integer id,
+	                            @RequestParam("type")Integer type,HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
 		OperatorLog operatorLog = null;
 		User user = (User) SecurityUtils.getSubject().getPrincipal();
@@ -333,5 +332,4 @@ public class GroupController {
 		result.accumulate("data_p", jsonArray1);
 		return result;
 	}
-
 }

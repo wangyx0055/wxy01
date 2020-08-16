@@ -24,12 +24,6 @@ public class ApppubProgram {
 	@Pattern(regexp = "(^$)|([A-Za-z]|[\\u4e00-\\u9fa5]|\\-|[0-9]|[;%&'@!#$%*.+,=_?$]){0,64}")
 	private String desc;
 
-
-
-	public ApppubProgram() {
-		super();
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -88,14 +82,14 @@ public class ApppubProgram {
 
 	@Override
 	public String toString() {
-		return "ApppubProgram{ "+
-			",id=" + id +
-			",name=" + name +
-			",apppub_server_id=" + apppub_server_id +
-			",path=" + path +
-			",parameter=" + parameter +
-			",icon=" + icon +
-			",desc=" + desc +
-			"";
+		return "ApppubProgram{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", apppub_server_id=" + apppub_server_id +
+				", path='" + path + '\'' +
+				", parameter='" + parameter + '\'' +
+				", icon='" + icon + '\'' +
+				", desc='" + desc + '\'' +
+				'}';
 	}
 }

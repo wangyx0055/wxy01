@@ -280,9 +280,11 @@ public class OperatorController {
         	deviceRecord.setProtocol_id(deviceAccount.getProtocol_id());
         	deviceRecord.setPort(deviceAccount.getPort());
         	deviceRecord.setStart(Integer.toString((int)(System.currentTimeMillis()/1000)));
+        	deviceRecord.setEnd(Integer.toString((int)(System.currentTimeMillis()/1000)));
         	deviceRecord.setUser_id(user.getId());
         	deviceRecord.setUsername(user.getUsername());
         	deviceRecord.setRealname(user.getRealname());
+        	deviceRecord.setAuth_type(session.getAttribute("login_type").toString());
         	
         	gConnection.setConnection_name(deviceAccount.getId()+"-"+deviceAccount.getDevice_id()+"-"+deviceAccount.getUsername());
         	if(!(deviceAccount.getProtocol_id()==5||deviceAccount.getProtocol_id()==6)) {
@@ -296,8 +298,6 @@ public class OperatorController {
     		gConnectionService.addGConnection(gConnection);
     		int gconnection_id = gConnection.getConnection_id();
     		this.addGConnectionParameters(gconnection_id, deviceRecord, deviceAccount, accessPolicies.get(0), session);
-    		
-    		
     		
     		try {
     			String hashString = new sun.misc.BASE64Encoder().encode(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+deviceRecord.getDevice_username()+"@"+deviceRecord.getDevice_name()+"("+deviceRecord.getDevice_ip()+")"+"\0"+request.getContextPath()).getBytes());
@@ -348,7 +348,7 @@ public class OperatorController {
         	jsonObject.put("upn", user.getUsername()+"@lsblj.cn");
         	jsonObject.put("cn", user.getUsername());
         	jsonObject.put("group", "CN=apppub,DC=lsblj,DC=cn");
-        	String resultString = com.longersec.blj.utils.httpClient.doPost("https://"+apppubServer.getIp()+"/aduser.php", jsonObject, "UTF-8");
+        	String resultString = com.longersec.blj.utils.httpClient.doPost("http://"+apppubServer.getIp()+":20616/aduser.php", jsonObject, "UTF-8");
         	
         	Date dNow = new Date();
             SimpleDateFormat ft = new SimpleDateFormat ("YYYYMMddhhmmssS");
@@ -390,6 +390,7 @@ public class OperatorController {
         	apppubRecord.setApppub_username(apppubAccount.getUsername());
         	apppubRecord.setPort(apppubServer.getPort());
         	apppubRecord.setStart(Integer.toString((int)(System.currentTimeMillis()/1000)));
+        	apppubRecord.setEnd(Integer.toString((int)(System.currentTimeMillis()/1000)));
         	apppubRecord.setUser_id(user.getId());
         	apppubRecord.setUsername(user.getUsername());
         	apppubRecord.setRealname(user.getRealname());

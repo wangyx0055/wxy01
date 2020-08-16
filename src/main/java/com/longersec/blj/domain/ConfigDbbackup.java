@@ -6,13 +6,20 @@ public class ConfigDbbackup {
 
 	private String backup_time;
 
-	private Integer filesize;
+	private Long filesize;
 
 	private String desc;
 	
 	private String filepath;
+	
 
+	public Long getFilesize() {
+		return filesize;
+	}
 
+	public void setFilesize(Long filesize) {
+		this.filesize = filesize;
+	}
 
 	public ConfigDbbackup() {
 		super();
@@ -32,14 +39,6 @@ public class ConfigDbbackup {
 
 	public void setBackup_time(String backup_time) {
 		this.backup_time = backup_time;
-	}
-
-	public Integer getFilesize() {
-		return filesize;
-	}
-
-	public void setFilesize(Integer filesize) {
-		this.filesize = filesize;
 	}
 
 	public String getDesc() {

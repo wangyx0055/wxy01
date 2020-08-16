@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -27,9 +28,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.longersec.blj.domain.Config;
 import com.longersec.blj.domain.ConfigDbbackup;
 import com.longersec.blj.domain.DeviceRecord;
 import com.longersec.blj.service.ConfigDbbackupService;
+import com.longersec.blj.service.ConfigService;
 import com.longersec.blj.utils.SystemCommandUtil;
 
 import net.sf.json.JSONArray;
@@ -45,6 +49,8 @@ public class ConfigDbbackupController {
 
 	@Autowired
 	private ConfigDbbackupService configDbbackupService;
+	@Autowired
+	private ConfigService configService;
 
 	@RequestMapping("/listConfigDbbackup")
 	@ResponseBody
@@ -74,6 +80,14 @@ public class ConfigDbbackupController {
 		JSONObject result = new JSONObject();
 		result.put("success", true);
 		if(result.getBoolean("success")) {
+			Config config = configService.getByName("dbbackuppath");
+			Date dNow = new Date();
+			SimpleDateFormat ft = new SimpleDateFormat ("YYYYMMddhhmmssS");
+            String filepath = config.getValue()+"/lsblj-"+ft.format(dNow)+".sql";
+			SystemCommandUtil.execCmd("/opt/lsblj/mariadb/bin/mysqldump -ulsblj -plsblj lsblj > " + filepath);
+			File dbFile = new File(filepath);
+			configDbbackup.setFilepath(filepath);
+			configDbbackup.setFilesize(dbFile.length());
 			Boolean r = configDbbackupService.addConfigDbbackup(configDbbackup);
 			result.put("success", r?true:false);
 		}
@@ -103,6 +117,10 @@ public class ConfigDbbackupController {
 			result.accumulate("msg", "id不能为空");
 		}
 		if(result.getBoolean("success")) {
+			for(int i=0; i<_ids.size(); i++) {
+				ConfigDbbackup configDbbackup = configDbbackupService.getById(ids[i]);
+				SystemCommandUtil.execCmd("rm -f "+configDbbackup.getFilepath());
+			}
 			Boolean r = configDbbackupService.delConfigDbbackup(_ids);
 			result.accumulate("success", r);
 		}
@@ -238,7 +256,7 @@ public class ConfigDbbackupController {
 		try {
 			out = response.getOutputStream();
 			File destFile = new File(filenameString);
-			if(upgradefile.getOriginalFilename().indexOf('.')<=0||!upgradefile.getOriginalFilename().substring(upgradefile.getOriginalFilename().indexOf('.')).equals(".upgrade")) {
+			if(upgradefile.getOriginalFilename().indexOf('.')<=0||!upgradefile.getOriginalFilename().substring(upgradefile.getOriginalFilename().indexOf('.')).equals(".upgrade.zip")) {
 				out.write("<script>window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"文件不正确!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
 				out.flush();
 				out.close();
@@ -251,7 +269,24 @@ public class ConfigDbbackupController {
 				out.close();
 				return ;
 			}
-			//SystemCommandUtil.execCmd("/opt/lsblj/mariadb/bin/mysql -ulsblj -plsblj lsblj < "+filenameString);
+			SystemCommandUtil.execCmd("unzip -o "+destFile+" -d /tmp");
+			File unzipfile = new File("/tmp/lsblj.war");
+			if(!unzipfile.exists()) {
+				out.write("<script>window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"文件不正确!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
+				out.flush();
+				out.close();
+				return ;
+			}
+			SystemCommandUtil.execCmd("mv /opt/lsblj/tomcat/webapps/ROOT.war /opt/lsblj/tomcat/webapps/ROOT.war.bak");
+			destFile = new File("/opt/lsblj/tomcat/webapps/ROOT.war");
+			FileUtils.copyInputStreamToFile(upgradefile.getInputStream(), destFile);
+			if(!destFile.exists()) {
+				SystemCommandUtil.execCmd("mv /opt/lsblj/tomcat/webapps/ROOT.war.bak /opt/lsblj/tomcat/webapps/ROOT.war");
+				out.write("<script>window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('升级失败');window.parent.$(\"#modal-danger .modal-body\").text(\"复制文件出错!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
+				out.flush();
+				out.close();
+				return ;
+			}
 			out.write("<script>window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-success .modal-title\").text('成功');window.parent.$(\"#modal-success .modal-body\").text(\"操作成功!\");window.parent.$(\"#modal-success\").modal();</script>".getBytes());
 			out.flush();
 			out.close();

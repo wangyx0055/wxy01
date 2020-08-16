@@ -130,4 +130,9 @@ public class UserServiceImpl implements UserService{
 	public ArrayList<Users> finduserGroup(int i) {
 		return UserDao.finduserGroup(i);
 	}
+
+	@Override
+	public User checkADUsername(String username) {
+		return UserDao.checkADUsername(username);
+	}
 }

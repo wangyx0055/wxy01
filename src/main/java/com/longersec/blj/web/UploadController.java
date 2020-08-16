@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,67 +47,59 @@ public class UploadController {
     public JSONObject fileUpload(HttpServletRequest request,
                                  @RequestParam("file_data")MultipartFile fileUp, HttpServletResponse response, @RequestParam("type") Integer type,@RequestParam("udepartment") Integer udepartment) throws Exception {
         JSONObject result = new JSONObject();
+        ArrayList<String> errorInfo = new ArrayList<String>(10);
         result.put("success", true);
-        int t = type;
         if(fileUp==null || fileUp.isEmpty()){
+            result.put("errorInfo", "文件不能为空");
             result.put("success", false);
+            return result;
         }
         try{
             File file = MultipartFileToFile.multipartFileToFile(fileUp);
             ArrayList<Group> listGroup  = new ArrayList<>();
-            ArrayList<Group> UpdatelistGroup  = new ArrayList<>();
-            System.out.println(file);
             List<String> list = importCsv(file);
-            String[] header = list.get(0).split(",");
-            if (header.length != 2){
-                result.put("success", false);
-            }
+            int length =0;
             for(int i=1;i<list.size();i++){
                 String[] temp1 = list.get(i).split(",");
                 String[] temp = insert(temp1," "," ");
                 Group group = new Group();
                 group.setName(temp[0]);
                 group.setType(type);
-                group.setCount(0);
-                //判断重名
-                Group _group = groupService.checkname(group);
                 group.setDesc(temp[1]);
-                if (_group==null){
-                    group.setDepartment(udepartment);
-                    listGroup.add(group);
-                }else{
-                    group.setDepartment(udepartment);
-                    group.setId(_group.getId());
-                    UpdatelistGroup.add(group);
+                group.setDepartment(udepartment);
+                Group checkname = groupService.checkname(group);
+                if (checkname != null) {
+                    result.put("errorInfo", group.getName()+"组名称重复");
+                    result.put("success", false);
+                    return result;
+                }
+                if ("".equals(group.getName())) {
+                    result.put("errorInfo", group.getName()+"组名称不能为空");
+                    result.put("success", false);
+                    return result;
+                }
+                if (group.getDesc().length()>128) {
+                    result.put("errorInfo", group.getName()+"描述超过128字符");
+                    result.put("success", false);
+                    return result;
+                }
+                boolean b = groupService.insertMore(group);
+                if(b) {
+                    length++;
                 }
             }
-            if (result.getBoolean("success")){
-                boolean b = true;
-                boolean u = true;
-                if (listGroup.size()!=0|| UpdatelistGroup.size()!=0){
-                    if (listGroup.size()!=0){
-                        b = groupService.insertMore(listGroup);
-                    }else if (UpdatelistGroup.size()!=0){
-                        u = groupService.editGroupList(UpdatelistGroup);
-                    }
-                    if (b && u){
-                        result.put("success", true);
-                    }else {
-                        result.put("success", false);
-                    }
-                    int length = listGroup.size()+UpdatelistGroup.size();
-                    if (list.size()-length==1){
-                        result.put("msg", "导入成功");
-                    }else {
-                        result.put("msg", "部分成功");
-                    }
-                }else {
-                    result.put("success", false);
-                }
+            //判断是导入成功
+            if (list.size() - length == 1) {
+                result.put("msg", "导入成功");
+            } else if(length > 0) {
+                result.put("msg", "部分成功");
+            } else {
+                result.put("success", false);
             }
         }catch (Exception e){
             result.put("success", false);
         }
+        result.put("errorInfo", errorInfo);
         return result;
     }
 
@@ -126,12 +119,6 @@ public class UploadController {
             File file = MultipartFileToFile.multipartFileToFile(fileUp);
             List<String> list = importCsv(file);
             String[] header = list.get(0).split(",");
-            int headLength = 10;
-            if (header.length != headLength) {
-                result.put("errorInfo", "表头格式不正确");
-                result.put("success", false);
-                return result;
-            }
             int length = 0;
             for (int i = 1; i < list.size(); i++) {
                 String[] temp1 = list.get(i).split(",");
@@ -203,12 +190,6 @@ public class UploadController {
             List<String> list = importCsv(file);
             ArrayList<Department> listDepartment  = new ArrayList<>();
             String[] header = list.get(0).split(",");
-            System.out.println(header);
-            if (header.length != 3) {
-                result.put("errorInfo", "表头格式不正确");
-                result.put("success", false);
-                return result;
-            }
             for(int i=1;i<list.size();i++){
                 String[] temp1 = list.get(i).split(",");
                 String[] temp = insert(temp1," "," ");
@@ -262,12 +243,6 @@ public class UploadController {
             File file = MultipartFileToFile.multipartFileToFile(fileUp);
             List<String> list = importCsv(file);
             String[] header = list.get(0).split(",");
-            int headLength = 11;
-            if (header.length != headLength){
-                result.put("errorInfo", "表头格式不正确");
-                result.put("success", false);
-                return result;
-            }
             int length = 0;
             for (int i = 1; i < list.size(); i++) {
                 String[] temp1 = list.get(i).split(",");

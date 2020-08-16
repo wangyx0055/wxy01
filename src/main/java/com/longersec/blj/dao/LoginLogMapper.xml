@@ -10,6 +10,7 @@
 		<result column="realname" jdbcType="VARCHAR" property="realname"/>
 		<result column="department" jdbcType="VARCHAR" property="department"/>
 		<result column="protocol" jdbcType="VARCHAR" property="protocol"/>
+		<result column="login_type" jdbcType="VARCHAR" property="login_type"/>
 		<result column="device_ip" jdbcType="VARCHAR" property="device_ip"/>
 		<result column="os" jdbcType="VARCHAR" property="os"/>
 		<result column="browser" jdbcType="VARCHAR" property="browser"/>
@@ -68,6 +69,7 @@
 		<if test="realname != null">`realname`=#{realname},</if>
 		<if test="department != null">`department`=#{department},</if>
 		<if test="protocol != null">`protocol`=#{protocol},</if>
+		<if test="login_type != null">`login_type`=#{login_type},</if>
 		<if test="device_ip != null">`device_ip`=#{device_ip},</if>
 		<if test="os != null">`os`=#{os},</if>
 		<if test="browser != null">`browser`=#{browser},</if>
@@ -88,6 +90,7 @@
 		<if test="realname != null">`realname`=#{realname},</if>
 		<if test="department != null">`department`=#{department},</if>
 		<if test="protocol != null">`protocol`=#{protocol},</if>
+		<if test="login_type != null">`login_type`=#{login_type},</if>
 		<if test="device_ip != null">`device_ip`=#{device_ip},</if>
 		<if test="os != null">`os`=#{os},</if>
 		<if test="browser != null">`browser`=#{browser},</if>
@@ -234,37 +237,37 @@
 		,count(IF(protocol='telnet',1,null)) telnet,count(IF(protocol='vnc',1,null)) vnc,count(IF(protocol='apppub',ct,null)) apppub
 			FROM (
 				select 'web' protocol,count(*)ct, username, realname from lsblj_login_log
-				WHERE 1 
+				WHERE 1
 				<if test="start_date != null and start_date != ''">
 					AND login_datetime &gt;= #{start_date}
 				</if>
 				<if test="end_date != null and end_date != '' ">
-					AND login_datetime &lt;= #{end_date} 
+					AND login_datetime &lt;= #{end_date}
 				</if>
 				 GROUP BY username
-				 UNION 
-				select p.name,count(*)ct, username, realname from lsblj_device_record dr left join lsblj_protocol p on dr.protocol_id=p.id 
-				WHERE 1 
+				 UNION
+				select p.name,count(*)ct, username, realname from lsblj_device_record dr left join lsblj_protocol p on dr.protocol_id=p.id
+				WHERE 1
 				<if test="start_date != null and start_date != ''">
 					AND `start` &gt;= #{start_date}
 				</if>
 				<if test="end_date != null and end_date != '' ">
-					AND `start` &lt;= #{end_date} 
+					AND `start` &lt;= #{end_date}
 				</if>
 				 GROUP BY username
-				  UNION 
-				select 'apppub',count(*)ct, username, realname from lsblj_apppub_record 
-				WHERE 1 
+				  UNION
+				select 'apppub',count(*)ct, username, realname from lsblj_apppub_record
+				WHERE 1
 				<if test="start_date != null and start_date != ''">
 					AND `start` &gt;= #{start_date}
 				</if>
 				<if test="end_date != null and end_date != '' ">
-					AND `start` &lt;= #{end_date} 
+					AND `start` &lt;= #{end_date}
 				</if>
 				 GROUP BY username
 			) t
-			
-			 GROUP BY username 
+
+			 GROUP BY username
 			ORDER BY username ASC
 			<if test="page_start != null and page_length != null">
 			LIMIT #{page_start},#{page_length}

@@ -40,6 +40,16 @@ public class ApppubProgramServiceImpl implements ApppubProgramService{
 	}
 
 	@Override
+	public List<Object> queryApppubProgramById(Integer apppub_server_id, ApppubProgram apppubProgram, int page_start, int page_length) {
+		return ApppubProgramDao.queryApppubProgramById(apppub_server_id,apppubProgram,page_start,page_length);
+	}
+
+//	@Override
+//	public List<Object> queryApppubProgramById(Integer apppub_server_id) {
+//		return ApppubProgramDao.queryApppubProgramById(apppub_server_id);
+//	}
+
+	@Override
 	public int total() {
 		// TODO Auto-generated method stub
 		return ApppubProgramDao.total();

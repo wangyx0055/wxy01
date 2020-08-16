@@ -54,4 +54,6 @@ public interface UserDao {
     boolean editUserList(@Param("ArrayList")ArrayList<User> update_users);
 
     ArrayList<Users> finduserGroup(int i);
+
+    public User checkADUsername(@Param("username") String username);
 }

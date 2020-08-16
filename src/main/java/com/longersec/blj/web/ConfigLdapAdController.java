@@ -1,12 +1,13 @@
 package com.longersec.blj.web;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.longersec.blj.domain.User;
+import com.longersec.blj.service.UserService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.longersec.blj.domain.ConfigLdapAd;
 import com.longersec.blj.service.ConfigLdapAdService;
 import com.longersec.blj.utils.Validator;
+import com.longersec.blj.utils.AdOperate;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -34,6 +36,8 @@ public class ConfigLdapAdController {
 
 	@Autowired
 	private ConfigLdapAdService configLdapAdService;
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("/listConfigLdapAd")
 	@ResponseBody
@@ -115,9 +119,30 @@ public class ConfigLdapAdController {
 
 	@RequestMapping("/asyncUser")
 	@ResponseBody
-	public JSONObject asyncUser(Integer id, HttpServletRequest request, HttpSession session) {
+	public JSONObject asyncUser(@RequestParam("ids") Integer ids, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		result.put("success", true);
+
+		ConfigLdapAd configLdapAd = configLdapAdService.getConfigLdapById(ids);
+		AdOperate adOperate = new AdOperate();
+		Boolean r = AdOperate.checkConnect(configLdapAd);
+		if(r) {
+			ArrayList<User> userArrayList = adOperate.searchUser(configLdapAd);
+			for(int i=0;i<userArrayList.size();i=i+2){
+				User isEdit = userService.checkADUsername(userArrayList.get(i).getUsername());
+				if (isEdit!=null){
+					User user1 = new User();
+					user1.setId(isEdit.getId());
+					user1.setLdap_dn(userArrayList.get(i).getLdap_dn());
+					userService.editUser(user1);
+				}else{
+					userService.addUser(userArrayList.get(i));
+				}
+			}
+			result.put("success", true);
+		}else{
+			result.put("msg",false);
+			result.put("success", false);
+		}
 		return result;
 	}
 }

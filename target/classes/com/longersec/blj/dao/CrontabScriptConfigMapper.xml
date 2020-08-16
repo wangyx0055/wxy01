@@ -64,12 +64,12 @@
 	<delete id="delCrontabScriptConfig" parameterType="java.util.List">
 		DELETE FROM lsblj_crontab_script_config
 		where id IN (
-		<foreach collection="list" item="item" separator=",">
-		#{item}
+		<foreach collection="list" item="item">
+		#{item},
 		</foreach>
-		,0);
-		DELETE FROM `lsblj_crontab_script_config_group` WHERE device_account_id NOT IN (SELECT id FROM `lsblj_crontab_script_config`);
-		DELETE FROM lsblj_crontab_script_config_device WHERE device_account_id NOT IN (SELECT id FROM `lsblj_crontab_script_config`);
+		0);
+		DELETE FROM `lsblj_crontab_script_config_group` WHERE group_id NOT IN (SELECT id FROM `lsblj_group`) and `type`=1;
+		DELETE FROM lsblj_crontab_script_config_device WHERE device_account_id NOT IN (SELECT id FROM `lsblj_device_account`);
 	</delete>
 
 	<select id="findAll" resultMap="BaseResultMap, crontabScriptConfigRecordCounts" resultType="java.lang.Object">

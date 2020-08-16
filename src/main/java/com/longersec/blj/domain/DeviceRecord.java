@@ -46,7 +46,7 @@ public class DeviceRecord {
 
 	private String client_mac;
 
-	private Integer auth_type;
+	private String auth_type;
 
 	private String protocol;
 
@@ -244,14 +244,13 @@ public class DeviceRecord {
 		this.client_mac = client_mac;
 	}
 
-	public Integer getAuth_type() {
+	public String getAuth_type() {
 		return auth_type;
 	}
 
-	public void setAuth_type(Integer auth_type) {
+	public void setAuth_type(String auth_type) {
 		this.auth_type = auth_type;
 	}
-
 
 	@Override
 	public String toString() {

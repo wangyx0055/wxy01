@@ -468,7 +468,7 @@ $("#upload").off().on("click", function () {
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看日志");
+                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
                 }
             },1500)
         },
@@ -497,3 +497,22 @@ function openFile() {
         $("#filename").html(fileName);
     })
 }
+
+$('#updateCount').click(function(){
+    $.ajax({
+        url:'../../department/update',
+        dataType:"json",
+        success:function(data){
+            if (data.success){
+                $("#modal-success .modal-title").text('成功');
+                $("#modal-success .modal-body").text('刷新成功');
+                $("#modal-success").modal();
+            }else {
+                $("#modal-danger .modal-title").text('失败');
+                $("#modal-danger .modal-body").text('刷新失败!');
+                $("#modal-danger").modal();
+            }
+            reloadDepartment();
+        }
+    })
+})

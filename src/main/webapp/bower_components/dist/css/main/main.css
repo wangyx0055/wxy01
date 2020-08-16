@@ -1209,6 +1209,35 @@ table tr span {
   margin-top: 15px;
   margin-left: 170px;
 }
+.am #modal-default4 .modal-body .box-header span {
+  float: left;
+  margin-top: 9px;
+  margin-left: 5px;
+}
+.am #modal-default4 .modal-body .box-header ul {
+  list-style: none;
+  margin-top: 5px;
+}
+.am #modal-default4 .modal-body .box-header ul > li:nth-of-type(1) {
+  float: left;
+}
+.am #modal-default4 .modal-body .box-header ul > li:nth-of-type(1) div {
+  margin-top: 3px;
+}
+.am #modal-default4 .modal-body .box-header ul > li:nth-of-type(1) div span {
+  font-size: 17px;
+  margin-left: -10px;
+  margin-top: -2px;
+}
+.am #modal-default4 .modal-body .box-header ul > li:nth-of-type(2) {
+  float: right;
+}
+.am #modal-default4 .modal-body .box-header ul > li:nth-of-type(2) button {
+  margin-left: 10px;
+  height: 30px;
+  color: #fff;
+  font-size: 12.5px;
+}
 /*apppub-暂未使用，保留*/
 .app .content-wrapper section .row .col-md-9 {
   width: 100%;
@@ -10654,7 +10683,7 @@ table tr span {
 .u #modal-primary4 .modal-body .u-qq,
 .u #modal-primary .modal-body .u-qq {
   margin-top: 38px;
-  margin-left: 106px;
+  margin-left: 108px;
 }
 .u #modal-primary4 .modal-body .u-remarks,
 .u #modal-primary .modal-body .u-remarks {
@@ -10701,8 +10730,9 @@ table tr span {
   border-right: none;
   width: 30px;
   height: 30px;
-  left: 52px;
+  left: 53px;
   background-color: #fff;
+  border-radius: 3px;
 }
 .u #modal-primary4 .modal-body .u-relevation1 div:nth-of-type(1) i,
 .u #modal-primary .modal-body .u-relevation1 div:nth-of-type(1) i {
@@ -10713,27 +10743,38 @@ table tr span {
 .u #modal-primary4 .modal-body .u-relevation1 div:nth-of-type(2),
 .u #modal-primary .modal-body .u-relevation1 div:nth-of-type(2) {
   position: absolute;
-  left: 168px;
-  top: -2px;
+  left: 169px;
+  top: -4px;
   font-size: 25px;
 }
 .u #modal-primary4 .modal-body .u-relevation1 input:nth-of-type(1),
 .u #modal-primary .modal-body .u-relevation1 input:nth-of-type(1) {
   position: absolute;
-  left: 84px;
+  left: 83px;
   width: 80px;
   height: 30px;
+  border-radius: 3px;
+  padding-top: 3px;
+  padding-right: 6px;
+  padding-bottom: 3px;
+  padding-left: 6px;
 }
 .u #modal-primary4 .modal-body .u-relevation1 input:nth-of-type(2),
 .u #modal-primary .modal-body .u-relevation1 input:nth-of-type(2) {
   position: absolute;
-  left: 180px;
+  left: 182px;
   width: 80px;
   height: 30px;
+  border-radius: 3px;
+  padding-top: 3px;
+  padding-right: 6px;
+  padding-bottom: 3px;
+  padding-left: 6px;
 }
 .u #modal-primary4 .modal-body .u-relevation1 input:nth-of-type(3),
 .u #modal-primary .modal-body .u-relevation1 input:nth-of-type(3) {
   position: absolute;
   left: 270px;
   top: 13px;
+  border-radius: 3px;
 }

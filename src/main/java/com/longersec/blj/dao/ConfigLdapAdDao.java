@@ -14,4 +14,5 @@ public interface ConfigLdapAdDao {
 
 	public List<Object> findAll(@Param("configLdapAd")ConfigLdapAd configLdapAd, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
+	public ConfigLdapAd getConfigLdapById(@Param("id") int id);
 }

@@ -115,6 +115,25 @@ public class httpClient {
         return result;
     }
     
+    public static String doGetResStr(String url){
+        @SuppressWarnings("deprecation")
+		DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(url);
+        String result = "";
+        try{
+            HttpResponse response = defaultHttpClient.execute(httpGet);
+            HttpEntity entity = response.getEntity();
+            if(entity != null){
+                result = EntityUtils.toString(entity, "UTF-8");
+            }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     public static String doPost(String url, Map<String, String> map, String charset) {
         HttpClient httpClient = null;
         HttpPost httpPost = null;
