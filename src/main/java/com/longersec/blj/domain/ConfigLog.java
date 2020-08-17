@@ -7,15 +7,15 @@ import javax.validation.constraints.*;
 public class ConfigLog {
     private Integer id;
 
-    @NotNull(message = "链接地址不能为空")
-    @NotEmpty(message = "链接地址不能为空")
+    @NotNull(message = "请输入链接地址")
+    @NotEmpty(message = "请输入链接地址")
     private String log_manage;
 
-    @NotNull(message = "链接名称不能为空")
-    @NotEmpty(message = "链接名称不能为空")
+    @NotNull(message = "请输入链接名称")
+    @NotEmpty(message = "请输入链接名称")
     private String name;
 
-    @NotNull(message = "排序不在范围")
+    @NotNull(message = "请输入排序")
     private Integer sort;
 
     public ConfigLog() {

@@ -1,12 +1,14 @@
 package com.longersec.blj.web;
 
+import com.longersec.blj.dao.ProtocolDao;
 import com.longersec.blj.dao.RoleDao;
 import com.longersec.blj.domain.*;
+import com.longersec.blj.license.License;
 import com.longersec.blj.service.*;
+import com.longersec.blj.utils.EncodeUtils;
 import com.longersec.blj.utils.MultipartFileToFile;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import net.sf.json.JSONObject;
-import org.apache.commons.io.FileUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/upload")
@@ -31,6 +33,8 @@ public class UploadController {
     private GroupService groupService;
     @Autowired
     private RoleDao roleDao;
+    @Autowired
+    private ProtocolDao protocolDao;
     @Autowired
     private UserService userService;
     @Autowired
@@ -118,32 +122,42 @@ public class UploadController {
         try {
             File file = MultipartFileToFile.multipartFileToFile(fileUp);
             List<String> list = importCsv(file);
-            String[] header = list.get(0).split(",");
             int length = 0;
             for (int i = 1; i < list.size(); i++) {
                 String[] temp1 = list.get(i).split(",");
-                String[] temp = insert(temp1, " ", " ", " ", " ");
+                String[] temp = insert(temp1, " ");
                 User user = new User();
                 //检查角色
-                Role role = roleDao.checkname(temp[4]);
+                Role role = roleDao.checkname(temp[3]);
                 if(role == null) {
                     errorInfo.add(temp[4]+":角色不存在");
                 }
+                String parent_id = "";
+                String parent = temp[2];
+                if (Pattern.matches("^.+\\{\\{\\d+}}$", parent)) {
+                    String[] split =  temp[2].split("\\{\\{");
+                    parent = split[0];
+                    parent_id = split[1].split("}}")[0];
+                }
                 //检查部门
-                Map<String, Object> checkDepartmentExport = DepartmentController.checkDepartmentExport(departmentService, temp[2], temp[3]);
-                Map<String, Object> checkUserExport = UserController.checkUserExport(userService, temp[0], temp[1], temp[5], temp[6], temp[7], temp[8], temp[9]);
+                Map<String, Object> checkDepartmentExport = DepartmentController.checkDepartmentExport(departmentService, parent, parent_id);
+                Map<String, Object> checkUserExport = UserController.checkUserExport(userService, temp[0], temp[1], temp[4], temp[5], temp[6], temp[7], temp[8]);
                 //检查用户
                 if (checkDepartmentExport.get("success").equals(true) && role != null && checkUserExport.get("success").equals(true)) {
-                    Department department1 = departmentService.selectByname(temp[2]);
-                    user.setDepartment(department1.getId());
+                    if ("".equals(parent_id)) {
+                        Department department1 = departmentService.selectByname(parent);
+                        user.setDepartment(department1.getId());
+                    } else {
+                        user.setDepartment(Integer.parseInt(parent_id));
+                    }
                     user.setRole_id(role.getId());
                     user.setUsername(temp[0]);
                     user.setRealname(temp[1]);
-                    user.setPassword(temp[5]);
-                    user.setEmail(temp[6]);
-                    user.setQq(temp[7]);
-                    user.setWechat(temp[8]);
-                    user.setMobile(temp[9]);
+                    user.setPassword(temp[4]);
+                    user.setEmail(temp[5]);
+                    user.setQq(temp[6]);
+                    user.setWechat(temp[7]);
+                    user.setMobile(temp[8]);
                     User p_user = (User) SecurityUtils.getSubject().getPrincipal();
                     user.setCreator_id(p_user.getId());
                     boolean b = userService.insertMore(user);
@@ -189,14 +203,17 @@ public class UploadController {
             File file = MultipartFileToFile.multipartFileToFile(fileUp);
             List<String> list = importCsv(file);
             ArrayList<Department> listDepartment  = new ArrayList<>();
-            String[] header = list.get(0).split(",");
             for(int i=1;i<list.size();i++){
                 String[] temp1 = list.get(i).split(",");
                 String[] temp = insert(temp1," "," ");
                 Department department = new Department();
                 department.setName(temp[0]);
                 department.setDescription(temp[1]);
-                department.setParent_name(temp[2]);
+                if(temp1.length == 2){
+                    department.setParent_name("");
+                } else {
+                    department.setParent_name(temp[2]);
+                }
                 listDepartment.add(department);
             }
             //表格条数
@@ -205,8 +222,14 @@ public class UploadController {
                 Department department1 = listDepartment.get(i);
                 Map<String,Object> checkExport = DepartmentController.checkExport(departmentService,department1.getName(), department1.getDescription(), department1.getParent_name());
                 if (checkExport.get("success").equals(true)){
-                    Department department2 = departmentService.selectByname(department1.getParent_name());
-                    department1.setParent_id(department2.getId());
+                    if ("".equals(department1.getParent_name())){
+                        department1.setParent_id(1);
+                    }else {
+                        Department department2 = departmentService.selectByname(department1.getParent_name());
+                        department1.setParent_id(department2.getId());
+                    }
+                    User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+                    department1.setCreate_id(p_user.getId());
                     department1.setCreate_time((int) System.currentTimeMillis());
                     departmentService.insertMore(department1);
                 } else {
@@ -242,33 +265,57 @@ public class UploadController {
         try{
             File file = MultipartFileToFile.multipartFileToFile(fileUp);
             List<String> list = importCsv(file);
-            String[] header = list.get(0).split(",");
             int length = 0;
+
+    		License l = new License();
+        	Boolean hasLicense = l.LicenseCheckUuid("");
+        	long licensecount = l.LicenseGetDevices();
+        	
             for (int i = 1; i < list.size(); i++) {
+            	long total = deviceService.total();
+        		if(!hasLicense&&total>=3) {
+        			result.put("success",false);
+        			result.put("errorInfo","设备数超过限制");
+        		}else if(hasLicense&&total>=licensecount) {
+        			result.put("success",false);
+        			result.put("errorInfo","设备数超过许可限制");
+        		}
                 String[] temp1 = list.get(i).split(",");
                 String[] temp = insert(temp1, " ", " ");
                 Device device = new Device();
-                Map<String, Object> checkDeviceExport = DeviceController.checkDeviceExport(deviceService,deviceTypeService, temp[0], temp[1], temp[2], temp[5], temp[6], temp[7], Integer.parseInt(temp[8]), Integer.parseInt(temp[9]), Integer.parseInt(temp[10]));
-                Map<String, Object> checkDepartmentExport = DepartmentController.checkDepartmentExport(departmentService, temp[3], temp[4]);
+                String parent_id = "";
+                String parent = temp[3];
+                if (Pattern.matches("^.+\\{\\{\\d+}}$", parent)) {
+                    String[] split =  temp[3].split("\\{\\{");
+                    parent = split[0];
+                    parent_id = split[1].split("}}")[0];
+                }
+                Map<String, Object> checkDeviceExport = DeviceController.checkDeviceExport(deviceService,deviceTypeService, protocolDao,temp[0], temp[1], temp[2], temp[4], temp[5], temp[6], temp[7], Integer.parseInt(temp[8]), Integer.parseInt(temp[9]));
+                Map<String, Object> checkDepartmentExport = DepartmentController.checkDepartmentExport(departmentService, parent, parent_id);
                 if (checkDeviceExport.get("success").equals(true) && checkDepartmentExport.get("success").equals(true)) {
-                    Department department1 = departmentService.selectByname(temp[3]);
-                    device.setDepartment(department1.getId());
+                    if ("".equals(parent_id)) {
+                        Department department1 = departmentService.selectByname(parent);
+                        device.setDepartment(department1.getId());
+                    } else {
+                        device.setDepartment(Integer.parseInt(parent_id));
+                    }
+                    Protocol byName = protocolDao.getByName(temp[7]);
                     device.setName(temp[0]);
                     device.setIp(temp[1]);
                     device.setOs_type((Integer) checkDeviceExport.get("ostype"));
-                    device.setDescription(temp[5]);
-                    if ("".equals(temp[6]) || "".equals(temp[7])) {
+                    device.setDescription(temp[4]);
+                    if ("".equals(temp[5]) || "".equals(temp[6])) {
                         device.setLogin_method(1);
-                        device.setSuper_account(temp[6]);
-                        device.setSuper_password(temp[7]);
+                        device.setSuper_account(temp[5]);
+                        device.setSuper_password(temp[6]);
                     } else {
                         device.setLogin_method(0);
-                        device.setSuper_account(temp[6]);
-                        device.setSuper_password(temp[7]);
+                        device.setSuper_account(temp[5]);
+                        device.setSuper_password(temp[6]);
                     }
-                    device.setProtocol_id(Integer.parseInt(temp[8]));
-                    device.setPort(Integer.parseInt(temp[9]));
-                    device.setSsh_key(Integer.parseInt(temp[10]));
+                    device.setProtocol_id(byName.getId());
+                    device.setPort(Integer.parseInt(temp[8]));
+                    device.setSsh_key(Integer.parseInt(temp[9]));
                     User p_user = (User) SecurityUtils.getSubject().getPrincipal();
                     device.setCreator_id(p_user.getId());
                     boolean b = deviceService.insertMore(device);
@@ -315,10 +362,6 @@ public class UploadController {
             List<String> list = importCsv(file);
             ArrayList<ApppubServer> listApppubservers  = new ArrayList<>();
             ArrayList<ApppubServer> UpdatelistApppubservers = new ArrayList<>();
-            String[] header = list.get(0).split(",");
-            if (header.length<6){                          //表头
-                result.put("success", false);
-            }
             for(int i=1;i<list.size();i++){
                 String[] temp1 = list.get(i).split(",");
                 String[] temp = insert(temp1," "," ");
@@ -375,12 +418,10 @@ public class UploadController {
         // 新建临时字符串数组
         String[] tmp = new String[newSize];
         // 先遍历将原来的字符串数组数据添加到临时字符串数组
-        for (int i = 0; i < size; i++) {
-            tmp[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, tmp, 0, size);
         // 在末尾添加上需要追加的数据
-        for (int i = size; i < newSize; i++) {
-            tmp[i] = str[i - size];
+        if (newSize - size >= 0) {
+            System.arraycopy(str, 0, tmp, size, newSize - size);
         }
         return tmp; // 返回拼接完成的字符串数组
     }
@@ -394,11 +435,12 @@ public class UploadController {
         ins.read(b);
         ins.close();
         try {
-            if (b[0] == -17 && b[1] == -69 && b[2] == -65){
-                isr = new InputStreamReader(new FileInputStream(file),"UTF-8");
-            }else{
-                isr = new InputStreamReader(new FileInputStream(file),"GBK");
-            }
+	        String encodeType = EncodeUtils.getEncode(file.getAbsolutePath(), true);
+	        if ("UTF-8".equals(encodeType)){
+		        isr = new InputStreamReader(new FileInputStream(file),"UTF-8");
+	        }else{
+		        isr = new InputStreamReader(new FileInputStream(file),"GBK");
+	        }
             br = new BufferedReader(isr);
             String line = "";
             while((line = br.readLine()) != null){

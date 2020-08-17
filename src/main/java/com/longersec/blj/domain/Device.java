@@ -1,5 +1,7 @@
 package com.longersec.blj.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
 
 public class Device {
@@ -8,7 +10,7 @@ public class Device {
 
 	private String searchAll;
 	
-	@NotNull(message = "协议类型不能为空")
+	@NotNull(message = "系统类型不能为空")
 	private Integer os_type;
 
 	private String os_ver;

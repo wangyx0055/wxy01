@@ -100,12 +100,16 @@ public class UserController {
 			total = ((ArrayList<Long>) resultUsers.get(1)).get(0);
 		}
 		for (User user1:users) {
-			List<String> allParentName = departmentService.findAllParentName(user1.getDepartment());
-			StringBuilder stringBuilder = new StringBuilder();
-			for (Object strings : allParentName) {
-				stringBuilder.append(strings).append("/");
+			if (user1.getDepartment() != 0) {
+				List<String> allParentName = departmentService.findAllParentName(user1.getDepartment());
+				StringBuilder stringBuilder = new StringBuilder();
+				for (Object strings : allParentName) {
+					stringBuilder.append(strings).append("/");
+				}
+				user1.setTopName(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
 			}
-			user1.setTopName(stringBuilder.substring(0,stringBuilder.length()-1));
+			
+
 		}
 		JSONArray jsonArray = JSONArray.fromObject(users);
 		JSONObject result = new JSONObject();

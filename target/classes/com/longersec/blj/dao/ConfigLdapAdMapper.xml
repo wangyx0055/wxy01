@@ -102,4 +102,9 @@
 		</if>
 		;SELECT found_rows() AS recordCounts;
 	</select>
+
+	<select id="getConfigLdapById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_config_ldap_ad where id =#{id};
+	</select>
+
 </mapper>

@@ -377,15 +377,15 @@
 								<span class="modal-title">报表导出</span>
 							</div>
 							<div class="modal-body">
-								<div class="rl-time" style="margin-left: 72px;">
+								<div class="rl-time" style="margin-left: 100px;">
 									<span>时间：</span>
 									<div class="input-group"
-										style="position: absolute; margin-top: -20px;">
+										style="position: absolute; margin-top: -20px;margin-left: 45px;">
 										<div class="input-group-addon">
 											<i class="fa fa-calendar" style="color: #a1a6a1b5"></i>
 										</div>
 										<input type="text" class="form-control pull-right"
-											id="export-date">
+											id="export-date" style="width: 190px;margin-right: 430px;">
 									</div>
 								</div>
 								<br>
@@ -401,13 +401,13 @@
 								</div>
 								<br>
 								<div class="rl-type" style="margin-left: 72px;">
-									<span>报表类型:</span> 
-									<input type="checkbox" checked="checked" value="time" />运维时间分布
-									<input type="checkbox" checked="checked" value="timeLongDevice" />设备会话时长 
-									<input type="checkbox" checked="checked" value="timeLongUser" />用户会话时长
+									<span>报表类型:</span>
+									<input style="vertical-align: -2px;margin-right: 5px;" type="checkbox" checked="checked" value="time" />运维时间分布
+									<input style="margin-left: 15px;" type="checkbox" checked="checked" value="timeLongDevice" />设备会话时长
+									<input style="margin-left: 20px;" type="checkbox" checked="checked" value="timeLongUser" />用户会话时长
 									<br />
 									<input type="checkbox" checked="checked" value="command" />命令统计 
-									<input type="checkbox" checked="checked" value="alert" />告警报表 
+									<input style="margin-left: 42px;" type="checkbox" checked="checked" value="alert" />告警报表
 								</div>
 								<div class="rl-file"
 									style="margin-left: 72px; margin-top: 20px;">
@@ -586,8 +586,11 @@
                                   <thead>
                                   <tr>
                                       <td><span>时间</span></td>
-                                      <td><span>命令</span></td>
-                                      <td><span>次数</span></td>
+                                      <td><span>来源地址</span></td>
+                                      <td><span>用户名</span></td>
+                                      <td><span>姓名</span></td>
+                                      <td><span>设备名称</span></td>
+                                      <td><span>协议</span></td>
                                   </tr>
                                   </thead>
                                   <tbody>

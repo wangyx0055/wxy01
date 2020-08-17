@@ -84,4 +84,6 @@ public interface DepartmentDao {
 	List<Department> findSubNodes(@Param("id") int id);
 
 	Department getById(@Param("id")Integer id);
+
+	List<Integer> selectIdByname(@Param("name")String name);
 }

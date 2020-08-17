@@ -90,6 +90,18 @@ public class ConfigNetworkController {
 		            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 		            str="";
 		            netConfigHashMap.put("id", i.toString());
+		            netConfigHashMap.put("name", "");
+		            netConfigHashMap.put("device", "");
+		            netConfigHashMap.put("ipv4addr", "");
+		            netConfigHashMap.put("ipv4netmask", "");
+		            netConfigHashMap.put("ipv4gateway", "");
+		            netConfigHashMap.put("onboot", "");
+		            netConfigHashMap.put("ipv6init", "");
+		            netConfigHashMap.put("ipv6addr", "");
+		            netConfigHashMap.put("ipv6netmask", "");
+		            netConfigHashMap.put("ipv6gateway", "");
+		            netConfigHashMap.put("ipv6_autoconf", "no");
+		            
 		            netConfigHashMap.put("bootproto", "static");
 		            netConfigHashMap.put("ipv6enable", ipv6enable);
 		            netConfigHashMap.put("ipv6autoconf", ipv6autoconf);
@@ -112,11 +124,19 @@ public class ConfigNetworkController {
 						}else if(str.toLowerCase().indexOf("ipv6init=")>=0) {
 							netConfigHashMap.put("ipv6init", str.substring("ipv6init=".length()).trim());
 						}else if(str.toLowerCase().indexOf("ipv6addr=")>=0) {
-							netConfigHashMap.put("ipv6addr", str.substring("ipv6addr=".length()).trim());
+							String ipv6 = str.substring("ipv6addr=".length()).trim();
+							if(ipv6.indexOf('/')>0) {
+								netConfigHashMap.put("ipv6addr", ipv6.substring(0, ipv6.indexOf('/')).trim());
+								netConfigHashMap.put("ipv6netmask", ipv6.substring(ipv6.indexOf('/')+1).trim());
+							}else {
+								netConfigHashMap.put("ipv6addr", ipv6.trim());
+								netConfigHashMap.put("ipv6netmask", "");
+							}
 						}else if(str.toLowerCase().indexOf("ipv6_defaultgw=")>=0) {
 							netConfigHashMap.put("ipv6gateway", str.substring("ipv6_defaultgw=".length()).trim());
 						}else if(str.toLowerCase().indexOf("ipv6_autoconf=")>=0) {
 	                		ipv6autoconf = str.substring("ipv6_autoconf=".length()).trim();
+	                		netConfigHashMap.put("ipv6autoconf", ipv6autoconf);
 	                	}
 					}
 		            netConfigHashMap.put("speed", "unknown");
@@ -208,26 +228,63 @@ public class ConfigNetworkController {
 	            netConfigHashMap.put("ipv6enable", ipv6enable);
 	            netConfigHashMap.put("ipv6autoconf", ipv6autoconf);
 	            String interfaceString = "";
+	            
+	            Boolean _ipaddr = false; 
+	            Boolean _netmask = false; 
+	            Boolean _gateway = false; 
+	            Boolean _bootproto = false; 
+	            Boolean _ipv6addr = false; 
+	            Boolean _ipv6_defaultgw = false; 
+	            Boolean _ipv6_autoconf = false; 
+	            
 	            while(( str = bufferedReader.readLine()) != null)
 				{
 					if(str.toLowerCase().indexOf("ipaddr=")>=0) {
+						_ipaddr = true;
 						interfaceString += "IPADDR="+configNetwork.getIpv4addr()+"\n";
 					}else if(str.toLowerCase().indexOf("netmask=")>=0) {
+						_netmask = true;
 						interfaceString += "NETMASK="+configNetwork.getIpv4netmask()+"\n";
 					}else if(str.toLowerCase().indexOf("gateway=")>=0) {
+						_gateway = true;
 						interfaceString += "GATEWAY="+configNetwork.getIpv4gateway()+"\n";
 					}else if(str.toLowerCase().indexOf("bootproto=")>=0) {
+						_bootproto = true;
 						interfaceString += "BOOTPROTO="+configNetwork.getBootprotocol()+"\n";
 					}else if(str.toLowerCase().indexOf("ipv6addr=")>=0) {
+						_ipv6addr = true;
 						interfaceString += "IPV6ADDR="+configNetwork.getIpv6addr()+"\n";
 					}else if(str.toLowerCase().indexOf("ipv6_defaultgw=")>=0) {
-						interfaceString += "IPV6_DEFROUTE="+configNetwork.getIpv6gateway()+"\n";
+						_ipv6_defaultgw = true;
+						interfaceString += "IPV6_DEFAULTGW="+configNetwork.getIpv6gateway()+"\n";
 					}else if(str.toLowerCase().indexOf("ipv6_autoconf=")>=0) {
-						interfaceString += "IPV6_AUTOCONF="+configNetwork.getIpv6autoconf()+"\n";
+						_ipv6_autoconf = true;
+						interfaceString += "IPV6_AUTOCONF="+(configNetwork.getIpv6autoconf()==1?"yes":"no")+"\n";
                 	}else {
                 		interfaceString += str+"\n";
                 	}
 				}
+	            if(!_ipaddr) {
+					interfaceString += "IPADDR="+configNetwork.getIpv4addr()+"\n";
+				}
+	            if(!_netmask) {
+					interfaceString += "NETMASK="+configNetwork.getIpv4netmask()+"\n";
+				}
+	            if(!_gateway) {
+					interfaceString += "GATEWAY="+configNetwork.getIpv4gateway()+"\n";
+				}
+	            if(!_bootproto) {
+					interfaceString += "BOOTPROTO="+configNetwork.getBootprotocol()+"\n";
+				}
+	            if(!_ipv6addr) {
+					interfaceString += "IPV6ADDR="+configNetwork.getIpv6addr()+"\n";
+				}
+	            if(!_ipv6_defaultgw) {
+					interfaceString += "IPV6_DEFROUTE="+configNetwork.getIpv6gateway()+"\n";
+				}
+	            if(!_ipv6_autoconf) {
+					interfaceString += "IPV6_AUTOCONF="+configNetwork.getIpv6autoconf()+"\n";
+            	}
 	            bufferedReader.close();
 	            inputStream.close();
 	            File file =new File(interfaceFile);

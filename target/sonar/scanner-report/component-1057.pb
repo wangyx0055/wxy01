@@ -1,1 +1,0 @@
-¡ 2jsX¶hr,src/main/webapp/js/view_js/confirm_config.js

@@ -481,7 +481,7 @@ $(function() {
                     }
                 },
                 "columns" : [ {
-                    "data" : "start"
+                    "data" : "interval"
                 }, {
                     "data" : "command"
                 }, {
@@ -602,15 +602,15 @@ $(function() {
                 "columns" : [ {
                     "data" : "interval"
                 }, {
-                    "data" : "3", "render": function(data,type,row,meta){
+                    "data" : "high_level", "render": function(data,type,row,meta){
                         return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
                     }
                 }, {
-                    "data" : "2", "render": function(data,type,row,meta){
+                    "data" : "middle_level", "render": function(data,type,row,meta){
                         return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
                     }
                 }, {
-                    "data" : "1", "render": function(data,type,row,meta){
+                    "data" : "low_level", "render": function(data,type,row,meta){
                         return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-Level" style="cursor:pointer;">'+data+'</a>';
                     }
                 }],
@@ -760,4 +760,11 @@ $('#app_table').DataTable({
 
 //会话
 //命令
+$("#modal-command").on('show.bs.modal', function (event) {
+     var button = $(event.relatedTarget);
+     i = button.data('row');
+     var title=$('#C-table').DataTable().row('#' + i).nodes(i).data()[i].command;
+     console.log(title);
+     $("#modal-command .modal-title").text("统计数据["+""+title+"]");
+});
 //告警

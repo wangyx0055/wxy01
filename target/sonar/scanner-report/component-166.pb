@@ -1,1 +1,0 @@
-¦ 2cssXÉhr:src/main/webapp/bower_components/Ionicons/css/ionicons.css

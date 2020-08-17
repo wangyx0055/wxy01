@@ -950,7 +950,7 @@ table tr span {
 }
 .am #modal-editserver .modal-body > div:nth-of-type(5) {
   margin-top: 22px;
-  margin-left: -10px;
+  margin-left: -9px;
 }
 .am #modal-editserver .modal-body > div:nth-of-type(5) p label {
   display: inline-block;
@@ -1089,7 +1089,7 @@ table tr span {
 }
 .am #modal-editapp .modal-body > div:nth-of-type(6) {
   margin-top: 15px;
-  margin-left: 114px;
+  margin-left: 115px;
   margin-bottom: 20px;
 }
 .am #modal-editapp .modal-body > div:nth-of-type(6) p > span:nth-of-type(1) {
@@ -1321,7 +1321,7 @@ table tr span {
 }
 .app #modal-editapp .modal-body > div:nth-of-type(3) p input {
   margin-top: -10px;
-  width: 220px;
+  width: 219px;
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -1343,7 +1343,7 @@ table tr span {
 }
 .app #modal-editapp .modal-body > div:nth-of-type(4) p input {
   margin-top: -10px;
-  width: 220px;
+  width: 219px;
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -1378,7 +1378,7 @@ table tr span {
 }
 .app #modal-editapp .modal-body > div:nth-of-type(6) p input {
   margin-top: -10px;
-  width: 220px;
+  width: 221px;
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -4535,7 +4535,7 @@ table tr span {
   width: 168px;
 }
 .rl #modal-default1 .rl-type {
-  margin-left: 70px;
+  margin-left: 72px;
   font-size: 14px;
 }
 .rl #modal-default1 .rl-type input:nth-of-type(1) {
@@ -6349,6 +6349,9 @@ table tr span {
   margin-top: 50px;
   position: relative;
 }
+.csp .col-md-9 .nav-tabs-custom .tab-content #activity .box .box-body > .box > div > span:nth-of-type(2) {
+  margin-left: 10px;
+}
 .csp .col-md-9 .nav-tabs-custom .tab-content #activity .box .box-body > .box > div > button {
   position: absolute;
   width: 65px;
@@ -6584,6 +6587,7 @@ table tr span {
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(1) {
   margin-top: 30px;
+  margin-left: 29px;
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(1) span {
   font-size: 14px;
@@ -6621,7 +6625,7 @@ table tr span {
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(4) {
   margin-top: 30px;
-  margin-left: 16px;
+  margin-left: 44px;
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(4) span {
   font-size: 14px;
@@ -6630,6 +6634,7 @@ table tr span {
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(5) {
   margin-top: 30px;
+  margin-left: 14px;
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(5) span {
   font-size: 14px;
@@ -6638,7 +6643,7 @@ table tr span {
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(6) {
   margin-top: 30px;
-  margin-left: -14px;
+  margin-left: 28px;
 }
 .csp .col-md-9 .nav-tabs-custom .tab-content #B .box .box-body > div > div:nth-of-type(6) span {
   font-size: 14px;
@@ -10511,7 +10516,7 @@ table tr span {
 .u #edituser .modal-body .u-psw,
 .u #modal-adduser .modal-body .u-psw {
   margin-top: 10px;
-  margin-left: 65px;
+  margin-left: 66px;
 }
 .u #edituser .modal-body .u-psw span:nth-of-type(1),
 .u #modal-adduser .modal-body .u-psw span:nth-of-type(1) {
@@ -10537,7 +10542,7 @@ table tr span {
 .u #edituser .modal-body .u-emial,
 .u #modal-adduser .modal-body .u-emial {
   margin-top: 10px;
-  margin-left: 89px;
+  margin-left: 90px;
 }
 .u #edituser .modal-body .u-emial span,
 .u #modal-adduser .modal-body .u-emial span {
@@ -10547,7 +10552,7 @@ table tr span {
 .u #edituser .modal-body .u-emial input,
 .u #modal-adduser .modal-body .u-emial input {
   margin-top: -10px;
-  width: 210px;
+  width: 209px;
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;

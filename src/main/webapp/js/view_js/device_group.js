@@ -81,6 +81,7 @@ $('#modal-editgroup').on('show.bs.modal', function (event) {
         i = button.data('row');
         let title_name=($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].name);
         $("#modal-editgroup .modal-title").text("编辑设备组"+""+""+"["+title_name+"]");
+        console.log(title_name)
         $('#id').val($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].id);
         $('#edit_name').val($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].name);
         $('#depart_name').val($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].depart_name);

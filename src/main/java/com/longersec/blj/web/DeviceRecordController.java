@@ -138,8 +138,6 @@ public class DeviceRecordController {
 		result.accumulate("data", jsonArray);
 		return result;
 	}
-	
-
 
 	@RequestMapping("/deviceCommandReports")
 	@ResponseBody

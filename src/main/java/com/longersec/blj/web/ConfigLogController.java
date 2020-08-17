@@ -86,7 +86,7 @@ public class ConfigLogController{
         boolean r;
         //操作日志
         OperatorLog operatorLog = Operator_log.log(request, session);
-        operatorLog.setModule("系统配置-拓展配置");
+        operatorLog.setModule("系统配置-扩展配置");
         if (id == null) {
             r = configLogService.addConfigLog(configLog);
             operatorLog.setDetails("添加链接"+"["+name+"]");
@@ -127,7 +127,7 @@ public class ConfigLogController{
         }
         //操作日志
         OperatorLog operatorLog = Operator_log.log(request, session);
-        operatorLog.setModule("系统配置-拓展配置");
+        operatorLog.setModule("系统配置-扩展配置");
         operatorLog.setDetails("删除链接"+"["+ids+"]");
         operatorLog.setContent("删除");
         Boolean r = configLogService.delConfigLog(_ids);
@@ -150,6 +150,19 @@ public class ConfigLogController{
             checksum = configLogService.checkname(0,name);
         } else {
             checksum = configLogService.checkname(id,name);
+        }
+        result.put("success", checksum == 0);
+        return result;
+    }
+    @RequestMapping("/checksort")
+    @ResponseBody
+    public JSONObject checksort(@RequestParam(value = "id",required = false) Integer id,@RequestParam(value = "sort") Integer sort) {
+        JSONObject result = new JSONObject();
+        int checksum;
+        if (id == null ) {
+            checksum = configLogService.checksort(0,sort);
+        } else {
+            checksum = configLogService.checksort(id, sort);
         }
         result.put("success", checksum == 0);
         return result;

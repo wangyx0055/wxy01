@@ -1,1 +1,0 @@
-Ñ 2webX5hr'src/main/webapp/view/common/footer.html

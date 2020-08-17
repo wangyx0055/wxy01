@@ -67,7 +67,7 @@
                  <div class="box-body">
                   <div class="box" >
                    <div>
-                     <span>当前版本版本信息:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V2.0</span>  <br>
+                     <span>当前版本版本信息:<span id="bljversion">V2.0</span></span>  <br>
                      <button type="button" id="upgradeBtn" class="btn newaddbtn pull-right"><span>升级</span></button>
                      
                     </div>
@@ -199,46 +199,32 @@
           <div class="box-body">
             <div>
               <div>
-                  <span>客户信息：</span>
-                  <span>阿里云用户</span>
+                  <span>客户名称：</span>
+                  <span id="lic_customename"></span>
               </div><br>
+              
+              <div>
+              </div>
               
               <div>
                   <span>授权类型：</span>
-                  <span>正式版</span>
-              </div><br>
-              
-              <div>
-                  <span>状态：</span>
-                  <span>已经激活</span>
+                  <span id="lic_versiontype"></span>
                   
                   <button type="button" class="btn newaddbtn pull-left " data-toggle="modal" data-target="#modal-updateLicense">更新许可证</button>
-                  <button type="button" id="backupLicenseBtn" class="btn newaddbtn pull-left" >备份许可证</button>
               </div><br>
-
               <div>
                   <span>产品ID：</span>
-                  <span>a27e60c7fa334b79b65f59ef44f0af38</span>
-              </div><br>
-              
-              <div>
-                  <span>授权模块：</span>
-                  <span>基础模块</span>
+                  <span id="lic_productid"></span>
               </div><br>
               
               <div style="">
                   <span>授权资源数：</span>
-                  <span>2</span>
-              </div><br>
-              
-              <div>
-                  <span>授权资源并发连接数：</span>
-                  <span>2</span>
+                  <span id="lic_devicenumber"></span>
               </div><br>
               
               <div>
                   <span>过期时间：</span>
-                  <span>2022-11-24 10:32:36</span>
+                  <span id="lic_expireddate"></span>
               </div><br>
           </div>
         </div>
@@ -439,18 +425,18 @@
               </div>
               <div style="margin-left: 125px;margin-top: 25px;font-size: 12px">
                 <span>申请许可:
-                <button type="button" id="applyLicenseBtn" class="btn newaddbtn pull-right" style="margin-right:320px;height: 30px;color: #fff;font-size: 12px;margin-top: -5px">点击下载</button></span>
+                <button type="button" onclick="document.getElementById('hide').src='../../systeminfo/applyLicense'" class="btn newaddbtn pull-right" style="margin-right:330px;height: 30px;color: #fff;font-size: 12px;margin-top: -5px">点击下载</button></span>
               </div>
-              <span style="margin-left: 205px;font-size: 12px;color: #8391A5;margin-top: 15px">下载许可申请文件，并联系供应商申请授权许可</span>
+              <span style="margin-left: 194px;font-size: 12px;color: #8391A5;margin-top: 15px">下载许可申请文件，并联系供应商申请授权许可</span>
               <div style="margin-left: 100px;margin-top: 25px;font-size: 12px">
                 <span>导入许可文件:
-                <button type="button" id="uploadLicenseBtn" class="btn newaddbtn pull-right" style="margin-right:320px;height: 30px;color: #fff;font-size: 12px;margin-top: -5px">点击上传</button></span>
+                <button type="button" id="uploadLicenseBtn" class="btn newaddbtn pull-right" style="margin-right:330px;height: 30px;color: #fff;font-size: 12px;margin-top: -5px">点击上传</button></span>
               </div><br>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left newaddbtn2" data-dismiss="modal" style="float: left;margin-left:460px;height: 30px;font-size: 12px">取消</button>
                 <button type="button" class="btn newaddbtn" data-dismiss="modal" style="height: 30px;font-size: 12px;margin-left: 10px">确定</button>
                 
-                <form action="../../configDbbackup/uploadLicense" target="hide"  method="post" enctype="multipart/form-data" style="display:none;">
+                <form action="../../systeminfo/uploadLicense" target="hide"  method="post" enctype="multipart/form-data" style="display:none;">
               	<input type="file" name="licenseFile" id="uploadLicenseInput" onchange="douploadLicense(this.form);" />
                 </form>
               </div>
@@ -609,7 +595,7 @@
 <script src="../../js/common/utils.js"></script>
 <script src="../../js/echarts.min.js"></script>
 <script src="../../js/view_js/config_system_parameter.js"></script>
-<iframe name="hide" src="" style="height:0;width:0"></iframe>
+<iframe name="hide" id="hide" src="" style="height:0;width:0"></iframe>
 </body>
 </html>
 </body>

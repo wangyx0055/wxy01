@@ -153,14 +153,14 @@ public class ExportTemplateController {
         java.io.FileInputStream in = new java.io.FileInputStream(fileLoad);
         int n;
         //为了保证excel打开csv不出现中文乱码
-        out.write(new   byte []{( byte ) 0xEF ,( byte ) 0xBB ,( byte ) 0xBF });
+        //out.write(new   byte []{( byte ) 0xEF ,( byte ) 0xBB ,( byte ) 0xBF });
         while ((n = in.read(b)) != -1) {
             //每次写入out1024字节
             out.write(b, 0, n);
         }
         in.close();
         out.close();
-        response.setContentType("text/csv; charset=\"utf-8\"");
+        response.setContentType("text/csv; charset=\"gbk\"");
     }
 
 

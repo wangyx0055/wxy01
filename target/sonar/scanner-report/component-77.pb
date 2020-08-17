@@ -1,1 +1,0 @@
-M 2cssX™hrBsrc/main/webapp/bower_components/dist/css/skins/skin-red-light.css

@@ -47,5 +47,10 @@ public class ConfigLogServiceImpl implements ConfigLogService {
     public int checkname(Integer id, String name) {
         return ConfigLogDao.checkname(id,name);
     }
+
+    @Override
+    public int checksort(Integer id, Integer sort) {
+        return ConfigLogDao.checksort(id,sort);
+    }
 }
 

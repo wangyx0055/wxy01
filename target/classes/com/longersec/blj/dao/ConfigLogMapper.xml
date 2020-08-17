@@ -61,4 +61,7 @@
 <select id="checkname" resultType="java.lang.Integer">
     SELECT count(*) FROM lsblj_config_logpara where id !=#{id} and name = #{name};
 </select>
+<select id="checksort" resultType="java.lang.Integer">
+    SELECT count(*) FROM lsblj_config_logpara where id !=#{id} and sort = #{sort};
+</select>
 </mapper>

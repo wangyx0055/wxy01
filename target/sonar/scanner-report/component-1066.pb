@@ -1,1 +1,0 @@
-ª 2jsXÈhr(src/main/webapp/js/view_js/log_manage.js

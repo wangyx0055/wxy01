@@ -82,6 +82,9 @@ $("#edit_log").on('show.bs.modal', function (event) {
     });
 
 $('#log_sure').click(function() {
+    /*if(!link_name()||!link_url()||!link_sort()){
+        return;
+    }*/
     $.ajax({
         url: "../../configLog/addConfigLog",
         type: "POST",
@@ -164,9 +167,12 @@ $('#log_sure').click(function() {
         })
     });
 });
-$("#log_name").blur(function () {
+function link_name(){
+    var link_lenght=/^.{1,10}$/;
     if($("#log_name").val() === ""){
         $("#Vlog_name").text("请输入链接名称");
+    }else if(!link_lenght.test($("#log_name").val())){
+        $("#Vlog_name").text("输入超出限制长度");
     } else {
         $.ajax({
             url: "../../configLog/checkname",
@@ -184,20 +190,49 @@ $("#log_name").blur(function () {
             }
         })
     }
+}
+$("#log_name").blur(function () {
+    link_name();
 });
-$("#log_manage").blur(function () {
+function link_url(){
+    var link_url=/^.{1,128}$/;
     if($("#log_manage").val() === ""){
         $("#Vlog_manage").text("请输入链接地址");
+    }else if(!link_url.test($("#log_manage").val())){
+        $("#Vlog_manage").text("输入超出限制长度");
     }
+}
+$("#log_manage").blur(function () {
+    link_url();
 });
-$("#log_sort").blur(function(){
+function link_sort(){
     let log_sort=$("#log_sort").val();
-    let sort=/^\d{1,3}$/;
+    let sort=/^[1-9]$/;
     if (log_sort.length ===0 ) {
-        $("#Vlog_sort").text("请输入排序大小");
-    } else if(log_sort !== "" && !sort.test(log_sort)){
-        $("#Vlog_sort").text("输入格式不正确");
-    }
+        $("#Vlog_sort").text("请输入排序");
+    } else if(log_sort !== "" && !sort.test(log_sort)&&(log_sort<1||log_sort>99)){
+        $("#Vlog_sort").text("请输入1-99之间的数字");
+    }/*else{
+        $.ajax({
+            url: "../../configLog/checksort",
+            type: "POST",
+            data: {
+                id: $('#log_id').val(),
+                sort: $('#log_sort').val(),
+            },
+            success: function (data) {
+                if (data.success) {
+                    $("#Vlog_sort").text("");
+                } else {
+                    $("#Vlog_sort").text("输入排序重复");
+                }
+                /!* $("#Vlog_sort").text("输入排序重复");*!/
+            }
+        })
+    }*/
+}
+$("#log_sort").blur(function(){
+    link_sort();
 });
 $("#log_manage").focus(function(){
 		 $("#Vlog_manage").text("");

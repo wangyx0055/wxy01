@@ -827,7 +827,7 @@ $('#editdeviceButton').off().click(function(){
                     loadAJAX('#devices');
                 }else{
                     $("#modal-danger .modal-title").text('失败');
-                    $("#modal-danger .modal-body").text("新建失败!");
+                    $("#modal-danger .modal-body").text(data.msg?data.msg:"新建失败!");
                     $("#modal-danger").modal();
                     loadAJAX('#devices');
                 }
@@ -1549,7 +1549,7 @@ $(function () {
                 topNode.text = result.data[0].text;
                 $("#depart_name").click(function(){
                     var options = {
-                        levels : 1,
+                        levels : 2,
                         data : result.data,
                         collapseIcon:"treegrid-expander treegrid-expander-expanded",
                         expandIcon:'treegrid-expander treegrid-expander-collapsed',
@@ -1560,7 +1560,6 @@ $(function () {
                         }
                     };
                     $('#tree').treeview(options);
-                    $('#tree ul').css("height",'184px');
                     $('#tree').click(function (event) {
                         stopPropagation(event);
                     });

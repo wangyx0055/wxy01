@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.longersec.blj.dao.UserDao">
+<mapper namespace="com.longersec.blj.dao.UserDao">  <!--namespace是加载配置文件所找的路径,通常设置为文件所在包+文件名形式-->
 	<sql id="zd">
-		lsblj_user.`id`, `role_id`, `username`, `realname`, `ldap_dn`, `avatar`, `status`, `fail_count`, `lock_time`, `last_chpass`, `email`, `mobile`, `qq`, `wechat`,  `local_auth`, `finger_auth`, `sms_auth`, `radius_auth`, `dynamic_auth`, `ldap_auth`, `ad_auth`, `wechat_auth`, `email_auth`, `auth_type`, `last_login_ip`, `last_change_password`, `department`, `resolution`, `rdpdisk`, `session_title`, `groupid`, `google_auth_key`, `google_auth_token_used`,`sms_code`
+		lsblj_user.`id`, `role_id`, `username`, `realname`, `ldap_dn`, `avatar`, `status`, `fail_count`, `lock_time`, `last_chpass`, `email`, `mobile`, `qq`, `wechat`,  `local_auth`, `finger_auth`, `sms_auth`, `radius_auth`, `dynamic_auth`, `ldap_auth`, `ad_auth`, `wechat_auth`, `email_auth`, `auth_type`, `last_login_ip`, `last_change_password`, `department`, `resolution`, `rdpdisk`, `session_title`, `groupid`, `google_auth_key`, `google_auth_token_used`,`sms_code`,`valid_datetime_start`, `valid_long`, `valid_datetime_end`
 	</sql>
 
 	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.User">
@@ -60,7 +60,7 @@
 		<result column="recordCounts" jdbcType="BIGINT"/>
 	</resultMap>
 
-	<insert id="addUser" parameterType="com.longersec.blj.domain.User">
+	<insert id="addUser" parameterType="com.longersec.blj.domain.User">  /* id为实际调用Mybatis方法时需要用的参数,  parameterType是调用对应方法时参数的数据类型*/
 		INSERT INTO lsblj_user
 		<set>
 		<if test="role_id != null">`role_id`=#{role_id},</if>
@@ -179,7 +179,7 @@
 	<delete id="delUser" parameterType="java.util.List">
         DELETE FROM lsblj_user
         where id>3 and id IN(
-        <foreach collection="list" item="item" >
+        <foreach collection='list' item='item' >
             #{item},
         </foreach>
 		0);
@@ -261,6 +261,7 @@
 	<select id="checkEmail" resultType="com.longersec.blj.domain.User" >
         select <include refid="zd"/> from lsblj_user where email = #{email} and id!=#{id} limit 1
     </select>
+    
     
     <select id="checkName" resultType="com.longersec.blj.domain.User">
     	select username,realname from lsblj_user  ORDER BY username ASC

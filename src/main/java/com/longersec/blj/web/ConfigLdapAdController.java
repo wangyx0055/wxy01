@@ -140,7 +140,6 @@ public class ConfigLdapAdController {
 			}
 			result.put("success", true);
 		}else{
-			result.put("msg",false);
 			result.put("success", false);
 		}
 		return result;

@@ -1,1 +1,0 @@
-è 2cssX·hr=src/main/webapp/bower_components/select2/dist/css/select2.css

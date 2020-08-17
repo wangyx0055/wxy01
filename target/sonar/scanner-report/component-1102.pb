@@ -1,1 +1,0 @@
-Î 2webX‚hr8src/main/webapp/view/auto_operation/rapid_operation.html

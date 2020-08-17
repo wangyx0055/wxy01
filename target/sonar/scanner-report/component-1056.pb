@@ -1,1 +1,0 @@
-  2jsXèhr5src/main/webapp/js/view_js/config_system_parameter.js

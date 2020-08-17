@@ -1,1 +1,0 @@
-’ 2javaXDhrAsrc/main/java/com/longersec/blj/domain/DeviceListForOperator.java

@@ -143,6 +143,7 @@ let departmentList = function(field,value){
 	                return value === 1?'':'<input type="checkbox" name="chk[]" value="'+value+'" />';
 	            }
 	        },
+            { field: 'id',  title: 'id' },
 	        { field: 'name',  title: '名称' },
 	        { field: 'description',  title: '描述' },
 	        { field: 'count',  title: '用户数' },
@@ -198,7 +199,7 @@ var reloadDepartment = function(){
 				topNode.text = result.data[0].text;
                 $("#departName").click(function() {
                     let options = {
-                        levels : 1,
+                        levels : 2,
                         data : result.data,
                         nodeIcon:'',
                         collapseIcon:"treegrid-expander treegrid-expander-expanded",
@@ -212,7 +213,6 @@ var reloadDepartment = function(){
                         },
                     };
                     $('#tree').treeview(options);
-                    $('#tree ul').css("height",'213px');
                     $('#tree').click(function (event) {
                         stopPropagation(event);
                     });
@@ -440,7 +440,6 @@ $("#upload").off().on("click", function () {
     }
     var formData = new FormData();
     formData.append("file_data", s);
-    formData.append("type", 0);
     $("#modal-upload .modal-title").text('状态');
     $("#modal-upload .modal-body").text('正在导入...');
     $("#modal-upload").modal();

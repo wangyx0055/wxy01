@@ -1,1 +1,0 @@
-ž 2jsX¼hr,src/main/webapp/js/view_js/config_network.js

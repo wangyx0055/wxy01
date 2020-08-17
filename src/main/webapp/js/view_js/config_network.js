@@ -131,7 +131,7 @@ $(function () {
     function checkIpv6() {
         var flag=true;
         var nip6=$("#ipv6addr").val();
-        var p3=/^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$/;
+        var p3=/^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\/\d{1,3}\s*$/;
         if(nip6==""){
             $("#Vipv6addr").text("请输入IPv6地址");
             flag=false;
@@ -168,7 +168,7 @@ $(function () {
     function checkGate6(){
         var flag=true;
         var ipv6gateway=$("#ipv6gateway").val();
-        var p2=/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/;
+        var p2=/^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/;
         if(ipv6gateway!=""&&!p2.test(ipv6gateway)){
             $("#Vipv6gateway").text("请输入有效的网关");
             flag=false;
@@ -351,12 +351,19 @@ $(function () {
                 }
             },
             "columns": [
-                {"data": "name"},
-                {"data": "name"},
-                {"data": "name"},
-                {"data": "name"},
-                {"data": "name"},
-                {"data": "status"},
+                {"data": "device"},
+                {"data": "name", render:function(data, type, row, meta){
+					return row.ipv4addr+"<br>"+row.ipv6addr;
+				}},
+                {"data": "name", render:function(data, type, row, meta){
+					return row.ipv4netmask+"<br>"+row.ipv6netmask;
+				}},
+                {"data": "name", render:function(data, type, row, meta){
+					return row.ipv4gateway+"<br>"+row.ipv6gateway;
+				}},
+                {"data": "onboot", render:function(data, type, row, meta){
+					return data==1?'启用':'禁用';
+				}},
                 {
                     "data": "id", "render": function (data, type, row, meta) {
                         return '<a class="newcss1" data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-interface" style="line-height:2px;margin-right:20px;cursor:pointer;">编辑</a>'+
@@ -454,7 +461,7 @@ $(function () {
                 ipv4addr: $('#ipv4addr').val(),
                 ipv4netmask: $('#ipv4netmask').val(),
                 ipv4gateway: $('#ipv4gateway').val(),
-                ipv6ipaddr: $('#ipv6addr').val(),
+                ipv6addr: $('#ipv6addr').val(),
                 ipv6gateway: $('#ipv6gateway').val(),
                 ipv6autoconf: $('#ipv6dhcp')[0].checked ? 1 : 0,
                 ipv6enable: $('#ipv6enable')[0].checked ? 0 : 1
@@ -533,7 +540,7 @@ $(function () {
     $('#modal-interface').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         i = button.data('row');
-        $('#ifaceName').text($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].name);
+        $('#ifaceName').text($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].device);
         $('#deviceName').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].device);
         if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].bootproto == 'static' || $('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].bootproto == 'none') {
             $('#ipv4static')[0].checked = true;
@@ -551,10 +558,12 @@ $(function () {
         }
         if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6autoconf == 'yes') {
             ifaceDhcp(6);
+            $('#ipv6addr').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6addr+'/'+$('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6netmask);
+            $('#ipv6gateway').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6gateway);
         } else if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6autoconf == 'no') {
             $('#ipv6static')[0].checked = true;
             ifaceStatic(6);
-            $('#ipv6addr').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6addr);
+            $('#ipv6addr').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6addr+'/'+$('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6netmask);
             $('#ipv6gateway').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6gateway);
         }
     });
@@ -579,7 +588,7 @@ function checkIPName(){
 //验证
 var regexp = {
       ipv4:/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/,
-      ipv6:/^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$/,
+      ipv6:/^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/,
       ip3:/^((128|192)|2(24|4[08]|5[245]))(\.(0|(128|192)|2((24)|(4[08])|(5[245])))){3}$/,
 }
 $('#routeDestIp').blur(function(){
@@ -594,7 +603,7 @@ $('#routeDestIp').blur(function(){
     if($('#v6')[0].checked==true&&destIp1==""){
         $('#VrouteDestIp').text('请输入IPv6地址');
     }else if($('#v6')[0].checked==true&&!regexp.ipv6.test(destIp1)){
-        $('#VrouteDestIp').text('请输入有效的IPv6地址');
+        //$('#VrouteDestIp').text('请输入有效的IPv6地址');
     }else {
         checkIPName();
     }

@@ -173,7 +173,7 @@ public class DepartmentController {
 			//操作日志
 			OperatorLog operatorLog = Operator_log.log(request, session);
 			operatorLog.setModule("部门管理");
-			operatorLog.setDetails("增加部门"+"["+name+"],"+"上级部门为["+stringBuilder.substring(0,stringBuilder.length()-1)+"]");
+			operatorLog.setDetails("增加部门"+"["+name+"],"+"上级部门为["+stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length())+"]");
 			operatorLog.setContent("添加");
 			boolean addDepartment = departmentService.addDepartment(department);
 			if (addDepartment) {
@@ -235,13 +235,13 @@ public class DepartmentController {
 			//操作日志
 			OperatorLog operatorLog = Operator_log.log(request, session);
 			operatorLog.setModule("部门管理");
-			operatorLog.setDetails("编辑部门["+department2.getName()+"为"+name+"],"+"上级部门为["+stringBuilder.substring(0,stringBuilder.length()-1)+"]");
+			operatorLog.setDetails("编辑部门["+department2.getName()+"为"+name+"],"+"上级部门为["+stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length())+"]");
 			operatorLog.setContent("编辑");
 			//编辑部门
 			boolean editDepartment = departmentService.editDepartment(department);
 			if (editDepartment) {
 				//上级部门改变进行更新数量
-				if (!name1.equals(parent_name)) {
+				if (name1!=null&&!name1.equals(parent_name)) {
 					//原来上级部门减少用户数量
 					UpdateDepartmentCount.userUpdateDepartmentCount(departmentService, department2.getParent_id(), -department2.getCount());
 					//编辑后的上级部门增加用户数量
@@ -347,11 +347,13 @@ public class DepartmentController {
 	public static Map<String, Object> checkExport(DepartmentService departmentService, String name, String desc, String parent_name){
 		Map<String, Object> errorMap = new HashMap<>(16);
 		//判断上级是否存在
-		int topDepartmentIfExists = departmentService.topDepartmentIfExists(parent_name);
-		if (topDepartmentIfExists == 0 ) {
-			errorMap.put("success", false);
-			errorMap.put("info",parent_name+":上级部门不存在");
-			return errorMap;
+		if (!"".equals(parent_name)) {
+			int topDepartmentIfExists = departmentService.topDepartmentIfExists(parent_name);
+			if (topDepartmentIfExists == 0) {
+				errorMap.put("success", false);
+				errorMap.put("info",parent_name+":上级部门不存在");
+				return errorMap;
+			}
 		}
 		//上级部门名称不能为本次编辑部门
 		if (parent_name.equals(name)) {
@@ -366,14 +368,27 @@ public class DepartmentController {
 			return errorMap;
 		}
 		//判断上级部门下级是否有相同的
-		Department department1 = departmentService.selectByname(parent_name);
-		List<Department> subNodes = departmentService.findSubNodes(department1.getId());
-		for (Department department2:subNodes) {
-			boolean flag = (department2.getName().equals(name) && !department2.getId().equals(department1.getId()));
-			if (flag) {
-				errorMap.put("info",name+":部门名称重复");
-				errorMap.put("success", false);
-				return errorMap;
+		List<Department> subNodes = new ArrayList<>();
+		if("".equals(parent_name)){
+			subNodes = departmentService.findSubNodes(1);
+			for (Department department2:subNodes) {
+				boolean flag = (department2.getName().equals(name) && !department2.getId().equals(1));
+				if (flag) {
+					errorMap.put("info",name+":部门名称重复");
+					errorMap.put("success", false);
+					return errorMap;
+				}
+			}
+		} else {
+			Department department1 = departmentService.selectByname(parent_name);
+			subNodes = departmentService.findSubNodes(department1.getId());
+			for (Department department2:subNodes) {
+				boolean flag = (department2.getName().equals(name) && !department2.getId().equals(department1.getId()));
+				if (flag) {
+					errorMap.put("info",name+":部门名称重复");
+					errorMap.put("success", false);
+					return errorMap;
+				}
 			}
 		}
 		errorMap.put("success", true);
@@ -381,32 +396,18 @@ public class DepartmentController {
 	}
 
 	/** 导入检查 **/
-	public static Map<String, Object> checkDepartmentExport(DepartmentService departmentService, String name, String parent_name){
+	public static Map<String, Object> checkDepartmentExport(DepartmentService departmentService, String name ,String parent_id){
 		Map<String, Object> errorMap = new HashMap<>(16);
 		List<String> list = new ArrayList<>(10);
-		Department department1 = departmentService.selectByname(parent_name);
-		//判断上级是否存在
-		int topDepartmentIfExists = departmentService.topDepartmentIfExists(parent_name);
-		if (topDepartmentIfExists == 0 ) {
-			errorMap.put("success", false);
-			errorMap.put("info",parent_name+":部门不存在");
-			return errorMap;
-		}
-		//上级部门名称不能为本次编辑部门
-		if (parent_name.equals(name) && department1.getId() != 1) {
-			errorMap.put("info",name+":上级部门名称和部门名称重复");
-			errorMap.put("success", false);
-			return errorMap;
-		}
-		//判断上级部门下级是否有相同的
-		List<Department> subNodes = departmentService.findSubNodes(department1.getId());
-		for (Department department2:subNodes) {
-			if (!department2.getId().equals(department1.getId()) || department1.getId() == 1) {
-				list.add(department2.getName());
-			}
-		}
-		if (!list.contains(name)) {
+		//判断部门是否存在
+		List<Integer> integers = departmentService.selectIdByname(name);
+		if (integers == null){
 			errorMap.put("info",name+":部门不存在");
+			errorMap.put("success", false);
+			return errorMap;
+		}
+		if ("".equals(parent_id) && integers.size()>1){
+			errorMap.put("info",name+":部门名称重复,请按照格式添加id");
 			errorMap.put("success", false);
 			return errorMap;
 		}

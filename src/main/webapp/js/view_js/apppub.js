@@ -480,7 +480,7 @@ $.ajax({
         if(result!=null){
             $("#depart_name").click(function() {
                 var options = {
-                    levels : 1,
+                    levels : 2,
                     data : result.data,
                     onNodeSelected : function(event, data) {
                         $("#depart_name").val(data.text);

@@ -468,17 +468,17 @@ $('#edituser').on('show.bs.modal', function (event) {
         var sms_auth=$('#userlist').DataTable().row('#' + i).nodes(i).data()[i].sms_auth;
           var valid_long = $('#userlist').DataTable().row('#' + i).nodes(i).data()[i].valid_long;
           if (valid_long == 0) {
-              $('#reservation1').val($('#userlist').DataTable().row('#' + i).nodes(i).data()[i].valid_datetime_start);
-              $('#reservation3').val($('#userlist').DataTable().row('#' + i).nodes(i).data()[i].valid_datetime_end);
-              $('#reservation1').prop('disabled', false);
-              $('#reservation3').prop('disabled', false);
-              $("#can_long").prop("checked", false);
+              $('#reservation').val($('#userlist').DataTable().row('#' + i).nodes(i).data()[i].valid_datetime_start);
+              $('#reservation2').val($('#userlist').DataTable().row('#' + i).nodes(i).data()[i].valid_datetime_end);
+              $('#reservation').prop('disabled', false);
+              $('#reservation2').prop('disabled', false);
+              $("#add_long").prop("checked", false);
           } else {
-              $('#reservation1').val("");
-              $('#reservation3').val("");
-              $('#reservation1').prop('disabled', true);
-              $('#reservation3').prop('disabled', true);
-              $("#can_long").prop("checked", true);
+              $('#reservation').val("");
+              $('#reservation2').val("");
+              $('#reservation').prop('disabled', true);
+              $('#reservation2').prop('disabled', true);
+              $("#add_long").prop("checked", true);
           }
         var methods = 0;
         if(dynamic_auth==1){
@@ -1055,7 +1055,7 @@ $(function () {
                 topNode.text = result.data[0].text;
                 $("#depart_name").click(function() {
                     var options = {
-                        levels : 1,
+                        levels : 2,
                         data : result.data,
                         nodeIcon:'',
                         collapseIcon:"treegrid-expander treegrid-expander-expanded",
@@ -1067,7 +1067,6 @@ $(function () {
                         }
                     };
                     $('#tree').treeview(options);
-                    $('#tree ul').css("height",'280px');
                     $('#tree').click(function (event) {
                         stopPropagation(event);
                     });

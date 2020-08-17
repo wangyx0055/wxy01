@@ -129,55 +129,6 @@ $(function () {
             }
         })
     };
-    $('#applyLicenseBtn').click(function(){
-        $.ajax({
-            url:"../../configDbbackup/applyLicense",
-            type:"POST",
-            data:{
-            },
-            success:function(data){
-                if(data.success){
-                    $("#modal-"+cmd).modal("hide");
-                    $("#modal-success .modal-title").text('成功');
-                    $("#modal-success .modal-body").text("操作成功!");
-                    $("#modal-success").modal();
-                }
-                else{
-                    $("#modal-danger .modal-title").text('失败');
-                    $("#modal-danger .modal-body").text(data.msg?data.msg:"操作失败!");
-                    $("#modal-danger").modal();
-                }
-            },
-            error:function(){
-
-            }
-        })
-    })
-    $('#backupLicenseBtn').click(function(){
-        $.ajax({
-            url:"../../configDbbackup/backupLicense",
-            type:"POST",
-            data:{
-                'ids[]':$("#backupid").val()
-            },
-            success:function(data){
-                if(data.success){
-                    $("#modal-"+cmd).modal("hide");
-                    $("#modal-success .modal-title").text('成功');
-                    $("#modal-success .modal-body").text("操作成功!");
-                    $("#modal-success").modal();
-                }
-                else{
-                    $("#modal-danger .modal-title").text('失败');
-                    $("#modal-danger .modal-body").text(data.msg?data.msg:"操作失败!");
-                    $("#modal-danger").modal();
-                }
-            },
-            error:function(){
-
-            }
-        })
-    })
 
     $('#rebootButton').click(function(){
         executeCmd('reboot');
@@ -753,4 +704,37 @@ $(function () {
           charts[i].resize();
       }
   });
+
+$.ajax({
+	    url:"../../systeminfo/version",
+	    type:"POST",
+	    data:{
+	    	'':(new Date()).getTime()
+	    	},
+	    success:function(data){
+	    	$('#bljversion').text(data)
+	    },
+	    error:function(){}
+	})
+	
 })
+
+
+function licenseInfo(){
+	$.ajax({
+	    url:"../../systeminfo/licenseinfo",
+	    type:"POST",
+	    data:{
+	    	'':(new Date()).getTime()
+	    	},
+	    success:function(data){
+	    	$('#lic_customename').text(data.name);
+	    	$('#lic_versiontype').text(data.versiontyp);
+	    	$('#lic_productid').text(data.productid);
+	    	$('#lic_devicenumber').text(data.devices);
+	    	$('#lic_expireddate').text(data.endtimestr);
+	    },
+	    error:function(){}
+	})
+}
+licenseInfo();

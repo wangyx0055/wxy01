@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-treegrid/0.2.0/css/jquery.treegrid.min.css">
 </head>
-<!--<style>
-    .fileinput-button {
+<style>
+/*    .fileinput-button {
         position: relative;
         display: inline-block;
         overflow: hidden;
@@ -42,8 +42,44 @@
         opacity: 0;
         -ms-filter: 'alpha(opacity=0)';
         font-size: 200px;
+    }*/
+    #tree {
+        position: absolute;
+        z-index: 1010;
+        background-color: white;
+        margin-left: 48px;
+        margin-top: -14px;
+        border: 1px solid #ccc;
+        width: 220px;
+        overflow: hidden auto;
+        display: none;
+        height: 204px;
+        border-top: none;
     }
-</style>-->
+    #tree ul li {
+        border-radius:0px;
+        border-left: none;
+        border-right: none;
+    }
+    #apppub_tree {
+        position: absolute;
+        z-index: 1010;
+        background-color: white;
+        margin-left: 37px;
+        margin-top: -13px;
+        border: 1px solid #ccc;
+        width: 220px;
+        overflow: hidden auto;
+        display: none;
+        height: 197px;
+        border-top: none;
+    }
+    #apppub_tree ul li {
+        border-radius:0px;
+        border-left: none;
+        border-right: none;
+    }
+</style>
 <body class="hold-transition skin-blue sidebar-mini am">
 <div class="wrapper" >
     <header class="main-header">
@@ -221,14 +257,14 @@
                     <span id="filename"></span>
                     <input type="file" id="btn_file" style="display:none" accept=".csv">
                         </div>
-                        <div>
-                            <span style="font-size: 12px;">更多选项:</span>
-                            <input type="checkbox"><span style="font-size: 12px;margin-left: 5px;">覆盖已有应用</span>
-                        </div>
+<!--                        <div>-->
+<!--                            <span style="font-size: 12px;">更多选项:</span>-->
+<!--                            <input type="checkbox"><span style="font-size: 12px;margin-left: 5px;">覆盖已有应用</span>-->
+<!--                        </div>-->
                         <br>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+                            <button type="button" class="btn newaddbtn" data-dismiss="modal" id="upload">确定</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -292,7 +328,7 @@
                                     <input type="text" id="depart_name" name="depart_name" readonly
                                            placeholder="&nbsp;&nbsp;&nbsp;请选择部门" autocomplete="off"
                                            onclick="$('#tree').show()"><span style="color: red;font-size: 12px;" id="VdepartName"></span>
-                                <div id="tree" style="display: none; position:absolute; z-index:1010; background-color:white;margin-left: 48px;margin-top: -10px; width: 210px;overflow:auto;overflow-x: hidden"></div>
+                                <div id="tree"></div>
                                 <input type="hidden" id="depart_id">
                                 </p>
                             </div>
@@ -392,7 +428,7 @@
                                     <input id="apppub_depart_name" name="apppub_depart_name" readonly
                                            placeholder="&nbsp;&nbsp;&nbsp;请选择部门" type="text" autocomplete="off"
                                            onclick="$('#apppub_tree').show()"><span style="color: red;font-size: 12px;" id="apppub_VdepartName">
-                                    <div id="apppub_tree" style="display: none; position:absolute; z-index:1010; background-color:white;margin-left: 37px;margin-top: -10px; width: 210px;overflow:auto;overflow-x: hidden"></div>
+                                    <div id="apppub_tree"></div>
                                     <input type="hidden" id="apppub_depart_id"></span></p>
                             </div>
                             <div>
@@ -501,16 +537,14 @@
                             <span class="modal-title">导入应用发布列表</span>
                         </div>
                         <div class="u-download" style="margin-left: 100px; margin-top: 25px;font-size: 12px;">
-                <span>下载模板:
+                <span style="font-size: 12px;">下载模板:
                     <a th:href="@{/downTemplate/apppubAccount}" id="downClick1"></a>
-                <button type="button" class="btn newaddbtn pull-right"
-                        style="margin-right: 360px;height: 30px;margin-top: -5px;" id="downTemplate1">点击下载</button></span>
+                <button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;" id="downTemplate1">点击下载</button></span>
                         </div>
                         <br>
                         <div class="u-upload" style="margin-left: 100px; margin-top: 25px;font-size: 12px;">
-                <span>上传文件:
-                <button type="button" class="btn newaddbtn pull-right"
-                        style="margin-right: 360px;height: 30px;margin-top: -5px;" onclick="openFile()">点击上传</button></span>
+                <span style="font-size: 12px;">上传文件:
+                    <button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;" onclick="openFile1()">点击上传</button></span>
                         <span id='Vfile1' style="color:red;font-size: 12px;"></span>
                         <span id="filename1"></span>
                         <input type="file" id="btn_file1" style="display:none" accept=".csv">
@@ -518,7 +552,7 @@
                         <br>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+                            <button type="button" class="btn newaddbtn" data-dismiss="modal" id="upload1">确定</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->

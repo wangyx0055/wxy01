@@ -34,6 +34,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -141,6 +143,18 @@ public class LoginController {
     	ArrayList<Object> resultConfigLogins = new ArrayList<Object>();
     	ArrayList<ConfigLogin> configLogins = new ArrayList<ConfigLogin>();
     	
+    	if(user.getValid_long()!=1) {
+        	int nowtime = (int)(System.currentTimeMillis()/1000);
+    		String[] symd = user.getValid_datetime_start().split("-");
+    		String[] eymd = user.getValid_datetime_end().split("-");
+    		
+    		if(nowtime<(new Date(Integer.valueOf(symd[0])-1900,Integer.valueOf(symd[1])-1,Integer.valueOf(symd[2])).getTime())/1000
+				|| nowtime>(new Date(Integer.valueOf(eymd[0])-1900,Integer.valueOf(eymd[1])-1,Integer.valueOf(eymd[2])+1).getTime())/1000
+					){
+				 model.addAttribute("msg","不在登录日期范围");
+			        return "/login";
+			}
+    	}
     	
     	loginlog.setSource_ip(httpClient.getRemortIP(request));
     	loginlog.setDepartment(user.getDepartment());

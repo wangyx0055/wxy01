@@ -1,1 +1,0 @@
-Ã 2webXÂhr3src/main/webapp/view/asset_manage/device_group.html

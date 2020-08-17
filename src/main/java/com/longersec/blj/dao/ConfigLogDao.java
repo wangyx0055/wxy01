@@ -15,5 +15,7 @@ public interface ConfigLogDao{
 	int selectCount();
 
 	int checkname( @Param("id")Integer id,  @Param("name")String name);
+
+    int checksort( @Param("id")Integer id, @Param("sort")Integer sort);
 }
 

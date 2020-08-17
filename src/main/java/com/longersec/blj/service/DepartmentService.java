@@ -70,5 +70,7 @@ public interface DepartmentService {
 
 	/**查询登录角色所拥有的部门id **/
 	List<Integer> selectTopId(int id);
+
+	List<Integer> selectIdByname(String name);
 }
 

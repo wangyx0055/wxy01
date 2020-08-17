@@ -1,1 +1,0 @@
-S 2cssX‡hr?src/main/webapp/bower_components/dist/css/skins/skin-yellow.css

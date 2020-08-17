@@ -43,6 +43,24 @@
         text-align: initial !important;
         width: 100px;
     }
+    #tree {
+        position: absolute;
+        z-index: 1010;
+        background-color: white;
+        margin-left: 74px;
+        margin-top: -13px;
+        border: 1px solid #ccc;
+        width: 210px;
+        overflow: hidden auto;
+        display: none;
+        height: 191px;
+        border-top: none;
+    }
+    #tree ul li {
+        border-radius:0px;
+        border-left: none;
+        border-right: none;
+    }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper" >
@@ -103,7 +121,7 @@
                                 <span style="font-size: 12px;">上级部门：</span>
                                 <input id="departName"  name="departName" type="text" autocomplete="off"  onclick="$('#tree').show()" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;" tabindex="2">&nbsp;&nbsp;<span id='VdepartName' style="color:red;font-size: 12px;"></span>
                             </p>
-                            <div id="tree" style="display: none; position:absolute; z-index:1010; background-color:white;margin-left: 74px;margin-top: -14px; width: 210px;overflow-y:auto;overflow-x: hidden"></div>
+                            <div id="tree"></div>
                         </div>
                     </div>
                     <div style="margin-top: 20px;margin-left: 100px">
@@ -112,9 +130,9 @@
                             <input type="text" name="name" id="name" style="margin-top: -10px;width:210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;">&nbsp;&nbsp;<span id='Vname' style="color:red;font-size: 12px;"></span></span>
                         <p style="font-size: 12px;margin-left: 73px;color: #a4abb5;margin-top: 0px; width: 306px;">长度1-32个字符,字符或数字,允许输入"_-@"</p>
                     </div>
-                    <div style="margin-top: 10px;margin-left: 135px">
+                    <div style="margin-top: 10px;margin-left: 136px">
                         <span><span style="font-size: 12px;vertical-align: top;display: inline-block">描述：</span>
-                            <textarea style="width:210px;height: 60px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;resize:none" name="description" id="description"></textarea>&nbsp;&nbsp;<span id='Vdescription' style="color:red;font-size: 12px;"></span></span>
+                            <textarea style="width:209px;height: 60px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;resize:none" name="description" id="description"></textarea>&nbsp;&nbsp;<span id='Vdescription' style="color:red;font-size: 12px;"></span></span>
                         <p style="font-size: 12px;margin-left: 38px;color: #a4abb5;margin-top: 0px; width: 306px;">长度1-64个汉字或字符</p>
                     </div>
                     <br>

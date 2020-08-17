@@ -7,53 +7,192 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0e48508-b45a-48f6-add5-c85995f73acd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/blj_new_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/blj_new_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/blj_new.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blj_new.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/AccessPolicyApppubMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/AccessPolicyApppubMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/GroupService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/GroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/GroupServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/DeleteDepartmentQuartz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/DeleteDepartmentQuartz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ConfigLogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ConfigLogDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ConfigLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ConfigLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/ConfigLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/ConfigLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Device.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/DeviceRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/DeviceRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ConfigLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ConfigLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/DepartmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ConfigLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ConfigLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DepartmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportTemplateServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportTemplateServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/LoginLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/LoginLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigDbbackupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigDbbackupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigLdapAdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigLdapAdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigNetworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigNetworkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DepartmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/GroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceRecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ExportTemplateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ExportTemplateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/SystemInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/SystemInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/common/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/apppub.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/apppub.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/apppub_manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/apppub_manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_network.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_system.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_system.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_system_parameter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_system_parameter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/department.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/department.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/device_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/device_group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/extend_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/extend_config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/hosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/rapid_operation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/rapid_operation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_session.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_session.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/user_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/user_group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/device_group.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/device_group.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/apppub_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/apppub_manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/hosts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/hosts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/common/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/common/department.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/user/user_group.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/user_group.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/AccessPolicyApppubMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/AccessPolicyApppubMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports_sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_network.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_network.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_system_parameter.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_system_parameter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ApppubProgramDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ApppubProgramDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ConfigDbbackupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ConfigDbbackupMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ConfigLdapAdDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ConfigLdapAdDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ConfigLdapAdMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/ConfigLdapAdMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/DepartmentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/DepartmentDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/DepartmentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/DeviceRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/DeviceRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/ApppubProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/ApppubProgram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/ConfigDbbackup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/ConfigDbbackup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/ConfigLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/ConfigLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/Device.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/Device.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/DeviceRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/DeviceRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/LoginLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/domain/LoginLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/ApppubProgramService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/ApppubProgramService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/ConfigLdapAdService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/ConfigLdapAdService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/DepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/DepartmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ConfigLdapAdServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ConfigLdapAdServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ExportTemplateServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/ExportTemplateServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/utils/AdOperate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/utils/AdOperate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/utils/httpClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/utils/httpClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ApppubProgramController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ApppubProgramController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigDbbackupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigDbbackupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigLdapAdController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigLdapAdController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigLogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigNetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ConfigNetworkController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/DepartmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/DeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/DeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ExportTemplateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/ExportTemplateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/OperatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/OperatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/SystemInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/SystemInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/UploadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/com/longersec/blj/web/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/WEB-INF/classes/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/lib/jconsole.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/WEB-INF/lib/tools.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/bower_components/dist/css/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/bower_components/dist/css/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/bower_components/dist/css/main/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/bower_components/dist/css/main/main.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blj/js/common/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/common/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/common/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/common/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/apppub.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/apppub.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/apppub_manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/apppub_manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/config_network.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/config_network.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/config_system.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/config_system.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/config_system_parameter.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/config_system_parameter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/confirm_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/confirm_config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/department.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/department.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/rapid_operation.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/rapid_operation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/extend_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/extend_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/host_sessions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/host_sessions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/hosts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/log_system.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/log_system.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/report_login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/report_login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/report_session.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/report_session.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/js/view_js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/js/view_js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/asset_manage/apppub_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/asset_manage/apppub_manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/asset_manage/hosts.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/asset_manage/hosts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/audit_manage/host_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/audit_manage/host_sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/audit_manage/logs_system.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/audit_manage/logs_system.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blj/view/common/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/common/department.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/AccessPolicyApppubMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/AccessPolicyApppubMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/statistic_analysis/reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/statistic_analysis/reports.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/statistic_analysis/reports_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/statistic_analysis/reports_sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/system_manage/config_network.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/system_manage/config_network.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/system_manage/config_system_parameter.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/system_manage/config_system_parameter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/system_manage/confirm_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/system_manage/confirm_config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blj/view/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/blj/view/user/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigDbbackupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigDbbackupMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigLdapAdDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigLdapAdDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigLdapAdMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigLdapAdMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ApppubProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ApppubProgram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ConfigDbbackup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ConfigDbbackup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ConfigLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ConfigLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Device.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Device.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/DeviceRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/DeviceRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/LoginLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/LoginLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubProgramService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubProgramService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ConfigLdapAdService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ConfigLdapAdService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DepartmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ConfigLdapAdServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ConfigLdapAdServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportTemplateServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportTemplateServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/AdOperate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/AdOperate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/httpClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/httpClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ApppubProgramController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ApppubProgramController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigDbbackupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigDbbackupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigLdapAdController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigLdapAdController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigLogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigNetworkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigNetworkController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DepartmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ExportTemplateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ExportTemplateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/OperatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/OperatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/SystemInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/SystemInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UploadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -91,9 +230,16 @@
       </list>
     </option>
   </component>
+<<<<<<< .mine
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+||||||| .r1895
+=======
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+>>>>>>> .r2117
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="true" />
@@ -104,7 +250,13 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+<<<<<<< .mine
         <option name="localRepository" value="E:\maven\apache-maven-3.5.4\repository" />
+||||||| .r1895
+        <option name="localRepository" value="C:\Users\hp\.m2\repository" />
+=======
+        <option name="localRepository" value="C:\apache-maven-3.6.3\repository" />
+>>>>>>> .r2117
         <option name="mavenHome" value="D:/开发工具/apache-maven-3.5.4" />
         <option name="userSettingsFile" value="D:\开发工具\apache-maven-3.5.4\conf\settings.xml" />
       </MavenGeneralSettings>
@@ -132,7 +284,13 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="flex.debug.filter.swf.load.unload" value="false" />
+<<<<<<< .mine
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/bower_components/bootstrap-select" />
+||||||| .r1895
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+>>>>>>> .r2117
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -148,8 +306,9 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
+<<<<<<< .mine
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
@@ -178,6 +337,20 @@
       <recent name="C:\Users\Administrator\Desktop\堡垒机\code\blj_new" />
     </key>
   </component>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 565 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+        <path>
+          <item name="Found 565 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="blj_new" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat9.0.29">
     <configuration name="UpdateDepartmentCountTest.userUpdateDepartmentCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="blj_new" />
@@ -201,7 +374,27 @@
     <configuration name="outbound_config.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/webapp/js/view_js/outbound_config.js" working-dir="$PROJECT_DIR$/src/main/webapp/js/view_js">
       <method v="2" />
     </configuration>
+    <configuration name="regExpUtil.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/webapp/js/common/regExpUtil.js" working-dir="$PROJECT_DIR$/src/main/webapp/js/common">
+      <method v="2" />
+    </configuration>
     <configuration name="Tomcat9.0.29" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.7" ALTERNATIVE_JRE_ENABLED="false">
+||||||| .r1895
+  <component name="RunManager" selected="Tomcat Server.Tomcat9.0.29">
+    <configuration name="alert_config.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/webapp/js/view_js/alert_config.js" working-dir="$PROJECT_DIR$/src/main/webapp/js/view_js">
+      <method v="2" />
+    </configuration>
+    <configuration name="outbound_config.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/webapp/js/view_js/outbound_config.js" working-dir="$PROJECT_DIR$/src/main/webapp/js/view_js">
+      <method v="2" />
+    </configuration>
+    <configuration name="Tomcat9.0.29" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat9.0.29" ALTERNATIVE_JRE_ENABLED="false">
+=======
+  <component name="RebelAgentSelection">
+    <selection>jxr</selection>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat9.0.29" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat9.0.29" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:9999/blj_new_war_exploded/" />
+>>>>>>> .r2117
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
@@ -213,7 +406,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_29_blj_new_3" />
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat9_0_29_blj_new" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -223,12 +416,19 @@
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="64777" />
       </RunnerSettings>
+<<<<<<< .mine
       <RunnerSettings RunnerId="JProfiler">
         <option name="jreHome" value="D:/Java/jdk1.8.0_201" />
       </RunnerSettings>
       <RunnerSettings RunnerId="JRebel Debug">
         <option name="DEBUG_PORT" value="javadebug" />
       </RunnerSettings>
+||||||| .r1895
+=======
+      <RunnerSettings RunnerId="JRebel Debug">
+        <option name="DEBUG_PORT" value="51984" />
+      </RunnerSettings>
+>>>>>>> .r2117
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -259,6 +459,7 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
+<<<<<<< .mine
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JProfiler">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -304,6 +505,39 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
+||||||| .r1895
+=======
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JRebel Executor">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+>>>>>>> .r2117
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -398,6 +632,7 @@
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="blj_new:war exploded" />
+          <artifact name="blj_new:Web exploded" />
         </option>
       </method>
     </configuration>
@@ -431,19 +666,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< .mine
     <list>
       <item itemvalue="JUnit.UpdateDepartmentCountTest.userUpdateDepartmentCount" />
+      <item itemvalue="Node.js.alert_config.js" />
+      <item itemvalue="Node.js.outbound_config.js" />
+      <item itemvalue="Node.js.regExpUtil.js" />
+      <item itemvalue="Tomcat Server.Tomcat9.0.29" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.regExpUtil.js" />
+        <item itemvalue="JUnit.UpdateDepartmentCountTest.userUpdateDepartmentCount" />
+        <item itemvalue="Node.js.outbound_config.js" />
+        <item itemvalue="Node.js.alert_config.js" />
+      </list>
+    </recent_temporary>
+||||||| .r1895
+    <list>
       <item itemvalue="Node.js.alert_config.js" />
       <item itemvalue="Node.js.outbound_config.js" />
       <item itemvalue="Tomcat Server.Tomcat9.0.29" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UpdateDepartmentCountTest.userUpdateDepartmentCount" />
         <item itemvalue="Node.js.outbound_config.js" />
         <item itemvalue="Node.js.alert_config.js" />
       </list>
     </recent_temporary>
+=======
+>>>>>>> .r2117
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -451,22 +703,40 @@
         <serviceView>
           <option name="contentProportion" value="0.11672185" />
           <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+        <serviceView>
+          <option name="contentProportion" value="0.08360927" />
+          <treeState>
             <expand>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
           </treeState>
+          <option name="isSelected" value="true" />
+          <option name="viewType" value="group" />
+          <option name="roots">
+            <list>
+              <ServiceState>
+                <option name="path">
+                  <list>
+                    <option value="Run Dashboard" />
+                    <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+                  </list>
+                </option>
+                <option name="contributor" value="com.intellij.execution.dashboard.RunDashboardServiceViewContributor" />
+              </ServiceState>
+            </list>
+          </option>
         </serviceView>
       </list>
     </option>
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration" cleanupOnStartRun="true">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
@@ -614,6 +884,7 @@
       <workItem from="1594633398047" duration="3557000" />
       <workItem from="1594697680712" duration="40000" />
       <workItem from="1595640399458" duration="311000" />
+<<<<<<< .mine
       <workItem from="1596266630948" duration="480000" />
       <workItem from="1596267171934" duration="8756000" />
       <workItem from="1596283567118" duration="14196000" />
@@ -645,6 +916,25 @@
       <workItem from="1597456943025" duration="26529000" />
       <workItem from="1597498205985" duration="6084000" />
       <workItem from="1597541293415" duration="3524000" />
+      <workItem from="1597569956649" duration="9196000" />
+      <workItem from="1597582861528" duration="1121000" />
+      <workItem from="1597590281330" duration="114000" />
+      <workItem from="1597620114012" duration="1419000" />
+      <workItem from="1597624529292" duration="5386000" />
+      <workItem from="1597631304216" duration="22719000" />
+||||||| .r1895
+=======
+      <workItem from="1596113608350" duration="127000" />
+      <workItem from="1596113977481" duration="499000" />
+      <workItem from="1596114498543" duration="2975000" />
+      <workItem from="1596117527821" duration="2595000" />
+      <workItem from="1596242910722" duration="630000" />
+      <workItem from="1596243577434" duration="10581000" />
+      <workItem from="1596273120967" duration="5733000" />
+      <workItem from="1596330890885" duration="18425000" />
+      <workItem from="1596414488331" duration="13641000" />
+      <workItem from="1596441558639" duration="30797000" />
+>>>>>>> .r2117
     </task>
     <servers />
   </component>
@@ -664,16 +954,38 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="325" y="0" width="645" height="680" key="#Tomcat_9.0.29/0.0.1280.680@0.0.1280.680" timestamp="1594565129414" />
+<<<<<<< .mine
     <state x="142" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597456736860">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594611976438">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596442395531">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1594611976438" />
     <state x="142" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1597456736860" />
-    <state x="528" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1597480106217">
+    <state x="528" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1597652651481">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1594611976438" />
+    <state x="440" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1594214933215">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1596442395531" />
+    <state x="440" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1596444292812">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
-    <state x="440" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594214933215" />
-    <state x="528" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597480106217" />
+    <state x="440" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1596444292812" />
+    <state x="263" y="18" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1596273503964">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="263" y="18" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1280.680@0.0.1280.680" timestamp="1596273503964" />
+    <state x="528" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597652651481" />
     <state x="389" y="90" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1597456836224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -682,8 +994,24 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1280.680@0.0.1280.680" timestamp="1594611972223" />
+<<<<<<< .mine
     <state x="408" y="318" width="638" height="187" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath" timestamp="1597456507870">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="318" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589198205703">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="459" y="238" width="432" height="187" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath" timestamp="1596273171827">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="459" y="238" width="432" height="187" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath/0.0.1280.680@0.0.1280.680" timestamp="1596273171827" />
+    <state x="443" y="238" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1596273181920">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="443" y="238" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1280.680@0.0.1280.680" timestamp="1596273181920" />
+    <state x="318" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589198205703">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
     <state x="408" y="318" width="638" height="187" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath/0.0.1536.824@0.0.1536.824" timestamp="1597456507870" />
     <state x="497" y="318" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1597456515687">
@@ -694,11 +1022,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="318" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1589198205703" />
+<<<<<<< .mine
     <state x="382" y="321" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1597224532418" />
     <state x="425" y="199" width="433" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594214905197">
+||||||| .r1895
+    <state x="425" y="199" width="433" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594214905197">
+=======
+    <state x="425" y="199" width="503" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596340661478">
+>>>>>>> .r2117
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="425" y="199" width="433" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1594214905197" />
+    <state x="425" y="199" width="503" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1596340661478" />
     <state x="482" y="211" width="364" height="259" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1593267794165">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -724,106 +1058,326 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="777" y="84" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1593671707779" />
+<<<<<<< .mine
     <state x="877" y="202" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1597147853332" />
     <state x="784" y="247" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597304988040">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="653" y="204" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1590236228101">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="653" y="204" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1596118893183">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state x="653" y="204" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1590236228101" />
     <state x="784" y="247" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1597304988040" />
-    <state width="541" height="565" key="DebuggerActiveHint" timestamp="1597484832327">
+    <state width="541" height="565" key="DebuggerActiveHint" timestamp="1597657006048">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="653" y="204" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1590236228101" />
+    <state width="416" height="466" key="DebuggerActiveHint" timestamp="1593495664265">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="653" y="204" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1596118893183" />
+    <state width="493" height="466" key="DebuggerActiveHint" timestamp="1596524297093">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="416" height="466" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1593495664265" />
-    <state width="541" height="565" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1597484832327" />
+    <state width="541" height="565" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1597657006048" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1597118216740">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="416" height="466" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1593495664265" />
+    <state x="421" y="81" key="FileChooserDialogImpl" timestamp="1594611962828">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="493" height="466" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1596524297093" />
+    <state x="474" y="31" key="FileChooserDialogImpl" timestamp="1596273750818">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1597118216740" />
     <state x="484" y="221" key="FileChooserDialogImpl" timestamp="1597456514530">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="421" y="81" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1594611962828" />
     <state x="484" y="221" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597456514530" />
-    <state width="1292" height="183" key="GridCell.Tab.0.bottom" timestamp="1597544784347">
+    <state width="1292" height="211" key="GridCell.Tab.0.bottom" timestamp="1597655013078">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="421" y="81" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1594611962828" />
+    <state width="1066" height="523" key="GridCell.Tab.0.bottom" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="474" y="31" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1596273750818" />
+    <state width="1208" height="135" key="GridCell.Tab.0.bottom" timestamp="1596586878900">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.0.center" timestamp="1597544784347">
+    <state width="1292" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597655013078" />
+    <state width="1292" height="211" key="GridCell.Tab.0.center" timestamp="1597655013078">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.0.center" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1596586878900" />
+    <state width="1208" height="135" key="GridCell.Tab.0.center" timestamp="1596586878900">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.0.left" timestamp="1597544784347">
+    <state width="1292" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597655013078" />
+    <state width="1292" height="211" key="GridCell.Tab.0.left" timestamp="1597655013078">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.0.left" timestamp="1594637674210">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1596586878900" />
+    <state width="1208" height="135" key="GridCell.Tab.0.left" timestamp="1596586878900">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594637674210" />
-    <state width="1292" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.0.right" timestamp="1597544784347">
+    <state width="1292" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597655013078" />
+    <state width="1292" height="211" key="GridCell.Tab.0.right" timestamp="1597655013078">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594637674210" />
+    <state width="1066" height="523" key="GridCell.Tab.0.right" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1596586878900" />
+    <state width="1208" height="135" key="GridCell.Tab.0.right" timestamp="1596586878900">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.1.bottom" timestamp="1597544784347">
+    <state width="1292" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597655013078" />
+    <state width="1292" height="175" key="GridCell.Tab.1.bottom" timestamp="1597656953932">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.1.bottom" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1596586878900" />
+    <state width="1208" height="135" key="GridCell.Tab.1.bottom" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.1.center" timestamp="1597544784347">
+    <state width="1292" height="175" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597656953932" />
+    <state width="1292" height="175" key="GridCell.Tab.1.center" timestamp="1597656953932">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.1.center" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="135" key="GridCell.Tab.1.center" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.1.left" timestamp="1597544784347">
+    <state width="1292" height="175" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597656953932" />
+    <state width="1292" height="175" key="GridCell.Tab.1.left" timestamp="1597656953932">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.1.left" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="135" key="GridCell.Tab.1.left" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.1.right" timestamp="1597544784347">
+    <state width="1292" height="175" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597656953932" />
+    <state width="1292" height="175" key="GridCell.Tab.1.right" timestamp="1597656953932">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.1.right" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="135" key="GridCell.Tab.1.right" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597544784347" />
-    <state width="1292" height="183" key="GridCell.Tab.2.bottom" timestamp="1597544783955">
+    <state width="1292" height="175" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597656953932" />
+    <state width="1292" height="211" key="GridCell.Tab.2.bottom" timestamp="1597655012635">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.2.bottom" timestamp="1594637674212">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="135" key="GridCell.Tab.2.bottom" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637674212" />
-    <state width="1292" height="183" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597544783955" />
-    <state width="1292" height="183" key="GridCell.Tab.2.center" timestamp="1597544783954">
+    <state width="1292" height="211" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597655012635" />
+    <state width="1292" height="211" key="GridCell.Tab.2.center" timestamp="1597655012634">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637674212" />
+    <state width="1066" height="523" key="GridCell.Tab.2.center" timestamp="1594637674212">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="135" key="GridCell.Tab.2.center" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1594637674212" />
-    <state width="1292" height="183" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1597544783954" />
-    <state width="1292" height="183" key="GridCell.Tab.2.left" timestamp="1597544783954">
+    <state width="1292" height="211" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1597655012634" />
+    <state width="1292" height="211" key="GridCell.Tab.2.left" timestamp="1597655012634">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1594637674212" />
+    <state width="1066" height="523" key="GridCell.Tab.2.left" timestamp="1594637674211">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="135" key="GridCell.Tab.2.left" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
-    <state width="1292" height="183" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1597544783954" />
-    <state width="1292" height="183" key="GridCell.Tab.2.right" timestamp="1597544783955">
+    <state width="1292" height="211" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1597655012634" />
+    <state width="1292" height="211" key="GridCell.Tab.2.right" timestamp="1597655012634">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1594637674211" />
+    <state width="1066" height="523" key="GridCell.Tab.2.right" timestamp="1594637674212">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="135" key="GridCell.Tab.2.right" timestamp="1596586878784">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="523" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1594637674212" />
-    <state width="1292" height="183" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1597544783955" />
-    <state width="1292" height="183" key="GridCell.Tab.3.bottom" timestamp="1597544783955">
+    <state width="1292" height="211" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1597655012634" />
+    <state width="1292" height="211" key="GridCell.Tab.3.bottom" timestamp="1597655012634">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="523" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1594637674212" />
+    <state width="1066" height="230" key="GridCell.Tab.3.bottom" timestamp="1594637462156">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="135" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1596586878784" />
+    <state width="1208" height="23" key="GridCell.Tab.3.bottom" timestamp="1596537591361">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="230" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637462156" />
-    <state width="1292" height="183" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597544783955" />
-    <state width="1292" height="183" key="GridCell.Tab.3.center" timestamp="1597544783955">
+    <state width="1292" height="211" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597655012634" />
+    <state width="1292" height="211" key="GridCell.Tab.3.center" timestamp="1597655012634">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="230" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594637462156" />
+    <state width="1066" height="230" key="GridCell.Tab.3.center" timestamp="1594637462155">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="23" key="GridCell.Tab.3.bottom/0.0.1280.680@0.0.1280.680" timestamp="1596537591361" />
+    <state width="1208" height="23" key="GridCell.Tab.3.center" timestamp="1596537591361">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="230" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1594637462155" />
-    <state width="1292" height="183" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1597544783955" />
-    <state width="1292" height="183" key="GridCell.Tab.3.left" timestamp="1597544783955">
+    <state width="1292" height="211" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1597655012634" />
+    <state width="1292" height="211" key="GridCell.Tab.3.left" timestamp="1597655012634">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="230" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1594637462155" />
+    <state width="1066" height="230" key="GridCell.Tab.3.left" timestamp="1594637462155">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="23" key="GridCell.Tab.3.center/0.0.1280.680@0.0.1280.680" timestamp="1596537591361" />
+    <state width="1208" height="23" key="GridCell.Tab.3.left" timestamp="1596537591361">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
+<<<<<<< .mine
     <state width="1066" height="230" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1594637462155" />
-    <state width="1292" height="183" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1597544783955" />
-    <state width="1292" height="183" key="GridCell.Tab.3.right" timestamp="1597544783955">
+    <state width="1292" height="211" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1597655012634" />
+    <state width="1292" height="211" key="GridCell.Tab.3.right" timestamp="1597655012634">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state width="1066" height="230" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1594637462155" />
+    <state width="1066" height="230" key="GridCell.Tab.3.right" timestamp="1594637462156">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state width="1208" height="23" key="GridCell.Tab.3.left/0.0.1280.680@0.0.1280.680" timestamp="1596537591361" />
+    <state width="1208" height="23" key="GridCell.Tab.3.right" timestamp="1596537591361">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
-    <state width="1066" height="230" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1594637462156" />
-    <state width="1292" height="183" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1597544783955" />
+    <state width="1208" height="23" key="GridCell.Tab.3.right/0.0.1280.680@0.0.1280.680" timestamp="1596537591361" />
+    <state width="1066" height="243" key="GridCell.Tab.4.bottom" timestamp="1596115103265">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.4.bottom/0.0.1280.680@0.0.1280.680" timestamp="1596115103265" />
+    <state width="1066" height="243" key="GridCell.Tab.4.center" timestamp="1596115103265">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.4.center/0.0.1280.680@0.0.1280.680" timestamp="1596115103265" />
+    <state width="1066" height="243" key="GridCell.Tab.4.left" timestamp="1596115103265">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.4.left/0.0.1280.680@0.0.1280.680" timestamp="1596115103265" />
+    <state width="1066" height="243" key="GridCell.Tab.4.right" timestamp="1596115103265">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.4.right/0.0.1280.680@0.0.1280.680" timestamp="1596115103265" />
+    <state width="1066" height="243" key="GridCell.Tab.5.bottom" timestamp="1596115108643">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.5.bottom/0.0.1280.680@0.0.1280.680" timestamp="1596115108643" />
+    <state width="1066" height="243" key="GridCell.Tab.5.center" timestamp="1596115108643">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.5.center/0.0.1280.680@0.0.1280.680" timestamp="1596115108643" />
+    <state width="1066" height="243" key="GridCell.Tab.5.left" timestamp="1596115108643">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.5.left/0.0.1280.680@0.0.1280.680" timestamp="1596115108643" />
+    <state width="1066" height="243" key="GridCell.Tab.5.right" timestamp="1596115108643">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1066" height="243" key="GridCell.Tab.5.right/0.0.1280.680@0.0.1280.680" timestamp="1596115108643" />
+    <state width="1292" height="211" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1597655012634" />
     <state width="1292" height="213" key="GridCell.Tab.9.bottom" timestamp="1596525032544">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -844,10 +1398,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1594560780607" />
+<<<<<<< .mine
     <state x="235" y="66" width="996" height="707" key="SettingsEditor" timestamp="1597478695945">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="142" y="0" key="SettingsEditor" timestamp="1594611521799">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="165" y="0" width="1038" height="680" key="SettingsEditor" timestamp="1596444523317">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1594611521799" />
+    <state x="165" y="0" width="1038" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1596444523317" />
+    <state x="439" y="118" key="chooseDestDirectoryDialog" timestamp="1596366948621">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="439" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1596366948621" />
+    <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596443317122">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1596443317122" />
     <state x="235" y="66" width="996" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597478695945" />
     <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1596964083822">
       <screen x="0" y="0" width="1536" height="824" />
@@ -881,11 +1451,19 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="221" y="0" key="editAsTableFormatDialogDimension/0.0.1280.680@0.0.1280.680" timestamp="1593093819936" />
-    <state x="229" y="86" width="1054" height="738" key="find.popup" timestamp="1597544024946">
+<<<<<<< .mine
+    <state x="229" y="86" width="1054" height="738" key="find.popup" timestamp="1597655923719">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="0" y="0" width="773" height="680" key="find.popup" timestamp="1594637366930">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="245" y="0" width="773" height="680" key="find.popup" timestamp="1596530446101">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
-    <state x="0" y="0" width="773" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1594637366930" />
-    <state x="229" y="86" width="1054" height="738" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597544024946" />
+    <state x="245" y="0" width="773" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1596530446101" />
+    <state x="229" y="86" width="1054" height="738" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597655923719" />
     <state x="28" y="0" key="new project wizard" timestamp="1594609173272">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -894,21 +1472,37 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="282" y="67" width="700" height="530" key="recent.locations.popup/0.0.1280.680@0.0.1280.680" timestamp="1593671965293" />
-    <state x="460" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1597288473294">
+<<<<<<< .mine
+    <state x="460" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1597652951744">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="383" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1593426621542">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="383" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1596354826304">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
-    <state x="383" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1593426621542" />
-    <state x="460" y="0" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1597288473294" />
+    <state x="383" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1596354826304" />
+    <state x="460" y="0" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1597652951744" />
     <state x="356" y="183" key="run.anything.popup" timestamp="1597197441136">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1591580462284" />
+<<<<<<< .mine
     <state x="356" y="183" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597197441136" />
-    <state x="502" y="182" width="807" height="822" key="search.everywhere.popup" timestamp="1597396931351">
+    <state x="502" y="182" width="807" height="822" key="search.everywhere.popup" timestamp="1597654855241">
       <screen x="0" y="0" width="1536" height="824" />
+||||||| .r1895
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1594564280464">
+      <screen x="0" y="0" width="1280" height="680" />
+=======
+    <state x="339" y="114" width="672" height="678" key="search.everywhere.popup" timestamp="1596523936758">
+      <screen x="0" y="0" width="1280" height="680" />
+>>>>>>> .r2117
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594564280464" />
-    <state x="502" y="182" width="807" height="822" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597396931351" />
+    <state x="339" y="114" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1596523936758" />
+    <state x="502" y="182" width="807" height="822" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597654855241" />
     <state x="331" y="23" key="spring file set editor" timestamp="1594611026522">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -918,6 +1512,7 @@
     </state>
     <state x="641" y="151" key="svn.repositoryBrowser/0.0.1536.824@0.0.1536.824" timestamp="1596266806574" />
   </component>
+<<<<<<< .mine
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -935,6 +1530,26 @@
       </configuration>
     </watches-manager>
   </component>
+||||||| .r1895
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigRouteController.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="this" />
+        <watch expression="this" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+=======
+>>>>>>> .r2117
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/blj_new$Tomcat_9_0_29.ic" NAME="Tomcat 9.0.29 Coverage Results" MODIFIED="1593599154793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>

@@ -337,23 +337,7 @@ $('#downTemplate1').click(function(){
     $('#downClick1')[0].click();
 });
 
-//发布应用上传点击事件
-function openFile1() {
-    $('#Vfile1').text();
-    $('#btn_file1').click();
-
-    $('#btn_file1').change(function(){
-        var file = $("#btn_file1").val();
-        var fileName = getFileName(file);
-        function getFileName(o){
-            var pos=o.lastIndexOf("\\");
-            return o.substring(pos+1);
-        }
-        $("#filename1").html(fileName);
-    })
-}
-
-//应用程序上传点击事件
+//应用服务器上传点击事件
 function openFile() {
   $('#Vfile').text();
   $('#btn_file').click();
@@ -369,6 +353,23 @@ function openFile() {
   })
 }
 
+//发布应用上传点击事件
+function openFile1() {
+    $('#Vfile1').text();
+    $('#btn_file1').click();
+
+    $('#btn_file1').change(function(){
+        var file1 = $("#btn_file1").val();
+        var fileName1 = getFileName(file1);
+        function getFileName(o){
+            var pos=o.lastIndexOf("\\");
+            return o.substring(pos+1);
+        }
+        $("#filename1").html(fileName1);
+    })
+}
+
+//应用服务器导入
 $("#upload").on("click", function () {
   var s = $('#btn_file')[0].files[0];
   if(!s){
@@ -410,6 +411,49 @@ $("#upload").on("click", function () {
 
       }
   });
+});
+
+//应用发布导入
+$("#upload1").on("click", function () {
+    var s1 = $('#btn_file1')[0].files[0];
+    if(!s1){
+        $('#Vfile1').text('请上传文件');
+        return;
+    }
+
+    var formData1 = new FormData();
+    formData1.append("file_data", s1);
+    formData1.append("type", 0);
+    $("#modal-upload .modal-title").text('状态');
+    $("#modal-upload .modal-body").text('正在导入...');
+    $("#modal-upload").modal();
+    $.ajax({
+        url: "../../upload/apppubserver",
+        type: 'POST',
+        cache: false,
+        data: formData1,
+        processData: false,
+        contentType: false,
+        textEncoding: 'GBK',
+        success: function (data) {
+            if (data.success){
+                $("#modal-default2").modal('hide');
+                $("#modal-upload").modal('hide');
+                $("#modal-success .modal-title").text('成功');
+                $("#modal-success .modal-body").text('导入成功!');
+                $("#modal-success").modal();
+                loadAJAX('#apppub');
+            }else {
+                $("#modal-upload").modal('hide');
+                $("#modal-danger .modal-title").text('失败');
+                $("#modal-danger .modal-body").text('导入失败!');
+                $("#modal-danger").modal();
+            }
+        },
+        error: function () {
+
+        }
+    });
 });
 
 //应用服务器的添加和编辑操作
@@ -1067,7 +1111,7 @@ $.ajax({
             topNode.text = result.data[0].text;
             $("#depart_name").click(function() {
                 var options = {
-                    levels : 1,
+                    levels : 2,
                     data : result.data,
                     collapseIcon:"treegrid-expander treegrid-expander-expanded",
                     expandIcon:'treegrid-expander treegrid-expander-collapsed',
@@ -1084,7 +1128,7 @@ $.ajax({
             });
             $("#apppub_depart_name").click(function() {
                 var options = {
-                    levels : 1,
+                    levels : 2,
                     data : result.data,
                     collapseIcon:"treegrid-expander treegrid-expander-expanded",
                     expandIcon:'treegrid-expander treegrid-expander-collapsed',

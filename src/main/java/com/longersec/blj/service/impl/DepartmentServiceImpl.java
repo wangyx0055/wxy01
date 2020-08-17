@@ -158,4 +158,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public List<Integer> selectTopId(int id) {
 		return DepartmentDao.selectTopId(id);
 	}
+
+	@Override
+	public List<Integer> selectIdByname(String name) {
+		return DepartmentDao.selectIdByname(name);
+	}
+
+
 }

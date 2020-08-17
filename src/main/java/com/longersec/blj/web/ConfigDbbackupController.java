@@ -1,6 +1,7 @@
 package com.longersec.blj.web;
 
 import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,7 +36,6 @@ import com.longersec.blj.domain.DeviceRecord;
 import com.longersec.blj.service.ConfigDbbackupService;
 import com.longersec.blj.service.ConfigService;
 import com.longersec.blj.utils.SystemCommandUtil;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -82,7 +82,10 @@ public class ConfigDbbackupController {
 		if(result.getBoolean("success")) {
 			Config config = configService.getByName("dbbackuppath");
 			Date dNow = new Date();
-			SimpleDateFormat ft = new SimpleDateFormat ("YYYYMMddhhmmssS");
+			SimpleDateFormat ft = new SimpleDateFormat ("YYYYMMddhhmmss");
+			if(!(new File(config.getValue())).exists()) {
+				SystemCommandUtil.execCmd("mkdir -p "+config.getValue());
+			}
             String filepath = config.getValue()+"/lsblj-"+ft.format(dNow)+".sql";
 			SystemCommandUtil.execCmd("/opt/lsblj/mariadb/bin/mysqldump -ulsblj -plsblj lsblj > " + filepath);
 			File dbFile = new File(filepath);
@@ -155,59 +158,6 @@ public class ConfigDbbackupController {
 		String msgString = SystemCommandUtil.execCmd("/opt/lsblj/mariadb/bin/mysql -ulsblj -plsblj lsblj < /opt/lsblj/dbbackup/lsblj.sql");
 		result.put("msg", msgString);
 		return result;
-	}
-
-	@RequestMapping("/backupLicense")
-	@ResponseBody
-	public JSONObject backupLicense(HttpServletRequest request, HttpSession session) {
-		JSONObject result = new JSONObject();
-		result.accumulate("success", false);
-		result.accumulate("msg", "未找到许可文件");
-		return result;
-	}
-
-	@RequestMapping("/applyLicense")
-	@ResponseBody
-	public JSONObject applyLicense(HttpServletRequest request, HttpSession session) {
-		JSONObject result = new JSONObject();
-		result.accumulate("success", false);
-		result.accumulate("msg", "未找到许可文件");
-		return result;
-	}
-
-	@RequestMapping("/uploadLicense")
-	@ResponseBody
-	public void uploadLicense(@RequestParam MultipartFile licenseFile, HttpServletRequest request, HttpServletResponse response) {
-		response.setContentType("multipart/form-data");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
-		ServletOutputStream out;
-		String filenameString = "/tmp/"+(new Date()).getTime();
-		try {
-			out = response.getOutputStream();
-			File destFile = new File(filenameString);
-			if(licenseFile.getOriginalFilename().indexOf('.')<=0||!licenseFile.getOriginalFilename().substring(licenseFile.getOriginalFilename().indexOf('.')).equals(".lic")) {
-				out.write("<script>window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"文件不正确!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
-				out.flush();
-				out.close();
-				return ;
-			}
-			FileUtils.copyInputStreamToFile(licenseFile.getInputStream(), destFile);
-			if(!destFile.exists()) {
-				out.write("<script>window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"复制文件出错!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
-				out.flush();
-				out.close();
-				return ;
-			}
-			SystemCommandUtil.execCmd("/opt/lsblj/mariadb/bin/mysql -ulsblj -plsblj lsblj < "+filenameString);
-			out.write("<script>window.parent.$('window.parent.$('#uploadLicenseBtn')[0].disabled=false;#loadingModal').modal('hide');window.parent.$(\"#modal-success .modal-title\").text('成功');window.parent.$(\"#modal-success .modal-body\").text(\"操作成功!\");window.parent.$(\"#modal-success\").modal();</script>".getBytes());
-			out.flush();
-			out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
 	}
 
 	@RequestMapping("/recoverFile")

@@ -231,7 +231,7 @@ $(function() {
     }
 
     var _dateVisit = function(interval, start, end) {
-    	if(start==null||start==""){
+    	if(start === null || start === ""){
     		$_date = $('dateVisit_date').val() + "";
     		if($_date.indexOf(' - ')>0){
         		$_date = $_date.split(' - ');
@@ -418,7 +418,7 @@ $(function() {
                     }
                 },
                 "columns" : [ {
-                    "data" : "total"
+                    "data" : "login_datetime"
                 },{
                     "data" : "username"
                 }, {
@@ -448,7 +448,6 @@ $(function() {
             })
     }
     function _dateSuccessFailChart(_data) {
-
         var data = new Array();
         var interval = new Array();
         var users = new Array();
@@ -587,7 +586,6 @@ $(function() {
     }
 
     function _userDateChart(_data) {
-
         var data = new Array();
         data[0] = [ 'interval', 'username', 'realname', 'total', 'ssh',
             'rdp', 'telnet', 'vnc', 'apppub', 'web' ];
@@ -701,91 +699,73 @@ $(function() {
 
    
 
-    $('.nav.nav-tabs li').each(function() {
-        $(this).click(function() {
-            if ($(this).children().attr('href') == '#B') {
-                _userVisit("day", "", "");
-            } else if ($(this).children().attr('href') == '#C') {
-                _dateSuccessFail("day", "", "");
-            } else if ($(this).children().attr('href') == '#D') {
-                _userDate("day", "", "");
-            } else {
-                _dateVisit("day", "", "");
-            }
-        })
+$('.nav.nav-tabs li').each(function() {
+    $(this).click(function() {
+        if ($(this).children().attr('href') == '#B') {
+            _userVisit("day", "", "");
+        } else if ($(this).children().attr('href') == '#C') {
+            _dateSuccessFail("day", "", "");
+        } else if ($(this).children().attr('href') == '#D') {
+            _userDate("day", "", "");
+        } else {
+            _dateVisit("day", "", "");
+        }
     })
-    _dateVisit("day", "", "");
-    $(window).resize(function() {
-        for (var i = 0; i < charts.length; i++) {
-            charts[i].resize();
-        }
-    });
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-        for (var i = 0; i < charts.length; i++) {
-            charts[i].resize();
-        }
-    });
-
-
-	init();
+})
+_dateVisit("day", "", "");
+$(window).resize(function() {
+    for (var i = 0; i < charts.length; i++) {
+        charts[i].resize();
+    }
+});
+$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+    for (var i = 0; i < charts.length; i++) {
+        charts[i].resize();
+    }
+});
+init();
 });
 
-
-    $('#login_log').DataTable({
-        'paging'      : true,
-        "iDisplayLength": 10,
-        'lengthChange': true,
-        "lengthMenu": [
-            [10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
-        ],
-        'dom'         :'t<"bottom"lifp<"clear">>',
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false,
-        "serverSide"	: true,
-        "destroy": true,
-        "ajax": {
-            "url": "../../loginLog/listLoginLog",
-           /* "data": function (d) {
-                for (var key in d) {
-                    if (key.indexOf("columns") == 0 || key.indexOf("order") == 0 || key.indexOf("search") == 0) { //以columns开头的参数删除
-                        delete d[key];
-                    }
-                }
-                //指定检索参数名称，后台参数名为extraSerach
-                eval('d.' + field + '="' + value
-                    + '"');
-            }*/
+//协议访问统计
+$('#login_log').DataTable({
+    'paging'      : true,
+    "iDisplayLength": 10,
+    'lengthChange': true,
+    "lengthMenu": [
+        [10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+    ],
+    'dom'         :'t<"bottom"lifp<"clear">>',
+    'searching'   : false,
+    'ordering'    : true,
+    'info'        : true,
+    'autoWidth'   : false,
+    "serverSide"	: true,
+    "destroy": true,
+    "ajax": {
+        "url": "../../loginLog/listLoginLog",
+    },
+    "columns": [
+        {"data": "login_datetime"},
+        {"data": "source_ip"},
+        {"data": "username"},
+        {"data": "realname"},
+        {"data": "protocol"},
+        {
+            "data": "status",
+            "render": function (data, type, row, mata) {
+                if (data == 0)
+                    return '失败';
+                else
+                    return '成功';
+            }
         },
-        "columns": [
-            {"data": "login_datetime",
-                /*"render": function (data, type, row, mata) {
-                   if(){
+        {"data": "details"},
 
-                   }
-                }*/
-            },
-            {"data": "source_ip"},
-            {"data": "username"},
-            {"data": "realname"},
-            {"data": "protocol"},
-            {
-                "data": "status",
-                "render": function (data, type, row, mata) {
-                    if (data == 0)
-                        return '失败';
-                    else
-                        return '成功';
-                }
-            },
-            {"data": "details"},
-
-        ],
-        "fnDrawCallback": function (settings, json) {
-            $('#loginlog div').tooltip();
-        }
-    });
+    ],
+    "fnDrawCallback": function (settings, json) {
+        $('#loginlog div').tooltip();
+    }
+});
 
 /*$("#modal-default4").on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal

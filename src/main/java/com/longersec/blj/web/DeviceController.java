@@ -4,8 +4,8 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.longersec.blj.domain.Group;
-import com.longersec.blj.domain.User;
+import com.longersec.blj.dao.ProtocolDao;
+import com.longersec.blj.domain.*;
 import com.longersec.blj.service.*;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -23,10 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.longersec.blj.domain.Device;
-import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.utils.Operator_log;
 import com.longersec.blj.utils.Validator;
+import com.longersec.blj.license.License;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -82,7 +81,7 @@ public class DeviceController {
 			for (Object strings : allParentName) {
 				stringBuilder.append(strings).append("/");
 			}
-			device1.setTopName(stringBuilder.substring(0,stringBuilder.length()-1));
+			device1.setTopName(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
 		}
 		JSONArray jsonArray = JSONArray.fromObject(devices);
 		JSONObject result = new JSONObject();
@@ -106,7 +105,17 @@ public class DeviceController {
 		String ip = device.getIp();
 		Device _device = deviceService.checkip(ip);
 		Device _device1 = deviceService.checkname(device.getName());
-
+		
+		int total = deviceService.total();
+		License l = new License();
+		if(!l.LicenseCheckUuid("")&&total>=3) {
+			result.put("success",false);
+			result.put("msg","设备数超过限制");
+		}else if(l.LicenseCheckUuid("")&&total>=l.LicenseGetDevices()) {
+			result.put("success",false);
+			result.put("msg","设备数超过许可限制");
+		}
+			
 		User user = (User) SecurityUtils.getSubject().getPrincipal();
 		device.setCreate_time((int) System.currentTimeMillis());
 		device.setCreator_id(user.getId());
@@ -287,8 +296,8 @@ public class DeviceController {
 		return result;
 	}
 
-	public static Map<String, Object> checkDeviceExport(DeviceService deviceService,DeviceTypeService deviceTypeService, String name, String ip, String osType, String description,
-	                                                    String account,String password,int protocolId, int port, int sshKey){
+	public static Map<String, Object> checkDeviceExport(DeviceService deviceService, DeviceTypeService deviceTypeService, ProtocolDao protocolDao , String name, String ip, String osType, String description,
+	                                                    String account, String password, String protocolname, int port, int sshKey){
 		Map<String, Object> errorMap = new HashMap<>(16);
 		Device checkName = deviceService.checkname(name);
 		if (checkName != null) {
@@ -331,13 +340,14 @@ public class DeviceController {
 			errorMap.put("success", false);
 			return errorMap;
 		}
-		if (protocolId<1 && protocolId >6) {
-			errorMap.put("info",protocolId+":该协议不存在");
+		Protocol byName = protocolDao.getByName(protocolname.toUpperCase());
+		if (byName == null) {
+			errorMap.put("info",protocolname+":该协议不存在");
 			errorMap.put("success", false);
 			return errorMap;
 		}
-		if (sshKey<0 && sshKey >1) {
-			errorMap.put("info",protocolId+":该sshKey不存在");
+		if (sshKey<0 || sshKey >1) {
+			errorMap.put("info",sshKey+":该sshKey不存在");
 			errorMap.put("success", false);
 			return errorMap;
 		}

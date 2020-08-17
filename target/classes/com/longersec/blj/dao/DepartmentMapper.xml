@@ -109,6 +109,7 @@
 			<if test="description != null">`description`=#{description},</if>
 			<if test="create_time != null">`create_time`=#{create_time},</if>
 			<if test="parent_id != null">`parent_id`=#{parent_id},</if>
+			<if test="create_id != null">`create_id`=#{create_id},</if>
 		</set>
 	</insert>
 
@@ -170,6 +171,11 @@
 	<select id="selectByname" resultType="com.longersec.blj.domain.Department" >
 		SELECT * FROM `lsblj_department` WHERE name = #{name}
 	</select>
+
+	<select id="selectIdByname" resultType="java.lang.Integer" >
+		SELECT id FROM `lsblj_department` WHERE name = #{name}
+	</select>
+
 
 	<select id="selectUserId" resultType="java.lang.Integer">
 		UPDATE lsblj_department SET `count` = 0 WHERE id IS NOT NULL;

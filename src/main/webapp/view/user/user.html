@@ -43,6 +43,24 @@
         body{
             padding-right: 0px!important;
         }
+        #tree {
+            position: absolute;
+            z-index: 1010;
+            background-color: white;
+            margin-left: 46px;
+            margin-top: -3px;
+            border: 1px solid #ccc;
+            width: 210px;
+            overflow: hidden auto;
+            display: none;
+            height: 192px;
+            border-top: none;
+        }
+        #tree ul li {
+            border-radius:0px;
+            border-left: none;
+            border-right: none;
+        }
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini u">
@@ -206,7 +224,7 @@
                   <span style="font-size: 12px">部门：</span>
                     <span style="width: 210px;overflow-y: auto;">
                         <input id="depart_name"  name="depart_name" readonly placeholder="&nbsp;&nbsp;&nbsp;请选择部门" type="text" autocomplete="off"  onclick="$('#tree').show()" style="width: 210px;height: 30px;margin-left: -2px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;" tabindex="2">&nbsp;&nbsp;<span id='VdepartName' style="color:red;font-size: 12px;"></span>
-                        <div id="tree" style=" position:absolute; z-index:1010; background-color:white;margin-left: 46px; width: 210px;overflow-y:auto;overflow-x: hidden"></div>
+                        <div id="tree"></div>
                         <input type="hidden" id="depart_id">
                     </span>
                 </div>

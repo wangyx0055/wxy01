@@ -1,1 +1,0 @@
-¯ 2jsX¤hr1src/main/webapp/js/view_js/password_management.js

@@ -1,20 +1,29 @@
 package com.longersec.blj.web;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.longersec.blj.domain.AlertLog;
+import com.longersec.blj.domain.Config;
 import com.longersec.blj.domain.ConfigAlertLevel;
 import com.longersec.blj.domain.ConfigNetwork;
 import com.longersec.blj.domain.EmailLog;
@@ -22,6 +31,7 @@ import com.longersec.blj.domain.SmsLog;
 import com.longersec.blj.domain.SystemMessage;
 import com.longersec.blj.domain.SystemUsage;
 import com.longersec.blj.domain.User;
+import com.longersec.blj.license.License;
 import com.longersec.blj.service.AlertLogService;
 import com.longersec.blj.service.ApppubAccountService;
 import com.longersec.blj.service.ApppubProgramService;
@@ -41,6 +51,7 @@ import com.longersec.blj.service.SystemUsageService;
 import com.longersec.blj.service.UserService;
 import com.longersec.blj.utils.SystemCommandUtil;
 import com.longersec.blj.utils.SystemUsageUtil;
+import com.longersec.blj.license.License;
 
 import cn.hutool.system.SystemUtil;
 import net.sf.json.JSONObject;
@@ -282,6 +293,115 @@ public class SystemInfoController {
 		result.put("getGraphTotal", deviceRecordService.getGraphTotal());
 		result.put("getApppubRecordTotal", apppubRecordService.getApppubRecordTotal());
 		
+		return result;
+	}
+	
+	@RequestMapping("/version")
+	@ResponseBody
+	public String version() {
+		String version = "";
+		try {
+			InputStream stream = new FileInputStream(this.getClass().getResource("/config.properties").getPath());
+			Properties pro = new Properties();
+			pro.load(stream);
+			version = pro.getProperty("blj.version");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return version;
+	}
+	
+	@RequestMapping("/applyLicense")
+	public void applyLicense(HttpServletRequest request, HttpSession session, HttpServletResponse response) {
+		String uuid = "";
+		License l = new License();
+        uuid = l.LicenseGetUuid();
+        System.out.println(uuid);
+        response.setContentType("multipart/form-data");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setHeader("content-disposition","attachment;fileName=license.req");
+		try {
+			ServletOutputStream out = response.getOutputStream();
+			out.write(uuid.getBytes(),0,uuid.length());
+	        out.close();
+	        out.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@RequestMapping("/uploadLicense")
+	@ResponseBody
+	public void uploadLicense(@RequestParam MultipartFile licenseFile, HttpServletRequest request, HttpServletResponse response) {
+		response.setContentType("multipart/form-data");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		ServletOutputStream out;
+		Config config = configService.getByName("licensepath");
+		String filenameString = config.getValue()+"/license";
+		try {
+			out = response.getOutputStream();
+			File destFile = new File(filenameString);
+			if(!licenseFile.getOriginalFilename().equals("license")) {
+				out.write("<script>window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"文件不正确!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
+				out.flush();
+				out.close();
+				return ;
+			}
+			FileUtils.copyFile(new File(filenameString), new File("/tmp/license"));
+			FileUtils.copyInputStreamToFile(licenseFile.getInputStream(), destFile);
+			if(!destFile.exists()) {
+				FileUtils.copyFile(new File("/tmp/license"), new File(filenameString));
+				out.write("<script>window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"复制文件出错!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
+				out.flush();
+				out.close();
+				return ;
+			}
+			License l = new License();
+			if(!l.LicenseCheckUuid("")) {
+				FileUtils.copyFile(new File("/tmp/license"), new File(filenameString));
+				out.write("<script>window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"License文件不正确!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
+				out.flush();
+				out.close();
+				return ;
+			}
+			out.write("<script>window.parent.licenseInfo();window.parent.$('#modal-updateLicense').modal('hide');window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-success .modal-title\").text('成功');window.parent.$(\"#modal-success .modal-body\").text(\"操作成功!\");window.parent.$(\"#modal-success\").modal();</script>".getBytes());
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	@RequestMapping("/licenseinfo")
+	@ResponseBody
+	public JSONObject licenseinfo() {
+		JSONObject result = new JSONObject();
+		License l = new License();
+		if(l.LicenseCheckUuid("")) {
+			result.put("versiontyp", "已授权");
+			result.put("productid", l.LicenseGetUuid());
+			result.put("name", l.LicenseGetName());
+			result.put("devices", l.LicenseGetDevices());
+			result.put("endtimestr", l.LicenseGetTimestampToHuman().substring(0,l.LicenseGetTimestampToHuman().indexOf(" ")));
+			result.put("endtime", l.LicenseGetEndTimestamp());
+		}else {
+			result.put("versiontyp", "未授权");
+			result.put("productid", "");
+			result.put("name", "");
+			result.put("devices", 3);
+			result.put("endtimestr", "");
+			result.put("endtime", "");
+		}
+        System.out.println(l.LicenseCheckUuid(""));
+        System.out.println(l.LicenseGetName());
+        System.out.println(l.LicenseGetDevices());
+        System.out.println(l.LicenseGetEndTimestr());
+        System.out.println(l.LicenseGetEndTimestamp());
+        
 		return result;
 	}
 }

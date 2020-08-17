@@ -300,7 +300,7 @@ public class ExportServiceImpl implements ExportService {
         File tempFile = File.createTempFile("vehicle", ".csv");
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
-        String[] headers = {"ID", "用户名","姓名","部门","角色名","状态","邮箱","QQ","微信","手机号码"};
+        String[] headers = {"ID", "用户名","姓名","部门名称","角色","状态","邮箱","QQ","微信","手机号码"};
         csvWriter.writeRecord(headers);
         ArrayList<User> datas = (ArrayList<User>) userDao.selectAll();
         for (User data : datas) {
@@ -308,7 +308,6 @@ public class ExportServiceImpl implements ExportService {
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getUsername());
             csvWriter.write(data.getRealname());
-         /*   csvWriter.write(data.getGroupname());*/
             csvWriter.write(data.getDepart_name());
             csvWriter.write(data.getRolename());
             csvWriter.write(data.getStatus()==1?"已禁用":"已启用");
@@ -348,7 +347,7 @@ public class ExportServiceImpl implements ExportService {
         File tempFile = File.createTempFile("vehicle", ".csv");
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
-        String[] headers = {"ID", "设备名","IP","系统类型","部门","描述","账号数"};
+        String[] headers = {"ID", "设备名","IP","系统类型","部门名称","描述","账号数"};
         csvWriter.writeRecord(headers);
         ArrayList<Device> datas = (ArrayList<Device>) deviceDao.selectAll();
         for (Device data : datas) {

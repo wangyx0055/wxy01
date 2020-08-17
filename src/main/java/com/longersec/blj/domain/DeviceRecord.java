@@ -51,6 +51,12 @@ public class DeviceRecord {
 	private String protocol;
 
 	private String command;
+
+	private Integer low_level;
+
+	private Integer middle_level;
+
+	private Integer high_level;
 	
 	private String searchAll;
 
@@ -66,6 +72,29 @@ public class DeviceRecord {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getMiddle_level() {
+		return middle_level;
+	}
+
+	public void setMiddle_level(Integer middle_level) {
+		this.middle_level = middle_level;
+	}
+
+	public Integer getLow_level() {
+		return low_level;
+	}
+
+	public Integer getHigh_level() {
+		return high_level;
+	}
+
+	public void setHigh_level(Integer high_level) {
+		this.high_level = high_level;
+	}
+
+	public void setLow_level(Integer low_level) {
+		this.low_level = low_level;
 	}
 
 	public String getCommand() {
@@ -270,6 +299,9 @@ public class DeviceRecord {
 				", realname='" + realname + '\'' +
 				", device_username='" + device_username + '\'' +
 				", time_length=" + time_length +
+				", low_level='" + low_level + '\'' +
+				", middle_level='" + middle_level + '\'' +
+				", high_level='" + high_level + '\'' +
 				", type='" + type + '\'' +
 				", status=" + status +
 				", log_file='" + log_file + '\'' +

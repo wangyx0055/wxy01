@@ -15,4 +15,6 @@ public interface ConfigLogService {
     int selectCount();
 
     int checkname(Integer id, String name);
+
+    int checksort(Integer id, Integer sort);
 }
