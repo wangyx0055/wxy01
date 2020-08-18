@@ -57,4 +57,88 @@
 	<select id="getById" resultMap="BaseResultMap">
 		SELECT * FROM lsblj_config_dbbackup where id=#{id}
 	</select>
+	
+	
+
+	<update id="DBReset" >
+		truncate table lsblj_access_policy;
+		truncate table lsblj_access_policy_apppub_account;
+		truncate table lsblj_access_policy_device_account;
+		truncate table lsblj_access_policy_group;
+		truncate table lsblj_access_policy_user;
+		truncate table lsblj_alert_log;
+		truncate table lsblj_app_loginkey;
+		truncate table lsblj_apppub_account;
+		truncate table lsblj_apppub_program;
+		truncate table lsblj_apppub_record;
+		truncate table lsblj_apppub_server;
+		truncate table lsblj_backup_config;
+		truncate table lsblj_backup_log;
+		truncate table lsblj_change_password_log;
+		truncate table lsblj_change_password_policy;
+		truncate table lsblj_change_password_policy_apppub;
+		truncate table lsblj_change_password_policy_device;
+		truncate table lsblj_change_password_policy_group;
+		truncate table lsblj_cmd_policy;
+		truncate table lsblj_cmd_policy_apppub;
+		truncate table lsblj_cmd_policy_cmd;
+		truncate table lsblj_cmd_policy_cmdgroup;
+		truncate table lsblj_cmd_policy_device_account;
+		truncate table lsblj_cmd_policy_group;
+		truncate table lsblj_cmd_policy_user;
+		truncate table lsblj_cmdgroup;
+		truncate table lsblj_cmdgroup_cmd;
+		truncate table lsblj_config_dbbackup;
+		truncate table lsblj_config_ldap_ad;
+		truncate table lsblj_config_logpara;
+		truncate table lsblj_config_route;
+		truncate table lsblj_crontab_command_log;
+		truncate table lsblj_crontab_script;
+		truncate table lsblj_crontab_script_config;
+		truncate table lsblj_crontab_script_config_device;
+		truncate table lsblj_crontab_script_config_group;
+		truncate table lsblj_device;
+		truncate table lsblj_device_account;
+		truncate table lsblj_device_record;
+		truncate table lsblj_device_record_key;
+		truncate table lsblj_device_record_mouse;
+		truncate table lsblj_dynamic_token;
+		truncate table lsblj_email_log;
+		truncate table lsblj_g_connection;
+		truncate table lsblj_g_connection_history;
+		truncate table lsblj_g_connection_parameter;
+		truncate table lsblj_group;
+		truncate table lsblj_group_device_account;
+		truncate table lsblj_group_user;
+		truncate table lsblj_ip_group;
+		truncate table lsblj_ip_group_ip;
+		truncate table lsblj_link_manage;
+		truncate table lsblj_live_sessions;
+		truncate table lsblj_log_delete_policy;
+		truncate table lsblj_log_delete_policy_apppub;
+		truncate table lsblj_log_delete_policy_device;
+		truncate table lsblj_log_delete_policy_group;
+		truncate table lsblj_log_delete_policy_user;
+		truncate table lsblj_login_log;
+		truncate table lsblj_operator_log;
+		truncate table lsblj_record;
+		truncate table lsblj_record_audit;
+		truncate table lsblj_record_command;
+		truncate table lsblj_session_autodelete;
+		truncate table lsblj_session_handdelete;
+		truncate table lsblj_sms_log;
+		truncate table lsblj_sys_session1;
+		truncate table lsblj_system_message;
+		truncate table lsblj_system_usage;
+		truncate table lsblj_user_favorite;
+		truncate table lsblj_user_passwordlog;
+		truncate table lsblj_user_visit;
+		truncate table lsblj_user_role;
+		
+		delete from lsblj_department where id>1;
+		update lsblj_department set `count`=0,`device_count`=0;
+		delete from lsblj_role where id > 5;
+		delete from lsblj_role_menu where role_id not in(select id from lsblj_role);
+		delete from lsblj_user where id>3;
+	</update>
 </mapper>

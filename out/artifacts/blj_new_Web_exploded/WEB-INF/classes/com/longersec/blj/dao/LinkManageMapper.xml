@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.LinkManageDao">
+    <resultMap id="BaseResultMap" type="com.longersec.blj.domain.LinkManage">
+        <id column="link_id" jdbcType="INTEGER" property="link_id"/>
+        <result column="link_name" jdbcType="VARCHAR" property="link_name"/>
+        <result column="link_url" jdbcType="VARCHAR" property="link_url"/>
+    </resultMap>
+
+    <resultMap id="linkManageRecordCounts" type="java.lang.Long">
+        <result column="recordCounts" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <insert id="addLinkManage" parameterType="com.longersec.blj.domain.LinkManage">
+        INSERT INTO lsblj_link_manage
+        <set>
+            <if test="link_id != null">`link_id`=#{link_id},</if>
+            <if test="link_name != null">`link_name`=#{link_name},</if>
+            <if test="link_url != null">`link_url`=#{link_url},</if>
+        </set>
+    </insert>
+
+    <update id="editLinkManage" parameterType="com.longersec.blj.domain.LinkManage">
+        UPDATE lsblj_link_manage
+        <set>
+            <if test="link_id != null">`link_id`=#{link_id},</if>
+            <if test="link_name != null">`link_name`=#{link_name},</if>
+            <if test="link_url != null">`link_url`=#{link_url},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="delLinkManage" parameterType="java.util.List">
+        DELETE FROM lsblj_link_manage
+        where id IN (
+        <foreach collection="list" item="item" separator=",">
+            #{item},
+        </foreach>
+        0)
+    </delete>
+</mapper>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.DeviceDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.Device">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="os_type" jdbcType="INTEGER" property="os_type"/>
+		<result column="os_ver" jdbcType="VARCHAR" property="os_ver"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="ipv6" jdbcType="VARCHAR" property="ipv6"/>
+		<result column="super_account" jdbcType="VARCHAR" property="super_account"/>
+		<result column="super_password" jdbcType="BLOB" property="super_password"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="account_count" jdbcType="INTEGER" property="account_count"/>
+		<result column="groupid" jdbcType="VARCHAR" property="groupid"/>
+	<!--	<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>-->
+		<result column="description" jdbcType="VARCHAR" property="description"/>
+		<result column="creator_id" jdbcType="INTEGER" property="creator_id"/>
+		<result column="create_time" jdbcType="INTEGER" property="create_time"/>
+		<result column="login_method" jdbcType="INTEGER" property="login_method"/>
+		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
+		<result column="department" jdbcType="INTEGER" property="department"/>
+		<result column="ssh_key" jdbcType="INTEGER" property="ssh_key"/>
+		<result column="groupname" jdbcType="VARCHAR" property="groupname"/>
+		<result column="protocolname" jdbcType="VARCHAR" property="protocolname"/>
+		<result column="typename" jdbcType="VARCHAR" property="typename"/>
+	</resultMap>
+
+	<resultMap id="deviceRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addDevice" keyProperty="id" useGeneratedKeys="true" parameterType="com.longersec.blj.domain.Device">
+		INSERT INTO lsblj_device
+		<set>
+		<if test="os_type != null">`os_type`=#{os_type},</if>
+		<if test="os_ver != null">`os_ver`=#{os_ver},</if>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="ipv6 != null">`ipv6`=#{ipv6},</if>
+		<if test="super_account != null">`super_account`=#{super_account},</if>
+		<if test="super_password != null">`super_password`=AES_ENCRYPT(#{super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="status != null">`status`=#{status},</if>
+		<if test="account_count != null">`account_count`=#{account_count},</if>
+		<if test="groupid != null">`groupid`=#{groupid},</if>
+	<!--	<if test="depart_name != null">`depart_name`=#{depart_name},</if>-->
+		<if test="description != null">`description`=#{description},</if>
+		<if test="creator_id != null">`creator_id`=#{creator_id},</if>
+		<if test="create_time != null">`create_time`=#{create_time},</if>
+		<if test="login_method != null">`login_method`=#{login_method},</if>
+		<if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
+		<if test="department != null">`department`=#{department},</if>
+		<if test="ssh_key != null">`ssh_key`=#{ssh_key};</if>
+		</set>
+	</insert>
+
+	<update id="editDevice" parameterType="com.longersec.blj.domain.Device">
+		UPDATE lsblj_device
+		<set>
+		<if test="os_type != null">`os_type`=#{os_type},</if>
+		<if test="name != null">`name`=#{name},</if>
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="department != null">`department`=#{department},</if>
+		<if test="description != null">`description`=#{description},</if>
+	<!--	<if test="depart_name != null">`depart_name`=#{depart_name},</if>-->
+		</set>
+		where id=#{id};
+	</update>
+
+	<select id="selectOldDepartment" resultType="java.lang.Integer">
+		SELECT `department` FROM  `lsblj_device` WHERE id = #{id};
+	</select>
+
+	<delete id="delDevice" parameterType="java.util.List">
+		DELETE FROM lsblj_device
+		where id IN(
+		<foreach collection="list" item="item">
+			#{item},
+		</foreach>
+		0);
+		DELETE  FROM lsblj_device_account WHERE device_id NOT IN (SELECT id FROM lsblj_device);
+		DELETE  FROM lsblj_group_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_access_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_cmd_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+	</delete>
+
+	<delete id="deleteUselessDevice">
+		DELETE FROM `lsblj_device` WHERE department = #{department};
+		DELETE  FROM lsblj_device_account WHERE device_id NOT IN (SELECT id FROM lsblj_device);
+		DELETE  FROM lsblj_group_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_access_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+		DELETE  FROM lsblj_cmd_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
+	</delete>
+
+	<select id="findAll" resultMap="BaseResultMap, deviceRecordCounts" resultType="java.lang.Object">
+		SELECT 
+		SQL_CALC_FOUND_ROWS
+		_device.*,lsblj_department.name depart_name, lsblj_department.id department,lsblj_device_type.name typename,lsblj_protocol.name protocolname  FROM lsblj_device as _device
+		LEFT JOIN lsblj_department ON _device.department=lsblj_department.id
+		LEFT JOIN lsblj_protocol on _device.protocol_id=lsblj_protocol.id
+		LEFT JOIN lsblj_device_type on _device.os_type=lsblj_device_type.id
+		where 1
+		<if test="device.name!=null">AND _device.name like CONCAT('%',#{device.name},'%')</if>
+		<if test="device.ip!=null">AND `ip` like CONCAT('%',#{device.ip},'%')</if>
+		<if test="device.typename!=null">AND lsblj_device_type.name like CONCAT('%',#{device.typename},'%')</if>
+		<if test="device.depart_name!=null">AND lsblj_department.name like CONCAT('%',#{device.depart_name},'%')</if>
+		<if test="device.searchAll!=null">
+		AND(
+		 _device.name like CONCAT('%',#{device.searchAll},'%')
+		 or ip like CONCAT('%',#{device.searchAll},'%')
+		 or lsblj_device_type.name like CONCAT('%',#{device.searchAll},'%')
+		 or lsblj_department.name like CONCAT('%',#{device.searchAll},'%')
+		)
+		</if>
+		<if test="depart_ids!=null and depart_ids.size()>0">
+			AND department in
+			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
+		
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="checkip" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_device where ip =#{ip};
+	</select>
+	<select id="checkname" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_device where name =#{name};
+	</select>
+
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_device where id =#{id};
+	</select>
+	<select id="selectAll" resultType="com.longersec.blj.domain.Device">
+		SELECT * FROM lsblj_device;
+	</select>
+
+	<update id="updateAccounts">
+		update lsblj_device set account_count = account_count+ #{counts} where id = #{device_id};
+	</update>
+	
+    <select id="total" resultType="java.lang.Integer">
+            select count(*) count from lsblj_device;
+    </select>
+
+    <select id="totalByDeviceType" resultType="java.util.Map">
+            select IFNULL(b.name,'其他') name,count(*) count 
+            	from lsblj_device a LEFT JOIN lsblj_device_type b ON a.os_type = b.id 
+            	GROUP BY a.os_type ORDER BY count LIMIT 4;
+    </select>
+
+	<select id="getCounts" resultType="java.lang.Integer">
+            select count(*) from lsblj_device where groupid=#{group_id}
+    </select>
+    <select id="checkSys_type" resultType="com.longersec.blj.domain.Device">
+		select * from lsblj_device where os_type=#{item} limit 1;
+	</select>
+    <select id="findDeviceGroup" resultType="com.longersec.blj.domain.Device">
+		select * from lsblj_device where groupid=#{i}
+	</select>
+
+    <insert id="insertMore">
+		INSERT INTO lsblj_device
+	    <set>
+		    <if test="os_type != null">`os_type`=#{os_type},</if>
+		    <if test="name != null">`name`=#{name},</if>
+		    <if test="ip != null">`ip`=#{ip},</if>
+		    <if test="port != null">`port`=#{port},</if>
+		    <if test="super_account != null">`super_account`=#{super_account},</if>
+		    <if test="super_password != null">`super_password`=AES_ENCRYPT(#{super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		    <if test="account_count != null">`account_count`=0,</if>
+		    <if test="description != null">`description`=#{description},</if>
+		    <if test="login_method != null">`login_method`=#{login_method},</if>
+		    <if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
+		    <if test="department != null">`department`=#{department},</if>
+		    <if test="ssh_key != null">`ssh_key`=#{ssh_key},</if>
+		    <if test="creator_id != null">`creator_id`=#{creator_id},</if>
+	    </set>
+	</insert>
+
+	<update id="editDeviceList" parameterType="com.longersec.blj.domain.Device">
+		<foreach collection="ArrayList" item="item" index="index">
+		UPDATE lsblj_device
+		<set>
+
+			<if test="item.os_type != null">`os_type`=#{item.os_type},</if>
+			<if test="item.name != null">`name`=#{item.name},</if>
+			<if test="item.ip != null">`ip`=#{item.ip},</if>
+			<if test="item.port != null">`port`=#{item.port},</if>
+			<if test="item.super_account != null">`super_account`=#{item.super_account},</if>
+			<if test="item.super_password != null">`super_password`=AES_ENCRYPT(#{item.super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+			<if test="item.account_count != null">`account_count`=#{item.account_count},</if>
+			<if test="item.groupid != null">`groupid`=#{item.groupid},</if>
+			<if test="item.description != null">`description`=#{item.description},</if>
+		<!--	<if test="item.depart_name != null">`depart_name`=#{item.depart_name},</if>-->
+			<if test="item.login_method != null">`login_method`=#{item.login_method},</if>
+			<if test="item.protocol_id != null">`protocol_id`=#{item.protocol_id},</if>
+			<if test="item.department != null">`department`=#{item.department},</if>
+			<if test="item.ssh_key != null">`ssh_key`=#{item.ssh_key},</if>
+		</set>
+		where id=#{item.id};
+		</foreach>
+	</update>
+
+
+</mapper>

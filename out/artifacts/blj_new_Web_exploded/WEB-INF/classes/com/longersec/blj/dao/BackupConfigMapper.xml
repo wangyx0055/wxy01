@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.BackupConfigDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.BackupConfig">
+		<id column="seq" jdbcType="INTEGER" property="seq"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="dbactive" jdbcType="INTEGER" property="dbactive"/>
+		<result column="fileactive" jdbcType="INTEGER" property="fileactive"/>
+		<result column="user" jdbcType="VARCHAR" property="user"/>
+		<result column="passwd" jdbcType="BLOB" property="passwd"/>
+		<result column="mysqluser" jdbcType="VARCHAR" property="mysqluser"/>
+		<result column="mysqlpasswd" jdbcType="BLOB" property="mysqlpasswd"/>
+		<result column="path" jdbcType="VARCHAR" property="path"/>
+		<result column="dbname" jdbcType="VARCHAR" property="dbname"/>
+		<result column="enable" jdbcType="INTEGER" property="enable"/>
+		<result column="session_flag" jdbcType="INTEGER" property="session_flag"/>
+		<result column="protocol" jdbcType="VARCHAR" property="protocol"/>
+		<result column="desc" jdbcType="VARCHAR" property="desc"/>
+	</resultMap>
+
+	<resultMap id="backupConfigRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addBackupConfig" parameterType="com.longersec.blj.domain.BackupConfig">
+		INSERT INTO lsblj_backup_config
+		<set>
+		<if test="seq != null">`seq`=#{seq},</if>
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="dbactive != null">`dbactive`=#{dbactive},</if>
+		<if test="fileactive != null">`fileactive`=#{fileactive},</if>
+		<if test="user != null">`user`=#{user},</if>
+		<if test="passwd != null">`passwd`=#{passwd},</if>
+		<if test="mysqluser != null">`mysqluser`=#{mysqluser},</if>
+		<if test="mysqlpasswd != null">`mysqlpasswd`=#{mysqlpasswd},</if>
+		<if test="path != null">`path`=#{path},</if>
+		<if test="dbname != null">`dbname`=#{dbname},</if>
+		<if test="enable != null">`enable`=#{enable},</if>
+		<if test="session_flag != null">`session_flag`=#{session_flag},</if>
+		<if test="protocol != null">`protocol`=#{protocol},</if>
+		<if test="desc != null">`desc`=#{desc},</if>
+		</set>
+	</insert>
+
+	<update id="editBackupConfig" parameterType="com.longersec.blj.domain.BackupConfig">
+		UPDATE lsblj_backup_config
+		<set>
+		<if test="seq != null">`seq`=#{seq},</if>
+		<if test="ip != null">`ip`=#{ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="dbactive != null">`dbactive`=#{dbactive},</if>
+		<if test="fileactive != null">`fileactive`=#{fileactive},</if>
+		<if test="user != null">`user`=#{user},</if>
+		<if test="passwd != null">`passwd`=#{passwd},</if>
+		<if test="mysqluser != null">`mysqluser`=#{mysqluser},</if>
+		<if test="mysqlpasswd != null">`mysqlpasswd`=#{mysqlpasswd},</if>
+		<if test="path != null">`path`=#{path},</if>
+		<if test="dbname != null">`dbname`=#{dbname},</if>
+		<if test="enable != null">`enable`=#{enable},</if>
+		<if test="session_flag != null">`session_flag`=#{session_flag},</if>
+		<if test="protocol != null">`protocol`=#{protocol},</if>
+		<if test="desc != null">`desc`=#{desc},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delBackupConfig" parameterType="java.util.List">
+		DELETE FROM lsblj_backup_config
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, backupConfigRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_backup_config 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

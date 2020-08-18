@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- my css -->
+    <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+</head>
+<body>
+<!--端口配置界面-->
+<div class="box" style="box-shadow: none;border-top: none;width: 100%">
+    <div class="box-body">
+        <div class="port_div1">
+            <!--<div style="float: left;position: relative;top: 50%;margin-top: -11px;border-radius: 1px;margin-right: 7px;width: 3px;height: 17px;background-color: rgb(0, 152, 252);vertical-align: middle;"></div>-->
+            <span  class="new-font-color">运维端口配置</span>
+            <button type="button" id="operateporteditbtn" class="btn newaddbtn"   data-toggle="modal" data-target="#oprate_button" >编辑</button>
+        </div>
+        <!-- 文字下面的蓝条条 -->
+        <div  class="new-line-color"></div>
+        <hr class="port_hr1">
+        <div class="port_body">
+            <input type="hidden" id="operate_id1" />
+            <div>
+                <span>SFTP：</span>
+                <span><span id="operate_ssh_sftp1"></span></span>
+            </div><br>
+           <!-- <div>
+                <span>RDP：</span>
+                <span><span id="operate_rdp1"></span></span>
+            </div><br>-->
+           <div>
+                <span>FTP：</span>
+                <span><span id="operate_ftp1"></span></span>
+            </div>
+            <br><br>
+        </div>
+        <hr class="port_hr2">
+        <!-- WEB控制台端口配置-->
+        <div>
+            <span   class="new-font-color">Web控制台端口配置</span>
+            <button type="button" id="webporteditbtn" class="btn newaddbtn"   data-toggle="modal" data-target="#003">编辑</button>
+        </div>
+        <!-- 文字下面的蓝条条 -->
+        <div class="new-line-color"></div>
+        <hr class="port_hr3">
+
+        <input type="hidden" id="web_id1" />
+        <div>
+            <div>
+                <span>WEB控制台端口：</span>
+                <span><span id="web_web1"></span></span>
+            </div><br><br>
+        </div>
+        <!-- SSH控制台端口配置-->
+<!--        <hr class="port_hr4">
+        <div>
+            <span   class="new-font-color">SSH控制台端口配置</span>
+            <button type="button" id="sshporteditbtn" class="btn newaddbtn"  data-toggle="modal" data-target="#005">编辑</button>
+        </div>
+        &lt;!&ndash; 文字下面的蓝条条 &ndash;&gt;
+        <div  class="new-line-color"></div>
+        <hr class="port_hr5">
+        <div>
+            <input type="hidden" id="ssh_id1" />
+            <div>
+                <span>SSH控制台端口：</span>
+                <span><span id="ssh_control_port1"></span></span>
+            </div><br><br>
+        </div>-->
+    </div>
+</div>
+<!--运维端口配置编辑-->
+<div class="modal modal-hides in" id="oprate_button" style=" padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <span class="modal-title">运维端口配置</span>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p><span><span>*</span>SFTP：</span>
+                        <input type="losss" id="operate_ssh_sftp">&nbsp;&nbsp;<span id="VPort_ssh_sftp" class="sign_red"></span><br>
+                        <span>请输入1-65535之间的有效数字，禁止</span><br>
+                        <span>配置与系统服务冲突的端口</span>
+                    </p>
+                </div>
+                <br>
+            <!--    <div>
+                    <p><span><span>*</span>RDP：</span>
+                        <input type="losss" id="operate_rdp">&nbsp;&nbsp;<span id="VPort_rdp" class="sign_red"></span><br>
+                        <span>请输入1-65535之间的有效数字，禁止</span><br>
+                        <span>配置与系统服务冲突的端口</span>
+                    </p>
+                </div>
+                <br>-->
+              <div>
+                    <p><span><span>*</span>FTP：</span>
+                        <input type="losss" id="operate_ftp">&nbsp;&nbsp;<span id="VPort_ftp" class="sign_red"></span><br>
+                        <span>请输入1-65535之间的有效数字，禁止</span><br>
+                        <span>配置与系统服务冲突的端口</span>
+                    </p>
+                </div>
+            </div>
+                <br>
+                <div class="modal-footer">
+                    <button type="button"  id="oprate_button1" class="btn newaddbtn pull-right" style="height: 30px;color: #fff;font-size: 12px;margin-left: 10px">确定</button>
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px">取消</button>
+                    <input type="hidden" id="operate_id" />
+                </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!--web控制台端口编辑-->
+<div class="modal modal-hides in web_port" id="003" style=" padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <span class="modal-title" style="font-size:16px">WEB控制台端口配置</span>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p><span><span>*</span>WEB控制台端口：</span>
+                        <input type="text" id="web_web">&nbsp;&nbsp;<span id="VPort_web_port" class="sign_red"></span><br>
+                        <span>请输入1-65535之间的有效数字，禁止配</span><br>
+                        <span>置与系统服务冲突的端口</span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="web_edit_button" class="btn newaddbtn pull-right" style="height: 30px;color: #fff;font-size: 12px;margin-left: 10px">确定</button>
+                <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px">取消</button>
+                <input type="hidden" id="web_id" />
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--ssh控制登陆台端口配置编辑-->
+<!--<div class="modal modal-hides in ssh_port" id="005" style=" padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <span class="modal-title" style="font-size:16px;">SSH控制台端口配置</span>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p><span><span>*</span>SSH控制台端口：</span>
+                        <input type="text" id="ssh_control_port">&nbsp;&nbsp;<span id="VPort_control_port" class="sign_red"></span><br>
+                        <span>请输入1-65535之间的有效数字，禁止配</span><br>
+                        <span>置与系统服务冲突的端口</span>
+                    </p>
+                </div></div>
+                <div class="modal-footer">
+                    <button type="button" id="ssh_edit_button" class="btn newaddbtn pull-right" style="height: 30px;color: #fff;font-size: 12px;margin-left: 10px">确定</button>
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px">取消</button>
+                    <input type="hidden" id="ssh_id" />
+                </div>
+        </div>
+        &lt;!&ndash; /.modal-content &ndash;&gt;
+    </div>
+    &lt;!&ndash; /.modal-dialog &ndash;&gt;
+</div>-->
+<script src="../../js/view_js/port_config.js"></script>
+</body>
+</html>

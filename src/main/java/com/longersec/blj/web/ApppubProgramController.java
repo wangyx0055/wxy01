@@ -3,6 +3,7 @@ package com.longersec.blj.web;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
@@ -231,8 +232,26 @@ public class ApppubProgramController {
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
 		apppubServer = apppubServerservice.getById(apppubServer.getId());
+		System.out.println("http://"+apppubServer.getIp()+":20616/getallapps.php");
 		String res = com.longersec.blj.utils.httpClient.doGetResStr("http://"+apppubServer.getIp()+":20616/getallapps.php");
+		System.out.println(res);
+		try {
+			byte[] _res = res.getBytes("UTF-8");
+			for(int i=0; i<_res.length; i++) {
+				if(_res[i]+256==0xEF||_res[i]+256==0xBB||_res[i]+256==0xBF) {
+					_res[i]=' ';
+				}
+			}
+			res = new String(_res);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println(res);
 		JSONArray apps = JSONArray.fromObject(res.substring(res.indexOf("[{")));
+
+		System.out.println(apps);
 		for(int i=0; i<apps.size(); i++) {
 			JSONObject app = apps.getJSONObject(i);
 			ApppubProgram apppubProgram = new ApppubProgram();

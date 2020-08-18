@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ApppubDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.Apppub">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="device_id" jdbcType="INTEGER" property="device_id"/>
+		<result column="app_name" jdbcType="VARCHAR" property="app_name"/>
+		<result column="server_ip" jdbcType="VARCHAR" property="server_ip"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="paramater" jdbcType="VARCHAR" property="paramater"/>
+		<result column="up_clipboard" jdbcType="INTEGER" property="up_clipboard"/>
+		<result column="down_clipboard" jdbcType="INTEGER" property="down_clipboard"/>
+		<result column="app_description" jdbcType="VARCHAR" property="app_description"/>
+		<result column="apppub_server_id" jdbcType="INTEGER" property="apppub_server_id"/>
+	</resultMap>
+
+	<resultMap id="apppubRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+	
+	<resultMap id="App" type="com.longersec.blj.domain.DTO.App">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="apppubserver" jdbcType="VARCHAR" property="apppubserver"/>
+	</resultMap>
+
+	<insert id="addApppub" parameterType="com.longersec.blj.domain.Apppub">
+		INSERT INTO lsblj_apppub
+		<set>
+		
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		<if test="app_name != null">`app_name`=#{app_name},</if>
+		<if test="server_ip != null">`server_ip`=#{server_ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="paramater != null">`paramater`=#{paramater},</if>
+		<if test="up_clipboard != null">`up_clipboard`=#{up_clipboard},</if>
+		<if test="down_clipboard != null">`down_clipboard`=#{down_clipboard},</if>
+		<if test="app_description != null">`app_description`=#{app_description},</if>
+		<if test="apppub_server_id != null">`apppub_server_id`=#{apppub_server_id},</if>
+		</set>
+	</insert>
+
+	<update id="editApppub" parameterType="com.longersec.blj.domain.Apppub">
+		UPDATE lsblj_apppub
+		<set>
+		
+		<if test="device_id != null">`device_id`=#{device_id},</if>
+		<if test="app_name != null">`app_name`=#{app_name},</if>
+		<if test="server_ip != null">`server_ip`=#{server_ip},</if>
+		<if test="port != null">`port`=#{port},</if>
+		<if test="paramater != null">`paramater`=#{paramater},</if>
+		<if test="up_clipboard != null">`up_clipboard`=#{up_clipboard},</if>
+		<if test="down_clipboard != null">`down_clipboard`=#{down_clipboard},</if>
+		<if test="app_description != null">`app_description`=#{app_description},</if>
+		<if test="apppub_server_id != null">`apppub_server_id`=#{apppub_server_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delApppub" parameterType="java.util.List">
+		DELETE FROM lsblj_apppub
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, apppubRecordCounts" resultType="java.lang.Object">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_apppub 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="selectNameAndId" resultMap="App">
+		SELECT b.id as apppub_account_id,b.name,a.name apppubserver FROM lsblj_apppub_account b left join lsblj_apppub_server a on a.id=b.apppub_server_id;
+	</select>
+	
+    <select id="total" resultType="java.lang.Integer">
+            select count(*) count from lsblj_device;
+    </select>
+</mapper>

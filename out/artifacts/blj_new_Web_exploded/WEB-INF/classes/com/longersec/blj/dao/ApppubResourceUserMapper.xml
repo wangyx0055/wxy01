@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ApppubResourceUserDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ApppubResourceUser">
+		<result column="userid" jdbcType="INTEGER" property="userid"/>
+		<result column="apppub_resource_id" jdbcType="INTEGER" property="apppub_resource_id"/>
+	</resultMap>
+
+	<resultMap id="apppubResourceUserRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addApppubResourceUser" parameterType="com.longersec.blj.domain.ApppubResourceUser">
+		INSERT INTO lsblj_apppub_resource_user
+		<set>
+		userid=#{userid},
+		apppub_resource_id=#{apppub_resource_id},
+		</set>
+	</insert>
+
+	<update id="editApppubResourceUser" parameterType="com.longersec.blj.domain.ApppubResourceUser">
+		UPDATE lsblj_apppub_resource_user
+		<set>
+		<if test="userid != null">userid=#{userid},</if>
+		<if test="apppub_resource_id != null">apppub_resource_id=#{apppub_resource_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delApppubResourceUser" parameterType="java.util.List">
+		DELETE FROM lsblj_apppub_resource_user
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, apppubResourceUserRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_apppub_resource_user 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

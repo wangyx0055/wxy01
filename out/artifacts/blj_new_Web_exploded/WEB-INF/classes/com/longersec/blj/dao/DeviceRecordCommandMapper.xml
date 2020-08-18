@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.DeviceRecordCommandDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.DeviceRecordCommand">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="lsblj_device_record_id" jdbcType="INTEGER" property="lsblj_device_record_id"/>
+		<result column="start" jdbcType="INTEGER" property="start"/>
+		<result column="command" jdbcType="VARCHAR" property="command"/>
+		<result column="_time" jdbcType="VARCHAR" property="_time"/>
+		<result column="relatime" jdbcType="VARCHAR" property="relatime"/>
+		<result column="lsblj_cmddanger_id" jdbcType="INTEGER" property="lsblj_cmddanger_id"/>
+	</resultMap>
+
+	<resultMap id="deviceRecordCommandRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addDeviceRecordCommand" parameterType="com.longersec.blj.domain.DeviceRecordCommand">
+		INSERT INTO lsblj_device_record_command
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="lsblj_device_record_id != null">`lsblj_device_record_id`=#{lsblj_device_record_id},</if>
+		<if test="start != null">`start`=#{start},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="lsblj_cmddanger_id != null">`lsblj_cmddanger_id`=#{lsblj_cmddanger_id},</if>
+		</set>
+	</insert>
+
+	<update id="editDeviceRecordCommand" parameterType="com.longersec.blj.domain.DeviceRecordCommand">
+		UPDATE lsblj_device_record_command
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="lsblj_device_record_id != null">`lsblj_device_record_id`=#{lsblj_device_record_id},</if>
+		<if test="start != null">`start`=#{start},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="lsblj_cmddanger_id != null">`lsblj_cmddanger_id`=#{lsblj_cmddanger_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delDeviceRecordCommand" parameterType="java.util.List">
+		DELETE FROM lsblj_device_record_command
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item}
+		</foreach>
+		,0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, deviceRecordCommandRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		FROM_UNIXTIME(LEFT(a.start,10)) _time,a.command,LEFT(a.start,10) start,(a.start - b.start*1000) relatime FROM lsblj_device_record_command a left join lsblj_device_record b on a.lsblj_device_record_id=b.id 
+		where a.lsblj_device_record_id=#{deviceRecordCommand.lsblj_device_record_id} 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_device_record_command where id=#{id}
+	</select>
+</mapper>

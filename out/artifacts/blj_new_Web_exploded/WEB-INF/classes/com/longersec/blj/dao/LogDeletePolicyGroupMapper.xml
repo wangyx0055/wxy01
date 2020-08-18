@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.LogDeletePolicyGroupDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.LogDeletePolicyGroup">
+		<id column="policy_id" jdbcType="INTEGER" property="policy_id"/>
+		<id column="group_id" jdbcType="VARCHAR" property="group_id"/>
+	</resultMap>
+
+	<resultMap id="logDeletePolicyGroupRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addLogDeletePolicyGroup" parameterType="com.longersec.blj.domain.LogDeletePolicyGroup">
+		INSERT INTO lsblj_log_delete_policy_group
+		<set>
+		<if test="policy_id != null">`policy_id`=#{policy_id},</if>
+		<if test="group_id != null">`group_id`=#{group_id},</if>
+		</set>
+	</insert>
+
+	<update id="editLogDeletePolicyGroup" parameterType="com.longersec.blj.domain.LogDeletePolicyGroup">
+		UPDATE lsblj_log_delete_policy_group
+		<set>
+		<if test="policy_id != null">`policy_id`=#{policy_id},</if>
+		<if test="group_id != null">`group_id`=#{group_id},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delLogDeletePolicyGroup" parameterType="java.util.List">
+		DELETE FROM lsblj_log_delete_policy_group
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, logDeletePolicyGroupRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_log_delete_policy_group 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+</mapper>

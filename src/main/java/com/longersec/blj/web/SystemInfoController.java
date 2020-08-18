@@ -341,6 +341,10 @@ public class SystemInfoController {
 		ServletOutputStream out;
 		Config config = configService.getByName("licensepath");
 		String filenameString = config.getValue()+"/license";
+		Boolean hasLicense = false;
+		if(new File(filenameString).exists()) {
+			hasLicense = true;
+		}
 		try {
 			out = response.getOutputStream();
 			File destFile = new File(filenameString);
@@ -350,10 +354,12 @@ public class SystemInfoController {
 				out.close();
 				return ;
 			}
-			FileUtils.copyFile(new File(filenameString), new File("/tmp/license"));
+			if(hasLicense)
+				FileUtils.copyFile(new File(filenameString), new File("/tmp/license"));
 			FileUtils.copyInputStreamToFile(licenseFile.getInputStream(), destFile);
 			if(!destFile.exists()) {
-				FileUtils.copyFile(new File("/tmp/license"), new File(filenameString));
+				if(hasLicense)
+					FileUtils.copyFile(new File("/tmp/license"), new File(filenameString));
 				out.write("<script>window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"复制文件出错!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
 				out.flush();
 				out.close();
@@ -361,7 +367,8 @@ public class SystemInfoController {
 			}
 			License l = new License();
 			if(!l.LicenseCheckUuid("")) {
-				FileUtils.copyFile(new File("/tmp/license"), new File(filenameString));
+				if(hasLicense)
+					FileUtils.copyFile(new File("/tmp/license"), new File(filenameString));
 				out.write("<script>window.parent.$('#uploadLicenseBtn')[0].disabled=false;window.parent.$('#loadingModal').modal('hide');window.parent.$(\"#modal-danger .modal-title\").text('失败');window.parent.$(\"#modal-danger .modal-body\").text(\"License文件不正确!\");window.parent.$(\"#modal-danger\").modal();</script>".getBytes());
 				out.flush();
 				out.close();

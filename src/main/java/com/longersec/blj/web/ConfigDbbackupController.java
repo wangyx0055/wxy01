@@ -155,8 +155,8 @@ public class ConfigDbbackupController {
 	public JSONObject reset(HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
-		String msgString = SystemCommandUtil.execCmd("/opt/lsblj/mariadb/bin/mysql -ulsblj -plsblj lsblj < /opt/lsblj/dbbackup/lsblj.sql");
-		result.put("msg", msgString);
+		configDbbackupService.DBReset();
+		result.put("msg", "");
 		return result;
 	}
 

@@ -15,6 +15,8 @@ public interface ConfigDbbackupService {
 	public List<Object> findAll(ConfigDbbackup configDbbackup, int page_start, int page_length);
 	
 	public ConfigDbbackup getById(Integer id);
+	
+	public void DBReset();
 
 }
 

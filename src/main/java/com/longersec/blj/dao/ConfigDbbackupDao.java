@@ -16,4 +16,6 @@ public interface ConfigDbbackupDao {
 	public List<Object> findAll(@Param("configDbbackup")ConfigDbbackup configDbbackup, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
 	public ConfigDbbackup getById(Integer id);
+	
+	public void DBReset();
 }

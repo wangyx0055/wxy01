@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>应用审计</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <!-- my css -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini as">
+<div class="wrapper">
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+  <div class="content-wrapper">
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+             <span class="box-title new-header">应用审计</span>
+            </div>
+            <hr>
+            <div class="box-body">
+               <div class="input-group margin">
+                  <select class="form-control" id="Distinguish">
+                    <option value='searchAll'>自动识别</option>
+                    <option value='name'>应用名称</option>                                        
+                    <option value='program'>应用程序</option>                                      
+                    <option value='apppub_username'>应用账号</option>                   
+                    <option value='client_ip'>来源IP</option>
+                    <option value='username'>用户名</option>
+                  </select>
+                  <input  id="searchId" type="text" class="form-control">
+                  <span class="input-group-btn">
+                    <button id="sousuoId" type="button" class="btn newaddbtn pull-left">搜索</button>
+                  </span>
+                </div>
+                 <div class="new-add-style box-tools">
+                     <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" data-toggle="modal"  data-target="#modal-default1" id="_export">导出</button>
+
+                </div>
+              <table id="apppubsessions" class="table  table-hover">
+                <thead>
+                       <tr>
+                        <td><span>序号</span></td>
+                        <td><span>应用名称</span></td>
+                        <td><span>应用程序</span></td>
+                        <td><span>应用账号</span></td>
+                        <td><span>来源IP</span></td>
+                        <td><span>用户名</span></td>
+                        <td><span>姓名</span></td>
+                        <td><span >起止时间</span></td>
+                        <td><span>状态
+                        <span class="caret dropdown-toggle"  data-toggle="dropdown" ></span>                                           
+                            <ul class="dropdown-menu" role="menu">
+                             <li><a href="#"><input type="checkbox" style="margin-bottom: 7px;margin-right: 5px;">已结束</a></li>
+                             <li><a href="#"><input type="checkbox" style="margin-bottom: 7px;margin-right: 5px;">未结束</a></li>
+                            </ul>
+                            </span>
+                        </td>                        
+                        <td><span>操作</span></td>
+                       </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+      </div>
+        <div class="modal modal-hides" id="modal-default1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">导出应用审计信息</span>
+                    </div>
+                    <div class="modal-body" >
+                        <div style="margin-top: 20px;margin-left: 80px;">
+                            <p><span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;">*</span>
+                                <span style="font-size: 12px;color: #505050;">用户密码：</span>
+                                <input type="password" placeholder="&nbsp;&nbsp;&nbsp;请输入用户密码" id="queryPsw" style="margin-top: -10px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;"><span style="font-size: 12px;color: red;" id="PswRep"></span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button"  class="btn newaddbtn"  id="export">确定</button>
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </div>
+      <div class=" modal fade modal-hides" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">会话详情</span> 
+          </div>
+          <div class="nav-tabs-custom" style="margin-top: 1px">
+              <ul class="nav nav-tabs">
+                 <li class="active"><a href="#A" data-toggle="tab">资产会话信息</a></li>
+                 <li><a href="#B" data-toggle="tab">系统会话信息</a></li>
+              </ul>
+            <div class="tab-content">
+               <div class="active tab-pane" id="A">
+                  <div class="modal-body">
+                      <div>
+                        <span>应用名称：<span id="name"></span></span>
+                      </div>
+                      <div>
+                        <span>应用程序：<span id="program"></span></span>
+                      </div>
+                      <div>
+                        <span>访问参数：<span id="access_parameter"></span></span>
+                      </div>
+                      <div>
+                        <span>应用账号：<span id="apppub_account_id"></span></span>
+                      </div>
+                      <div>
+                        <span>起止时间：<span id="start"></span></span>
+                      </div>
+                      <div>
+                        <span>会话时长：<span id="time_length"></span>秒</span>
+                      </div>
+                      <div>
+                        <span>会话大小：<span id="log_file_size"></span>k</span>
+                      </div>
+                     <br>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                     <button type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+                      </div>   
+                 </div>
+               <div class="tab-pane" id="B">
+                   <div class="modal-body">
+                     <div>
+	                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：<span id="username"></span></span>
+	                 </div>
+	                 <div>
+	                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来源IP：<span id="client_ip"></span></span>
+	              </div>
+	                 <div>
+	                    <span>来源MAC：<span id="client_mac"></span></span>
+	                 </div>
+	              <div>
+	                  <span>起止时间：<span id="end"></span></span>
+	              </div>
+	              <div>
+	                  <span>会话时长：<span id="length"></span>秒</span>
+	              </div>
+	              <div>
+	                  <span>认证类型：<span id="auth_type"></span></span>
+	              </div>  
+               </div>
+               <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                     <button type="button" class="btn newaddbtn"  data-dismiss="modal">确定</button>
+                   </div>   
+            </div>
+
+          </div>
+        </div>
+      </div>
+      </div>
+            <!-- /.modal-content -->
+    </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div th:replace="view/common/footer :: footer"></div>
+    </footer>
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<!-- page script -->
+<script src="../../js/common/modal.js"></script>
+<script src="../../js/view_js/apppub_sessions.js"></script>
+</body>
+</html>

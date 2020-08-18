@@ -45,4 +45,10 @@ public class ConfigDbbackupServiceImpl implements ConfigDbbackupService{
 		return ConfigDbbackupDao.getById(id);
 	}
 
+	@Override
+	public void DBReset() {
+		// TODO Auto-generated method stub
+		ConfigDbbackupDao.DBReset();
+	}
+
 }

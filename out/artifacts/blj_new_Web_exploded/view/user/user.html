@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>用户列表</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <!-- my css -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+   <!-- daterange picker -->
+   <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../bower_components/dist/css/bootstrap-treeview.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../bower_components/bootstrap-select/bootstrap-select.min.css">
+  <script src="../../js/html5shiv.min.js"></script>
+  <script src="../../js/respond.min.js"></script>
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-treegrid/0.2.0/css/jquery.treegrid.min.css">
+    <style>
+        .laa{
+            display: inline-block;
+            padding: 1px 1px;
+            text-align: right;
+            width: 144px;
+            vertical-align: top;
+        }
+        .select-option{
+            height: 100px;
+        }
+        body{
+            padding-right: 0px!important;
+        }
+        #tree {
+            position: absolute;
+            z-index: 1010;
+            background-color: white;
+            margin-left: 46px;
+            margin-top: -3px;
+            border: 1px solid #ccc;
+            width: 210px;
+            overflow: hidden auto;
+            display: none;
+            height: 192px;
+            border-top: none;
+        }
+        #tree ul li {
+            border-radius:0px;
+            border-left: none;
+            border-right: none;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini u">
+<div class="wrapper">
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+    <div class="content-wrapper">
+      <section class="content">
+        <div class="row">
+        <div class="col-xs-12">
+         <div class="box">
+               <div class="box-header">
+                 <span class="box-title new-header">用户列表</span>
+               </div>
+               <hr class="ug-hr1">
+                <div class="box-body">
+                  <div class="input-group margin">
+	                  <select class="form-control" id="Distinguish">
+	                    <option value="searchall" selected>自动识别</option>
+	                    <option value="username">用户名</option>
+                          <option value="realname">姓名</option>
+	                    <option value="depart_name">部门</option>
+	                    <option value="rolename">角色</option>
+                          <option value="status">状态</option>
+
+	                  </select>
+	                  <input type="text" class="form-control" id="searchId">
+	                  <span class="input-group-btn">
+	                  <i class="glyphicon glyphicon-search"> <span class="glyphicon glyphicon-search"></span></i>
+	                  <button type="button" class="btn  pull-left newaddbtn" id="search" style="margin-left: -2px;">搜索</button>
+	                  </span>
+                 </div>
+                 <div class="new-add-style">
+                    <button type="button" class="btn  newaddbtn" data-toggle="modal" data-target="#edituser" id="newT">新建</button>
+                    <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal"  data-target="#modal-default"  data-dismiss="modal" onclick="resetFileInput()">导入</button>
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" data-toggle="modal"  data-target="#modal-default1" id="_export">导出</button>
+                 </div>
+                  <table id="userlist" class="table table-hover">
+                    <thead>
+                      <tr>
+                        <td style="width: 55px;padding-right: 0px;"><span>选择</span></td>
+                        <td style="width: 15%"><span>用户名</span></td>
+                        <td style="width: 15%"><span>姓名</span></td>
+                        <td style="width: 15%"><span>部门</span></td>
+                        <td style="width: 15%"><span>角色</span></td>
+                        <td style="width: 15%"><span>状态</span></td>
+                        <td><span>操作</span></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                  <form>
+                 <input type="checkbox" id="checkAll" onclick="sel('chk[]')">
+                    <button type="button" class="btn btn-default pull-left newaddbtn2"  data-dismiss="modal" data-toggle="modal"  data-target="#delAll">删除</button>
+                  </form>
+                </div>
+               </div>
+           </div>
+        </div>
+        <div class="modal modal-hides" id="modal-deluser">
+          <div class="modal-dialog">
+            <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">提示</span>
+              </div>
+                <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                  <p>您确定要删除所选的用户吗？</p>
+                </div><br>          
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                   <button type="button" id="delButton" class="btn newaddbtn" >确定</button>
+                <input type="hidden" id="del_id" /> 
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <div class="modal modal-hides" id="modal-default">
+           <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                  <span class="modal-title">导入用户列表</span>
+              </div>
+              <div class="u-download">
+                <span>下载模板:
+                    <a th:href="@{/downTemplate/user}" id="downClick"></a>
+                <button type="button" class="btn newaddbtn pull-right" id="downTemplate">点击下载</button></span>
+              </div><br>
+              <div class="u-upload">
+                <p><span>上传文件:
+                    <button type="button" class="btn newaddbtn pull-right" onclick="openFile()">点击上传</button>
+                </span></p>
+                  <span id="filename"></span>
+                  <span id="Vfile" style="color: red;font-size:12px;"></span>
+                  <input type="file" id="btn_file" style="display:none" accept=".csv">
+              </div><br>
+
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                   <button type="button"  class="btn newaddbtn"   id="upload">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <div class="modal modal-hides" id="modal-default1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">导出用户列表</span>
+              </div>
+              <div class="modal-body">
+                 <div>
+                  <p><span>*</span>
+                  <span>用户密码：</span>
+                  <input type="password" placeholder="&nbsp;&nbsp;&nbsp;请输入当前管理员用户密码" id="queryPsw">&nbsp;&nbsp;<span id="PswRep" style="color: red;font-size:12px;"></span></p>
+                 </div>
+              </div>
+              <div class="modal-footer">
+                   <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                  <a th:href="@{/export/exprotUser}" id="downFile" style="display: none"></a>
+                   <button type="button"  class="btn newaddbtn"  id="export">确定</button>
+                
+                 </div>
+            <!-- /.modal-content -->
+            </div>
+          <!-- /.modal-dialog -->
+          </div>
+         </div>
+
+        <div class="modal modal-hides" id="edituser">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">编辑用户</span>
+              </div>
+              <div class="modal-body">
+                <div class="u-personnel" style="margin-left: 91px;">
+                <span>*</span>
+                  <span>角色：</span>
+                  <select name="role" id="role_id" autocomplete="off">
+                  </select>
+                </div>
+                <div class="u-department" style="margin-left: 92px;">
+                <span>*</span>
+                  <span style="font-size: 12px">部门：</span>
+                    <span style="width: 210px;overflow-y: auto;">
+                        <input id="depart_name"  name="depart_name" readonly placeholder="&nbsp;&nbsp;&nbsp;请选择部门" type="text" autocomplete="off"  onclick="$('#tree').show()" style="width: 210px;height: 30px;margin-left: -2px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;" tabindex="2">&nbsp;&nbsp;<span id='VdepartName' style="color:red;font-size: 12px;"></span>
+                        <div id="tree"></div>
+                        <input type="hidden" id="depart_id">
+                    </span>
+                </div>
+              <!--    <div class="u-group" style="margin-left: 76px;margin-top: 7px;">
+                      <span style="font-size: 20px;color: red;vertical-align: -6px;">*</span>
+                      <span style="color: #505050;font-size: 12px;">用户组：</span>
+                      <span style="width: 210px;overflow-y: auto;">
+                        <select id="groupid"  data-size="5" style="font-size:12px;border-radius: 3px;width: 210px;height: 30px;border:1px solid #ccc">
+                        </select>
+                    </span>
+                      <span id="Vgroup" style="color: red;font-size:12px;"></span>
+                  </div>-->
+                <div class="u-register">
+                  <p>
+                  <span>*</span>
+                  <span>用户名：</span>
+                  <input type="text" id="username" placeholder="&nbsp;&nbsp;&nbsp;请输入用户登录名" >&nbsp;&nbsp;<span id="Vusername" style="color: red;font-size:12px;"></span></p>
+                </div>
+                <div class="u-name">
+                  <p><span>*</span>
+                  <span>姓名：</span>
+                  <input type="text" id="realname" placeholder="&nbsp;&nbsp;&nbsp;用户的真实姓名">&nbsp;&nbsp;<span id="Vrealname" style="color: red;font-size:12px;"></span></p>
+                </div>
+                <div class="u-pwd">
+                  <p><span>*</span>
+                  <span>密码：</span>
+                  <input type="password" id="password" placeholder="&nbsp;&nbsp;&nbsp;请输入用户密码" value="">&nbsp;&nbsp;<span id="Vpwd" style=" width: 225px;color: red;font-size:12px;"/></p>
+                </div>
+                  <div id="showRule"></div>
+
+                <div class="u-psw" id="_showRule" >
+                  <span>*</span>
+                  <span>确认密码：</span>
+                  <input type="password" id="query_passwd" placeholder="&nbsp;&nbsp;&nbsp;请确认密码" value="">&nbsp;&nbsp;<span id="V_pwd" style="color: red;font-size:12px;"></span>
+                </div>
+<!--                 <div class="u-relevation1">-->
+<!--                      <span>有效期：</span>-->
+<!--                      <div class="input-group-addon">-->
+<!--                          <i class="fa fa-calendar" style="color:#a1a6a1b5"></i>-->
+<!--                      </div>-->
+<!--                      <div>-</div>-->
+<!--                      <input type="text" class="form-control" id="reservation">-->
+<!--                      <input type="text" class="form-control" id="reservation2">-->
+<!--                      <input id="add_long" type="checkbox" checked="checked">-->
+<!--                      <span id="long">永久有效</span>-->
+<!--                 </div>-->
+                <div class="u-emial">
+                  <p><span>Email：</span>
+                  <input type="text" id="email" placeholder="&nbsp;&nbsp;&nbsp;电子邮箱地址">&nbsp;&nbsp;<span id="Vemail" style="color: red;font-size:12px;"></span></p>
+                </div>
+                <div class="u-tel">
+                  <p> <span id="tel_sign">*</span>
+                      <span>手机：</span>
+                      <input type="text" id="mobile" maxlength="11">&nbsp;&nbsp;<span id="Vmobile" style="color: red;font-size:12px;"></span></p>
+                </div>
+                <div class="u-method">
+                  <span>认证方式：</span>
+               <select id="u-methods" onchange="methods(this.value);" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;">
+                 <option value="0">静态密码</option>
+                 <option value="1">动态口令</option>
+                 <option value="4">短信认证</option>
+                 <option value="3">指纹认证</option>
+                 <option value="2">密码+指纹</option>
+                </select>
+                    <!--<img data-dismiss="modal" data-toggle="modal" data-target="#modal-default2" src="../../bower_components/dist/img/finger.png" id="div6" style="display: none;cursor: pointer;">-->
+                    <button type="button" class="btn newaddbtn"  data-dismiss="modal" data-toggle="modal" data-user="0" data-target="#modal-default2"  id="div6" style="display: none;margin-left: 5px;margin-bottom: 2px">指纹录入</button>
+                    <button type="button" class="btn newaddbtn"  data-toggle="modal"  data-target="#modal-dynamicAll" id="div4" style="display: none;margin-left: 5px;margin-bottom: 2px" onclick="resetL()">重置令牌</button>
+                 <!--  <img src="../../bower_components/dist/img/arrowhead.png" onclick="show3();"> -->
+                  <br>
+                  <div id="div8" style="display:none">
+                    <input id="sms_auth" type="checkbox"><span>&nbsp;短信</span>
+                    <input id="ad_auth" type="checkbox"><span>&nbsp;AD域</span>
+                    <input id="radius_auth" type="checkbox"><span>&nbsp;RADIUS</span><br>
+                    <input id="ldap_auth" type="checkbox"><span>&nbsp;LADP</span>
+                    <input id="email_auth" type="checkbox" class="input"><span>&nbsp;Email</span>
+                    <input id="weixin_auth" type="checkbox" class="input"><span>&nbsp;微信</span>
+                    </div>
+                   <br>
+                </div>
+            </div>
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn newaddbtn"  data-dismiss="modal"  data-toggle="modal"  data-target="#modal-primary4" onclick="showMore()">更多</button>
+                    <button type="button" id="editButton" class="btn newaddbtn"  >确定</button>
+                    <input type="hidden" id="id" value="0" />
+                    <input type="hidden" id="fingerdata" value="" />
+                    <input type="hidden" id="fingerchange" value="0" />
+                </div>  
+          </div>
+         </div>
+         </div>
+        <div class="modal modal-hides" id="modal-primary4">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">编辑用户</span>
+              </div>
+              <div class="modal-body">
+                  <div class="u-relevation1">
+                      <span>有效期：</span>
+                      <div class="input-group-addon">
+                          <i class="fa fa-calendar" style="color:#a1a6a1b5"></i>
+                      </div>
+                      <div>-</div>
+                      <input type="text" class="form-control" id="reservation">
+                      <input type="text" class="form-control" id="reservation2">
+                      <input id="add_long" type="checkbox" checked="checked">
+                      <span id="long">永久有效</span>
+                  </div>
+                <div class="u-qq">
+                  <p><span>QQ：</span>
+                  <input type="text" id="qq" th:maxlength="12">&nbsp;&nbsp;<span id="Vqq" style="color: red;font-size:12px;"></span></p>
+                </div>
+                <div class="u-weixin">
+                  <p><span>微信：</span>
+                  <input type="text" id="wechat" th:maxlength="13">&nbsp;&nbsp;<span id="Vwechat" style="color: red;font-size:12px;"></span></p>
+                </div> 
+                <div class="u-remarks">
+                  <p>
+                      <labe class="laa" for="messageContent"><span style="color: black">备注:</span></labe>
+                      <textarea align="left"  id="description" th:maxlength="64"></textarea>&nbsp;&nbsp;<span id="Vdescription" style="color: red;font-size:12px;" ></span>
+                    </p>
+                 </div>
+              </div><br>
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn newaddbtn"  data-dismiss="modal"  data-toggle="modal"  data-target="#edituser">上一步</button>
+                    <button type="button" id="editButton1" class="btn newaddbtn"  >确定</button>
+                </div>     
+
+              </div>
+            </div>
+          </div>
+          <div class="modal modal-hides" id="modal-dynamicAll">
+              <div class="modal-dialog">
+                  <div class="modal-content newdiv" style="width: 350px;margin-left: 100px;margin-top: 200px">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                          <span class="modal-title">提示</span>
+                      </div>
+                      <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                          <p style="margin-left: 20px;">您确定要重置令牌吗？</p>
+                      </div><br>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default newaddbtn2"  data-dismiss="modal">取消</button>
+                          <button type="button" id="dynamicAllButton" class="btn newaddbtn" >确定</button>
+                      </div>
+                      <input type="hidden" id="dynamic_id" />
+                  </div>
+                  <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+          </div>
+          <div class="modal modal-hides" id="delAll">
+              <div class="modal-dialog">
+                  <div class="modal-content newdiv" style="width: 350px;margin-left: 80px;">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                          <span class="modal-title">提示</span>
+                      </div>
+                      <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                          <p>您确定要删除所选的用户吗？</p>
+                      </div><br>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default newaddbtn2"  data-dismiss="modal">取消</button>
+                          <button type="button" id="delAllButton" class="btn newaddbtn" >确定</button>
+                      </div>
+                  </div>
+                  <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+          </div>
+        <div class="modal modal-hides" id="modal-default2">
+          <div class="modal-dialog">
+            <div class="modal-content" style="width: 750px;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">录入指纹</span>
+              </div>
+              <div class="modal-body">
+               <iframe id="fingerpage" src="" width="730" height="430" frameborder="0"></iframe>
+              </div>     
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal" data-target="#edituser" data-dismiss="modal">取消</button>
+                <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#edituser" data-dismiss="modal">确定</button>               
+              </div>
+              <input type="hidden" id="fingerdata" />
+              <input type="hidden" id="fingerchange" value="0" />
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+          <!--导入失败信息提示-->
+          <div class="modal modal-hides" id="modal-uploadInfo">
+              <div class="modal-dialog">
+                  <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                          <span class="modal-title">提示</span>
+                      </div>
+                      <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                          <p style="margin-left: -62px;" id="uploadError"></p>
+                      </div><br>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                          <button type="button" id="uploadInfo" class="btn newaddbtn" data-dismiss="modal">确定</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </section>
+    <!-- /.content -->
+  </div>
+ <footer class="main-footer">
+    <div th:replace="view/common/footer :: footer"></div>
+ </footer>
+</div>
+<!-- jQuery 3 -->
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../bower_components/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!--select-->
+<script src="../../bower_components/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="../../bower_components/bootstrap-select/defaults-zh_CN.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<script src="../../bower_components/dist/js/checkAll.js"></script>
+<!-- page script -->
+<script src="../../js/common/modal.js"></script>
+<script src="../../js/bootstrap-treeview.js"></script>
+<script src="../../js/common/timepicker.js"></script>
+<script src="../../js/common/relative.js"></script>
+<script src="../../js/common/sortable.js"></script>
+<script type="text/javascript" src="../../js/view_js/user.js"></script>
+</body>
+</html>

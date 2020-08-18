@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>网络配置</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <!-- my css -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+  <script src="../../js/html5shiv.min.js"></script>
+  <script src="../../js/respond.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini cn" >
+<div class="wrapper" >
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+  <div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    
+    <!-- Main content -->
+    <section class="content" >
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box-title" >
+             <span class="new-header">网络配置</span>
+             </div>
+          <div class="nav-tabs-custom">
+             <ul class="nav nav-tabs">
+              <li class="active"><a href="#activity" data-toggle="tab">接口设置</a></li>
+              <li><a href="#timeline" data-toggle="tab">静态路由</a></li>
+              <li><a href="#settings" data-toggle="tab">网络诊断</a></li>
+             </ul>
+            <div class="tab-content">
+        
+              <div class="active tab-pane" id="activity">
+                <!-- Post -->
+                <div class="box-body pad" style="margin-top: 0px!important;">
+                  <table id="interfaceList" class="table  table-hover">
+                    <thead>
+                       <tr>
+                        <td><span>接口名称</span></td>
+                        <td><span>IP地址</span></td>
+                        <td><span>子网掩码/前缀</span></td>
+                        <td><span>默认网关</span></td>
+                        <td><span>状态</span></td>
+                        <td><span>操作</span></td>
+                       </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>                       
+                </div>
+              </div>
+        
+             <div class="tab-pane" id="timeline">
+                <!-- Post -->
+                <div class="box-body pad">
+                  <div>
+                  <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-editroute" id="newroute">新建</button>
+                 </div>
+               <hr class="network_hr1">
+                  <table id="routeList" class="table table-hover">
+                    <thead>
+                       <tr>
+                        <td style="width: 10%"><span>目的地址</span></td>
+                        <td style="width: 15%"><span>子网掩码</span></td>
+                        <td style="width: 15%"><span>下一跳地址</span></td>
+                        <td style="width: 15%"><span>路由类型</span></td>
+                        <td style="width: 15%"><span>接口</span></td>
+                        <td style="width: 15%"><span>备注</span></td>
+                        <td ><span>操作</span></td>
+                       </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>                       
+                </div>
+              </div>
+       
+      <!-- 连通性测试 -->
+      <div class="tab-pane" id="settings">
+              <div class="box">
+                <div class="box-body">
+            <div>
+            <span class="new-font-color">连通性测试</span>
+            </div>
+          <!-- 文字下面的蓝条条 -->
+        <div class="new-line-color network_line1"></div>
+        <hr class="network_hr2">
+                  <div class="box">
+                   <div class="box-body">
+                    <div>
+                     <span>诊断类型:</span>
+                     <input name="sex3" class="network_test_type" id="ping" type="radio" checked="checked" />
+                     <span for="P" checked="checked" >PING</span>
+                     <input name="sex3" class="network_test_type" id="route" type="radio"/>
+                     <span for="L">路由追踪</span>
+                     <input name="sex3" class="network_test_type" id="tcpport" type="radio"/>
+                     <span for="T">TCP端口检测</span>
+                      <input name="sex3" class="network_test_type" id="tcpdump" type="radio"/>
+                     <span for="P">抓包分析</span>
+                    </div>
+            
+                  <div id="div2" style="display:block">
+                <div> 
+                  <span>主机地址：</span>
+                  <input type="text" id="networkip">
+                <button type="button" id="networktestbtn" class="btn newaddbtn pull-left "><span>立即执行</span></button></td>
+                </div><br>
+                  <p>&nbsp;&nbsp;<span id="Vnetworkip" class="sign_red"></span></p>
+                  <div id="portdiv" style="display:none;">
+                  <span>端口：</span>
+                  <input type="text" id="networkport"></td>
+                  <br>
+                 <p>&nbsp;&nbsp;<span id="Vnetworkport" style="font-size: 12px;color: red"></span></p>
+                 </div><br>
+                  <div id="networkResult">
+                  </div>
+                  </div> 
+                   </div>
+                   </div>
+                  </div>
+                </div>
+              </div>
+               </div>
+        </div>
+        </div>
+        </div>
+        <div class="modal modal-hides" id="modal-restart">
+            <div class="modal-dialog">
+                <div class="modal-content newdiv" style="width: 350px;margin-left: 80px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">提示</span>
+                    </div>
+                    <div class="ug-delsure" style="margin-left: 100px;margin-top: 30px;">
+                        <p>您确定要重启吗？</p>
+                    </div><br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button" id="restart_Net" class="btn newaddbtn" >确定</button>
+                    </div>
+                </div>
+                <input type="hidden" id="delNet" value=""/>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+	  <div class="modal modal-hides modal-hides" id="modal-interface">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">配置网络接口</span>
+              </div>
+              <div class="modal-body" style="margin-left: 40px;">
+                <div style="margin-top: 20px;margin-left: 66px">
+                  <span>接口名称：&nbsp;&nbsp;&nbsp;<span id="deviceName">eth0</span></span>
+                 </div>
+                <div style="margin-top: 20px;margin-left: 69px">
+                     <span>IPv<span>4</span>设置：</span> 
+                     <!-- <input name="sex" id="Di" type="radio" style="margin-left:10px" checked="checked" onClick="show5()" />
+                     <span for="Di">Disable</span> -->
+                     <input name="sex" id="ipv4dhcp" type="radio" onClick="ifaceDhcp(4)" style="margin-top: -1px;vertical-align: middle;" checked/>
+                     <span for="DH">自动获得</span>
+                     <input name="sex" id="ipv4static" type="radio" onClick="ifaceStatic(4)" style="margin-left: 30px;margin-top: -1px;vertical-align: middle;"/>
+                     
+                     <span for="ST">手动设置</span>
+                </div>
+               
+                 <div style="margin-top: 20px;margin-left: 88px">
+                  <span style=""><span style="color:red;vertical-align:middle;">*</span>地址：
+                  <input type="text" size="30px" id="ipv4addr" style="margin-top: -10px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">
+                  &nbsp;&nbsp;<span id="Vipv4addr" class="sign_red"></span></span>
+                 </div>
+                 <div style="margin-top: 25px;margin-left: 60px">
+                  <span style=""><span style="color:red;vertical-align:middle;">*</span>子网掩码：
+                  <input type="text" size="30px" id="ipv4netmask" style="margin-top: -10px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">
+                   &nbsp;&nbsp;<span id="Vipv4netmask" class="sign_red"></span>
+                  </span>
+                 </div>
+                 <div style="margin-top: 20px;margin-left: 66px">
+                  <span style="vertical-align: top">默认网关：
+                  <input type="text" size="30px" id="ipv4gateway"  style="margin-top: -10px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">
+                  <span id="Vipv4gateway" class="sign_red"></span>
+                  </span>
+                  <p style="margin-left: 73px;margin-top: 5px;color: #a4abb5;font-size: 12px;width: 194px;">请配置正确的网关，否则可能会造成堡垒机无法连接</p>
+                 </div>
+                 
+                 <hr style="border: 0;border-bottom:1px solid #E8E8E8;width: 110%;margin-left: -45px;margin-top: 20px">
+                 <div style="margin-left: 70px;margin-top: 20px">
+                     <span>IPv<span style="">6</span>设置:</span> 
+                     <input name="sex1" id="ipv6enable" type="radio" style="margin-left:11px;margin-top:0px;vertical-align:middle;" onClick="ifaceDhcp(6)"  checked/>
+                     <span for="DH" style="vertical-align:middle;">禁用</span>
+                     <input name="sex1" id="ipv6dhcp" type="radio" style="margin-left:11px;margin-top:0px;vertical-align:middle;" onClick="ifaceDhcp(6)" />
+                     <span for="DH" style="vertical-align:middle;">自动获得</span>
+                     <input name="sex1" id="ipv6static" type="radio" style="margin-left:10px;margin-top: 0px;vertical-align: middle;" onClick="ifaceStatic(6)" />
+                     <span for="ST">手动设置</span>
+                </div>
+
+                 <div style="margin-top: 20px;margin-left: 86px">
+                  <span style=""><span style="color:red;vertical-align:middle;">*</span>地址：
+                  <input type="text" size="30px" id="ipv6addr" style="margin-top: -10px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">
+                  &nbsp;<span id="Vipv6addr" class="sign_red"></span></span>
+                 </div>
+                 <div style="margin-top: 20px;margin-left: 63px">
+                  <span style="vertical-align: top">默认网关：
+                      <input type="text" size="30px" id="ipv6gateway" style="margin-top: -10px;width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">
+                      <span id="Vipv6gateway" class="sign_red"></span>
+                  </span>
+                     <p style="margin-left: 73px;margin-top: 5px;color: #a4abb5;font-size: 12px;width: 194px;">请配置正确的网关，否则可能会造成堡垒机无法连接</p>
+                 </div>
+                
+              </div>
+                 <br>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                   <button type="button" id="saveInterface" class="btn newaddbtn" >确定</button>          
+                 </div>
+               <input type="hidden" id="deviceName"  />
+              </div>
+            <!-- /.modal-content -->
+            </div>
+          <!-- /.modal-dialog -->
+        </div>
+      <div class="modal modal-hides" id="modal-routedel">
+          <div class="modal-dialog">
+              <div class="modal-content newdiv" style="width: 350px;margin-left: 80px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">提示</span>
+                </div>
+                <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                  <p>您确定要删除所选路由吗？</p>
+                </div><br>          
+              <div class="modal-footer">
+                   <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                   <button type="button" id="delRouteBtn" class="btn newaddbtn" >确定</button>          
+                 </div>
+            </div>
+            <input type="hidden" id="delRouteId" value=""/>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+   		</div>
+      <!-- /.row -->
+      <div class="modal modal-hides" id="modal-editroute">
+          <div class="modal-dialog">
+            <div class="modal-content" style="margin-top: 60px;">
+              <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">编辑静态路由</span>
+              </div>
+              <div class="modal-body">
+                <div>
+                     <span>类型：</span> 
+                     <input name="sex2" onclick="showMask()" id="v4" type="radio"/>
+                     <span for="v4" >IPv<span>4</span></span>
+                     <input name="sex2" onclick="hideMask()" id="v6" type="radio" />
+                     <span for="v6">IPv<span>6</span></span>
+                </div>
+                <div id="div3">
+                 <div>
+                  <span><span>*</span>目的地址：</span>
+                  <input type="text" id="routeDestIp" size="30px">&nbsp;&nbsp;<span id="VrouteDestIp" class="sign_red"></span>
+                 </div>
+                 <div id="ipv4_mask">
+                  <span><span>*</span>子网掩码：</span>
+                  <input type="text" id="routeNetmask" size="30px">&nbsp;&nbsp;<span id="VrouteNetmask" class="sign_red"></span>
+                 </div>
+                 <div>
+                  <span><span>*</span>下一跳地址：</span>
+                  <input type="text" id="nextAddress" size="30px">&nbsp;&nbsp;<span id="VnextAddress" class="sign_red"></span>
+                 </div>
+                 <div>
+                  <span>接口：</span>
+                  <select name="lo" id="routeInterface">
+                  <option>eth0</option>                  
+                   </select>
+                 </div>
+                 <div>
+                  <span>备注：</span>
+                  <input type="text" id="routeDesc" size="30px">
+                 </div>
+                </div>
+              </div>
+                 <br>
+                  <div class="modal-footer">
+                   <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                   <button type="button" id="editRouteBtn" class="btn newaddbtn" >确定</button>          
+                 </div>
+                 <input type="hidden"  value="0" id="routeId" />
+            <!-- /.modal-content -->
+            </div>
+          <!-- /.modal-dialog -->
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+    <footer class="main-footer">
+      <div th:replace="view/common/footer :: footer"></div>
+  </footer>
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../js/common/modal.js"></script>
+<script src="../../js/view_js/config_network.js"></script>
+</body>
+</html>
