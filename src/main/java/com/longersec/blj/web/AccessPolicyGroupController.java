@@ -58,7 +58,7 @@ public class AccessPolicyGroupController {
 		boolean r = true;
 		accessPolicyGroupService.deleteBypolicy_id(policy_id,type);
 		if(devicegroup != null) {
-			r = accessPolicyGroupService.editAccessPolicyGroup(policy_id, Arrays.asList(devicegroup));
+			r = accessPolicyGroupService.editAccessPolicyDeviceGroup(policy_id, Arrays.asList(devicegroup));
 		}
 		result.put("success", r);
 		return result;

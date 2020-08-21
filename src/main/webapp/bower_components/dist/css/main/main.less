@@ -8,6 +8,9 @@
   width: 250px;
   background-color: #d3d3d3;
 }
+.tooltip{
+  word-wrap: break-word !important;
+}
 /*下拉菜单鼠标样式*/
 .dropdown-menu li{
   cursor: pointer !important;
@@ -16,6 +19,11 @@
 .input-file{
   background-color:#1494F7;
    
+}
+/*模态框open时scroll-y消失*/
+.modal-open{
+  overflow-x: hidden;
+  overflow-y: scroll!important;
 }
 /*nav切换上标样式*/
 .nav-top-style;
@@ -2375,20 +2383,6 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
           margin-left: 4px;font-size: 16px;line-height: 54px;
         }
       }
-      .rl-report-right,
-      .rs-right,
-      .r-right {
-        float: right;
-        >ul {
-          list-style: none;margin-top: 12px;margin-right:20px;
-          li {
-            float: left;
-            button {
-              height: 30px;font-size: 12px;margin-left: 10px;
-            }
-          }
-        }
-      }
     }
   }
   #modal-default {
@@ -2424,6 +2418,14 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
 }
 .rl{
   .tab-content {
+    .output-table{
+      float: right;
+      margin-top: 10px;
+      margin-right: 10px;
+      >li{
+        list-style: none;
+      }
+    }
     #A,
     #B,
     #C,
@@ -2497,17 +2499,25 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
   }
   #modal-default1 {
     .rl-time {
-      margin-left: 98px;
+      position: absolute;margin-left: 100px;
       >div {
         margin-right: -31px;float:right;
         div {
           height: 34px;width: 20%;
           i {
-            margin-left: -4px;margin-right: 4px;margin-top: 4px;
+            margin-left: -4px;margin-right: 4px;
           }
         }
         input {
-          margin-left: -10px; width: 168px;
+          margin-left: -6px; width: 180px;
+        }
+      }
+    }
+    .rl-show{
+      margin-left:72px;
+      >span:nth-of-type(2){
+        input{
+          vertical-align: -1px;margin-right:2px;
         }
       }
     }
@@ -2517,10 +2527,10 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
         margin-left:10px;margin-top: -3px;margin-right: 7px;
       }
       input:nth-of-type(2) {
-        margin-left:50px;margin-top: -3px;margin-right: 7px;
+        margin-left:20px;margin-top: -3px;margin-right: 7px;
       }
       input:nth-of-type(3) {
-        margin-left:50px;margin-top: -3px;margin-right: 7px;
+        margin-left:20px;margin-top: -3px;margin-right: 7px;
       }
       input:nth-of-type(4) {
         margin-left:72px;margin-top: -3px;margin-right: 7px;
@@ -2536,11 +2546,25 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
       }
 
     }
+    .rl-file{
+      margin-left: 72px; margin-top: 20px;
+      >input{
+        vertical-align: -2px;
+      }
+    }
   }
 }
 /*reports_sessions*/
 .rs {
   .tab-content {
+    .output-table{
+      float: right;
+      margin-top: 10px;
+      margin-right: 10px;
+      >li{
+        list-style: none;
+      }
+    }
     #A,
     #B,
     #C,
@@ -2624,79 +2648,67 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
       }
     }
   }
-  #modal-default,
-  #modal-default1 {
-    .modal-body {
-      .rs-show,
-      .rs-file {
-        margin-left: 70px;margin-top: 70px;
-        >p {
-          float: left;
-          form {
-            p {
-              input {
-                margin-left: 20px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  #modal-default1 {
+  #modal-default1{
     .rs-time {
-      margin-left: 70px;
-      >div {
-        margin-right: -31px;float:right;
+      margin-left: 100px;margin-top:30px;
+      >div:nth-of-type(1) {
+        position: absolute; margin-top: -20px;margin-left: 45px;
         div {
-          height: 34px;width: 20%;
           i {
-            margin-left: -4px;margin-right: 4px;margin-top: 4px;
+            color: #a1a6a1b5;
           }
         }
         input {
-          margin-left: -10px; width: 168px;
+          width: 190px;margin-right: 430px;
+        }
+      }
+    }
+    .rs-show{
+      margin-left: 72px;
+      >span:nth-of-type(2){
+        >input{
+          vertical-align: -1px;margin-right: 2px;
         }
       }
     }
     .rs-type {
-      margin-left: 70px;font-size: 14px;
-      input:nth-of-type(1) {
-        margin-left:10px;margin-top: -3px;margin-right: 5px;
-    }
+      margin-left: 72px;
+      >input:nth-of-type(1) {
+        vertical-align: -2px;margin-right: 5px;margin-left: 10px;
+       }
+      >input:nth-of-type(2) {
+        margin-top: -3px;margin-right: 5px;margin-left: 15px;
       }
-      input:nth-of-type(2) {
-        margin-top: -3px;margin-right: 5px;
+      >input:nth-of-type(3) {
+        margin-left:20px;margin-top: -3px;margin-right: 5px;
       }
-      input:nth-of-type(3) {
-        margin-left:30px;margin-top: -3px;margin-right: 5px;
-      }
-      input:nth-of-type(4) {
+      >input:nth-of-type(4) {
         margin-left:73px;margin-top: -3px;margin-right: 5px;
       }
-      input:nth-of-type(5) {
-        margin-left:58px;margin-top: -3px;margin-right: 5px;
+      >input:nth-of-type(5) {
+        margin-left:42px;margin-top: -3px;margin-right: 5px;
       }
-      input:nth-of-type(6) {
-        margin-left:27px;margin-top: -3px;margin-right: 5px;
       }
-      input:nth-of-type(7) {
-        margin-left:73px;margin-top: -3px;margin-right: 5px;
+    
+     .rs-file{
+      margin-left: 72px; margin-top: 20px;
+      >input{
+        vertical-align: -2px;
       }
-      input:nth-of-type(8) {
-        margin-left:58px;margin-top: -3px;margin-right: 5px;
-      }
-      input:nth-of-type(9) {
-        margin-left:52px;margin-top: -3px;margin-right: 5px;
-      }
-      input:nth-of-type(10) {
-        margin-left:73px;margin-top: -3px;margin-right: 5px;
-      }
+     }
     }
   }
 /*reports*/
 .r {
   .tab-content {
+    .output-table{
+      float: right;
+      margin-top: 10px;
+      margin-right: 10px;
+      >li{
+        list-style: none;
+      }
+    }
     #G,
     #F {
       height: 100%;
@@ -2716,25 +2728,6 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
       }
     }
   }
-  #modal-default,
-  #modal-default1{
-    .modal-body{
-      .r-show,
-      .r-file {
-        margin-left: 70px;margin-top: 70px;
-        >p {
-          float: left;margin-left: -20px;
-        }
-        >form {
-          p {
-            input {
-              margin-left: 20px;vertical-align: -1px;
-            }
-          }
-        }
-      }
-    }
-  }
   #modal-default1 {
     .r-time {
       margin-left: 98px;
@@ -2749,12 +2742,12 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
       }
     }
     .r-type {
-      margin-left: 70px;font-size: 14px;
+      margin-left: 70px;font-size: 14px;margin-top:30px;
       input:nth-of-type(1) {
         margin-left:10px; margin-top: -2px;margin-right: 7px;
       }
       input:nth-of-type(2) {
-        margin-left:50px; margin-top: -2px;margin-right: 7px;
+        margin-left:20px; margin-top: -2px;margin-right: 7px;
       }
       input:nth-of-type(3) {
         margin-left:50px;margin-top: -2px;margin-right: 7px;
@@ -2772,6 +2765,17 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
         margin-left:72px;margin-top: -2px;margin-right: 7px;
       }
 
+    }
+    .r-file{
+      margin-left: 70px;font-size: 14px;margin-top: 20px;
+      >form{
+        margin-left: 70px;margin-top: -31px;
+        p{
+          >input{
+            vertical-align: -2px;
+          }
+        }
+      }
     }
   }
 }
@@ -4106,7 +4110,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
       .ad_asy{
         font-size: 12px;margin-left: 73px;
         select{
-          width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left: -8px;
+          width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left: -12px;
         }
       }
       .more_ad{
@@ -6045,14 +6049,13 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
   .product-title{
     color:#454040;
     .product-time{
-      background-color: #f0f4ef;
+      background-color: #009ffd38;
       color: #1494F7;
       float: right;
       font-size: 13px;
       margin-top: 10px;
       position: absolute;
-      margin-left: 100px;
-      width: 100px;
+      margin-left: 150px;
   }
   }
   .product-description{

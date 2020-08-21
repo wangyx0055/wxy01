@@ -127,19 +127,19 @@
             <div class="modal-body">
                 <span>*</span><span style="font-size: 12px;">服务器地址：&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <input type="text" id="ad_edit_ip1" size="30px">&nbsp;&nbsp;<span id="Vip" class="sign_red"></span>
-                <p>请输入有效的IP地址或域名</p>
+                <p>请输入有效的IP地址</p>
                 <div>
                     <span>&nbsp;类型：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span  id="ad_edit_type" style="margin-left: -5px">
-                       <lable> <input type="radio" name="typerid1" value="0" checked><span  style="font-size: 12px;">&nbsp;&nbsp;LADP认证&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></lable>
+                       <lable> <input type="radio" name="typerid1" value="0" checked><span  style="font-size: 12px;">&nbsp;&nbsp;LDAP认证&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></lable>
                       <lable> <input type="radio" name="typerid1" value="1"><span  style="font-size: 12px;">&nbsp;&nbsp;AD认证</span></lable>
                     </span>
                 </div><br>
                 <div>
                     <span>&nbsp;SSL：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span id="ad_edit_ssl">
-                        <lable><input type="radio" id="sslrid" name="sslrid1" value="1" checked><span  style="font-size: 12px;">&nbsp;&nbsp;否</span></lable>
-                        <lable><input type="radio" id="sslrid2" name="sslrid1" value="0" ><span style="font-size: 12px;">&nbsp;&nbsp;是</span></lable>
+                        <lable><input type="radio" id="sslrid" name="sslrid1" value="0" checked><span  style="font-size: 12px;">&nbsp;&nbsp;否</span></lable>
+                        <lable><input type="radio" id="sslrid2" name="sslrid1" value="1" ><span style="font-size: 12px;">&nbsp;&nbsp;是</span></lable>
                     </span>
                 </div>
                 <div id="div7"  >
@@ -162,10 +162,10 @@
                         <option value="1" selected>手动同步</option>
                         <option value="2">自动同步</option>
                       </select></span></br></br>
-                    <span class="more_ad">更多：&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;
-                    <lable><input type="checkbox" id="ad_edit_cover" value="1" checked /><span>&nbsp;&nbsp;覆盖已有用户</span></lable>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <lable><input type="checkbox" id="ad_edit_add_department" value="1" /><span>&nbsp;&nbsp;创建新部门</span></lable>
-                    <br><br>
+<!--                    <span class="more_ad">更多：&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;-->
+<!--                    <lable><input type="checkbox" id="ad_edit_cover" value="1" checked /><span>&nbsp;&nbsp;覆盖已有用户</span></lable>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                    <lable><input type="checkbox" id="ad_edit_add_department" value="1" /><span>&nbsp;&nbsp;创建新部门</span></lable>-->
+<!--                    <br><br>-->
             </div>
             </div>
             <div class="modal-footer">
@@ -191,7 +191,8 @@
                 <div class="box-body">
                 	<span>登录名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="lo" id="ad_edit_username">
                         <option value="CN" selected>CN</option>
-                        <option value="SN">SN</option></select></span></br></br>
+                        <option value="SN">SN</option>
+                        <option value="UID" selected>UID</option></select></span></br></br>
                     <span>姓名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="lo" id="ad_edit_password2">
                         <option value="CN" selected>CN</option>
                         <option value="SN">SN</option></select></span></br></br>

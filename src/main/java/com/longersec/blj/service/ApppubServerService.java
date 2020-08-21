@@ -3,6 +3,7 @@ package com.longersec.blj.service;
 import java.util.ArrayList;
 import java.util.List;
 import com.longersec.blj.domain.ApppubServer;
+import org.apache.ibatis.annotations.Param;
 
 public interface ApppubServerService {
 
@@ -11,6 +12,8 @@ public interface ApppubServerService {
 	public boolean editApppubServer(ApppubServer apppubServer);
 
 	public boolean delApppubServer(List<Integer> ids);
+
+	boolean delUselessApppubServer(Integer id);
 
 	public List<Object> findAll(ApppubServer apppubServer, String sname,Integer type,int page_start, int page_length);
 
@@ -25,5 +28,7 @@ public interface ApppubServerService {
 	public boolean editApppubServerList(ArrayList<ApppubServer> updatelistlistApppubservers);
 
 	public ApppubServer checkip(String ip, Integer id);
+
+	public ApppubServer getApppubServerByName (String name);
 }
 

@@ -77,8 +77,8 @@ public class GroupServiceImpl implements GroupService{
 	}
 
 	@Override
-	public boolean editGroupList(ArrayList<Group> updatelistGroup) {
-		return GroupDao.editGroupList(updatelistGroup);
+	public boolean editGroupList(Group group) {
+		return GroupDao.editGroupList(group);
 	}
 
 	@Override

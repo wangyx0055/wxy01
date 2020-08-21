@@ -799,15 +799,14 @@ $('#delButton').click(function(){
                 $("#modal-success .modal-title").text('成功');
                 $("#modal-success .modal-body").text('操作成功!');
                 $("#modal-success").modal();
-                loadAJAX('#userlist');
                 $("#modal-deluser").modal('hide');
             }
             else{
                 $("#modal-danger .modal-title").text('失败');
                 $("#modal-danger .modal-body").text('操作失败!');
                 $("#modal-danger").modal();
-                loadAJAX('#userlist');
             }
+            loadAJAX('#userlist');
         },
         error:function(){}
     })

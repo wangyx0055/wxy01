@@ -13,8 +13,10 @@ public interface LoginLogService {
 
 	public boolean delLoginLog(List<Integer> ids);
 
-	public List<Object> findAll(LoginLog loginLog, int page_start, int page_length);
-	
+	public List<Object> findAll(LoginLog loginLog,int page_start, int page_length);
+
+	public List<Object> findAll1(LoginLog loginLog,int page_start,String time_format,String time,  int page_length);
+
 	public List<Map<String, Object>> selectLast7Day();
 	
 	public List<Map<String, Object>> selectByUser();

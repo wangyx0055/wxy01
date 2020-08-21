@@ -46,6 +46,7 @@
 		<if test="department != null">`department`=#{department},</if>
 		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
 		<if test="apppub_program_id != null">`apppub_program_id`=#{apppub_program_id},</if>
+		<if test="apppub_server_id != null">`apppub_server_id`=#{apppub_server_id},</if>
 		<if test="url != null">`url`=#{url},</if>
 		<if test="desc != null">`desc`=#{desc},</if>
 			<if test="apppub != null">`apppub`=#{apppub},</if>
@@ -119,8 +120,12 @@
             	ON b.apppub_program_id=a.id GROUP BY b.id ORDER BY count DESC limit 4;
     </select>
 
-	<select id="checkName" resultType="java.lang.String">
-		select id from lsblj_apppub_account where id!=#{id} and name=#{name} limit 1;
+	<select id="checkName" resultType="java.lang.Integer">
+		select count(*) from lsblj_apppub_account where id != #{id} and name=#{name};
+	</select>
+
+	<select id="getApppubAccountByName" resultType="com.longersec.blj.domain.ApppubAccount">
+		select * from lsblj_apppub_account where name=#{name} limit 1;
 	</select>
 
 	<select id="selectName" resultType="java.lang.String">
@@ -213,7 +218,7 @@
 	
 	<select id="getApppubAccount" resultMap="ApppubAccountMap, apppubAccountRecordCounts" resultType="java.lang.Object">
 		SELECT SQL_CALC_FOUND_ROWS 
-			a.id,a.name apppubaccountname,a.username apppubusername,pro.name appprogramname,s.ip appserverip, s.name appservername,p.name policyname,user_apppub_account.*  
+			a.id,a.name apppubaccountname,a.username apppubusername,IFNULL(pro.name,'') appprogramname,s.ip appserverip, s.name appservername,p.name policyname,user_apppub_account.*
 			FROM lsblj_apppub_account a 
 			LEFT JOIN lsblj_apppub_program pro ON a.apppub_program_id=pro.id  
 			LEFT JOIN lsblj_apppub_server s ON a.apppub_server_id=s.id 
@@ -250,4 +255,40 @@
 			
 			;SELECT found_rows() AS recordCounts;
 	</select>
+
+	<insert id="insertMore">
+		INSERT INTO lsblj_apppub_account
+		<set>
+			<if test="name != null">`name`=#{name},</if>
+			<if test="username != null">`username`=#{username},</if>
+			<if test="department != null">`department`=#{department},</if>
+			<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+			<if test="apppub_program_id != null">`apppub_program_id`=#{apppub_program_id},</if>
+			<if test="apppub_server_id != null">`apppub_server_id`=#{apppub_server_id},</if>
+			<if test="url != null">`url`=#{url},</if>
+			<if test="desc != null">`desc`=#{desc},</if>
+			<if test="apppub != null">`apppub`=#{apppub},</if>
+		</set>
+	</insert>
+
+	<update id="editApppubAccountList">
+		<foreach collection="ArrayList" item="item" index="index">
+			UPDATE lsblj_apppub_account
+			<set>
+				<if test="item.name != null">`name`=#{item.name},</if>
+				<if test="item.username != null">`username`=#{item.username},</if>
+				<if test="item.department != null">`department`=#{item.department},</if>
+				<if test="item.password != null">`password`=AES_ENCRYPT(#{item.password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+				<if test="item.apppub_program_id != null">`apppub_program_id`=#{item.apppub_program_id},</if>
+				<if test="item.apppub_server_id != null">`apppub_server_id`=#{item.apppub_server_id},</if>
+				<if test="item.url != null">`url`=#{item.url},</if>
+				<if test="item.desc != null">`desc`=#{item.desc},</if>
+				<if test="item.apppub != null">`apppub`=#{item.apppub},</if>
+			</set>
+			where id=#{item.id};
+		</foreach>
+
+	</update>
+
+
 </mapper>

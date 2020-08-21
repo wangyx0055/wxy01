@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
   <script src="../../js/html5shiv.min.js"></script>
   <script src="../../js/respond.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="../../bower_components/treeview/font.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini rs" >
 <div class="wrapper" >
@@ -47,22 +47,17 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="rs-report">
-         <!--    <div class="rs-left">
-              <span class="glyphicon glyphicon-list"></span>
-            <span>运维报表</span>
-          </div> -->
           <div class="box-title" style="padding:15px;" >
              <span class="new-header">运维报表</span>
              </div>
-          <div class="rs-right" style="margin-top: -50px;">
+          <!--<div class="rs-right" style="margin-top: -50px;">
             <ul class="mr-nav-like">
-            <!--
+            &lt;!&ndash;
             <li><button type="button" class="btn btn-default pull-left" data-dismiss="modal"  data-toggle="modal" data-target="#modal-default" style="background-color:white;color:#12BA1D;border:1px solid #12BA1D;outline:none">报表自动发送</button></li>
-            -->
+            &ndash;&gt;
             <li><button type="button" class="btn btn-default pull-left baobiao" data-dismiss="modal" data-toggle="modal" data-target="#modal-default1">报表导出</button></li>
-             
             </ul>
-          </div>
+          </div>-->
           </div>
           <div class="nav-tabs-custom">
              <ul class="nav nav-tabs" style="margin-left: 17px !important;">
@@ -72,6 +67,13 @@
               <li><a href="#D" data-toggle="tab">告警报表</a></li>
              </ul>
                   <div class="tab-content">
+                      <ul class="mr-nav-like output-table">
+                   <!--
+                          <li><button type="button" class="btn btn-default pull-left" data-dismiss="modal"  data-toggle="modal" data-target="#modal-default" style="background-color:white;color:#12BA1D;border:1px solid #12BA1D;outline:none">报表自动发送</button></li>
+                        -->
+                          <li><button type="button" class="btn btn-default pull-left baobiao" data-dismiss="modal" data-toggle="modal" data-target="#modal-default1">报表导出</button></li>
+
+                      </ul>
                 <div class="active tab-pane" id="A">
                     <div class="rs-photo">
                         <span class="new-font-color">趋势图</span>
@@ -377,41 +379,39 @@
 								<span class="modal-title">报表导出</span>
 							</div>
 							<div class="modal-body">
-								<div class="rl-time" style="margin-left: 100px;">
+								<div class="rs-time">
 									<span>时间：</span>
-									<div class="input-group"
-										style="position: absolute; margin-top: -20px;margin-left: 45px;">
+									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-calendar" style="color: #a1a6a1b5"></i>
+											<i class="fa fa-calendar"></i>
 										</div>
 										<input type="text" class="form-control pull-right"
-											id="export-date" style="width: 190px;margin-right: 430px;">
+											id="export-date">
 									</div>
 								</div>
 								<br>
 								<br>
-								<div class="rl-show" style="margin-left: 72px;">
+								<div class="rs-show">
 									<span>展示粒度：</span> 
 									<span>
-										<input type="radio" name="interval" data-interval="hour" checked="checked"> 按小时 
-										<input type="radio" name="interval" data-interval="day"> 按天
-										<input type="radio" name="interval" data-interval="week"> 按周 
+										<input type="radio" name="interval" data-interval="hour" checked="checked"> 按小时 &nbsp;&nbsp;&nbsp;
+										<input type="radio" name="interval" data-interval="day"> 按天&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="interval" data-interval="week"> 按周 &nbsp;&nbsp;&nbsp;
 										<input type="radio" name="interval" data-interval="month"> 按月
 									</span>
 								</div>
 								<br>
-								<div class="rl-type" style="margin-left: 72px;">
+								<div class="rs-type">
 									<span>报表类型:</span>
-									<input style="vertical-align: -2px;margin-right: 5px;" type="checkbox" checked="checked" value="time" />运维时间分布
-									<input style="margin-left: 15px;" type="checkbox" checked="checked" value="timeLongDevice" />设备会话时长
-									<input style="margin-left: 20px;" type="checkbox" checked="checked" value="timeLongUser" />用户会话时长
+									<input type="checkbox" checked="checked" value="time" />运维时间分布
+									<input type="checkbox" checked="checked" value="timeLongDevice" />设备会话时长
+									<input type="checkbox" checked="checked" value="timeLongUser" />用户会话时长
 									<br />
 									<input type="checkbox" checked="checked" value="command" />命令统计 
-									<input style="margin-left: 42px;" type="checkbox" checked="checked" value="alert" />告警报表
+									<input type="checkbox" checked="checked" value="alert" />告警报表
 								</div>
-								<div class="rl-file"
-									style="margin-left: 72px; margin-top: 20px;">
-									<span>文件格式：</span> <span>
+								<div class="rs-file">
+									<span>文件格式：</span>
 									<input type="radio" checked="checked" data-interval="csv"> CSV 
 								</div>
 								<br>

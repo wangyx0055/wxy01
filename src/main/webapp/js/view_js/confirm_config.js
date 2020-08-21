@@ -416,15 +416,21 @@ function asyncUser(id) {
                 $("#modal-success .modal-body").text('同步成功!');
                 $("#modal-success").modal();
             } else {
-                $("#modal-upload").modal("hide");
-                $("#modal-danger .modal-title").text('失败');
-                $("#modal-danger .modal-body").text("同步失败!");
-                $("#modal-danger").modal();
+                if(data.error.length!=0){
+                    $("#modal-upload").modal("hide");
+                    $("#modal-danger .modal-title").text('失败');
+                    $("#modal-danger .modal-body").text(data.error);
+                    $("#modal-danger").modal();
+                }else{
+                    $("#modal-upload").modal("hide");
+                    $("#modal-danger .modal-title").text('失败');
+                    $("#modal-danger .modal-body").text("同步失败!");
+                    $("#modal-danger").modal();
+                }
             }
         },
         error: function() {
-
-}
+        }
     })
 }
 function reload() {

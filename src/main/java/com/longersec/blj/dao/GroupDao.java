@@ -41,5 +41,5 @@ public interface GroupDao {
 
 	Group selectByname(@Param("name")String name, @Param("type") Integer type);
 
-    boolean editGroupList(@Param("ArrayList")ArrayList<Group> updatelistGroup);
+    boolean editGroupList(Group group);
 }

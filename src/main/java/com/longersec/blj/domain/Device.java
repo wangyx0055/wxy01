@@ -62,6 +62,26 @@ public class Device {
 
 	private String typename;
 
+	private Integer file_id;
+
+	private String ssh_password;
+
+	public Integer getFile_id() {
+		return file_id;
+	}
+
+	public void setFile_id(Integer file_id) {
+		this.file_id = file_id;
+	}
+
+	public String getSsh_password() {
+		return ssh_password;
+	}
+
+	public void setSsh_password(String ssh_password) {
+		this.ssh_password = ssh_password;
+	}
+
 	public Integer getId() {
 		return id;
 	}

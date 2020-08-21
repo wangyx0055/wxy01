@@ -49,8 +49,11 @@ public class DeviceServiceImpl implements DeviceService{
 		deviceAccount.setPassword(device.getSuper_password());
 		deviceAccount.setProtocol_id(device.getProtocol_id());
 		deviceAccount.setPort(device.getPort());
+		deviceAccount.setSsh_key(device.getSsh_key());
+		deviceAccount.setFile_id(device.getFile_id());
+		deviceAccount.setSsh_password(device.getSsh_password());
 		boolean c = deviceAccountDao.addDeviceAccount(deviceAccount);
-		if ( a==true && c==true){
+		if ( a && c){
 			return true;
 		}else {
 			return false;

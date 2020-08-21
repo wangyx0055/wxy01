@@ -31,7 +31,7 @@ $(function () {
                         return '<input type="checkbox" name="chk[]" value='+data+'>';
                     }},
                 {"data": "login_datetime"},
-                {"data": "title"},
+                {"data": "read_check"},
                 {
                     "data": "level",
                     "render": function (data, type, row, mata) {
@@ -53,7 +53,7 @@ $(function () {
 		        }}
 
             ],
-            "fnDrawCallback": function( settings, json ) {
+            "fnDrawCallback": function(data, settings, json ) {
                 $('#massagelist div').tooltip();
                 //点击已读消息
                 let $tr=$("#massagelist>tbody tr");
@@ -61,27 +61,13 @@ $(function () {
                         $tr.on("click",function (event){
                         console.log($(this));
                         $(this).css({"font-weight":"500","color":"rgba(0, 0, 0, 0.85)",});
-                /*        $.ajax({
-                            url:"../../systemMessage/listSystemMessage?"+new Date().getTime(),
-                            type:"POST",
-                            data:{
-                                start:0,
-                                length:1
-                            },
-                            success:function(data){
-                                $('.navbar-custom-menu .label-warning').text(data.recordsTotal-1);
-                                $('.navbar-custom-menu .dropdown-menu .header').text(data.recordsTotal+"条通知");
-                                for(var i=0; i<data.data.length; i++){
-                                    $('.navbar-custom-menu .dropdown-menu .menu').remove("<li><a href=\"#\"><i class=\"fa fa-warning text-red\"></i> "+data.data[i].title+":"+data.data[i].content+"</a> </li>");
-                                }
-                            },
-                            error:function(){}
-                        })*/
+                        row.data.read_check=0;
                 });
                 //点击阅读全部消息
-                $("#ad_del_button_").click(function () {
-                    let $tr=$("#massagelist>tbody").find("tr");
-                    $tr.css({"font-weight":"500","color":"rgba(0, 0, 0, 0.85)",});
+                $("#read_button").click(function () {
+                        let $tr=$("#massagelist>tbody").find("tr");
+                        $tr.css({"font-weight":"500","color":"rgba(0, 0, 0, 0.85)",});
+                        row.data.read_check=0;
                 })
             }
         })
@@ -95,9 +81,9 @@ $(function () {
     $('#massagelist div').tooltip();
 });
 //删除
-$('#delAllButton').click(function(){
+/*$('#delAllButton').click(function(){
     var obj = document.getElementsByName('chk[]');
-    /*  console.log(obj);*/
+    /!*  console.log(obj);*!/
     var ids= [];
     for ( let i in obj){
         if(obj[i].checked)
@@ -155,4 +141,6 @@ $('#delAllButton').click(function(){
             $("#modal-danger").modal();
         }
     })
-});
+});*/
+
+//

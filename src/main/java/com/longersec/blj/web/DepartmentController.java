@@ -50,6 +50,9 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
 
+	@Autowired
+	private ApppubServerService apppubServerService;
+
 	@RequestMapping("/findAll")
 	@ResponseBody
 	public JSONObject findAll() {
@@ -65,10 +68,12 @@ public class DepartmentController {
 	public JSONObject findParentName(@RequestParam(value = "parent_id") int parent_id) {
 		result = new JSONObject();
 		Department department = departmentService.findParentName(parent_id);
-/*		//自动更新部门用户和设备数量
+		/*//自动更新部门用户和设备数量
 		UpdateDepartmentCount.AutoUpdateDepartmentDeviceCounts(departmentService);
 		UpdateDepartmentCount.AutoUpdateDepartmentUserCounts(departmentService);*/
-		result.put("name",department.getParent_name());
+		result.put("name","");
+		if(department!=null)
+			result.put("name",department.getParent_name());
 		return result;
 	}
 
@@ -288,12 +293,12 @@ public class DepartmentController {
 					operatorLog.setResult("成功");
 				}
 			}
-			List<Object> objectList = UpdateDepartmentCount.deleteUserUpdateDepartmentCount(departmentService, userService, deviceService, groupService, userGroupUserService, groupDeviceAccountService, _ids);
+			List<Object> objectList = UpdateDepartmentCount.deleteUserUpdateDepartmentCount(departmentService, userService, deviceService, groupService, userGroupUserService, groupDeviceAccountService, apppubServerService,_ids);
 			StringBuilder stringBuilder = new StringBuilder();
 			for (Object strings : objectList) {
 				stringBuilder.append(strings).append(",");
 			}
-			operatorLog.setDetails("删除部门["+stringBuilder+"]");
+			operatorLog.setDetails("删除部门["+stringBuilder.substring(0,stringBuilder.length()>0?stringBuilder.length()-1:stringBuilder.length())+"]");
 		}
 		operatorLogService.addOperatorLog(operatorLog);
 		return result;
@@ -401,7 +406,7 @@ public class DepartmentController {
 		List<String> list = new ArrayList<>(10);
 		//判断部门是否存在
 		List<Integer> integers = departmentService.selectIdByname(name);
-		if (integers == null){
+		if (integers == null || integers.size() == 0){
 			errorMap.put("info",name+":部门不存在");
 			errorMap.put("success", false);
 			return errorMap;

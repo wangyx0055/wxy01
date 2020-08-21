@@ -110,6 +110,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
+	public boolean editMore(Department department) {
+		return DepartmentDao.editMore(department);
+	}
+
+	@Override
 	public Department selectByname(String s) {
 		return DepartmentDao.selectByname(s);
 	}
@@ -164,5 +169,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return DepartmentDao.selectIdByname(name);
 	}
 
-
+	@Override
+	public Department selectByNameAndParentId(String name, int parent_id) {
+		return DepartmentDao.selectByNameAndParentId(name,parent_id);
+	}
 }

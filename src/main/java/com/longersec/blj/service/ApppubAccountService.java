@@ -28,10 +28,16 @@ public interface ApppubAccountService {
 	
 	public List<Map<String, Integer>> totalByProgram();
 
-	public String checkName(Integer id, String name);
+	public int checkName(Integer id, String name);
 
 	public String selectName(Integer id, String name);
 
 	public ApppubAccount getById(Integer id);
+
+	boolean insertMore(ApppubAccount apppubAccount);
+
+	boolean editApppubAccountList(ArrayList<ApppubAccount> update_apppubAccounts);
+
+	public  ApppubAccount getApppubAccountByName (String name);
 }
 

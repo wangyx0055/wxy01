@@ -1,7 +1,6 @@
 package com.longersec.blj.utils;
 
 import java.io.UnsupportedEncodingException;
-import java.rmi.server.UID;
 import java.util.*;
 
 import javax.naming.Context;
@@ -14,7 +13,6 @@ import javax.naming.ldap.LdapName;
 
 import com.longersec.blj.domain.ConfigLdapAd;
 
-import com.longersec.blj.domain.ConfigLogin;
 import com.longersec.blj.domain.User;
 
 import org.springframework.ldap.NameNotFoundException;
@@ -171,12 +169,27 @@ public class AdOperate {
 
 	}
 
+	//连接测试
 	public static boolean checkConnect(ConfigLdapAd configLdapAd){
 
 		Hashtable<String, String> env = new Hashtable<String, String>();
 
-//		String adminName = "administrator@lsblj.cn";//username@domain
-		String adminName = configLdapAd.getAdministrator()+"@"+configLdapAd.getDomain();//username@domain
+
+		//判断字符串格式
+		String adminName = "";
+		String isADorLDAP = configLdapAd.getAdministrator();
+		if(isADorLDAP.indexOf("DC=")!=-1){
+			adminName = configLdapAd.getAdministrator();//username@domain LDAP认证格式
+		}else{
+			adminName = configLdapAd.getAdministrator()+"@"+configLdapAd.getDomain();
+		}
+
+//		String adminName = "administrator@lsblj.cn";//username@domain AD认证格式
+//		String adminName = "CN=Administrator,CN=Users,DC=lsblj,DC=cn";//username@domain LDAP认证格式
+//		String adminName = configLdapAd.getAdministrator()+"@"+configLdapAd.getDomain();//username@domain AD认证格式
+//		String adminName = configLdapAd.getAdministrator();//username@domain LDAP认证格式
+
+
 //		String adminPassword = "ls@BLJ1";//password
 		String adminPassword = configLdapAd.getPassword();//password
 //		String ldapURL = "ldap://39.96.69.249:389";//ip:port
@@ -198,14 +211,29 @@ public class AdOperate {
 		}
 	}
 
+	//获取结果查询集
 	public ArrayList<User> searchUser(ConfigLdapAd configLdapAd) {
 
 		ArrayList<User> userArrayList = new ArrayList<>();
+
 		String returnValue = configLdapAd.getUsername();
 
 		Properties env = new Properties();
-//		String adminName = "administrator@lsblj.cn";//username@domain
-		String adminName = configLdapAd.getAdministrator()+"@"+configLdapAd.getDomain();//username@domain
+
+		//判断字符串格式
+		String adminName = "";
+		String isADorLDAP = configLdapAd.getAdministrator();
+		if(isADorLDAP.indexOf("DC=")!=-1){
+			adminName = configLdapAd.getAdministrator();//username@domain LDAP认证格式
+		}else{
+			adminName = configLdapAd.getAdministrator()+"@"+configLdapAd.getDomain();
+		}
+
+//		String adminName = "administrator@lsblj.cn";//username@domain AD认证格式
+//		String adminName = "CN=Administrator,CN=Users,DC=lsblj,DC=cn";//username@domain LDAP认证格式
+//		String adminName = configLdapAd.getAdministrator()+"@"+configLdapAd.getDomain();//username@domain AD认证格式
+//		String adminName = configLdapAd.getAdministrator();//username@domain LDAP认证格式
+
 //		String adminPassword = "ls@BLJ1";//password
 		String adminPassword = configLdapAd.getPassword();//password
 //		String ldapURL = "ldap://39.96.69.249:389";//ip:port
@@ -226,44 +254,52 @@ public class AdOperate {
 
 			searchCtls.setReturningAttributes(returnedAtts);
 			NamingEnumeration<SearchResult> answer = ctx.search(searchBase, searchFilter,searchCtls);
-			int totalResults = 0;// Specify the attributes to return
-			int rows = 0;
 			while (answer.hasMoreElements()) {
 				SearchResult sr = (SearchResult) answer.next();
 				Attributes Attrs = sr.getAttributes();// 得到符合条件的属性集
 				User user = new User();
 				if (Attrs != null) {
-					try {
-						for (NamingEnumeration ne = Attrs.getAll(); ne.hasMore();) {
-							Attribute Attr = (Attribute) ne.next();// 得到下一个属性
-							String distinguishedname = Attrs.get("distinguishedname").toString();
-							String distinguishedName = distinguishedname.substring(0, distinguishedname.indexOf(":"));
-							String newDistinguishedName = distinguishedname.substring(distinguishedName.length()+2,distinguishedname.length());
 
-//							String uid = Attrs.get("uid").toString();
-//							String UID = uid.substring(0, uid.indexOf(":"));
-//							String newUID = uid.substring(UID.length()+2,uid.length());
+					String distinguishedname = Attrs.get("distinguishedname").toString();
+					String distinguishedName = distinguishedname.substring(0, distinguishedname.indexOf(":"));
+					String newDistinguishedName = distinguishedname.substring(distinguishedName.length()+2,distinguishedname.length());
 
-							if(returnValue.equals("CN")||returnValue=="") {
-								String cn = Attrs.get("cn").toString();
-								String CN = cn.substring(0, cn.indexOf(":"));
-								String newCN = cn.substring(CN.length() + 2, cn.length());
-								user.setUsername(newCN);
-								user.setRealname(newCN);
-							}else if(returnValue.equals("SN")){
-								String sn = Attrs.get("sn").toString();
-								String SN = sn.substring(0, sn.indexOf(":"));
-								String newSN = sn.substring(SN.length()+2,sn.length());
-								user.setUsername(newSN);
-								user.setRealname(newSN);
-							}
+
+					if (Attrs.get("cn")!=null){
+						if(returnValue.equals("CN")||returnValue.equals("")) {
+						String cn = Attrs.get("cn").toString();
+						String CN = cn.substring(0, cn.indexOf(":"));
+						String newCN = cn.substring(CN.length() + 2, cn.length());
+							user.setUsername(newCN);
+							user.setRealname(newCN);
 							user.setRole_id(1);
 							user.setLdap_dn(newDistinguishedName);
 							userArrayList.add(user);
 						}
 					}
-					catch (NamingException e) {
-						System.err.println("Throw Exception : " + e);
+					if (Attrs.get("sn")!=null){
+						if(returnValue.equals("SN")){
+						String sn = Attrs.get("sn").toString();
+						String SN = sn.substring(0, sn.indexOf(":"));
+						String newSN = sn.substring(SN.length()+2,sn.length());
+							user.setUsername(newSN);
+							user.setRealname(newSN);
+							user.setRole_id(1);
+							user.setLdap_dn(newDistinguishedName);
+							userArrayList.add(user);
+						}
+					}
+					if (Attrs.get("uid")!=null){
+						if(returnValue.equals("UID")) {
+						String uid = Attrs.get("uid").toString();
+						String UID = uid.substring(0, uid.indexOf(":"));
+						String newUID = uid.substring(UID.length()+2,uid.length());
+							user.setUsername(newUID);
+							user.setRealname(newUID);
+							user.setRole_id(1);
+							user.setLdap_dn(newDistinguishedName);
+							userArrayList.add(user);
+						}
 					}
 				}//if
 			}
@@ -275,4 +311,50 @@ public class AdOperate {
 		return userArrayList;
 	}
 
+	//对获取的DN进行处理
+	public List<String> dnOperate(ConfigLdapAd configLdapAd,String dnStr){
+
+		List<String> baseDList = new ArrayList();
+		List<String> dnList = new ArrayList();
+
+		//获取"DC="字符串的出现次数
+		int strlen=dnStr.length();
+		String afterstr=dnStr.replace("DC=","dc");
+		int afterlen=afterstr.length();
+		int endlen = strlen-afterlen;
+
+		//排除无关干扰字符串
+		String dnStr1 = dnStr.replace("DC=","");
+		String dnStr2 = dnStr1.replace("CN=","");
+		String dnStr3 = dnStr2.replace("OU=","");
+
+		//按照","分割字符串
+		String[] newDnStr = dnStr3.split(",");
+
+		//根据"DC="出现次数获取所有"DC="字段后的字符
+		for(int i=newDnStr.length-1;i>newDnStr.length-endlen-1;i--){
+			baseDList.add(newDnStr[i]);
+		}
+		//将处理后的字符串拼接成域名格式 例如：“lsbjlj.cn”
+		String Str = "";
+		for(int i = baseDList.size()-1;i>=0;i--){
+			String Str1 = baseDList.get(i);
+			Str = Str + Str1+".";
+		}
+		Str = Str.substring(0,Str.length()-1);
+
+		//将拼接好的域名格式部门名，放入dnList数组第一个字段
+		dnList.add(Str);
+
+		//获取次级的部门列表
+		for(int i=newDnStr.length-3;i>0;i--){
+			dnList.add(newDnStr[i]);
+		}
+
+		return dnList;
+
+	}
+
+
 }
+

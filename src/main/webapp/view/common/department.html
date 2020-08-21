@@ -23,9 +23,9 @@
     <script src="../../js/html5shiv.min.js"></script>
     <script src="../../js/respond.min.js"></script>
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-treegrid/0.2.0/css/jquery.treegrid.min.css">
+    <link rel="stylesheet" href="../../bower_components/treeview/font.css">
+    <link href="../../bower_components/treeview/bootstrap-table.min.css" rel="stylesheet">
+    <link  href="../../bower_components/treeview/jquery.treegrid.min.css" rel="stylesheet">
 </head>
 <style>
     .treegrid-expander-collapsed{
@@ -60,6 +60,9 @@
         border-radius:0px;
         border-left: none;
         border-right: none;
+    }
+    body{
+        padding-right: 0px!important;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -133,7 +136,7 @@
                     <div style="margin-top: 10px;margin-left: 136px">
                         <span><span style="font-size: 12px;vertical-align: top;display: inline-block">描述：</span>
                             <textarea style="width:209px;height: 60px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;resize:none" name="description" id="description"></textarea>&nbsp;&nbsp;<span id='Vdescription' style="color:red;font-size: 12px;"></span></span>
-                        <p style="font-size: 12px;margin-left: 38px;color: #a4abb5;margin-top: 0px; width: 306px;">长度1-64个汉字或字符</p>
+                        <p style="font-size: 12px;margin-left: 38px;color: #a4abb5;margin-top: 0px; width: 306px;">长度1-128个汉字或字符</p>
                     </div>
                     <br>
                     <div class="modal-footer">
@@ -324,9 +327,9 @@
 <script src="../../js/common/modal.js"></script>
 <script src="../../bower_components/dist/js/checkAll.js"></script>
 <script src="../../js/bootstrap-treeview.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap-table/1.12.0/extensions/treegrid/bootstrap-table-treegrid.js"></script>
-<script src="https://cdn.bootcss.com/jquery-treegrid/0.2.0/js/jquery.treegrid.min.js"></script>
+<script src="../../bower_components/treeview/bootstrap-table.min.js"></script>
+<script src="../../bower_components/treeview/bootstrap-table-treegrid.js"></script>
+<script src="../../bower_components/treeview/jquery.treegrid.min.js"></script>
 <script type="text/javascript" src="../../js/view_js/department.js"></script>
 </body>
 </html>

@@ -67,4 +67,9 @@ public class ApppubProgramServiceImpl implements ApppubProgramService{
 		return ApppubProgramDao.checkAppName(name);
 	}
 
+	@Override
+	public ApppubProgram getApppubProgramByName(String name) {
+		return ApppubProgramDao.getApppubProgramByName(name);
+	}
+
 }

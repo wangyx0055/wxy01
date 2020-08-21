@@ -22,7 +22,7 @@ public class DeleteDepartmentQuartz {
 		while (true) {
 			int selectUselessDepartments = departmentService.selectUselessDepartments();
 			if (selectUselessDepartments > 0) {
-				boolean deleteUselessDepartments = departmentService.deleteUselessDepartments();
+				departmentService.deleteUselessDepartments();
 			} else {
 				break ;
 			}

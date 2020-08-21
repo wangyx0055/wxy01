@@ -143,9 +143,13 @@ let departmentList = function(field,value){
 	                return value === 1?'':'<input type="checkbox" name="chk[]" value="'+value+'" />';
 	            }
 	        },
-            { field: 'id',  title: 'id' },
+            { field: 'id',  title: 'ID' },
 	        { field: 'name',  title: '名称' },
-	        { field: 'description',  title: '描述' },
+	        { field: 'description',  title: '描述' , "render" : function(data, type,row, mata) {
+                    return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
+                        +data
+                        + '</div>';
+                }},
 	        { field: 'count',  title: '用户数' },
 	        { field: 'device_count',  title: '设备数' },
 	        { field: 'operate', title: '操作', align: 'center', events : operateEvents, formatter: 'operateFormatter' },
@@ -164,6 +168,7 @@ let departmentList = function(field,value){
 	            }
 	        });
 	        $table.treegrid('getRootNodes').treegrid('expand');
+            $('#department div').tooltip();
 	    },
 	    onCheck:function(row){
             const datas = $table.bootstrapTable('getData');
@@ -314,17 +319,20 @@ $(function () {
                         $("#modal-danger .modal-body").text("编辑失败!");
                         $("#modal-danger").modal();
                     }
-                    reloadDepartment();
                 }else {
                     $("#modal-success .modal-title").text('成功');
                     if ($('#edit_id').val() === ""){
                         $("#modal-success .modal-body").text("新建成功!");
+                        $("#modal-success").modal();
+                        $('#modal-default2').modal('hide');
+                        reloadDepartment();
                     }else {
                         $("#modal-success .modal-body").text("编辑成功!");
+                        $("#modal-success").modal();
+                        $('#modal-default2').modal('hide');
+                        reloadDepartment();
                     }
-                    $("#modal-success").modal();
-                    $('#modal-default2').modal('hide');
-                    reloadDepartment();
+
                 }
             },
         })

@@ -27,6 +27,7 @@ import com.longersec.blj.utils.QRCodeUtils;
 import com.longersec.blj.utils.httpClient;
 import com.sun.tools.javac.resources.javac;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.io.FileInputStream;
@@ -51,7 +52,11 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.session.mgt.eis.SessionDAO;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,6 +87,8 @@ public class LoginController {
 	private AppLoginkeyService appLoginkeyService;
 	@Autowired
 	private ConfigFingerService configFingerService;
+	@Autowired
+	private SessionDAO sessionDAO;
 	
 	
     @RequestMapping("/checkLogin")
@@ -229,6 +236,8 @@ public class LoginController {
             model.addAttribute("msg","账号被锁定");
             return "/login";
     	}
+    	int total_online = 0;
+    	
     	
     	//if(user.getRole_id()==1) {
         	JSONObject policyJsonObject = checkPolicy(user.getId(), user.getGroupid(), httpClient.getRemortIP(request),session);
@@ -313,6 +322,27 @@ public class LoginController {
 				result = password.equals(db_password);
 			}
 			if(result) {
+				Collection<Session> sessions = sessionDAO.getActiveSessions();
+				for(Session _session:sessions){
+					if (_session.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY) == null) {
+		                continue;
+		            }
+					SimplePrincipalCollection principalCollection = (SimplePrincipalCollection) _session
+		                    .getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
+		            User useronline = (User) principalCollection.getPrimaryPrincipal();
+		            if(useronline.getUsername().equals(user.getUsername())) {
+		            	total_online++;
+		            }
+				}
+				if(total_online>=configLogin.getSame_user()) {
+					loginlog.setDetails("超过相同用户在线数");
+		    		loginlog.setStatus(0);
+		    		loginlog.setResult("失败");
+		    		loginLogService.addLoginLog(loginlog);
+		            model.addAttribute("msg","超过相同用户在线数");
+		            return "/login";
+				}
+				
 				if(user.getDynamic_auth()==1) {
 					user.setGoogle_auth_token_used(1);
 				}

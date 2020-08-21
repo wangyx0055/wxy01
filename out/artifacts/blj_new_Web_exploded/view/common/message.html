@@ -23,7 +23,7 @@
     <script src="../../js/html5shiv.min.js"></script>
     <script src="../../js/respond.min.js"></script>
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="../../bower_components/treeview/font.css">
     <style>
         #massagelist>tbody>tr{
             font-weight: 600;
@@ -60,14 +60,15 @@
                             </div>
                             <div class="new-add-style">
                                 <button type="button" class="btn  newaddbtn" data-toggle="modal" data-target="#readAll">全部已读</button>
+                                <button type="button" class="btn  newaddbtn" data-toggle="modal" data-target="#default3">导出</button>
                             </div>
                             <table id="massagelist" class="table table-hover">
                                 <thead>
                                 <tr id="tr1">
-                                    <td style="width: 55px;padding-right: 0px;"><span>选择</span></td>
-                                    <td style="width: 200px"><span>时间</span></td>
-                                    <td style="width: 200px"><span>主题</span>
-                                    <td style="width: 150px"><span>事件级别</span></td>
+                                    <td style="width: 55px;"><span>选择</span></td>
+                                    <td style="width: 25%"><span>时间</span></td>
+                                    <td style="width: 25%"><span>主题</span>
+                                    <td style="width: 15%"><span>事件级别</span></td>
                                     <!--	<div class="dropdown">
                                             <span class="dropdown-toggle" id="menu1" data-toggle="dropdown" style="color: black;cursor: pointer">标题</span>
                                             <ul class="dropdown-menu" role="menu" style="font-size: 12px;">
@@ -103,7 +104,7 @@
                             <p style="margin-left: -15px;">您确定将所有消息标记为已读吗?</p>
                         </div><br>
                         <div class="modal-footer">
-                            <button type="button" class="btn newaddbtn pull-right changes" id="ad_del_button_"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                            <button type="button" class="btn newaddbtn pull-right changes" id="read_button"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
                             <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
                             <input type="hidden" id="del_id" />
                         </div>

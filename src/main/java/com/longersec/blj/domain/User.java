@@ -17,7 +17,7 @@ public class User implements java.io.Serializable{
 	@NotNull(message = "用户名不能为空")
 	private String username;
 
-	@Pattern(regexp = "[\\u4e00-\\u9fa5\\w]{1,128}",message = "姓名格式错误")
+	@Pattern(regexp = "[\\u4e00-\\u9fa5\\w-_@0-9]{1,128}",message = "姓名格式错误")
 	@NotNull(message = "姓名不能为空")
 	private String realname;
 

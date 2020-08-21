@@ -34,7 +34,7 @@ public interface GroupService {
 
 	Group selectByname( String name,Integer type);
 
-	boolean editGroupList(ArrayList<Group> updatelistGroup);
+	boolean editGroupList(Group group);
 
     public String selectById(Integer groupid, int type);
 

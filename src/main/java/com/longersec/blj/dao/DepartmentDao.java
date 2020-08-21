@@ -77,6 +77,8 @@ public interface DepartmentDao {
 
     boolean insertMore(Department department);
 
+	boolean editMore(Department department);
+
 	Department selectByname(@Param("name")String name);
 
 	List<Department> findTopNodes(@Param("id") int id);
@@ -86,4 +88,7 @@ public interface DepartmentDao {
 	Department getById(@Param("id")Integer id);
 
 	List<Integer> selectIdByname(@Param("name")String name);
+
+	/** AD域导入部门判断**/
+	Department selectByNameAndParentId(@Param("name") String name,@Param("parent_id") int parent_id);
 }

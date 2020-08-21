@@ -36,6 +36,11 @@ public class ApppubServerServiceImpl implements ApppubServerService{
 	}
 
 	@Override
+	public boolean delUselessApppubServer(Integer id) {
+		return ApppubServerDao.delUselessApppubServer(id);
+	}
+
+	@Override
 	public List<Object> findAll(ApppubServer apppubServer,String sname,Integer type, int page_start, int page_length) {
 		return ApppubServerDao.findAll(apppubServer,sname,type, page_start, page_length);
 	}
@@ -55,6 +60,11 @@ public class ApppubServerServiceImpl implements ApppubServerService{
 	public ApppubServer checkip(String ip, Integer id) {
 		// TODO Auto-generated method stub
 		return ApppubServerDao.checkip(ip, id);
+	}
+
+	@Override
+	public ApppubServer getApppubServerByName(String name) {
+		return ApppubServerDao.getApppubServerByName(name);
 	}
 
 	@Override

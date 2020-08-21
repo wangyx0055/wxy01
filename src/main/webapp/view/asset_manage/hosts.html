@@ -24,8 +24,8 @@
   <script src="../../js/html5shiv.min.js"></script>
   <script src="../../js/respond.min.js"></script>
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-treegrid/0.2.0/css/jquery.treegrid.min.css">
+  <link rel="stylesheet" href="../../bower_components/treeview/font.css">
+    <link rel="stylesheet" href="../../bower_components/treeview/jquery.treegrid.min.css">
 </head>
 <style>
     #div23 .file-input{
@@ -160,7 +160,7 @@
               </div>
               <!-- /.modal-dialog -->
           </div>
-         <!-- 新建/编辑设备第一步-->
+     <!-- 新建/编辑设备第一步-->
      <div class="modal modal-hides" id="modal-editdevice">
               <div class="modal-dialog">
                   <div class="modal-content">
@@ -218,7 +218,7 @@
           </div>
           <!-- /.modal-dialog -->
       </div>
-<!--下一步-->
+     <!--下一步-->
       <div class="modal modal-hides" id="modal-primary1">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -245,12 +245,12 @@
                    <br>
                   <span style="font-size: 12px;color: #505050;margin-left: -10px;display: inline-block;margin-top: 10px;">特权账号:</span><input  class="input" type="checkbox" style="margin-left:10px;margin-top: 0px"/>
                       </div>
-                      <div style="margin-left: -2px;margin-bottom: 20px;margin-top: 10px;">
+                      <div id="pass3" style="margin-left: -2px;margin-bottom: 20px;margin-top: 10px;">
                           <span id="xing5" style="font-size: 20px;vertical-align: -20%;color: red">*</span>
                           <span style="font-size: 12px;color: #505050;">密码：
                   <input id="_edit_device_password" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;"></span>&nbsp;&nbsp;<span id='_Vdevice_password' style="color:red;font-size: 12px;"></span>
                       </div>
-                      <div style="margin-left: -26px;">
+                      <div id="pass4" style="margin-left: -26px;">
                           <span id="xing6" style="font-size: 20px;vertical-align: -20%;color: red">*</span>
                           <span style="font-size: 12px;color: #505050;">确认密码：
                   <input id="_edit_device_password1" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;"></span>&nbsp;&nbsp;<span id='_Vdevice_password1' style="color:red;font-size: 12px;"></span>
@@ -268,17 +268,21 @@
                   <input id="edit_device_port" type="text" size="30px" value="22"></span>&nbsp;&nbsp;<span id='Vport' style="color:red;font-size: 12px;"></span>
                  </div>
                  <div id="div22" style="margin-top: 20px;margin-left: 61px;">
-                 <div>
                   <span style="font-size: 12px;color: #505050">SSH Key：</span>
                   <select name="lo" id="edit_device_ssh_key" onchange="showSSHKEY(this.value);" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">
                   <option value="0">是</option>
                   <option value="1" selected="selected">否</option>
                    </select>
-                 <!--  <div id="div1">
-                  <button type="button" class="btn btn-default pull-right" >上传</button>
-                 </div><br>-->
-                 </div><br>
-                 </div><br>
+                 </div>
+                  <div id="div55" style="margin-right: 157px;margin-top: 25px;margin-left: 115px;">
+                      <input type="hidden" id="file_id1" value="" name="file_id" />
+                      <input id="scriptfile-input1" type="file" name="scriptfile">
+                      &nbsp;<span id="Vupload_file1" style="color: red;font-size:12px;"></span>
+                      <div id="sshpass1" style="margin-left: -56px;margin-bottom: 20px;margin-top: 9px;">
+                          <span style="font-size: 12px;color: #505050">key密钥：
+                         <input id="edit_sshkey1" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">&nbsp;&nbsp;<span id="Vsshkey1" style="color: red;font-size:12px;"></span></span>
+                      </div>
+                  </div>
               </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
@@ -290,7 +294,8 @@
           <!-- /.modal-dialog -->
           </div>
       </div>
-      <div class="modal modal-hides" id="modal-default2">
+        <!--导入-->
+        <div class="modal modal-hides" id="modal-default2">
         <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -325,6 +330,7 @@
         </div>
           <!-- /.modal-dialog -->
         </div>
+        <!--导出-->
         <div class="modal modal-hides" id="modal-default3">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -350,6 +356,7 @@
           <!-- /.modal-dialog -->
           </div>
         </div>
+          <!--设备账号列表-->
         <div class="modal modal-hides" id="modal-default4">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -384,19 +391,17 @@
                   <form style="margin-top:-60px;">
                       <input type="checkbox" class="禁用 解禁 删除" onclick="sel('chk_[]')">
                       <button type="button" class="btn btn-default pull-left newaddbtn2"  data-toggle="modal" data-target="#modal-del2" style="margin-left: 30px;">删除</button>
-                 </form> 
-<!--                 <div class="modal-footer" style="margin-top: 20px;">-->
-<!--                   <button type="button" class="btn pull-left newaddbtn" data-dismiss="modal">完成</button></div>-->
-<!--                 </div>-->
+                 </form>
+        <!--                 <div class="modal-footer" style="margin-top: 20px;">-->
+        <!--                   <button type="button" class="btn pull-left newaddbtn" data-dismiss="modal">完成</button></div>-->
+        <!--                 </div>-->
               </div>
             </div>
-            <!-- /.modal-content -->
           </div>
-          <!-- /.modal-dialog -->
         </div>
         </div>
-<!--          设备账号-->
-       <div class="modal modal-hides" id="modal-editdeviceaccount">
+      <!-- 设备账号编辑新建-->
+      <div class="modal modal-hides" id="modal-editdeviceaccount">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -424,12 +429,12 @@
                        <input type="checkbox" class="input" style="margin-left: 8px;margin-top: -2px;"/>
                       </div>
 
-                      <div style="margin-left: 12px;margin-bottom: 20px;margin-top: 9px;">
+                      <div id="pass" style="margin-left: 12px;margin-bottom: 20px;margin-top: 9px;">
                           <span id="xing2" style="font-size: 20px;vertical-align: -20%;color: red">*</span>
                           <span style="font-size: 12px;color: #505050">密码：
                   <input id="_edit_account_password" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">&nbsp;&nbsp;<span id="_Vaccount_password" style="color: red;font-size:12px;"></span></span>
                       </div>
-                      <div style="margin-left: -12px">
+                      <div id="pass1" style="margin-left: -12px">
                           <span id="xing3" style="font-size: 20px;vertical-align: -20%;color:red">*</span>
                           <span style="font-size: 12px;color: #505050">确认密码：
                   <input id="_edit_account_password1" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">&nbsp;&nbsp;<span id="_Vaccount_password1" class="sign_red"></span></span>
@@ -453,12 +458,16 @@
                   <option value="0">是</option>
                   <option value="1" selected="selected">否</option>
                    </select>
-                     <div id="div23" style="margin-right: 170px;margin-top: -30px;">
+                     <div id="div23" style="margin-right: 157px;margin-top: -30px;    margin-left: 54px;">
                          <input type="hidden" id="file_id" value="" name="file_id" />
                          <input id="scriptfile-input" type="file" name="scriptfile">
+                         &nbsp;<span id="Vupload_file" style="color: red;font-size:12px;"></span>
+                         <button type="button" id="down" class="btn newaddbtn">下载脚本</button>
+                         <div id="sshpass" style="margin-left: -56px;margin-bottom: 20px;margin-top: 9px;">
+                             <span style="font-size: 12px;color: #505050">key密钥：
+                         <input id="edit_sshkey" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">&nbsp;&nbsp;<span id="Vsshkey" style="color: red;font-size:12px;"></span></span>
+                         </div>
                      </div>
-                     <span id="key_name" style="margin-left: 280px;"></span>
-                     <span id="Vupload_file" class="sign_red" style="color: red;"></span>
                  </div>
                  </div><br>
               </div>
@@ -473,7 +482,7 @@
           <!-- /.modal-dialog -->
           </div>
       </div>
-          
+          <!--删除设备账号-->
       <div class="modal modal-hides" id="modal-deldeviceaccount">
           <div class="modal-dialog">
               <div class="modal-content newdiv" style="width: 350px;margin-left: 80px;">

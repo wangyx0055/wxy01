@@ -14,8 +14,12 @@ public interface LoginLogDao {
 
 	public boolean delLoginLog(List<Integer> ids);
 
-	public List<Object> findAll(@Param("loginLog")LoginLog loginLog, @Param("page_start")int page_start, @Param("page_length")int page_length);
+	public List<Object> findAll(@Param("loginLog")LoginLog loginLog, @Param("page_start")int page_start,
+	                            @Param("page_length")int page_length);
 
+	public List<Object> findAll1(@Param("loginLog")LoginLog loginLog, @Param("page_start")int page_start,
+	                            @Param("time_format")String time_format,  @Param("time")String time,
+	                            @Param("page_length")int page_length);
     List<LoginLog> selectAll();
 	
 	public List<Map<String, Object>> selectLast7Day();

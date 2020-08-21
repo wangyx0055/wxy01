@@ -47,7 +47,7 @@ public class UpdateDepartmentCount {
 	 * @return**/
 	public static synchronized List<Object> deleteUserUpdateDepartmentCount(DepartmentService departmentService, UserService userService, DeviceService deviceService,
 	                                                                        GroupService groupService,UserGroupUserService userGroupUserService,
-	                                                                        GroupDeviceAccountService groupDeviceAccountService,
+	                                                                        GroupDeviceAccountService groupDeviceAccountService,ApppubServerService apppubServerService,
 	                                                                        List<Integer> departmentId){
 		// todo 用于存储被删除的部门id和name做系统日志,当再次遍历到就跳出循环---完善initialCapacity的大小
 		List<Object> list = new ArrayList<Object> (10);
@@ -76,6 +76,8 @@ public class UpdateDepartmentCount {
 					userService.deleteUselessUser(department2.getId());
 					//删除设备相关
 					deviceService.deleteUselessDevice(department2.getId());
+					//删除和应用相关
+					apppubServerService.delUselessApppubServer(department2.getId());
 					//删除部门
 					departmentService.delDepartment(Collections.singletonList(department2.getId()));
 					list.add(department2.getId());

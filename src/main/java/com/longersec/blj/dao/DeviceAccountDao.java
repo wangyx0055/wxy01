@@ -40,6 +40,8 @@ public interface DeviceAccountDao {
 
     DeviceAccount checkaccountname(@Param("username") String username,@Param("protocol_id") int protocol_id,@Param("device_id") int device_id);
 
+	DeviceAccount checkaccountById(@Param("device_id") int device_id,@Param("username") String username);
+
     public boolean insertMore(@Param("ArrayList") ArrayList<Device> devices);
 
     boolean editDeviceAccountList(@Param("ArrayList")ArrayList<Device> updatedevices);

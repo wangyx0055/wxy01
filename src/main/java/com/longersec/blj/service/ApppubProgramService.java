@@ -26,5 +26,7 @@ public interface ApppubProgramService {
 
 	public ApppubProgram checkAppName(String name);
 
+	public ApppubProgram getApppubProgramByName (String name);
+
 }
 

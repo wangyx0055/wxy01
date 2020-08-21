@@ -77,9 +77,9 @@
 		(SELECT @id :=#{id}) pd
 		WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON g.department=T.id
 		where type=#{group.type}
-		<if test="group.name != null"> AND `name` like CONCAT('%',#{group.name},'%')</if>
+		<if test="group.name != null"> AND g.`name` like CONCAT('%',#{group.name},'%')</if>
 		<if test="group.searchAll != null">
-			AND (`name` like CONCAT('%',#{group.searchAll},'%') or `desc` like CONCAT('%',#{group.searchAll},'%'))
+			AND (g.`name` like CONCAT('%',#{group.searchAll},'%') or `desc` like CONCAT('%',#{group.searchAll},'%'))
 		</if>
 		<if test="page_start != null and page_length != null">
 			LIMIT #{page_start},#{page_length}
@@ -136,13 +136,14 @@
 	</select>
 
 	<update id="editGroupList" >
-		<foreach collection="ArrayList" item="item" index="index">
-			UPDATE lsblj_group
-				<set>
-					<if test="item.desc != null">`desc`=#{item.desc},</if>
-				</set>
-			where id=#{item.id};
-		</foreach>
+		UPDATE lsblj_group
+		<set>
+			<if test="type != null">`type`=#{type},</if>
+			<if test="name != null">`name`=#{name},</if>
+			<if test="department != null">`department`=#{department},</if>
+			<if test="desc != null">`desc`=#{desc}</if>
+		</set>
+		where id =#{id}
 	</update>
 
 </mapper>

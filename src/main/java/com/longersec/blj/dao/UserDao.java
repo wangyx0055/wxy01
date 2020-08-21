@@ -51,7 +51,7 @@ public interface UserDao {
 
     boolean insertMore(User user);
 
-    boolean editUserList(@Param("ArrayList")ArrayList<User> update_users);
+    boolean editUserList(User user);
 
     ArrayList<Users> finduserGroup(int i);
 

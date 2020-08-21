@@ -93,18 +93,20 @@ public class ApppubAccountController {
 		Map<String, Object> resultMap = Validator.fieldValidate(errorResult);
 		//操作日志
 		OperatorLog operatorLog =Operator_log.log(request, session);
-		operatorLog.setModule("应用发布");
-		String isexitU = " ";
-		if (id == null) {
-			isexitU= apppubAccountService.checkName(0,apppubAccount.getName());
-		} else {
-			isexitU = apppubAccountService.checkName(id,apppubAccount.getName());
+		operatorLog.setModule("发布应用");
+		//检查重名的常量
+		int checksum;
+		//检查重名
+		if(id == null){
+			checksum = apppubAccountService.checkName(0,apppubAccount.getName());
+		}else {
+			checksum = apppubAccountService.checkName(id,apppubAccount.getName());
 		}
 
 		if (apppubAccount.getId() == null){
-			operatorLog.setDetails("添加应用发布["+apppubAccount.getName()+"]");
+			operatorLog.setDetails("添加发布应用["+apppubAccount.getName()+"]");
 			operatorLog.setContent("添加");
-			if(resultMap == null && isexitU == null){
+			if(resultMap == null && checksum ==0){
 				r = apppubAccountService.addApppubAccount(apppubAccount);
 				if (r){
 					operatorLog.setResult("成功");
@@ -112,14 +114,14 @@ public class ApppubAccountController {
 				}else{
 					operatorLog.setResult("失败");
 					result.put("success", false);
-				}
+ 				}
 			}else{
 				result.put("success", false);
 			}
 		}else{
-			operatorLog.setDetails("编辑应用发布["+apppubAccount.getName()+"]");
+			operatorLog.setDetails("编辑发布应用["+apppubAccount.getName()+"]");
 			operatorLog.setContent("编辑");
-			if (resultMap == null){
+			if (resultMap == null && checksum ==0){
 				r = apppubAccountService.editApppubAccount(apppubAccount);
 				if (r){
 					operatorLog.setResult("成功");
@@ -132,7 +134,6 @@ public class ApppubAccountController {
 				result.put("success", false);
 			}
 		}
-		operatorLog.setResult("");
 		operatorLogService.addOperatorLog(operatorLog);
 		return result;
 	}
@@ -145,8 +146,8 @@ public class ApppubAccountController {
 		result.put("success", true);
 		//操作日志
 		OperatorLog operatorLog = Operator_log.log(request, session);
-		operatorLog.setModule("应用");
-		operatorLog.setDetails("删除应用发布");
+		operatorLog.setModule("发布应用");
+		operatorLog.setDetails("删除发布应用");
 		operatorLog.setContent("删除");
 		if(_ids.isEmpty()) {
 			result.put("success", false);
@@ -157,6 +158,7 @@ public class ApppubAccountController {
 			operatorLog.setResult("成功");
 			result.put("success", true);
 		}else{
+			operatorLog.setResult("失败");
 			result.put("success", false);
 		}
 		operatorLogService.addOperatorLog(operatorLog);

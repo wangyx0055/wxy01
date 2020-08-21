@@ -33,12 +33,10 @@ public class DeviceAccountServiceImpl implements DeviceAccountService{
 
 	@Override
 	public boolean addDeviceAccount(DeviceAccount deviceAccount) {
-		// TODO Auto-generated method stub
-
 		int device_id = deviceAccount.getDevice_id();
 		boolean d = deviceDao.updateAccounts(device_id,1);
 		boolean a = this.DeviceAccountDao.addDeviceAccount(deviceAccount);
-		if (d==true && a==true){
+		if (d && a){
 			return true;
 		}else {
 			return false;
@@ -114,6 +112,11 @@ public class DeviceAccountServiceImpl implements DeviceAccountService{
 	@Override
 	public DeviceAccount checkaccountname(String username,int protocol_id,int device_id) {
 		return DeviceAccountDao.checkaccountname(username,protocol_id,device_id);
+	}
+
+	@Override
+	public DeviceAccount checkaccountById(int device_id, String username) {
+		return DeviceAccountDao.checkaccountById(device_id,username);
 	}
 
 	@Override

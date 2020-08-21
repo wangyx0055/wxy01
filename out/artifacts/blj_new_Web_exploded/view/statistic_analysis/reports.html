@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
   <script src="../../js/html5shiv.min.js"></script>
   <script src="../../js/respond.min.js"></script>
-  <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="../../bower_components/treeview/font.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini r" >
 <div class="wrapper" >
@@ -49,15 +49,15 @@
             <div class="box-title" style="padding:15px;" > 
              <span class="new-header">权限报表</span>
              </div>
-            <div class="r-right" style="margin-top: -50px;">
+         <!--   <div class="r-right" style="margin-top: -50px;">
             <ul class="mr-nav-like"> 
-            <!-- 
+            &lt;!&ndash;
             <li><button type="button" class="btn btn-default pull-left" data-dismiss="modal"  data-toggle="modal" data-target="#modal-default" style="background-color:white;color:#1494F7;border:1px solid #1494F7;outline:none;display:none;">报表自动发送</button></li>
-            -->
+            &ndash;&gt;
             <li><button type="button" class="baobiao btn btn-default pull-left" data-dismiss="modal"  data-toggle="modal" data-target="#modal-default1">报表导出</button></li>
              
             </ul>
-            </div>
+            </div>-->
           </div>
           <div class="nav-tabs-custom">
              <ul class="nav nav-tabs" style="margin-left: 10px !important;">
@@ -65,6 +65,13 @@
               <li><a href="#G" data-toggle="tab">应用权限报表</a></li>
              </ul>
             <div class="tab-content">
+                <ul class="mr-nav-like output-table">
+             <!--
+                    <li><button type="button" class="btn btn-default pull-left" data-dismiss="modal"  data-toggle="modal" data-target="#modal-default" style="background-color:white;color:#1494F7;border:1px solid #1494F7;outline:none;display:none;">报表自动发送</button></li>
+               -->
+                    <li><button type="button" class="baobiao btn btn-default pull-left" data-dismiss="modal"  data-toggle="modal" data-target="#modal-default1">报表导出</button></li>
+
+                </ul>
               <div class="active tab-pane" id="F">
                   <div style="margin-top: 20px;margin-left: 10px;">
                       <div class="input-group margin" style="position: relative;display: table;border-collapse: separate;">
@@ -163,7 +170,7 @@
                                     <input type="checkbox"  checked="checked"/>每月&nbsp;每月一日00::00发送<br>
                                 </div>
                                 <div class="rl-file">
-                                    <p>文件格式：</p>
+                                    <span>文件格式：</span>
                                     <form>
                                         <p><input type="radio">
                                             PDF

@@ -300,7 +300,8 @@ public class OperatorController {
     		this.addGConnectionParameters(gconnection_id, deviceRecord, deviceAccount, accessPolicies.get(0), session);
     		
     		try {
-    			String hashString = new sun.misc.BASE64Encoder().encode(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+deviceRecord.getDevice_username()+"@"+deviceRecord.getDevice_name()+"("+deviceRecord.getDevice_ip()+")"+"\0"+request.getContextPath()).getBytes());
+    			//String hashString = new sun.misc.BASE64Encoder().encode(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+deviceRecord.getDevice_username()+"@"+deviceRecord.getDevice_name()+"("+deviceRecord.getDevice_ip()+")"+"\0"+request.getContextPath()).getBytes());
+    			String hashString = Base64.encodeBase64String(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+deviceRecord.getDevice_username()+"@"+deviceRecord.getDevice_name()+"("+deviceRecord.getDevice_ip()+")"+"\0"+request.getContextPath()).getBytes());
     			if(deviceAccount.getProtocol_id()==5||deviceAccount.getProtocol_id()==6) {
     				response.setContentType("multipart/form-data");
     				response.setCharacterEncoding("UTF-8");

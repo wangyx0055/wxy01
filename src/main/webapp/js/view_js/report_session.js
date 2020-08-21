@@ -22,20 +22,21 @@ $(function() {
 		var date_range = function(tab, start, end){
 			var interval_days = (end - start)/86400;
 			if(interval_days<=1){
-				$('#'+tab+' .rl-time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
-            	$('#'+tab+' .rl-time button[data-interval=hour]').addClass('newaddbtn').removeClass('newaddbtn2')
+				$('#'+tab+' .rs-time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
+            	$('#'+tab+' .rs-time button[data-interval=hour]').addClass('newaddbtn').removeClass('newaddbtn2')
 				return 'hour';
 			}else if(interval_days>1&&interval_days<=7){
-				$('#'+tab+' .rl-time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
-            	$('#'+tab+' .rl-time button[data-interval=day]').addClass('newaddbtn').removeClass('newaddbtn2')
+				$('#'+tab+' .' +
+                    'time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
+            	$('#'+tab+' .rs-time button[data-interval=day]').addClass('newaddbtn').removeClass('newaddbtn2')
 				return 'day';
 			}else if(interval_days>7&&interval_days<=62){
-				$('#'+tab+' .rl-time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
-            	$('#'+tab+' .rl-time button[data-interval=week]').addClass('newaddbtn').removeClass('newaddbtn2')
+				$('#'+tab+' .rs-time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
+            	$('#'+tab+' .rs-time button[data-interval=week]').addClass('newaddbtn').removeClass('newaddbtn2')
 				return 'week';
 			}else if(interval_days>62){
-				$('#'+tab+' .rl-time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
-            	$('#'+tab+' .rl-time button[data-interval=month]').addClass('newaddbtn').removeClass('newaddbtn2')
+				$('#'+tab+' .rs-time .mr-nav-like .newaddbtn').addClass('newaddbtn2').removeClass('newaddbtn');
+            	$('#'+tab+' .rs-time button[data-interval=month]').addClass('newaddbtn').removeClass('newaddbtn2')
 				return 'month';
 			}
 		}
@@ -57,7 +58,7 @@ $(function() {
 	        "opens"  : "right",
 	        "ranges" : ranges
 	    },function(start, end, label) {
-	    	_A($($('#A .rl-time .mr-nav-like .newaddbtn')).attr('data-interval'), start/1000, end/1000);
+	    	_A($($('#A .rs-time .mr-nav-like .newaddbtn')).attr('data-interval'), start/1000, end/1000);
 	    });
 	    $('#B-date').daterangepicker({
 	        'locale' : locale,
@@ -79,7 +80,7 @@ $(function() {
 	        "opens" : "right",
 	        "ranges" : ranges
 	    },function(start, end, label) {
-	    	_C($($('#C .rl-time .mr-nav-like .newaddbtn')).attr('data-interval'), start/1000, end/1000);
+	    	_C($($('#C .rs-time .mr-nav-like .newaddbtn')).attr('data-interval'), start/1000, end/1000);
 	    });
 	    $('#D-date').daterangepicker({
 	        'locale' : locale,
@@ -90,7 +91,7 @@ $(function() {
 	        "opens" : "right",
 	        "ranges" : ranges
 	    },function(start, end, label) {
-	    	_D($($('#D .rl-time .mr-nav-like .newaddbtn')).attr('data-interval'), start/1000, end/1000);
+	    	_D($($('#D .rs-time .mr-nav-like .newaddbtn')).attr('data-interval'), start/1000, end/1000);
 	    });
 
 		$('#export-date').daterangepicker({
@@ -106,22 +107,22 @@ $(function() {
 			export_end_time = end/1000;
 	    	var interval_days = (end/1000 - start/1000)/86400;
 			if(interval_days<=1){
-            	$('#modal-default1 .rl-show input[data-interval=hour]')[0].checked = true;
+            	$('#modal-default1 .rs-show input[data-interval=hour]')[0].checked = true;
 			}else if(interval_days>1&&interval_days<=7){
-            	$('#modal-default1 .rl-show input[data-interval=day]')[0].checked = true;
+            	$('#modal-default1 .rs-show input[data-interval=day]')[0].checked = true;
 			}else if(interval_days>7&&interval_days<=62){
-            	$('#modal-default1 .rl-show input[data-interval=week]')[0].checked = true;
+            	$('#modal-default1 .rs-show input[data-interval=week]')[0].checked = true;
 			}else if(interval_days>62){
-            	$('#modal-default1 .rl-show input[data-interval=month]')[0].checked = true;
+            	$('#modal-default1 .rs-show input[data-interval=month]')[0].checked = true;
 			}
 	    });
 
 	};
 	
 	$('#export').click(function(){
-		$('#modal-default1 .rl-type input').each(function(){
+		$('#modal-default1 .rs-type input').each(function(){
 			if($(this)[0].checked){
-				var interval = $('#modal-default1 .rl-show input[checked=checked]').attr('data-interval');
+				var interval = $('#modal-default1 .rs-show input[checked=checked]').attr('data-interval');
 				var url = '../../export/export'+UpperFirstLetter($(this).val())+'RecordReportlog?interval='+interval+'&start='+export_start_time+'&end='+export_end_time;
 				document.getElementById('hide_'+$(this).val()).src=url;
 			}
@@ -140,7 +141,7 @@ $(function() {
             users[i] = _data[i].users;
         }
         var title = '按'
-            + $('#A .rl-time .mr-nav-like .newaddbtn').text()
+            + $('#A .rs-time .mr-nav-like .newaddbtn').text()
             + '访问量';
         option = {
             title : {
@@ -267,7 +268,7 @@ $(function() {
             total[i] = _data[i].total;
         }
         var title = '按'
-            + $('#B .rl-time .mr-nav-like .newaddbtn').text()
+            + $('#B .rs-time .mr-nav-like .newaddbtn').text()
             + '时长(秒)';
         option = {
             title : {
@@ -403,7 +404,7 @@ $(function() {
         	total[i] = _data[i].total;
         }
         var title = '按'
-            + $('#C .rl-time .mr-nav-like .newaddbtn').text()
+            + $('#C .rs-time .mr-nav-like .newaddbtn').text()
             + '访问量';
         option = {
             title : {
@@ -510,7 +511,7 @@ $(function() {
             ssh[i] = _data[i].ssh;
         }
         var title = '按'
-            + $('#D .rl-time .mr-nav-like .newaddbtn').text()
+            + $('#D .rs-time .mr-nav-like .newaddbtn').text()
             + '访问量';
         option = {
             title : {

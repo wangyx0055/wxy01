@@ -50,11 +50,23 @@
 
 	<delete id="delApppubServer" parameterType="java.util.List">
 		DELETE FROM lsblj_apppub_server
-		where id IN
-		<foreach collection="list" item="item" open="(" close=")" separator=",">
-			#{item}
+		where id IN(
+		<foreach collection="list" item="item">
+			#{item},
 		</foreach>
+		0);
+		DELETE  FROM `lsblj_apppub_program` WHERE apppub_server_id NOT IN (SELECT id FROM `lsblj_apppub_server`);
+		DELETE  FROM `lsblj_apppub_account` WHERE apppub_server_id NOT IN (SELECT id FROM `lsblj_apppub_server`);
+		DELETE  FROM `lsblj_access_policy_apppub_account` WHERE apppub_account_id NOT IN (SELECT id FROM `lsblj_apppub_account`);
 	</delete>
+
+	<delete id="delUselessApppubServer">
+		DELETE  FROM `lsblj_apppub_server` WHERE department =#{id} ;
+		DELETE  FROM `lsblj_apppub_program` WHERE apppub_server_id NOT IN (SELECT id FROM `lsblj_apppub_server`);
+		DELETE  FROM `lsblj_apppub_account` WHERE apppub_server_id NOT IN (SELECT id FROM `lsblj_apppub_server`);
+		DELETE  FROM `lsblj_access_policy_apppub_account` WHERE apppub_account_id NOT IN (SELECT id FROM `lsblj_apppub_account`);
+	</delete>
+
 	<select id="findAll" resultMap="BaseResultMap, apppubServerRecordCounts" resultType="java.lang.Object">
 		SELECT
 		SQL_CALC_FOUND_ROWS
@@ -113,5 +125,9 @@
 		 AND id != #{id}
 		</if>
 		 limit 1;
+	</select>
+
+	<select id="getApppubServerByName" resultType="com.longersec.blj.domain.ApppubServer">
+		select * from lsblj_apppub_server where name = #{name} limit 1;
 	</select>
 </mapper>

@@ -6,6 +6,7 @@
 		<id column="id" jdbcType="INTEGER" property="id"/>
 		<result column="name" jdbcType="VARCHAR" property="name"/>
 		<result column="file_id" jdbcType="INTEGER" property="file_id"/>
+		<result column="script_name" jdbcType="INTEGER" property="script_name"/>
 		<result column="exec_method" jdbcType="INTEGER" property="exec_method"/>
 		<result column="exec_datetime" jdbcType="TIMESTAMP" property="exec_datetime"/>
 		<result column="exec_cycle" jdbcType="INTEGER" property="exec_cycle"/>
@@ -15,7 +16,6 @@
 		<result column="description" jdbcType="VARCHAR" property="description"/>
 		<result column="command" jdbcType="VARCHAR" property="command"/>
 		<result column="status" jdbcType="INTEGER" property="status"/>
-		<result column="script_name" jdbcType="INTEGER" property="script_name"/>
 	</resultMap>
 
 	<resultMap id="crontabScriptConfigRecordCounts" type="java.lang.Long">

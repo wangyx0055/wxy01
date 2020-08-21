@@ -39,6 +39,8 @@ public interface DeviceAccountService {
 
     public DeviceAccount checkaccountname(String username,int protocol_id,int device_id);
 
+	DeviceAccount checkaccountById(int device_id, String username);
+
     public boolean insertMore(ArrayList<Device> devices);
 
     boolean editDeviceAccountList(ArrayList<Device> updatedevices);

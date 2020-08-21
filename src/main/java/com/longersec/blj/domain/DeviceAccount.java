@@ -36,59 +36,13 @@ public class DeviceAccount {
 	
 	private String device_username;
 
+	private String script_name;
 
+	private Integer file_id;
 
+	private String ssh_password;
 	public DeviceAccount() {
 		super();
-	}
-
-	@Override
-	public String toString() {
-		return "DeviceAccount{" +
-				"id=" + id +
-				", username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", device_id=" + device_id +
-				", port=" + port +
-				", protocol_id=" + protocol_id +
-				", is_super=" + is_super +
-				", ssh_key=" + ssh_key +
-				", status=" + status +
-				", login_method=" + login_method +
-				'}';
-	}
-	
-
-	public String getIp() {
-		return ip;
-	}
-
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-
-	public String getDevice_name() {
-		return device_name;
-	}
-
-	public void setDevice_name(String device_name) {
-		this.device_name = device_name;
-	}
-
-	public String getGroupname() {
-		return groupname;
-	}
-
-	public void setGroupname(String groupname) {
-		this.groupname = groupname;
-	}
-
-	public String getTypename() {
-		return typename;
-	}
-
-	public void setTypename(String typename) {
-		this.typename = typename;
 	}
 
 	public Integer getId() {
@@ -171,6 +125,38 @@ public class DeviceAccount {
 		this.login_method = login_method;
 	}
 
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getDevice_name() {
+		return device_name;
+	}
+
+	public void setDevice_name(String device_name) {
+		this.device_name = device_name;
+	}
+
+	public String getGroupname() {
+		return groupname;
+	}
+
+	public void setGroupname(String groupname) {
+		this.groupname = groupname;
+	}
+
+	public String getTypename() {
+		return typename;
+	}
+
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
+
 	public String getProtocolname() {
 		return protocolname;
 	}
@@ -194,6 +180,54 @@ public class DeviceAccount {
 	public void setDevice_username(String device_username) {
 		this.device_username = device_username;
 	}
-	
-	
+
+	public String getScript_name() {
+		return script_name;
+	}
+
+	public void setScript_name(String script_name) {
+		this.script_name = script_name;
+	}
+
+	public Integer getFile_id() {
+		return file_id;
+	}
+
+	public void setFile_id(Integer file_id) {
+		this.file_id = file_id;
+	}
+
+	public String getSsh_password() {
+		return ssh_password;
+	}
+
+	public void setSsh_password(String ssh_password) {
+		this.ssh_password = ssh_password;
+	}
+
+	@Override
+	public String toString() {
+		return "DeviceAccount{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", device_id=" + device_id +
+				", port=" + port +
+				", protocol_id=" + protocol_id +
+				", is_super=" + is_super +
+				", ssh_key=" + ssh_key +
+				", status=" + status +
+				", login_method=" + login_method +
+				", ip='" + ip + '\'' +
+				", device_name='" + device_name + '\'' +
+				", groupname='" + groupname + '\'' +
+				", typename='" + typename + '\'' +
+				", protocolname='" + protocolname + '\'' +
+				", searchAll='" + searchAll + '\'' +
+				", device_username='" + device_username + '\'' +
+				", script_name='" + script_name + '\'' +
+				", file_id=" + file_id +
+				", ssh_password='" + ssh_password + '\'' +
+				'}';
+	}
 }

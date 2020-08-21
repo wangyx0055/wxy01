@@ -56,10 +56,10 @@ $(function() {
 	        startDate : moment().subtract(29, 'days'),
 	        endDate : moment(),
 	        "opens"  : "right",
-	        "ranges" : ranges
+		    "ranges" : ranges
 	    },function(start, end, label) {
 	    	_dateVisit(date_range('A', start/1000, end/1000), start/1000, end/1000);
-	    });
+	    })
 	    $('#date_userVisit').daterangepicker({
 	        'locale' : locale,
 	        showDropdowns : true,
@@ -178,49 +178,49 @@ $(function() {
             yAxis : [ {
                 type : 'value'
             } ],
-            series : [ {
+            series : [{
                 name : 'SSH',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : ssh
             }, {
                 name : 'RDP',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : rdp
             }, {
                 name : 'TELNET',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : telnet
             }, {
                 name : 'VNC',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : vnc
             }, {
                 name : 'FTP',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : ftp
             }, {
                 name : 'SFTP',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : sftp
             }, {
                 name : '应用发布',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : apppub
             }, {
                 name : '前台',
-                type : 'bar',
+                type : 'line',
                 stack : 'web',
                 data : web
             }, {
                 name : '总数',
-                type : 'bar',
+                type : 'line',
                 data : total
             } ]
         };
@@ -229,14 +229,13 @@ $(function() {
         myChart.setOption(option);
         charts.push(myChart)
     }
-
     var _dateVisit = function(interval, start, end) {
     	if(start === null || start === ""){
     		$_date = $('#date_dateVisit').val() + "";
     		if($_date.indexOf(' - ')>0){
         		$_date = $_date.split(' - ');
-        		start = $_date[0];
-        		end = $_date[1];
+        		start = Date.parse($_date[0])/1000;
+        		end = Date.parse($_date[1])/1000;
     		}
     	}
         $('#dateVisit').DataTable(
@@ -270,18 +269,79 @@ $(function() {
                 },
                 "columns" : [
                 {"data" : "interval"},
-                {"data" : "ssh"},
-                {"data" : "telnet"},
-                {"data" : "rdp",},
-                {"data" : "vnc"},
-                {"data" : "ftp"},
-                {"data" : "sftp"},
-                {"data" : "web"},
-                {"data" : "apppub"},
-                {"data" : "total",
-                    "render": function(data,type,row,meta){
-                        return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-default4" style="cursor:pointer;">'+data+'</a>';
-                    }}],
+                {"data" : "ssh","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'ssh'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                {"data" : "telnet","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'telnet'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                {"data" : "rdp","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'rdp'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                {"data" : "vnc","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'vnc'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                {"data" : "ftp","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'ftp'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                {"data" : "sftp","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'sftp'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                {"data" : "web","render": function(data,type,row,meta){
+                	if (data>0) {
+                		let param = row.interval+','+'web'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+	            }},
+                {"data" : "apppub","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'apppub'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                {"data" : "total","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.interval+','+'all'+','+interval;
+		                return '<a class="newcss1" onclick="login_log(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                ],
                 "initComplete" : function(settings, json) {
                     $('#dateVisit div').tooltip();
                     _dateVisitChart(json.data);
@@ -348,37 +408,37 @@ $(function() {
             } ],
             series : [ {
                 name : 'SSH',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : ssh
             }, {
                 name : 'RDP',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : rdp
             }, {
                 name : 'TELNET',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : telnet
             }, {
                 name : 'VNC',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : vnc
             }, {
                 name : '应用发布',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : apppub
             }, {
                 name : '前台',
-                type : 'bar',
+                type : 'line',
                 stack : 'type',
                 data : web
             }, {
                 name : '总数',
-                type : 'bar',
+                type : 'line',
                 data : total
             } ]
         };
@@ -386,8 +446,15 @@ $(function() {
         myChart.setOption(option);
         charts.push(myChart)
     }
-
     var _userVisit = function(interval, start, end) {
+	    if(start === null || start === ""){
+		    $_date = $('#date_dateVisit').val() + "";
+		    if($_date.indexOf(' - ')>0){
+			    $_date = $_date.split(' - ');
+			    start = Date.parse($_date[0])/1000;
+			    end = Date.parse($_date[1])/1000;
+		    }
+	    }
         $('#userVisit').DataTable(
             {
                 'paging' : true,
@@ -419,34 +486,73 @@ $(function() {
                 },
                 "columns" : [ {
                     "data" : "login_datetime"
-                },{
-                    "data" : "username"
-                }, {
-                    "data" : "realname"
-                }, {
-                    "data" : "ssh"
-                }, {
-                    "data" : "rdp"
-                }, {
-                    "data" : "telnet"
-                }, {
-                    "data" : "vnc"
-                }, {
-                    "data" : "apppub"
-                }, {
-                    "data" : "web"
-                }, {
-                    "data" : "total",
-                    "render": function(data,type,row,meta){
-                        return '<a  class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-default4" style="cursor:pointer;">'+data+'</a>';
-                    }
-                } ],
+                },
+	            {"data" : "username"},
+	            {"data" : "realname"},
+	            {"data" : "ssh","render": function(data,type,row,meta){
+		            if (data>0) {
+			            let param = row.login_datetime+','+'ssh'+','+row.username;
+			            return '<a class="newcss1" onclick="login_log1(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		            } else {
+			            return   '<span>'+data+'</span>';
+		            }
+	            }},
+	            {"data" : "rdp","render": function(data,type,row,meta){
+		            if (data>0) {
+			            let param = row.login_datetime+','+'rdp'+','+row.username;
+			            return '<a class="newcss1" onclick="login_log1(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		            } else {
+			            return   '<span>'+data+'</span>';
+		            }
+	            }},
+	            {"data" : "telnet","render": function(data,type,row,meta){
+		            if (data>0) {
+			            let param = row.login_datetime+','+'telnet'+','+row.username;
+			            return '<a class="newcss1" onclick="login_log1(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		            } else {
+			            return   '<span>'+data+'</span>';
+		            }
+	            }},
+	            {"data" : "vnc","render": function(data,type,row,meta){
+		            if (data>0) {
+			            let param = row.login_datetime+','+'vnc'+','+row.username;
+			            return '<a class="newcss1" onclick="login_log1(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		            } else {
+			            return   '<span>'+data+'</span>';
+		            }
+	            }},
+	            {"data" : "apppub","render": function(data,type,row,meta){
+		            if (data>0) {
+			            let param = row.login_datetime+','+'apppub'+','+row.username;
+			            return '<a class="newcss1" onclick="login_log1(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		            } else {
+			            return   '<span>'+data+'</span>';
+		            }
+	            }},
+	            {"data" : "web","render": function(data,type,row,meta){
+		            if (data>0) {
+			            let param = row.login_datetime+','+'web'+','+row.username;
+			            return '<a class="newcss1" onclick="login_log1(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		            } else {
+			            return   '<span>'+data+'</span>';
+		            }
+	            }},
+                {"data" : "total","render": function(data,type,row,meta){
+	                if (data>0) {
+		                let param = row.login_datetime+','+'all'+','+row.username;
+		                return '<a class="newcss1" onclick="login_log1(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+	                } else {
+		                return   '<span>'+data+'</span>';
+	                }
+                }},
+                ],
                 "initComplete" : function(settings, json) {
                     $('#userVisit div').tooltip();
                     _userVisitChart(json.data);
                 }
             })
     }
+
     function _dateSuccessFailChart(_data) {
         var data = new Array();
         var interval = new Array();
@@ -536,6 +642,14 @@ $(function() {
         charts.push(myChart)
     }
     var _dateSuccessFail = function(interval, start, end) {
+	    if(start === null || start === ""){
+		    $_date = $('#date_dateVisit').val() + "";
+		    if($_date.indexOf(' - ')>0){
+			    $_date = $_date.split(' - ');
+			    start = Date.parse($_date[0])/1000;
+			    end = Date.parse($_date[1])/1000;
+		    }
+	    }
         $('#dateSuccessFail').DataTable(
             {
                 'paging' : true,
@@ -565,19 +679,42 @@ $(function() {
                         eval('d.end_date="' + end + '"');
                     }
                 },
-                "columns" : [ {
-                    "data" : "interval"
-                }, {
-                    "data" : "users"
-                }, {
-                    "data" : "successes"
-                }, {
-                    "data" : "fails"
-                }, {
-                    "data" : "sourceips"
-                } , {
-                    "data" : "total"
-                }, ],
+                "columns" : [
+                {"data" : "interval"},
+                {"data" : "users","render": function(data,type,row,meta){
+		                if (data>0) {
+			                let param = row.interval+','+2+','+interval;
+			                return '<a class="newcss1" onclick="login_log2(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		                } else {
+			                return   '<span>'+data+'</span>';
+		                }
+	                }},
+                {"data" : "successes","render": function(data,type,row,meta){
+		                if (data>0) {
+			                let param = row.interval+','+1+','+interval;
+			                return '<a class="newcss1" onclick="login_log2(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		                } else {
+			                return   '<span>'+data+'</span>';
+		                }
+	                }},
+                {"data" : "fails","render": function(data,type,row,meta){
+		                if (data>0) {
+			                let param = row.interval+','+0+','+interval;
+			                return '<a class="newcss1" onclick="login_log2(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		                } else {
+			                return   '<span>'+data+'</span>';
+		                }
+	                }},
+                {"data" : "sourceips"},
+                {"data" : "total","render": function(data,type,row,meta){
+		                if (data>0) {
+			                let param = row.interval+','+2+','+interval;
+			                return '<a class="newcss1" onclick="login_log2(\''+param+'\')" style="cursor: pointer" >'+data+'</a>';
+		                } else {
+			                return   '<span>'+data+'</span>';
+		                }
+	                }},
+                ],
                 "initComplete" : function(settings, json) {
                     $('#dateSuccessFail div').tooltip();
                     _dateSuccessFailChart(json.data);
@@ -640,6 +777,14 @@ $(function() {
         charts.push(myChart)
     }
     var _userDate = function(interval, start, end) {
+	    if(start === null || start === ""){
+		    $_date = $('#date_dateVisit').val() + "";
+		    if($_date.indexOf(' - ')>0){
+			    $_date = $_date.split(' - ');
+			    start = Date.parse($_date[0])/1000;
+			    end = Date.parse($_date[1])/1000;
+		    }
+	    }
         $('#userDate').DataTable(
             {
                 'paging' : true,
@@ -697,8 +842,6 @@ $(function() {
             })
     }
 
-   
-
 $('.nav.nav-tabs li').each(function() {
     $(this).click(function() {
         if ($(this).children().attr('href') == '#B') {
@@ -718,64 +861,152 @@ $(window).resize(function() {
         charts[i].resize();
     }
 });
-$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-    for (var i = 0; i < charts.length; i++) {
-        charts[i].resize();
-    }
-});
-init();
+  init();
 });
 
 //协议访问统计
-$('#login_log').DataTable({
-    'paging'      : true,
-    "iDisplayLength": 10,
-    'lengthChange': true,
-    "lengthMenu": [
-        [10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
-    ],
-    'dom'         :'t<"bottom"lifp<"clear">>',
-    'searching'   : false,
-    'ordering'    : true,
-    'info'        : true,
-    'autoWidth'   : false,
-    "serverSide"	: true,
-    "destroy": true,
-    "ajax": {
-        "url": "../../loginLog/listLoginLog",
-    },
-    "columns": [
-        {"data": "login_datetime"},
-        {"data": "source_ip"},
-        {"data": "username"},
-        {"data": "realname"},
-        {"data": "protocol"},
-        {
-            "data": "status",
-            "render": function (data, type, row, mata) {
-                if (data == 0)
-                    return '失败';
-                else
-                    return '成功';
-            }
-        },
-        {"data": "details"},
+function login_log(time) {
+	$('#modal-default4').modal();
+	let strs= new Array();
+	strs = time.split(",");
+	$('#login_log').DataTable({
+		'paging'      : true,
+		"iDisplayLength": 10,
+		'lengthChange': true,
+		"lengthMenu": [
+			[10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+		],
+		'dom'         :'t<"bottom"lifp<"clear">>',
+		'searching'   : false,
+		'ordering'    : true,
+		'info'        : true,
+		'autoWidth'   : false,
+		"serverSide"	: true,
+		"destroy": true,
+		"ajax": {
+			"url": "../../loginLog/listLoginLog1",
+			data:{
+				protocol:strs[1],
+				login_datetime:strs[0],
+				time_format:strs[2],
+			}
+		},
+		"columns": [
+			{"data": "login_datetime"},
+			{"data": "source_ip"},
+			{"data": "username"},
+			{"data": "realname"},
+			{"data": "protocol"},
+			{
+				"data": "status",
+				"render": function (data, type, row, mata) {
+					return data === 0?'失败':'成功';
+				}
+			},
+			{"data": "details"},
 
-    ],
-    "fnDrawCallback": function (settings, json) {
-        $('#loginlog div').tooltip();
-    }
-});
+		],
+		"fnDrawCallback": function (settings, json) {
+			$('#loginlog div').tooltip();
+		}
+	})
+}
 
-/*$("#modal-default4").on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget); // Button that triggered the modal
-    i = button.data('row');
-    $('#login_id').val($('#dateVisit').DataTable().row('#' + i).nodes(i).data()[i].interval);
-    console.log($('#login_id').val());
-    console.log($('#login_log').DataTable().row('#' + i).nodes(i).data()[i].login_datetime);
-    var same_time=$('#login_log').DataTable().row('#' + i).nodes(i).data()[i].login_datetime;
-    var time = getTime(same_time);
-    function getTime(o) {
+//用户访问统计
+function login_log1(time) {
+	$('#modal-default4').modal();
+	let strs= new Array();
+	strs = time.split(",");
+	$('#login_log').DataTable({
+		'paging'      : true,
+		"iDisplayLength": 10,
+		'lengthChange': true,
+		"lengthMenu": [
+			[10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+		],
+		'dom'         :'t<"bottom"lifp<"clear">>',
+		'searching'   : false,
+		'ordering'    : true,
+		'info'        : true,
+		'autoWidth'   : false,
+		"serverSide"	: true,
+		"destroy": true,
+		"ajax": {
+			"url": "../../loginLog/listLoginLog1",
+			data:{
+				protocol:strs[1],
+				login_datetime:"",
+				username:strs[2],
+				time_format:"%Y-%m-%d",
+			}
+		},
+		"columns": [
+			{"data": "login_datetime"},
+			{"data": "source_ip"},
+			{"data": "username"},
+			{"data": "realname"},
+			{"data": "protocol"},
+			{
+				"data": "status",
+				"render": function (data, type, row, mata) {
+					return data === 0?'失败':'成功';
+				}
+			},
+			{"data": "details"},
 
-    }
-});*/
+		],
+		"fnDrawCallback": function (settings, json) {
+			$('#loginlog div').tooltip();
+		}
+	})
+}
+//成功失败统计
+function login_log2(time) {
+	$('#modal-default4').modal();
+	let strs= new Array();
+	strs = time.split(",");
+	if (strs[1]==='2'){
+		strs[1] =null;
+	}
+	$('#login_log').DataTable({
+		'paging'      : true,
+		"iDisplayLength": 10,
+		'lengthChange': true,
+		"lengthMenu": [
+			[10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+		],
+		'dom'         :'t<"bottom"lifp<"clear">>',
+		'searching'   : false,
+		'ordering'    : true,
+		'info'        : true,
+		'autoWidth'   : false,
+		"serverSide"	: true,
+		"destroy": true,
+		"ajax": {
+			"url": "../../loginLog/listLoginLog1",
+			data:{
+				login_datetime:strs[0],
+				time_format:strs[2],
+				status:strs[1],
+			}
+		},
+		"columns": [
+			{"data": "login_datetime"},
+			{"data": "source_ip"},
+			{"data": "username"},
+			{"data": "realname"},
+			{"data": "protocol"},
+			{
+				"data": "status",
+				"render": function (data, type, row, mata) {
+					return data === 0?'失败':'成功';
+				}
+			},
+			{"data": "details"},
+
+		],
+		"fnDrawCallback": function (settings, json) {
+			$('#loginlog div').tooltip();
+		}
+	})
+}

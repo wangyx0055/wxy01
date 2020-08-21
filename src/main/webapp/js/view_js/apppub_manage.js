@@ -353,6 +353,12 @@ function openFile() {
   })
 }
 
+function resetFileInput1(){
+    $('#Vfile1').text('');
+    $('#btn_file1').val('');
+    $("#filename1").text('');
+}
+
 //发布应用上传点击事件
 function openFile1() {
     $('#Vfile1').text();
@@ -428,7 +434,7 @@ $("#upload1").on("click", function () {
     $("#modal-upload .modal-body").text('正在导入...');
     $("#modal-upload").modal();
     $.ajax({
-        url: "../../upload/apppubserver",
+        url: "../../upload/apppubAccount",
         type: 'POST',
         cache: false,
         data: formData1,
@@ -440,7 +446,7 @@ $("#upload1").on("click", function () {
                 $("#modal-default2").modal('hide');
                 $("#modal-upload").modal('hide');
                 $("#modal-success .modal-title").text('成功');
-                $("#modal-success .modal-body").text('导入成功!');
+                $("#modal-success .modal-body").text(data.msg);
                 $("#modal-success").modal();
                 loadAJAX('#apppub');
             }else {
@@ -448,11 +454,15 @@ $("#upload1").on("click", function () {
                 $("#modal-danger .modal-title").text('失败');
                 $("#modal-danger .modal-body").text('导入失败!');
                 $("#modal-danger").modal();
+                loadAJAX('#apppub');
             }
+            setTimeout(function () {
+                if (data.errorInfo.length !== 0) {
+                    $("#modal-uploadInfo").modal();
+                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                }
+            },1500);
         },
-        error: function () {
-
-        }
     });
 });
 
@@ -1071,6 +1081,7 @@ function getAppProgram(){
 	    },
 	    success:function(data){
 	        if (data.success){
+				$('#edit_app')[0].options.length = 0;
 	            for (var i = 0; i < data.data.length; i++){
 	                $('#edit_app').append('<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>');
 	            }

@@ -131,7 +131,7 @@ var userList = function(field,value,type,value1){
             {"data": "name",
                 "render" : function(data, type,
                                     row, mata) {
-                    return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
+                    return '<div style="display: inline-block;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
                         +data
                         + '</div>';
 
@@ -147,7 +147,7 @@ var userList = function(field,value,type,value1){
             {"data": "desc",
                 "render" : function(data, type,
                                     row, mata) {
-                    return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
+                    return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:200px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
                         +data
                         + '</div>';
 

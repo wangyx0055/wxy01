@@ -44,6 +44,8 @@ public interface DepartmentService {
 
     boolean insertMore(Department listDepartment);
 
+	boolean editMore(Department department);
+
     Department selectByname(String s);
 	
     Department getById(Integer id);
@@ -72,5 +74,8 @@ public interface DepartmentService {
 	List<Integer> selectTopId(int id);
 
 	List<Integer> selectIdByname(String name);
+
+	/** AD域导入部门判断**/
+	Department selectByNameAndParentId(String name,int parent_id);
 }
 

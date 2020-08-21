@@ -46,7 +46,7 @@ public interface UserService {
 
     boolean insertMore(User user);
 
-    boolean editUserList(ArrayList<User> update_users);
+    boolean editUserList(User user);
 
     ArrayList<Users> finduserGroup(int i);
 

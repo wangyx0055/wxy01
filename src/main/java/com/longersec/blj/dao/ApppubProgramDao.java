@@ -27,4 +27,6 @@ public interface ApppubProgramDao {
     public ApppubProgram getById(@Param("id") Integer id);
     
 	public ApppubProgram checkAppName(String name);
+
+	public ApppubProgram getApppubProgramByName (@Param("name") String name);
 }

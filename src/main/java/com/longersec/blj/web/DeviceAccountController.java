@@ -83,11 +83,8 @@ public class DeviceAccountController {
 	@ResponseBody
 	public JSONObject addDeviceAccount(DeviceAccount deviceAccount, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
-		if(result.getBoolean("success")) {
 			Boolean r = deviceAccountService.addDeviceAccount(deviceAccount);
-			result.put("success", r?true:false);
-		}
+			result.put("success", r);
 		return result;
 	}
 
@@ -95,11 +92,8 @@ public class DeviceAccountController {
 	@ResponseBody
 	public JSONObject editDeviceAccount(DeviceAccount deviceAccount, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		result.put("success", true);
-		if(result.getBoolean("success")) {
 			Boolean r = deviceAccountService.editDeviceAccount(deviceAccount);
-			result.put("success", r?true:false);
-		}
+			result.put("success", r);
 		return result;
 	}
 

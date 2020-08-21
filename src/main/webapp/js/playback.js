@@ -255,37 +255,6 @@ function getKeys(url){
 }
 
 
-/*function show1(){
-	document.getElementById("menu1").innerHTML= "全部";
-};
-function show2(){
-	document.getElementById("menu1").innerHTML= "键盘输入";
-};
-function show3(){
-	document.getElementById("menu1").innerHTML= "剪切板复制";
-};
-function show4(){
-	document.getElementById("menu1").innerHTML= "剪切板粘贴";
-};
-function show5(){
-	document.getElementById("menu2").innerHTML= "全部";
-};
-function show6(){
-	document.getElementById("menu2").innerHTML= "上传文件(夹)";
-};
-function show7(){
-	document.getElementById("menu2").innerHTML= "下载文件";
-}
-function show8(){
-	document.getElementById("menu2").innerHTML= "重命名文件(夹)";
-}
-function show9(){
-	document.getElementById("menu2").innerHTML= "删除文件(夹)";
-}
-function show10(){
-	document.getElementById("menu2").innerHTML= "创建文件夹";
-}*/
-
 var _commands = function(isapppub, record_id, field, value) {
     $('#commands')
         .DataTable(

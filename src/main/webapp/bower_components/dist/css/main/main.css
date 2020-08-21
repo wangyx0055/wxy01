@@ -30,6 +30,9 @@
   width: 250px;
   background-color: #d3d3d3;
 }
+.tooltip {
+  word-wrap: break-word !important;
+}
 /*下拉菜单鼠标样式*/
 .dropdown-menu li {
   cursor: pointer !important;
@@ -37,6 +40,11 @@
 /*上按钮背景*/
 .input-file {
   background-color: #1494F7;
+}
+/*模态框open时scroll-y消失*/
+.modal-open {
+  overflow-x: hidden;
+  overflow-y: scroll!important;
 }
 /*nav切换上标样式*/
 .nav-tabs-custom > .nav-tabs {
@@ -4175,126 +4183,6 @@ table tr span {
   font-size: 16px;
   line-height: 54px;
 }
-.rl .col-md-9 .rl-report .rl-report-right,
-.rs .col-md-9 .rl-report .rl-report-right,
-.r .col-md-9 .rl-report .rl-report-right,
-.rl .col-md-9 .rs-report .rl-report-right,
-.rs .col-md-9 .rs-report .rl-report-right,
-.r .col-md-9 .rs-report .rl-report-right,
-.rl .col-md-9 .r-report .rl-report-right,
-.rs .col-md-9 .r-report .rl-report-right,
-.r .col-md-9 .r-report .rl-report-right,
-.rl .col-md-9 .rl-report .rs-right,
-.rs .col-md-9 .rl-report .rs-right,
-.r .col-md-9 .rl-report .rs-right,
-.rl .col-md-9 .rs-report .rs-right,
-.rs .col-md-9 .rs-report .rs-right,
-.r .col-md-9 .rs-report .rs-right,
-.rl .col-md-9 .r-report .rs-right,
-.rs .col-md-9 .r-report .rs-right,
-.r .col-md-9 .r-report .rs-right,
-.rl .col-md-9 .rl-report .r-right,
-.rs .col-md-9 .rl-report .r-right,
-.r .col-md-9 .rl-report .r-right,
-.rl .col-md-9 .rs-report .r-right,
-.rs .col-md-9 .rs-report .r-right,
-.r .col-md-9 .rs-report .r-right,
-.rl .col-md-9 .r-report .r-right,
-.rs .col-md-9 .r-report .r-right,
-.r .col-md-9 .r-report .r-right {
-  float: right;
-}
-.rl .col-md-9 .rl-report .rl-report-right > ul,
-.rs .col-md-9 .rl-report .rl-report-right > ul,
-.r .col-md-9 .rl-report .rl-report-right > ul,
-.rl .col-md-9 .rs-report .rl-report-right > ul,
-.rs .col-md-9 .rs-report .rl-report-right > ul,
-.r .col-md-9 .rs-report .rl-report-right > ul,
-.rl .col-md-9 .r-report .rl-report-right > ul,
-.rs .col-md-9 .r-report .rl-report-right > ul,
-.r .col-md-9 .r-report .rl-report-right > ul,
-.rl .col-md-9 .rl-report .rs-right > ul,
-.rs .col-md-9 .rl-report .rs-right > ul,
-.r .col-md-9 .rl-report .rs-right > ul,
-.rl .col-md-9 .rs-report .rs-right > ul,
-.rs .col-md-9 .rs-report .rs-right > ul,
-.r .col-md-9 .rs-report .rs-right > ul,
-.rl .col-md-9 .r-report .rs-right > ul,
-.rs .col-md-9 .r-report .rs-right > ul,
-.r .col-md-9 .r-report .rs-right > ul,
-.rl .col-md-9 .rl-report .r-right > ul,
-.rs .col-md-9 .rl-report .r-right > ul,
-.r .col-md-9 .rl-report .r-right > ul,
-.rl .col-md-9 .rs-report .r-right > ul,
-.rs .col-md-9 .rs-report .r-right > ul,
-.r .col-md-9 .rs-report .r-right > ul,
-.rl .col-md-9 .r-report .r-right > ul,
-.rs .col-md-9 .r-report .r-right > ul,
-.r .col-md-9 .r-report .r-right > ul {
-  list-style: none;
-  margin-top: 12px;
-  margin-right: 20px;
-}
-.rl .col-md-9 .rl-report .rl-report-right > ul li,
-.rs .col-md-9 .rl-report .rl-report-right > ul li,
-.r .col-md-9 .rl-report .rl-report-right > ul li,
-.rl .col-md-9 .rs-report .rl-report-right > ul li,
-.rs .col-md-9 .rs-report .rl-report-right > ul li,
-.r .col-md-9 .rs-report .rl-report-right > ul li,
-.rl .col-md-9 .r-report .rl-report-right > ul li,
-.rs .col-md-9 .r-report .rl-report-right > ul li,
-.r .col-md-9 .r-report .rl-report-right > ul li,
-.rl .col-md-9 .rl-report .rs-right > ul li,
-.rs .col-md-9 .rl-report .rs-right > ul li,
-.r .col-md-9 .rl-report .rs-right > ul li,
-.rl .col-md-9 .rs-report .rs-right > ul li,
-.rs .col-md-9 .rs-report .rs-right > ul li,
-.r .col-md-9 .rs-report .rs-right > ul li,
-.rl .col-md-9 .r-report .rs-right > ul li,
-.rs .col-md-9 .r-report .rs-right > ul li,
-.r .col-md-9 .r-report .rs-right > ul li,
-.rl .col-md-9 .rl-report .r-right > ul li,
-.rs .col-md-9 .rl-report .r-right > ul li,
-.r .col-md-9 .rl-report .r-right > ul li,
-.rl .col-md-9 .rs-report .r-right > ul li,
-.rs .col-md-9 .rs-report .r-right > ul li,
-.r .col-md-9 .rs-report .r-right > ul li,
-.rl .col-md-9 .r-report .r-right > ul li,
-.rs .col-md-9 .r-report .r-right > ul li,
-.r .col-md-9 .r-report .r-right > ul li {
-  float: left;
-}
-.rl .col-md-9 .rl-report .rl-report-right > ul li button,
-.rs .col-md-9 .rl-report .rl-report-right > ul li button,
-.r .col-md-9 .rl-report .rl-report-right > ul li button,
-.rl .col-md-9 .rs-report .rl-report-right > ul li button,
-.rs .col-md-9 .rs-report .rl-report-right > ul li button,
-.r .col-md-9 .rs-report .rl-report-right > ul li button,
-.rl .col-md-9 .r-report .rl-report-right > ul li button,
-.rs .col-md-9 .r-report .rl-report-right > ul li button,
-.r .col-md-9 .r-report .rl-report-right > ul li button,
-.rl .col-md-9 .rl-report .rs-right > ul li button,
-.rs .col-md-9 .rl-report .rs-right > ul li button,
-.r .col-md-9 .rl-report .rs-right > ul li button,
-.rl .col-md-9 .rs-report .rs-right > ul li button,
-.rs .col-md-9 .rs-report .rs-right > ul li button,
-.r .col-md-9 .rs-report .rs-right > ul li button,
-.rl .col-md-9 .r-report .rs-right > ul li button,
-.rs .col-md-9 .r-report .rs-right > ul li button,
-.r .col-md-9 .r-report .rs-right > ul li button,
-.rl .col-md-9 .rl-report .r-right > ul li button,
-.rs .col-md-9 .rl-report .r-right > ul li button,
-.r .col-md-9 .rl-report .r-right > ul li button,
-.rl .col-md-9 .rs-report .r-right > ul li button,
-.rs .col-md-9 .rs-report .r-right > ul li button,
-.r .col-md-9 .rs-report .r-right > ul li button,
-.rl .col-md-9 .r-report .r-right > ul li button,
-.rs .col-md-9 .r-report .r-right > ul li button,
-.r .col-md-9 .r-report .r-right > ul li button {
-  height: 30px;
-  font-size: 12px;
-  margin-left: 10px;
-}
 .rl #modal-default .modal-body .rl-cycle,
 .rs #modal-default .modal-body .rl-cycle,
 .r #modal-default .modal-body .rl-cycle {
@@ -4345,6 +4233,14 @@ table tr span {
 .rs #modal-default .modal-body .rl-file > p form p input,
 .r #modal-default .modal-body .rl-file > p form p input {
   margin-left: 20px;
+}
+.rl .tab-content .output-table {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.rl .tab-content .output-table > li {
+  list-style: none;
 }
 .rl .tab-content #A,
 .rl .tab-content #B,
@@ -4515,7 +4411,8 @@ table tr span {
   font-weight: lighter;
 }
 .rl #modal-default1 .rl-time {
-  margin-left: 98px;
+  position: absolute;
+  margin-left: 100px;
 }
 .rl #modal-default1 .rl-time > div {
   margin-right: -31px;
@@ -4528,11 +4425,17 @@ table tr span {
 .rl #modal-default1 .rl-time > div div i {
   margin-left: -4px;
   margin-right: 4px;
-  margin-top: 4px;
 }
 .rl #modal-default1 .rl-time > div input {
-  margin-left: -10px;
-  width: 168px;
+  margin-left: -6px;
+  width: 180px;
+}
+.rl #modal-default1 .rl-show {
+  margin-left: 72px;
+}
+.rl #modal-default1 .rl-show > span:nth-of-type(2) input {
+  vertical-align: -1px;
+  margin-right: 2px;
 }
 .rl #modal-default1 .rl-type {
   margin-left: 72px;
@@ -4544,12 +4447,12 @@ table tr span {
   margin-right: 7px;
 }
 .rl #modal-default1 .rl-type input:nth-of-type(2) {
-  margin-left: 50px;
+  margin-left: 20px;
   margin-top: -3px;
   margin-right: 7px;
 }
 .rl #modal-default1 .rl-type input:nth-of-type(3) {
-  margin-left: 50px;
+  margin-left: 20px;
   margin-top: -3px;
   margin-right: 7px;
 }
@@ -4573,7 +4476,22 @@ table tr span {
   margin-top: -3px;
   margin-right: 7px;
 }
+.rl #modal-default1 .rl-file {
+  margin-left: 72px;
+  margin-top: 20px;
+}
+.rl #modal-default1 .rl-file > input {
+  vertical-align: -2px;
+}
 /*reports_sessions*/
+.rs .tab-content .output-table {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.rs .tab-content .output-table > li {
+  list-style: none;
+}
 .rs .tab-content #A,
 .rs .tab-content #B,
 .rs .tab-content #C,
@@ -4855,99 +4773,73 @@ table tr span {
   font-size: 14px;
   font-weight: lighter;
 }
-.rs #modal-default .modal-body .rs-show,
-.rs #modal-default1 .modal-body .rs-show,
-.rs #modal-default .modal-body .rs-file,
-.rs #modal-default1 .modal-body .rs-file {
-  margin-left: 70px;
-  margin-top: 70px;
-}
-.rs #modal-default .modal-body .rs-show > p,
-.rs #modal-default1 .modal-body .rs-show > p,
-.rs #modal-default .modal-body .rs-file > p,
-.rs #modal-default1 .modal-body .rs-file > p {
-  float: left;
-}
-.rs #modal-default .modal-body .rs-show > p form p input,
-.rs #modal-default1 .modal-body .rs-show > p form p input,
-.rs #modal-default .modal-body .rs-file > p form p input,
-.rs #modal-default1 .modal-body .rs-file > p form p input {
-  margin-left: 20px;
-}
 .rs #modal-default1 .rs-time {
-  margin-left: 70px;
+  margin-left: 100px;
+  margin-top: 30px;
 }
-.rs #modal-default1 .rs-time > div {
-  margin-right: -31px;
-  float: right;
+.rs #modal-default1 .rs-time > div:nth-of-type(1) {
+  position: absolute;
+  margin-top: -20px;
+  margin-left: 45px;
 }
-.rs #modal-default1 .rs-time > div div {
-  height: 34px;
-  width: 20%;
+.rs #modal-default1 .rs-time > div:nth-of-type(1) div i {
+  color: #a1a6a1b5;
 }
-.rs #modal-default1 .rs-time > div div i {
-  margin-left: -4px;
-  margin-right: 4px;
-  margin-top: 4px;
+.rs #modal-default1 .rs-time > div:nth-of-type(1) input {
+  width: 190px;
+  margin-right: 430px;
 }
-.rs #modal-default1 .rs-time > div input {
-  margin-left: -10px;
-  width: 168px;
+.rs #modal-default1 .rs-show {
+  margin-left: 72px;
+}
+.rs #modal-default1 .rs-show > span:nth-of-type(2) > input {
+  vertical-align: -1px;
+  margin-right: 2px;
 }
 .rs #modal-default1 .rs-type {
-  margin-left: 70px;
-  font-size: 14px;
+  margin-left: 72px;
 }
-.rs #modal-default1 .rs-type input:nth-of-type(1) {
+.rs #modal-default1 .rs-type > input:nth-of-type(1) {
+  vertical-align: -2px;
+  margin-right: 5px;
   margin-left: 10px;
+}
+.rs #modal-default1 .rs-type > input:nth-of-type(2) {
+  margin-top: -3px;
+  margin-right: 5px;
+  margin-left: 15px;
+}
+.rs #modal-default1 .rs-type > input:nth-of-type(3) {
+  margin-left: 20px;
   margin-top: -3px;
   margin-right: 5px;
 }
-.rs #modal-default1 input:nth-of-type(2) {
-  margin-top: -3px;
-  margin-right: 5px;
-}
-.rs #modal-default1 input:nth-of-type(3) {
-  margin-left: 30px;
-  margin-top: -3px;
-  margin-right: 5px;
-}
-.rs #modal-default1 input:nth-of-type(4) {
+.rs #modal-default1 .rs-type > input:nth-of-type(4) {
   margin-left: 73px;
   margin-top: -3px;
   margin-right: 5px;
 }
-.rs #modal-default1 input:nth-of-type(5) {
-  margin-left: 58px;
+.rs #modal-default1 .rs-type > input:nth-of-type(5) {
+  margin-left: 42px;
   margin-top: -3px;
   margin-right: 5px;
 }
-.rs #modal-default1 input:nth-of-type(6) {
-  margin-left: 27px;
-  margin-top: -3px;
-  margin-right: 5px;
+.rs #modal-default1 .rs-file {
+  margin-left: 72px;
+  margin-top: 20px;
 }
-.rs #modal-default1 input:nth-of-type(7) {
-  margin-left: 73px;
-  margin-top: -3px;
-  margin-right: 5px;
-}
-.rs #modal-default1 input:nth-of-type(8) {
-  margin-left: 58px;
-  margin-top: -3px;
-  margin-right: 5px;
-}
-.rs #modal-default1 input:nth-of-type(9) {
-  margin-left: 52px;
-  margin-top: -3px;
-  margin-right: 5px;
-}
-.rs #modal-default1 input:nth-of-type(10) {
-  margin-left: 73px;
-  margin-top: -3px;
-  margin-right: 5px;
+.rs #modal-default1 .rs-file > input {
+  vertical-align: -2px;
 }
 /*reports*/
+.r .tab-content .output-table {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.r .tab-content .output-table > li {
+  list-style: none;
+}
 .r .tab-content #G,
 .r .tab-content #F {
   height: 100%;
@@ -4983,27 +4875,6 @@ table tr span {
   font-size: 12px;
   margin-left: 70px;
 }
-.r #modal-default .modal-body .r-show,
-.r #modal-default1 .modal-body .r-show,
-.r #modal-default .modal-body .r-file,
-.r #modal-default1 .modal-body .r-file {
-  margin-left: 70px;
-  margin-top: 70px;
-}
-.r #modal-default .modal-body .r-show > p,
-.r #modal-default1 .modal-body .r-show > p,
-.r #modal-default .modal-body .r-file > p,
-.r #modal-default1 .modal-body .r-file > p {
-  float: left;
-  margin-left: -20px;
-}
-.r #modal-default .modal-body .r-show > form p input,
-.r #modal-default1 .modal-body .r-show > form p input,
-.r #modal-default .modal-body .r-file > form p input,
-.r #modal-default1 .modal-body .r-file > form p input {
-  margin-left: 20px;
-  vertical-align: -1px;
-}
 .r #modal-default1 .r-time {
   margin-left: 98px;
 }
@@ -5023,6 +4894,7 @@ table tr span {
 .r #modal-default1 .r-type {
   margin-left: 70px;
   font-size: 14px;
+  margin-top: 30px;
 }
 .r #modal-default1 .r-type input:nth-of-type(1) {
   margin-left: 10px;
@@ -5030,7 +4902,7 @@ table tr span {
   margin-right: 7px;
 }
 .r #modal-default1 .r-type input:nth-of-type(2) {
-  margin-left: 50px;
+  margin-left: 20px;
   margin-top: -2px;
   margin-right: 7px;
 }
@@ -5058,6 +4930,18 @@ table tr span {
   margin-left: 72px;
   margin-top: -2px;
   margin-right: 7px;
+}
+.r #modal-default1 .r-file {
+  margin-left: 70px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+.r #modal-default1 .r-file > form {
+  margin-left: 70px;
+  margin-top: -31px;
+}
+.r #modal-default1 .r-file > form p > input {
+  vertical-align: -2px;
 }
 /*access_control*/
 .ac .col-xs-12 > .box {
@@ -7203,7 +7087,7 @@ table tr span {
   border-radius: 3px;
   border: 1px solid #ccc;
   font-size: 12px;
-  margin-left: -8px;
+  margin-left: -12px;
 }
 .cs_con #G #ad-edit-group2 .modal-body #div7 .more_ad {
   font-size: 12px;
@@ -10127,14 +10011,13 @@ table tr span {
   color: #454040;
 }
 .index_body .products-list .product-info .product-title .product-time {
-  background-color: #f0f4ef;
+  background-color: #009ffd38;
   color: #1494F7;
   float: right;
   font-size: 13px;
   margin-top: 10px;
   position: absolute;
-  margin-left: 100px;
-  width: 100px;
+  margin-left: 150px;
 }
 .index_body .products-list .product-info .product-description {
   color: #5a5454;
@@ -10783,3 +10666,4 @@ table tr span {
   top: 13px;
   border-radius: 3px;
 }
+/*# sourceMappingURL=main.css.map */

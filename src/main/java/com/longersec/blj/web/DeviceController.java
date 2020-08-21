@@ -101,7 +101,7 @@ public class DeviceController {
 		
 		int total = deviceService.total();
 		License l = new License();
-		if(!l.LicenseCheckUuid("")&&total>=3) {
+		if(!l.LicenseCheckUuid("")&&total>=13) {
 			result.put("success",false);
 			result.put("msg","设备数超过限制");
 		}else if(l.LicenseCheckUuid("")&&total>=l.LicenseGetDevices()) {
@@ -164,7 +164,12 @@ public class DeviceController {
 		operatorLog.setDetails("编辑设备["+device.getName()+"]["+device.getIp()+"]");
 		result.put("success",true);
 		Device _device = deviceService.checkip(ip);
-
+//		Device _device1 = deviceService.checkname(device.getName());
+//
+//		if (_device1!=null){
+//			result.put("success",false);
+//			result.put("isName","设备名称重复");
+//		}
 		if (_device!=null && !_device.getId().equals(device.getId())){
 			result.put("success",false);
 			result.put("isIp","IP地址重复");
@@ -292,13 +297,7 @@ public class DeviceController {
 	public static Map<String, Object> checkDeviceExport(DeviceService deviceService, DeviceTypeService deviceTypeService, ProtocolDao protocolDao , String name, String ip, String osType, String description,
 	                                                    String account, String password, String protocolname, int port, int sshKey){
 		Map<String, Object> errorMap = new HashMap<>(16);
-		Device checkName = deviceService.checkname(name);
-		if (checkName != null) {
-			errorMap.put("info",name+":用户名已经存在");
-			errorMap.put("success", false);
-			return errorMap;
-		}
-		if(name == null) {
+		if(name == null || "".equals(name)) {
 			errorMap.put("info",  ":设备名称不能为空");
 			errorMap.put("success", false);
 			return errorMap;
@@ -311,13 +310,13 @@ public class DeviceController {
 		} else {
 			errorMap.put("ostype",checOsType);
 		}
-		Device checkip = deviceService.checkip(ip);
+/*		Device checkip = deviceService.checkip(ip);
 		if (checkip != null) {
 			errorMap.put("info",checkip+":设备地址重复");
 			errorMap.put("success", false);
 			return errorMap;
-		}
-		if (ip == null) {
+		}*/
+		if (ip == null || "".equals(ip)) {
 			errorMap.put("info",name+":设备地址不能为空");
 			errorMap.put("success", false);
 			return errorMap;
@@ -334,7 +333,7 @@ public class DeviceController {
 			return errorMap;
 		}
 		Protocol byName = protocolDao.getByName(protocolname.toUpperCase());
-		if (byName == null) {
+		if (byName == null || "".equals(byName)) {
 			errorMap.put("info",protocolname+":该协议不存在");
 			errorMap.put("success", false);
 			return errorMap;

@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
 <script src="../../js/html5shiv.min.js"></script>
 <script src="../../js/respond.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" href="../../bower_components/treeview/font.css">
 <style>
 /*.ranges li {
     font-size: 13px;
@@ -77,22 +77,22 @@
 							<div class="box-title" style="padding: 15px;">
 								<span class="new-header">登录报表</span>
 							</div>
-							<div class="rl-report-right"
+					<!--		<div class="rl-report-right"
 								style="margin-top: -50px;">
 								<ul class="mr-nav-like">
-									<!-- <li>
+									&lt;!&ndash; <li>
 										<button type="button" class="btn btn-default pull-left baobiao"
 											data-dismiss="modal" data-toggle="modal"
 											data-target="#modal-default">报表自动发送</button>
 									</li>
-									 -->
+									 &ndash;&gt;
 									<li style="float: left;">
 										<button type="button" class="btn btn-default pull-left baobiao"
 											data-dismiss="modal" data-toggle="modal"
 											data-target="#modal-default1">报表导出</button>
 									</li>
 								</ul>
-							</div>
+							</div>-->
 						</div>
 						<div class="nav-tabs-custom">
 							<ul class="nav nav-tabs" style="margin-left: 17px !important;">
@@ -104,6 +104,18 @@
                             <li><a href="#D" data-toggle="tab">登录方式统计</a></li> -->
 							</ul>
 							<div class="tab-content">
+								<ul class="mr-nav-like output-table">
+							<!--	<li>
+									<button type="button" class="btn btn-default pull-left baobiao"
+											data-dismiss="modal" data-toggle="modal"
+											data-target="#modal-default">报表自动发送</button>
+								</li>-->
+									<li style="float: left;">
+										<button type="button" class="btn btn-default pull-left baobiao"
+												data-dismiss="modal" data-toggle="modal"
+												data-target="#modal-default1">报表导出</button>
+									</li>
+								</ul>
 								<div class="active tab-pane" id="A" style="margin-top: 20px;">
 									<div class="rl-photo">
 										<span class="new-font-color">统计图</span>
@@ -427,8 +439,7 @@
 							<div class="modal-body">
 								<div class="rl-time">
 									<span>时间：</span>
-									<div class="input-group"
-										style="position: absolute; margin-top: -20px; margin-left: 45px;">
+									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-calendar" style="color: #a1a6a1b5"></i>
 										</div>
@@ -438,12 +449,13 @@
 								</div>
 								<br>
 								<br>
-								<div class="rl-show" style="margin-left: 72px;">
+								<br>
+								<div class="rl-show">
 									<span>展示粒度：</span> 
 									<span>
-										<input type="radio" name="interval" data-interval="hour" checked="checked"> 按小时 
-										<input type="radio" name="interval" data-interval="day"> 按天
-										<input type="radio" name="interval" data-interval="week"> 按周 
+										<input type="radio" name="interval" data-interval="hour" checked="checked"> 按小时 &nbsp;&nbsp;&nbsp;
+										<input type="radio" name="interval" data-interval="day"> 按天&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="interval" data-interval="week"> 按周 &nbsp;&nbsp;&nbsp;
 										<input type="radio" name="interval" data-interval="month"> 按月
 									</span>
 								</div>
@@ -454,9 +466,8 @@
 									<input type="checkbox" checked="checked" value="user" />用户访问 
 									<input type="checkbox" checked="checked" value="fail" />登录尝试 
 								</div>
-								<div class="rl-file"
-									style="margin-left: 72px; margin-top: 20px;">
-									<span>文件格式：</span> <span>
+								<div class="rl-file">
+									<span>文件格式：</span>
 									<input type="radio" checked="checked" data-interval="csv"> CSV 
 								</div>
 								<br>

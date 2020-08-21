@@ -113,6 +113,18 @@
 		</set>
 	</insert>
 
+	<insert id="editMore">
+		UPDATE lsblj_department
+		<set>
+			<if test="name != null">`name`=#{name},</if>
+			<if test="description != null">`description`=#{description},</if>
+			<if test="create_time != null">`create_time`=#{create_time},</if>
+			<if test="parent_id != null">`parent_id`=#{parent_id},</if>
+			<if test="create_id != null">`create_id`=#{create_id}</if>
+		</set>
+		    where id =#{id}
+	</insert>
+
 	<select id="findParentName" resultMap="BaseResultMap">
 		SELECT rd.`name` AS `parent_name` FROM `lsblj_department` ld INNER JOIN lsblj_department rd ON ld.parent_id=rd.id WHERE ld.id=#{parent_id};
 	</select>
@@ -214,9 +226,15 @@
 		</foreach>
 		0);
 	</update>
+
 	<select id="selectTopId" resultType="java.lang.Integer">
 		SELECT id FROM lsblj_department ld,
 		               (SELECT @id :=#{id}) pd
 		WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id};
 	</select>
+
+	<select id="selectByNameAndParentId" resultMap="BaseResultMap">
+		SELECT * FROM `lsblj_department` WHERE name = #{name} AND parent_id = #{parent_id};
+	</select>
+
 </mapper>

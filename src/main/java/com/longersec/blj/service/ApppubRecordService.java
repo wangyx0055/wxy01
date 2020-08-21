@@ -21,6 +21,5 @@ public interface ApppubRecordService {
     public Integer getApppubRecordTotal();
 	
 	public ApppubRecord getById(Integer id);
-
 }
 

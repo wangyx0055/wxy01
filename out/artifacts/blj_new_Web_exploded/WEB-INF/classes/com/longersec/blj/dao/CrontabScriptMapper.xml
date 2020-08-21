@@ -8,7 +8,7 @@
 		<result column="file_path" jdbcType="VARCHAR" property="file_path"/>
 		<result column="type" jdbcType="INTEGER" property="type"/>
 		<result column="desc" jdbcType="VARCHAR" property="desc"/>
-		<result column="upload_time" jdbcType="TIMESTAMP" property="desc"/>
+		<result column="upload_time" jdbcType="TIMESTAMP" property="upload_time"/>
 	</resultMap>
 
 	<resultMap id="crontabScriptRecordCounts" type="java.lang.Long">
@@ -47,7 +47,7 @@
 	<delete id="delCrontabScript" parameterType="java.util.List">
 		DELETE FROM lsblj_crontab_script
 		where id IN (
-		<foreach collection="list" item="item" separator=",">
+		<foreach collection="list" item="item">
 		#{item},
 		</foreach>
 		0)

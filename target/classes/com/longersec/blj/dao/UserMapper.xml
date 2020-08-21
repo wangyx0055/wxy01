@@ -217,7 +217,7 @@
 		AND department in
 		<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
                     #{item}
-                </foreach>
+        </foreach>
        </if>
 		 ORDER BY id ASC
 		<if test="page_start != null and page_length != null">
@@ -231,14 +231,17 @@
 	</select>
 	
 	<delete id="deleteUselessUser">
-		DELETE FROM `lsblj_user` WHERE department = #{department};
+		DELETE FROM `lsblj_user` WHERE department = #{department} and id NOT IN(1,2,3);
 		DELETE FROM lsblj_group_user WHERE user_id NOT IN (SELECT id FROM lsblj_user);
 		DELETE FROM lsblj_access_policy_user WHERE user_id NOT IN (SELECT id FROM lsblj_user);
 		DELETE  FROM lsblj_cmd_policy_user WHERE user_id NOT IN (SELECT id FROM lsblj_user);
 	</delete>
 
 	<select id="selectNameAndId" resultMap="users">
-		SELECT id as user_id,username,realname FROM lsblj_user ORDER BY username ASC;
+		SELECT g.id as user_id,g.username,g.realname FROM lsblj_user g INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
+			                                                                                                                             lsblj_department ld,
+			                                                                                                                             (SELECT @id :=308) pd
+		                                                                           WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = 308) T ON g.department=T.id ORDER BY g.username ASC;
 	</select>
 
 	<select id="checkLogin" resultType="com.longersec.blj.domain.User" parameterType="String">
@@ -313,23 +316,20 @@
     </insert>
 
     <update id="editUserList">
-        <foreach collection="ArrayList" item="item" index="index">
             UPDATE lsblj_user
             <set>
-            <if test="item.role_id != null">`role_id`=#{item.role_id},</if>
-            <if test="item.username != null">`username`=#{item.username},</if>
-            <if test="item.realname != null">`realname`=#{item.realname},</if>
-            <if test="item.department != null">`department`=#{item.department},</if>
-            <if test="item.password != null">`password`=AES_ENCRYPT(#{item.password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
-            <if test="item.groupid != null">`groupid`=#{item.groupid},</if>
-            <if test="item.email != null">`email`=#{item.email},</if>
-            <if test="item.mobile != null">`mobile`=#{item.mobile},</if>
-            <if test="item.qq != null">`qq`=#{item.qq},</if>
-            <if test="item.wechat != null">`wechat`=#{item.wechat},</if>
+            <if test="role_id != null">`role_id`=#{role_id},</if>
+            <if test="username != null">`username`=#{username},</if>
+            <if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+            <if test="realname != null">`realname`=#{realname},</if>
+            <if test="department != null">`department`=#{department},</if>
+            <if test="email != null">`email`=#{email},</if>
+            <if test="mobile != null">`mobile`=#{mobile},</if>
+            <if test="qq != null">`qq`=#{qq},</if>
+            <if test="wechat != null">`wechat`=#{wechat},</if>
+            <if test="creator_id != null">`creator_id`=#{creator_id},</if>
             </set>
-            where id=#{item.id};
-        </foreach>
-
+            where id=#{id};
     </update>
 
 </mapper>

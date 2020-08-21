@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.longersec.blj.dao.LoginLogDao;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +41,44 @@ public class LoginLogController {
 		ArrayList<Object> resultLoginLogs = new ArrayList<Object>();
 		ArrayList<LoginLog> loginLogs = new ArrayList<LoginLog>();
 		long total = 0;
-		resultLoginLogs = (ArrayList<Object>)loginLogService.findAll(loginLog, page_start, page_length);
+		resultLoginLogs = (ArrayList<Object>)loginLogService.findAll(loginLog, page_start,page_length);
+		if(CollectionUtils.isNotEmpty(resultLoginLogs)) {
+		loginLogs = (ArrayList<LoginLog>)resultLoginLogs.get(0);
+		total = ((ArrayList<Long>) resultLoginLogs.get(1)).get(0);
+		}
+		JSONArray jsonArray = JSONArray.fromObject(loginLogs);
+		JSONObject result = new JSONObject();
+		result.accumulate("success", true);
+		result.accumulate("recordsTotal", total);
+		result.accumulate("recordsFiltered", total);
+		result.accumulate("data", jsonArray);
+		return result;
+	}
+
+	@RequestMapping("/listLoginLog1")
+	@ResponseBody
+	public JSONObject listLoginLog1(LoginLog loginLog,HttpServletRequest request, HttpSession session,
+	                               @RequestParam(value = "time_format",required = false)String time_format,
+	                               @RequestParam("login_datetime")String login_datetime) {
+		int page_start = Integer.parseInt(request.getParameter("start"));
+		int page_length = Integer.parseInt(request.getParameter("length"));
+		ArrayList<Object> resultLoginLogs = new ArrayList<Object>();
+		ArrayList<LoginLog> loginLogs = new ArrayList<LoginLog>();
+		long total = 0;
+		String timeFormat ="%Y-%m-%d";
+		if("hour".equals(time_format)) {
+			timeFormat ="%Y-%m-%d %H";
+		}else if("week".equals(time_format)) {
+			timeFormat ="%Y-%v";
+		}else if("month".equals(time_format)) {
+			timeFormat ="%Y-%m";
+		}else {
+			timeFormat ="%Y-%m-%d";
+		}
+		if("all".equals(loginLog.getProtocol())) {
+			loginLog.setProtocol("");
+		}
+		resultLoginLogs = (ArrayList<Object>)loginLogService.findAll1(loginLog, page_start,timeFormat, login_datetime, page_length);
 		if(CollectionUtils.isNotEmpty(resultLoginLogs)) {
 			loginLogs = (ArrayList<LoginLog>)resultLoginLogs.get(0);
 			total = ((ArrayList<Long>) resultLoginLogs.get(1)).get(0);

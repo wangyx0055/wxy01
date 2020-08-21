@@ -46,7 +46,6 @@
 		<if test="status != null">`status`=#{status},</if>
 		<if test="account_count != null">`account_count`=#{account_count},</if>
 		<if test="groupid != null">`groupid`=#{groupid},</if>
-	<!--	<if test="depart_name != null">`depart_name`=#{depart_name},</if>-->
 		<if test="description != null">`description`=#{description},</if>
 		<if test="creator_id != null">`creator_id`=#{creator_id},</if>
 		<if test="create_time != null">`create_time`=#{create_time},</if>
@@ -65,7 +64,6 @@
 		<if test="ip != null">`ip`=#{ip},</if>
 		<if test="department != null">`department`=#{department},</if>
 		<if test="description != null">`description`=#{description},</if>
-	<!--	<if test="depart_name != null">`depart_name`=#{depart_name},</if>-->
 		</set>
 		where id=#{id};
 	</update>

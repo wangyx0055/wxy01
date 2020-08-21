@@ -21,6 +21,8 @@ public interface ApppubServerDao {
 
 	public boolean delApppubServer(List<Integer> ids);
 
+	boolean delUselessApppubServer(@Param("id") Integer id);
+
 	public List<Object> findAll(@Param("apppubServer") ApppubServer apppubServer, @Param("sname") String sname, @Param("type") Integer type, @Param("page_start") int page_start, @Param("page_length") int page_length);
 
 	public String selectName(@Param("id") Integer id, @Param("name") String name);
@@ -34,4 +36,6 @@ public interface ApppubServerDao {
 	boolean insertMore(@Param("ArrayList") ArrayList<ApppubServer> listApppubServer);
 
 	boolean editApppubServerList(@Param("ArrayList") ArrayList<ApppubServer> updatelistApppubServer);
+
+	public ApppubServer getApppubServerByName (@Param("name") String name);
 }

@@ -1,120 +1,157 @@
 let topNode = {id:0,text:''};
+$('#down').click(function(){
+    window.location.href="../../file/downSsh?file_id="+$('#file_id').val()
+});
 var fileInput = function(file_id){
-    if (file_id == null) {
-        $("#scriptfile-input").fileinput({
-            uploadUrl: "../../file/uploadScript",
-            enableResumableUpload: false,
-            resumableUploadOptions: {
-            },
-            uploadExtraData: {
-                'uploadToken': new Date().getTime(), // for access control / security
-            },
-            maxFileCount: 1,
-            language: 'zh',
-            allowedPreviewTypes: ['html','text'],    // allow only images
-            showCancel: true,
-            initialPreviewAsData: true,
-            overwriteInitial: false,
-            initialPreviewDownloadUrl:true,
-            initialPreview: ['../../file/down?file_id='+file_id],
-            initialPreviewConfig: [{'downloadUrl':'../../file/down?file_id='+file_id}],
-            theme: 'fas',
-            deleteUrl: "../../file/deleteFile?file_id="+file_id
-        }).on('fileuploaded', function(event, previewId, index, fileId) {
-            console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
-            $('#file_id').val(arguments[1].response['file-id'])
-        }).on('fileuploaderror', function(event, data, msg) {
-            console.log('File Upload Error', 'ID: ' + data.fileId + ', Thumb ID: ' + data.previewId);
-        }).on('filebatchuploadcomplete', function(event, preview, config, tags, extraData) {
-            console.log('File Batch Uploaded', preview, config, tags, extraData);
-        }).on('filesuccessremove', function(event, id) {
-            console.log('Uploaded thumbnail successfully removed');
-        });
-    } else {
-        $("#scriptfile-input").fileinput({
-            uploadUrl: "../../file/uploadScript",
-            enableResumableUpload: false,
-            resumableUploadOptions: {
-            },
-            uploadExtraData: {
-                'uploadToken': new Date().getTime(), // for access control / security
-            },
-            maxFileCount: 1,
-            language: 'zh',
-            allowedPreviewTypes: ['html','text'],    // allow only images
-            showCancel: true,
-            initialPreviewAsData: true,
-            overwriteInitial: false,
-            initialPreviewDownloadUrl:true,
-            initialPreview: ['../../file/down?file_id='+file_id],
-            initialPreviewConfig: [{'downloadUrl':'../../file/down?file_id='+file_id}],
-            theme: 'fas',
-            deleteUrl: "../../file/deleteFile?file_id="+file_id
-        }).on('fileuploaded', function(event, previewId, index, fileId) {
-            console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
-            $('#file_id').val(arguments[1].response['file-id'])
-        }).on('fileuploaderror', function(event, data, msg) {
-            console.log('File Upload Error', 'ID: ' + data.fileId + ', Thumb ID: ' + data.previewId);
-        }).on('filebatchuploadcomplete', function(event, preview, config, tags, extraData) {
-            console.log('File Batch Uploaded', preview, config, tags, extraData);
-        }).on('filesuccessremove', function(event, id) {
-            console.log('Uploaded thumbnail successfully removed');
-        });
-    }
-
-};
+    $("#scriptfile-input").fileinput({
+        uploadUrl: "../../file/uploadSsh",
+        enableResumableUpload: false,
+        resumableUploadOptions: {
+        },
+        uploadExtraData: {
+            'uploadToken': new Date().getTime(), // for access control / security
+        },
+        maxFileCount: 1,
+        language: 'zh',
+        allowedPreviewTypes: ['html','text'],    // allow only images
+        showCancel: true,
+        showPreview: false,
+        initialPreviewAsData: true,
+        overwriteInitial: false,
+        initialPreviewDownloadUrl:false,
+        theme: 'fas',
+        deleteUrl: "../../file/deleteSsh?file_id="+file_id
+    }).on('fileuploaded', function(event, previewId, index, fileId) {
+        console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
+        $('#file_id').val(arguments[1].response['file-id']);
+        $("#Vupload_file").text("");
+    }).on('fileuploaderror', function(event, data, msg) {
+        console.log('File Upload Error', 'ID: ' + data.fileId + ', Thumb ID: ' + data.previewId);
+    }).on('filebatchuploadcomplete', function(event, preview, config, tags, extraData) {
+        console.log('File Batch Uploaded', preview, config, tags, extraData);
+    }).on('filesuccessremove', function(event, id) {
+        console.log('Uploaded thumbnail successfully removed');
+    });
+}
+var fileInput1 = function(file_id){
+    $("#scriptfile-input1").fileinput({
+        uploadUrl: "../../file/uploadSsh",
+        enableResumableUpload: false,
+        resumableUploadOptions: {
+        },
+        uploadExtraData: {
+            'uploadToken': new Date().getTime(), // for access control / security
+        },
+        maxFileCount: 1,
+        language: 'zh',
+        allowedPreviewTypes: ['html','text'],    // allow only images
+        showCancel: true,
+        showPreview: false,
+        initialPreviewAsData: true,
+        overwriteInitial: false,
+        initialPreviewDownloadUrl:false,
+        theme: 'fas',
+        deleteUrl: "../../file/deleteSsh?file_id="+file_id
+    }).on('fileuploaded', function(event, previewId, index, fileId) {
+        console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
+        $('#file_id1').val(arguments[1].response['file-id']);
+        $("#Vupload_file1").text("");
+    }).on('fileuploaderror', function(event, data, msg) {
+        console.log('File Upload Error', 'ID: ' + data.fileId + ', Thumb ID: ' + data.previewId);
+    }).on('filebatchuploadcomplete', function(event, preview, config, tags, extraData) {
+        console.log('File Batch Uploaded', preview, config, tags, extraData);
+    }).on('filesuccessremove', function(event, id) {
+        console.log('Uploaded thumbnail successfully removed');
+    });
+}
 //默认端口
 function showAGREE(v){
 	var device_port=$('#modal-editdeviceaccount .modal-title').text();
-	console.log(device_port);
-    if(v=='2'){
+    if(v==='2'){
         document.getElementById("div20").style.display="none";
         document.getElementById("edit_account_port").value="3389";
+        document.getElementById("xing2").style.color="red";
+        document.getElementById("xing3").style.color="red";
     }
-    else if(v=='1'){
+    else if(v==='1'){
         document.getElementById("div20").style.display="block";
         document.getElementById("edit_account_port").value="22";
+        document.getElementById("xing2").style.color="white";
+        document.getElementById("xing3").style.color="white";
     }
-    else if(v=='3'){
+    else if(v==='3'){
         document.getElementById("div20").style.display="none";
         document.getElementById("edit_account_port").value="23";
+        document.getElementById("xing2").style.color="red";
+        document.getElementById("xing3").style.color="red";
     }
-    else if(v=='4') {
+    else if(v==='4') {
         document.getElementById("div20").style.display="none";
         document.getElementById("edit_account_port").value="5901";
-    }else if(v=='5'){
+        document.getElementById("xing2").style.color="red";
+        document.getElementById("xing3").style.color="red";
+    }else if(v==='5'){
         document.getElementById("div20").style.display="none";
         document.getElementById("edit_account_port").value="21";
-    }else if(v=="6"){
+        document.getElementById("xing2").style.color="red";
+        document.getElementById("xing3").style.color="red";
+    }else if(v==="6"){
         document.getElementById("div20").style.display="none";
         document.getElementById("edit_account_port").value="22";
+        document.getElementById("xing2").style.color="red";
+        document.getElementById("xing3").style.color="red";
 	}
 }
 function showBGREE(v){
-    if(v=='2'){
+    if(v==='2'){
         document.getElementById("div22").style.display="none";
+        document.getElementById("div55").style.display="none";
+        document.getElementById("xing5").style.color = "red";
+        document.getElementById("xing6").style.color = "red";
         document.getElementById("edit_device_port").value="3389";
     }
-    else if(v=='1'){
+    else if(v==='1'){
         document.getElementById("div22").style.display="block";
+        document.getElementById("div55").style.display="none";
+        document.getElementById("xing5").style.color = "white";
+        document.getElementById("xing6").style.color = "white";
+        $('#edit_device_ssh_key').val('1');
         document.getElementById("edit_device_port").value="22";
     }
-    else if(v=='3'){
+    else if(v==='3'){
         document.getElementById("div22").style.display="none";
+        document.getElementById("div55").style.display="none";
+        document.getElementById("xing5").style.color = "red";
+        document.getElementById("xing6").style.color = "red";
         document.getElementById("edit_device_port").value="23";
     }
-    else if(v=='4') {
+    else if(v==='4') {
         document.getElementById("div22").style.display="none";
+        document.getElementById("div55").style.display="none";
+        document.getElementById("xing5").style.color = "red";
+        document.getElementById("xing6").style.color = "red";
         document.getElementById("edit_device_port").value="5901";
+    }else if(v==='5'){
+        document.getElementById("div22").style.display="none";
+        document.getElementById("div55").style.display="none";
+        document.getElementById("xing5").style.color = "red";
+        document.getElementById("xing6").style.color = "red";
+        document.getElementById("edit_device_port").value="21";
+    }else if(v==="6"){
+        document.getElementById("div22").style.display="none";
+        document.getElementById("div55").style.display="none";
+        document.getElementById("xing5").style.color = "red";
+        document.getElementById("xing6").style.color = "red";
+        document.getElementById("edit_device_port").value="22";
     }
 }
 function  showSsh(v){
-    if(v=="0"){
-        $("#div23").show();
+    if(v==="0"){
+        $('#div23').show();
         $("#key_name").text("");
         $("#Vupload_file").text("");
-    }else if(v=='1'){
-        $("#div23").hide();
+    }else if(v==='1'){
+        $('#div23').hide();
         $("#key_name").text("");
         $("#Vupload_file").text(" ");
     }
@@ -628,11 +665,7 @@ $('#search').click(function(){
 //新建设备第一步
 $("#next").click(function(){
    var flag = checkdevice();
-    if(flag==false)return flag;
- /*   else {
-      $("#modal-editdevice").modal("hide");
-      $("#modal-primary1").modal.show();
-    }*/
+    if(flag===false)return flag;
     $('#edit_device_login_method').val('11');
     document.getElementById("xing4").style.color = "red";
     document.getElementById("xing5").style.color = "red";
@@ -641,23 +674,46 @@ $("#next").click(function(){
     $('#_edit_device_password').val('');
     $('#_edit_device_password1').val('');
     $('#depart_name').val(topNode.text);
-    $('#edit_device_protocol option:first').prop("selected",'selected');
+    $('#edit_device_protocol').val('2');
     $('#edit_device_port').val('22');
     $('#_Vsuper_account').text('');
     $('#_Vdevice_password').text('');
     $('#_Vdevice_password1').text('');
     $('#Vport').text('');
-    showBGREE('1')
+    $('#file_id').val(0);
+    fileInput1('');
    //系统类型为windows时协议类型为rdp
-    var _os_type = $('#edit_device_os_type').val();
-    if (_os_type==51){
+    let _os_type = $('#edit_device_os_type option:selected').text().toUpperCase();
+    if (_os_type==="WINDOWS"){
         $('#edit_device_protocol').val('2');
         $('#edit_device_port').val("3389");
-        showBGREE(_os_type)
+        $('#div55').css("display",'none');
+        $('#pass3').css("display","block");
+        $('#div22').css("display",'none');
+        $('#pass4').css("display","block");
+        document.getElementById("xing5").style.color = "red";
+        document.getElementById("xing6").style.color = "red";
+    } else{
+        $('#edit_device_protocol').val('1');
+        $('#edit_device_port').val("22");
+        $('#div55').css("display",'none');
+        $('#div22').css("display",'block');
+        $('#edit_device_ssh_key').val('1');
+        document.getElementById("xing5").style.color = "white";
+        document.getElementById("xing6").style.color = "white";
     }
 });
+function  showSSHKEY(v){
+    if(v==="0"){
+        $('#div55').css("display",'block');
+        $("#Vupload_file1").text("");
+    }else if(v==='1'){
+        $('#div55').css("display",'none');
+        $("#Vupload_file1").text(" ");
+    }
+}
 //第二部_editdeviceButton
-$("#_editdeviceButton").click(function(){
+$("#_editdeviceButton").off().click(function(){
     var url = "../../device/editDevice";
     var flag=checkdevice();
     if (flag == false) return false;
@@ -770,7 +826,7 @@ $('#editdeviceButton').off().click(function(){
     password = $('#_edit_device_password').val();
     password1 = $('#_edit_device_password1').val();
     super_account = $('#_edit_device_super_account').val();
-    if ($('#edit_device_login_method').val()=='11') {
+    if ($('#edit_device_login_method').val()==='11' && $('#edit_device_protocol').val()!=='1') {
         if (password == "" || password1 == "") {
             if (password == "") {
                 $('#_Vdevice_password').text('请输入密码');
@@ -781,15 +837,18 @@ $('#editdeviceButton').off().click(function(){
             flag = false;
         }
     }
-    if(password!="" && password1==""){
+    if(password!="" && password1=="" && $('#edit_device_ssh_key').val()!=='1'){
             $('#_Vdevice_password1').text('请输入确认密码');
             flag=false;
     }else if(password != ""&&password != password1){
             $('#_Vdevice_password1').text('密码不一致');
             flag=false;
     }
-    if ($('#_Vdevice_password1').text()!="" || $('#_Vdevice_password').text()!="" || $('#_Vsuper_account').text()!="" || $('#Vport').text()!=""){
+    if (($('#_Vdevice_password1').text()!="" || $('#_Vdevice_password').text()!="" || $('#_Vsuper_account').text()!="" || $('#Vport').text()!="")&& $('#edit_device_protocol').val()!=='1'){
             flag=false;
+    }
+    if ( $('#edit_device_ssh_key').val()==='0' && $('#edit_sshkey1')==="") {
+        flag=false;
     }
     var login_method = $('#edit_device_login_method').find("option:selected").val();
     if(login_method==11){
@@ -816,7 +875,8 @@ $('#editdeviceButton').off().click(function(){
                 protocol_id:$('#edit_device_protocol').find("option:selected").val(),
                 port:$('#edit_device_port').val(),
                 ssh_key:$('#edit_device_ssh_key').find("option:selected").val(),
-
+                file_id:$('#file_id1').val(),
+                ssh_password:$('#edit_sshkey1').val(),
             },
             success:function(data){
                 if(data.success){
@@ -947,7 +1007,11 @@ $("#newDevice").click(function(){
     $('#Vip').text('');
     $('#VdepartName').text('');
 });
+/*
+$('#modal-editdevice').on('show.bs.modal', function (event) {
 
+});
+*/
 
 $('#modal-editdevice').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
@@ -1049,9 +1113,6 @@ $('#export').click(function(){
                 }
                 loadAJAX('#devices');
             }
-        },
-        error:function(){
-
         }
     })
 });
@@ -1124,20 +1185,6 @@ $("#upload").on("click", function (){
     });
 });
 
-//ssh_key上传点击事件
-/*$("#upload_file").on("click", function (){
-    $('#Vupload_file').text();
-    $('#key_file').click();
-    $('#key_file').change(function(){
-        var file = $("#key_file").val();
-        var fileName = getFileName(file);
-        function getFileName(o){
-            var pos=o.lastIndexOf("\\");
-            return o.substring(pos+1);
-        }
-        $("#key_name").html(fileName);
-    })
-});*/
 $("#upload_file").click(function () {
     $("#key_file").click();
     stopPropagation(event);
@@ -1227,14 +1274,13 @@ function deviceaccount(device_id){
                 }}
         ]
     });
-    $('#modal-editdeviceaccount').on('show.bs.modal', function (event) {
+    $('#modal-editdeviceaccount').off().on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         if(button.data('row')!=undefined&&button.data('row')!=null){
             $('#modal-editdeviceaccount .modal-title').text('编辑账号');
             i = button.data('row');
             $('#edit_account_id').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].id);
             $('#edit_account_port').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].port);
-        /*    console.log($('#edit_account_port').val())*/
             var login_value = $('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].login_method;
             if(login_value ==0){
                 $('#edit_account_login_method').val("33");
@@ -1262,13 +1308,22 @@ function deviceaccount(device_id){
                 }
             }
             $('#edit_account_protocol').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].protocol_id);
-         /*   showAGREE($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].protocol_id,'edit_account_port');*/
+            if ($('#edit_account_protocol').val()==="1") {
+                $('#div20').css("display",'block');
+            }else {
+                $('#div20').css("display",'none');
+            }
             $('#edit_account_ssh_key').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].ssh_key);
-            if( $('#edit_account_ssh_key').val()==0){
+            if( $('#edit_account_ssh_key').val()==='0'){
                 $("#div23").show();
             }else {
                 $("#div23").hide();
             }
+            $('#file_id').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].file_id);
+            fileInput('');
+            $('#down').css("display",'block');
+            $(".file-caption-name").val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].script_name);
+            $('#edit_sshkey').attr("placeholder","\xa0\xa0\xa0********");
         }else{
             $('#edit_account_id').val('');
             $('#modal-editdeviceaccount .modal-title').text('新建账号');
@@ -1277,16 +1332,22 @@ function deviceaccount(device_id){
             $('#edit_account_password1').val('');
             $('#edit_account_protocol option:first').prop("selected",'selected');
             $('#edit_account_ssh_key option:last').prop("selected",'selected');
-            $("#div23").hide();
+            $(".fileinput-remove-button").click();
+            $('#down').css("display","none");
+            $('#file_id').val(0);
             fileInput('');
+            showAGREE($('#edit_account_protocol').val());
+            $('#div23').css("display","none");
+            $('#edit_account_ssh_key').val('1');
         }
     });
-    $('#modal-deldeviceaccount').on('show.bs.modal', function (event) {
+    //设备账号删除的回显
+    $('#modal-deldeviceaccount').off().on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         i = button.data('row');
         $('#del_account_id').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].id);
     });
-
+    //设备账号编辑操作
     $('#editDeviceAccountButton').off().on('click', function(){
         var url = "../../deviceAccount/editDeviceAccount";
         if($('#edit_account_id').val()==""){
@@ -1303,13 +1364,13 @@ function deviceaccount(device_id){
         password = $('#_edit_account_password').val();
         _password = $('#_edit_account_password1').val();
         username = $('#_edit_account_username').val();
-        if ($('#edit_account_login_method').val()=='33'){
+        if ($('#edit_account_login_method').val()=='33' &&$('#edit_account_ssh_key').val()==='1'){
             if ($('#_edit_account_username').val()=="" ){
                 $('#_Vaccount_username').text('请输入设备账号')
                 flag = false;
             }
             if ($('#edit_account_id').val()==""){
-                if ($('#_edit_account_password1').val()=="" || $('#_edit_account_password').val()=="" ){
+                if ($('#_edit_account_password1').val()=="" || $('#_edit_account_password').val()==""){
                     if ($('#_edit_account_password').val()==""){
                         $('#_Vaccount_password').text('请输入密码');
                     }
@@ -1319,7 +1380,7 @@ function deviceaccount(device_id){
                     flag = false;
                 }
             }
-            if ($('#_Vaccount_username').text()!="" || $('#_Vaccount_password').text()!="" || $('#_Vaccount_password1').text()!="" || $('#Vedit_account_port').text()!=""){
+            if ($('#_Vaccount_username').text()!="" || $('#_Vaccount_password').text()!="" || $('#_Vaccount_password1').text()!="" || $('#Vedit_account_port').text()!="" ){
                 flag = false;
             }
         }
@@ -1336,10 +1397,10 @@ function deviceaccount(device_id){
         }else {
             login_method=1;
         }
-        if($("#edit_account_ssh_key").val()==0&&$("#upload_file").val()==""){
+        if($("#edit_account_ssh_key").val()==0 && $(".file-caption-name").val()===""){
             $("#Vupload_file").text("请上传文件");
         }
-        if ($('#_Vaccount_username').text()!="" || $('#_Vaccount_password').text()!="" || $('#_Vaccount_password1').text()!=""||($("#edit_account_ssh_key").val()==0&&$("#Vupload_file").text()!="")){
+        if (($('#_Vaccount_username').text()!="" || $('#_Vaccount_password').text()!="" || $('#_Vaccount_password1').text()!=""||($("#edit_account_ssh_key").val()==0)&&$("#Vupload_file").text()!=""&&$('#edit_account_ssh_key').val()==='1')){
             flag = false;
         }
         if (flag){
@@ -1352,10 +1413,12 @@ function deviceaccount(device_id){
                     username:username,
                     password:password,
                     querypassword:_password,
+                    file_id:$('#file_id').val(),
                     protocol_id:$('#edit_account_protocol').val(),
                     port:$('#edit_account_port').val(),
                     ssh_key:$('#edit_account_ssh_key').val(),
                     device_id:$('#_edit_device_id').val(),
+                    ssh_password:$('#edit_sshkey').val(),
                 },
                 success:function(data){
                     if(data.success){
@@ -1372,9 +1435,6 @@ function deviceaccount(device_id){
                             $("#modal-success .modal-body").text('编辑成功!');
                             $("#modal-success").modal();
                             loadAJAX('#deviceaccount');
-                         /*   if ($('#edit_account_id').val() == "") {
-                                loadAJAX('#hostList');
-                            }*/
                         }
                     }
                     else{
@@ -1392,25 +1452,17 @@ function deviceaccount(device_id){
                         }
                     }
                 },
-                error:function(){
-
-                }
             })
         }
     });
-
     function clearAcount(){
         $('#edit_account_username').val();
-        $('#edit_account_password').val();
-        $('#edit_account_password1').val();
         $('#_edit_account_password').val();
         $('#_edit_account_password1').val();
         $('#edit_account_login_method').val="33";
         $('#edit_account_protocol option:first').prop("selected",'selected');
         $('#_edit_account_password').attr("placeholder","");
         $('#_edit_account_password1').attr("placeholder","");
-        $('#edit_account_password').attr("placeholder","");
-        $('#edit_account_password1').attr("placeholder","");
     }
     $('#clearText').click(function(){
         clearAcount()
@@ -1490,11 +1542,11 @@ function deviceaccount(device_id){
 }
 
 function show2(v){
-    if(v=='33'){
+    if(v==='33'){
         document.getElementById("xing1").style.color="red";
         document.getElementById("xing2").style.color="red";
         document.getElementById("xing3").style.color="red";
-    }else if(v=='44'){
+    }else if(v==='44'){
         document.getElementById("xing1").style.color="white";
         document.getElementById("xing2").style.color="white";
         document.getElementById("xing3").style.color="white";
@@ -1504,13 +1556,13 @@ function show2(v){
     }
 }
 function show1(v){
-    if(v=='11') {
+    if(v==='11') {
         document.getElementById("xing4").style.color = "red";
         document.getElementById("xing5").style.color = "red";
         document.getElementById("xing6").style.color = "red";
     }
     else if
-    (v=='13'){
+    (v==='13'){
         document.getElementById("xing4").style.color="white";
         document.getElementById("xing5").style.color="white";
         document.getElementById("xing6").style.color="white";

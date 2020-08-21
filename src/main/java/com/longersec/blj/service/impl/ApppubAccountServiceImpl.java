@@ -73,9 +73,10 @@ public class ApppubAccountServiceImpl implements ApppubAccountService{
 	}
 
 	@Override
-	public String checkName(Integer id,String name) {
+	public int checkName(Integer id, String name) {
 		return ApppubAccountDao.checkName(id,name);
 	}
+
 
 	@Override
 	public String selectName(Integer id, String name) {
@@ -86,5 +87,20 @@ public class ApppubAccountServiceImpl implements ApppubAccountService{
 	public ApppubAccount getById(Integer id) {
 		// TODO Auto-generated method stub
 		return ApppubAccountDao.getById(id);
+	}
+
+	@Override
+	public boolean insertMore(ApppubAccount apppubAccount) {
+		return ApppubAccountDao.insertMore(apppubAccount);
+	}
+
+	@Override
+	public boolean editApppubAccountList(ArrayList<ApppubAccount> update_apppubAccounts) {
+		return ApppubAccountDao.editApppubAccountList(update_apppubAccounts);
+	}
+
+	@Override
+	public ApppubAccount getApppubAccountByName(String name) {
+		return ApppubAccountDao.getApppubAccountByName(name);
 	}
 }

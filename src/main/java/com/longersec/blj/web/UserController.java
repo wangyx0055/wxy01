@@ -614,12 +614,6 @@ public class UserController {
 
 	public static Map<String, Object> checkUserExport(UserService userService, String username,String realname, String password,  String email, String qq, String wechat, String mobile){
 		Map<String, Object> errorMap = new HashMap<>(16);
-		User isexitU = userService.checkLogin(username);
-		if (isexitU != null) {
-			errorMap.put("info",username+":用户名已经存在");
-			errorMap.put("success", false);
-			return errorMap;
-		}
 		if(username == null) {
 			errorMap.put("info",":用户名不能为空");
 			errorMap.put("success", false);

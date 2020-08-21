@@ -80,6 +80,7 @@ public class ApppubAccount {
 	public void setDepartment(Integer department) {
 		this.department = department;
 	}
+
 	public String getDepart_name() {
 		return depart_name;
 	}

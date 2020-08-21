@@ -122,8 +122,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean editUserList(ArrayList<User> update_users) {
-		return UserDao.editUserList(update_users);
+	public boolean editUserList(User user) {
+		return UserDao.editUserList(user);
 	}
 
 	@Override

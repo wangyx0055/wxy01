@@ -88,7 +88,12 @@
 		SELECT found_rows() AS recordCounts;
 	</select>
 
-    <select id="total" resultType="java.lang.Integer">
+	<select id="total" resultType="java.lang.Integer">
             select count(*) count from lsblj_apppub_program;
     </select>
+
+	<select id="getApppubProgramByName" resultType="com.longersec.blj.domain.ApppubProgram">
+		select * from lsblj_apppub_program where name = #{name} limit 1;
+	</select>
+
 </mapper>
