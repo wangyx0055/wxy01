@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import com.longersec.blj.domain.DTO.DeviceGroup;
 import com.longersec.blj.domain.DTO.UserGroup;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.GroupService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,12 +37,15 @@ public class CrontabScriptConfigGroupController {
 
 	@RequestMapping("/findCrontabScriptconfigUserGroup")
 	@ResponseBody
-	public JSONObject findAccessPolicyGroupAndUser(@RequestParam("config_id")Integer config_id) {
+	public JSONObject findAccessPolicyGroupAndUser(@RequestParam("config_id")Integer config_id,
+	                                               @RequestParam(value = "page_start",required = false)int page_start,
+	                                               @RequestParam(value ="page_length",required = false)int page_length) {
 		JSONObject result = new JSONObject();
 		ArrayList<UserGroup> resultCrontabScriptconfigGroups = new ArrayList<UserGroup>();
 		ArrayList<UserGroup> resultGroups = new ArrayList<UserGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCrontabScriptconfigGroups = (ArrayList<UserGroup>) crontabScriptConfigGroupService.selectById(config_id);
-		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId();
+		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),0,20000);
 		resultGroups.removeAll(resultCrontabScriptconfigGroups);
 		JSONArray jsonArray_p_user_group = JSONArray.fromObject(resultCrontabScriptconfigGroups);
 		JSONArray jsonArray_user_group = JSONArray.fromObject(resultGroups);
@@ -56,8 +61,9 @@ public class CrontabScriptConfigGroupController {
 		JSONObject result = new JSONObject();
 		ArrayList<DeviceGroup> resultCrontabScriptconfigDeviceGroups = new ArrayList<DeviceGroup>();
 		ArrayList<DeviceGroup> resultDeviceGroups = new ArrayList<DeviceGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCrontabScriptconfigDeviceGroups = (ArrayList<DeviceGroup>) crontabScriptConfigGroupService.selectBydIdDevice(config_id);
-		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId();
+		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment());
 		resultDeviceGroups.removeAll(resultCrontabScriptconfigDeviceGroups);
 		JSONArray jsonArray_p_device_group = JSONArray.fromObject(resultCrontabScriptconfigDeviceGroups);
 		JSONArray jsonArray_device_group = JSONArray.fromObject(resultDeviceGroups);

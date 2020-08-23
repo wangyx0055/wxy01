@@ -421,11 +421,6 @@ function asyncUser(id) {
                     $("#modal-danger .modal-title").text('失败');
                     $("#modal-danger .modal-body").text(data.error);
                     $("#modal-danger").modal();
-                }else{
-                    $("#modal-upload").modal("hide");
-                    $("#modal-danger .modal-title").text('失败');
-                    $("#modal-danger .modal-body").text("同步失败!");
-                    $("#modal-danger").modal();
                 }
             }
         },

@@ -133,7 +133,7 @@ public class UpdateDepartmentCount {
 	/** 自动更新用户组用户数量 **/
 	public static synchronized void AutoUpdateGroupCounts(GroupService groupService, UserGroupUserService userGroupUserService){
 		//1.先查询用户组的id
-		List<UserGroup> userGroups = groupService.selectNameAndId();
+		List<UserGroup> userGroups = groupService.selectNameAndIdTop();
 		//2.遍历用户组id
 		for (UserGroup userGroup:userGroups) {
 			//3.查询用户组用户数量
@@ -146,7 +146,7 @@ public class UpdateDepartmentCount {
 	/** 自动更新设备组设备账号数量 **/
 	public static synchronized void AutoUpdateGroupDeviceCounts(GroupService groupService,GroupDeviceAccountService groupDeviceAccountService){
 		//1.先查询设备组的id
-		List<DeviceGroup> deviceGroups = groupService.selectNameAnddId();
+		List<DeviceGroup> deviceGroups = groupService.selectNameAndIdTop1();
 		//2.遍历设备组id
 		for (DeviceGroup deviceGroup:deviceGroups) {
 			//3.查询设备组设备账号数量

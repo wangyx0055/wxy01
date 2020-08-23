@@ -443,29 +443,15 @@ $('#modal-primary8').on('show.bs.modal', function (event) {
             //show
             $('#edit_device').html('');
             $('#edit_device1').html('');
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i].protocol_id == 1) {
-                    arr[i].protocol_id = "ssh";
-                } else if (arr[i].protocol_id == 2) {
-                    arr[i].protocol_id = "rdp";
-                } else if (arr[i].protocol_id == 3) {
-                    arr[i].protocol_id = "telnet";
-                } else {
-                    arr[i].protocol_id = "vnc";
-                }
-                $('#edit_device').html($('#edit_device').html() + '<div><input value="' + arr[i].device_account_id + '" type="checkbox"><span>' + arr[i].device_name + "[" + arr[i].username + "]" + "[" + arr[i].protocol_id + "]" + '</span></div>')
+            let len = arr.length;
+            for (let i = 0; i < len; i++) {
+                arr[i].protocol_id =_protocol(arr[i].protocol_id);
+                $('#edit_device').append('<div><input value="' + arr[i].device_account_id + '" type="checkbox"><span>' + arr[i].device_name + "[" + arr[i].username + "]" + "[" + arr[i].protocol_id + "]" + '</span></div>')
             }
-            for (var i = 0; i < arr1.length; i++) {
-                if (arr1[i].protocol_id == 1) {
-                    arr1[i].protocol_id = "ssh";
-                } else if (arr1[i].protocol_id == 2) {
-                    arr1[i].protocol_id = "rdp";
-                } else if (arr1[i].protocol_id == 3) {
-                    arr1[i].protocol_id = "telnet";
-                } else {
-                    arr1[i].protocol_id = "vnc";
-                }
-                $('#edit_device1').html($('#edit_device1').html() + '<div><input value="' + arr1[i].device_account_id + '" type="checkbox" ><span>' + arr1[i].device_name + "[" + arr1[i].username + "]" + "[" + arr1[i].protocol_id + "]" + '</span></div>')
+            let len1 = arr1.length;
+            for (let i = 0; i < len1; i++) {
+                arr1[i].protocol_id =_protocol(arr1[i].protocol_id);
+                $('#edit_device1').append('<div><input value="' + arr1[i].device_account_id + '" type="checkbox" ><span>' + arr1[i].device_name + "[" + arr1[i].username + "]" + "[" + arr1[i].protocol_id + "]" + '</span></div>')
             }
             RelativeMethods(7);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
             ac_edit_device_list = $('#edit_device').html();
@@ -477,10 +463,10 @@ $('#modal-primary8').on('show.bs.modal', function (event) {
 });
 $("#relevance-device").click(function () {
 //devicegroup
-    let selecteddevicegroup = [];
-    $('#edit_device1 input').each(function () {
-        selecteddevicegroup.push(this.value)
-    })
+let selecteddevicegroup = [];
+$('#edit_device1 input').each(function () {
+    selecteddevicegroup.push(this.value)
+})
 });
 //device
 $("#relevance-device").click(function () {

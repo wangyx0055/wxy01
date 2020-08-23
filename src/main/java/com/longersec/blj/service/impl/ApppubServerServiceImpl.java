@@ -41,8 +41,8 @@ public class ApppubServerServiceImpl implements ApppubServerService{
 	}
 
 	@Override
-	public List<Object> findAll(ApppubServer apppubServer,String sname,Integer type, int page_start, int page_length) {
-		return ApppubServerDao.findAll(apppubServer,sname,type, page_start, page_length);
+	public List<Object> findAll(ApppubServer apppubServer,String sname,Integer type, int page_start, int page_length,List<Integer> depart_ids) {
+		return ApppubServerDao.findAll(apppubServer,sname,type, page_start, page_length,depart_ids);
 	}
 
 	@Override
@@ -57,6 +57,11 @@ public class ApppubServerServiceImpl implements ApppubServerService{
 	}
 
 	@Override
+	public ApppubServer checkname(Integer id, String name) {
+		return ApppubServerDao.checkname(id,name);
+	}
+
+	@Override
 	public ApppubServer checkip(String ip, Integer id) {
 		// TODO Auto-generated method stub
 		return ApppubServerDao.checkip(ip, id);
@@ -65,11 +70,6 @@ public class ApppubServerServiceImpl implements ApppubServerService{
 	@Override
 	public ApppubServer getApppubServerByName(String name) {
 		return ApppubServerDao.getApppubServerByName(name);
-	}
-
-	@Override
-	public ApppubServer checkname(String name) {
-		return  ApppubServerDao.checkname(name);
 	}
 
 	@Override

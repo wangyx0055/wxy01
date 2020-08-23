@@ -39,8 +39,8 @@ public class ApppubAccountServiceImpl implements ApppubAccountService{
 	}
 
 	@Override
-	public List<Object> findAll(String sname,Integer type,ApppubAccount apppubAccount, int page_start, int page_length) {
-		return ApppubAccountDao.findAll(sname,type,apppubAccount, page_start, page_length);
+	public List<Object> findAll(String sname,Integer type,ApppubAccount apppubAccount, int page_start, int page_length,List<Integer> depart_ids) {
+		return ApppubAccountDao.findAll(sname,type,apppubAccount, page_start, page_length,depart_ids);
 	}
 
 	@Override

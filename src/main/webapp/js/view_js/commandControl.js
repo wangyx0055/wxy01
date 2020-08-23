@@ -16,8 +16,8 @@ function listAll(){
 		success:function (data){
 			$('#add_user1').html('');
 			$('#add_user').html('');
-			var data = data.data;
-			for(var i=0; i<data.length; i++){
+			let len1 = data.length;
+			for(let i=0; i<len1; i++){
 				if(data[i].username.length>0)
 					$('#add_user').html($('#add_user').html()+'<div><input value="'+data[i].id+'" type="checkbox"><span>'+data[i].username+"["+data[i].realname+"]"+'</span></div>');
 			};
@@ -62,18 +62,11 @@ function listAll(){
 			$('#add_device').html('');
 			$('#add_device1').html('');
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
+			let len1 = data.length;
+			for(let i=0; i<len1; i++){
 				if(data[i].username.length>0)
-					if (data[i].protocol_id==1){
-						data[i].protocol_id="ssh";
-					}else if (data[i].protocol_id==2){
-						data[i].protocol_id="rdp";
-					}else if(data[i].protocol_id==3){
-						data[i].protocol_id="telnet";
-					}else {
-						data[i].protocol_id="vnc";
-					}
-				$('#add_device').html($('#add_device').html()+'<div><input value="'+data[i].device_account_id+'" type="checkbox"><span>'+data[i].device_name+"["+data[i].username+"]"+"["+data[i].protocol_id+"]"+'</span></div>');
+					data[i].protocol_id =_protocol(data[i].protocol_id);
+				$('#add_device').append('<div><input value="'+data[i].device_account_id+'" type="checkbox"><span>'+data[i].device_name+"["+data[i].username+"]"+"["+data[i].protocol_id+"]"+'</span></div>');
 			};
 			RelativeMethods(2);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
 			listDeviceAccount = $('#add_device').html();//保存显示出来的原本的数据
@@ -94,7 +87,8 @@ function listAll(){
 			$('#add_devicegroup').html('');
 			$('#add_devicegroup1').html('');
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
+			let len1 = data.length;
+			for(let i=0; i<len1; i++){
 				if(data[i].name.length>0)
 					$('#add_devicegroup').html($('#add_devicegroup').html()+'<div><input value="'+data[i].id+'" type="checkbox"><span>'+data[i].name+'</span></div>');
 			};
@@ -116,7 +110,8 @@ function listAll(){
 			$('#add_cmdgroup').html('');
 			$('#add_cmdgroup1').html('');
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
+			let len1 = data.length;
+			for(let i=0; i<len1; i++){
 				if(data[i].name.length>0)
 					$('#add_cmdgroup').html($('#add_cmdgroup').html()+'<div><input value="'+data[i].id+'" type="checkbox"><span>'+data[i].name+'</span></div>');
 			};
@@ -423,10 +418,12 @@ $('#modal-primary3').on('show.bs.modal',function(event){
 			//show
 			$('#edit_user').html('');
 			$('#edit_user1').html('');
-			for (var i = 0; i < arr.length; i++) {
+			let len = arr.length;
+			for(let i=0; i<len; i++){
 				$('#edit_user').html($('#edit_user').html()+'<div><input value="'+arr[i].user_id+'" type="checkbox"><span>'+arr[i].username+'</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
+			let len1 = arr1.length;
+			for(let i=0; i<len1; i++){
 				$('#edit_user1').html($('#edit_user1').html()+'<div><input value="'+arr1[i].user_id+'" type="checkbox"><span>'+arr1[i].username+'</span></div>')
 			}
 			RelativeMethods(5);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
@@ -456,29 +453,15 @@ $('#modal-primary5').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_device').html('');
 			$('#edit_device1').html('');
-			for (var i = 0; i < arr.length; i++) {
-				if (arr[i].protocol_id == 1) {
-					arr[i].protocol_id = "ssh";
-				} else if (arr[i].protocol_id == 2) {
-					arr[i].protocol_id = "rdp";
-				} else if (arr[i].protocol_id == 3) {
-					arr[i].protocol_id = "telnet";
-				} else {
-					arr[i].protocol_id = "vnc";
-				}
-				$('#edit_device').html($('#edit_device').html() + '<div><input value="' + arr[i].device_account_id + '" type="checkbox"><span>' + arr[i].device_name + "[" + arr[i].username + "]" + "[" + arr[i].protocol_id + "]" + '</span></div>')
+			let len1 = arr.length;
+			for(let i=0; i<len1; i++){
+				arr[i].protocol_id =_protocol(arr[i].protocol_id);
+				$('#edit_device').append('<div><input value="' + arr[i].device_account_id + '" type="checkbox"><span>' + arr[i].device_name + "[" + arr[i].username + "]" + "[" + arr[i].protocol_id + "]" + '</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
-				if (arr1[i].protocol_id == 1) {
-					arr1[i].protocol_id = "ssh";
-				} else if (arr1[i].protocol_id == 2) {
-					arr1[i].protocol_id = "rdp";
-				} else if (arr1[i].protocol_id == 3) {
-					arr1[i].protocol_id = "telnet";
-				} else {
-					arr1[i].protocol_id = "vnc";
-				}
-				$('#edit_device1').html($('#edit_device1').html() + '<div><input value="' + arr1[i].device_account_id + '" type="checkbox"><span>' + arr1[i].device_name + "[" + arr1[i].username + "]" + "[" + arr1[i].protocol_id + "]" + '</span></div>')
+			let len = arr1.length;
+			for(let i=0; i<len; i++){
+				arr1[i].protocol_id =_protocol(arr1[i].protocol_id);
+				$('#edit_device1').append('<div><input value="' + arr1[i].device_account_id + '" type="checkbox"><span>' + arr1[i].device_name + "[" + arr1[i].username + "]" + "[" + arr1[i].protocol_id + "]" + '</span></div>')
 			}
 			RelativeMethods(7);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
 			ac_edit_device_list=$('#edit_device').html();
@@ -507,10 +490,12 @@ $('#modal-primary2').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_cmdgroup').html('');
 			$('#edit_cmdgroup1').html('');
-			for (var i = 0; i < arr.length; i++) {
+			let len = arr.length;
+			for(let i=0; i<len; i++){
 				$('#edit_cmdgroup').html($('#edit_cmdgroup').html()+'<div><input value="'+arr[i].cmdgroup_id+'" type="checkbox"><span>'+arr[i].name+'</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
+			let len1 = arr1.length;
+			for(let i=0; i<len1; i++){
 				$('#edit_cmdgroup1').html($('#edit_cmdgroup1').html()+'<div><input value="'+arr1[i].cmdgroup_id+'" type="checkbox"><span>'+arr1[i].name+'</span></div>')
 			}
 			RelativeMethods(9);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
@@ -540,17 +525,18 @@ $('#modal-primary4').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_usergroup').html('');
 			$('#edit_usergroup1').html('');
-			for (var i = 0; i < arr.length; i++) {
+			let len = arr.length;
+			for(let i=0; i<len; i++){
 				$('#edit_usergroup').html($('#edit_usergroup').html()+'<div><input value="'+arr[i].group_id+'" type="checkbox"><span>'+arr[i].group_name+'</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
+			let len1 = arr1.length;
+			for(let i=0; i<len1; i++){
 				$('#edit_usergroup1').html($('#edit_usergroup1').html()+'<div><input value="'+arr1[i].group_id+'" type="checkbox"><span>'+arr1[i].group_name+'</span></div>')
 			}
 			RelativeMethods(6);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
 			ac_edit_usergroup_list=$('#edit_usergroup').html();
 			ac_edit_usergroup1_list=$('#edit_usergroup1').html();
 		},
-		error:function(){},
 	})
 })
 
@@ -574,10 +560,12 @@ $('#modal-primary6').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_devicegroup').html('');
 			$('#edit_devicegroup1').html('');
-			for (var i = 0; i < arr.length; i++) {
+			let len = arr.length;
+			for(let i=0; i<len; i++){
 				$('#edit_devicegroup').html($('#edit_devicegroup').html()+'<div><input value="'+arr[i].dgroup_id+'" type="checkbox"><span>'+arr[i].dgroup_name+'</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
+			let len1 = arr1.length;
+			for(let i=0; i<len1; i++){
 				$('#edit_devicegroup1').html($('#edit_devicegroup1').html()+'<div><input value="'+arr1[i].dgroup_id+'" type="checkbox"><span>'+arr1[i].dgroup_name+'</span></div>')
 			}
 			RelativeMethods(8);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面

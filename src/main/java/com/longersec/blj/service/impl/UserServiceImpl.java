@@ -55,8 +55,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<Users> selectNameAndId() {
-		return UserDao.selectNameAndId();
+	public List<Users> selectNameAndId(Integer id) {
+		return UserDao.selectNameAndId(id);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class Department {
 
 	private Integer dept_id;
 
-	@Pattern(regexp = "([A-Za-z]|[\\u4e00-\\u9fa5]|\\-|\\@|\\_|[0-9]){0,32}",message = "部门名称格式不正确")
+	@Pattern(regexp = "([A-Za-z]|[\\u4e00-\\u9fa5]|\\.|\\-|\\@|\\_|[0-9]){0,32}",message = "部门名称格式不正确")
 	@NotNull(message = "部门名称不能为空")
 	@NotEmpty(message = "部门名称不能为空")
 	private String name;

@@ -77,6 +77,12 @@
 			or a.`username` like CONCAT('%',#{sname},'%')
 			or a.`desc` like CONCAT('%',#{sname},'%')
 			)</if>
+		<if test="depart_ids!=null and depart_ids.size()>0">
+			AND a.department in
+			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach> or a.department =0
+		</if>
 		<if test="type==2">AND a.`name` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==3">AND a.`username` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==4">AND a.`desc` like CONCAT('%',#{sname},'%')</if>

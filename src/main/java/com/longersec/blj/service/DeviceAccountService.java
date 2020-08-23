@@ -31,7 +31,7 @@ public interface DeviceAccountService {
 
 	public DeviceAccount getById(Integer device_account_id);
     
-    public List<Deviceaccess> selectNameAndId();
+    public List<Deviceaccess> selectNameAndId(Integer id);
     
     public int total();
 

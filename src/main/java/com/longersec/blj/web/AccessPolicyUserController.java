@@ -1,11 +1,13 @@
 package com.longersec.blj.web;
 
 import com.longersec.blj.domain.DTO.Users;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.AccessPolicyUserService;
 import com.longersec.blj.service.GroupService;
 import com.longersec.blj.service.UserService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +35,9 @@ public class AccessPolicyUserController {
 	public JSONObject findAccessPolicyUserAndUser(@RequestParam("pid") Integer pid) {
 		ArrayList<Users> resultAccessPolicyUsers = new ArrayList<Users>();
 		ArrayList<Users> resultUsers = new ArrayList<Users>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyUsers = (ArrayList<Users>) accessPolicyUserService.selectById(pid);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId();
+		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultAccessPolicyUsers);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultAccessPolicyUsers);

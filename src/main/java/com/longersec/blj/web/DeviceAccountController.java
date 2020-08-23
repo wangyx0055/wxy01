@@ -15,6 +15,7 @@ import com.longersec.blj.service.GroupService;
 import com.longersec.blj.service.UserGroupUserService;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -73,7 +74,8 @@ public class DeviceAccountController {
 	@ResponseBody
 	public JSONObject listDeviceAccountNameIp(DeviceAccount deviceAccount,HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		List<Deviceaccess> nameIp = deviceAccountService.selectNameAndId();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
+		List<Deviceaccess> nameIp = deviceAccountService.selectNameAndId(users.getDepartment());
 		result.accumulate("success", true);
 		result.accumulate("data", nameIp);
 		return result;

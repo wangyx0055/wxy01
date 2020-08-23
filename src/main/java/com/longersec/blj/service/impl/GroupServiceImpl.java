@@ -42,13 +42,23 @@ public class GroupServiceImpl implements GroupService{
 
 	
 	@Override
-	public List<UserGroup> selectNameAndId() {
-		return GroupDao.selectNameAndId();
+	public List<UserGroup> selectNameAndId(Integer id,int page_start, int page_length) {
+		return GroupDao.selectNameAndId(id,page_start,page_length);
 	}
-	
+
 	@Override
-	public List<DeviceGroup> selectNameAnddId() {
-		return GroupDao.selectNameAnddId();
+	public List<UserGroup> selectNameAndIdTop() {
+		return GroupDao.selectNameAndIdTop();
+	}
+
+	@Override
+	public List<DeviceGroup> selectNameAndIdTop1() {
+		return GroupDao.selectNameAndIdTop1();
+	}
+
+	@Override
+	public List<DeviceGroup> selectNameAnddId(Integer id) {
+		return GroupDao.selectNameAnddId(id);
 	}
 	
 	@Override

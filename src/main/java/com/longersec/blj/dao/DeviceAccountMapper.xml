@@ -143,7 +143,8 @@
 		;SELECT found_rows() AS recordCounts;
 	</select>
 	
-	<select id="getDeviceAccountByPolicies" resultMap="DevlistMap, deviceAccountRecordCounts">
+	<select id="getDeviceAccountByPolicies" resultMap="DevlistMap, deviceAccountRecordCounts"
+	        resultType="java.lang.Object">
 		SELECT SQL_CALC_FOUND_ROWS 
 			a.id,a.username,a.port,l.id protocol_id,l.name protocol,s.ip,s.name,IFNULL(f.id,0) favorite_id 
 			
@@ -229,8 +230,11 @@
 	</resultMap>
 	
 	<select id="selectNameAndId" resultMap="devices">
-		SELECT da.id as device_account_id ,da.username,d.protocol_id as protocol_id,d.name device_name,p.name protocol_name 
-		FROM lsblj_device_account da ,lsblj_device d , lsblj_protocol p
+		SELECT da.id as device_account_id ,da.username,da.protocol_id as protocol_id,d.name device_name,p.name protocol_name
+		FROM lsblj_device_account da ,lsblj_device d INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
+		 lsblj_department ld,
+		(SELECT @id :=#{id}) pd
+		 WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON d.department=T.id, lsblj_protocol p
 		WHERE da.device_id=d.id AND da.protocol_id=p.id
 	</select>
 	
@@ -289,7 +293,8 @@
 		<result property="policyname" column="policyname" jdbcType="VARCHAR"/>
 	</resultMap> 
 	
-	<select id="getUserDeviceAccount" resultMap="UserDeviceAccountMap, deviceAccountRecordCounts">
+	<select id="getUserDeviceAccount" resultMap="UserDeviceAccountMap, deviceAccountRecordCounts"
+	        resultType="java.lang.Object">
 		SELECT SQL_CALC_FOUND_ROWS 
 			a.id,a.username device_username,a.port,l.name protocol,s.ip,s.name,user_device_account.* ,p.name policyname  
 			FROM lsblj_device_account a LEFT JOIN lsblj_device s ON a.device_id=s.id LEFT  JOIN lsblj_protocol l ON a.protocol_id=l.id 

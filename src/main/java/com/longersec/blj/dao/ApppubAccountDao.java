@@ -18,7 +18,7 @@ public interface ApppubAccountDao {
 
 	public boolean delApppubAccount(List<Integer> ids);
 
-	public List<Object> findAll(@Param("sname") String sname,@Param("type") Integer type,@Param("apppubAccount")ApppubAccount apppubAccount, @Param("page_start")int page_start, @Param("page_length")int page_length);
+	public List<Object> findAll(@Param("sname") String sname,@Param("type") Integer type,@Param("apppubAccount")ApppubAccount apppubAccount, @Param("page_start")int page_start, @Param("page_length")int page_length,@Param("depart_ids") List<Integer> depart_ids);
 
     public List<Object> queryByappserver(@Param("apppub_server_id")Integer apppub_server_id,@Param("sname")String sname,@Param("type")Integer type, @Param("apppubAccount")ApppubAccount apppubAccount, @Param("page_start")int page_start, @Param("page_length")int page_length);
     

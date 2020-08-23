@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.longersec.blj.domain.DTO.Deviceaccess;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.DeviceService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,8 +45,9 @@ public class CrontabScriptConfigDeviceController {
 	public JSONObject findCrontScriptConfigDevice(@RequestParam("config_id")Integer config_id) {
 		ArrayList<Deviceaccess> resultAccessPolicyDevice = new ArrayList<Deviceaccess>();
 		ArrayList<Deviceaccess> resultDevice = new ArrayList<Deviceaccess>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyDevice = (ArrayList<Deviceaccess>) crontabScriptConfigDeviceService.selectById(config_id);
-		resultDevice = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId();
+		resultDevice = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultDevice.removeAll(resultAccessPolicyDevice);
 		JSONArray jsonArray_p_device = JSONArray.fromObject(resultAccessPolicyDevice);

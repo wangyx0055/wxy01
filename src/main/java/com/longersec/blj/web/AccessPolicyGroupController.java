@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 import com.longersec.blj.domain.DTO.DeviceGroup;
 import com.longersec.blj.domain.DTO.UserGroup;
 import com.longersec.blj.domain.DTO.Users;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.GroupService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,11 +68,14 @@ public class AccessPolicyGroupController {
 
 	@RequestMapping("/findAccessPolicyGroupAndUser")
 	@ResponseBody
-	public JSONObject findAccessPolicyGroupAndUser(@RequestParam("policy_id")Integer policy_id) {
+	public JSONObject findAccessPolicyGroupAndUser(@RequestParam("policy_id")Integer policy_id,
+	                                               @RequestParam(value = "page_start",required = false)int page_start,
+	                                               @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<UserGroup> resultAccessPolicyGroups = new ArrayList<UserGroup>();
 		ArrayList<UserGroup> resultGroups = new ArrayList<UserGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyGroups = (ArrayList<UserGroup>) accessPolicyGroupService.selectById(policy_id);
-		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId();
+		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultGroups.removeAll(resultAccessPolicyGroups);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultAccessPolicyGroups);
@@ -87,8 +92,9 @@ public class AccessPolicyGroupController {
 	public JSONObject findAccessPolicyDeviceGroupAndUser(@RequestParam("policy_id")Integer policy_id) {
 		ArrayList<DeviceGroup> resultAccessPolicyDeviceGroups = new ArrayList<DeviceGroup>();
 		ArrayList<DeviceGroup> resultDeviceGroups = new ArrayList<DeviceGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyDeviceGroups = (ArrayList<DeviceGroup>) accessPolicyGroupService.selectBydIdDevice(policy_id);
-		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId();
+		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultDeviceGroups.removeAll(resultAccessPolicyDeviceGroups);
 		JSONArray jsonArray_p_dgroups = JSONArray.fromObject(resultAccessPolicyDeviceGroups);

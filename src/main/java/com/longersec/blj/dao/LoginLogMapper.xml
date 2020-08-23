@@ -141,9 +141,9 @@
 		DATE_FORMAT(FROM_UNIXTIME(TT.login_datetime),#{time_format}) login_datetime,TT.protocol,TT.username, TT.realname ,TT.source_ip,TT.`status`,TT.result,TT.details FROM (
 		SELECT 'web' protocol, username, realname, login_datetime ,source_ip,`status`,result,details FROM lsblj_login_log
 		UNION ALL
-		SELECT p.name protocol, username, realname, `start` login_datetime, device_ip,`status`,IF(`status`=0,'成功','失败') result,IF(`status`=0,'登录成功','登录失败') details FROM lsblj_device_record dr LEFT JOIN lsblj_protocol p ON dr.protocol_id=p.id
+		SELECT p.name protocol, username, realname, `start` login_datetime, device_ip,`status`,IF(`status`=1,'成功','失败') result,IF(`status`=1,'登录成功','登录失败') details FROM lsblj_device_record dr LEFT JOIN lsblj_protocol p ON dr.protocol_id=p.id
 		UNION ALL
-		SELECT 'apppub' protocol, username, realname, `start` login_datetime, server_ip,`status`,IF(`status`=0,'成功','失败') result,IF(`status`=0,'登录成功','登录失败') details FROM lsblj_apppub_record
+		SELECT 'apppub' protocol, username, realname, `start` login_datetime, server_ip,`status`,IF(`status`=1,'成功','失败') result,IF(`status`=1,'登录成功','登录失败') details FROM lsblj_apppub_record
 		) TT
 		where DATE_FORMAT(FROM_UNIXTIME(login_datetime),#{time_format}) like  CONCAT('%',#{time},'%')
 		<if test="loginLog.source_ip != null"> AND source_ip like CONCAT('%',#{loginLog.source_ip},'%')</if>

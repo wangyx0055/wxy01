@@ -82,3 +82,4 @@ if (regExpUtil.checkName(regLength,10) ==="null") {
 }else {
 	console.log("格式正确")
 }
+

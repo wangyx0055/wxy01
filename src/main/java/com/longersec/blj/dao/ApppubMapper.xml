@@ -77,10 +77,14 @@
 	</select>
 	
 	<select id="selectNameAndId" resultMap="App">
-		SELECT b.id as apppub_account_id,b.name,a.name apppubserver FROM lsblj_apppub_account b left join lsblj_apppub_server a on a.id=b.apppub_server_id;
+		SELECT b.id AS apppub_account_id,b.name,a.name apppubserver
+		FROM lsblj_apppub_account b INNER JOIN lsblj_apppub_server a INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
+		lsblj_department ld,
+		(SELECT @id :=#{id}) pd
+		WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON a.department=T.id and a.id=b.apppub_server_id;
 	</select>
 	
     <select id="total" resultType="java.lang.Integer">
-            select count(*) count from lsblj_device;
+            select count(*) count from lsblj_apppub_account;
     </select>
 </mapper>

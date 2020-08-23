@@ -15,13 +15,13 @@ public interface ApppubServerService {
 
 	boolean delUselessApppubServer(Integer id);
 
-	public List<Object> findAll(ApppubServer apppubServer, String sname,Integer type,int page_start, int page_length);
+	public List<Object> findAll(ApppubServer apppubServer, String sname,Integer type,int page_start, int page_length,List<Integer> depart_ids);
 
 	public String selectName(Integer id,String name);
 
 	public ApppubServer getById(Integer id);
 
-	ApppubServer checkname(String name);
+	ApppubServer checkname(Integer id,String name);
 
 	public boolean insertMore(ArrayList<ApppubServer> listApppubservers);
 

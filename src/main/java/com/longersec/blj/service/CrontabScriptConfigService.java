@@ -11,7 +11,7 @@ public interface CrontabScriptConfigService {
 
 	public boolean delCrontabScriptConfig(List<Integer> ids);
 
-	public List<Object> findAll(CrontabScriptConfig crontabScriptConfig, int page_start, int page_length);
+	public List<Object> findAll(CrontabScriptConfig crontabScriptConfig, int page_start, int page_length,List<Integer> depart_ids);
 
 	public String selectName(Integer id,String name);
 

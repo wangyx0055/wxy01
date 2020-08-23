@@ -52,14 +52,14 @@
 
 	<select id="selectById" resultMap="devices">
 		SELECT
-			da.device_account_id device_account_id,u.username username,d.protocol_id protocol_id, d.name device_name, p.name protocol_name
+			da.device_account_id device_account_id,u.username username,u.protocol_id protocol_id, d.name device_name, p.name protocol_name
 		FROM lsblj_group_device_account da,lsblj_device_account u,lsblj_device d,lsblj_protocol p
 		WHERE group_id = #{group_id}
 		  AND da.device_account_id=u.id
 		  AND d.id=u.device_id
 		  AND u.protocol_id=p.id
 	</select>
-
+	
 	<select id="selectDeviceAccountUserDeviceCounts" resultType="java.lang.Integer">
 		select count(*) from `lsblj_group_device_account` where group_id = #{group_id};
 	</select>

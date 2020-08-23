@@ -37,8 +37,8 @@ public class CrontabScriptConfigServiceImpl implements CrontabScriptConfigServic
 	}
 
 	@Override
-	public List<Object> findAll(CrontabScriptConfig crontabScriptConfig, int page_start, int page_length) {
-		return CrontabScriptConfigDao.findAll(crontabScriptConfig, page_start, page_length);
+	public List<Object> findAll(CrontabScriptConfig crontabScriptConfig, int page_start, int page_length,List<Integer> depart_ids) {
+		return CrontabScriptConfigDao.findAll(crontabScriptConfig, page_start, page_length,depart_ids);
 	}
 
 	@Override

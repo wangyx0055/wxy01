@@ -23,13 +23,13 @@ public interface ApppubServerDao {
 
 	boolean delUselessApppubServer(@Param("id") Integer id);
 
-	public List<Object> findAll(@Param("apppubServer") ApppubServer apppubServer, @Param("sname") String sname, @Param("type") Integer type, @Param("page_start") int page_start, @Param("page_length") int page_length);
+	public List<Object> findAll(@Param("apppubServer") ApppubServer apppubServer, @Param("sname") String sname, @Param("type") Integer type, @Param("page_start") int page_start, @Param("page_length") int page_length,@Param("depart_ids") List<Integer> depart_ids);
 
 	public String selectName(@Param("id") Integer id, @Param("name") String name);
 
 	public ApppubServer getById(@Param("id") Integer id);
 
-	ApppubServer checkname(@Param("name") String name);
+	ApppubServer checkname(@Param("id") Integer id,@Param("name") String name);
 
 	ApppubServer checkip(@Param("ip") String ip, @Param("id") Integer id);
 

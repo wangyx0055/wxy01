@@ -87,6 +87,12 @@
 			or lsblj_crontab_script_config.`exec_method` like CONCAT('%',#{crontabScriptConfig.searchAll },'%')
 			or lsblj_crontab_script_config.`command` like CONCAT('%',#{crontabScriptConfig.searchAll },'%')
 		)</if>
+<!--		<if test="depart_ids!=null and depart_ids.size()>0">-->
+<!--			AND lsblj_crontab_script_config.department in-->
+<!--			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">-->
+<!--				#{item}-->
+<!--			</foreach>-->
+<!--		</if>-->
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start},#{page_length}
 		</if>

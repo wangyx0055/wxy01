@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.*;
@@ -200,13 +201,15 @@ public class AdOperate {
 		env.put(Context.SECURITY_PRINCIPAL, adminName);
 		env.put(Context.SECURITY_CREDENTIALS, adminPassword);
 		env.put(Context.PROVIDER_URL, ldapURL);
+		env.put("com.sun.jndi.ldap.connect.timeout", "3000");
 		try {
-			DirContext ctx = new InitialDirContext(env);
+			LdapContext ctx = new InitialLdapContext(env,null);
 			System.out.println("认证成功");
 			ctx.close();
 			return true;
-		} catch (Exception e) {
+		} catch (NamingException e) {
 			System.out.println("认证失败");
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -270,11 +273,13 @@ public class AdOperate {
 						String cn = Attrs.get("cn").toString();
 						String CN = cn.substring(0, cn.indexOf(":"));
 						String newCN = cn.substring(CN.length() + 2, cn.length());
+						if(!newCN.equals(configLdapAd.getFilter_loginname())){
 							user.setUsername(newCN);
 							user.setRealname(newCN);
 							user.setRole_id(1);
 							user.setLdap_dn(newDistinguishedName);
 							userArrayList.add(user);
+						}
 						}
 					}
 					if (Attrs.get("sn")!=null){
@@ -282,11 +287,13 @@ public class AdOperate {
 						String sn = Attrs.get("sn").toString();
 						String SN = sn.substring(0, sn.indexOf(":"));
 						String newSN = sn.substring(SN.length()+2,sn.length());
+						if(!newSN.equals(configLdapAd.getFilter_loginname())){
 							user.setUsername(newSN);
 							user.setRealname(newSN);
 							user.setRole_id(1);
 							user.setLdap_dn(newDistinguishedName);
 							userArrayList.add(user);
+						}
 						}
 					}
 					if (Attrs.get("uid")!=null){
@@ -294,11 +301,13 @@ public class AdOperate {
 						String uid = Attrs.get("uid").toString();
 						String UID = uid.substring(0, uid.indexOf(":"));
 						String newUID = uid.substring(UID.length()+2,uid.length());
+						if(!newUID.equals(configLdapAd.getFilter_loginname())){
 							user.setUsername(newUID);
 							user.setRealname(newUID);
 							user.setRole_id(1);
 							user.setLdap_dn(newDistinguishedName);
 							userArrayList.add(user);
+						}
 						}
 					}
 				}//if

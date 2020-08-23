@@ -14,7 +14,7 @@ public interface CrontabScriptConfigDao {
 
 	boolean delCrontabScriptConfig(List<Integer> ids);
 
-	public List<Object> findAll(@Param("crontabScriptConfig")CrontabScriptConfig crontabScriptConfig, @Param("page_start")int page_start, @Param("page_length")int page_length);
+	public List<Object> findAll(@Param("crontabScriptConfig")CrontabScriptConfig crontabScriptConfig, @Param("page_start")int page_start, @Param("page_length")int page_length,@Param("depart_ids") List<Integer> depart_ids);
 
 	public String selectName(@Param("id") Integer id,@Param("name") String name);
 

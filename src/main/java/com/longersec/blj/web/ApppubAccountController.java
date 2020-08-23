@@ -9,11 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import com.longersec.blj.domain.Group;
 import com.longersec.blj.domain.OperatorLog;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.DepartmentService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.utils.Operator_log;
 import com.longersec.blj.utils.Validator;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -49,9 +51,17 @@ public class ApppubAccountController {
 		int page_length = Integer.parseInt(request.getParameter("length"));
 		ArrayList<Object> resultApppubAccounts = new ArrayList<Object>();
 		ArrayList<ApppubAccount> apppubAccounts = new ArrayList<ApppubAccount>();
+		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+		List<Integer> depart_ids = new ArrayList<>();
+		if (p_user.getRole_id().equals(5)){
+			//获取所在的部门
+			int depart_id = p_user.getDepartment();
+			depart_ids = departmentService.selectById(depart_id);
+			depart_ids.add(p_user.getDepartment());
+		}
 		long total = 0;
 		int type=1;
-		resultApppubAccounts = (ArrayList<Object>)apppubAccountService.findAll(sname,type,apppubAccount, page_start, page_length);
+		resultApppubAccounts = (ArrayList<Object>)apppubAccountService.findAll(sname,type,apppubAccount, page_start, page_length,depart_ids);
 		if(CollectionUtils.isNotEmpty(resultApppubAccounts)) {
 			apppubAccounts = (ArrayList<ApppubAccount>)resultApppubAccounts.get(0);
 			total = ((ArrayList<Long>) resultApppubAccounts.get(1)).get(0);
@@ -116,6 +126,7 @@ public class ApppubAccountController {
 					result.put("success", false);
  				}
 			}else{
+				operatorLog.setResult("失败");
 				result.put("success", false);
 			}
 		}else{
@@ -131,6 +142,7 @@ public class ApppubAccountController {
 					result.put("success", false);
 				}
 			}else{
+				operatorLog.setResult("失败");
 				result.put("success", false);
 			}
 		}

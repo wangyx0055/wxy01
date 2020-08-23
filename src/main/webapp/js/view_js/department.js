@@ -143,7 +143,7 @@ let departmentList = function(field,value){
 	                return value === 1?'':'<input type="checkbox" name="chk[]" value="'+value+'" />';
 	            }
 	        },
-            { field: 'id',  title: 'ID' },
+            { field: 'id',  title: '部门ID' },
 	        { field: 'name',  title: '名称' },
 	        { field: 'description',  title: '描述' , "render" : function(data, type,row, mata) {
                     return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
@@ -230,7 +230,7 @@ var reloadDepartment = function(){
 
 //正则验证
 let regexp = {
-    name:/^([A-Za-z]|[\u4e00-\u9fa5]|\-|\@|\_|[0-9]){1,32}$/,
+    name:/^([A-Za-z]|[\u4e00-\u9fa5]|\.|\-|\@|\_|[0-9]){1,32}$/,
 };
 $("#description").blur(function () {
     if($("#description").val().length >64){
@@ -247,7 +247,17 @@ $("#name").blur(function () {
     }else {
         checkNameAndDepartment()
     }
+/*    if (regExpUtil.checkName($("#name").val(),32) ==="null") {
+        $("#Vname").text("部门名称不能为空");
+    }else if (regExpUtil.checkName($("#name").val(),32) ==="false"){
+        $("#Vname").text("部门名称格式不正确");
+    } else if (regExpUtil.checkName($("#name").val(),32) ==="length"){
+        $("#Vname").text("部门名称不能超过32个字符");
+    }else {
+        $("#Vname").text("");
+    }*/
 });
+
 $("#departName").blur(function () {
     checkNameAndDepartment()
 });

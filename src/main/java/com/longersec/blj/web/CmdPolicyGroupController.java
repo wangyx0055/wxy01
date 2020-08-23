@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.longersec.blj.domain.User;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,11 +43,14 @@ public class CmdPolicyGroupController {
 	
 	@RequestMapping("/findCmdPolicyUserGroupAndUser")
 	@ResponseBody
-	public JSONObject findAccessPolicyUserGroupAndUser(@RequestParam("policy_id")Integer policy_id) {
+	public JSONObject findAccessPolicyUserGroupAndUser(@RequestParam("policy_id")Integer policy_id,
+	                                                   @RequestParam(value = "page_start",required = false)int page_start,
+	                                                   @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<UserGroup> resultCmdPolicyGroups = new ArrayList<UserGroup>();
 		ArrayList<UserGroup> resultGroups = new ArrayList<UserGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCmdPolicyGroups = (ArrayList<UserGroup>) cmdPolicyGroupService.selectByIdUser(policy_id);
-		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId();
+		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),0,20000);
 		JSONObject result = new JSONObject();
 		resultGroups.removeAll(resultCmdPolicyGroups);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultCmdPolicyGroups);
@@ -61,8 +67,9 @@ public class CmdPolicyGroupController {
 	public JSONObject findCmdPolicyDeviceGroupAndUser(@RequestParam("policy_id")Integer policy_id) {
 		ArrayList<DeviceGroup> resultCmdPolicyDeviceGroups = new ArrayList<DeviceGroup>();
 		ArrayList<DeviceGroup> resultDeviceGroups = new ArrayList<DeviceGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCmdPolicyDeviceGroups = (ArrayList<DeviceGroup>) cmdPolicyGroupService.selectBydIdDevice(policy_id);
-		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId();
+		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultDeviceGroups.removeAll(resultCmdPolicyDeviceGroups);
 		JSONArray jsonArray_p_dgroups = JSONArray.fromObject(resultCmdPolicyDeviceGroups);

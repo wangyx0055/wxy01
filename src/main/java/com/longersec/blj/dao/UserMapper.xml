@@ -239,9 +239,9 @@
 
 	<select id="selectNameAndId" resultMap="users">
 		SELECT g.id as user_id,g.username,g.realname FROM lsblj_user g INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
-			                                                                                                                             lsblj_department ld,
-			                                                                                                                             (SELECT @id :=308) pd
-		                                                                           WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = 308) T ON g.department=T.id ORDER BY g.username ASC;
+                                                 lsblj_department ld,
+                                                 (SELECT @id :=#{id}) pd
+WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON g.department=T.id ORDER BY g.username ASC;
 	</select>
 
 	<select id="checkLogin" resultType="com.longersec.blj.domain.User" parameterType="String">

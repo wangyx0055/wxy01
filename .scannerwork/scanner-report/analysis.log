@@ -1,0 +1,44 @@
+SonarQube plugins:
+  - SonarPython 1.13.0.2922 (python)
+  - Chinese Pack 1.19 (l10nzh)
+  - SonarCSS 1.0.3.724 (cssfamily)
+  - JaCoCo 1.0.1.143 (jacoco)
+  - SonarGo 1.1.0.1612 (go)
+  - SonarKotlin 1.5.0.315 (kotlin)
+  - Svn 1.9.0.1295 (scmsvn)
+  - SonarJS 5.1.1.7506 (javascript)
+  - SonarRuby 1.5.0.315 (ruby)
+  - SonarScala 1.5.0.315 (sonarscala)
+  - SonarC# 7.11.0.8083 (csharp)
+  - SonarJava 5.11.0.17289 (java)
+  - LDAP 2.2.0.608 (ldap)
+  - SonarHTML 3.1.0.1615 (web)
+  - Git 1.8.0.1574 (scmgit)
+  - SonarFlex 2.4.0.1222 (flex)
+  - SonarXML 2.0.1.2020 (xml)
+  - SonarPHP 3.0.0.4537 (php)
+  - SonarTS 1.9.0.3766 (typescript)
+  - Checkstyle 4.26 (checkstyle)
+  - SonarVB 7.11.0.8083 (vbnet)
+Global server settings:
+  - sonar.core.id=EFC42A08-AXObJrAwUpkopP6G7G5a
+  - sonar.core.startTime=2020-08-22T09:35:04+0800
+  - sonar.scm.disabled=true
+  - sonar.svn.password.secured=******
+  - sonar.svn.username=18955007261
+Project server settings:
+Project scanner properties:
+  - sonar.host.url=http://localhost:9000
+  - sonar.java.binaries=target
+  - sonar.jdbc.password=******
+  - sonar.jdbc.url=jdbc:mysql://localhost:3307/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
+  - sonar.jdbc.username=sonar
+  - sonar.projectBaseDir=C:\Users\Administrator\Desktop\堡垒机\code\blj_new
+  - sonar.projectKey=blj_new
+  - sonar.projectName=blj_new
+  - sonar.projectVersion=1.0
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=3.2.0.1227
+  - sonar.sourceEncoding=UTF-8
+  - sonar.sources=src
+  - sonar.working.directory=C:\Users\Administrator\Desktop\堡垒机\code\blj_new\.scannerwork

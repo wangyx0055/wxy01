@@ -23,9 +23,13 @@ public interface GroupDao {
 
 	boolean updateGroupCount(@Param("count") int count, @Param("group_id") int group_id);
 	
-	List<UserGroup> selectNameAndId();
+	List<UserGroup> selectNameAndId(@Param("id") int id,@Param("page_start")int page_start, @Param("page_length")int page_length);
 	
-	List<DeviceGroup> selectNameAnddId();
+	List<DeviceGroup> selectNameAnddId(@Param("id") int id);
+
+	public List<UserGroup> selectNameAndIdTop();
+
+	public List<DeviceGroup> selectNameAndIdTop1();
 
 	Group checkname(@Param("group")Group group);
 

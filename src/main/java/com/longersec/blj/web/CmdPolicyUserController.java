@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.longersec.blj.domain.User;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,8 +45,9 @@ public class CmdPolicyUserController {
 	public JSONObject findCmdPolicyUserAndUser(@RequestParam("policy_id") Integer policy_id) {
 		ArrayList<Users> resultCmdPolicyUsers = new ArrayList<Users>();
 		ArrayList<Users> resultUsers = new ArrayList<Users>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCmdPolicyUsers = (ArrayList<Users>) cmdPolicyUserService.selectById(policy_id);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId();
+		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultCmdPolicyUsers);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultCmdPolicyUsers);

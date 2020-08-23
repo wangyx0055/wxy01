@@ -23,7 +23,7 @@ public interface UserDao {
 
 	boolean deleteUselessUser(@Param("department") int department);
 		
-	public List<Users> selectNameAndId();
+	public List<Users> selectNameAndId(@Param("id")Integer id);
 
     public User checkLogin(String username);
     

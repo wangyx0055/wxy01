@@ -53,11 +53,19 @@ public class ApppubServerController {
 		}
 		int page_start = Integer.parseInt(request.getParameter("start"));
 		int page_length = Integer.parseInt(request.getParameter("length"));
+		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+		List<Integer> depart_ids = new ArrayList<>();
+		if (p_user.getRole_id().equals(5)){
+			//获取所在的部门
+			int depart_id = p_user.getDepartment();
+			depart_ids = departmentService.selectById(depart_id);
+			depart_ids.add(p_user.getDepartment());
+		}
 		ArrayList<Object> resultApppubServers = new ArrayList<Object>();
 		ArrayList<ApppubServer> apppubServers = new ArrayList<ApppubServer>();
 		long total = 0;
 		int type =1;
-		resultApppubServers = (ArrayList<Object>)apppubServerService.findAll(apppubServer,sname,type,page_start, page_length);
+		resultApppubServers = (ArrayList<Object>)apppubServerService.findAll(apppubServer,sname,type,page_start, page_length,depart_ids);
 		if(CollectionUtils.isNotEmpty(resultApppubServers)) {
 			apppubServers = (ArrayList<ApppubServer>)resultApppubServers.get(0);
 			total = ((ArrayList<Long>) resultApppubServers.get(1)).get(0);
@@ -95,46 +103,44 @@ public class ApppubServerController {
 		//操作日志
 		OperatorLog operatorLog =Operator_log.log(request, session);
 		operatorLog.setModule("应用管理");
-		if(apppubServerService.checkip(apppubServer.getIp(), apppubServer.getId())!=null) {
-			result.put("success", false);
-			result.put("msg", "服务器地址重复");
-			operatorLog.setResult("失败");
-		}else {
-			if (apppubServer.getId()==null){
-				operatorLog.setDetails("增加应用服务器["+apppubServer.getName()+"]");
-				operatorLog.setContent("添加");
-				if(resultMap == null){
-					r = apppubServerService.addApppubServer(apppubServer);
-					if (r){
-						operatorLog.setResult("成功");
-						result.put("success", true);
-					}else{
-						operatorLog.setResult("失败");
-						result.put("success", false);
-					}
+
+		if (apppubServer.getId()==null){
+			operatorLog.setDetails("增加应用服务器["+apppubServer.getName()+"]");
+			operatorLog.setContent("添加");
+			ApppubServer apppubServer1 = apppubServerService.checkname(0,apppubServer.getName());
+			ApppubServer apppubServer2 = apppubServerService.checkip(apppubServer.getIp(),apppubServer.getId());
+			if(resultMap == null && apppubServer1==null && apppubServer2 ==null){
+				r = apppubServerService.addApppubServer(apppubServer);
+				if (r){
+					operatorLog.setResult("成功");
+					result.put("success", true);
 				}else{
-					result.put("success", false);
 					operatorLog.setResult("失败");
+					result.put("success", false);
 				}
 			}else{
-				operatorLog.setDetails("编辑应用服务器["+apppubServer.getName()+"]");
-				operatorLog.setContent("编辑");
-				if (resultMap == null){
-					r = apppubServerService.editApppubServer(apppubServer);
-					if (r){
-						operatorLog.setResult("成功");
-						result.put("success", true);
-					}else{
-						operatorLog.setResult("失败");
-						result.put("success", false);
-					}
+				result.put("success", false);
+				operatorLog.setResult("失败");
+			}
+		}else{
+			operatorLog.setDetails("编辑应用服务器["+apppubServer.getName()+"]");
+			operatorLog.setContent("编辑");
+			ApppubServer apppubServer1 = apppubServerService.checkname(apppubServer.getId(),apppubServer.getName());
+			ApppubServer apppubServer2 = apppubServerService.checkip(apppubServer.getIp(),apppubServer.getId());
+			if (resultMap == null && apppubServer1==null && apppubServer2 ==null){
+				r = apppubServerService.editApppubServer(apppubServer);
+				if (r){
+					operatorLog.setResult("成功");
+					result.put("success", true);
 				}else{
-					result.put("success", false);
 					operatorLog.setResult("失败");
+					result.put("success", false);
 				}
+			}else{
+				result.put("success", false);
+				operatorLog.setResult("失败");
 			}
 		}
-		
 		operatorLogService.addOperatorLog(operatorLog);
 		return result;
 	}
@@ -175,14 +181,14 @@ public class ApppubServerController {
 			result.put("success", false);
 		}
 		if (!result.getBoolean("success")){
-			ApppubServer _name = apppubServerService.checkname(name);
+			ApppubServer _name = apppubServerService.checkname(0,name);
 			if (_name==null){
 				result.put("success", true);
 			}else {
 				result.put("success", false);
 			}
 		}else{
-			ApppubServer _name = apppubServerService.checkname(name);
+			ApppubServer _name = apppubServerService.checkname(id,name);
 			if (_name==null){
 				result.put("success", true);
 			}else {

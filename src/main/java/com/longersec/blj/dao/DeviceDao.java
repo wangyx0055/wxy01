@@ -10,7 +10,7 @@ import com.longersec.blj.domain.Device;
 
 public interface DeviceDao {
 
-	int selectOldDepartment(@Param("id") int id);
+	Integer selectOldDepartment(@Param("id") int id);
 
 	public boolean editDevice(Device device);
 

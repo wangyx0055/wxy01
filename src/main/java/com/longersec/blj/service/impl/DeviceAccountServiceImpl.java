@@ -93,9 +93,9 @@ public class DeviceAccountServiceImpl implements DeviceAccountService{
 	}
 
 	@Override
-	public List<Deviceaccess> selectNameAndId() {
+	public List<Deviceaccess> selectNameAndId(Integer id) {
 		// TODO Auto-generated method stub
-		return DeviceAccountDao.selectNameAndId();
+		return DeviceAccountDao.selectNameAndId(id);
 	}
 
 	@Override

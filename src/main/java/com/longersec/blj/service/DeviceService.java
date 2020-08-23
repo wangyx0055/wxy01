@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface DeviceService {
 
-	int selectOldDepartment(int id);
+	Integer selectOldDepartment(int id);
 
 	public boolean addDevice(Device device);
 

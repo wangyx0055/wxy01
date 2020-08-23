@@ -1,10 +1,12 @@
 package com.longersec.blj.web;
 
 import com.longersec.blj.domain.DTO.Users;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.CrontabScriptConfigUserService;
 import com.longersec.blj.service.UserService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +38,9 @@ public class CrontabScriptUserController {
 	public JSONObject findAccessPolicyUserAndUser(@RequestParam("config_id") Integer config_id) {
 		ArrayList<Users> resultCrontabScriptConfigUser = new ArrayList<Users>();
 		ArrayList<Users> resultUsers = new ArrayList<Users>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCrontabScriptConfigUser = (ArrayList<Users>) crontabScriptConfigUserService.selectById(config_id);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId();
+		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultCrontabScriptConfigUser);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultCrontabScriptConfigUser);

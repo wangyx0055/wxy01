@@ -20,9 +20,13 @@ public interface GroupService {
 
 	public List<Object> findAll(Group group, int page_start, int page_length, Integer id);
 	
-	public List<UserGroup> selectNameAndId();
+	public List<UserGroup> selectNameAndId(Integer id, int page_start, int page_length);
 
-	public List<DeviceGroup> selectNameAnddId();
+	public List<UserGroup> selectNameAndIdTop();
+
+	public List<DeviceGroup> selectNameAndIdTop1();
+
+	public List<DeviceGroup> selectNameAnddId(Integer id);
 
 	public Group checkname(Group group);
 	

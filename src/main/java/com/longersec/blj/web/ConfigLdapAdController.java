@@ -242,6 +242,7 @@ public class ConfigLdapAdController {
 			result.put("success", true);
 		}else{
 			result.put("success", false);
+			result.put("error","同步失败!");
 			OperatorLog operatorLog = Operator_log.log(request, session);
 			operatorLog.setModule("认证配置");
 			operatorLog.setDetails("LDAP/AD域同步失败");

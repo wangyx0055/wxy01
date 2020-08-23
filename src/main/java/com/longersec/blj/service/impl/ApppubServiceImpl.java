@@ -41,8 +41,8 @@ public class ApppubServiceImpl implements ApppubService{
 	}
 
 	@Override
-	public List<App> selectNameAndId() {
-		return ApppubDao.selectNameAndId();
+	public List<App> selectNameAndId(Integer id) {
+		return ApppubDao.selectNameAndId(id);
 	}
 
 	@Override

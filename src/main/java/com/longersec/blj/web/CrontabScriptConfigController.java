@@ -2,12 +2,14 @@ package com.longersec.blj.web;
 
 import com.longersec.blj.domain.CrontabScriptConfig;
 import com.longersec.blj.domain.OperatorLog;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.*;
 import com.longersec.blj.utils.Operator_log;
 import com.longersec.blj.utils.SystemCommandUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +39,8 @@ public class CrontabScriptConfigController {
 	private CrontabScriptConfigDeviceService crontabScriptConfigDeviceService;
 	@Autowired
 	private CrontabScriptConfigGroupService crontabScriptConfigGroupService;
-	
+	@Autowired
+	private DepartmentService departmentService;
 	@RequestMapping("/listCrontabScriptConfig")
 	@ResponseBody
 	public JSONObject listCrontabScriptConfig(CrontabScriptConfig crontabScriptConfig,HttpServletRequest request, HttpSession session) {
@@ -45,8 +48,16 @@ public class CrontabScriptConfigController {
 		int page_length = Integer.parseInt(request.getParameter("length"));
 		ArrayList<Object> resultCrontabScriptConfigs = new ArrayList<Object>();
 		ArrayList<CrontabScriptConfig> crontabScriptConfigs = new ArrayList<CrontabScriptConfig>();
+		User principal =(User) SecurityUtils.getSubject().getPrincipal();
+		List<Integer> depart_ids = new ArrayList<>();
+		if (principal.getRole_id().equals(5)){
+			//获取所在的部门
+			int depart_id = principal.getDepartment();
+			depart_ids = departmentService.selectById(depart_id);
+			depart_ids.add(principal.getDepartment());
+		}
 		long total = 0;
-		resultCrontabScriptConfigs = (ArrayList<Object>)crontabScriptConfigService.findAll(crontabScriptConfig, page_start, page_length);
+		resultCrontabScriptConfigs = (ArrayList<Object>)crontabScriptConfigService.findAll(crontabScriptConfig, page_start, page_length,depart_ids);
 		if(CollectionUtils.isNotEmpty(resultCrontabScriptConfigs)) {
 			crontabScriptConfigs = (ArrayList<CrontabScriptConfig>)resultCrontabScriptConfigs.get(0);
 			total = ((ArrayList<Long>) resultCrontabScriptConfigs.get(1)).get(0);

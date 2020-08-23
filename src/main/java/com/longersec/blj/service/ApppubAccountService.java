@@ -16,7 +16,7 @@ public interface ApppubAccountService {
 
 	public boolean delApppubAccount(List<Integer> ids);
 
-	public List<Object> findAll(String sname,Integer type,ApppubAccount apppubAccount, int page_start, int page_length);
+	public List<Object> findAll(String sname,Integer type,ApppubAccount apppubAccount, int page_start, int page_length,List<Integer> depart_ids);
 
 	public List<Object> queryByappserver(Integer apppub_program_id,String sname,Integer type, ApppubAccount apppubAccount, int page_start, int page_length);
     

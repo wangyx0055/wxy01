@@ -205,11 +205,13 @@ public class DeviceController {
 		String ips = "";
 		for (int item : ids){
 			//查询旧的部门id
-			int selectOldDepartment = deviceService.selectOldDepartment(item);
+			Integer selectOldDepartment = deviceService.selectOldDepartment(item);
 			//更新部门设备数量
-			UpdateDepartmentCount.deviceUpdateDepartmentCount(departmentService,selectOldDepartment,-1);
-			 Device _device = deviceService.getById(item);
-			 ips += _device.getName()+"("+_device.getIp()+"),";
+			if(selectOldDepartment!=null) {
+				UpdateDepartmentCount.deviceUpdateDepartmentCount(departmentService,selectOldDepartment,-1);
+			}
+			Device _device = deviceService.getById(item);
+			ips += _device.getName()+"("+_device.getIp()+"),";
 		}
 		if(_ids.isEmpty()) {
 			result.put("success", false);

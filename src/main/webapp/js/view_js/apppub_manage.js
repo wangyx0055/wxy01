@@ -106,23 +106,29 @@ function checkApp(){
     var ser_ip2=/^(http(s)?:\/\/)?(www\.)?[a-zA-Z][-a-zA-Z]{0,62}(\.[a-zA-Z][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/;
     var ser_port= /^[0-9]{1,65535}$/;
     var ser_desc=/^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!./#$%*+,=_?$]){0,64}$/;
-    if($("#edit_ser_name").val()==""){
+    if ($('#judge_name').text()!=""){
+        flag=false;
+    }else if($("#edit_ser_name").val()==""){
         $('#judge_name').text("请输入服务器名称");
         flag=false;
     }else if (!ser_name.test($("#edit_ser_name").val())){
         $('#judge_name').text("请输入正确的服务器名称");
         flag=false;
     }
-    if($("#edit_ser_ip").val()==""){
+    if($('#judge_ip').text()!=""){
+        flag=false;
+    }else if($("#edit_ser_ip").val()==""){
         $('#judge_ip').text("请输入服务器地址");
         flag=false;
-    }else if(ser_ip.test($("#edit_ser_ip").val())) {
+    }
+    else if(ser_ip.test($("#edit_ser_ip").val())) {
         $('#judge_ip').text("");
         flag=true;
     }else if(ser_ip2.test($("#edit_ser_ip").val())) {
         $('#judge_ip').text("");
         flag=true;
-    }else if ($('#judge_name').text()!=""){
+    }
+    else if ($('#judge_name').text()!=""){
         $('#judge_ip').text("请输入正确的服务器地址");
         flag=false;
     }
@@ -137,11 +143,11 @@ function checkApp(){
         $('#judge_port').text("请输入1-65535之间的有效数字");
         flag=false;
     }
-    if($('#judge_ip').text()!=""){
-        flag=false;
-    }
     if ( $("#edit_ser_desc").val() !== ""&&!ser_desc.test($("#edit_ser_desc").val())) {
         $('#judge_desc').text("超过限制长度");
+        flag=false;
+    }
+    if ($('#judge_name').text()!=""){
         flag=false;
     }
   return flag;
@@ -469,7 +475,9 @@ $("#upload1").on("click", function () {
 //应用服务器的添加和编辑操作
 $('#editButton1').click(function(){
     var flag=checkApp();
-    if(!flag)return false;
+    if(!flag){
+        return false;
+    }
     var  url = "../../apppubServer/addApppubServer";
     if ($('#edit_ser_id').val() !== ''){
         url = "../../apppubServer/editApppubServer";
@@ -499,7 +507,6 @@ $('#editButton1').click(function(){
                     $("#modal-success .modal-body").text('编辑成功!');
                     $("#modal-success").modal();
                 }
-                loadAJAX('#appserver');
             }
             else{
                 if ($('#edit_ser_id').val() === "") {
@@ -511,8 +518,9 @@ $('#editButton1').click(function(){
                     $("#modal-danger .modal-body").text('编辑失败!');
                     $("#modal-danger").modal();
                 }
-                loadAJAX('#appserver');
             }
+            loadAJAX('#appserver');
+            loadAJAX('#apppub');
         },
         error:function(){
             $("#modal-danger .modal-body").text('失败!');

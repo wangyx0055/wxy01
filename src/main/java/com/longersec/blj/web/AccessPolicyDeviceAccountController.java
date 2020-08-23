@@ -2,11 +2,13 @@ package com.longersec.blj.web;
 
 import com.longersec.blj.domain.AccessPolicyDeviceAccount;
 import com.longersec.blj.domain.DTO.Deviceaccess;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.AccessPolicyDeviceAccountService;
 import com.longersec.blj.service.DeviceAccountService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,8 +57,9 @@ public class AccessPolicyDeviceAccountController {
 	public JSONObject findAccessPolicyDeviceAccountAndUser(@RequestParam("policy_id") Integer policy_id) {
 		ArrayList<Deviceaccess> resultAccessPolicyDevice = new ArrayList<Deviceaccess>();
 		ArrayList<Deviceaccess> resultDevice = new ArrayList<Deviceaccess>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyDevice = (ArrayList<Deviceaccess>) accessPolicyDeviceAccountService.selectById(policy_id);
-		resultDevice = (ArrayList<Deviceaccess>) DeviceAccountService.selectNameAndId();
+		resultDevice = (ArrayList<Deviceaccess>) DeviceAccountService.selectNameAndId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultDevice.removeAll(resultAccessPolicyDevice);
 		JSONArray jsonArray_p_device = JSONArray.fromObject(resultAccessPolicyDevice);

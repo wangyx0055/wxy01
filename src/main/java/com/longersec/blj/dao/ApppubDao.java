@@ -14,7 +14,7 @@ public interface ApppubDao {
 
 	public List<Object> findAll(@Param("apppub")Apppub apppub, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
-	public List<App> selectNameAndId();
+	public List<App> selectNameAndId(@Param("id")Integer id);
 	
 	public int total();
 	

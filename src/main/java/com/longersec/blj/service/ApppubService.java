@@ -15,7 +15,7 @@ public interface ApppubService {
 
 	public List<Object> findAll(Apppub apppub, int page_start, int page_length);
 
-	public List<App> selectNameAndId();
+	public List<App> selectNameAndId(Integer id);
 	
 	public int total();
 }

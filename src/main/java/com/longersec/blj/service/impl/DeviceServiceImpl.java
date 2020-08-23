@@ -34,7 +34,7 @@ public class DeviceServiceImpl implements DeviceService{
 	}
 
 	@Override
-	public int selectOldDepartment(int id) {
+	public Integer selectOldDepartment(int id) {
 		return DeviceDao.selectOldDepartment(id);
 	}
 

@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.longersec.blj.domain.User;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -106,8 +109,9 @@ public class AccessPolicyApppubController {
 	
 		ArrayList<App> resultAccessPolicyApp = new ArrayList<App>();
 		ArrayList<App> resultApp = new ArrayList<App>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyApp = (ArrayList<App>) accessPolicyApppubService.selectById(policy_id);
-		resultApp = (ArrayList<App>) apppubService.selectNameAndId();
+		resultApp = (ArrayList<App>) apppubService.selectNameAndId(users.getDepartment());
 		JSONObject result = new JSONObject();
 		resultApp.removeAll(resultAccessPolicyApp);
 		JSONArray jsonArray_p_app = JSONArray.fromObject(resultAccessPolicyApp);
