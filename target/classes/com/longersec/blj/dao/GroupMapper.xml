@@ -41,10 +41,8 @@
 	<update id="editGroup" parameterType="com.longersec.blj.domain.Group">
 		UPDATE lsblj_group
 		<set>
-		
 		<if test="type != null">`type`=#{type},</if>
 		<if test="name != null">`name`=#{name},</if>
-		<if test="department != null">`department`=#{department},</if>
 		<if test="desc != null">`desc`=#{desc},</if>
 		<if test="count != null">`count`=#{count},</if>
 		<if test="creator_id != null">`creator_id`=#{creator_id},</if>
@@ -87,11 +85,27 @@
 		;SELECT found_rows() AS recordCounts;
 	</select>
 	<select id="selectNameAndId" resultMap="UserGroup">
-		SELECT id as group_id,name as group_name FROM lsblj_group where type =0;
+		SELECT g.id as group_id, g.name as group_name FROM lsblj_group g INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
+		lsblj_department ld,
+		 (SELECT @id :=#{id}) pd
+		 WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON g.department=T.id
+		where type =0 ORDER BY g.name LIMIT #{page_start},#{page_length};
 	</select>
-	
+
 	<select id="selectNameAnddId" resultMap="DeviceGroup">
-		SELECT id as dgroup_id,name as dgroup_name FROM lsblj_group where type =1;
+		SELECT g.id as dgroup_id, g.name as dgroup_name FROM lsblj_group g INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
+		lsblj_department ld,
+		(SELECT @id :=#{id}) pd
+		WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON g.department=T.id
+		where type =1 ORDER BY g.name LIMIT #{page_start},#{page_length};
+	</select>
+
+	<select id="selectNameAndIdTop" resultMap="UserGroup">
+		SELECT id as group_id, `name` as group_name FROM lsblj_group where type =0;
+	</select>
+
+	<select id="selectNameAndIdTop1" resultMap="DeviceGroup">
+		SELECT id as dgroup_id, `name` as dgroup_name FROM lsblj_group  where type =1;
 	</select>
 	
 	<select id="checkname" resultType="com.longersec.blj.domain.Group">
@@ -107,9 +121,11 @@
 	<select id="listByType" resultType="com.longersec.blj.domain.Group">
 		SELECT
 		SQL_CALC_FOUND_ROWS
-		lsblj_group.* ,lsblj_department.name depart_name
+		lsblj_group.* ,T.name depart_name
 		FROM lsblj_group
-		LEFT JOIN lsblj_department ON lsblj_group.department=lsblj_department.id
+		inner JOIN (SELECT id ,parent_id,`name` FROM lsblj_department ld,
+		(SELECT @id :=#{id}) pd
+		WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON lsblj_group.department=T.id
 		where type = #{type}
 	</select>
 

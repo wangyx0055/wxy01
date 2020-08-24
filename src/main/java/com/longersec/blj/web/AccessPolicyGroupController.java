@@ -89,12 +89,14 @@ public class AccessPolicyGroupController {
 	
 	@RequestMapping("/findAccessPolicyDeviceGroupAndUser")
 	@ResponseBody
-	public JSONObject findAccessPolicyDeviceGroupAndUser(@RequestParam("policy_id")Integer policy_id) {
+	public JSONObject findAccessPolicyDeviceGroupAndUser(@RequestParam("policy_id")Integer policy_id,
+	                                                     @RequestParam(value = "page_start",required = false)int page_start,
+	                                                     @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<DeviceGroup> resultAccessPolicyDeviceGroups = new ArrayList<DeviceGroup>();
 		ArrayList<DeviceGroup> resultDeviceGroups = new ArrayList<DeviceGroup>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyDeviceGroups = (ArrayList<DeviceGroup>) accessPolicyGroupService.selectBydIdDevice(policy_id);
-		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment());
+		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultDeviceGroups.removeAll(resultAccessPolicyDeviceGroups);
 		JSONArray jsonArray_p_dgroups = JSONArray.fromObject(resultAccessPolicyDeviceGroups);

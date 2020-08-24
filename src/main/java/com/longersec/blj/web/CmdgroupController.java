@@ -7,9 +7,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.longersec.blj.domain.Group;
+import com.longersec.blj.domain.*;
+import com.longersec.blj.service.DepartmentService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.longersec.blj.domain.Cmdgroup;
-import com.longersec.blj.domain.CmdgroupCmd;
-import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.service.CmdgroupCmdService;
 import com.longersec.blj.service.CmdgroupService;
 import com.longersec.blj.service.OperatorLogService;
@@ -42,6 +41,8 @@ public class CmdgroupController {
 	private CmdgroupService cmdgroupService;
 	@Autowired
 	private CmdgroupCmdService cmdgroupCmdService;
+	@Autowired
+	private DepartmentService departmentService;
 
 	/**
 	 * @Description 命令集的搜索
@@ -62,11 +63,31 @@ public class CmdgroupController {
 		ArrayList<Object> resultCmdgroups = new ArrayList<Object>();
 		ArrayList<Cmdgroup> cmdgroups = new ArrayList<Cmdgroup>();
 		long total = 0;
-		resultCmdgroups = (ArrayList<Object>)cmdgroupService.findAll(cmdgroup, sname,type,page_start, page_length);
+		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+		List<Integer> depart_ids = new ArrayList<>();
+		if (p_user.getRole_id().equals(5)){
+			//获取所在的部门
+			int depart_id = p_user.getDepartment();
+			depart_ids = departmentService.selectById(depart_id);
+			depart_ids.add(p_user.getDepartment());
+		}
+		resultCmdgroups = (ArrayList<Object>)cmdgroupService.findAll(cmdgroup, sname,type,page_start, page_length,depart_ids);
 		if(CollectionUtils.isNotEmpty(resultCmdgroups)) {
 			cmdgroups = (ArrayList<Cmdgroup>)resultCmdgroups.get(0);
 			total = ((ArrayList<Long>) resultCmdgroups.get(1)).get(0);
 		}
+
+		for (Cmdgroup cmdgroup1 : cmdgroups) {
+			if(cmdgroup1.getDepartment()!=0) {
+				List<String> allParentName = departmentService.findAllParentName(cmdgroup1.getDepartment());
+				StringBuilder stringBuilder = new StringBuilder();
+				for (Object strings : allParentName) {
+					stringBuilder.append(strings).append("/");
+				}
+				cmdgroup1.setTopName1(stringBuilder.substring(0, stringBuilder.length() - 1));
+			}
+		}
+
 		JSONArray jsonArray = JSONArray.fromObject(cmdgroups);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
@@ -88,6 +109,8 @@ public class CmdgroupController {
 		}else {
 			result.accumulate("success", true);
 		}
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		cmdgroup.setDepartment(user.getDepartment());
         //操作日志
 		OperatorLog operatorLog =Operator_log.log(request, session);
 		operatorLog.setModule("命令集控制策略");

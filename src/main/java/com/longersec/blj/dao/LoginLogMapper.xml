@@ -170,13 +170,21 @@
 		 FROM lsblj_login_log
 		 ORDER BY login_datetime DESC
 	</select>
-	
+
 	<select id="selectLast7Day" resultType="Map">
-		SELECT  date_format(FROM_UNIXTIME(login_datetime), "%e") day, count(*) ct
-			FROM lsblj_login_log 
-			WHERE login_datetime>(UNIX_TIMESTAMP()-6*24*3600) 
+		SELECT  date_format(FROM_UNIXTIME(login_datetime), "%w") day, count(*) ct
+			FROM lsblj_login_log
+			WHERE login_datetime>(UNIX_TIMESTAMP()-6*24*3600)
 			GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%d")
-			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%d") DESC
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%w") ASC
+	</select>
+
+	<select id="selectLast30Day" resultType="Map">
+		SELECT  date_format(FROM_UNIXTIME(login_datetime), "%e") day, count(*) ct
+			FROM lsblj_login_log
+			WHERE login_datetime>(UNIX_TIMESTAMP()-29*24*3600)
+			GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%d")
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%d") ASC
 	</select>
 	
 	<select id="selectByUser" resultType="java.util.Map">
@@ -184,9 +192,17 @@
 			FROM lsblj_login_log 
 			WHERE user_id IN(SELECT id FROM lsblj_user)
 			GROUP BY username
-			ORDER BY ct DESC LIMIT 12
+			ORDER BY ct DESC LIMIT 5
 	</select>
-	
+
+	<select id="selectByUserMonth" resultType="java.util.Map">
+		SELECT username, realname, count(*) ct
+			FROM lsblj_login_log
+			WHERE user_id IN(SELECT id FROM lsblj_user)
+			GROUP BY username
+			ORDER BY ct DESC LIMIT 20
+	</select>
+
 	<select id="selectByHour" resultMap="reportMap, loginLogRecordCounts" resultType="java.lang.Object">
 		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m-%d %H") `interval`, count(*) total,count(IF(status=1,1,null)) successes,count(IF(status=0,1,null)) fails
 				,count(distinct source_ip) sourceips,count(distinct username) users 

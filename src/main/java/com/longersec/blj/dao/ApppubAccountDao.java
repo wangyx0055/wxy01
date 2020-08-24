@@ -36,7 +36,7 @@ public interface ApppubAccountDao {
 
 	public ApppubAccount getById(@Param("id") Integer id);
 
-	public List<ApppubAccount> selectAll();
+	public List<ApppubAccount> selectAll(@Param("id") Integer id);
 
 	boolean insertMore(ApppubAccount apppubAccount);
 

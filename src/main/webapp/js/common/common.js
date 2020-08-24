@@ -23,7 +23,4 @@ jQuery(function($){
         });
         _ajax(_opt);
     };
-    //防止xss注入
-	//$('input').attr("onblur",'this.value=this.value.replace("<script>",'+'"$ltscript&gt")');
-	//$('textarea').attr("onblur",'this.value=this.value.replace("<script>",'+'"$ltscript&gt")');
 });

@@ -13,7 +13,7 @@ public interface CmdgroupDao {
 
 	public boolean delCmdgroup(List<Integer> ids);
 
-	public List<Object> findAll(@Param("cmdgroup")Cmdgroup cmdgroup,@Param("sname")String sname,@Param("type")Integer type, @Param("page_start")int page_start, @Param("page_length")int page_length);
+	public List<Object> findAll(@Param("cmdgroup")Cmdgroup cmdgroup,@Param("sname")String sname,@Param("type")Integer type, @Param("page_start")int page_start, @Param("page_length")int page_length,@Param("depart_ids") List<Integer> depart_ids);
 
 	public List<Cmd> selectNameAndId();
 

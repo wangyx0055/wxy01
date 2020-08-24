@@ -45,6 +45,26 @@ public class AccessPolicy  implements java.io.Serializable{
 
 	private Integer department;
 
+	private String depart_name;
+
+	private String topName;
+
+	public String getDepart_name() {
+		return depart_name;
+	}
+
+	public void setDepart_name(String depart_name) {
+		this.depart_name = depart_name;
+	}
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
+	}
+
 	public Integer getDepartment() {
 		return department;
 	}
@@ -223,6 +243,8 @@ public class AccessPolicy  implements java.io.Serializable{
 				", status=" + status +
 				", desc='" + desc + '\'' +
 				", department=" + department +
+				", depart_name='" + depart_name + '\'' +
+				", topName='" + topName + '\'' +
 				'}';
 	}
 }

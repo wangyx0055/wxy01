@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.longersec.blj.domain.ApppubAccount;
 import com.longersec.blj.domain.User;
 import com.longersec.blj.service.*;
 import org.apache.commons.collections.CollectionUtils;
@@ -72,7 +73,6 @@ public class AccessPolicyController {
 		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
 		List<Integer> depart_ids = new ArrayList<>();
 		if (p_user.getRole_id().equals(5)){
-
 			//获取所在的部门
 			int depart_id = p_user.getDepartment();
 			depart_ids = departmentService.selectById(depart_id);
@@ -89,7 +89,18 @@ public class AccessPolicyController {
 			accessPolicys = (ArrayList<AccessPolicy>)resultAccessPolicys.get(0);
 			total = ((ArrayList<Long>) resultAccessPolicys.get(1)).get(0);
 		}
-		
+
+		for (AccessPolicy accessPolicy1 : accessPolicys) {
+			if(accessPolicy1.getDepartment()!=0) {
+				List<String> allParentName = departmentService.findAllParentName(accessPolicy1.getDepartment());
+				StringBuilder stringBuilder = new StringBuilder();
+				for (Object strings : allParentName) {
+					stringBuilder.append(strings).append("/");
+				}
+				accessPolicy1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
+			}
+		}
+
 		JSONArray jsonArray = JSONArray.fromObject(accessPolicys);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);

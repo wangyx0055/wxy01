@@ -22,6 +22,7 @@
 		<result column="status" jdbcType="VARCHAR" property="status"/>
 		<result column="desc" jdbcType="VARCHAR" property="desc"/>
 		<result column="department" jdbcType="VARCHAR" property="department"/>
+		<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>
 	</resultMap>
 
 	<resultMap id="accessPolicyRecordCounts" type="java.lang.Long">
@@ -104,17 +105,20 @@
 		SELECT 
 		SQL_CALC_FOUND_ROWS 
 		DATE_FORMAT(FROM_UNIXTIME(valid_datetime_start),'%Y-%m-%d %H:%i:%s') valid_datetime_start,DATE_FORMAT(FROM_UNIXTIME(valid_datetime_end),'%Y-%m-%d %H:%i:%s') valid_datetime_end
-		,lsblj_access_policy.* FROM lsblj_access_policy
+		,lsblj_access_policy.* ,ld.name depart_name FROM lsblj_access_policy
+		LEFT JOIN lsblj_department ld ON lsblj_access_policy.department = ld.id
 		where 1
 		<if test="type==1">AND (
-			`name` like CONCAT('%',#{sname},'%')
+			lsblj_access_policy.`name` like CONCAT('%',#{sname},'%')
 			or `desc` like CONCAT('%',#{sname},'%')
 			or `status` like CONCAT('%',#{stat},'%')
+			or ld.`name` like CONCAT('%',#{sname},'%')
 			)
 		</if>
-		<if test="type==2">AND `name` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==2">AND lsblj_access_policy.`name` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==3">AND `desc` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==4">AND `status` like CONCAT('%',#{stat},'%')</if>
+		<if test="type==5">AND ld.`name` like CONCAT('%',#{sname},'%')</if>
 		<if test="depart_ids!=null and depart_ids.size()>0">
 			AND department in
 			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
@@ -140,7 +144,7 @@
 					) 
 					AND id IN(
 						SELECT policy_id FROM lsblj_access_policy_user where user_id=#{userid} 
-						UNION SELECT policy_id FROM lsblj_access_policy_group where group_id=#{groupid} AND type!=2
+						UNION SELECT policy_id FROM lsblj_access_policy_group where group_id IN(select group_id from lsblj_group_user where user_id=#{userid} ) AND type!=1
 					) 
 					<if test="device_account_id !=null and device_account_id !=0">
 						AND id IN(SELECT policy_id FROM lsblj_access_policy_device_account WHERE device_account_id=#{device_account_id})

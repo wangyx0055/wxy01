@@ -175,7 +175,7 @@
                                   <span>设备名称：</span>
                                   <input id="edit_device_name" type="text"/>&nbsp;&nbsp;<span id='Vdevicename' style="color:red;font-size: 12px;"></span></p>
                           </div>
-                          <p>长度为1-128个汉字或字符</p>
+                          <p>长度为1-32个汉字或字符</p>
                           <div>
                               <p><span>*</span>
                                   <span>设备地址：</span>
@@ -201,7 +201,7 @@
                           <div style="margin-left: -31px;">
                               <p>
                                   <label class="label"><span>描述:</span></label>
-                                  <textarea id="edit_device_description" align="left" style="font-size: 12px;">&nbsp;&nbsp;</textarea><span id='Vedit_device_description' style="color:red;font-size: 12px;"></span>
+                                  <textarea id="edit_device_description" align="left" maxlength="128" style="font-size: 12px;">&nbsp;&nbsp;</textarea><span id='Vedit_device_description' style="color:red;font-size: 12px;"></span>
                               </p>
                           </div>
                           <p style="margin-left: 124px;">描述最长128个汉字或字符</p>
@@ -552,9 +552,10 @@
                           <span aria-hidden="true">&times;</span></button>
                       <span class="modal-title">提示</span>
                   </div>
-                  <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
-                      <p style="margin-left: -62px;" id="uploadError"></p>
-                  </div><br>
+                  <div style="height: 200px;overflow-y: auto;text-align: center">
+                      <p id="uploadError">
+                      </p>
+                  </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                       <button type="button" id="uploadInfo" class="btn newaddbtn" data-dismiss="modal">确定</button>

@@ -24,6 +24,7 @@
 		<result column="desc" jdbcType="VARCHAR" property="desc"/>
 		<result column="alert_methods" jdbcType="VARCHAR" property="alert_methods"/>
 		<result column="alert_level" jdbcType="VARCHAR" property="alert_level"/>
+		<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>
 	</resultMap>
 
 	<resultMap id="cmdPolicyRecordCounts" type="java.lang.Long">
@@ -124,20 +125,29 @@
 	<select id="findAll" resultMap="BaseResultMap, cmdPolicyRecordCounts" resultType="java.lang.Object">
 		SELECT 
 		SQL_CALC_FOUND_ROWS 
-		GROUP_CONCAT(c.command order by p.id asc SEPARATOR '\n') cmd,p.* FROM lsblj_cmd_policy p
+		GROUP_CONCAT(c.command order by p.id asc SEPARATOR '\n') cmd,p.* ,ld.name depart_name FROM lsblj_cmd_policy p
 		LEFT JOIN lsblj_cmd_policy_cmd c ON p.id=c.policy_id
+		LEFT JOIN lsblj_department ld ON p.department_id = ld.id
 		where 1
 		<if test="type==1">AND (
 			p.`name` like CONCAT('%',#{sname},'%')
 			or p.`desc` like CONCAT('%',#{sname},'%')
 			or p.`status` like CONCAT('%',#{stat},'%')
 			or p.`execute_action` like CONCAT('%',#{cot},'%')
+			or ld.`name` like CONCAT('%',#{sname},'%')
 			)
 		</if>
 		<if test="type==2">AND p.`name` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==3">AND p.`desc` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==5">AND p.`status` like CONCAT('%',#{stat},'%')</if>
 		<if test="type==4">AND p.`execute_action` like CONCAT('%',#{cot},'%')</if>
+		<if test="type==6">AND ld.`name`  like CONCAT('%',#{sname},'%')</if>
+		<if test="depart_ids!=null and depart_ids.size()>0">
+			AND p.department_id in
+			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
 		GROUP BY p.id 
 		ORDER BY p.name ASC
 		<if test="page_start != null and page_length != null">

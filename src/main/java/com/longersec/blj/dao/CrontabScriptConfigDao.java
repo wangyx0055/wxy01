@@ -18,7 +18,7 @@ public interface CrontabScriptConfigDao {
 
 	public String selectName(@Param("id") Integer id,@Param("name") String name);
 
-	public List<CrontabScriptConfig> selectAll();
+	public List<CrontabScriptConfig> selectAll(@Param("id") Integer id);
 
     CrontabScriptConfig checkname(String name);
 }

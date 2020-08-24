@@ -20,7 +20,7 @@ public interface AccessPolicyService {
 
 	public List<Object> findAll(AccessPolicy accessPolicy, String sname , String stat , Integer type, int page_start, int page_length, List<Integer> depart_ids);
     
-    public List<AccessPolicy> getUserPolicy(Integer userid, Integer groupid, Integer device_account_id, Integer apppub_account_id);
+    public List<AccessPolicy> getUserPolicy(Integer userid, Integer device_account_id, Integer apppub_account_id);
     
     public AccessPolicy getById(@Param("id")Integer id);
 

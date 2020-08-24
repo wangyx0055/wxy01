@@ -35,12 +35,14 @@ public class GroupDeviceAccountController {
 
 	@RequestMapping("/findGroupDeviceAccount")
 	@ResponseBody
-	public JSONObject findGroupDeviceAccount(@RequestParam("group_id") Integer group_id) {
+	public JSONObject findGroupDeviceAccount(@RequestParam("group_id") Integer group_id,
+	                                         @RequestParam(value = "page_start",required = false)Integer page_start,
+	                                         @RequestParam(value ="page_length",required = false)Integer page_length) {
 		ArrayList<Deviceaccess> resultGroupDeviceAccount = new ArrayList<Deviceaccess>();
 		ArrayList<Deviceaccess> resultDeviceAccount = new ArrayList<Deviceaccess>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultGroupDeviceAccount = (ArrayList<Deviceaccess>) groupDeviceAccountService.selectById(group_id);
-		resultDeviceAccount = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId(users.getDepartment());
+		resultDeviceAccount = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultDeviceAccount.removeAll(resultGroupDeviceAccount);
 		JSONArray jsonArray_p_device = JSONArray.fromObject(resultGroupDeviceAccount);

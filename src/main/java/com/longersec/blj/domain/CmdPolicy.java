@@ -44,6 +44,26 @@ public class CmdPolicy {
 
 	private String alert_level;
 
+	private String depart_name;
+
+	private String topName;
+
+	public String getDepart_name() {
+		return depart_name;
+	}
+
+	public void setDepart_name(String depart_name) {
+		this.depart_name = depart_name;
+	}
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -234,8 +254,10 @@ public class CmdPolicy {
 				", status=" + status +
 				", cmd='" + cmd + '\'' +
 				", desc='" + desc + '\'' +
-				", alert_methods=" + alert_methods +
+				", alert_methods='" + alert_methods + '\'' +
 				", alert_level='" + alert_level + '\'' +
+				", depart_name='" + depart_name + '\'' +
+				", topName='" + topName + '\'' +
 				'}';
 	}
 }

@@ -26,6 +26,10 @@ public interface LoginLogDao {
 	
 	public List<Map<String, Object>> selectByUser();
 	
+	public List<Map<String, Object>> selectLast30Day();
+
+	public List<Map<String, Object>> selectByUserMonth();
+	
 	public List<Object> selectByHour (@Param("start_date")String start_date, @Param("end_date")String end_date, @Param("page_start")int page_start, @Param("page_length")int page_length);
 	
 	public List<Object> selectByDay  (@Param("start_date")String start_date, @Param("end_date")String end_date, @Param("page_start")int page_start, @Param("page_length")int page_length);
@@ -43,4 +47,5 @@ public interface LoginLogDao {
 	public List<Object> selectProtocolByWeek (@Param("start_date")String start_date, @Param("end_date")String end_date, @Param("page_start")int page_start, @Param("page_length")int page_length);
 	
 	public List<Object> selectProtocolByMonth(@Param("start_date")String start_date, @Param("end_date")String end_date, @Param("page_start")int page_start, @Param("page_length")int page_length);
+
 }

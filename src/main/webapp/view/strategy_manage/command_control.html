@@ -23,6 +23,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../../bower_components/treeview/font.css">
+    <style>
+
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini cc">
 <div class="wrapper" >
@@ -56,6 +59,7 @@
                          <select class="form-control" id="Distinguish">
                              <option value="1" selected>自动识别</option>
                              <option value="2" >策略名称</option>
+                             <option value="6" >部门</option>
                              <option value="3" >描述</option>
                              <option value="4" >执行动作</option>
                              <option value="5" >状态</option>
@@ -67,17 +71,18 @@
                      </div>
                      <div class="new-add-style">
                          <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-default" id="clearN" >新建</button>
-<!--                         <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal"  data-target="#modal-default2">导入</button>-->
-<!--                         <button type="button" class="btn btn-default newaddbtn2" value="Export to Excel" data-dismiss="modal"  data-toggle="modal"  data-target="#modal-default4">导出</button>-->
+<!--                     <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal"  data-target="#modal-default2">导入</button>-->
+<!--                     <button type="button" class="btn btn-default newaddbtn2" value="Export to Excel" data-dismiss="modal"  data-toggle="modal"  data-target="#modal-default4">导出</button>-->
                      </div>
                     <table id="example2" class="table table-hover">
                       <thead>
                          <tr>
                              <td style="width:55px;padding-right: 0px;"><span>选择</span></td>
-                             <td style="width: 15%"><span>策略名称</span></td>
-                             <td style="width: 25%"><span>描述</span></td>
-                             <td style="width: 21%"><span>执行动作</span></td>
-                             <td style="width: 10%"><span>状态</span></td>
+                             <td style="width: 14%"><span>策略名称</span></td>
+                             <td style="width: 14%"><span>部门</span></td>
+                             <td style="width: 14%"><span>描述</span></td>
+                             <td style="width: 14%"><span>执行动作</span></td>
+                             <td style="width: 14%"><span>状态</span></td>
                              <td><span>操作</span></td>
                          </tr>
                       </thead>
@@ -97,6 +102,7 @@
                              <option value="1" selected>自动识别</option>
                              <option value="2">命令集名称</option>
                              <option value="3">命令/参数</option>
+                             <option value="4">部门</option>
                          </select>
                          <input type="text" class="form-control" id="searchId1">
                          <span class="input-group-btn">
@@ -113,8 +119,9 @@
                       <thead>
                          <tr>
                              <td style="width: 50px"><span>选择</span></td>
-                             <td><span>命令集名称</span></td>
-                             <td style="width: 50%"><span>命令/参数</span></td>
+                             <td style="width: 16%"><span>命令集名称</span></td>
+                             <td style="width: 16%"><span>部门</span></td>
+                             <td style="width: 20%"><span>命令/参数</span></td>
                              <td ><span>操作</span></td>
                          </tr>
                       </thead>
@@ -220,7 +227,8 @@
                  </div>
                    <div class="cc-policy-desc">
                       <span>描述:</span>
-                      <textarea id="add_desc2"></textarea><span style="color: red;font-size: 12px" id="Vadddesc"></span>
+                      <textarea id="add_desc2" maxlength="128"></textarea><span style="color: red;font-size: 12px" id="Vadddesc"></span>
+                       <p style="font-size: 12px;margin-left: 90px;color: #a4abb5;margin-top: 0px">描述最长128个汉字或字符</p>
                    </div>
                 </div>
                 <div class="modal-footer">
@@ -1061,7 +1069,8 @@
                </div>
             <div class="cc-policy-desc">
                   <span>描述:</span>
-                  <textarea id="edit_desc777" style="margin-top: 25px;margin-left: 90px;"></textarea><span id="Veditdesc" style="color: red;font-size:12px;"></span>
+                  <textarea id="edit_desc777" maxlength="128" style="margin-top: 25px;margin-left: 90px;"></textarea><span id="Veditdesc" style="color: red;font-size:12px;"></span>
+                  <p style="font-size: 12px;color: #a4abb5;margin-left: 92px;">长度为1-128个汉字或字符</p>
                 </div>
           </div>
            <div class="modal-footer">

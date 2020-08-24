@@ -165,15 +165,17 @@
 							</foreach>
 						,0)
 				)
-				OR a.device_id IN(
-					SELECT id FROM lsblj_device WHERE groupid IN(
-						SELECT group_id FROM lsblj_access_policy_group WHERE policy_id IN(
+				OR a.id IN(
+					SELECT device_account_id FROM lsblj_group_device_account WHERE group_id IN(
+						SELECT group_id FROM lsblj_access_policy_group WHERE type!=0 AND policy_id IN(
 							<foreach collection="policy_ids" item="item" separator=",">
 							#{item}
 							</foreach>
 						,0)
 					)
-				))
+				)
+				
+				)
 			<if test="where.searchall != null and where.searchall != ''">
 			 AND (s.ip like CONCAT('%',#{where.searchall},'%') OR s.name like CONCAT('%',#{where.searchall},'%') OR a.username like CONCAT('%',#{where.searchall},'%') OR l.name like CONCAT('%',#{where.searchall},'%'))
 			</if>
@@ -235,7 +237,10 @@
 		 lsblj_department ld,
 		(SELECT @id :=#{id}) pd
 		 WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON d.department=T.id, lsblj_protocol p
-		WHERE da.device_id=d.id AND da.protocol_id=p.id
+		WHERE da.device_id=d.id AND da.protocol_id=p.id ORDER BY da.username
+		<if test="page_start != -1 and page_length != -1">
+			LIMIT #{page_start},#{page_length}
+		</if>
 	</select>
 	
     <select id="total" resultType="java.lang.Integer">
@@ -296,35 +301,43 @@
 	<select id="getUserDeviceAccount" resultMap="UserDeviceAccountMap, deviceAccountRecordCounts"
 	        resultType="java.lang.Object">
 		SELECT SQL_CALC_FOUND_ROWS 
-			a.id,a.username device_username,a.port,l.name protocol,s.ip,s.name,user_device_account.* ,p.name policyname  
+			a.id,a.username device_username,a.port,l.name protocol,s.ip,s.name,user_device_account.* ,p.name policyname,user.username,user.realname 
 			FROM lsblj_device_account a LEFT JOIN lsblj_device s ON a.device_id=s.id LEFT  JOIN lsblj_protocol l ON a.protocol_id=l.id 
 			LEFT JOIN (
-				SELECT user.id user_id,user.username,user.realname,pda.device_account_id,pu.policy_id 
-					FROM lsblj_access_policy_user pu
-						LEFT JOIN lsblj_access_policy_device_account pda ON pda.policy_id=pu.policy_id 
-						LEFT JOIN lsblj_user user ON pu.user_id=user.id where user.id is not null
-				UNION DISTINCT
-				SELECT user.id user_id,user.username,user.realname,pda.device_account_id,pg.policy_id
-					FROM lsblj_access_policy_group pg
-						LEFT JOIN lsblj_access_policy_device_account pda ON pda.policy_id=pg.policy_id 
-						LEFT JOIN lsblj_user user ON pg.group_id=user.groupid where user.id is not null
+				select user_id,device_account_id, puser.policy_id FROM(
+					select user_id,policy_id from lsblj_access_policy_user 
+					UNION 
+					select user_id,policy_id from lsblj_access_policy_group apgu LEFT JOIN lsblj_group_user gu ON apgu.group_id=gu.group_id where type=0
+				) puser 
+				JOIN
+				(
+					select device_account_id,policy_id from lsblj_access_policy_device_account 
+					UNION 
+					select device_account_id,policy_id from lsblj_access_policy_group apgd LEFT JOIN lsblj_group_device_account gda ON apgd.group_id=gda.group_id where type=1
+				
+				) pdevice_account ON puser.policy_id=pdevice_account.policy_id AND user_id IS NOT NULL AND device_account_id IS NOT NULL
+				
 			) user_device_account ON user_device_account.device_account_id=a.id 
+			
 			LEFT JOIN lsblj_access_policy p ON p.id=user_device_account.policy_id 
+			
+			LEFT JOIN lsblj_user user ON user.id=user_device_account.user_id 
+			
 			WHERE user_device_account.device_account_id is not null  and p.id is not null 
 			<if test="deviceAccount.searchAll !=null and deviceAccount.searchAll != ''">
 			 AND (s.ip like CONCAT('%',#{deviceAccount.searchAll},'%') OR s.name like CONCAT('%',#{deviceAccount.searchAll},'%') OR user_device_account.username like CONCAT('%',#{deviceAccount.searchAll},'%') OR a.username like CONCAT('%',#{deviceAccount.searchAll},'%'))
 			</if>
 			<if test="deviceAccount.device_name !=null and deviceAccount.device_name != ''">
-			 AND (s.name like CONCAT('%',#{deviceAccount.device_name},'%') OR s.name like CONCAT('%',#{deviceAccount.device_name},'%'))
+			 AND (s.name like CONCAT('%',#{deviceAccount.device_name},'%'))
 			 </if>
 			<if test="deviceAccount.ip !=null and deviceAccount.ip != ''">
-			 AND (s.ip like CONCAT('%',#{deviceAccount.device_ip},'%') OR s.ip like CONCAT('%',#{deviceAccount.device_ip},'%'))
+			 AND (s.ip like CONCAT('%',#{deviceAccount.device_ip},'%') )
 			 </if>
 			<if test="deviceAccount.device_username !=null and deviceAccount.device_username != ''">
-			 AND (a.username like CONCAT('%',#{deviceAccount.username},'%') OR a.username like CONCAT('%',#{deviceAccount.username},'%'))
+			 AND (a.username like CONCAT('%',#{deviceAccount.username},'%'))
 			</if>
 			<if test="deviceAccount.username !=null and deviceAccount.username != ''">
-			 AND (user_device_account.username like CONCAT('%',#{deviceAccount.username},'%') OR user_device_account.username like CONCAT('%',#{deviceAccount.username},'%'))
+			 AND (user.username like CONCAT('%',#{deviceAccount.username},'%'))
 			</if>
 			<if test="page_start != null and page_length != null">
 				LIMIT #{page_start},#{page_length}

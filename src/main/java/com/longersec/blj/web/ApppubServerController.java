@@ -70,14 +70,14 @@ public class ApppubServerController {
 			apppubServers = (ArrayList<ApppubServer>)resultApppubServers.get(0);
 			total = ((ArrayList<Long>) resultApppubServers.get(1)).get(0);
 		}
-//		for (ApppubServer apppubServer1 : apppubServers) {
-//			List<String> allParentName = departmentService.findAllParentName(apppubServer1.getDepartment());
-//			StringBuilder stringBuilder = new StringBuilder();
-//			for (Object strings : allParentName) {
-//				stringBuilder.append(strings).append("/");
-//			}
-//			apppubServer1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
-//		}
+		for (ApppubServer apppubServer1 : apppubServers) {
+			List<String> allParentName = departmentService.findAllParentName(apppubServer1.getDepartment());
+			StringBuilder stringBuilder = new StringBuilder();
+			for (Object strings : allParentName) {
+				stringBuilder.append(strings).append("/");
+			}
+			apppubServer1.setTopName1(stringBuilder.substring(0, stringBuilder.length() - 1));
+		}
 		JSONArray jsonArray = JSONArray.fromObject(apppubServers);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);

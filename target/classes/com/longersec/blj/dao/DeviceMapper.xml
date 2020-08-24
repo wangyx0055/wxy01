@@ -137,7 +137,9 @@
 		SELECT * FROM lsblj_device where id =#{id};
 	</select>
 	<select id="selectAll" resultType="com.longersec.blj.domain.Device">
-		SELECT * FROM lsblj_device;
+		SELECT * FROM lsblj_device a INNER JOIN (SELECT id ,parent_id FROM lsblj_department ld,
+        (SELECT @id :=#{id}) pd
+        WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON a.department=T.id;
 	</select>
 
 	<update id="updateAccounts">

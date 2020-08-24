@@ -7,306 +7,386 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68d5ec52-ef25-4837-aa9c-10bee323f309" name="Default Changelist" comment="l">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/hotswap_agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/SshScriptDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/SshScriptMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/SshScript.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/SshScriptService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/SshScriptServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/SshScriptController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/SshScriptDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/SshScriptMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/SshScript.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/SshScriptService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/SshScriptServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/SshScriptController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/javax-xml-soap-1.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/license.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/work_config.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/work_manage/authorize.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/work_config.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/work_manage/authorize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.scannerwork/scanner-report/analysis.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/AccessPolicyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/AccessPolicyDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/AccessPolicyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/AccessPolicyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubAccountDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubAccountDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubServerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubServerDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdPolicyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdPolicyDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdPolicyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdPolicyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdgroupDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdgroupDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdgroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CmdgroupMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabCommandLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabCommandLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptConfigDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptConfigDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/CrontabScriptMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DepartmentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DepartmentDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DepartmentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceAccountDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceAccountDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceTypeMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/GroupDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/GroupDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/GroupDeviceAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/GroupDeviceAccountMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/GroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/GroupMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/LoginLogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/LoginLogDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/SystemMessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/SystemMessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/ApppubAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/ApppubAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/DeviceAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/DeviceAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubProgramService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubProgramService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubResourceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubResourceService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/AccessPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/AccessPolicy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/ApppubServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/ApppubServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/CmdPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/CmdPolicy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/Cmdgroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/Cmdgroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/CrontabCommandLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/CrontabCommandLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/CrontabScriptConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/CrontabScriptConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/Department.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/SystemMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/domain/SystemMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/AccessPolicyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/AccessPolicyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubAccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubAccountService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubServerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubServerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/ApppubService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/CmdPolicyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/CmdPolicyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/CmdgroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/CmdgroupService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/CrontabScriptConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/CrontabScriptConfigService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/DepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/DepartmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/DeviceAccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/DeviceAccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/DeviceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/DeviceService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/GroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/GroupService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/LoginLogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/LoginLogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/AccessPolicyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/AccessPolicyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubAccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubAccountServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubServerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubServerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ApppubServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/CmdPolicyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/CmdPolicyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/CmdgroupServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/CmdgroupServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/CrontabScriptConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/CrontabScriptConfigServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/DeviceAccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/DeviceAccountServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/DeviceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/DeviceServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/GroupServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/GroupServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/LoginLogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/LoginLogServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/service/impl/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/AdOperate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/AdOperate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/UpdateDepartmentCount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/UpdateDepartmentCount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyApppubController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyApppubController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyDeviceAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyDeviceAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyGroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/AccessPolicyUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ApppubAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ApppubAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ApppubServerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ApppubServerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyDeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyDeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyGroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdPolicyUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdgroupCmdController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdgroupCmdController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdgroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CmdgroupController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ConfigLdapAdController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ConfigLdapAdController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabCommandLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabCommandLogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigDeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigDeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptConfigGroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/CrontabScriptUserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/DepartmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/DeviceAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/DeviceAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UploadFileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UploadFileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/DeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/DeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/GroupDeviceAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/GroupDeviceAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/OperatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/OperatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/SystemInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/SystemInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UploadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UserGroupUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UserGroupUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/chart.js/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/chart.js/Chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/sortable.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/sortable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/playback.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/playback.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/js/pages/dashboard2.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/js/pages/dashboard2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/regExpUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/common/regExpUtil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/accessControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/accessControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/apppub_manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/apppub_manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/commandControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/commandControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/config_network.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/config_network.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/confirm_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/confirm_config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/department.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/department.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/device_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/device_group.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/hosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/report_login.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/report_login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/report_session.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/report_session.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/operation_task.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/operation_task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/rapid_operation.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/rapid_operation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/role_manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/role_manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/save_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/save_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/security_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/security_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/system_Typr.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/system_Typr.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/user_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/user_group.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/apppub.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/apppub.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/apppub_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/apppub_manage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/device_group.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/device_group.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/hosts.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/hosts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/system_Type.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/asset_manage/system_Type.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/apppub_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/apppub_sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/host_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/host_sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/log_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/log_manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/logs_system.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/logs_system.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/replay2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/replay2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/sessions_online.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/sessions_online.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/auto_operation/operational_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/auto_operation/operational_task.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/auto_operation/rapid_operation.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/auto_operation/rapid_operation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/department.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/message.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/common/menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/operation_manage/app_operation.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/operation_manage/app_operation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/operation_manage/host_operation.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/operation_manage/host_operation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/operation_manage/self.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/operation_manage/self.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/password_manage/password_management.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/password_manage/password_management.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/password_manage/password_modify_logs.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/password_manage/password_modify_logs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/password_manage/secret_change_strategy.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/password_manage/secret_change_strategy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/statistic_analysis/reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/statistic_analysis/reports.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/statistic_analysis/reports_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/statistic_analysis/reports_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/statistic_analysis/reports_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/statistic_analysis/reports_sessions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/strategy_manage/access_control.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/strategy_manage/access_control.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/strategy_manage/command_control.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/strategy_manage/command_control.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/config_network.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/config_network.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/config_system.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/config_system.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/config_system_parameter.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/config_system_parameter.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/confirm_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/confirm_config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/interface_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/interface_config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/Job_approval.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/Job_approval.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/extend_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/extend_config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/outbound_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/outbound_config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/security_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/security_config.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/access_authorize.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/access_authorize.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/apppub_replay.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/apppub_replay.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/authorizes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/authorizes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/command_authorize.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/command_authorize.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/department_of_management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/department_of_management.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/device_account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/device_account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/dynamic_token.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/dynamic_token.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/equipment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/equipment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/history_sessions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/history_sessions.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/massage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/massage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/overview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/overview.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/sessions_graphic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/sessions_graphic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/sessions_search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/sessions_search.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/shouquan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/shouquan.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/text_replay.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/useless/text_replay.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/user/role_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/user/role_manage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/user/user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/user/user_group.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/user/user_group.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/AccessPolicyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/AccessPolicyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/AccessPolicyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/AccessPolicyMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubAccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubAccountDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubAccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubProgramDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubProgramDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubProgramMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubProgramMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubServerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubServerDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/ApppubServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdPolicyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdPolicyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdPolicyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdPolicyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdgroupDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdgroupDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdgroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CmdgroupMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabCommandLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabCommandLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/CrontabScriptMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DepartmentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceAccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceAccountDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/DeviceTypeMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/GroupMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/LoginLogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/LoginLogDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/SystemMessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/SystemMessageMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/ApppubAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/ApppubAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Device.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/DeviceAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/DeviceAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubProgramService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubProgramService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubServerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/AccessPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/AccessPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/ApppubServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/ApppubServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/CmdPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/CmdPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Cmdgroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Cmdgroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/CrontabCommandLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/CrontabCommandLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/CrontabScriptConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/CrontabScriptConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/SystemMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/domain/SystemMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/AccessPolicyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/AccessPolicyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/ApppubService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/CmdPolicyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/CmdPolicyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/CmdgroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/CmdgroupService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/DepartmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/DeviceAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/DeviceAccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/GroupService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/LoginLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/LoginLogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubAccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubProgramServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubProgramServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubServerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubServerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/AccessPolicyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/AccessPolicyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ApppubServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/CmdPolicyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/CmdPolicyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/CmdgroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/CmdgroupServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DepartmentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DeviceAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DeviceAccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/DeviceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportTemplateServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportTemplateServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/ExportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/GroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/GroupServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/LoginLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/LoginLogServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/AdOperate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/AdOperate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/DeleteDepartmentQuartz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/DeleteDepartmentQuartz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/UpdateDepartmentCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/utils/UpdateDepartmentCount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyApppubController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyApppubController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyDeviceAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyDeviceAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/AccessPolicyUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ApppubAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ApppubAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ApppubServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ApppubServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyDeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdPolicyUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdgroupCmdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdgroupCmdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdgroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CmdgroupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigLdapAdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/ConfigLdapAdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabCommandLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabCommandLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigDeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptConfigGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/CrontabScriptUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DepartmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/DeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/GroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/GroupDeviceAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/GroupDeviceAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/IndexController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/LoginLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/LoginLogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/OperatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/OperatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/SystemInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/SystemInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UploadFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UploadFileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UserGroupUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/longersec/blj/web/UserGroupUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bower_components/chart.js/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bower_components/chart.js/Chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/css/main/main.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/common/sortable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/sortable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/playback.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/playback.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/js/pages/dashboard2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bower_components/dist/js/pages/dashboard2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/common/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/common/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/accessControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/accessControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/apppub_manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/apppub_manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/commandControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/commandControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/config_network.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/confirm_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/confirm_config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/department.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/department.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/device_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/device_group.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/hosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_session.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/report_session.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/operation_task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/operation_task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/rapid_operation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/rapid_operation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/role_manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/role_manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/save_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/save_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/security_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/security_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/system_Typr.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/system_Typr.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/user_group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/user_group.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/apppub.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/apppub.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/apppub_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/apppub_manage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/device_group.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/device_group.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/hosts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/hosts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/system_Type.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/asset_manage/system_Type.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/apppub_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/apppub_sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/host_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/host_sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/log_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/log_manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/logs_system.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/logs_system.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/replay2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/replay2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/sessions_online.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/audit_manage/sessions_online.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/auto_operation/operational_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/auto_operation/operational_task.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/auto_operation/rapid_operation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/auto_operation/rapid_operation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/common/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/common/department.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/common/message.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/common/message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/common/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/common/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/common/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/common/menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/operation_manage/app_operation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/operation_manage/app_operation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/operation_manage/host_operation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/operation_manage/host_operation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/operation_manage/self.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/operation_manage/self.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/password_manage/password_management.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/password_manage/password_management.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/password_manage/password_modify_logs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/password_manage/password_modify_logs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/password_manage/secret_change_strategy.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/password_manage/secret_change_strategy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports_sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/statistic_analysis/reports_sessions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/strategy_manage/access_control.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/strategy_manage/access_control.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/strategy_manage/command_control.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/strategy_manage/command_control.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_network.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_network.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_system.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_system.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_system_parameter.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/config_system_parameter.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/confirm_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/confirm_config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/interface_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/interface_config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/Job_approval.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/Job_approval.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/extend_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/extend_config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/outbound_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/outbound_config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/system_manage/security_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/system_manage/security_config.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/access_authorize.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/access_authorize.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/apppub_replay.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/apppub_replay.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/authorizes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/authorizes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/command_authorize.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/command_authorize.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/department_of_management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/department_of_management.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/device_account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/device_account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/dynamic_token.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/dynamic_token.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/equipment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/equipment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/history_sessions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/history_sessions.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/massage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/massage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/overview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/overview.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/sessions_graphic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/sessions_graphic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/sessions_search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/sessions_search.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/shouquan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/shouquan.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/useless/text_replay.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/useless/text_replay.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/user/role_manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/role_manage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/user/user_group.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/user_group.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/AccessPolicyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/AccessPolicyDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/AccessPolicyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/AccessPolicyMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubAccountDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubAccountDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubProgramMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubServerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubServerDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdPolicyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdPolicyDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdPolicyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdPolicyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdgroupDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdgroupDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdgroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CmdgroupMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabCommandLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabCommandLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptConfigDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptConfigDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptConfigMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/CrontabScriptMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DepartmentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceAccountDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceAccountDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceTypeMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/GroupDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/GroupDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/GroupDeviceAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/GroupDeviceAccountMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/GroupMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/GroupMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/SystemMessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/SystemMessageMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ApppubAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ApppubAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Device.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Device.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/DeviceAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/DeviceAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/AccessPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/AccessPolicy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ApppubServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/ApppubServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/CmdPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/CmdPolicy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Cmdgroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Cmdgroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/CrontabCommandLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/CrontabCommandLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/CrontabScriptConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/CrontabScriptConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/Department.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/SystemMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/domain/SystemMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/AccessPolicyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/AccessPolicyService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubAccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubAccountService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubProgramService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubProgramService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubServerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubServerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/ApppubService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/CmdPolicyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/CmdPolicyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/CmdgroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/CmdgroupService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/CrontabScriptConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/CrontabScriptConfigService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DepartmentService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DeviceAccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DeviceAccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DeviceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/DeviceService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/GroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/GroupService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/LoginLogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/LoginLogService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/AccessPolicyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/AccessPolicyServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubAccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubAccountServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubProgramServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubServerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubServerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ApppubServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/CmdPolicyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/CmdPolicyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/CmdgroupServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/CmdgroupServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/CrontabScriptConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/CrontabScriptConfigServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DepartmentServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DeviceAccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DeviceAccountServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DeviceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/DeviceServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportTemplateServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportTemplateServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/ExportServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/GroupServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/GroupServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/LoginLogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/LoginLogServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/service/impl/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/AdOperate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/AdOperate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/DeleteDepartmentQuartz.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/UpdateDepartmentCount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/UpdateDepartmentCount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyApppubController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyApppubController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyDeviceAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyDeviceAccountController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyGroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/AccessPolicyUserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ApppubAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ApppubAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ApppubServerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ApppubServerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyDeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyDeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyGroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdPolicyUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdgroupCmdController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdgroupCmdController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdgroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CmdgroupController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigLdapAdController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigLdapAdController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabCommandLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabCommandLogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigDeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigDeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptConfigGroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/CrontabScriptUserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DepartmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DeviceAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DeviceAccountController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/DeviceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/GroupDeviceAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/GroupDeviceAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/IndexController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginLogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginLogController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/OperatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/OperatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/SystemInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/SystemInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UploadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UploadFileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UploadFileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserGroupUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserGroupUserController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +441,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/longersec/blj/dao" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/bower_components/treeview" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -371,7 +451,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.20387357" />
   </component>
   <component name="RecentsManager">
@@ -379,12 +459,16 @@
       <recent name="com.longersec.blj.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\堡垒机\code\blj_new\src\main\webapp\bower_components\treeview" />
       <recent name="C:\Users\Administrator\Desktop\堡垒机\code\blj_new\src\main\java\com\longersec\blj\dao" />
       <recent name="C:\Users\Administrator\Desktop\堡垒机\code\blj_new\src\main\java\com\longersec\blj\domain" />
       <recent name="C:\Users\Administrator\Desktop\堡垒机\code\blj_new\src\main\webapp\WEB-INF\lib" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.7">
+    <configuration name="regExpUtil.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/webapp/js/common/regExpUtil.js" working-dir="$PROJECT_DIR$/src/main/webapp/js/common">
+      <method v="2" />
+    </configuration>
     <configuration name="Tomcat 9.0.7" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.7" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
@@ -567,6 +651,11 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.regExpUtil.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -607,7 +696,13 @@
       <workItem from="1597893988544" duration="16123000" />
       <workItem from="1597969471718" duration="104000" />
       <workItem from="1597969613912" duration="29579000" />
-      <workItem from="1598011262769" duration="2174000" />
+      <workItem from="1598011262769" duration="9770000" />
+      <workItem from="1598056619731" duration="31657000" />
+      <workItem from="1598149808878" duration="2060000" />
+      <workItem from="1598154089363" duration="24938000" />
+      <workItem from="1598228473116" duration="27134000" />
+      <workItem from="1598265875552" duration="99000" />
+      <workItem from="1598266003834" duration="337000" />
     </task>
     <servers />
   </component>
@@ -624,10 +719,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" width="1089" height="756" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1597711636957" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1598006031792">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1598253990406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1598006031792" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1598253990406" />
     <state x="389" y="90" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1597710996267">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -636,18 +731,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="557" y="318" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1536.824@0.0.1536.824" timestamp="1597710566632" />
-    <state x="524" y="114" key="#xdebugger.evaluate" timestamp="1598002499539">
+    <state x="524" y="114" key="#xdebugger.evaluate" timestamp="1598264234824">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="524" y="114" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1598002499539" />
+    <state x="524" y="114" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1598264234824" />
     <state x="327" y="5" key="CommitChangelistDialog2" timestamp="1597729505055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="327" y="5" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1597729505055" />
-    <state width="518" height="438" key="DebuggerActiveHint" timestamp="1598011784803">
+    <state width="518" height="438" key="DebuggerActiveHint" timestamp="1598264274865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="518" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1598011784803" />
+    <state width="518" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1598264274865" />
     <state x="351" y="134" width="792" height="670" key="EditFileWatcherDialog" timestamp="1597970766720">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -656,90 +751,90 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="102" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597796736315" />
-    <state width="1144" height="261" key="GridCell.Tab.0.bottom" timestamp="1598013487944">
+    <state width="1144" height="198" key="GridCell.Tab.0.bottom" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598013487944" />
-    <state width="1144" height="261" key="GridCell.Tab.0.center" timestamp="1598013487944">
+    <state width="1144" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.0.center" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598013487944" />
-    <state width="1144" height="261" key="GridCell.Tab.0.left" timestamp="1598013487944">
+    <state width="1144" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.0.left" timestamp="1598264369814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598013487944" />
-    <state width="1144" height="261" key="GridCell.Tab.0.right" timestamp="1598013487944">
+    <state width="1144" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598264369814" />
+    <state width="1144" height="198" key="GridCell.Tab.0.right" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598013487944" />
-    <state width="1144" height="261" key="GridCell.Tab.1.bottom" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.1.bottom" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.1.center" timestamp="1598013487511">
+    <state width="1144" height="198" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.1.center" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598013487511" />
-    <state width="1144" height="261" key="GridCell.Tab.1.left" timestamp="1598013487511">
+    <state width="1144" height="198" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.1.left" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598013487511" />
-    <state width="1144" height="261" key="GridCell.Tab.1.right" timestamp="1598013487511">
+    <state width="1144" height="198" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.1.right" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598013487511" />
-    <state width="1144" height="261" key="GridCell.Tab.2.bottom" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.2.bottom" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.2.center" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.2.center" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.2.left" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.2.left" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.2.right" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.2.right" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.3.bottom" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.3.bottom" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.3.center" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.3.center" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.3.left" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.3.left" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
-    <state width="1144" height="261" key="GridCell.Tab.3.right" timestamp="1598013487512">
+    <state width="1144" height="198" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
+    <state width="1144" height="198" key="GridCell.Tab.3.right" timestamp="1598264369815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1144" height="261" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1598013487512" />
+    <state width="1144" height="198" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1598264369815" />
     <state x="408" y="109" width="755" height="605" key="NewModule_or_Project.wizard" timestamp="1597711353682">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="408" y="109" width="755" height="605" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1597711353682" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1597992192839">
+    <state x="427" y="95" key="SettingsEditor" timestamp="1598265973035">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597992192839" />
-    <state x="377" y="112" width="782" height="600" key="find.popup" timestamp="1597994839048">
+    <state x="427" y="95" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1598265973035" />
+    <state x="229" y="141" width="782" height="600" key="find.popup" timestamp="1598256909376">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="377" y="112" width="782" height="600" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597994839048" />
+    <state x="229" y="141" width="782" height="600" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1598256909376" />
     <state x="178" y="113" key="new project wizard" timestamp="1597711158380">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="113" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1597711158380" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1598006019730">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1598248344809">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598006019730" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598248344809" />
   </component>
   <component name="ideajad">
     <property name="annotate" value="false" />

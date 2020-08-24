@@ -75,7 +75,7 @@
       <section class="content">
         <div class="row">
         <div class="col-xs-12">
-         <div class="box">
+           <div class="box">
                <div class="box-header">
                  <span class="box-title new-header">用户列表</span>
                </div>
@@ -125,6 +125,8 @@
                </div>
            </div>
         </div>
+
+
         <div class="modal modal-hides" id="modal-deluser">
           <div class="modal-dialog">
             <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
@@ -260,50 +262,46 @@
                   <span>确认密码：</span>
                   <input type="password" id="query_passwd" placeholder="&nbsp;&nbsp;&nbsp;请确认密码" value="">&nbsp;&nbsp;<span id="V_pwd" style="color: red;font-size:12px;"></span>
                 </div>
-<!--                 <div class="u-relevation1">-->
-<!--                      <span>有效期：</span>-->
-<!--                      <div class="input-group-addon">-->
-<!--                          <i class="fa fa-calendar" style="color:#a1a6a1b5"></i>-->
-<!--                      </div>-->
-<!--                      <div>-</div>-->
-<!--                      <input type="text" class="form-control" id="reservation">-->
-<!--                      <input type="text" class="form-control" id="reservation2">-->
-<!--                      <input id="add_long" type="checkbox" checked="checked">-->
-<!--                      <span id="long">永久有效</span>-->
-<!--                 </div>-->
-                <div class="u-emial">
-                  <p><span>Email：</span>
-                  <input type="text" id="email" placeholder="&nbsp;&nbsp;&nbsp;电子邮箱地址">&nbsp;&nbsp;<span id="Vemail" style="color: red;font-size:12px;"></span></p>
-                </div>
+                  <div class="u-method">
+                      <span>认证方式：</span>
+                      <select id="u-methods" onchange="methods(this.value);" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;">
+                          <option value="0">静态密码</option>
+                          <option value="1">动态口令</option>
+                          <option value="4">短信认证</option>
+                          <option value="3">指纹认证</option>
+                          <option value="2">密码+指纹</option>
+                      </select>
+                      <!--<img data-dismiss="modal" data-toggle="modal" data-target="#modal-default2" src="../../bower_components/dist/img/finger.png" id="div6" style="display: none;cursor: pointer;">-->
+                      <button type="button" class="btn newaddbtn"  data-dismiss="modal" data-toggle="modal" data-user="0" data-target="#modal-default2"  id="div6" style="display: none;margin-left: 5px;margin-bottom: 2px">指纹录入</button>
+                      <button type="button" class="btn newaddbtn"  data-toggle="modal"  data-target="#modal-dynamicAll" id="div4" style="display: none;margin-left: 5px;margin-bottom: 2px" onclick="resetL()">重置令牌</button>
+                      <!--  <img src="../../bower_components/dist/img/arrowhead.png" onclick="show3();"> -->
+                      <br>
+                      <div id="div8" style="display:none">
+                          <input id="sms_auth" type="checkbox"><span>&nbsp;短信</span>
+                          <input id="ad_auth" type="checkbox"><span>&nbsp;AD域</span>
+                          <input id="radius_auth" type="checkbox"><span>&nbsp;RADIUS</span><br>
+                          <input id="ldap_auth" type="checkbox"><span>&nbsp;LADP</span>
+                          <input id="email_auth" type="checkbox" class="input"><span>&nbsp;Email</span>
+                          <input id="weixin_auth" type="checkbox" class="input"><span>&nbsp;微信</span>
+                      </div>
+                      <br>
+                  </div>
                 <div class="u-tel">
                   <p> <span id="tel_sign">*</span>
                       <span>手机：</span>
                       <input type="text" id="mobile" maxlength="11">&nbsp;&nbsp;<span id="Vmobile" style="color: red;font-size:12px;"></span></p>
                 </div>
-                <div class="u-method">
-                  <span>认证方式：</span>
-               <select id="u-methods" onchange="methods(this.value);" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;">
-                 <option value="0">静态密码</option>
-                 <option value="1">动态口令</option>
-                 <option value="4">短信认证</option>
-                 <option value="3">指纹认证</option>
-                 <option value="2">密码+指纹</option>
-                </select>
-                    <!--<img data-dismiss="modal" data-toggle="modal" data-target="#modal-default2" src="../../bower_components/dist/img/finger.png" id="div6" style="display: none;cursor: pointer;">-->
-                    <button type="button" class="btn newaddbtn"  data-dismiss="modal" data-toggle="modal" data-user="0" data-target="#modal-default2"  id="div6" style="display: none;margin-left: 5px;margin-bottom: 2px">指纹录入</button>
-                    <button type="button" class="btn newaddbtn"  data-toggle="modal"  data-target="#modal-dynamicAll" id="div4" style="display: none;margin-left: 5px;margin-bottom: 2px" onclick="resetL()">重置令牌</button>
-                 <!--  <img src="../../bower_components/dist/img/arrowhead.png" onclick="show3();"> -->
-                  <br>
-                  <div id="div8" style="display:none">
-                    <input id="sms_auth" type="checkbox"><span>&nbsp;短信</span>
-                    <input id="ad_auth" type="checkbox"><span>&nbsp;AD域</span>
-                    <input id="radius_auth" type="checkbox"><span>&nbsp;RADIUS</span><br>
-                    <input id="ldap_auth" type="checkbox"><span>&nbsp;LADP</span>
-                    <input id="email_auth" type="checkbox" class="input"><span>&nbsp;Email</span>
-                    <input id="weixin_auth" type="checkbox" class="input"><span>&nbsp;微信</span>
-                    </div>
-                   <br>
-                </div>
+                  <div class="u-relevation1">
+                      <span>有效期：</span>
+                      <div class="input-group-addon">
+                          <i class="fa fa-calendar" style="color:#a1a6a1b5"></i>
+                      </div>
+                      <div>-</div>
+                      <input type="text" class="form-control" id="reservation">
+                      <input type="text" class="form-control" id="reservation2">
+                      <input id="add_long" type="checkbox" checked="checked">
+                      <span id="long">永久有效</span>
+                  </div>
             </div>
                  <div class="modal-footer">
                     <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
@@ -325,7 +323,7 @@
                 <span class="modal-title">编辑用户</span>
               </div>
               <div class="modal-body">
-                  <div class="u-relevation1">
+            <!--      <div class="u-relevation1">
                       <span>有效期：</span>
                       <div class="input-group-addon">
                           <i class="fa fa-calendar" style="color:#a1a6a1b5"></i>
@@ -335,6 +333,10 @@
                       <input type="text" class="form-control" id="reservation2">
                       <input id="add_long" type="checkbox" checked="checked">
                       <span id="long">永久有效</span>
+                  </div>-->
+                  <div class="u-emial">
+                      <p><span>Email：</span>
+                          <input type="text" id="email" placeholder="&nbsp;&nbsp;&nbsp;电子邮箱地址">&nbsp;&nbsp;<span id="Vemail" style="color: red;font-size:12px;"></span></p>
                   </div>
                 <div class="u-qq">
                   <p><span>QQ：</span>
@@ -346,9 +348,10 @@
                 </div> 
                 <div class="u-remarks">
                   <p>
-                      <labe class="laa" for="messageContent"><span style="color: black">备注:</span></labe>
-                      <textarea align="left"  id="description" th:maxlength="64"></textarea>&nbsp;&nbsp;<span id="Vdescription" style="color: red;font-size:12px;" ></span>
+                      <labe class="laa" for="messageContent"><span style="color: black">描述:</span></labe>
+                      <textarea align="left"  id="description" th:maxlength="128"></textarea>&nbsp;&nbsp;<span id="Vdescription" style="color: red;font-size:12px;" ></span>
                     </p>
+                    <p style="font-size: 12px;color: #a4abb5;margin-left: 153px;margin-top: -15px;">长度为1-128个汉字或字符</p>
                  </div>
               </div><br>
                 <div class="modal-footer">
@@ -432,9 +435,10 @@
                               <span aria-hidden="true">&times;</span></button>
                           <span class="modal-title">提示</span>
                       </div>
-                      <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
-                          <p style="margin-left: -62px;" id="uploadError"></p>
-                      </div><br>
+                      <div style="height: 200px;overflow-y: auto;text-align: center">
+                          <p id="uploadError">
+                          </p>
+                      </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                           <button type="button" id="uploadInfo" class="btn newaddbtn" data-dismiss="modal">确定</button>

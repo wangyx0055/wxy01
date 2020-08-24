@@ -69,7 +69,7 @@ $(function() {
             $('#ad_edit_status').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].status);
             $('#ad_edit_username').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].username);
             $('#ad_edit_administrator').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].administrator);
-            $('#ad_edit_password').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].password);
+            $('#ad_edit_password').attr("placeholder","\xa0********");
             $('#ad_edit_filter_department').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].filter_department);
             $('#ad_edit_filter_username').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].filter_username);
             $('#ad_edit_filter_loginname').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].filter_loginname);
@@ -326,26 +326,38 @@ $(function() {
   function showRadius1(){
         $("#radiusid1").show();
     }
-    function hideRadius1(){
+    function hideRadius1() {
         $("#radiusid1").hide();
+    }
+    function showBiont() {
+        $("#url_body").show();
+    }
+    function hideBiont(){
+     $("#url_body").hide();
     }
 //生物认证配置
 $(function() {
     $('#biont_button').click(function() {
+        console.log($('#finger_status input[name="fingerstatus"]').val());
         var flag = CheckRecv();
         if (flag === false) return false;
+        if($('#finger_status input[name="fingerstatus"]:checked').val() == 1){
+            $("#bion_body").show();
+        }else if($('#finger_status input[name="fingerstatus"]:checked').val() == 0){
+            $("#bion_body").hide();
+        }
         $.ajax({
             url: "../../configFinger/editConfigFinger",
             type: "POST",
             data: {
                 id: $('#biont_id').val(),
                 url: $('#biont_url').val(),
-				status:$('#finger_status input[name="fingerstatus"]').val()
+				status:$('#finger_status input[name="fingerstatus"]:checked').val()
             },
             success: function(data) {
                 if (data.success) {
                     $("#biont_g").modal("hide");
-                    $('#finger_status').text($('#finger_status input[name="fingerstatus"]').val() == 1 ? '开启': '关闭');
+                    $('#finger_status1').text($('#finger_status input[name="fingerstatus"]:checked').val() == 1 ? '开启': '关闭');
                     $("#modal-success .modal-title").text('成功');
                     $("#modal-success .modal-body").text('编辑成功!');
                     $("#modal-success").modal();
@@ -378,14 +390,16 @@ $.ajax({
         if (data.success) {
             $('#biont_id').val(data.data[0].id);
             $('#biont_url1').html(data.data[0].url);
-			if (data.data[0].status == 1) {
+		/*	if (data.data[0].status == 1) {
                 $('#finger_status input[name="fingerstatus"]').get(0).checked = true;
-                $('#finger_status').html("开启");
+                $('#finger_status1').html("开启");
 
             } else {
                 $('#finger_status input[name="fingerstatus"]').get(1).checked = true;
-                $('#finger_status').html("关闭");
-            }
+                $('#finger_status1').html("关闭");
+            }*/
+            $('#finger_status input[name="fingerstatus"]').get(0).checked = true;
+            $('#finger_status1').html("开启");
         } else {
             $("#modal-danger .modal-title").text('失败');
             $("#modal-danger .modal-body").text("编辑失败!");
@@ -689,7 +703,7 @@ $('#ad_edit_administrator').blur(function () {
     var ad_edit_administrator = $('#ad_edit_administrator').val();
     if (ad_edit_administrator == "") {
         flag = false;
-        $('#Vpassword').text("请输入管理员DN");
+        $('#Vadministrator').text("请输入管理员DN");
     }
 });
 $('#ad_edit_administrator').focus(function () {

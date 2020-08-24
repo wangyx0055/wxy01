@@ -23,7 +23,7 @@ public interface UserDao {
 
 	boolean deleteUselessUser(@Param("department") int department);
 		
-	public List<Users> selectNameAndId(@Param("id")Integer id);
+	public List<Users> selectNameAndId(@Param("id")Integer id, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
     public User checkLogin(String username);
     
@@ -41,7 +41,7 @@ public interface UserDao {
 
     public Boolean editstatus(User user);
 
-    public List<User> selectAll();
+    public List<User> selectAll(@Param("id") int id);
     
     public int total();
 

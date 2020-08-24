@@ -65,6 +65,7 @@ function showEndTime() {
             autoApply: false,
             singleDatePicker: true,
             opens: "right",
+            drops:"up",
             startDate: minDate,
             minDate: $('#reservation2').val(),//动态获取截止日期的最小取值范围
         }
@@ -100,6 +101,7 @@ $('#add_long').click(() => {
                 autoApply: false,
                 singleDatePicker: true,
                 opens: "left",
+                drops:"up",
                 startDate: minDate,
                 minDate: minDate,
             }
@@ -111,6 +113,7 @@ $('#add_long').click(() => {
                 autoApply: false,
                 singleDatePicker: true,
                 opens: "right",
+                drops:"up",
                 startDate: minDate,
                 minDate: minDate,
             }
@@ -149,7 +152,7 @@ var regexp = {
     username:/^([A-Za-z]|\-|\_|\(|\)|[0-9]){0,32}$/,
     name:/^([A-Za-z]|[\u4e00-\u9fa5]|\-|\@|\_|[0-9]){0,32}$/,
     length:/^\S{0,32}$/,
-    length_des:/^\S{0,64}$/,
+    length_des:/^\S{0,128}$/,
 }
 //用户名
 //失去焦点，移出输入框
@@ -169,7 +172,6 @@ $('#username').blur(function(){
             //进行重复判断
             checkusername();
         }
-
     }
 });
 // 获取焦点，重新输入
@@ -182,7 +184,7 @@ $('#groupid').change(function () {
     if ($('#groupid').val()!=null){
         $('#Vgroup').text('');
     }
-})
+});
 
 // 检查重名
 function checkusername(){
@@ -220,6 +222,9 @@ $('#realname').focus(function(){
 $('#password').blur(function(){
     var FORMATE = new RegExp("^(?![A-Za-z0-9]+$)(?![a-z0-9\\W]+$)(?![A-Za-z\\W]+$)(?![A-Z0-9\\W]+$)[a-zA-Z0-9\\W]{8,32}$");
     var passwd = $('#password').val();
+    if($("#query_passwd").val()!==""&&passwd==$("#query_passwd").val()){
+        $("#V_pwd").text("");
+    }
     $.ajax({
         url:"../../user/verify",
         type:"POST",
@@ -321,7 +326,7 @@ $('#description').blur(function(){
     var description = $('#description').val();
     if(description!=''){
         if (!regexp.length_des.test(description)){
-            $('#Vdescription').text('最长64个字符');
+            $('#Vdescription').text('超过限制长度');
         }
     }
 });
@@ -588,6 +593,7 @@ function clearT(){
     $('#reservation2').prop('disabled', true);
     $('#reservation').val('');
     $('#reservation2').val('');
+    $("#add_long").prop("checked", true);
 
 }
 
@@ -860,13 +866,19 @@ $("#upload").off().on("click", function () {
                 $("#modal-danger .modal-body").text('导入失败!');
                 $("#modal-danger").modal();
             }
-            loadAJAX('#userlist');
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                    if (data.errorInfo.length !== 0) {
+                        $("#modal-uploadInfo").modal();
+                        for(let item of data.errorInfo) {
+                            $('#uploadError').append(item+"<br/>");
+                        }
+                        $('#uploadError').append("----详细请看文档和日志");
+                    }
                 }
             },1500);
+            loadAJAX('#userlist');
         },
         error: function () {
 

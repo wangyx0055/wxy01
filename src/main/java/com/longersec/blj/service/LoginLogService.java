@@ -26,5 +26,10 @@ public interface LoginLogService {
 	public List<Object> selectByUser(String interval,String start_date, String end_date, int page_start, int page_length);
 	
 	public List<Object> selectProtocolBydate(String interval,String start_date, String end_date, int page_start, int page_length);
+
+	public List<Map<String, Object>> selectLast30Day();
+
+	public List<Map<String,Object>> selectByUserMonth();
+
 }
 

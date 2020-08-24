@@ -22,7 +22,7 @@ public interface UserService {
 
 	int selectOldDepartment(int id);
 
-	public List<Users> selectNameAndId(Integer id);
+	public List<Users> selectNameAndId(Integer id, int page_start, int page_length);
 
     public User checkLogin(String username);
     

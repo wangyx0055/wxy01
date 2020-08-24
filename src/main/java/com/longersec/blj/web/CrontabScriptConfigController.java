@@ -1,5 +1,6 @@
 package com.longersec.blj.web;
 
+import com.longersec.blj.domain.AccessPolicy;
 import com.longersec.blj.domain.CrontabScriptConfig;
 import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.domain.User;
@@ -62,6 +63,18 @@ public class CrontabScriptConfigController {
 			crontabScriptConfigs = (ArrayList<CrontabScriptConfig>)resultCrontabScriptConfigs.get(0);
 			total = ((ArrayList<Long>) resultCrontabScriptConfigs.get(1)).get(0);
 		}
+
+		for (CrontabScriptConfig crontabScriptConfig1 : crontabScriptConfigs) {
+			if(crontabScriptConfig1.getDepartment()!=0) {
+				List<String> allParentName = departmentService.findAllParentName(crontabScriptConfig1.getDepartment());
+				StringBuilder stringBuilder = new StringBuilder();
+				for (Object strings : allParentName) {
+					stringBuilder.append(strings).append("/");
+				}
+				crontabScriptConfig1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
+			}
+		}
+
 		JSONArray jsonArray = JSONArray.fromObject(crontabScriptConfigs);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
@@ -78,6 +91,10 @@ public class CrontabScriptConfigController {
 		List<Integer> device 		=  	_device==null?null:Arrays.asList(_device);
 		List<Integer> devicegroup 	= 	_devicegroup==null?null:Arrays.asList(_devicegroup);	
 		JSONObject result = new JSONObject();
+
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		crontabScriptConfig.setDepartment(user.getDepartment());
+
         //操作日志
 		OperatorLog operatorLog =Operator_log.log(request, session);
 		operatorLog.setModule("执行任务");

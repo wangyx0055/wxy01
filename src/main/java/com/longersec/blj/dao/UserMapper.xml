@@ -239,9 +239,10 @@
 
 	<select id="selectNameAndId" resultMap="users">
 		SELECT g.id as user_id,g.username,g.realname FROM lsblj_user g INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
-                                                 lsblj_department ld,
-                                                 (SELECT @id :=#{id}) pd
-WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON g.department=T.id ORDER BY g.username ASC;
+        lsblj_department ld,
+        (SELECT @id :=#{id}) pd
+		WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON g.department=T.id ORDER BY g.username ASC
+		 LIMIT #{page_start},#{page_length};
 	</select>
 
 	<select id="checkLogin" resultType="com.longersec.blj.domain.User" parameterType="String">
@@ -276,11 +277,13 @@ WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR i
     </select>
     <select id="selectAll" resultType="com.longersec.blj.domain.User">
         SELECT
-                SQL_CALC_FOUND_ROWS
-                <include refid="zd"/>,lsblj_role.name rolename, lsblj_department.name depart_name
-                FROM lsblj_user
-                LEFT JOIN lsblj_role ON lsblj_user.role_id=lsblj_role.id
-                LEFT JOIN lsblj_department ON lsblj_user.department=lsblj_department.id
+        SQL_CALC_FOUND_ROWS
+        <include refid="zd"/>,lsblj_role.name rolename, T.name depart_name
+        FROM lsblj_user
+        LEFT JOIN lsblj_role ON lsblj_user.role_id=lsblj_role.id
+	    INNER JOIN (SELECT id ,parent_id,`name` FROM lsblj_department ld,
+	    (SELECT @id :=#{id}) pd
+	    WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON lsblj_user.department=T.id
     </select> 
     
     <select id="total" resultType="java.lang.Integer">

@@ -6,6 +6,7 @@ import com.longersec.blj.domain.*;
 import com.longersec.blj.service.*;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -90,7 +91,8 @@ public class ExportServiceImpl implements ExportService {
         // 写表头
         String[] headers = {"ID","部门名称","用户数","主机数","描述"};
         csvWriter.writeRecord(headers);
-        ArrayList<Department> datas = (ArrayList<Department>) departmentDao.selectAll();
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        ArrayList<Department> datas = (ArrayList<Department>) departmentDao.findSubNodes(principal.getDepartment());
         for (Department data : datas) {
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getName());
@@ -110,7 +112,8 @@ public class ExportServiceImpl implements ExportService {
         // 写表头
         String[] headers = {"ID","服务器名称","服务器地址","端口","账号","密码","描述"};
         csvWriter.writeRecord(headers);
-        ArrayList<ApppubServer> datas = (ArrayList<ApppubServer>) ApppubServerDao.selectAll();
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        ArrayList<ApppubServer> datas = (ArrayList<ApppubServer>) ApppubServerDao.selectAll(principal.getDepartment());
         for (ApppubServer data : datas) {
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getName());
@@ -132,7 +135,8 @@ public class ExportServiceImpl implements ExportService {
         // 写表头
         String[] headers = {"ID","服务器名称","部门","应用名称","应用程序","用户","访问参数","描述"};
         csvWriter.writeRecord(headers);
-        ArrayList<ApppubAccount> datas = (ArrayList<ApppubAccount>) ApppubAccountDao.selectAll();
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        ArrayList<ApppubAccount> datas = (ArrayList<ApppubAccount>) ApppubAccountDao.selectAll(principal.getDepartment());
         for (ApppubAccount data : datas) {
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getAppservername());
@@ -154,6 +158,7 @@ public class ExportServiceImpl implements ExportService {
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
         String[] headers = {"ID","程序名称","程序路径","程序参数","描述"};
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
         csvWriter.writeRecord(headers);
         ArrayList<ApppubProgram> datas = (ArrayList<ApppubProgram>) ApppubProgramDao.selectAll();
         for (ApppubProgram data : datas) {
@@ -174,8 +179,9 @@ public class ExportServiceImpl implements ExportService {
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
         String[] headers = {"ID","任务名称","命令/脚本","描述","执行方式"};
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
         csvWriter.writeRecord(headers);
-        ArrayList<CrontabScriptConfig> datas = (ArrayList<CrontabScriptConfig>) CrontabScriptConfigDao.selectAll();
+        ArrayList<CrontabScriptConfig> datas = (ArrayList<CrontabScriptConfig>) CrontabScriptConfigDao.selectAll(principal.getDepartment());
         for (CrontabScriptConfig data : datas) {
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getName());
@@ -194,6 +200,7 @@ public class ExportServiceImpl implements ExportService {
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
         String[] headers = {"时间", "来源ip","用户名","姓名","部门","设备地址","系统账号","登陆方式","状态","备注"};
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
         csvWriter.writeRecord(headers);
         ArrayList<LoginLog> datas = (ArrayList<LoginLog>) loginLogDao.selectAll();
         for (LoginLog data : datas) {
@@ -220,6 +227,7 @@ public class ExportServiceImpl implements ExportService {
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
         String[] headers = {"时间", "事件","内容","告警等级","告警方式","结果"};
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
         csvWriter.writeRecord(headers);
         //这里如果数据不是String类型，请进行转换
         csvWriter.write("2020-03-18 18:15:49.0");
@@ -247,15 +255,16 @@ public class ExportServiceImpl implements ExportService {
         csvWriter.close();
         return tempFile;
     }
-//passsword
-   @Override
-        public File createTempFile_Password2() throws IOException {
+
+    @Override
+    public File createTempFile_Password2() throws IOException {
         File tempFile = File.createTempFile("vehicle", ".csv");
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
         String[] headers = {"ID", "应用服务器","应用名称","程序名称"};
         csvWriter.writeRecord(headers);
-        ArrayList<ApppubServer> datas = (ArrayList<ApppubServer>) ApppubServerDao.selectAll();
+         User principal = (User)SecurityUtils.getSubject().getPrincipal();
+         ArrayList<ApppubServer> datas = (ArrayList<ApppubServer>) ApppubServerDao.selectAll(principal.getDepartment());
         for (ApppubServer data : datas) {
             //这里如果数据不是String类型，请进行转换
             csvWriter.write(data.getId().toString());
@@ -278,7 +287,8 @@ public class ExportServiceImpl implements ExportService {
         // 写表头
         String[] headers = {"ID", "设备地址","设备名称","设备分组","系统类型","登录协议","设备账号"};
         csvWriter.writeRecord(headers);
-        ArrayList<Device> datas = (ArrayList<Device>) deviceDao.selectAll();
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        ArrayList<Device> datas = (ArrayList<Device>) deviceDao.selectAll(principal.getDepartment());
         for (Device data : datas) {
             //这里如果数据不是String类型，请进行转换
             csvWriter.write(data.getId().toString());
@@ -302,7 +312,8 @@ public class ExportServiceImpl implements ExportService {
         // 写表头
         String[] headers = {"ID", "用户名","姓名","部门名称","角色","状态","邮箱","QQ","微信","手机号码"};
         csvWriter.writeRecord(headers);
-        ArrayList<User> datas = (ArrayList<User>) userDao.selectAll();
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        ArrayList<User> datas = (ArrayList<User>) userDao.selectAll(principal.getDepartment());
         for (User data : datas) {
             //这里如果数据不是String类型，请进行转换
             csvWriter.write(data.getId().toString());
@@ -328,7 +339,8 @@ public class ExportServiceImpl implements ExportService {
         // 写表头
         String[] headers = {"ID","组名","部门","描述","成员数"};
         csvWriter.writeRecord(headers);
-        ArrayList<Group> datas = (ArrayList<Group>) groupDao.listByType(type);
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        ArrayList<Group> datas = (ArrayList<Group>) groupDao.listByType(type,principal.getDepartment());
         for (Group data : datas) {
             //这里如果数据不是String类型，请进行转换
             csvWriter.write(data.getId().toString());
@@ -349,7 +361,8 @@ public class ExportServiceImpl implements ExportService {
         // 写表头
         String[] headers = {"ID", "设备名","IP","系统类型","部门名称","描述","账号数"};
         csvWriter.writeRecord(headers);
-        ArrayList<Device> datas = (ArrayList<Device>) deviceDao.selectAll();
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        ArrayList<Device> datas = (ArrayList<Device>) deviceDao.selectAll(principal.getDepartment());
         for (Device data : datas) {
             //这里如果数据不是String类型，请进行转换
             String checknameById = deviceTypeDao.checknameById(data.getOs_type());

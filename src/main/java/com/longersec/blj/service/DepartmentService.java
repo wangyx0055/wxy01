@@ -77,5 +77,8 @@ public interface DepartmentService {
 
 	/** AD域导入部门判断**/
 	Department selectByNameAndParentId(String name,int parent_id);
+
+	/**删除策略和执行任务关联信息 **/
+	boolean deleteUseless(Integer id);
 }
 

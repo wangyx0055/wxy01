@@ -20,7 +20,7 @@ public interface CmdPolicyService {
 
 	public boolean delCmdPolicy(List<String> ids);
 
-	public List<Object> findAll(CmdPolicy cmdPolicy,String sname ,Integer type ,String stat ,String cot ,int page_start, int page_length);
+	public List<Object> findAll(CmdPolicy cmdPolicy,String sname ,Integer type ,String stat ,String cot ,int page_start, int page_length, List<Integer> depart_ids);
 
     public CmdPolicy checkName(String name);
     

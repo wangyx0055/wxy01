@@ -173,4 +173,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public Department selectByNameAndParentId(String name, int parent_id) {
 		return DepartmentDao.selectByNameAndParentId(name,parent_id);
 	}
+
+	@Override
+	public boolean deleteUseless(Integer id) {
+		return DepartmentDao.deleteUseless(id);
+	}
 }

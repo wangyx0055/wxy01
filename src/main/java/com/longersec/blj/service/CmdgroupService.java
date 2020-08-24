@@ -12,7 +12,7 @@ public interface CmdgroupService {
 
 	public boolean delCmdgroup(List<Integer> ids);
 
-	public List<Object> findAll(Cmdgroup cmdgroup, String sname,Integer type,int page_start, int page_length);
+	public List<Object> findAll(Cmdgroup cmdgroup, String sname,Integer type,int page_start, int page_length, List<Integer> depart_ids);
 
 	public List<Cmd> selectNameAndId();
 

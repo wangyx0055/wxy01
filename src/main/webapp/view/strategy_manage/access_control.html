@@ -45,6 +45,7 @@
                <div class="input-group margin">
                  <select class="form-control" id="Distinguish">
                    <option value="1" selected>自动识别</option>
+                   <option value="5" >部门</option>
                    <option value="2" >策略名称</option>
                    <option value="3" >描述</option>
                    <option value="4" >状态</option>
@@ -65,8 +66,9 @@
                <thead>
                    <tr>
                        <td style="width: 55px;padding-right: 0px !important;"><span>选择</span></td>
-                       <td style="width: 25%"><span>策略名称</span></td>
-                       <td style="width: 30%"><span>描述</span></td>
+                       <td style="width: 20%"><span>策略名称</span></td>
+                       <td style="width: 20%"><span>部门</span></td>
+                       <td style="width: 20%"><span>描述</span></td>
                        <td style="width: 15%"><span>状态</span></td>
                        <td><span>操作</span></td>
                    </tr>
@@ -367,7 +369,8 @@
                  <p>每行输入一个IP地址或地址段，不支持空格，例如：<br>192.168.1.10或192.168.1.10-192.168.1.100</p>
                 <div class="ac-desc">
                   <span>描述:</span>
-                  <textarea id="add_desc"></textarea>
+                  <textarea id="add_desc" maxlength="128"></textarea>
+                    <p style="font-size: 12px;margin-left: 123px;color: #a4abb5;margin-top: 0px">描述最长128个汉字或字符</p>
                 </div>
                  <div class="modal-footer">
                  <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>  
@@ -1046,7 +1049,8 @@
                     <p>每行输入一个IP地址或地址段，不支持空格，支持子网掩<br>码，例如：192.168.1.10-192.168.1.100或192.168.1.10/24</p>
                     <div class="ac-desc">
                         <span>描述:</span>
-                        <textarea id="edit_desc"></textarea>
+                        <textarea id="edit_desc" maxlength="128"></textarea>
+                        <p style="font-size: 12px;color: #a4abb5;margin-left: 92px">长度为1-128个汉字或字符</p>
                     </div>
                     <div class="modal-footer">
                         <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" >取消</button>

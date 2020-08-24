@@ -32,12 +32,14 @@ public class AccessPolicyUserController {
 
 	@RequestMapping("/findAccessPolicyUserAndUser")
 	@ResponseBody
-	public JSONObject findAccessPolicyUserAndUser(@RequestParam("pid") Integer pid) {
+	public JSONObject findAccessPolicyUserAndUser(@RequestParam("pid") Integer pid,
+	                                              @RequestParam(value = "page_start",required = false)int page_start,
+	                                              @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<Users> resultAccessPolicyUsers = new ArrayList<Users>();
 		ArrayList<Users> resultUsers = new ArrayList<Users>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyUsers = (ArrayList<Users>) accessPolicyUserService.selectById(pid);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment());
+		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultAccessPolicyUsers);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultAccessPolicyUsers);

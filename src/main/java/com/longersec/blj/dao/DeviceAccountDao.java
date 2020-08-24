@@ -32,7 +32,7 @@ public interface DeviceAccountDao {
      
     public DeviceAccount getById(@Param("id")Integer id);
     
-    public List<Deviceaccess> selectNameAndId(@Param("id")Integer id);
+    public List<Deviceaccess> selectNameAndId(@Param("id")Integer id, @Param("page_start")int page_start, @Param("page_length")int page_length);
     
     public int total();
 

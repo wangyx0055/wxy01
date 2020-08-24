@@ -3,26 +3,51 @@ let listUserGroup = null;
 let listDeviceAccount = null;
 let listDeviceGroup = null;
 let listCmdGroup = null;
-function listAll(){
+const page_length = 200;
+$('#modal-primary33').on('show.bs.modal', function (event){
+	let page_start5 =0;
+	let page_start6 =0;
 	//关联显示用户
 	$.ajax({
 		url:"../../user/listUser",
 		type:"POST",
 		dataType:"json",
 		data:{
-			start:0,
-			length:10000,
+			start:page_start5,
+			length:page_length,
 		},
 		success:function (data){
-			$('#add_user1').html('');
-			$('#add_user').html('');
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
-				if(data[i].username.length>0)
-					$('#add_user').html($('#add_user').html()+'<div><input value="'+data[i].id+'" type="checkbox"><span>'+data[i].username+"["+data[i].realname+"]"+'</span></div>');
-			};
-			RelativeMethods('');//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+			for (let item of data) {
+				$('#add_user').append( '<div><input value="' + item.id + '" type="checkbox"><span>' + item.username + "[" + item.realname + "]" + '</span></div>')
+			}
+			RelativeMethods('');//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面4
 			listAddUser = $('#add_user').html();//保存显示出来的原本的数据
+			//慢加载
+			$('#add_user').on("scroll",function () {
+				let viewH =$(this).height(),//可见高度
+					contentH =$(this).get(0).scrollHeight,//内容高度
+					scrollTop =$(this).scrollTop();//滚动高度
+				if(contentH - viewH - scrollTop <= 60) {
+					page_start5 += 500;
+					$.ajax({
+						url: "../../user/listUser",
+						type: "POST",
+						data: {
+							start:page_start5,
+							length:page_length,
+						},
+						success: function (data) {
+							var data = data.data;
+							for (let item of data) {
+								$('#add_user').append( '<div><input value="' + item.id + '" type="checkbox"><span>' + item.username + "[" + item.realname + "]" + '</span></div>')
+							}
+							RelativeMethods('');//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面4
+							listAddUser = $('#add_user').html();//保存显示出来的原本的数据
+						},
+					})
+				}
+			});
 		},
 		error:function(){}
 	})
@@ -33,50 +58,89 @@ function listAll(){
 		dataType:"json",
 		data:{
 			type: 0,
-			start:0,
-			length:10000,
+			start: page_start6,
+			length: page_length,
 		},
-		success:function (data){
-			$('#add_group').html('');
-			$('#add_group1').html('');
+		success:function (data) {
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
-				if(data[i].name.length>0)
-					$('#add_group').html($('#add_group').html()+'<div><input value="'+data[i].id+'" type="checkbox"><span>'+data[i].name+'</span></div>');
-			};
+			for (let item of data) {
+				$('#add_group').append('<div><input value="' + item.id + '" type="checkbox"><span>' + item.name + '</span></div>');
+			}
 			RelativeMethods(1);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
 			listUserGroup = $('#add_group').html();//保存显示出来的原本的数据
-		},
-		error:function(){}
+			//慢加载
+			$('#add_group').on("scroll", function () {
+				let viewH = $(this).height(),//可见高度
+					contentH = $(this).get(0).scrollHeight,//内容高度
+					scrollTop = $(this).scrollTop();//滚动高度
+				if (contentH - viewH - scrollTop <= 60) {
+					page_start6 += 500;
+					$.ajax({
+						url: "../../group/listGroup",
+						type: "POST",
+						data: {
+							"type": 0,
+							start: page_start6,
+							length: page_length,
+						},
+						success: function (data) {
+							var data = data.data;
+							for (let item of data) {
+								$('#add_group').append('<div><input value="' + item.id + '" type="checkbox"><span>' + item.name + '</span></div>');
+							}
+							RelativeMethods(1);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+							listUserGroup = $('#add_group').html();//保存显示出来的原本的数据
+						},
+					})
+				}
+			});
+		}
 	})
+});
+$('#modal-primary55').on('show.bs.modal', function (event){
+	let page_start7 =0;
+	let page_start8 =0;
 	//关联显示设备账户
 	$.ajax({
 		url:"../../deviceAccount/listDeviceAccountNameIp",
 		type:"POST",
 		dataType:"json",
 		data:{
-			start:0,
-			length:10000,
+			start: page_start7,
+			length: page_length
 		},
 		success:function (data){
-			$('#add_device').html('');
-			$('#add_device1').html('');
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
-				if(data[i].username.length>0)
-					if (data[i].protocol_id==1){
-						data[i].protocol_id="ssh";
-					}else if (data[i].protocol_id==2){
-						data[i].protocol_id="rdp";
-					}else if(data[i].protocol_id==3){
-						data[i].protocol_id="telnet";
-					}else {
-						data[i].protocol_id="vnc";
-					}
-				$('#add_device').html($('#add_device').html()+'<div><input value="'+data[i].device_account_id+'" type="checkbox"><span>'+data[i].device_name+"["+data[i].username+"]"+"["+data[i].protocol_id+"]"+'</span></div>');
-			};
+			for(let item of data) {
+				$('#add_device').append('<div><input value="' + item.device_account_id + '" type="checkbox"><span>' + item.device_name + "[" + item.username + "]" + "[" + item.protocol_name + "]" + '</span></div>');
+			}
 			RelativeMethods(2);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
 			listDeviceAccount = $('#add_device').html();//保存显示出来的原本的数据
+			//慢加载
+			$('#add_device').on("scroll",function () {
+				let viewH =$(this).height(),//可见高度
+					contentH =$(this).get(0).scrollHeight,//内容高度
+					scrollTop =$(this).scrollTop();//滚动高度
+				if(contentH - viewH - scrollTop <= 60) {
+					page_start7 += 500;
+					$.ajax({
+						url: "../../deviceAccount/listDeviceAccountNameIp",
+						type: "POST",
+						data: {
+							start: page_start7,
+							length: page_length
+						},
+						success: function (data) {
+							var data = data.data;
+							for(let item of data) {
+								$('#add_device').append('<div><input value="' + item.device_account_id + '" type="checkbox"><span>' + item.device_name + "[" + item.username + "]" + "[" + item.protocol_name + "]" + '</span></div>');
+							}
+							RelativeMethods(2);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+							listDeviceAccount = $('#add_device').html();//保存显示出来的原本的数据
+						},
+					})
+				}
+			})
 		},
 		error:function(){}
 	})
@@ -86,23 +150,50 @@ function listAll(){
 		type:"POST",
 		dataType:"json",
 		data:{
-			type:1,
-			start:0,
-			length:10000,
+			type: 1,
+			start: page_start8,
+			length: page_length,
+			name: $('#searchIdG').val(),
 		},
 		success:function (data){
-			$('#add_devicegroup').html('');
-			$('#add_devicegroup1').html('');
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
-				if(data[i].name.length>0)
-					$('#add_devicegroup').html($('#add_devicegroup').html()+'<div><input value="'+data[i].id+'" type="checkbox"><span>'+data[i].name+'</span></div>');
-			};
+			for(let item of data){
+				$('#add_devicegroup').append('<div><input value="' + item.id + '" type="checkbox"><span>' +item.name + '</span></div>');
+			}
 			RelativeMethods(3);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
 			listDeviceGroup = $('#add_devicegroup').html();//保存显示出来的原本的数据
+			//慢加载
+			$('#add_devicegroup').on("scroll",function () {
+				let viewH =$(this).height(),//可见高度
+					contentH =$(this).get(0).scrollHeight,//内容高度
+					scrollTop =$(this).scrollTop();//滚动高度
+				if(contentH - viewH - scrollTop <= 60) {
+					page_start8 += 500;
+					$.ajax({
+						url: "../../group/listGroup",
+						type: "POST",
+						data: {
+							type: 1,
+							start: page_start8,
+							length: page_length,
+							name: $('#searchIdG').val(),
+						},
+						success: function (data) {
+							var data = data.data;
+							for(let item of data){
+								$('#add_devicegroup').append('<div><input value="' + item.id + '" type="checkbox"><span>' +item.name + '</span></div>');
+							}
+							RelativeMethods(3);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+							listDeviceGroup = $('#add_devicegroup').html();//保存显示出来的原本的数据
+						},
+					})
+				}
+			})
 		},
 		error:function(){}
 	})
+});
+$('#modal-primary44').on('show.bs.modal', function (event){
 	//关联显示命令集
 	$.ajax({
 		url:"../../cmdgroup/listCmdgroup",
@@ -113,19 +204,16 @@ function listAll(){
 			length:10000,
 		},
 		success:function (data){
-			$('#add_cmdgroup').html('');
-			$('#add_cmdgroup1').html('');
 			var data = data.data;
-			for(var i=0; i<data.length; i++){
-				if(data[i].name.length>0)
-					$('#add_cmdgroup').html($('#add_cmdgroup').html()+'<div><input value="'+data[i].id+'" type="checkbox"><span>'+data[i].name+'</span></div>');
+			for (let item of data) {
+				$('#add_cmdgroup').append('<div><input value="'+item.id+'" type="checkbox"><span>'+item.name+'</span></div>');
 			};
 			RelativeMethods(4);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
 			listCmdGroup = $('#add_cmdgroup').html();//保存显示出来的原本的数据
 		},
 		error:function(){}
 	})
-}
+});
 $(function(){
 //策略列表的显示
 	function AutoSearch(){
@@ -204,7 +292,12 @@ $(function(){
 						return '<input type="checkbox" name="chk[]" value='+data+'>';
 					}},
 				{ "data": "name" },
-				{ "data": "desc" },
+				{"data": "depart_name","render":function (data,type, row, meta) {
+						return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+row.topName+'">'+data+'</div>'
+					}},
+				{"data": "desc","render":function (data) {
+						return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+					}},
 				{
 					"data": "execute_action",
 					"render":function(data,type,row,mata){
@@ -247,7 +340,11 @@ $(function(){
 							'<a data-row="'+meta.row+'" data-toggle="modal" class="newcss2" data-target="#modal-default1" style="cursor:pointer;margin-left: 20px;" >删除</a>'+
 							'</a>'
 					}}
-			]
+			],
+			 "fnDrawCallback": function() {
+			 //提示工具
+			 $('#example2 div').tooltip()
+		 }
 		});
 	}
 	AutoSearch();
@@ -282,6 +379,9 @@ $(function(){
 						return '<input type="checkbox" name="chk1[]" value='+data+'>';
 					}},
 				{ "data": "name" },
+				{"data": "depart_name","render":function (data,type, row, meta) {
+						return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+row.topName1+'">'+data+'</div>'
+					}},
 				{ "data": "cmd", "render" : function(data, type, row, mata) {
 						return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:500px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
 						+data
@@ -359,12 +459,13 @@ $('#edit_cmdname').blur(function(){
 			$("#Vedit_cmdname").text("输入格式不正确");
 			return;
 		}
-})
+});
 //关联命令
 $('#modal-primary1').on('show.bs.modal',function(event){
 	$("#Vedit_cmdname").text("");
 	var button = $(event.relatedTarget) // Button that triggered the modal
 	var i = button.data('row');
+	$('#modal-primary1 .modal-title').text("关联命令["+$('#example2').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
 	$('#primary1_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 	$('#edit_cmdname').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].cmd);
 })
@@ -408,14 +509,18 @@ $('#relevance-cmd').click(function(){
 let ac_edit_user_list = null;
 let ac_edit_user1_list = null;
 $('#modal-primary3').on('show.bs.modal',function(event){
+	let page_start1 =0;
 	var button = $(event.relatedTarget) // Button that triggered the modal
 	var i = button.data('row');
+	$('#modal-primary3 .modal-title').text("关联用户["+$('#example2').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
 	$('#primary3_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 	$.ajax({
 		url:"../../cmdPolicyUser/findCmdPolicyUserAndUser",
 		type:"POST",
 		data:{
 			policy_id:$('#primary3_id').val(),
+			page_start:page_start1,
+			page_length:page_length
 		},
 		success:function(data){
 			var arr = data.data_users;
@@ -423,15 +528,41 @@ $('#modal-primary3').on('show.bs.modal',function(event){
 			//show
 			$('#edit_user').html('');
 			$('#edit_user1').html('');
-			for (var i = 0; i < arr.length; i++) {
-				$('#edit_user').html($('#edit_user').html()+'<div><input value="'+arr[i].user_id+'" type="checkbox"><span>'+arr[i].username+'</span></div>')
+			for (let item of arr) {
+				$('#edit_user').append( '<div><input value="' + item.user_id + '" type="checkbox"><span>' + item.username + "[" + item.realname + "]" + '</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
-				$('#edit_user1').html($('#edit_user1').html()+'<div><input value="'+arr1[i].user_id+'" type="checkbox"><span>'+arr1[i].username+'</span></div>')
+			for (let item1 of arr1) {
+				$('#edit_user1').append('<div><input value="' + item1.user_id + '" type="checkbox"><span>' + item1.username + "[" + item1.realname + "]" + '</span></div>')
 			}
 			RelativeMethods(5);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
-			ac_edit_user_list=$('#edit_user').html();
-			ac_edit_user1_list=$('#edit_user1').html();
+			ac_edit_user_list = $('#edit_user').html();
+			ac_edit_user1_list = $('#edit_user1').html();
+			//慢加载
+			$('#edit_user').on("scroll",function () {
+				let viewH =$(this).height(),//可见高度
+					contentH =$(this).get(0).scrollHeight,//内容高度
+					scrollTop =$(this).scrollTop();//滚动高度
+				if(contentH - viewH - scrollTop <= 60) {
+					page_start1 += 500;
+					$.ajax({
+						url:"../../cmdPolicyUser/findCmdPolicyUserAndUser",
+						type: "POST",
+						data: {
+							policy_id:$('#primary3_id').val(),
+							page_start:page_start1,
+							page_length:page_length
+						},
+						success: function (data) {
+							var arr = data.data_users;
+							for (let item of arr) {
+								$('#edit_user').append( '<div><input value="' + item.user_id + '" type="checkbox"><span>' + item.username + "[" + item.realname + "]" + '</span></div>')
+							}
+							RelativeMethods(5);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+							ac_edit_user_list = $('#edit_user').html();
+						},
+					})
+				}
+			});
 		},
 		error:function(){},
 	})
@@ -441,14 +572,18 @@ $('#modal-primary3').on('show.bs.modal',function(event){
 let ac_edit_device_list = null;
 let ac_edit_device1_list =null;
 $('#modal-primary5').on('show.bs.modal', function (event) {
+	let page_start2 =0;
 	var button = $(event.relatedTarget);// Button that triggered the modal
 	var i = button.data('row');
+	$('#modal-primary5 .modal-title').text("关联设备["+$('#example2').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
 	$('#primary5_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 	$.ajax({
 		url:"../../cmdPolicyDevice/findCmdPolicyDeviceAndUser",
 		type:"POST",
 		data:{
-			policy_id:$('#primary5_id').val(),
+			policy_id: $('#primary5_id').val(),
+			page_start:page_start2,
+			page_length:page_length
 		},
 		success:function(data) {
 			var arr = data.data_device;
@@ -456,33 +591,42 @@ $('#modal-primary5').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_device').html('');
 			$('#edit_device1').html('');
-			for (var i = 0; i < arr.length; i++) {
-				if (arr[i].protocol_id == 1) {
-					arr[i].protocol_id = "ssh";
-				} else if (arr[i].protocol_id == 2) {
-					arr[i].protocol_id = "rdp";
-				} else if (arr[i].protocol_id == 3) {
-					arr[i].protocol_id = "telnet";
-				} else {
-					arr[i].protocol_id = "vnc";
-				}
-				$('#edit_device').html($('#edit_device').html() + '<div><input value="' + arr[i].device_account_id + '" type="checkbox"><span>' + arr[i].device_name + "[" + arr[i].username + "]" + "[" + arr[i].protocol_id + "]" + '</span></div>')
+			for (let item of arr) {
+				$('#edit_device').append('<div><input value="' + item.device_account_id + '" type="checkbox"><span>' + item.device_name + "[" + item.username + "]" + "[" + item.protocol_name + "]" + '</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
-				if (arr1[i].protocol_id == 1) {
-					arr1[i].protocol_id = "ssh";
-				} else if (arr1[i].protocol_id == 2) {
-					arr1[i].protocol_id = "rdp";
-				} else if (arr1[i].protocol_id == 3) {
-					arr1[i].protocol_id = "telnet";
-				} else {
-					arr1[i].protocol_id = "vnc";
-				}
-				$('#edit_device1').html($('#edit_device1').html() + '<div><input value="' + arr1[i].device_account_id + '" type="checkbox"><span>' + arr1[i].device_name + "[" + arr1[i].username + "]" + "[" + arr1[i].protocol_id + "]" + '</span></div>')
+			//已选择数据
+			for(let item1 of arr1){
+				$('#edit_device1').append('<div><input value="' + item1.device_account_id + '" type="checkbox" ><span>' + item1.device_name + "[" + item1.username + "]" + "[" + item1.protocol_name + "]" + '</span></div>')
 			}
 			RelativeMethods(7);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
-			ac_edit_device_list=$('#edit_device').html();
-			ac_edit_device1_list=$('#edit_device1').html();
+			ac_edit_device_list = $('#edit_device').html();
+			ac_edit_device1_list = $('#edit_device1').html();
+			//慢加载
+			$('#edit_device').on("scroll",function () {
+				let viewH =$(this).height(),//可见高度
+					contentH =$(this).get(0).scrollHeight,//内容高度
+					scrollTop =$(this).scrollTop();//滚动高度
+				if(contentH - viewH - scrollTop <= 60) {
+					page_start2 += 500;
+					$.ajax({
+						url:"../../cmdPolicyDevice/findCmdPolicyDeviceAndUser",
+						type: "POST",
+						data: {
+							policy_id: $('#primary5_id').val(),
+							page_start:page_start2,
+							page_length:page_length
+						},
+						success: function (data) {
+							var arr = data.data_device;
+							for (let item of arr) {
+								$('#edit_device').append('<div><input value="' + item.device_account_id + '" type="checkbox"><span>' + item.device_name + "[" + item.username + "]" + "[" + item.protocol_name + "]" + '</span></div>')
+							}
+							RelativeMethods(7);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+							ac_edit_device_list = $('#edit_device').html();
+						},
+					})
+				}
+			})
 		},
 		error:function(){},
 	})
@@ -494,6 +638,7 @@ let ac_edit_cmdgroup1_list = null;
 $('#modal-primary2').on('show.bs.modal', function (event) {
 	var button = $(event.relatedTarget); // Button that triggered the modal
 	var i = button.data('row');
+	$('#modal-primary2 .modal-title').text("关联命令集["+$('#example2').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
 	$('#primary2_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 	$.ajax({
 		url:"../../cmdPolicyCmd/findCmdPolicyCmdAndUser",
@@ -507,10 +652,12 @@ $('#modal-primary2').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_cmdgroup').html('');
 			$('#edit_cmdgroup1').html('');
-			for (var i = 0; i < arr.length; i++) {
+			let len = arr.length;
+			for(let i=0; i<len; i++){
 				$('#edit_cmdgroup').html($('#edit_cmdgroup').html()+'<div><input value="'+arr[i].cmdgroup_id+'" type="checkbox"><span>'+arr[i].name+'</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
+			let len1 = arr1.length;
+			for(let i=0; i<len1; i++){
 				$('#edit_cmdgroup1').html($('#edit_cmdgroup1').html()+'<div><input value="'+arr1[i].cmdgroup_id+'" type="checkbox"><span>'+arr1[i].name+'</span></div>')
 			}
 			RelativeMethods(9);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
@@ -525,14 +672,18 @@ $('#modal-primary2').on('show.bs.modal', function (event) {
 let ac_edit_usergroup_list = null;
 let ac_edit_usergroup1_list = null;
 $('#modal-primary4').on('show.bs.modal', function (event) {
+	let page_start =0;
 	var button = $(event.relatedTarget) // Button that triggered the modal
 	var i = button.data('row');
+	$('#modal-primary4 .modal-title').text("关联用户组["+$('#example2').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
 	$('#primary4_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 	$.ajax({
 		url:"../../cmdPolicyGroup/findCmdPolicyUserGroupAndUser",
 		type:"POST",
 		data:{
 			policy_id:$('#primary4_id').val(),
+			page_start:page_start,
+			page_length:page_length
 		},
 		success:function(data){
 			var arr = data.data_users;
@@ -540,17 +691,43 @@ $('#modal-primary4').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_usergroup').html('');
 			$('#edit_usergroup1').html('');
-			for (var i = 0; i < arr.length; i++) {
-				$('#edit_usergroup').html($('#edit_usergroup').html()+'<div><input value="'+arr[i].group_id+'" type="checkbox"><span>'+arr[i].group_name+'</span></div>')
+			for (let item of arr) {
+				$('#edit_usergroup').append('<div><input value="' + item.group_id + '" type="checkbox"><span>' + item.group_name  + '</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
-				$('#edit_usergroup1').html($('#edit_usergroup1').html()+'<div><input value="'+arr1[i].group_id+'" type="checkbox"><span>'+arr1[i].group_name+'</span></div>')
+			//已选择
+			for (let item1 of arr1) {
+				$('#edit_usergroup1').append('<div><input value="' + item1.group_id + '" type="checkbox"><span>' + item1.group_name + '</span></div>')
 			}
 			RelativeMethods(6);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
-			ac_edit_usergroup_list=$('#edit_usergroup').html();
-			ac_edit_usergroup1_list=$('#edit_usergroup1').html();
+			ac_edit_usergroup_list = $('#edit_usergroup').html();
+			ac_edit_usergroup1_list = $('#edit_usergroup1').html();
+			//慢加载
+			$('#edit_usergroup').on("scroll",function () {
+				let viewH =$(this).height(),//可见高度
+					contentH =$(this).get(0).scrollHeight,//内容高度
+					scrollTop =$(this).scrollTop();//滚动高度
+				if(contentH - viewH - scrollTop <= 60) {
+					page_start += 500;
+					$.ajax({
+						url:"../../cmdPolicyGroup/findCmdPolicyUserGroupAndUser",
+						type: "POST",
+						data: {
+							policy_id:$('#primary4_id').val(),
+							page_start:page_start,
+							page_length:page_length
+						},
+						success: function (data) {
+							var arr = data.data_users;
+							for (let item of arr) {
+								$('#edit_usergroup').append('<div><input value="' + item.group_id + '" type="checkbox"><span>' + item.group_name + '</span></div>')
+							}
+							RelativeMethods(6);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+							ac_edit_usergroup_list = $('#edit_usergroup').html();
+						},
+					})
+				}
+			});
 		},
-		error:function(){},
 	})
 })
 
@@ -558,15 +735,18 @@ $('#modal-primary4').on('show.bs.modal', function (event) {
 let ac_edit_devicegroup_list = null;
 let ac_edit_devicegroup1_list = null;
 $('#modal-primary6').on('show.bs.modal', function (event) {
-	console.log($('#edit_devicegroup1').html())
+	let page_start3 =0;
 	var button = $(event.relatedTarget);// Button that triggered the modal
 	var i = button.data('row');
+	$('#modal-primary6 .modal-title').text("关联设备组["+$('#example2').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
 	$('#primary6_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 	$.ajax({
 		url:"../../cmdPolicyGroup/findCmdPolicyDeviceGroupAndUser",
 		type:"POST",
 		data:{
 			policy_id:$('#primary6_id').val(),
+			page_start:page_start3,
+			page_length:page_length
 		},
 		success:function(data){
 			var arr = data.data_dgroups;
@@ -574,15 +754,41 @@ $('#modal-primary6').on('show.bs.modal', function (event) {
 			//show
 			$('#edit_devicegroup').html('');
 			$('#edit_devicegroup1').html('');
-			for (var i = 0; i < arr.length; i++) {
-				$('#edit_devicegroup').html($('#edit_devicegroup').html()+'<div><input value="'+arr[i].dgroup_id+'" type="checkbox"><span>'+arr[i].dgroup_name+'</span></div>')
+			for(let item of arr){
+				$('#edit_devicegroup').append('<div><input value="' + item.dgroup_id + '" type="checkbox"><span>' + item.dgroup_name + '</span></div>')
 			}
-			for (var i = 0; i < arr1.length; i++) {
-				$('#edit_devicegroup1').html($('#edit_devicegroup1').html()+'<div><input value="'+arr1[i].dgroup_id+'" type="checkbox"><span>'+arr1[i].dgroup_name+'</span></div>')
+			for(let item1 of arr1){
+				$('#edit_devicegroup1').append('<div><input value="' + item1.dgroup_id + '" type="checkbox"><span>' + item1.dgroup_name + '</span></div>')
 			}
 			RelativeMethods(8);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
-			ac_edit_devicegroup_list=$('#edit_devicegroup').html();
-			ac_edit_devicegroup1_list=$('#edit_devicegroup1').html();
+			ac_edit_devicegroup_list = $('#edit_devicegroup').html();
+			ac_edit_devicegroup1_list = $('#edit_devicegroup1').html();
+			//慢加载
+			$('#edit_devicegroup').on("scroll",function () {
+				let viewH =$(this).height(),//可见高度
+					contentH =$(this).get(0).scrollHeight,//内容高度
+					scrollTop =$(this).scrollTop();//滚动高度
+				if(contentH - viewH - scrollTop <= 60) {
+					page_start3 += 500;
+					$.ajax({
+						url:"../../cmdPolicyGroup/findCmdPolicyDeviceGroupAndUser",
+						type: "POST",
+						data: {
+							policy_id:$('#primary6_id').val(),
+							page_start:page_start3,
+							page_length:page_length
+						},
+						success: function (data) {
+							var arr = data.data_dgroups;
+							for(let item of arr){
+								$('#edit_devicegroup').append('<div><input value="' + item.dgroup_id + '" type="checkbox"><span>' + item.dgroup_name + '</span></div>')
+							}
+							RelativeMethods(8);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+							ac_edit_devicegroup_list = $('#edit_devicegroup').html();
+						},
+					})
+				}
+			})
 		},
 		error:function(){},
 	})
@@ -1688,8 +1894,17 @@ $('#clearN').click(function () {
 	$('#add_long2').prop("checked",true);
 	$('#add_cmd2').val('');
 	$('#Vadd_cmd2').text('');
-	listAll();
-})
+	$('#add_cmdgroup').html('');
+	$('#add_cmdgroup1').html('');
+	$('#add_user1').html('');
+	$('#add_user').html('');
+	$('#add_group').html('');
+	$('#add_group1').html('');
+	$('#add_devicegroup').html('');
+	$('#add_devicegroup1').html('');
+	$('#add_device').html('');
+	$('#add_device1').html('');
+});
 function checkNull(){
 	checkname1()
 	var v_b1 = true;

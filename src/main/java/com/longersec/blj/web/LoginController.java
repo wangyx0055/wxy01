@@ -238,27 +238,6 @@ public class LoginController {
     	}
     	int total_online = 0;
     	
-    	
-    	//if(user.getRole_id()==1) {
-        	JSONObject policyJsonObject = checkPolicy(user.getId(), user.getGroupid(), httpClient.getRemortIP(request),session);
-        	if(!policyJsonObject.getBoolean("result")) {
-            	loginlog.setDetails("没有允许登录策略");
-        		loginlog.setStatus(0);
-        		loginlog.setResult("失败");
-        		loginLogService.addLoginLog(loginlog);
-                model.addAttribute("msg",policyJsonObject.getString("error"));
-     
-                AlertLog alertLog = new AlertLog();
-                alertLog.setUser_id(user.getId());
-                alertLog.setRealname(user.getRealname());
-                alertLog.setOperational_group(user.getGroupid().toString());
-                alertLog.setUsername(user.getUsername());
-                alertLog.setSource_ip(httpClient.getRemortIP(request));
-                alertLog.setOperate_datetime(Long.toString((System.currentTimeMillis()/1000)));
-                alertLogService.addAlertLog(alertLog);
-                return "/login";
-        	}
-    	//}
 
         Subject subject = SecurityUtils.getSubject();
         //操作日志
@@ -645,54 +624,4 @@ public class LoginController {
     	}
     	return false;
     } 
-    
-    private JSONObject checkPolicy(Integer userid, Integer groupid, String client_ip, HttpSession session) {
-    	JSONObject jsonObject = new JSONObject();
-    	jsonObject.put("result", true);
-		Calendar c = Calendar.getInstance();
-		int weekday = c.get(Calendar.DAY_OF_WEEK);
-		int hour = c.get(Calendar.HOUR_OF_DAY);
-    	ArrayList<AccessPolicy> accessPolicies = new ArrayList<AccessPolicy>();
-    	String hourString = "";
-    	ArrayList<Integer> userAllowedPolicies = new ArrayList<Integer>();
-    	userAllowedPolicies.add(0);
-    	accessPolicies = (ArrayList<AccessPolicy>) accessPolicyService.getUserPolicy(userid, groupid, null, null);
-    	for (AccessPolicy accessPolicy : accessPolicies) {
-    		if (weekday == 1) {
-    			hourString = accessPolicy.getTimelimit_ban_sunday();
-    		} else if (weekday == 2) {
-    			hourString = accessPolicy.getTimelimit_ban_monday();
-    		} else if (weekday == 3) {
-    			hourString = accessPolicy.getTimelimit_ban_tuesday();
-    		} else if (weekday == 4) {
-    			hourString = accessPolicy.getTimelimit_ban_wednesday();
-    		} else if (weekday == 5) {
-    			hourString = accessPolicy.getTimelimit_ban_thursday();
-    		} else if (weekday == 6) {
-    			hourString = accessPolicy.getTimelimit_ban_friday();
-    		} else if (weekday == 7) {
-    			hourString = accessPolicy.getTimelimit_ban_saturday();
-    		}
-    		if((","+hourString+",").indexOf(","+hour+",")>=0) {
-    			jsonObject.put("result", false);
-    			jsonObject.put("error", "登录时间不允许");
-    			jsonObject.put("policy", accessPolicy);
-    			return jsonObject;
-    		}
-    		if(accessPolicy.getAllow_ip().length()>0&&(","+accessPolicy.getAllow_ip()+",").indexOf(","+client_ip+",")<0) {
-    			jsonObject.put("result", false);
-    			jsonObject.put("error", "当前IP不在允许范围内");
-    			jsonObject.put("policy", accessPolicy);
-    			return jsonObject;
-    		}else if(accessPolicy.getBan_ip().length()>0&&(","+accessPolicy.getBan_ip()+",").indexOf(","+client_ip+",")>=0) {
-    			jsonObject.put("result", false);
-    			jsonObject.put("error", "当前IP在黑名单中");
-    			jsonObject.put("policy", accessPolicy);
-    			return jsonObject;
-        	}
-    		userAllowedPolicies.add(accessPolicy.getId());
-		}
-    	session.setAttribute("userAllowedPolicies", userAllowedPolicies);
-    	return jsonObject;
-    }
 }

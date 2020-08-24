@@ -57,11 +57,8 @@ public class CmdgroupCmdController {
 	@ResponseBody
 	public JSONObject addCmdgroupCmd(CmdgroupCmd cmdgroupCmd, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
-		if(result.getBoolean("success")) {
-			Boolean r = cmdgroupCmdService.addCmdgroupCmd(cmdgroupCmd);
-			result.accumulate("success", r?true:false);
-		}
+		Boolean r = cmdgroupCmdService.addCmdgroupCmd(cmdgroupCmd);
+		result.accumulate("success", r);
 		return result;
 	}
 
@@ -69,11 +66,8 @@ public class CmdgroupCmdController {
 	@ResponseBody
 	public JSONObject editCmdgroupCmd(CmdgroupCmd cmdgroupCmd, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
-		if(result.getBoolean("success")) {
-			Boolean r = cmdgroupCmdService.editCmdgroupCmd(cmdgroupCmd);
-			result.accumulate("success", r?true:false);
-		}
+		Boolean r = cmdgroupCmdService.editCmdgroupCmd(cmdgroupCmd);
+		result.accumulate("success", r);
 		return result;
 	}
 

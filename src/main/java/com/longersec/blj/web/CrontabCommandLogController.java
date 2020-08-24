@@ -6,7 +6,12 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.longersec.blj.domain.CrontabScriptConfig;
+import com.longersec.blj.domain.User;
+import com.longersec.blj.service.DepartmentService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +38,8 @@ public class CrontabCommandLogController {
 
 	@Autowired
 	private CrontabCommandLogService crontabCommandLogService;
+	@Autowired
+	private DepartmentService departmentService;
 
 	@RequestMapping("/listCrontabCommandLog")
 	@ResponseBody
@@ -46,6 +53,17 @@ public class CrontabCommandLogController {
 		if(CollectionUtils.isNotEmpty(resultCrontabCommandLogs)) {
 			crontabCommandLogs = (ArrayList<CrontabCommandLog>)resultCrontabCommandLogs.get(0);
 			total = ((ArrayList<Long>) resultCrontabCommandLogs.get(1)).get(0);
+		}
+
+		for (CrontabCommandLog crontabCommandLog1 : crontabCommandLogs) {
+			if(crontabCommandLog1.getDepartment()!=0) {
+				List<String> allParentName = departmentService.findAllParentName(crontabCommandLog1.getDepartment());
+				StringBuilder stringBuilder = new StringBuilder();
+				for (Object strings : allParentName) {
+					stringBuilder.append(strings).append("/");
+				}
+				crontabCommandLog1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
+			}
 		}
 		JSONArray jsonArray = JSONArray.fromObject(crontabCommandLogs);
 		JSONObject result = new JSONObject();
@@ -61,6 +79,10 @@ public class CrontabCommandLogController {
 	public JSONObject addCrontabCommandLog(CrontabCommandLog crontabCommandLog, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
+
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		crontabCommandLog.setDepartment(user.getDepartment());
+
 		if(result.getBoolean("success")) {
 			Boolean r = crontabCommandLogService.addCrontabCommandLog(crontabCommandLog);
 			result.accumulate("success", r?true:false);

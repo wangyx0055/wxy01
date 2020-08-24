@@ -91,4 +91,7 @@ public interface DepartmentDao {
 
 	/** AD域导入部门判断**/
 	Department selectByNameAndParentId(@Param("name") String name,@Param("parent_id") int parent_id);
+
+	/**删除策略和执行任务关联信息 **/
+	boolean deleteUseless(@Param("id")Integer id);
 }

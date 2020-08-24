@@ -45,7 +45,7 @@ public class CrontabScriptConfigGroupController {
 		ArrayList<UserGroup> resultGroups = new ArrayList<UserGroup>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCrontabScriptconfigGroups = (ArrayList<UserGroup>) crontabScriptConfigGroupService.selectById(config_id);
-		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),0,20000);
+		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		resultGroups.removeAll(resultCrontabScriptconfigGroups);
 		JSONArray jsonArray_p_user_group = JSONArray.fromObject(resultCrontabScriptconfigGroups);
 		JSONArray jsonArray_user_group = JSONArray.fromObject(resultGroups);
@@ -57,13 +57,15 @@ public class CrontabScriptConfigGroupController {
 
 	@RequestMapping("/findCrontabScriptconfigDeviceGroup")
 	@ResponseBody
-	public JSONObject findCrontabScriptconfigDeviceGroup(@RequestParam("config_id")Integer config_id) {
+	public JSONObject findCrontabScriptconfigDeviceGroup(@RequestParam("config_id")Integer config_id,
+	                                                     @RequestParam(value = "page_start",required = false)int page_start,
+	                                                     @RequestParam(value ="page_length",required = false)int page_length) {
 		JSONObject result = new JSONObject();
 		ArrayList<DeviceGroup> resultCrontabScriptconfigDeviceGroups = new ArrayList<DeviceGroup>();
 		ArrayList<DeviceGroup> resultDeviceGroups = new ArrayList<DeviceGroup>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCrontabScriptconfigDeviceGroups = (ArrayList<DeviceGroup>) crontabScriptConfigGroupService.selectBydIdDevice(config_id);
-		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment());
+		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment(),page_start,page_length);
 		resultDeviceGroups.removeAll(resultCrontabScriptconfigDeviceGroups);
 		JSONArray jsonArray_p_device_group = JSONArray.fromObject(resultCrontabScriptconfigDeviceGroups);
 		JSONArray jsonArray_device_group = JSONArray.fromObject(resultDeviceGroups);

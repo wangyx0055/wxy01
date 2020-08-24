@@ -72,10 +72,10 @@ public class DeviceAccountController {
 	
 	@RequestMapping("/listDeviceAccountNameIp")
 	@ResponseBody
-	public JSONObject listDeviceAccountNameIp(DeviceAccount deviceAccount,HttpServletRequest request, HttpSession session) {
+	public JSONObject listDeviceAccountNameIp() {
 		JSONObject result = new JSONObject();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
-		List<Deviceaccess> nameIp = deviceAccountService.selectNameAndId(users.getDepartment());
+		List<Deviceaccess> nameIp = deviceAccountService.selectNameAndId(users.getDepartment(),-1,-1);
 		result.accumulate("success", true);
 		result.accumulate("data", nameIp);
 		return result;

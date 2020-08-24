@@ -42,9 +42,10 @@
         <!-- Tasks: style can be found in dropdown.less -->
 
         <!-- User Account: style can be found in dropdown.less -->
-        <li class="dropdown user user-menu" style="position: relative;width: 115px;" title="个人中心">
+        <li class="dropdown user user-menu" style="position: relative;width: 115px;">
             <img id="admin"  style="position: absolute;left: 9px;top: 9px;width: 30px;height: 30px;margin-left: 5px;">
-        <span class="hidden-xs" style="position: absolute;left: 46px;top: 7px"><a style="font-size: 14px;color: rgba(0,0,0,0.65);" th:href="@{/view/operation_manage/self.html}" ><span  shiro:principal property="username"/> </a></span>
+        <span class="hidden-xs" style="position: absolute;left: 46px;top: 7px"><a style="font-size: 14px;color: rgba(0,0,0,0.65);width: 65px;overflow: hidden;text-overflow: ellipsis;display: inline-block;" title="" id="showUserName" th:href="@{/view/operation_manage/self.html}" >
+            <span shiro:principal property="username"/></a></span>
             <span class="hidden-xs" style="font-size: 12px;color: rgba(0,0,0,0.65);position: absolute;left: 46px;top: 22px" id="rolename" ><span  shiro:principal property="rolename" /></span>
         </li>
         <!-- Control Sidebar Toggle Button -->
@@ -52,6 +53,7 @@
           <a th:href="@{/loginout}" style="font-size: 13px;padding: 0;margin-top: 13px;margin-right: 10px;margin-left: 5px;color:rgba(0,0,0,0.65);">退出</a>
         </li>
       </ul>
+        <input id="userName" type="hidden" th:value="${session.user.username}">
     </div>
   </nav>
 <!-- jQuery 3 -->
@@ -116,6 +118,9 @@
 	       	})
        };
        message();
+
+       //用户名显示
+      $("#showUserName").attr("title",$('#userName').val());
   </script>
 </div>
 </body>

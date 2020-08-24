@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>授权工单</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- my css -->
+    <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+    <script src="../../js/html5shiv.min.js"></script>
+    <script src="../../js/respond.min.js"></script>
+    <!-- Google Font -->
+    <link rel="stylesheet" href="../../bower_components/treeview/font.css">
+    <style>
+        .ranges{
+            display: none;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini author"  >
+<div class="wrapper">
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box" style="box-shadow: none;border-top: none">
+                        <div class="box-header">
+                            <span class="box-title new-header">授权工单</span>
+                        </div>
+                        <hr style="border-top:solid 1px #e9e9e9 ;margin-top: 4px;margin-left: -10px;width: 101.6% ">
+                        <!-- <div class="one" style="float: right;">杨两份</div> -->
+
+                        <!-- /.box-header -->
+                        <div class="box-body" style="margin-top: -33px">
+                        <!--    <div class="input-group margin">
+                                <select class="form-control" style="width: 100px;height:30px;font-size: 12px;margin-left: -2px">
+                                    <option>自动识别</option>
+                                    <option>授权策略</option>
+                                    <option>顺序</option>
+                                </select>
+                                <input type="text" class="form-control" style="width: 130px;font-size: 12px;height: 30px">
+                                <span class="input-group-btn" style="float: left;">
+                  <i class="glyphicon glyphicon-search"> <span class="glyphicon glyphicon-search"></span></i>
+                  <button type="button" class="btn btn-default pull-left" style="height: 30px;font-size: 12px;">搜索</button>
+                  </span>
+                            </div>-->
+                    <div class="input-group margin">
+                        <select class="form-control" id="Distinguish">
+                            <option>自动识别</option>
+                            <option>授权策略</option>
+                            <option>顺序</option>
+                        </select>
+                        <input type="text" class="form-control" id="searchId">
+                        <span class="input-group-btn">
+	                    <i class="glyphicon glyphicon-search"> <span class="glyphicon glyphicon-search"></span></i>
+	                    <button type="button" class="btn  pull-left newaddbtn" id="search" style="margin-left: -2px;">搜索</button>
+	                    </span>
+                       </div>
+                        <div class="new-add-style">
+                            <button type="button" class="btn  newaddbtn" data-toggle="modal" data-target="#modal-primary" id="newT">新建</button>
+                           <!-- <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal"  data-target="#modal-default"  data-dismiss="modal" onclick="resetFileInput()">导入</button>
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" data-toggle="modal"  data-target="#modal-default1" id="_export">导出</button>-->
+                        </div>
+                                <table id="example2" class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td><span>选择</span></td>
+                                        <td><span>工单号</span></td>
+                                        <td><span>资源账户</span></td>
+                                        <td><span>申请时间</span></td>
+                                        <td><span>状态</span></td>
+                                        <td><span>描述</span></td>
+                                        <td><span>操作</span></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" name="chk"></td>
+                                        <td>13223456789045678</td>
+                                        <td>1</td>
+                                        <td>2020-08-20 15:57:11</td>
+                                        <td>已生效</td>
+                                        <td>工单描述</td>
+                                        <td><a class="newcss1" style="margin-right: 15px">编辑</a><a class="newcss1" data-toggle="modal" data-target="#modal_default8" style="margin-right: 15px">撤回</a><a class="newcss1" style="margin-right: 15px;cursor: pointer">提交</a><a class="newcss2" data-target="#modal_default" data-toggle="modal"  style="cursor: pointer">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="chk"></td>
+                                        <td>13223456789045678</td>
+                                        <td>2</td>
+                                        <td>2020-08-20 15:57:11</td>
+                                        <td>已过期</td>
+                                        <td>工单描述</td>
+                                        <td><a class="newcss1" style="margin-right: 15px">编辑</a><a class="newcss1" style="margin-right: 15px">撤回</a><a class="newcss1"  data-toggle="modal" data-target="#modal_default8" style="margin-right: 15px;cursor: pointer">提交</a><a data-target="#modal_default" data-toggle="modal" class="newcss2"  style="cursor: pointer">删除</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="chk"></td>
+                                        <td>13223456789045678</td>
+                                        <td>3</td>
+                                        <td>2020-08-20 15:57:11</td>
+                                        <td>待提交</td>
+                                        <td>工单描述</td>
+                                        <td><a class="newcss1" style="margin-right: 15px">编辑</a><a class="newcss1" style="margin-right: 15px">撤回</a><a class="newcss1"  data-toggle="modal" data-target="#modal_default8" style="margin-right: 15px;cursor: pointer">提交</a><a data-target="#modal_default" data-toggle="modal" class="newcss2"  style="cursor: pointer">删除</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <form style="margin-top: 20px;">
+                                    <input type="checkbox" id="checkAll" onclick="sel('chk[]')">
+                                    <button type="button" class="btn btn-default pull-left newaddbtn2" data-dismiss="modal" data-toggle="modal" data-target="#modal_deAll">删除</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--新建的关联设备   关联设备组  -->
+            <div class="modal modal-hides" id="modal-primary5">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #f7f7f7">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title" style="font-size:18px">添加授权策略</span>
+                        </div>
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#c" data-toggle="tab">关联设备</a></li>
+                                <li><a href="#d" data-toggle="tab">关联设备组</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="c">
+                                <div class="modal-body" style="height: 400px;">
+                                    <div class="common-relative-left">
+                                        <div><span>可选择的设备</span>
+                                        </div>
+                                        <div >
+                                            <div>
+                                                <input type="text" class="form-control"  placeholder="根据关键词搜索"  id="list_deviceAccount">
+                                                <img src="../../images/big.svg" id="search_deviceAccount">
+                                            </div>
+                                            <!--dataleft  -->
+                                            <div class="data-left2" id="add_device">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- add and romove  -->
+                                    <div class="add-remove" style="left: 266px;">
+                                        <button class="btn btn-default " disabled="true"  id="remove2"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                        <button class="btn btn-default " disabled="true"  id="add2"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                    </div>
+                                    <!-- selectall -->
+                                    <div class="select-left-all">
+                                        <input type="checkbox" id="left-checked2">
+                                        <span>全选</span>
+                                    </div>
+                                    <div class="select-right-all" >
+                                        <input type="checkbox" id="right-checked2">
+                                        <span>全选</span>
+                                    </div>
+                                    <div class="common-relative-right">
+                                        <div><span>已选择的设备</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <input type="text" class="form-control">
+                                                <img src="../../images/big.svg">
+                                            </div>
+                                            <!-- dataright -->
+                                            <div class="data-right2" id="add_device1">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="d">
+                                <div class="modal-body" style="height: 400px;">
+                                    <div class="common-relative-left">
+                                        <div><span>可选择的设备组</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <input type="text" class="form-control" placeholder="根据关键词搜索"  id="list_devicegroup">
+                                                <img src="../../images/big.svg" id="search_devicegroup">
+                                            </div>
+                                            <!--dataleft  -->
+                                            <div class="data-left3" id="add_devicegroup">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- add and romove  -->
+                                    <div class="add-remove" style="left: 266px;">
+                                        <button class="btn btn-default " disabled="true"  id="remove3"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                                        <button class="btn btn-default " disabled="true"  id="add3"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                    </div>
+                                    <!-- selectall -->
+                                    <div class="select-left-all">
+                                        <input type="checkbox" id="left-checked3">
+                                        <span>全选</span>
+                                    </div>
+                                    <div class="select-right-all" >
+                                        <input type="checkbox" id="right-checked3">
+                                        <span>全选</span>
+                                    </div>
+                                    <div class="common-relative-right">
+                                        <div><span>已选择的设备组</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <input type="text" class="form-control" >
+                                                <img src="../../images/big.svg">
+                                            </div>
+                                            <!-- dataright -->
+                                            <div class="data-right3" id="add_devicegroup1">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary" data-dismiss="modal">上一步</button>
+                                    <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary5" data-dismiss="modal">确定</button>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal modal-hides" id="modal-primary">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">添加授权策略</span>
+                        </div>
+                        <div class="modal-body">
+                            <div style="margin-top: 20px;margin-left: 56px;font-size: 12px;">
+                                <span class="sign_emphasize">*</span>
+                                <span>运维时间：</span>
+                                    <input type="losss" id="effect_time" placeholder="生效时间" style="width: 170px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;">
+                                    <input type="losss" id="fail_time" placeholder="失效时间" style="width: 170px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;">
+                            </div>
+                            <div style="margin-top: 20px;margin-left: 66px;font-size: 12px;">
+                                <span >文件传输：</span>
+                               <input th:type="checkbox"><span style="display: inline-block;vertical-align: -3px;margin-left:6px;">上传</span>&nbsp;&nbsp;&nbsp;
+                               <input th:type="checkbox"><span style="display: inline-block;vertical-align: -3px;margin-left:6px;">下载</span>
+                            </div>
+                            <div style="margin-top: 20px;margin-left: 66px;font-size: 12px;">
+                                <span >更多选项：</span>
+                                <input th:type="checkbox"><span style="display: inline-block;vertical-align: -3px;margin-left:6px;">文件管理</span>&nbsp;&nbsp;&nbsp;
+                                <input th:type="checkbox"><span style="display: inline-block;vertical-align: -3px;margin-left:6px;">上行剪切板</span>&nbsp;&nbsp;&nbsp;
+                                <input th:type="checkbox"><span style="display: inline-block;vertical-align: -3px;margin-left:6px;">下行剪切板</span>&nbsp;&nbsp;&nbsp;
+                                <input th:type="checkbox"><span style="display: inline-block;vertical-align: -3px;margin-left:6px;">显示水印</span>
+                            </div>
+                            <div style="margin-top: 20px;margin-left: 90px;font-size: 12px;margin-bottom: 20px">
+                                <span >描述:</span>
+                                <textarea style="border-radius: 3px;border: 1px solid #ccc;width: 210px;height: 80px;vertical-align:top;margin-left:8px;resize: none;"></textarea>
+                                <p style="font-size: 12px;color: #a4abb5;margin-left: 38px;">备注最长128个汉字或字符</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                                <button type="button"  class="btn newaddbtn"  id="authorButton" data-toggle="modal" data-target="#modal-primary5" data-dismiss="modal">下一步</button>
+                                <input type="hidden" id="authorize_id" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+         <!--   提交-->
+            <div class="modal modal-hides" id="modal_default8">
+                <div class="modal-dialog">
+                    <div class="modal-content newdiv">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">提示</span>
+                        </div>
+                        <div class="ug-delsure" style="margin-left: 65px!important;">
+                            <p>您确定要提交所选授权工单吗？</p>
+                        </div><br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn newaddbtn pull-right" id="submitWork"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
+                            <input type="hidden" id="submit_work" />
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+           <!-- 删除-->
+            <div class="modal modal-hides" id="modal_default">
+                <div class="modal-dialog">
+                    <div class="modal-content newdiv">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">提示</span>
+                        </div>
+                        <div class="ug-delsure" style="margin-left: 65px!important;">
+                            <p>您确定要删除所选授权工单吗？</p>
+                        </div><br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn newaddbtn pull-right" id="delWork"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
+                            <input type="hidden" id="del_work" />
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!--总删除-->
+            <div class="modal modal-hides" id="modal_deAll">
+                <div class="modal-dialog">
+                    <div class="modal-content newdiv">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">提示</span>
+                        </div>
+                        <div class="ug-delsure" style="margin-left: 65px!important;">
+                            <p>您确定要删除所选授权工单吗？</p>
+                        </div><br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn newaddbtn pull-right" id="delAllWork"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
+                            <input type="hidden" id="delAll_work" />
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <div class="modal modal-hides" id="modal-default8">
+                <div class="modal-dialog">
+                    <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">提示</span>
+                        </div>
+                        <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                            <p>您确定要删除所选的授权工单吗？</p>
+                        </div><br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                            <button type="button" id="delButton" class="btn newaddbtn" >确定</button>
+                            <input type="hidden" id="del_id" />
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <footer class="main-footer">
+        <div th:replace="/view/common/footer :: footer"></div>
+    </footer>
+</div>
+<!-- jQuery 3 -->
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- date-range-picker -->
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<script src="../../bower_components/dist/js/checkAll.js"></script>
+<script src="../../js/common/modal.js"></script>s
+<script>
+    function init() {
+        //定义locale汉化插件
+        var locale = {
+            format: "YYYY-MM-DD HH:mm",
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                '七月', '八月', '九月', '十月', '十一月', '十二月'
+            ],
+            applyLabel: '确定', //确定按钮文本
+            cancelLabel: '取消', //取消按钮文本
+            showClose:false,
+            startView:0,
+            minView: 0,
+            minuteStep:5
+        };
+        //日期控件初始化
+        $('#effect_time').daterangepicker(
+            {
+                'locale': locale,
+                "autoApply": true,
+                timePicker: true, //显示时间
+                timePicker24Hour: true, //时间制
+                "autoclose": true,
+                showDropdowns: true, //年月份下拉框
+                singleDatePicker: true,
+            }
+        );
+        $('#fail_time').daterangepicker(
+            {
+                'locale': locale,
+                "autoApply": true,
+                timePicker: true, //显示时间
+                timePicker24Hour: true, //时间制
+                "autoclose": true,
+                singleDatePicker: true,
+            }
+        );
+    }
+    $(document).ready(function() {
+        init();
+    });
+</script>
+</body>
+</html>

@@ -36,14 +36,14 @@ public class ApppubServer {
 	
 	private String password;
 
-	private String topName;
+	private String topName1;
 
-	public String getTopName() {
-		return topName;
+	public String getTopName1() {
+		return topName1;
 	}
 
-	public void setTopName(String topName) {
-		this.topName = topName;
+	public void setTopName1(String topName1) {
+		this.topName1 = topName1;
 	}
 
 	public String getAccount() {
@@ -159,7 +159,7 @@ public class ApppubServer {
 				", depart_name='" + depart_name + '\'' +
 				", account='" + account + '\'' +
 				", password='" + password + '\'' +
-				", topName='" + topName + '\'' +
+				", topName1='" + topName1 + '\'' +
 				'}';
 	}
 }

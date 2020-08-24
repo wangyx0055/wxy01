@@ -73,6 +73,7 @@
                                     <!--<option value="4">描述</option>-->
 <!--                                      <option value="status">是否执行</option>-->
                                     <option value="exec_method">执行方式</option>
+                                    <option value="depart_name">部门</option>
                                 </select>
                                 <input type="text" class="form-control" id="searchId">
                                 <span>
@@ -88,10 +89,11 @@
                                 <tr>
                                     <td style="width: 55px;padding-right: 0px;"><span>选择</span></td>
                                     <td style="width: 10%"><span>任务名称</span></td>
+                                    <td style="width: 10%"><span>部门</span></td>
                                     <td style="width: 10%"><span>命令/脚本</span></td>
-                                    <td style="width: 15%"><span>描述</span></td>
+                                    <td style="width: 10%"><span>描述</span></td>
                                     <td style="width: 10%"><span>是否执行</span></td>
-                                    <td style="width: 20%"><span>执行方式</span></td>
+                                    <td style="width: 10%"><span>执行方式</span></td>
                                     <td><span>操作</span></td>
                                 </tr>
                                 </thead>
@@ -138,7 +140,7 @@
                             </div>
                             <div id="div10" style="margin-left: 74px;margin-top: 20px;">
                             	<input type="hidden" id="file_id" value="" name="file_id" />
-                                <input type="text" placeholder="请输入执行的脚本" id="command" style="margin-top: -10px;width: 220px;height: 30px; border-radius: 3px;border: 1px solid #ccc;font-size: 12px;">
+                                <input type="text" placeholder="请输入执行的脚本（最长128个字符）" id="command" style="margin-top: -10px;width: 220px;height: 30px; border-radius: 3px;border: 1px solid #ccc;font-size: 12px;" maxlength="128">
                   <!--              <input type="checkbox"><span style="font-size: 12px;margin-left: 5px;">立即执行</span>-->
                                 <br/>
                             </div>
@@ -196,7 +198,7 @@
                         <div class="ro-desc">
                             <p>
                                 <label class="label"><span>任务描述:</span></label>
-                                <textarea id="edit_desc" style="width: 220px;"></textarea><span style="margin-right: 139px;color: red;font-size: 12px;" id="judge_desc"></span>
+                                <textarea id="edit_desc" style="width: 220px;" maxlength="128"></textarea><span style="margin-right: 139px;color: red;font-size: 12px;" id="judge_desc"></span>
                             </p>
                         </div>
                         <p class="ro-p2">描述最长128个汉字或字符</p><br>

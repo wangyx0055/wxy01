@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.io.StringBufferInputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -146,10 +147,9 @@ public class OperatorController {
 			}else if(data.equals("history")) {
 				where.put("history", 1);
 			}
-			
 		}
 		User user = (User) session.getAttribute("loginUser");
-		ArrayList<Integer> policyArrayList = (ArrayList<Integer>) session.getAttribute("userAllowedPolicies");
+		ArrayList<Integer> policyArrayList = (ArrayList<Integer>) this.getUserPolicy(user.getId(), httpClient.getRemortIP(request),session);
 		if(policyArrayList!=null&&policyArrayList.size()>0) {
 			results = (ArrayList<Object>) deviceAccountService.getDeviceAccountByPolicies(user.getId(), policyArrayList, where, page_start, page_length);
 	    	if(CollectionUtils.isNotEmpty(results)) {
@@ -205,7 +205,7 @@ public class OperatorController {
 			
 		}
 		User user = (User) session.getAttribute("loginUser");
-		ArrayList<Integer> policyArrayList = (ArrayList<Integer>) session.getAttribute("userAllowedPolicies");
+		ArrayList<Integer> policyArrayList = (ArrayList<Integer>) this.getUserPolicy(user.getId(), httpClient.getRemortIP(request),session);
 		if(policyArrayList!=null&&policyArrayList.size()>0) {
 			results = (ArrayList<Object>) apppubAccountService.getApppubAccountByPolicies(user.getId(), policyArrayList, where, page_start, page_length);
 	    	if(CollectionUtils.isNotEmpty(results)) {
@@ -222,6 +222,47 @@ public class OperatorController {
     	return result;
     }
     
+    private ArrayList<Integer> getUserPolicy(Integer userid, String client_ip, HttpSession session) {
+    	JSONObject jsonObject = new JSONObject();
+    	jsonObject.put("result", true);
+		Calendar c = Calendar.getInstance();
+		int weekday = c.get(Calendar.DAY_OF_WEEK);
+		int hour = c.get(Calendar.HOUR_OF_DAY);
+    	ArrayList<AccessPolicy> accessPolicies = new ArrayList<AccessPolicy>();
+    	String hourString = "";
+    	ArrayList<Integer> userAllowedPolicies = new ArrayList<Integer>();
+    	userAllowedPolicies.add(0);
+    	accessPolicies = (ArrayList<AccessPolicy>) accessPolicyService.getUserPolicy(userid, null, null);
+    	for (AccessPolicy accessPolicy : accessPolicies) {
+    		if (weekday == 1) {
+    			hourString = accessPolicy.getTimelimit_ban_sunday();
+    		} else if (weekday == 2) {
+    			hourString = accessPolicy.getTimelimit_ban_monday();
+    		} else if (weekday == 3) {
+    			hourString = accessPolicy.getTimelimit_ban_tuesday();
+    		} else if (weekday == 4) {
+    			hourString = accessPolicy.getTimelimit_ban_wednesday();
+    		} else if (weekday == 5) {
+    			hourString = accessPolicy.getTimelimit_ban_thursday();
+    		} else if (weekday == 6) {
+    			hourString = accessPolicy.getTimelimit_ban_friday();
+    		} else if (weekday == 7) {
+    			hourString = accessPolicy.getTimelimit_ban_saturday();
+    		}
+    		if((","+hourString+",").indexOf(","+hour+",")>=0) {//登录时间不允许
+    			continue;
+    		}
+    		if(accessPolicy.getAllow_ip().length()>0&&(","+accessPolicy.getAllow_ip()+",").indexOf(","+client_ip+",")<0) {//当前IP不在允许范围内
+    			continue;
+    		}else if(accessPolicy.getBan_ip().length()>0&&(","+accessPolicy.getBan_ip()+",").indexOf(","+client_ip+",")>=0) {//当前IP在黑名单中
+    			continue;
+        	}
+    		userAllowedPolicies.add(accessPolicy.getId());
+		}
+    	session.setAttribute("userAllowedPolicies", userAllowedPolicies);
+    	return userAllowedPolicies;
+    }
+    
     @RequestMapping("/deviceLogin")
     public void deviceLogin(HttpServletRequest request,HttpServletResponse response, HttpSession session, Integer device_account_id, Integer apppub_account_id) {
     	JSONObject  result = new JSONObject();
@@ -232,7 +273,7 @@ public class OperatorController {
 		Config config = new Config();
 		config = configService.getByName("recordpath");//寻找授权策略
     	ArrayList<AccessPolicy> accessPolicies = new ArrayList<AccessPolicy>();
-    	accessPolicies = (ArrayList<AccessPolicy>) accessPolicyService.getUserPolicy(user.getId(), user.getGroupid(), device_account_id, apppub_account_id);
+    	accessPolicies = (ArrayList<AccessPolicy>) accessPolicyService.getUserPolicy(user.getId(), device_account_id, apppub_account_id);
 		
     	if(device_account_id!=null) {
     		//设备账号

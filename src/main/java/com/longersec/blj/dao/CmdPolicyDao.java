@@ -21,7 +21,7 @@ public interface CmdPolicyDao {
 
 	public boolean delCmdPolicy(List<String> ids);
 
-	public List<Object> findAll(@Param("cmdPolicy")CmdPolicy cmdPolicy,@Param("sname")String sname, @Param("type")Integer type, @Param("stat")String stat,@Param("cot")String cot, @Param("page_start")int page_start, @Param("page_length")int page_length);
+	public List<Object> findAll(@Param("cmdPolicy")CmdPolicy cmdPolicy,@Param("sname")String sname, @Param("type")Integer type, @Param("stat")String stat,@Param("cot")String cot, @Param("page_start")int page_start, @Param("page_length")int page_length,@Param("depart_ids") List<Integer> depart_ids);
 
     public CmdPolicy checkName(@Param("name") String name);
     

@@ -30,6 +30,36 @@ public class CrontabScriptConfig {
 
 	private String script_name;
 
+	private Integer department;
+
+	private String depart_name;
+
+	private String topName;
+
+	public Integer getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Integer department) {
+		this.department = department;
+	}
+
+	public String getDepart_name() {
+		return depart_name;
+	}
+
+	public void setDepart_name(String depart_name) {
+		this.depart_name = depart_name;
+	}
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
+	}
+
 	public Integer getStatus() {
 		return status;
 	}
@@ -163,6 +193,9 @@ public class CrontabScriptConfig {
 				", searchAll='" + searchAll + '\'' +
 				", status=" + status +
 				", script_name='" + script_name + '\'' +
+				", department=" + department +
+				", depart_name='" + depart_name + '\'' +
+				", topName='" + topName + '\'' +
 				'}';
 	}
 }

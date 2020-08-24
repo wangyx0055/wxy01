@@ -42,6 +42,18 @@
         .box .nav-stacked>li:last-of-type{
             border-bottom: 1px solid #f4f4f4;
         }
+        .week-time{
+            margin-right: -4px;background-color: #448AFF;color: white;border:none;outline: none;height: 25px;font-size: 12px;width:45px;
+        }
+        .month-time{
+            border:none;outline: none;color: gray;height: 25px;font-size: 12px;background-color:white;width: 45px;border: 1px solid #94919185;border-left: none;
+        }
+        .week-time-click{
+            margin-right: -4px;border: 1px solid #94919185;background-color: white;color: gray;outline: none;height: 25px;font-size: 12px;width:45px;
+        }
+        .month-time-click{
+            border:none;outline: none;color: white;height: 25px;font-size: 12px;background-color: #448AFF;width: 45px;border-left: none;
+        }
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini index_body">
@@ -124,123 +136,174 @@
                 </div>
                 <!-- /.col -->
             </div>
-            <!-- /.row -->
+            <!-- /.row最近访问量 -->
             <div class="row">
-                <div class="col-md-12">
+                <!--最近用户访问量-->
+                <div class="col-md-4">
                     <div class="box">
                         <div class="box-header with-border">
-                           <span class="box-title new-header" >系统状态</span>
+                           <span class="box-title new-header" >最近用户访问量</span>
+                            <div style="float: right" id="lated_user">
+                                <button class="week-time" id="lated_user_week">本周</button>
+                                <button class="month-time" id="lated_user_month">本月</button>
+                            </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body" style="margin-top: 0px !important;">
                             <div class="row">
-                                <div class="col-md-8" id="salesChart" style="height:230px;">
+
+                                <div class="col-md-12" id="salesChart" style="height:210px;">
                                 </div>
                                 <!-- /.col -->
-                        <div class="col-md-4">
-                            <p class="text-center" style="color: rgba(0,0,0,0.65);">
-                              使用情况
-                            </p>
-                            <div class="progress-group" id="cpuinfo">
-                                <span>CPU</span>
-                                <span class="progress-number">0%</span>
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-green" ></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group" id="memoryinfo">
-                                <span>内存</span>
-                                <span class="progress-number">0G/0G</span>
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-green" ></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group" id="diskinfo">
-                                <span>硬盘</span>
-                                <span class="progress-number">0T/0T</span>
 
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-green" ></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group" id="networkinfo">
-                                <span>吞吐量</span>
-                                <span class="progress-number">0KB/KB</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-green"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                        </div>
                         <!-- /.col -->
                     </div>
                 <!-- /.row -->
-            </div>
+                   </div>
+                 <!-- /box-body -->
+                    </div>
+             <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <span class="box-title new-header" >最近资产访问量</span>
+                            <div style="float: right" id="lated_asset">
+                                <button class="week-time" id="lated_asset_week">本周</button>
+                                <button class="month-time" id="lated_asset_month">本月</button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="margin-top: 0px !important;">
+                            <div class="row">
+                                <!--最近用户访问量-->
+                                <div class="col-md-12" id="assetsChart" style="height:210px;">
+                                </div>
+                                <!-- /.col -->
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
                         <!-- /box-body -->
                     </div>
                     <!-- /.box -->
                 </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row 12-->
-
-            <!-- Main row -->
-            <div class="row">
-                <!-- Left col -->
-                <div class="col-md-8">
-                    <!-- MAP & BOX PANE -->
-                    
+                <div class="col-md-4">
                     <div class="box">
                         <div class="box-header with-border">
-                              <span class="box-title new-header">用户累计访问量TOP10</span>
+                            <span class="box-title new-header" >待审批工单</span>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="margin-top: 0px !important;height:235px;">
+                            <ul class="products-list product-list-in-box" style="margin-left: 20px;">
+                                <li class="item"  id="allow1">
+                                    <div class="alow_user" style="float:left;">
+                                       <span>admin</span>
+                                    </div>
+                                    <div class="alow_massage" style="float:left;margin-left: 220px;">
+                                        <span class="product-time"  id="alow_number">202008201608076699482</span>
+                                        <span class="product-description"  id="alow_type" style="font-size: 12px;">访问授权工单</span>
+                                    </div>
+                                </li>
+                                <li class="item"  id="allow2">
+                                </li>
+                                <li class="item"  id="allow3">
+                                </li>
+                                <li class="item"  id="allow4">
+
+                                </li>
+                            </ul>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+            <!-- /.row 12-->
+            <!-- Main row 累计访问量 -->
+            <div class="row">
+                <!-- Left col -->
+                <!-- /.用户累计访问量TOP10 -->
+                <div class="col-md-4">
+                    <!-- MAP & BOX PANE -->
+                    <div class="box">
+                        <div class="box-header with-border">
+                              <span class="box-title new-header">累计用户访问量TOP5</span>
+                            <div style="float: right" id="total-user">
+                                <button class="week-time" id="total-user-week">本周</button>
+                                <button class="month-time" id="total-user-month">本月</button>
+                            </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-8">
                                     <div class="pad">
                                         <!-- Map will be created here -->
-                                        <div id="bar-chart" style="width: 100%; height: 325px;"></div>
+                                        <div id="bar-chart" style="width: 100%; height: 230px;"></div>
                                     </div>
-                                </div>
-                            </div>
                             <!-- /.row -->
                         </div>
                         <!-- /.box-body -->
                     </div>
-        <!-- /.用户累计访问量TOP10 -->
+                </div>
+                <div class="col-md-4">
+                    <!-- MAP & BOX PANE -->
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <span class="box-title new-header">累计资产访问量TOP5</span>
+                            <div style="float: right" id="total_asset">
+                                <button class="week-time" id="total_asset_week">本周</button>
+                                <button class="month-time" id="total_asset_month">本月</button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                                    <div class="pad">
+                                        <!-- Map will be created here -->
+                                        <div id="bar-asset-chart" style="width: 100%; height: 230px;"></div>
+                                    </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
           <div class="row">
             <div class="col-md-6">
                 <div class="box box-default">
                     <div class="box-header with-border" style="margin-top: 0px !important;">
-                        <span class="box-title new-header">系统类型</span>
+                        <span class="box-title new-header">系统状态</span>
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body" style="margin-top: 0px !important;">
+                    <div class="box-body" style="height: 384px;">
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="chart-responsive">
-                                    <canvas id="pieChart" height="150"></canvas>
-                                </div>
+                            <div class="col-md-6 col-sm-6" style="text-align: center;margin-top:48px;">
+
+                                    <canvas id="cpuChart" height="120" width="120px"></canvas>
+                                    <p>CPU</p>
+
+
+                                    <canvas id="memoryChart" height="120" width="120px"></canvas>
+                                    <p>内存</p>
+
                                 <!-- /chart-responsive -->
                             </div>
                             <!-- /.col -->
-                            <div class="col-md-4">
-                                <ul class="chart-legend clearfix" id="devicesByTypeName">
-                                </ul>
+                            <div class="col-md-6 col-sm-6" style="text-align: center;margin-top: 48px;">
+                                <div class="chart-responsive">
+                                    <canvas id="diskChart" height="120" width="120px"></canvas>
+                                    <p>硬盘</p>
+                                </div>
+                                <div class="chart-responsive">
+                                    <canvas id="infoChart" height="120" width="120px"></canvas>
+                                    <p>流量</p>
+                                </div>
                             </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer no-padding" style="height: 163px;">
-                        <ul class="nav nav-pills nav-stacked" id="devicesByTypeValue">
-                        </ul>
                     </div>
                     <!-- /.footer -->
                 </div>
@@ -248,101 +311,56 @@
 
                 <!--/.direct-chat -->
             </div>
-            <!-- /资产类型 -->
-            <div class="col-md-6">
-                <!-- USERS LIST -->
-                <div class="box box-default">
-                    <div class="box-header with-border">
-                          <span class="box-title new-header">应用类型</span>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body" style="margin-top: 0px !important;">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="chart-responsive">
-                                    <canvas id="pieChart2" height="150"></canvas>
-                                </div>
-                                <!-- /chart-responsive -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-4">
-                                <ul class="chart-legend clearfix" id="apppubByTypeName">
-                                </ul>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer no-padding" style="height: 163px;" >
-                        <ul class="nav nav-pills nav-stacked" id="apppubByTypeValue">
-                        </ul>
-                    </div>
-                    <!-- /.footer -->
-                </div>
-                <!--/.box -->
-            </div>
+            <!-- /应用类型 -->
+<!--            <div class="col-md-4">-->
+<!--                &lt;!&ndash; USERS LIST &ndash;&gt;-->
+<!--                <div class="box box-default">-->
+<!--                    <div class="box-header with-border">-->
+<!--                          <span class="box-title new-header">应用类型</span>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; /.box-header &ndash;&gt;-->
+<!--                    <div class="box-body" style="margin-top: 0px !important;">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="chart-responsive">-->
+<!--                                    <canvas id="pieChart2" height="150"></canvas>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; /chart-responsive &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; /.col &ndash;&gt;-->
+<!--                            <div class="col-md-6">-->
+<!--                                <ul class="chart-legend clearfix" id="apppubByTypeName">-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; /.col &ndash;&gt;-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; /.row &ndash;&gt;-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; /.box-body &ndash;&gt;-->
+<!--                    <div class="box-footer no-padding" style="height: 163px;" >-->
+<!--                        <ul class="nav nav-pills nav-stacked" id="apppubByTypeValue">-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; /.footer &ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash;/.box &ndash;&gt;-->
+<!--            </div>-->
         <!-- 应用类型  -->
             <!-- /.col -->
-        </div>
-                    <!-- /.row小 -->
-                    <!-- TABLE: LATEST ORDERS -->
-                    <!-- /.box -->
-                </div>
-                <!--col-md-8 -->
-                <div class="col-md-4">
-                    <!-- Info Boxes Style 2 -->
-                     <div class="box box-default">
-                    <div class="box_visit">
-                   <div>
-                   <img th:src="@{/images/tupian.png}">
-                   <div>
-                   <span>图形访问 30天增长   &nbsp<span id="graph30increatepercent">0</span></span><br>
-                   <span id="graph30increate">0</span>
-                   </div>
-                   </div>
-                   <hr class="visit_hr">
-                   <br>
-                   <div>
-                   <img th:src="@{/images/code.png}">
-                   <div>
-                   <span>字符访问 30天增长   &nbsp<span id="text30increatepercent">0</span></span><br>
-                   <span id="text30increate">0</span>
-                   </div>
-                   </div>
-                   <hr class="visit_hr">
-                   <br>
-                   <div>
-                   <img th:src="@{/images/APPm.png}">
-                   <div>
-                   <span>应用操作 30天增长   &nbsp<span id="apppub30increatepercent">0</span></span><br>
-                   <span  id="apppub30increate">0</span>
-                   </div>
-                   </div>
-                   <hr class="visit_hr">
-                   <br>
-                   <div style="height: 88px;margin-top: -10px;">
-                   <img th:src="@{/images/file.png}" >
-                   <div>
-                   <span>文件传输 30天增长   &nbsp<span id="filetransfer30increatepercent">0</span></span><br>
-                   <span id="filetransfer30increate">0</span>
-                   </div>
-                   </div>
-                   </div>
-                   </div>
-                 <!-- 图片 -->
+
+                <div class="col-md-6">
                   <div class="box box-default">
                 <div style="background-color:white;border-radius: 3px;">
                  <div class="box-header with-border">
-                                <span class="box-title new-header" >当前在线用户</span>
+                                <span class="box-title new-header" >实时在线用户</span>
                              <!--    <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                     </button>
                                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                 </div> -->
                             </div>
-                            <div class="box-body" style="height: 365px;">
-                                <ul class="products-list product-list-in-box">
+                            <div class="box-body" style="height:333px;">
+                                <ul class="products-list product-list-in-box" style="margin-left: 20px;">
                                 	<li class="item" style="margin-top: 10px;display:none;" id="onlineuser1">
                                         <div class="product-img">
                                             <img id="onlineuser1image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
@@ -384,9 +402,9 @@
                                 </ul>
                                 </div>
                   <!-- /.box-body -->
-                    <!-- <div class="box-footer">
-                  <button style="height: 30px;width: 130px;background-color: white;border-radius: 3px;float: right;font-size: 13px;border: 1px solid #ccc;">查看访问记录>></button>
-                     </div>-->
+                   <div class="box-footer">
+                  <button class="newaddbtn2" style="float: right">查看访问记录>></button>
+                     </div>
                      <!-- /.box-footer -->
                 </div>
                <!--  用户 -->
@@ -394,8 +412,7 @@
                 </div>
                 <!-- /.col md-4-->
             </div>
-            <!-- /.row 大-->
-            </div>
+          </div>
             <div class="box">
                 <div class="box-header with-border">
                 <span class="box-title new-header">实时会话</span>

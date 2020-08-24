@@ -55,7 +55,7 @@
 		<if test="deviceType.searchAll!=null">
 			AND(
 			name like CONCAT('%',#{deviceType.searchAll},'%')
-			or param like CONCAT('%',#{device.searchAll},'%')
+			or param like CONCAT('%',#{deviceType.searchAll},'%')
 			)
 		</if>
 		<if test="page_start != null and page_length != null">

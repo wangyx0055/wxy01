@@ -250,7 +250,7 @@
                     $("#session_backup_port_show").text($('#session_backup_port').val());
                     $("#session_backup_username_show").text($('#session_backup_username').val());
                     $("#session_backup_path_show").text($('#session_backup_path').val());
-                    $('#session_backup_iscompress_show').text($('#session_backup_iscompress_yes')[0].checked ? '启用': '未启用');
+                    $('#session_backup_iscompress_show').text($('#session_backup_iscompress_yes')[0].checked ? '是': '否');
 
                 } else {
                     $("#modal-danger .modal-title").text('失败');
@@ -314,7 +314,7 @@ $.ajax({
             $('#session_backup_port_show').text(data.data[0].session_backup_port);
             $('#session_backup_username_show').text(data.data[0].session_backup_username);
             $('#session_backup_path_show').text(data.data[0].session_backup_path);
-            $('#session_backup_iscompress_show').text(data.data[0].session_backup_iscompress == 1 ? '启用': '未启用');
+            $('#session_backup_iscompress_show').text(data.data[0].session_backup_iscompress == 1 ? '是': '否');
         } else {}
     },
     error: function() {

@@ -29,7 +29,7 @@ function resetC(){
 }
 var regexp = {
     name:/^([A-Za-z0-9]|[\u4e00-\u9fa5]|@|_){0,64}$/,
-    length:/^\S{0,32}$/,
+    length:/^\S{0,128}$/,
     length_des:/^\S{0,64}$/,
 }
 //失去焦点，移出输入框
@@ -177,7 +177,7 @@ $('#modal-editgroup').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     if(button.data('row')!=undefined&&button.data('row')!=null){
         i = button.data('row');
-        $("#modal-editgroup .modal-title").text("编辑用户组  "+"["+$('#user_group_list').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
+        $("#modal-editgroup .modal-title").text("编辑用户组");
         $('#id').val($('#user_group_list').DataTable().row('#' + i).nodes(i).data()[i].id);
         $('#edit_name').val($('#user_group_list').DataTable().row('#' + i).nodes(i).data()[i].name);
         $('#edit_desc').val($('#user_group_list').DataTable().row('#' + i).nodes(i).data()[i].desc);
@@ -191,7 +191,7 @@ $('#modal-editgroup').on('show.bs.modal', function (event) {
     }
 });
 
-
+//删除用户
 $('#modal-delgroup').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     i = button.data('row');
@@ -312,7 +312,13 @@ $("#upload").off().on("click", function () {
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                    if (data.errorInfo.length !== 0) {
+                        $("#modal-uploadInfo").modal();
+                        for(let item of data.errorInfo) {
+                            $('#uploadError').append(item+"<br/>");
+                        }
+                        $('#uploadError').append("----详细请看文档和日志");
+                    }
                 }
             },1500)
         },
@@ -430,17 +436,22 @@ $('#delAllButton').click(function(){
 });
 
 //user
+const page_length = 500;
 let ac_edit_user_list = null;
 let ac_edit_user1_list = null;
 $('#modal-default6').on('show.bs.modal', function (event) {
+    let page_start1 =0;
     var button = $(event.relatedTarget);
     var i = button.data('row');
+    $("#modal-default6 .modal-title").text("关联用户["+$('#user_group_list').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
     $('#modal6_id').val($('#user_group_list').DataTable().row('#' + i).nodes(i).data()[i].id);
     $.ajax({
         url: "../../userGroupUser/findUserGroupUser",
         type: "POST",
         data: {
             group_id: $('#modal6_id').val(),
+            page_start:page_start1,
+            page_length:page_length
         },
         success: function (data) {
             var arr = data.data_users;
@@ -448,15 +459,41 @@ $('#modal-default6').on('show.bs.modal', function (event) {
             //show
             $('#edit_user').html('');
             $('#edit_user1').html('');
-            for (var i = 0; i < arr.length; i++) {
-                $('#edit_user').html($('#edit_user').html() + '<div><input value="' + arr[i].user_id + '" type="checkbox"><span>' + arr[i].username + "[" + arr[i].realname + "]" + '</span></div>')
+            for (let item of arr) {
+                $('#edit_user').append( '<div><input value="' + item.user_id + '" type="checkbox"><span>' + item.username + "[" + item.realname + "]" + '</span></div>')
             }
-            for (var i = 0; i < arr1.length; i++) {
-                $('#edit_user1').html($('#edit_user1').html() + '<div><input value="' + arr1[i].user_id + '" type="checkbox"><span>' + arr1[i].username + "[" + arr1[i].realname + "]" + '</span></div>')
+            for (let item1 of arr1) {
+                $('#edit_user1').append('<div><input value="' + item1.user_id + '" type="checkbox"><span>' + item1.username + "[" + item1.realname + "]" + '</span></div>')
             }
             RelativeMethods(5);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
             ac_edit_user_list = $('#edit_user').html();
             ac_edit_user1_list = $('#edit_user1').html();
+            //慢加载
+            $('#edit_user').on("scroll",function () {
+                let viewH =$(this).height(),//可见高度
+                    contentH =$(this).get(0).scrollHeight,//内容高度
+                    scrollTop =$(this).scrollTop();//滚动高度
+                if(contentH - viewH - scrollTop <= 60) {
+                    page_start1 += 500;
+                    $.ajax({
+                        url: "../../userGroupUser/findUserGroupUser",
+                        type: "POST",
+                        data: {
+                            group_id: $('#modal6_id').val(),
+                            page_start:page_start1,
+                            page_length:page_length
+                        },
+                        success: function (data) {
+                            var arr = data.data_users;
+                            for (let item of arr) {
+                                $('#edit_user').append( '<div><input value="' + item.user_id + '" type="checkbox"><span>' + item.username + "[" + item.realname + "]" + '</span></div>')
+                            }
+                            RelativeMethods(5);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+                            ac_edit_user_list = $('#edit_user').html();
+                        },
+                    })
+                }
+            });
         },
         error: function () {
         },

@@ -105,13 +105,15 @@ public class AccessPolicyApppubController {
 
 	@RequestMapping("/findAccessPolicyAppAndUser")
 	@ResponseBody
-	public JSONObject findAccessPolicyAppAndUser(@RequestParam("policy_id") Integer policy_id) {
+	public JSONObject findAccessPolicyAppAndUser(@RequestParam("policy_id") Integer policy_id,
+	                                             @RequestParam(value = "page_start",required = false)int page_start,
+	                                             @RequestParam(value ="page_length",required = false)int page_length) {
 	
 		ArrayList<App> resultAccessPolicyApp = new ArrayList<App>();
 		ArrayList<App> resultApp = new ArrayList<App>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyApp = (ArrayList<App>) accessPolicyApppubService.selectById(policy_id);
-		resultApp = (ArrayList<App>) apppubService.selectNameAndId(users.getDepartment());
+		resultApp = (ArrayList<App>) apppubService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultApp.removeAll(resultAccessPolicyApp);
 		JSONArray jsonArray_p_app = JSONArray.fromObject(resultAccessPolicyApp);

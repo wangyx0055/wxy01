@@ -32,6 +32,12 @@ public class CrontabCommandLog {
 
 	private Integer config_cycle;
 
+	private Integer department;
+
+	private String depart_name;
+
+	private String topName;
+
 	public Integer getConfig_cycle() {
 		return config_cycle;
 	}
@@ -157,6 +163,30 @@ public class CrontabCommandLog {
 		this.config_name = config_name;
 	}
 
+	public Integer getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Integer department) {
+		this.department = department;
+	}
+
+	public String getDepart_name() {
+		return depart_name;
+	}
+
+	public void setDepart_name(String depart_name) {
+		this.depart_name = depart_name;
+	}
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
+	}
+
 	@Override
 	public String toString() {
 		return "CrontabCommandLog{" +
@@ -175,6 +205,9 @@ public class CrontabCommandLog {
 				", searchAll='" + searchAll + '\'' +
 				", config_method=" + config_method +
 				", config_cycle=" + config_cycle +
+				", department=" + department +
+				", depart_name='" + depart_name + '\'' +
+				", topName='" + topName + '\'' +
 				'}';
 	}
 }

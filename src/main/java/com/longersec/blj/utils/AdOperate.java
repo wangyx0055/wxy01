@@ -219,7 +219,16 @@ public class AdOperate {
 
 		ArrayList<User> userArrayList = new ArrayList<>();
 
+		List<String> split = new ArrayList();
+
 		String returnValue = configLdapAd.getUsername();
+
+		String filter_username = "";
+		filter_username = configLdapAd.getFilter_username();
+		String[] splitFilter_username = filter_username.split(",");
+		for(int i=0;i<splitFilter_username.length;i++){
+			split.add(splitFilter_username[i]);
+		}
 
 		Properties env = new Properties();
 
@@ -273,13 +282,11 @@ public class AdOperate {
 						String cn = Attrs.get("cn").toString();
 						String CN = cn.substring(0, cn.indexOf(":"));
 						String newCN = cn.substring(CN.length() + 2, cn.length());
-						if(!newCN.equals(configLdapAd.getFilter_loginname())){
 							user.setUsername(newCN);
 							user.setRealname(newCN);
 							user.setRole_id(1);
 							user.setLdap_dn(newDistinguishedName);
 							userArrayList.add(user);
-						}
 						}
 					}
 					if (Attrs.get("sn")!=null){
@@ -287,13 +294,11 @@ public class AdOperate {
 						String sn = Attrs.get("sn").toString();
 						String SN = sn.substring(0, sn.indexOf(":"));
 						String newSN = sn.substring(SN.length()+2,sn.length());
-						if(!newSN.equals(configLdapAd.getFilter_loginname())){
 							user.setUsername(newSN);
 							user.setRealname(newSN);
 							user.setRole_id(1);
 							user.setLdap_dn(newDistinguishedName);
 							userArrayList.add(user);
-						}
 						}
 					}
 					if (Attrs.get("uid")!=null){
@@ -301,13 +306,11 @@ public class AdOperate {
 						String uid = Attrs.get("uid").toString();
 						String UID = uid.substring(0, uid.indexOf(":"));
 						String newUID = uid.substring(UID.length()+2,uid.length());
-						if(!newUID.equals(configLdapAd.getFilter_loginname())){
 							user.setUsername(newUID);
 							user.setRealname(newUID);
 							user.setRole_id(1);
 							user.setLdap_dn(newDistinguishedName);
 							userArrayList.add(user);
-						}
 						}
 					}
 				}//if
@@ -316,6 +319,16 @@ public class AdOperate {
 		}catch (NamingException e) {
 			e.printStackTrace();
 			System.err.println("Problem searching directory: " + e);
+		}
+		//用户过滤
+		for(int j =0;j<userArrayList.size();j++){
+			for(int k=0;k<split.size();k++){
+				if(userArrayList.get(j).getUsername().toString().equals(split.get(k).toString())){
+					userArrayList.remove(j);
+					j--;
+					break;
+				}
+			}
 		}
 		return userArrayList;
 	}

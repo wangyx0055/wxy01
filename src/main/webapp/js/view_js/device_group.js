@@ -79,9 +79,7 @@ $('#modal-editgroup').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     if(button.data('row')!=undefined&&button.data('row')!=null){
         i = button.data('row');
-        let title_name=($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].name);
-        $("#modal-editgroup .modal-title").text("编辑设备组"+""+""+"["+title_name+"]");
-        console.log(title_name)
+        $("#modal-editgroup .modal-title").text("编辑设备组");
         $('#id').val($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].id);
         $('#edit_name').val($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].name);
         $('#depart_name').val($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].depart_name);
@@ -287,7 +285,13 @@ $("#upload").off().on("click", function () {
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                    if (data.errorInfo.length !== 0) {
+                        $("#modal-uploadInfo").modal();
+                        for(let item of data.errorInfo) {
+                            $('#uploadError').append(item+"<br/>");
+                        }
+                        $('#uploadError').append("----详细请看文档和日志");
+                    }
                 }
             },1500)
         }
@@ -396,7 +400,7 @@ $('#edit_name').focus(function(){
 
 $('#edit_desc').blur(function () {
     var regexp = {
-        name:/^\S{0,64}$/,
+        name:/^\S{0,128}$/,
     };
     if(!regexp.name.test($('#edit_desc').val())){
         $('#Vedit_desc').text("超过限制长度");
@@ -425,17 +429,23 @@ $('#depart_name').focus(function () {
     $('#VdepartName').text('');
 });
 //device
+const page_length = 500;
 let ac_edit_device_list = null;
 let ac_edit_device1_list = null;
+
 $('#modal-primary8').on('show.bs.modal', function (event) {
+    let page_start2 =0;
     var button = $(event.relatedTarget) // Button that triggered the modal
     var i = button.data('row');
+    $("#modal-primary8 .modal-title").text("关联设备账号["+$('#device_group').DataTable().row('#' + i).nodes(i).data()[i].name+"]")
     $('#modal8_id').val($('#device_group').DataTable().row('#' + i).nodes(i).data()[i].id);
     $.ajax({
         url: "../../groupDeviceAccount/findGroupDeviceAccount",
         type: "POST",
         data: {
             group_id: $('#modal8_id').val(),
+            page_start:page_start2,
+            page_length:page_length
         },
         success: function (data) {
             var arr = data.data_device;
@@ -443,19 +453,42 @@ $('#modal-primary8').on('show.bs.modal', function (event) {
             //show
             $('#edit_device').html('');
             $('#edit_device1').html('');
-            let len = arr.length;
-            for (let i = 0; i < len; i++) {
-                arr[i].protocol_id =_protocol(arr[i].protocol_id);
-                $('#edit_device').append('<div><input value="' + arr[i].device_account_id + '" type="checkbox"><span>' + arr[i].device_name + "[" + arr[i].username + "]" + "[" + arr[i].protocol_id + "]" + '</span></div>')
+            for (let item of arr) {
+                $('#edit_device').append('<div><input value="' + item.device_account_id + '" type="checkbox"><span>' + item.device_name + "[" + item.username + "]" + "[" + item.protocol_name + "]" + '</span></div>')
             }
-            let len1 = arr1.length;
-            for (let i = 0; i < len1; i++) {
-                arr1[i].protocol_id =_protocol(arr1[i].protocol_id);
-                $('#edit_device1').append('<div><input value="' + arr1[i].device_account_id + '" type="checkbox" ><span>' + arr1[i].device_name + "[" + arr1[i].username + "]" + "[" + arr1[i].protocol_id + "]" + '</span></div>')
+            //已选择数据
+            for(let item1 of arr1){
+                $('#edit_device1').append('<div><input value="' + item1.device_account_id + '" type="checkbox" ><span>' + item1.device_name + "[" + item1.username + "]" + "[" + item1.protocol_name + "]" + '</span></div>')
             }
             RelativeMethods(7);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
             ac_edit_device_list = $('#edit_device').html();
             ac_edit_device1_list = $('#edit_device1').html();
+            //慢加载
+            $('#edit_device').on("scroll",function () {
+                let viewH =$(this).height(),//可见高度
+                    contentH =$(this).get(0).scrollHeight,//内容高度
+                    scrollTop =$(this).scrollTop();//滚动高度
+                if(contentH - viewH - scrollTop <= 60) {
+                    page_start2 += 500;
+                    $.ajax({
+                        url: "../../groupDeviceAccount/findGroupDeviceAccount",
+                        type: "POST",
+                        data: {
+                            group_id: $('#modal8_id').val(),
+                            page_start:page_start2,
+                            page_length:page_length
+                        },
+                        success: function (data) {
+                            var arr = data.data_device;
+                            for (let item of arr) {
+                                $('#edit_device').append('<div><input value="' + item.device_account_id + '" type="checkbox"><span>' + item.device_name + "[" + item.username + "]" + "[" + item.protocol_name + "]" + '</span></div>')
+                            }
+                            RelativeMethods(7);//封装的穿梭框函数代码在/bower_components/dist/js/common/relative.js里面
+                            ac_edit_device_list = $('#edit_device').html();
+                        },
+                    })
+                }
+            })
         },
         error: function () {
         },

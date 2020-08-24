@@ -42,12 +42,14 @@ public class CrontabScriptConfigDeviceController {
 
 	@RequestMapping("/findCrontScriptConfigDevice")
 	@ResponseBody
-	public JSONObject findCrontScriptConfigDevice(@RequestParam("config_id")Integer config_id) {
+	public JSONObject findCrontScriptConfigDevice(@RequestParam("config_id")Integer config_id,
+	                                              @RequestParam(value = "page_start",required = false)int page_start,
+	                                              @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<Deviceaccess> resultAccessPolicyDevice = new ArrayList<Deviceaccess>();
 		ArrayList<Deviceaccess> resultDevice = new ArrayList<Deviceaccess>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyDevice = (ArrayList<Deviceaccess>) crontabScriptConfigDeviceService.selectById(config_id);
-		resultDevice = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId(users.getDepartment());
+		resultDevice = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultDevice.removeAll(resultAccessPolicyDevice);
 		JSONArray jsonArray_p_device = JSONArray.fromObject(resultAccessPolicyDevice);

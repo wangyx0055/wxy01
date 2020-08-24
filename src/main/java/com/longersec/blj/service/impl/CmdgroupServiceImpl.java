@@ -36,8 +36,8 @@ public class CmdgroupServiceImpl implements CmdgroupService{
 	}
 
 	@Override
-	public List<Object> findAll(Cmdgroup cmdgroup, String sname,Integer type,int page_start, int page_length) {
-		return CmdgroupDao.findAll(cmdgroup, sname,type,page_start, page_length);
+	public List<Object> findAll(Cmdgroup cmdgroup, String sname,Integer type,int page_start, int page_length, List<Integer> depart_ids) {
+		return CmdgroupDao.findAll(cmdgroup, sname,type,page_start, page_length,depart_ids);
 	}
 
 	@Override

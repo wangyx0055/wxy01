@@ -57,8 +57,8 @@ public class GroupServiceImpl implements GroupService{
 	}
 
 	@Override
-	public List<DeviceGroup> selectNameAnddId(Integer id) {
-		return GroupDao.selectNameAnddId(id);
+	public List<DeviceGroup> selectNameAnddId(Integer id,int page_start, int page_length) {
+		return GroupDao.selectNameAnddId(id, page_start,  page_length);
 	}
 	
 	@Override
@@ -67,8 +67,8 @@ public class GroupServiceImpl implements GroupService{
 	}
 
 	@Override
-	public ArrayList<Group> listByType(Integer type) {
-		return GroupDao.listByType(type);
+	public ArrayList<Group> listByType(Integer type,Integer id) {
+		return GroupDao.listByType(type,id);
 	}
 
 	@Override

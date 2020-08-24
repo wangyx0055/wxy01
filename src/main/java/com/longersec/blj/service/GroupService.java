@@ -26,13 +26,13 @@ public interface GroupService {
 
 	public List<DeviceGroup> selectNameAndIdTop1();
 
-	public List<DeviceGroup> selectNameAnddId(Integer id);
+	public List<DeviceGroup> selectNameAnddId(Integer id,int page_start, int page_length);
 
 	public Group checkname(Group group);
 	
 	public List<UserGroup> select_two(int type);
 
-	public ArrayList<Group> listByType(Integer type);
+	public ArrayList<Group> listByType(Integer type,Integer id);
 
     boolean insertMore(Group group);
 

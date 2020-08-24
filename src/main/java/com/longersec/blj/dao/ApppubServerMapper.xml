@@ -78,9 +78,11 @@
 			las.`name` like CONCAT('%',#{sname},'%')
 			or las.`ip` like CONCAT('%',#{sname},'%')
 			or las.`desc` like CONCAT('%',#{sname},'%')
+			or ld.`name` like CONCAT('%',#{sname},'%')
 			)</if>
 		<if test="type==2">AND las.`name` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==3">AND las.`ip` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==4">AND ld.`name` like CONCAT('%',#{sname},'%')</if>
 		<if test="depart_ids!=null and depart_ids.size()>0">
 			AND las.department in
 			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
@@ -96,7 +98,9 @@
 	</select>
 
 	<select id="selectAll" resultType="com.longersec.blj.domain.ApppubServer">
-		select * from lsblj_apppub_server;
+		select * from lsblj_apppub_server a INNER JOIN (SELECT id ,parent_id FROM lsblj_department ld,
+        (SELECT @id :=#{id}) pd
+        WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON a.department=T.id;
 	</select>
 
 	<select id="selectName" resultType="java.lang.String">

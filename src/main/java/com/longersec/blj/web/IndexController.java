@@ -203,4 +203,9 @@ public class IndexController {
     public String finger(){
         return "view/user/finger";
     }
+    //工单管理
+    @RequestMapping("/view/work_manage/authorize")
+    public String authorize(){
+        return "/view/work_manage/authorize";
+    }
 }

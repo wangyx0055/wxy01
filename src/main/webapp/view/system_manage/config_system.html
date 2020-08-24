@@ -71,6 +71,7 @@
 			  <li><a href="#D" data-toggle="tab">端口配置</a></li>
 			 <!-- <li><a href="#E" data-toggle="tab">界面配置</a></li>-->
 			  <li><a href="#L" data-toggle="tab">告警配置</a></li>
+                 <li><a href="#F" data-toggle="tab">工单配置</a></li>
 			  <li><a href="#M" data-toggle="tab">存储配置</a></li>			  
 			  <li><a href="#N" data-toggle="tab">扩展配置</a></li>
              </ul>
@@ -125,6 +126,10 @@
 <!--        <div th:include="/view/system_manage/alert_config :: alert_config">-->
         <div th:include="/view/system_manage/alert_config.html"></div>
 	</div>
+         <!--工单配置 -->
+     <div class="tab-pane" id="F" style="height: 100%">
+         <div th:include="/view/system_manage/work_config.html"></div>
+     </div>
 	    <!--   存储配置 -->
 	<div class="tab-pane" id="M" style="height: 100%">
 <!--        <div th:include="/view/system_manage/save_config :: save_config">-->
@@ -168,6 +173,7 @@
 <!-- page script -->
 <script src="../../js/common/utils.js"></script>
 <script src="../../js/view_js/config_system.js"></script>
+<script src="../../js/common/relative.js"></script>
 <script src="../../js/common/modal.js"></script>
 <script></script>
 </body>

@@ -78,6 +78,8 @@ public class UpdateDepartmentCount {
 					deviceService.deleteUselessDevice(department2.getId());
 					//删除和应用相关
 					apppubServerService.delUselessApppubServer(department2.getId());
+					//删除策略相关,执行任务
+					departmentService.deleteUseless(department2.getId());
 					//删除部门
 					departmentService.delDepartment(Collections.singletonList(department2.getId()));
 					list.add(department2.getId());
@@ -85,8 +87,8 @@ public class UpdateDepartmentCount {
 				}
 			}
 		}
-		AutoUpdateGroupCounts(groupService,userGroupUserService);
-		AutoUpdateGroupDeviceCounts(groupService,groupDeviceAccountService);
+		//AutoUpdateGroupCounts(groupService,userGroupUserService);
+		//AutoUpdateGroupDeviceCounts(groupService,groupDeviceAccountService);
 		return list1;
 	}
 

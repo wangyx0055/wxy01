@@ -66,16 +66,16 @@ public class ApppubAccountController {
 			apppubAccounts = (ArrayList<ApppubAccount>)resultApppubAccounts.get(0);
 			total = ((ArrayList<Long>) resultApppubAccounts.get(1)).get(0);
 		}
-//		for (ApppubAccount apppubAccount1 : apppubAccounts) {
-//			if(apppubAccount1.getDepartment()!=0) {
-//				List<String> allParentName = departmentService.findAllParentName(apppubAccount1.getDepartment());
-//				StringBuilder stringBuilder = new StringBuilder();
-//				for (Object strings : allParentName) {
-//					stringBuilder.append(strings).append("/");
-//				}
-//				apppubAccount1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
-//			}
-//		}
+		for (ApppubAccount apppubAccount1 : apppubAccounts) {
+			if(apppubAccount1.getDepartment()!=0) {
+				List<String> allParentName = departmentService.findAllParentName(apppubAccount1.getDepartment());
+				StringBuilder stringBuilder = new StringBuilder();
+				for (Object strings : allParentName) {
+					stringBuilder.append(strings).append("/");
+				}
+				apppubAccount1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
+			}
+		}
 		JSONArray jsonArray = JSONArray.fromObject(apppubAccounts);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);

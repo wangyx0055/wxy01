@@ -62,7 +62,11 @@
         border-right: none;
     }
     body{
-        padding-right: 0px!important;
+        padding-right: 0px !important;
+        overflow-y: hidden;
+    }
+    .fixed-table-body{
+        height: 480px;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -131,12 +135,12 @@
                         <span style="font-size: 20px;vertical-align: -20%;color: red">*</span>
                         <span><span style="font-size: 12px;">部门名称：</span>
                             <input type="text" name="name" id="name" style="margin-top: -10px;width:210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;">&nbsp;&nbsp;<span id='Vname' style="color:red;font-size: 12px;"></span></span>
-                        <p style="font-size: 12px;margin-left: 73px;color: #a4abb5;margin-top: 0px; width: 306px;">长度1-32个字符,字符或数字,允许输入"_-@"</p>
+                        <p style="font-size: 12px;margin-left: 73px;color: #a4abb5;margin-top: 0px; width: 306px;">长度为1-32个字符,允许输入"_.-@"</p>
                     </div>
                     <div style="margin-top: 10px;margin-left: 136px">
                         <span><span style="font-size: 12px;vertical-align: top;display: inline-block">描述：</span>
-                            <textarea style="width:209px;height: 60px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;resize:none" name="description" id="description"></textarea>&nbsp;&nbsp;<span id='Vdescription' style="color:red;font-size: 12px;"></span></span>
-                        <p style="font-size: 12px;margin-left: 38px;color: #a4abb5;margin-top: 0px; width: 306px;">长度1-128个汉字或字符</p>
+                            <textarea style="width:209px;height: 60px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;resize:none" maxlength="128" name="description" id="description"></textarea>&nbsp;&nbsp;<span id='Vdescription' style="color:red;font-size: 12px;"></span></span>
+                        <p style="font-size: 12px;margin-left: 38px;color: #a4abb5;margin-top: 0px; width: 306px;">长度为1-128个汉字或字符</p>
                     </div>
                     <br>
                     <div class="modal-footer">
@@ -216,9 +220,10 @@
                             <span aria-hidden="true">&times;</span></button>
                         <span class="modal-title">提示</span>
                     </div>
-                    <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
-                        <p style="margin-left: -62px;" id="uploadError"></p>
-                    </div><br>
+                    <div style="height: 200px;overflow-y: auto;text-align: center">
+                        <p id="uploadError">
+                        </p>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                         <button type="button" id="uploadInfo" class="btn newaddbtn" data-dismiss="modal" >确定</button>
@@ -325,6 +330,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../bower_components/dist/js/demo.js"></script>
 <script src="../../js/common/modal.js"></script>
+<script src="../../js/common/regExpUtil.js"></script>
 <script src="../../bower_components/dist/js/checkAll.js"></script>
 <script src="../../js/bootstrap-treeview.js"></script>
 <script src="../../bower_components/treeview/bootstrap-table.min.js"></script>

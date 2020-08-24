@@ -12,8 +12,6 @@ public class SystemMessage {
 
 	private Integer level;
 
-
-
 	public SystemMessage() {
 		super();
 	}
@@ -57,6 +55,17 @@ public class SystemMessage {
 	public void setLevel(Integer level) {
 		this.level = level;
 	}
+	public Integer getRead_check() {
+		return read_check;
+	}
+
+	public void setRead_check(Integer read_check) {
+		this.read_check = read_check;
+	}
+
+	private Integer read_check;
+
+
 
 	@Override
 	public String toString() {
@@ -66,6 +75,7 @@ public class SystemMessage {
 			",content=" + content +
 			",add_datetime=" + add_datetime +
 			",level=" + level +
+			",read_check=" + read_check +
 			"";
 	}
 }

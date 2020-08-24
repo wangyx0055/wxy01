@@ -18,7 +18,7 @@ public interface AccessPolicyDao {
 
 	public List<Object> findAll(@Param("accessPolicy")AccessPolicy accessPolicy, @Param("sname")String sname, @Param("stat")String stat,@Param("type")Integer type,@Param("page_start")int page_start, @Param("page_length")int page_length,@Param("depart_ids") List<Integer> depart_ids);
     
-    public List<AccessPolicy> getUserPolicy(@Param("userid")Integer userid, @Param("groupid")Integer groupid, @Param("device_account_id")Integer device_account_id, @Param("apppub_account_id")Integer apppub_account_id);
+    public List<AccessPolicy> getUserPolicy(@Param("userid")Integer userid, @Param("device_account_id")Integer device_account_id, @Param("apppub_account_id")Integer apppub_account_id);
     
     public AccessPolicy getById(@Param("id")Integer id);
 

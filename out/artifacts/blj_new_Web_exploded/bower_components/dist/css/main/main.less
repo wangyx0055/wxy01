@@ -85,7 +85,7 @@ table tr span{
   border-left: 3px solid #1494F7;
   line-height: 1!important;
   display: inline-block!important;
-  font-size: 18px!important;
+  font-size: 14px!important;
 }
 /*下拉框树*/
 #tree ul li {
@@ -114,7 +114,11 @@ table tr span{
   border:1px solid #1494F7!important;
   outline:none!important;
 }
-//提示
+// 提示星号
+.sign_emphasize{
+  color:red;font-size: 20px;vertical-align: -20%;
+}
+//提示文字
 .sign_red{
   color: red;font-size:12px;
 }
@@ -2870,27 +2874,27 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
       .ac-ip {
         margin-left: 70px;margin-top: 20px;
         >span {
-          font-size: 13px;color: #505050;
+          font-size: 12px;color: #505050;
         }
         #add_ip,
         #edit_ip {
-          width: 300px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 13px;
+          width: 300px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;
           option {
-            font-size: 13px;
+            font-size: 12px;
           }
         }
       }
       .black,
       .edit_black {
-        margin-left: 122px;resize:none;width: 300px;height: 65px;border-radius: 3px;border: 1px solid #ccc;font-size: 13px;margin-top: 10px;
+        margin-left: 122px;resize:none;width: 300px;height: 65px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-top: 10px;
       }
       .ac-desc {
         position:relative;
         >span {
           left:76px;position: absolute;top: 5px;font-size: 12px;
         }
-        textarea {
-          resize:none;width: 300px;height: 26px;border-radius: 3px;border: 1px solid #ccc;font-size: 13px;margin-left:122px;
+        textarea{
+          resize:none;width: 300px;height: 65px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left:122px;
         }
       }
     }
@@ -2940,6 +2944,8 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
 .lm .modal-body,
 .scs .modal-body,
 .ug .modal-body,
+.cs_con .modal-body,
+.author .modal-body,
 .dg .modal-body,
 .ro .modal-body {
   .common-relative-left {
@@ -3087,10 +3093,10 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
           position: absolute;font-size: 12px;margin-top: 30px;margin-left: 50px;
       }
       #add_desc2 {
-        resize:none;width: 300px;height: 26px;border-radius: 3px;border: 1px solid #ccc;font-size: 13px;margin-left:90px;margin-top: 30px;
+        resize:none;width: 300px;height: 65px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left:90px;margin-top: 30px;
       }
       #edit_desc777 {
-        resize:none;width: 300px;height: 26px;border-radius: 3px;border: 1px solid #ccc;font-size: 13px;margin-left:91px;margin-top: 27px;
+        resize:none;width: 300px;height: 65px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left:91px;margin-top: 27px;
       }
     }
   }
@@ -3273,7 +3279,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
        }
         }
        .network_hr1{
-        border: 0;border-bottom:1px solid #E8E8E8;width: 100%;margin-left: 7px;margin-top: 0px;
+        border: 0;border-bottom:1px solid #E8E8E8;width: 95%;height:4px;margin-left: 7px;margin-top: 30px;position: absolute;
        } 
       }
     }
@@ -3383,7 +3389,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
             font-size: 12px;margin-left: 140px;color: #a4abb5;margin-top: 10px;
             }
             >div:nth-of-type(3){
-            margin-left: 135px;font-size: 13px;margin-top: 20px;width: 400px;height: 200px;background-color: #eff5fc;
+            margin-left: 135px;font-size: 13px;margin-top: 20px;width: 400px;height: 200px;background-color: #eff5fc;overflow-y: auto;
             }
             }
            }
@@ -4102,15 +4108,15 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
         vertical-align: -20%;color:red;font-size: 20px;margin-right: 1px;margin-left: 70px;
       }
       #ad_edit_basedn{
-        width: 210px;height: 30px;font-size:12px;border-radius: 3px;border: 1px solid #ccc;margin-left: 1px;
+        width: 210px;height: 30px;font-size:12px;border-radius: 3px;border: 1px solid #ccc;margin-left: -2px;
       }
       >p:nth-of-type(3){
-        font-size: 12px;margin-left: 150px;color: #a4abb5;
+        font-size: 12px;margin-left: 148px;color: #a4abb5;
       }
       .ad_asy{
         font-size: 12px;margin-left: 73px;
         select{
-          width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left: -12px;
+          width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left: -14px;
         }
       }
       .more_ad{
@@ -4143,7 +4149,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
   }
   >span:nth-of-type(2){
     font-size: 12px;margin-left: 90px;
-    #ad_edit_password2{
+    #ad_edit_realname{
       width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;
     }
   }
@@ -4157,16 +4163,16 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
     font-size: 12px;margin-left: 66px
   }
   #ad_edit_filter_username{
-    margin-top: 15px;font-size:12px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-left: 10px
+    margin-top: 15px;font-size:12px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-left: 9px
   }
-  span:nth-of-type(7){
-    font-size: 12px;margin-left: 55px;
-  }
-  #ad_edit_filter_loginname{
-   margin-top: 15px;font-size:12px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-left: 10px
-  }
+  // span:nth-of-type(7){
+  //   font-size: 12px;margin-left: 55px;
+  // }
+  // #ad_edit_filter_loginname{
+  //  margin-top: 15px;font-size:12px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-left: 7px
+  // }
   >p:nth-of-type(1){
-    font-size: 12px;margin-left: 151px;color: #a4abb5;margin-top: 0px;
+    font-size: 12px;margin-left: 151px;color: #a4abb5;margin-top: -10px;
   }
   .email_ad1{
     font-size: 12px;margin-left: 90px
@@ -4212,26 +4218,26 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
      >span:nth-of-type(1){
       font-size: 12px;margin-left: 60px;color:#505050; 
       >span{
-        vertical-align: -20%;color:red;font-size: 20px;margin-right: 1px;
+        vertical-align: -25%;color:red;font-size: 20px;margin-right: 1px;
       }
      }
      #radius_ip{
       margin-top: 15px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-left: 10px;
      }
      >p:nth-of-type(1){
-      font-size: 12px;margin-left: 156px;color: #a4abb5;margin-top: 0px;
+      font-size: 12px;margin-left: 159px;color: #a4abb5;margin-top: 0px;
      }
      .r_port{
       font-size: 12px;margin-left: 96px;color:#505050;
       >span{
-        vertical-align: -20%;color:red;font-size: 20px;margin-right: 1px;
+        vertical-align: -25%;color:red;font-size: 20px;margin-right: 1px;
       }
      }
     #radius_port{
       margin-top: 15px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-left: 10px; 
      }
      >p:nth-of-type(2){
-      font-size: 12px;margin-left: 156px;color: #a4abb5;margin-top: 0px;
+      font-size: 12px;margin-left: 159px;color: #a4abb5;margin-top: 0px;
      }
      .r_protocal{
       font-size: 12px;margin-left: 77px;
@@ -4257,7 +4263,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
      .r_pass{
       font-size: 12px;margin-left: 48px;color:#505050;
       >span{
-        vertical-align: -20%;color:red;font-size: 20px;margin-right: 1px;
+        vertical-align: -25%;color:red;font-size: 20px;margin-right: 1px;
       }
      }
      #radius_secret_key{
@@ -4266,14 +4272,14 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
      .r_time{
       font-size: 12px;margin-left: 72px; color:#505050;
       >span:nth-of-type(1){
-        vertical-align: -20%;color:red;font-size: 20px;margin-right: 1px;
+        vertical-align: -25%;color:red;font-size: 20px;margin-right: 1px;
       }
       #radius_timeout{
         margin-top: 15px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;margin-left: 10px;
       }
      }
      >p:nth-of-type(3){
-      font-size: 12px;margin-left: 155px;color: #a4abb5
+      font-size: 12px;margin-left: 159px;color: #a4abb5
      }
    }
  }
@@ -4299,7 +4305,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
       } 
       font-size: 12px;color: #505050;width: 90px;
       >span{
-        vertical-align: -20%;color:red;font-size: 20px;margin-right: 1px;
+        vertical-align: -8px;color:red;font-size: 20px;margin-right: 1px;
       }
     }
    }
@@ -4525,7 +4531,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
     border: 0;border-bottom:1px solid #E8E8E8;width: 100%;margin-left: 7px;margin-top: 0px;
   }
   .save_body{
-    margin-left:42px;margin-top:20px;
+    margin-left:42px;margin-top:40px;
     >span:nth-of-type(1){
       font-size:14px;color:black;margin-left: 152px;margin-top: 3px;
     }
@@ -4560,7 +4566,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
     border: 0;border-bottom:1px solid #E8E8E8;width: 100%;margin-left: 7px;margin-top: 1px;
   }
   .session_body{
-    margin-left:43px;margin-top:20px;
+    margin-left:43px;margin-top:40px;
     >span:nth-of-type(1){
       font-size:14px;color:black;margin-left: 152px;margin-top: 3px
     }
@@ -5725,7 +5731,7 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
           }
         }
         >div:nth-of-type(5){
-          margin-top: 30px;margin-left: -42px;
+          margin-top: 30px;margin-left: -28px;
           >span:nth-of-type(1){
             font-size: 14px;float: left;margin-top: 2px;
           }
@@ -5929,19 +5935,26 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
     >span:nth-of-type(1){
       font-size: 12px;color:#a4abb5;margin-left: 102px;
       >span{
-        font-size: 12px;color:#a4abb5;margin-left: 102px
+        font-size: 12px;color:#a4abb5;margin-left: 102px;
       }
     }
   }
   >div:nth-of-type(5){
-    margin-left: 57px;
+    margin-left: 66px;font-size: 12px;
     >p{
+      margin-bottom: 0px;
       >span:nth-of-type(1){
-        font-size: 12px;color: #505050
+        font-size: 12px;margin-left:-5px;
+        >span:nth-of-type(1){
+        vertical-align: -20%;color:red;font-size: 20px;margin-right: 1px;
+        }
       }
       >input{
         margin-top: 20px;width:210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;margin-left: 7px;
       }
+    }
+    >span{
+      font-size: 12px;color:#a4abb5;margin-left: 102px;
     }
   }
 }
@@ -6271,46 +6284,44 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
         span:nth-of-type(2) {font-size: 12px;color: #505050;}
         input {margin-top: -10px;width:210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;}
       }
-      // .u-relevation1 {
-      //   margin-left: 85px;margin-top: 5px;font-size: 12px;position:relative;height:10px;
-      //   >span:nth-of-type(1) {
-      //     position:absolute;top: 15px;
-      //   }
-      //   >span:nth-of-type(2) {
-      //     position:absolute;left:215px;top:15px;
-      //   }
-      //   div:nth-of-type(1) {
-      //     position:absolute;border-right:none;width:32px;height:34px;left:52px;background-color: #fff;
-      //     i {
-      //       position:absolute;font-size:16px;left:9px;
-      //     }
-      //   }
-      //   div:nth-of-type(2) {
-      //     position:absolute;left: 136px;top: -2px;font-size: 25px;
-      //   }
-      //   input:nth-of-type(1) {
-      //     position:absolute;left:84px;width:50px;
-      //   }
-      //   input:nth-of-type(2) {
-      //     position:absolute;left:146px;width:50px;
-      //   }
-      //   input:nth-of-type(3) {
-      //     position:absolute;left:200px;top:17px;
-      //   }
-      // }
-      .u-emial {
-        margin-top: 10px;margin-left: 90px;
-        span {font-size: 13.5px;color: #505050;}
-        input {margin-top: -10px;width:209px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;}
-      }
       .u-tel {
-        margin-top: 13px;margin-left: 86px;
+        margin-top: -2px;margin-left: 87px;
         p span:nth-of-type(1) {font-size: 20px;color: white;vertical-align: -7px;}
         p span:nth-of-type(2) {font-size: 12px;color: #505050;}
         p input {margin-top: -10px;width:210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;}
       }
+      .u-relevation1 {
+        margin-left: 85px;margin-top: 5px;font-size: 12px;position:relative;height:40px;
+        >span:nth-of-type(1) {
+          position:absolute;top: 8px;
+        }
+        >span:nth-of-type(2) {
+          position:absolute;left:285px;top:8px;
+        }
+        div:nth-of-type(1) {
+          position:absolute;border-right:none;width:30px;height:30px;left:53px;background-color: #fff;
+          border-radius: 2px;
+          i {
+            position:absolute;font-size:16px;left:7px;
+          }
+        }
+        div:nth-of-type(2) {
+          position:absolute;left: 169px;top: -4px;font-size: 25px;
+        }
+        input:nth-of-type(1) {
+          position:absolute;left:83px;width:80px;height:30px;border-radius: 2px;
+          padding-top: 3px;padding-right: 6px;padding-bottom: 3px;padding-left: 6px;
+        }
+        input:nth-of-type(2) {
+          position:absolute;left:182px;width:80px;height:30px;border-radius: 3px;
+          padding-top: 3px;padding-right: 6px;padding-bottom: 3px;padding-left: 6px;
+        }
+        input:nth-of-type(3) {
+          position:absolute;left:270px;top:10px;border-radius: 3px;
+        }
+      }
       .u-method {
-        margin-left: 73px;
+        margin-left: 75px;margin-top:7px;
         >span{
           font-size: 12px;
           color: #505050;
@@ -6356,11 +6367,13 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
         p span {font-size: 12px;color: #505050;}
         p input {margin-top: -10px;width:210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;}
       }
-      .u-wexin {
-        margin-top: 20px;margin-left: 100px;
+      .u-emial {
+        margin-top: 10px;margin-left: 90px;
+        span {font-size: 13.5px;color: #505050;}
+        input {margin-top: -10px;width:209px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;}
       }
       .u-qq {
-        margin-top: 38px;margin-left: 108px;
+        margin-left: 108px;
       }
       .u-remarks {
         margin-top: 15px;margin-left: -15px;
@@ -6368,36 +6381,6 @@ font-size: 12px;margin-left: 127px;color: #a4abb5;margin-top: -10px;
           font-size: 12px;color: #505050;font-weight: lighter;
         }
         textarea {border-radius: 3px;margin-left: 7px;border: 1px solid #ccc;width: 210px;height: 80px;resize:none;}
-      }
-      .u-relevation1 {
-        margin-left: 85px;margin-top: 5px;font-size: 12px;position:relative;height:10px;
-        >span:nth-of-type(1) {
-          position:absolute;top: 15px;
-        }
-        >span:nth-of-type(2) {
-          position:absolute;left:285px;top:15px;
-        }
-        div:nth-of-type(1) {
-          position:absolute;border-right:none;width:30px;height:30px;left:53px;background-color: #fff;
-          border-radius: 3px;
-          i {
-            position:absolute;font-size:16px;left:9px;
-          }
-        }
-        div:nth-of-type(2) {
-          position:absolute;left: 169px;top: -4px;font-size: 25px;
-        }
-        input:nth-of-type(1) {
-          position:absolute;left:83px;width:80px;height:30px;border-radius: 3px;
-          padding-top: 3px;padding-right: 6px;padding-bottom: 3px;padding-left: 6px;
-        }
-        input:nth-of-type(2) {
-          position:absolute;left:182px;width:80px;height:30px;border-radius: 3px;
-          padding-top: 3px;padding-right: 6px;padding-bottom: 3px;padding-left: 6px;
-        }
-        input:nth-of-type(3) {
-          position:absolute;left:270px;top:13px;border-radius: 3px;
-        }
       }
     }
   }

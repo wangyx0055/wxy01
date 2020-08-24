@@ -15,8 +15,9 @@ $(function() {
         $("#password_verification_times").val(document.getElementById("password_verification_times1").innerHTML);
         $("#safe_password_newuser_forcechange").val(document.getElementById("password_newuser_forcechange1").innerHTML);
         $("#password_cycle").val(document.getElementById("password_cycle1").innerHTML);
-        $("#new_user_default_password").val(document.getElementById("new_user_default_password1").innerHTML);
-        $("#Vnew_user_default_password").text('');
+        $("#fail_warn").val(document.getElementById("fail_warn1").innerHTML);
+     /*   $("#new_user_default_password").val(document.getElementById("new_user_default_password1").innerHTML);*/
+        /*$("#Vnew_user_default_password").text('');*/
         $("#VPWD_password_verification_times").text("");
         $("#VPWD_password_cycle").text("");
     });
@@ -220,10 +221,10 @@ $(function() {
             $('#VPWD_password_cycle' ).html("输入次数不在有效值范围");
             return false;
         }
-        if(newPassw!==" "&&!p1.test(newPassw)){
+       /* if(newPassw!==" "&&!p1.test(newPassw)){
             $('#Vnew_user_default_password').html("输入密码格式不正确");
             return false;
-        }
+        }*/
         return flag
     }
     $('#password_button').click(function() {
@@ -248,7 +249,7 @@ $(function() {
                 password_verification_times: $('#password_verification_times').val(),
                 password_newuser_forcechange:password_newuser_forcechange,
                 password_cycle: $('#password_cycle').val(),
-                new_user_default_password: $('#new_user_default_password').val(),
+               /* new_user_default_password: $('#new_user_default_password').val(),*/
              /*   web_timeout: document.getElementById("web_timeout1").innerHTML,*/
             },
             success: function(data) {
@@ -261,7 +262,8 @@ $(function() {
                     $("#password_verification_times1").text($('#password_verification_times').val());
                     $("#password_newuser_forcechange1").text(password_newuser_forcechange== 0 ? '开启': '关闭');
                     $("#password_cycle1").text($('#password_cycle').val());
-                    $("#new_user_default_password1").text($('#new_user_default_password').val());
+                    $("#fail_warn1").text($('#fail_warn').val());
+                    /*$("#new_user_default_password1").text($('#new_user_default_password').val());*/
                 } else {
                     if (data.msg) {
                         for (k in data.msg) {
@@ -320,7 +322,8 @@ $(function() {
                     $('#password_newuser_forcechange1').html("关闭");
                 }
                 $('#password_cycle1').html(data.data[0].password_cycle);
-                $('#new_user_default_password1').html(data.data[0].new_user_default_password);
+                $('#fail_warn').html(data.data[0].fail_warn);
+                /*$('#new_user_default_password1').html(data.data[0].new_user_default_password);*/
                 $('#web_timeout1').html(data.data[0].web_timeout);
                 $('#same_user1').html(data.data[0].same_user);
             } else {
@@ -385,12 +388,12 @@ $('#password_cycle').blur(function (){
 $("#password_cycle").focus(function () {
     $('#VPWD_password_cycle' ).html("");
 });
-$("#new_user_default_password").focus(function () {
+/*$("#new_user_default_password").focus(function () {
     $('#Vnew_user_default_password' ).html("");
 });
 $('#new_user_default_password').focus(function () {
     $("#Vnew_user_default_password").text('');
-});
+});*/
 //web登录
 $('#web_timeout').blur(function () {
     var p1=/^\d{1,3600}$/;

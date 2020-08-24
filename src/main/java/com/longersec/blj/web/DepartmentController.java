@@ -366,35 +366,11 @@ public class DepartmentController {
 			errorMap.put("success", false);
 			return errorMap;
 		}
-		int num = 120;
+		int num = 128;
 		if (desc.length() > num) {
 			errorMap.put("info",desc+":描述超长");
 			errorMap.put("success", false);
 			return errorMap;
-		}
-		//判断上级部门下级是否有相同的
-		List<Department> subNodes = new ArrayList<>();
-		if("".equals(parent_name)){
-			subNodes = departmentService.findSubNodes(1);
-			for (Department department2:subNodes) {
-				boolean flag = (department2.getName().equals(name) && !department2.getId().equals(1));
-				if (flag) {
-					errorMap.put("info",name+":部门名称重复");
-					errorMap.put("success", false);
-					return errorMap;
-				}
-			}
-		} else {
-			Department department1 = departmentService.selectByname(parent_name);
-			subNodes = departmentService.findSubNodes(department1.getId());
-			for (Department department2:subNodes) {
-				boolean flag = (department2.getName().equals(name) && !department2.getId().equals(department1.getId()));
-				if (flag) {
-					errorMap.put("info",name+":部门名称重复");
-					errorMap.put("success", false);
-					return errorMap;
-				}
-			}
 		}
 		errorMap.put("success", true);
 		return errorMap;

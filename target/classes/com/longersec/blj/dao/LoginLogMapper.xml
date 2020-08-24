@@ -141,9 +141,9 @@
 		DATE_FORMAT(FROM_UNIXTIME(TT.login_datetime),#{time_format}) login_datetime,TT.protocol,TT.username, TT.realname ,TT.source_ip,TT.`status`,TT.result,TT.details FROM (
 		SELECT 'web' protocol, username, realname, login_datetime ,source_ip,`status`,result,details FROM lsblj_login_log
 		UNION ALL
-		SELECT p.name protocol, username, realname, `start` login_datetime, device_ip,`status`,IF(`status`=0,'成功','失败') result,IF(`status`=0,'登录成功','登录失败') details FROM lsblj_device_record dr LEFT JOIN lsblj_protocol p ON dr.protocol_id=p.id
+		SELECT p.name protocol, username, realname, `start` login_datetime, device_ip,`status`,IF(`status`=1,'成功','失败') result,IF(`status`=1,'登录成功','登录失败') details FROM lsblj_device_record dr LEFT JOIN lsblj_protocol p ON dr.protocol_id=p.id
 		UNION ALL
-		SELECT 'apppub' protocol, username, realname, `start` login_datetime, server_ip,`status`,IF(`status`=0,'成功','失败') result,IF(`status`=0,'登录成功','登录失败') details FROM lsblj_apppub_record
+		SELECT 'apppub' protocol, username, realname, `start` login_datetime, server_ip,`status`,IF(`status`=1,'成功','失败') result,IF(`status`=1,'登录成功','登录失败') details FROM lsblj_apppub_record
 		) TT
 		where DATE_FORMAT(FROM_UNIXTIME(login_datetime),#{time_format}) like  CONCAT('%',#{time},'%')
 		<if test="loginLog.source_ip != null"> AND source_ip like CONCAT('%',#{loginLog.source_ip},'%')</if>
@@ -170,13 +170,21 @@
 		 FROM lsblj_login_log
 		 ORDER BY login_datetime DESC
 	</select>
-	
+
 	<select id="selectLast7Day" resultType="Map">
-		SELECT  date_format(FROM_UNIXTIME(login_datetime), "%e") day, count(*) ct
-			FROM lsblj_login_log 
-			WHERE login_datetime>(UNIX_TIMESTAMP()-6*24*3600) 
+		SELECT  date_format(FROM_UNIXTIME(login_datetime), "%w") day, count(*) ct
+			FROM lsblj_login_log
+			WHERE login_datetime>(UNIX_TIMESTAMP()-6*24*3600)
 			GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%d")
-			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%d") DESC
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%w") ASC
+	</select>
+
+	<select id="selectLast30Day" resultType="Map">
+		SELECT  date_format(FROM_UNIXTIME(login_datetime), "%e") day, count(*) ct
+			FROM lsblj_login_log
+			WHERE login_datetime>(UNIX_TIMESTAMP()-29*24*3600)
+			GROUP BY date_format(FROM_UNIXTIME(login_datetime),"%d")
+			ORDER BY date_format(FROM_UNIXTIME(login_datetime),"%d") ASC
 	</select>
 	
 	<select id="selectByUser" resultType="java.util.Map">
@@ -184,9 +192,17 @@
 			FROM lsblj_login_log 
 			WHERE user_id IN(SELECT id FROM lsblj_user)
 			GROUP BY username
-			ORDER BY ct DESC LIMIT 12
+			ORDER BY ct DESC LIMIT 5
 	</select>
-	
+
+	<select id="selectByUserMonth" resultType="java.util.Map">
+		SELECT username, realname, count(*) ct
+			FROM lsblj_login_log
+			WHERE user_id IN(SELECT id FROM lsblj_user)
+			GROUP BY username
+			ORDER BY ct DESC LIMIT 20
+	</select>
+
 	<select id="selectByHour" resultMap="reportMap, loginLogRecordCounts" resultType="java.lang.Object">
 		SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m-%d %H") `interval`, count(*) total,count(IF(status=1,1,null)) successes,count(IF(status=0,1,null)) fails
 				,count(distinct source_ip) sourceips,count(distinct username) users 

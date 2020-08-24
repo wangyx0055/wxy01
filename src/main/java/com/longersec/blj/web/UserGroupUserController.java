@@ -35,12 +35,14 @@ public class UserGroupUserController {
 
 	@RequestMapping("/findUserGroupUser")
 	@ResponseBody
-	public JSONObject findUserGroupUser(@RequestParam("group_id") Integer group_id) {
+	public JSONObject findUserGroupUser(@RequestParam("group_id") Integer group_id,
+	                                    @RequestParam(value = "page_start",required = false)Integer page_start,
+	                                    @RequestParam(value ="page_length",required = false)Integer page_length) {
 		ArrayList<Users> resultUserGroupUsers = new ArrayList<Users>();
 		ArrayList<Users> resultUsers = new ArrayList<Users>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultUserGroupUsers = (ArrayList<Users>) userGroupUserService.selectById(group_id);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment());
+		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultUserGroupUsers);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultUserGroupUsers);

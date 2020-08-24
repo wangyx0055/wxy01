@@ -54,12 +54,14 @@ public class AccessPolicyDeviceAccountController {
 
 	@RequestMapping("/findAccessPolicyDeviceAccountAndUser")
 	@ResponseBody
-	public JSONObject findAccessPolicyDeviceAccountAndUser(@RequestParam("policy_id") Integer policy_id) {
+	public JSONObject findAccessPolicyDeviceAccountAndUser(@RequestParam("policy_id") Integer policy_id,
+	                                                       @RequestParam(value = "page_start",required = false)int page_start,
+	                                                       @RequestParam(value = "page_length",required = false)int page_length) {
 		ArrayList<Deviceaccess> resultAccessPolicyDevice = new ArrayList<Deviceaccess>();
 		ArrayList<Deviceaccess> resultDevice = new ArrayList<Deviceaccess>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultAccessPolicyDevice = (ArrayList<Deviceaccess>) accessPolicyDeviceAccountService.selectById(policy_id);
-		resultDevice = (ArrayList<Deviceaccess>) DeviceAccountService.selectNameAndId(users.getDepartment());
+		resultDevice = (ArrayList<Deviceaccess>) DeviceAccountService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultDevice.removeAll(resultAccessPolicyDevice);
 		JSONArray jsonArray_p_device = JSONArray.fromObject(resultAccessPolicyDevice);

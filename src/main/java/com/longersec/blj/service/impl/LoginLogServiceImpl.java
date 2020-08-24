@@ -52,6 +52,15 @@ public class LoginLogServiceImpl implements LoginLogService{
 		// TODO Auto-generated method stub
 		return LoginLogDao.selectLast7Day();
 	}
+	@Override
+	public List<Map<String, Object>> selectLast30Day() {
+		return LoginLogDao.selectLast30Day();
+	}
+
+	@Override
+	public List<Map<String, Object>> selectByUserMonth() {
+		return LoginLogDao.selectByUserMonth();
+	}
 
 	@Override
 	public List<Map<String, Object>> selectByUser() {
@@ -79,20 +88,21 @@ public class LoginLogServiceImpl implements LoginLogService{
 		
 		return LoginLogDao.selectProtocolByUser(start_date, end_date, page_start, page_length);
 	}
-	
+
 	@Override
-	public List<Object> selectProtocolBydate(String interval, String start_date, String end_date, int page_start, int page_length){
+	public List<Object> selectProtocolBydate(String interval, String start_date, String end_date, int page_start, int page_length) {
 		// TODO Auto-generated method stub
-		if(interval.equals("hour")) {
+		if (interval.equals("hour")) {
 			return LoginLogDao.selectProtocolByHour(start_date, end_date, page_start, page_length);
-		}else if(interval.equals("week")) {
+		} else if (interval.equals("week")) {
 			return LoginLogDao.selectProtocolByWeek(start_date, end_date, page_start, page_length);
-		}else if(interval.equals("month")) {
+		} else if (interval.equals("month")) {
 			return LoginLogDao.selectProtocolByMonth(start_date, end_date, page_start, page_length);
-		}else {
+		} else {
 			return LoginLogDao.selectProtocolByDay(start_date, end_date, page_start, page_length);
 		}
-		
+
 	}
+
 
 }

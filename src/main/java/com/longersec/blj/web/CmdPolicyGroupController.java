@@ -50,7 +50,7 @@ public class CmdPolicyGroupController {
 		ArrayList<UserGroup> resultGroups = new ArrayList<UserGroup>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCmdPolicyGroups = (ArrayList<UserGroup>) cmdPolicyGroupService.selectByIdUser(policy_id);
-		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),0,20000);
+		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultGroups.removeAll(resultCmdPolicyGroups);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultCmdPolicyGroups);
@@ -64,12 +64,14 @@ public class CmdPolicyGroupController {
 	
 	@RequestMapping("/findCmdPolicyDeviceGroupAndUser")
 	@ResponseBody
-	public JSONObject findCmdPolicyDeviceGroupAndUser(@RequestParam("policy_id")Integer policy_id) {
+	public JSONObject findCmdPolicyDeviceGroupAndUser(@RequestParam("policy_id")Integer policy_id,
+	                                                  @RequestParam(value = "page_start",required = false)int page_start,
+	                                                  @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<DeviceGroup> resultCmdPolicyDeviceGroups = new ArrayList<DeviceGroup>();
 		ArrayList<DeviceGroup> resultDeviceGroups = new ArrayList<DeviceGroup>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCmdPolicyDeviceGroups = (ArrayList<DeviceGroup>) cmdPolicyGroupService.selectBydIdDevice(policy_id);
-		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment());
+		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultDeviceGroups.removeAll(resultCmdPolicyDeviceGroups);
 		JSONArray jsonArray_p_dgroups = JSONArray.fromObject(resultCmdPolicyDeviceGroups);

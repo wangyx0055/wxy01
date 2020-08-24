@@ -15,6 +15,8 @@
 		<result column="end_datetime" jdbcType="VARCHAR" property="end_datetime"/>
 		<result column="config_id" jdbcType="INTEGER" property="config_id"/>
 		<result column="config_name" jdbcType="INTEGER" property="config_name" />
+		<result column="department" jdbcType="VARCHAR" property="department"/>
+		<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>
 	</resultMap>
 
 	<resultMap id="crontabCommandLogRecordCounts" type="java.lang.Long">
@@ -35,6 +37,7 @@
 		<if test="exec_status != null">`exec_status`=#{exec_status},</if>
 		<if test="end_datetime != null">`end_datetime`=#{end_datetime},</if>
 		<if test="config_id != null">`config_id`=#{config_id},</if>
+		<if test="department != null">`department`=#{department},</if>
 		</set>
 	</insert>
 
@@ -68,20 +71,23 @@
 	<select id="findAll" resultMap="BaseResultMap, crontabCommandLogRecordCounts">
 		SELECT
 		SQL_CALC_FOUND_ROWS
-		l.id,l.result,l.device_name,l.device_ip,l.device_port,l.device_username,l.exec_status,l.config_id,DATE_FORMAT(l.exec_datetime,'%Y-%m-%d %H:%i:%s') exec_datetime,DATE_FORMAT(l.end_datetime,'%Y-%m-%d %H:%i:%s') end_datetime,
-		c.name config_name,l.command,c.exec_method config_method,c.exec_cycle config_cycle
+		l.id,l.result,l.device_name,l.device_ip,l.device_port,l.device_username,l.exec_status,l.config_id,l.department,DATE_FORMAT(l.exec_datetime,'%Y-%m-%d %H:%i:%s') exec_datetime,DATE_FORMAT(l.end_datetime,'%Y-%m-%d %H:%i:%s') end_datetime,
+		c.name config_name,l.command,c.exec_method config_method,c.exec_cycle config_cycle,ld.name depart_name
 		FROM lsblj_crontab_command_log l
 		LEFT JOIN lsblj_crontab_script_config c ON l.config_id=c.id
+		LEFT JOIN lsblj_department ld ON l.department = ld.id
 		where 1
 		<if test="crontabCommandLog.config_name != null"> AND c.`name` like CONCAT('%',#{crontabCommandLog.config_name},'%')</if>
 		<if test="crontabCommandLog.command != null"> AND l.`command` like CONCAT('%',#{crontabCommandLog.command},'%')</if>
 		<if test="crontabCommandLog.config_method != null"> AND c.`exec_method` like CONCAT('%',#{crontabCommandLog.config_method},'%')</if>
 		<if test="crontabCommandLog.exec_status != null"> AND l.`exec_status` like CONCAT('%',#{crontabCommandLog.exec_status},'%')</if>
+		<if test="crontabCommandLog.depart_name != null"> AND ld.`name` like CONCAT('%',#{crontabCommandLog.depart_name},'%')</if>
 		<if test="crontabCommandLog.searchAll != null">   AND (
 			c.`name` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
 			or l.`command` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
 			or c.`exec_method` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
 			or l.`exec_status` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
+			or ld.`name` like CONCAT('%',#{crontabCommandLog.searchAll },'%')
 
         )</if>
 

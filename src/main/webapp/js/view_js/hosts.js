@@ -324,11 +324,15 @@ $('#_edit_device_password').focus(function(){
 $('#_edit_device_password').blur(function(){
     if ($('#edit_device_login_method').val()=='11'){
         var pwd = $('#_edit_device_password').val();
+        var pwd2 = $('#_edit_device_password1').val();
         if(pwd==''){
             $('#_Vdevice_password').text('请输入密码');
+        }else if(pwd2!==''&&pwd==pwd2){
+            $('#_Vdevice_password1').text('');
         }
     }
 });
+
 // 失去焦点
 $('#_edit_device_password1').blur(function(){
         var pwd = $('#_edit_device_password1').val();
@@ -371,7 +375,7 @@ $('#_edit_device_super_account').focus(function(){
 
 $('#edit_device_description').blur(function () {
     var regexp = {
-        name:/^\S{0,64}$/,
+        name:/^\S{0,128}$/,
     };
     if(!regexp.name.test($('#edit_device_description').val())){
         $('#Vedit_device_description').text("超过限制长度");
@@ -500,6 +504,8 @@ $('#_edit_account_password').blur(function(){
     if ($('#edit_account_login_method').val()=='33') {
         if ($('#_edit_account_password').val() == "") {
             $('#_Vaccount_password').text('请输入密码');
+        }else if($('#_edit_account_password1').val()!=""&&$('#_edit_account_password').val()==$('#_edit_account_password1').val()){
+            $('#_Vaccount_password1').text('');
         }
     }
 });
@@ -664,7 +670,7 @@ $('#search').click(function(){
 
 //新建设备第一步
 $("#next").click(function(){
-   var flag = checkdevice();
+    var flag = checkdevice();
     if(flag===false)return flag;
     $('#edit_device_login_method').val('11');
     document.getElementById("xing4").style.color = "red";
@@ -766,8 +772,6 @@ $("#_editdeviceButton").off().click(function(){
       }else if(p3.exec($("#edit_device_ip").val())){
           $('#Vip').text('');
           flag=true;
-      }else{
-          checkip();
       }/*else{
           //不符合
           $('#Vip').text('请输入有效的IP地址或域名');
@@ -783,7 +787,7 @@ $("#_editdeviceButton").off().click(function(){
        }
         if($('#edit_device_description').val()!=""){
             var regexp = {
-                name:/^\S{0,64}$/,};
+                name:/^\S{0,128}$/,};
             if(!regexp.name.test($('#edit_device_description').val())){
                 $('#Vedit_device_description').text("超过限制长度");
                 flag=false;
@@ -791,7 +795,7 @@ $("#_editdeviceButton").off().click(function(){
                 $('#Vedit_device_description').text("");
             }
         }
-    if ($("#Vdevicename").text()!=""||$("#Vip").text()!="" || $('#VdepartName').text()!=""|| $('#Vedit_device_description').text()!=""){
+    if ($("#Vdevicename").text()!==""||$("#Vip").text()!=="" || $('#VdepartName').text()!==""|| $('#Vedit_device_description').text()!==""){
         flag=false;
     }
     return flag;
@@ -840,7 +844,7 @@ $('#editdeviceButton').off().click(function(){
     if(password!="" && password1=="" && $('#edit_device_ssh_key').val()!=='1'){
             $('#_Vdevice_password1').text('请输入确认密码');
             flag=false;
-    }else if(password != ""&&password != password1){
+    }else if(password !== ""&&password !== password1){
             $('#_Vdevice_password1').text('密码不一致');
             flag=false;
     }
@@ -1178,7 +1182,13 @@ $("#upload").on("click", function (){
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                    if (data.errorInfo.length !== 0) {
+                        $("#modal-uploadInfo").modal();
+                        for(let item of data.errorInfo) {
+                            $('#uploadError').append(item+"<br/>");
+                        }
+                        $('#uploadError').append("----详细请看文档和日志");
+                    }
                 }
             },1500);
         }

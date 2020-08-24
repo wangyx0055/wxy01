@@ -107,7 +107,7 @@ public class GroupController {
 	@ResponseBody
 	public JSONObject listByType(Group group){
 		ArrayList<Group> groups = new ArrayList<Group>();
-		groups = groupService.listByType(group.getType());
+		groups = groupService.listByType(group.getType(),1);
 		JSONArray jsonArray = JSONArray.fromObject(groups);
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);

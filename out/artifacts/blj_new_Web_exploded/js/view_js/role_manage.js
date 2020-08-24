@@ -347,6 +347,7 @@ $.ajax({
                 '                      </div>\n' +
                 '                  </div>\n' +
                 '              </div>';
+
             $("#re_div").html(re_div);
 
             // $("input[name='add2'][value=2]").attr("checked",true);

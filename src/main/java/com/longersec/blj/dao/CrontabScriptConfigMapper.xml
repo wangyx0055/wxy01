@@ -16,6 +16,7 @@
 		<result column="description" jdbcType="VARCHAR" property="description"/>
 		<result column="command" jdbcType="VARCHAR" property="command"/>
 		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="department" jdbcType="VARCHAR" property="department"/>
 	</resultMap>
 
 	<resultMap id="crontabScriptConfigRecordCounts" type="java.lang.Long">
@@ -40,6 +41,7 @@
 		<if test="su != null">`su`=#{su},</if>
 		<if test="description != null">`description`=#{description},</if>
 		<if test="command != null">`command`=#{command},</if>
+		<if test="department != null">`department`=#{department},</if>
 		</set>
 	</insert>
 
@@ -75,31 +77,36 @@
 	<select id="findAll" resultMap="BaseResultMap, crontabScriptConfigRecordCounts" resultType="java.lang.Object">
 		SELECT
 		SQL_CALC_FOUND_ROWS
-		lsblj_crontab_script_config.*,lsblj_crontab_script.name AS script_name,lsblj_crontab_script.`file_path`,lsblj_crontab_script.`type`,lsblj_crontab_script.`upload_time`,lsblj_crontab_script.`desc`
+		lsblj_crontab_script_config.*,ld.name depart_name,lsblj_crontab_script.name AS script_name,lsblj_crontab_script.`file_path`,lsblj_crontab_script.`type`,lsblj_crontab_script.`upload_time`,lsblj_crontab_script.`desc`
 		FROM lsblj_crontab_script_config
 		LEFT JOIN lsblj_crontab_script ON lsblj_crontab_script_config.file_id=lsblj_crontab_script.id
+		LEFT JOIN lsblj_department ld ON lsblj_crontab_script_config.department = ld.id
 		where 1
 		<if test="crontabScriptConfig.name != null"> AND lsblj_crontab_script_config.`name` like CONCAT('%',#{crontabScriptConfig.name},'%')</if>
 		<if test="crontabScriptConfig.exec_method != null"> AND lsblj_crontab_script_config.`exec_method` like CONCAT('%',#{crontabScriptConfig.exec_method})</if>
 		<if test="crontabScriptConfig.command != null"> AND lsblj_crontab_script_config.`command` like CONCAT('%',#{crontabScriptConfig.command})</if>
+		<if test="crontabScriptConfig.depart_name != null"> AND ld.`name` like CONCAT('%',#{crontabScriptConfig.depart_name})</if>
 		<if test="crontabScriptConfig.searchAll != null"> AND  (
 			lsblj_crontab_script_config.`name` like CONCAT('%',#{crontabScriptConfig.searchAll },'%')
 			or lsblj_crontab_script_config.`exec_method` like CONCAT('%',#{crontabScriptConfig.searchAll },'%')
 			or lsblj_crontab_script_config.`command` like CONCAT('%',#{crontabScriptConfig.searchAll },'%')
+			or ld.`name` like CONCAT('%',#{crontabScriptConfig.searchAll },'%')
 		)</if>
-<!--		<if test="depart_ids!=null and depart_ids.size()>0">-->
-<!--			AND lsblj_crontab_script_config.department in-->
-<!--			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">-->
-<!--				#{item}-->
-<!--			</foreach>-->
-<!--		</if>-->
+		<if test="depart_ids!=null and depart_ids.size()>0">
+			AND lsblj_crontab_script_config.department in
+			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start},#{page_length}
 		</if>
 		;SELECT found_rows() AS recordCounts;
 	</select>
 	<select id="selectAll" resultType="com.longersec.blj.domain.CrontabScriptConfig">
-		select * from lsblj_crontab_script_config;
+		select * from lsblj_crontab_script_config a INNER JOIN (SELECT id ,parent_id FROM lsblj_department ld,
+		(SELECT @id :=#{id}) pd
+		 WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON a.department=T.id
 	</select>
 	<select id="selectName" resultType="java.lang.String">
 		select name from lsblj_crontab_script_config where id!=#{id} and name=#{name} limit 1;

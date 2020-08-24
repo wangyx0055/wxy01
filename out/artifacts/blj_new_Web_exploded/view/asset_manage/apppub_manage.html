@@ -112,8 +112,12 @@
                        <div class="input-group margin">
                            <select class="form-control" id="Distinguish1">
                                <option value="1" selected>自动识别</option>
+                               <option value="6">服务器名称</option>
+                               <option value="4">部门</option>
                                <option value="2">应用名称</option>
+                               <option value="5">应用程序</option>
                                <option value="3">用户名</option>
+
                            </select>
                            <input type="text" class="form-control" id="searchId1" style="width: 130px;font-size: 12px;height: 30px"/>
                            <span class="input-group-btn" style="float: left;">
@@ -130,14 +134,14 @@
                            <thead>
                            <tr>
                                <td style="width: 55px;padding-right: 0px"><span>选择</span></td>
-                               <td ><span>服务器名称</span></td>
-                               <td ><span>部门</span></td>
-                               <td ><span>应用名称</span></td>
-                               <td ><span>应用程序</span></td>
-                               <td ><span>用户</span></td>
-                               <td ><span>访问参数</span></td>
-                               <td ><span>描述</span></td>
-                               <td ><span>操作</span></td>
+                               <td style="width: 10%"><span>服务器名称</span></td>
+                               <td style="width: 8%"><span>部门</span></td>
+                               <td style="width: 10%"><span>应用名称</span></td>
+                               <td style="width: 10%"><span>应用程序</span></td>
+                               <td style="width: 12%"><span>用户名</span></td>
+                               <td style="width: 12%"><span>访问参数</span></td>
+                               <td style="width: 12%"><span>描述</span></td>
+                               <td><span>操作</span></td>
                            </tr>
                            </thead>
                            <tbody>
@@ -157,6 +161,7 @@
                            <option value="1" selected>自动识别</option>
                            <option value="2">服务器名称</option>
                            <option value="3">服务器地址</option>
+                           <option value="4">部门</option>
                        </select>
                        <input type="text" class="form-control" id="searchId">
                        <span class="input-group-btn">
@@ -344,12 +349,12 @@
                             <div>
                                 <p>
                                     <label class="label"><span>描述:</span></label>
-                                    <textarea align="left" id="edit_ser_desc"></textarea>
+                                    <textarea align="left" id="edit_ser_desc" maxlength="128"></textarea>
                                     <span style="color: red;font-size: 12px;display: inline-block"
                                           id="judge_desc"></span>
                                 </p>
                             </div>
-                            <p>长度为0-128个汉字或字符,可以有数字</p>
+                            <p>描述最长128个汉字或字符</p>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal"
                                         style="cursor: pointer">取消
@@ -465,14 +470,14 @@
                             </div>
                             <div>
                                 <p><span>访问参数：</span>
-                                    <input id="edit_url" type="text"><span style="color: red;font-size: 12px;"
+                                    <input id="edit_url" type="text" maxlength="128"><span style="color: red;font-size: 12px;"
                                                                            id="judge_url"></span></p>
                             </div>
                             <p style="margin-top: 0px;">请填写相关参数,最长128汉字或字符</p>
                             <div>
                                 <p>
                                     <label class="label"><span>描述:</span></label>
-                                    <textarea id="apppub_edit_desc"></textarea> <span
+                                    <textarea id="apppub_edit_desc" maxlength="128"></textarea> <span
                                         style="color: red;font-size: 12px;display: inline-block" id="apppub_judge_desc"></span>
                                 </p>
                             </div>
@@ -601,9 +606,10 @@
                           <span aria-hidden="true">&times;</span></button>
                       <span class="modal-title">提示</span>
                   </div>
-                  <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
-                      <p style="margin-left: -62px;" id="uploadError"></p>
-                  </div><br>
+                  <div style="height: 200px;overflow-y: auto;text-align: center">
+                      <p id="uploadError">
+                      </p>
+                  </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                       <button type="button" id="uploadInfo" class="btn newaddbtn" data-dismiss="modal">确定</button>

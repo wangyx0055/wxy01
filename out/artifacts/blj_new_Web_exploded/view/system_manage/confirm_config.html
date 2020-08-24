@@ -105,9 +105,9 @@
             <input type="hidden" id="biont_id1" />&nbsp;&nbsp;
 			<div class="bion_status_body">
                 <span>状态：</span>
-                <span><span id="finger_status"></span></span>
+                <span><span id="finger_status1"></span></span>
             </div>
-            <div class="bion_url_body">
+            <div class="bion_url_body" id="bion_body">
                 <span>生物认证服务器地址：</span>
                 <span><span id="biont_url1"></span></span>
             </div><br>
@@ -142,7 +142,7 @@
                         <lable><input type="radio" id="sslrid2" name="sslrid1" value="1" ><span style="font-size: 12px;">&nbsp;&nbsp;是</span></lable>
                     </span>
                 </div>
-                <div id="div7"  >
+                <div id="div7">
                     <span>*</span> <span>端口：&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <input type="text" id="ad_edit_port" value="389" size="30px">&nbsp;&nbsp;<span id="Vport" class="sign_red"></span>
                     <p>请输入1-65535之间的有效数字</p>
@@ -193,7 +193,7 @@
                         <option value="CN" selected>CN</option>
                         <option value="SN">SN</option>
                         <option value="UID" selected>UID</option></select></span></br></br>
-                    <span>姓名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="lo" id="ad_edit_password2">
+                    <span>姓名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="lo" id="ad_edit_realname">
                         <option value="CN" selected>CN</option>
                         <option value="SN">SN</option></select></span></br></br>
                     <span>部门过滤：&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -201,9 +201,10 @@
                     </br>
                     <span>用户过滤：&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <input type="text" id="ad_edit_filter_username" size="30px">&nbsp;&nbsp;<span class="sign_red" id="Vad_edit_filter_username"></span></br>
-                    <span>登录名过滤：&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" id="ad_edit_filter_loginname" size="30px">&nbsp;&nbsp;<span class="sign_red" id="Vad_edit_filter_loginname"></span>
-                    <p>例如：&nbsp;&nbsp;最长1024字符，支持通配符（*代表任意字符）<br>过滤多个登录名用“|”隔开</p>
+<!--                    <span>登录名过滤：&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+<!--                    <input type="text" id="ad_edit_filter_loginname" size="30px">&nbsp;&nbsp;<span class="sign_red" id="Vad_edit_filter_loginname"></span>-->
+<!--                    <p>例如：&nbsp;&nbsp;最长1024字符，支持通配符（*代表任意字符）<br>过滤多个用户用英文逗号“,”隔开</p>-->
+                    <p style="margin-top: 2px;color: #a4abb5;font-size: 12px;width: 194px;">过滤多个用户用英文逗号“,”隔开</p>
                     <span class="email_ad1">邮箱：&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <input type="text" id="ad_edit_email" size="30px">&nbsp;&nbsp;<span class="sign_red" id="Vad_edit_email"></span>
                     <p>例如：&nbsp;&nbsp;填写远程服务器上表示用户邮箱的属性名</p>
@@ -239,7 +240,7 @@
                     </span>
                 </div>
                 <div id="radiusid">
-                <span><span>*</span>服务器地址:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span><span class="sign_emphasize">*</span>服务器地址:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <input type="text" id="radius_ip" size="30px">&nbsp;&nbsp;<span id="VRadius_ip" class="sign_red"></span>
                 <p>请输入有效的IP地址或域名</p>
                 <span class="r_port"><span>*</span>端口:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -250,7 +251,7 @@
                         <lable><input type="radio" name="radiusone1" value="0" checked/><span>&nbsp;&nbsp;PAP</span></lable>
 						<lable><input type="radio" id="radius_protocol2" name="radiusone1" value="1" /><span>&nbsp;&nbsp;CHAP</span></lable>
                     </span></br>
-                <span class="r_pass"><span>*</span>认证共享秘钥:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class="r_pass"><span class="sign_emphasize">*</span>认证共享秘钥:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <input type="password" id="radius_secret_key" size="30px">&nbsp;&nbsp;<span id="VRadius_secret_key" class="sign_red"></span></br>
                 <span class="r_time">
                     <span>*</span>认证超时:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -287,11 +288,11 @@
 				<div>
                 	<span><span>*</span>状态:</span >
                     <span id="finger_status">
-						<lable><input type="radio" name="fingerstatus" value="1" /><span>&nbsp;&nbsp;开启</span></lable>
-                    	<lable><input type="radio" name="fingerstatus" value="0" checked><span>&nbsp;&nbsp;关闭</span></lable>
+						<lable><input type="radio" onclick="showBiont()" name="fingerstatus" value="1" /><span>&nbsp;&nbsp;开启</span></lable>
+                    	<lable><input type="radio" onclick="hideBiont()"  name="fingerstatus" value="0" checked/><span>&nbsp;&nbsp;关闭</span></lable>
                     </span>
                 </div>
-                <div>
+                <div id="url_body">
                     <span><span>*</span>生物认证服务器地址：</span>
                     <input type="text"  id="biont_url"  placeholder="http://127.0.0.1:8080/LSBC/IService">&nbsp;&nbsp;<span id="Finger_url" class="sign_red"></span>
                     <input type="hidden" id="biont_id" />

@@ -13,7 +13,7 @@ import com.longersec.blj.domain.Department;
 public interface ApppubServerDao {
 
 
-	public List<ApppubServer> selectAll();
+	public List<ApppubServer> selectAll(@Param("id") Integer id);
 
 	public boolean editApppubServer(ApppubServer apppubServer);
 

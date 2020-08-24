@@ -108,9 +108,10 @@
 <!--                  </div>-->
                   <div>
                   <span>描述：
-                      <textarea type="text" id="edit_desc"></textarea></span>
+                      <textarea type="text" maxlength="128" id="edit_desc"></textarea></span>
                       <span id="Vedit_desc"></span>
-                  </div><br><br>
+                  </div>
+                  <p style="font-size: 12px;color: #a4abb5;margin-left: 130px;">长度为1-128个汉字或字符</p>
                   <div class="modal-footer">
                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                    <button type="button" class="btn newaddbtn" id="editButton">确定</button>
@@ -296,9 +297,10 @@
                             <span aria-hidden="true">&times;</span></button>
                         <span class="modal-title">提示</span>
                     </div>
-                    <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
-                        <p style="margin-left: -62px;" id="uploadError"></p>
-                    </div><br>
+                    <div style="height: 200px;overflow-y: auto;text-align: center">
+                        <p id="uploadError">
+                        </p>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                         <button type="button" id="uploadInfo" class="btn newaddbtn" data-dismiss="modal" >确定</button>

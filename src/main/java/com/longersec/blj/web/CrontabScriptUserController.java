@@ -35,12 +35,14 @@ public class CrontabScriptUserController {
 
 	@RequestMapping("/findCrontabScriptConfigUser")
 	@ResponseBody
-	public JSONObject findAccessPolicyUserAndUser(@RequestParam("config_id") Integer config_id) {
+	public JSONObject findAccessPolicyUserAndUser(@RequestParam("config_id") Integer config_id,
+	                                              @RequestParam(value = "page_start",required = false)int page_start,
+	                                              @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<Users> resultCrontabScriptConfigUser = new ArrayList<Users>();
 		ArrayList<Users> resultUsers = new ArrayList<Users>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCrontabScriptConfigUser = (ArrayList<Users>) crontabScriptConfigUserService.selectById(config_id);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment());
+		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultCrontabScriptConfigUser);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultCrontabScriptConfigUser);

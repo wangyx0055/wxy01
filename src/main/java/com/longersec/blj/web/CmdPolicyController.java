@@ -7,8 +7,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.longersec.blj.domain.Device;
+import com.longersec.blj.domain.*;
+import com.longersec.blj.service.*;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,17 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.longersec.blj.domain.AccessPolicy;
-import com.longersec.blj.domain.CmdPolicy;
-import com.longersec.blj.domain.CmdPolicyCmd;
-import com.longersec.blj.domain.CmdgroupCmd;
-import com.longersec.blj.domain.OperatorLog;
-import com.longersec.blj.service.CmdPolicyCmdgroupService;
-import com.longersec.blj.service.CmdPolicyDeviceAccountService;
-import com.longersec.blj.service.CmdPolicyGroupService;
-import com.longersec.blj.service.CmdPolicyService;
-import com.longersec.blj.service.CmdPolicyUserService;
-import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.utils.KeyUtil;
 import com.longersec.blj.utils.Operator_log;
 
@@ -58,6 +49,9 @@ public class CmdPolicyController {
 
 	@Autowired
 	private CmdPolicyGroupService cmdPolicyGroupService;
+
+	@Autowired
+	private DepartmentService departmentService;
 	
 	private static String id=null;
 	/**
@@ -85,10 +79,29 @@ public class CmdPolicyController {
 		ArrayList<Object> resultCmdPolicys = new ArrayList<Object>();
 		ArrayList<CmdPolicy> cmdPolicys = new ArrayList<CmdPolicy>();
 		long total = 0;
-		resultCmdPolicys = (ArrayList<Object>)cmdPolicyService.findAll(cmdPolicy,sname,type,stat,cot,page_start, page_length);
+		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+		List<Integer> depart_ids = new ArrayList<>();
+		if (p_user.getRole_id().equals(5)){
+			//获取所在的部门
+			int depart_id = p_user.getDepartment();
+			depart_ids = departmentService.selectById(depart_id);
+			depart_ids.add(p_user.getDepartment());
+		}
+		resultCmdPolicys = (ArrayList<Object>)cmdPolicyService.findAll(cmdPolicy,sname,type,stat,cot,page_start, page_length,depart_ids);
 		if(CollectionUtils.isNotEmpty(resultCmdPolicys)) {
 			cmdPolicys = (ArrayList<CmdPolicy>)resultCmdPolicys.get(0);
 			total = ((ArrayList<Long>) resultCmdPolicys.get(1)).get(0);
+		}
+
+		for (CmdPolicy cmdPolicy1 : cmdPolicys) {
+			if(cmdPolicy1.getDepartment_id()!=0) {
+				List<String> allParentName = departmentService.findAllParentName(cmdPolicy1.getDepartment_id());
+				StringBuilder stringBuilder = new StringBuilder();
+				for (Object strings : allParentName) {
+					stringBuilder.append(strings).append("/");
+				}
+				cmdPolicy1.setTopName(stringBuilder.substring(0, stringBuilder.length() - 1));
+			}
 		}
 		JSONArray jsonArray = JSONArray.fromObject(cmdPolicys);
 		JSONObject result = new JSONObject();
@@ -143,6 +156,8 @@ public class CmdPolicyController {
 		if(result.getBoolean("success")) {
 			operatorLog.setResult("成功");
 			operatorLogService.addOperatorLog(operatorLog);
+			User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+			cmdPolicy.setDepartment_id(p_user.getDepartment());
 				cmdPolicyService.addCmdPolicy(cmdPolicy);
 			if(user!=null)
 				cmdPolicyUserService.addCmdPolicyUser(cmdPolicy.getId(), user);

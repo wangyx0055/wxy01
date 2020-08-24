@@ -25,7 +25,7 @@ public interface GroupDao {
 	
 	List<UserGroup> selectNameAndId(@Param("id") int id,@Param("page_start")int page_start, @Param("page_length")int page_length);
 	
-	List<DeviceGroup> selectNameAnddId(@Param("id") int id);
+	List<DeviceGroup> selectNameAnddId(@Param("id") int id,@Param("page_start")int page_start, @Param("page_length")int page_length);
 
 	public List<UserGroup> selectNameAndIdTop();
 
@@ -35,7 +35,7 @@ public interface GroupDao {
 
 	List<UserGroup> select_two(@Param("type") int type);
 
-    ArrayList<Group> listByType(Integer type);
+    ArrayList<Group> listByType(@Param("type")Integer type,@Param("id") Integer id);
 
 	String selectById(@Param("groupid") Integer groupid, @Param("type") int type);
 

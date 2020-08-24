@@ -7,7 +7,7 @@ let regexp = {
     port: /^[0-9]{1,65535}$/,
     ip: /^(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])$/,
     ip_yu:/^(http(s)?:\/\/)?(www\.)?[a-zA-Z][-a-zA-Z]{0,62}(\.[a-zA-Z][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/,
-    desc: /^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!./#$%*+,=_?$]){0,64}$/
+    desc: /^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!./#$%*+,=_?$]){0,128}$/
 }
 // 获取焦点，重新输入
 $('#edit_ser_name').focus(function () {
@@ -105,7 +105,7 @@ function checkApp(){
     var ser_ip= /^(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])$/;
     var ser_ip2=/^(http(s)?:\/\/)?(www\.)?[a-zA-Z][-a-zA-Z]{0,62}(\.[a-zA-Z][-a-zA-Z]{0,62})+(:\d+)*(\/\w+\.\w+)*$/;
     var ser_port= /^[0-9]{1,65535}$/;
-    var ser_desc=/^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!./#$%*+,=_?$]){0,64}$/;
+    var ser_desc=/^([A-Za-z]|[\u4e00-\u9fa5]|\-|[0-9]|[;%&'@!./#$%*+,=_?$]){0,128}$/;
     if ($('#judge_name').text()!=""){
         flag=false;
     }else if($("#edit_ser_name").val()==""){
@@ -186,7 +186,7 @@ $(function () {
                 {"data": "name"},
                 {"data": "ip"},
                 {"data": "depart_name", "render" : function(data, type, row, mata) {
-                        return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
+                        return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100px;" data-html="true" data-toggle="tooltip" title="'+row.topName1+'">'
                             +data
                             + '</div>';
                     }},
@@ -264,7 +264,9 @@ $(function () {
                 { "data": "name" },
                 { "data": "appprogramname"},
                 { "data": "username" },
-                { "data": "url" },
+                { "data": "url","render":function (data) {
+                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                    }},
                 { "data": "desc","render":function (data) {
                           return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
                       }},
@@ -465,7 +467,13 @@ $("#upload1").on("click", function () {
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                    if (data.errorInfo.length !== 0) {
+                        $("#modal-uploadInfo").modal();
+                        for(let item of data.errorInfo) {
+                            $('#uploadError').append(item+"<br/>");
+                        }
+                        $('#uploadError').append("----详细请看文档和日志");
+                    }
                 }
             },1500);
         },

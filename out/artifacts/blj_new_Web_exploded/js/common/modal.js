@@ -16,6 +16,8 @@ $('.modal').on('show.bs.modal',function () {
 	//模态框默认第一个激活active
 	$('.modal .nav-tabs-custom li').removeClass('active');
 	$('.modal .nav-tabs-custom li:first-child').addClass('active');
+	$('.modal  .tab-content .tab-pane').removeClass('active');
+	$('.modal  .tab-content .tab-pane:first-child').addClass('active');
 });
 $('.modal').css('background','rgba(0,0,0,0)');
 //返回状态模态框自动消失

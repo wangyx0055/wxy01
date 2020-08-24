@@ -6,6 +6,8 @@
 		<id column="id" jdbcType="INTEGER" property="id"/>
 		<result column="name" jdbcType="VARCHAR" property="name"/>
 		<result column="cmd" jdbcType="VARCHAR" property="cmd"/>
+		<result column="department" jdbcType="VARCHAR" property="department"/>
+		<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>
 	</resultMap>
 
 	<resultMap id="cmdgroupRecordCounts" type="java.lang.Long">
@@ -26,6 +28,7 @@
 		<set>
 		<if test="name != null">`name`=#{name},</if>
 		<if test="cmd != null">`cmd`=#{cmd},</if>
+		<if test="department != null">`department`=#{department},</if>
 		</set>
 	</insert>
 
@@ -50,15 +53,24 @@
 	<select id="findAll" resultMap="BaseResultMap, cmdgroupRecordCounts" resultType="java.lang.Object">
 		SELECT 
 		SQL_CALC_FOUND_ROWS
-		g.id,g.name, GROUP_CONCAT(c.command SEPARATOR '\n') cmd FROM lsblj_cmdgroup g LEFT JOIN lsblj_cmdgroup_cmd c ON g.id=c.group_id
+		g.*,ld.name depart_name, GROUP_CONCAT(c.command SEPARATOR '\n') cmd FROM lsblj_cmdgroup g LEFT JOIN lsblj_cmdgroup_cmd c ON g.id=c.group_id
+		LEFT JOIN lsblj_department ld ON g.department = ld.id
 		where 1
+		<if test="depart_ids!=null and depart_ids.size()>0">
+			AND g.department in
+			<foreach collection="depart_ids" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
 		<if test="type==1">AND (
 			g.`name` like CONCAT('%',#{sname},'%')
 			or g.`cmd` like CONCAT('%',#{sname},'%')
+			or ld.`name` like CONCAT('%',#{sname},'%')
 			)
 		</if>
 		<if test="type==2">AND g.`name` like CONCAT('%',#{sname},'%')</if>
 		<if test="type==3">AND `cmd` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==4">AND ld.`name` like CONCAT('%',#{sname},'%')</if>
 		GROUP BY g.id 
 		ORDER BY g.name ASC 
 		<if test="page_start != null and page_length != null">

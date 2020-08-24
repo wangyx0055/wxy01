@@ -8,6 +8,7 @@
 		<result column="content" jdbcType="VARCHAR" property="content"/>
 		<result column="add_datetime" jdbcType="VARCHAR" property="add_datetime"/>
 		<result column="level" jdbcType="INTEGER" property="level"/>
+		<result column="read_check" jdbcType="INTEGER" property="read_check"/>
 	</resultMap>
 
 	<resultMap id="systemMessageRecordCounts" type="java.lang.Long">

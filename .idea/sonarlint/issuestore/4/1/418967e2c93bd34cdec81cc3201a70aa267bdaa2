@@ -1,0 +1,86 @@
+
+d
+java:S2095œ"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(ÒÈ
+f
+java:S1192>"KDefine a constant instead of duplicating this literal "errorInfo" 14 times.(’½Ã”ûÿÿÿÿ
+l
+java:S1192S"VDefine a constant instead of duplicating this literal "ç»„åç§°ä¸èƒ½ä¸ºç©º" 3 times.(ª’´¨
+d
+java:S1192<"IDefine a constant instead of duplicating this literal "success" 40 times.(‹ƒ øÿÿÿÿ
+g
+java:S1192¢"QDefine a constant instead of duplicating this literal "^.+\\{\\{\\d+}}$" 3 times.(•“ë	
+n
+java:S1192>"SDefine a constant instead of duplicating this literal "æ–‡ä»¶ä¸èƒ½ä¸ºç©º" 5 times.(’½Ã”ûÿÿÿÿ
+^
+java:S1192£"GDefine a constant instead of duplicating this literal "\\{\\{" 3 times.(³¶Ş
+s	java:S135J"YReduce the total number of break and continue statements in this loop to use at most one.(°ÒÌĞıÿÿÿÿ
+t	java:S135±"YReduce the total number of break and continue statements in this loop to use at most one.(°ÒÌĞıÿÿÿÿ
+Z
+java:S1155ş">Use isEmpty() to check whether the collection is empty or not.(¤œø™ÿÿÿÿÿ
+Z
+java:S1155ş">Use isEmpty() to check whether the collection is empty or not.(¤œø™ÿÿÿÿÿ
+U
+java:S1155ÿ">Use isEmpty() to check whether the collection is empty or not.(œ²ÑÄ
+Z
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(¢î½‚şÿÿÿÿ
+l	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä»‰…úÿÿÿÿ
+l	java:S117º"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+l	java:S117ğ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä»‰…úÿÿÿÿ
+l	java:S117‘"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+g	java:S117è"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò—€¤
+g	java:S117í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«µ±€
+l	java:S117¯"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¢£ëıÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä»‰…úÿÿÿÿ
+g	java:S117Æ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ÿ‰•
+W
+java:S2259¸"@A "NullPointerException" could be thrown; "br" is nullable here.(µÖ€’
+U
+java:S4973³"9Use the "equals" method if value comparison was intended.(ÊÇ÷ûÿÿÿÿ
+h
+java:S37769"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(¨£Îæ
+o
+java:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(å•
+n
+java:S3776„"RRefactor this method to reduce its Cognitive Complexity from 34 to the 15 allowed.(¹¡ìÈÿÿÿÿÿ
+p
+java:S2293†"YReplace the type specification in this constructor call with the diamond operator ("<>").(å•
+S
+java:S1854’"<Remove this useless assignment to local variable "subNodes".(‡¾ı¶
+n
+java:S3776ê"RRefactor this method to reduce its Cognitive Complexity from 50 to the 15 allowed.(‘¹ßøÿÿÿÿ
+p
+java:S2293ì"YReplace the type specification in this constructor call with the diamond operator ("<>").(å•
+i
+java:S3776Î"RRefactor this method to reduce its Cognitive Complexity from 54 to the 15 allowed.(Şâ¶
+p
+java:S2293Ğ"YReplace the type specification in this constructor call with the diamond operator ("<>").(å•
+n
+java:S3776Ş"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(åí±şÿÿÿÿ
+Y
+java:S1126„"BReplace this if-then-else statement by a single method invocation.(°ˆª‡
+a
+java:S1854®"ERemove this useless assignment to local variable "listApppubAccount".(¼™ğøÿÿÿÿ
+g
+java:S1854¯"KRemove this useless assignment to local variable "UpdatelistApppubAccount".(à¢£ëıÿÿÿÿ
+n
+java:S3776œ"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(ÓÅ²éşÿÿÿÿ
+p
+java:S2293Ÿ"YReplace the type specification in this constructor call with the diamond operator ("<>").(å•
+O	java:S106¬"9Replace this use of System.out or System.err by a logger.(ëê†•
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(üÂµ«
+a
+java:S2674¡"JCheck the return value of the "read" call to see how many bytes were read.(³ĞÍñ
+U
+java:S4719¦"9Replace charset name argument with StandardCharsets.UTF_8(Çè˜Úÿÿÿÿÿ
+O	java:S106µ"9Replace this use of System.out or System.err by a logger.(Ïù®÷
+O	java:S106º"9Replace this use of System.out or System.err by a logger.(ë¬
+F
+java:S2093£"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+R
+java:S1481®"6Remove this unused "listApppubAccount" local variable.(¼™ğøÿÿÿÿ
+X
+java:S1481¯"<Remove this unused "UpdatelistApppubAccount" local variable.(à¢£ëıÿÿÿÿ
+R	java:S125Ç"<This block of commented-out lines of code should be removed.(Ù„ê 
+R	java:S125Ô"<This block of commented-out lines of code should be removed.(çãìó

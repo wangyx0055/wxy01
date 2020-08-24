@@ -237,4 +237,24 @@
 		SELECT * FROM `lsblj_department` WHERE name = #{name} AND parent_id = #{parent_id};
 	</select>
 
+	<delete id="deleteUseless">
+		DELETE  FROM `lsblj_access_policy` WHERE department= #{id};
+		DELETE  FROM `lsblj_access_policy_user` WHERE policy_id NOT IN (SELECT id FROM lsblj_access_policy);
+		DELETE  FROM `lsblj_access_policy_apppub_account` WHERE policy_id NOT IN (SELECT id FROM lsblj_access_policy);
+		DELETE  FROM `lsblj_access_policy_device_account` WHERE policy_id NOT IN (SELECT id FROM lsblj_access_policy);
+		DELETE  FROM `lsblj_access_policy_group` WHERE policy_id NOT IN (SELECT id FROM lsblj_access_policy);
+
+		DELETE  FROM `lsblj_cmd_policy` WHERE department_id = #{id};
+		DELETE  FROM `lsblj_cmd_policy_group` WHERE policy_id NOT IN (SELECT id FROM lsblj_cmd_policy);
+		DELETE  FROM `lsblj_cmd_policy_device_account` WHERE policy_id NOT IN (SELECT id FROM lsblj_cmd_policy);
+		DELETE  FROM `lsblj_cmd_policy_apppub` WHERE policy_id NOT IN (SELECT id FROM lsblj_cmd_policy);
+		DELETE  FROM `lsblj_cmd_policy_cmdgroup` WHERE policy_id NOT IN (SELECT id FROM lsblj_cmd_policy);
+		DELETE  FROM `lsblj_cmd_policy_user` WHERE policy_id NOT IN (SELECT id FROM lsblj_cmd_policy);
+
+		DELETE  FROM `lsblj_cmdgroup` WHERE department = #{id};
+
+		DELETE  FROM `lsblj_crontab_script_config` WHERE department = #{id};
+		DELETE  FROM `lsblj_crontab_script_config_device` WHERE config_id NOT IN (SELECT id FROM lsblj_crontab_script_config);
+		DELETE  FROM `lsblj_crontab_script_config_group` WHERE config_id NOT IN (SELECT id FROM lsblj_crontab_script_config);
+	</delete>
 </mapper>

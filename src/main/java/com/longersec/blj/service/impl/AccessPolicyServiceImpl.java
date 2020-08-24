@@ -45,9 +45,9 @@ public class AccessPolicyServiceImpl implements AccessPolicyService{
 	}
 
 	@Override
-	public List<AccessPolicy> getUserPolicy(Integer userid, Integer groupid, Integer device_account_id, Integer apppub_account_id) {
+	public List<AccessPolicy> getUserPolicy(Integer userid, Integer device_account_id, Integer apppub_account_id) {
 		// TODO Auto-generated method stub
-		return AccessPolicyDao.getUserPolicy(userid, groupid, device_account_id, apppub_account_id);
+		return AccessPolicyDao.getUserPolicy(userid, device_account_id, apppub_account_id);
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public interface DeviceDao {
 
 	public Device getById(@Param("id")Integer id);
 
-    public List<Device> selectAll();
+    public List<Device> selectAll(@Param("id")Integer id);
 
     public boolean updateAccounts(@Param("device_id") int device_id,@Param("counts") int counts);
     

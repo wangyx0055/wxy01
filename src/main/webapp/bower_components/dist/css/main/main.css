@@ -747,7 +747,7 @@ table tr span {
   border-left: 3px solid #1494F7;
   line-height: 1!important;
   display: inline-block !important;
-  font-size: 18px!important;
+  font-size: 14px!important;
 }
 /*下拉框树*/
 #tree ul li {
@@ -775,6 +775,11 @@ table tr span {
   color: #1494F7 !important;
   border: 1px solid #1494F7 !important;
   outline: none!important;
+}
+.sign_emphasize {
+  color: red;
+  font-size: 20px;
+  vertical-align: -20%;
 }
 .sign_red {
   color: red;
@@ -5104,7 +5109,7 @@ table tr span {
 }
 .ac #modal-default .modal-body .ac-ip > span,
 .ac #modal-default5 .modal-body .ac-ip > span {
-  font-size: 13px;
+  font-size: 12px;
   color: #505050;
 }
 .ac #modal-default .modal-body .ac-ip #add_ip,
@@ -5115,13 +5120,13 @@ table tr span {
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 12px;
 }
 .ac #modal-default .modal-body .ac-ip #add_ip option,
 .ac #modal-default5 .modal-body .ac-ip #add_ip option,
 .ac #modal-default .modal-body .ac-ip #edit_ip option,
 .ac #modal-default5 .modal-body .ac-ip #edit_ip option {
-  font-size: 13px;
+  font-size: 12px;
 }
 .ac #modal-default .modal-body .black,
 .ac #modal-default5 .modal-body .black,
@@ -5133,7 +5138,7 @@ table tr span {
   height: 65px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 12px;
   margin-top: 10px;
 }
 .ac #modal-default .modal-body .ac-desc,
@@ -5151,10 +5156,10 @@ table tr span {
 .ac #modal-default5 .modal-body .ac-desc textarea {
   resize: none;
   width: 300px;
-  height: 26px;
+  height: 65px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 12px;
   margin-left: 122px;
 }
 /* command_control */
@@ -5230,6 +5235,8 @@ table tr span {
 .lm .modal-body .common-relative-left,
 .scs .modal-body .common-relative-left,
 .ug .modal-body .common-relative-left,
+.cs_con .modal-body .common-relative-left,
+.author .modal-body .common-relative-left,
 .dg .modal-body .common-relative-left,
 .ro .modal-body .common-relative-left {
   float: left;
@@ -5240,6 +5247,8 @@ table tr span {
 .lm .modal-body .common-relative-left > div:nth-of-type(1),
 .scs .modal-body .common-relative-left > div:nth-of-type(1),
 .ug .modal-body .common-relative-left > div:nth-of-type(1),
+.cs_con .modal-body .common-relative-left > div:nth-of-type(1),
+.author .modal-body .common-relative-left > div:nth-of-type(1),
 .dg .modal-body .common-relative-left > div:nth-of-type(1),
 .ro .modal-body .common-relative-left > div:nth-of-type(1) {
   width: 190px;
@@ -5257,6 +5266,8 @@ table tr span {
 .lm .modal-body .common-relative-left > div:nth-of-type(1) span,
 .scs .modal-body .common-relative-left > div:nth-of-type(1) span,
 .ug .modal-body .common-relative-left > div:nth-of-type(1) span,
+.cs_con .modal-body .common-relative-left > div:nth-of-type(1) span,
+.author .modal-body .common-relative-left > div:nth-of-type(1) span,
 .dg .modal-body .common-relative-left > div:nth-of-type(1) span,
 .ro .modal-body .common-relative-left > div:nth-of-type(1) span {
   margin-left: 10px;
@@ -5266,6 +5277,8 @@ table tr span {
 .lm .modal-body .common-relative-left > div:nth-of-type(2),
 .scs .modal-body .common-relative-left > div:nth-of-type(2),
 .ug .modal-body .common-relative-left > div:nth-of-type(2),
+.cs_con .modal-body .common-relative-left > div:nth-of-type(2),
+.author .modal-body .common-relative-left > div:nth-of-type(2),
 .dg .modal-body .common-relative-left > div:nth-of-type(2),
 .ro .modal-body .common-relative-left > div:nth-of-type(2) {
   width: 190px;
@@ -5281,6 +5294,8 @@ table tr span {
 .lm .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1),
 .scs .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1),
 .ug .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1),
+.cs_con .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1),
+.author .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1),
 .dg .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1),
 .ro .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) {
   position: relative;
@@ -5291,6 +5306,8 @@ table tr span {
 .lm .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) input,
 .scs .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) input,
 .ug .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) input,
+.cs_con .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) input,
+.author .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) input,
 .dg .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) input,
 .ro .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) input {
   width: 75%;
@@ -5305,6 +5322,8 @@ table tr span {
 .lm .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) img,
 .scs .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) img,
 .ug .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) img,
+.cs_con .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) img,
+.author .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) img,
 .dg .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) img,
 .ro .modal-body .common-relative-left > div:nth-of-type(2) > div:nth-of-type(1) img {
   width: 20px;
@@ -5319,6 +5338,8 @@ table tr span {
 .lm .modal-body .common-relative-right,
 .scs .modal-body .common-relative-right,
 .ug .modal-body .common-relative-right,
+.cs_con .modal-body .common-relative-right,
+.author .modal-body .common-relative-right,
 .dg .modal-body .common-relative-right,
 .ro .modal-body .common-relative-right {
   float: right;
@@ -5330,6 +5351,8 @@ table tr span {
 .lm .modal-body .common-relative-right > div:nth-of-type(1),
 .scs .modal-body .common-relative-right > div:nth-of-type(1),
 .ug .modal-body .common-relative-right > div:nth-of-type(1),
+.cs_con .modal-body .common-relative-right > div:nth-of-type(1),
+.author .modal-body .common-relative-right > div:nth-of-type(1),
 .dg .modal-body .common-relative-right > div:nth-of-type(1),
 .ro .modal-body .common-relative-right > div:nth-of-type(1) {
   width: 190px;
@@ -5346,6 +5369,8 @@ table tr span {
 .lm .modal-body .common-relative-right > div:nth-of-type(1) span,
 .scs .modal-body .common-relative-right > div:nth-of-type(1) span,
 .ug .modal-body .common-relative-right > div:nth-of-type(1) span,
+.cs_con .modal-body .common-relative-right > div:nth-of-type(1) span,
+.author .modal-body .common-relative-right > div:nth-of-type(1) span,
 .dg .modal-body .common-relative-right > div:nth-of-type(1) span,
 .ro .modal-body .common-relative-right > div:nth-of-type(1) span {
   margin-left: 10px;
@@ -5355,6 +5380,8 @@ table tr span {
 .lm .modal-body .common-relative-right > div:nth-of-type(2),
 .scs .modal-body .common-relative-right > div:nth-of-type(2),
 .ug .modal-body .common-relative-right > div:nth-of-type(2),
+.cs_con .modal-body .common-relative-right > div:nth-of-type(2),
+.author .modal-body .common-relative-right > div:nth-of-type(2),
 .dg .modal-body .common-relative-right > div:nth-of-type(2),
 .ro .modal-body .common-relative-right > div:nth-of-type(2) {
   width: 190px;
@@ -5370,6 +5397,8 @@ table tr span {
 .lm .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1),
 .scs .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1),
 .ug .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1),
+.cs_con .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1),
+.author .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1),
 .dg .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1),
 .ro .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) {
   position: relative;
@@ -5380,6 +5409,8 @@ table tr span {
 .lm .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) input,
 .scs .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) input,
 .ug .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) input,
+.cs_con .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) input,
+.author .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) input,
 .dg .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) input,
 .ro .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) input {
   width: 75%;
@@ -5394,6 +5425,8 @@ table tr span {
 .lm .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) img,
 .scs .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) img,
 .ug .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) img,
+.cs_con .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) img,
+.author .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) img,
 .dg .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) img,
 .ro .modal-body .common-relative-right > div:nth-of-type(2) > div:nth-of-type(1) img {
   width: 20px;
@@ -5569,10 +5602,10 @@ table tr span {
 .cc #modal-default777 .modal-body .cc-policy-desc #add_desc2 {
   resize: none;
   width: 300px;
-  height: 26px;
+  height: 65px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 12px;
   margin-left: 90px;
   margin-top: 30px;
 }
@@ -5580,10 +5613,10 @@ table tr span {
 .cc #modal-default777 .modal-body .cc-policy-desc #edit_desc777 {
   resize: none;
   width: 300px;
-  height: 26px;
+  height: 65px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 12px;
   margin-left: 91px;
   margin-top: 27px;
 }
@@ -5880,9 +5913,11 @@ table tr span {
 .cn .row .nav-tabs-custom .tab-content #timeline .box-body .network_hr1 {
   border: 0;
   border-bottom: 1px solid #E8E8E8;
-  width: 100%;
+  width: 95%;
+  height: 4px;
   margin-left: 7px;
-  margin-top: 0px;
+  margin-top: 30px;
+  position: absolute;
 }
 .cn .row .nav-tabs-custom .tab-content #settings {
   height: 100%;
@@ -6079,6 +6114,7 @@ table tr span {
   width: 400px;
   height: 200px;
   background-color: #eff5fc;
+  overflow-y: auto;
 }
 .cn #modal-editroute .modal-body > div:nth-of-type(1) {
   margin-left: 95px;
@@ -7070,11 +7106,11 @@ table tr span {
   font-size: 12px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  margin-left: 1px;
+  margin-left: -2px;
 }
 .cs_con #G #ad-edit-group2 .modal-body #div7 > p:nth-of-type(3) {
   font-size: 12px;
-  margin-left: 150px;
+  margin-left: 148px;
   color: #a4abb5;
 }
 .cs_con #G #ad-edit-group2 .modal-body #div7 .ad_asy {
@@ -7087,7 +7123,7 @@ table tr span {
   border-radius: 3px;
   border: 1px solid #ccc;
   font-size: 12px;
-  margin-left: -12px;
+  margin-left: -14px;
 }
 .cs_con #G #ad-edit-group2 .modal-body #div7 .more_ad {
   font-size: 12px;
@@ -7122,7 +7158,7 @@ table tr span {
   font-size: 12px;
   margin-left: 90px;
 }
-.cs_con #G #ad_edit_p .modal-body .box-body > span:nth-of-type(2) #ad_edit_password2 {
+.cs_con #G #ad_edit_p .modal-body .box-body > span:nth-of-type(2) #ad_edit_realname {
   width: 210px;
   height: 30px;
   border-radius: 3px;
@@ -7152,26 +7188,13 @@ table tr span {
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  margin-left: 10px;
-}
-.cs_con #G #ad_edit_p .modal-body .box-body span:nth-of-type(7) {
-  font-size: 12px;
-  margin-left: 55px;
-}
-.cs_con #G #ad_edit_p .modal-body .box-body #ad_edit_filter_loginname {
-  margin-top: 15px;
-  font-size: 12px;
-  width: 210px;
-  height: 30px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  margin-left: 10px;
+  margin-left: 9px;
 }
 .cs_con #G #ad_edit_p .modal-body .box-body > p:nth-of-type(1) {
   font-size: 12px;
   margin-left: 151px;
   color: #a4abb5;
-  margin-top: 0px;
+  margin-top: -10px;
 }
 .cs_con #G #ad_edit_p .modal-body .box-body .email_ad1 {
   font-size: 12px;
@@ -7227,7 +7250,7 @@ table tr span {
   color: #505050;
 }
 .cs_con #G #radius_button .modal-body #radiusid > span:nth-of-type(1) > span {
-  vertical-align: -20%;
+  vertical-align: -25%;
   color: red;
   font-size: 20px;
   margin-right: 1px;
@@ -7242,7 +7265,7 @@ table tr span {
 }
 .cs_con #G #radius_button .modal-body #radiusid > p:nth-of-type(1) {
   font-size: 12px;
-  margin-left: 156px;
+  margin-left: 159px;
   color: #a4abb5;
   margin-top: 0px;
 }
@@ -7252,7 +7275,7 @@ table tr span {
   color: #505050;
 }
 .cs_con #G #radius_button .modal-body #radiusid .r_port > span {
-  vertical-align: -20%;
+  vertical-align: -25%;
   color: red;
   font-size: 20px;
   margin-right: 1px;
@@ -7267,7 +7290,7 @@ table tr span {
 }
 .cs_con #G #radius_button .modal-body #radiusid > p:nth-of-type(2) {
   font-size: 12px;
-  margin-left: 156px;
+  margin-left: 159px;
   color: #a4abb5;
   margin-top: 0px;
 }
@@ -7295,7 +7318,7 @@ table tr span {
   color: #505050;
 }
 .cs_con #G #radius_button .modal-body #radiusid .r_pass > span {
-  vertical-align: -20%;
+  vertical-align: -25%;
   color: red;
   font-size: 20px;
   margin-right: 1px;
@@ -7314,7 +7337,7 @@ table tr span {
   color: #505050;
 }
 .cs_con #G #radius_button .modal-body #radiusid .r_time > span:nth-of-type(1) {
-  vertical-align: -20%;
+  vertical-align: -25%;
   color: red;
   font-size: 20px;
   margin-right: 1px;
@@ -7329,7 +7352,7 @@ table tr span {
 }
 .cs_con #G #radius_button .modal-body #radiusid > p:nth-of-type(3) {
   font-size: 12px;
-  margin-left: 155px;
+  margin-left: 159px;
   color: #a4abb5;
 }
 .cs_con #G #biont_g .modal-body > div:nth-of-type(1) {
@@ -7356,7 +7379,7 @@ table tr span {
   vertical-align: 2px;
 }
 .cs_con #G #biont_g .modal-body > div:nth-of-type(1) > span > span {
-  vertical-align: -20%;
+  vertical-align: -8px;
   color: red;
   font-size: 20px;
   margin-right: 1px;
@@ -7721,7 +7744,7 @@ table tr span {
 }
 .cs_con #M .box .box-body .save_body {
   margin-left: 42px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .cs_con #M .box .box-body .save_body > span:nth-of-type(1) {
   font-size: 14px;
@@ -7782,7 +7805,7 @@ table tr span {
 }
 .cs_con #M .box .box-body .session_body {
   margin-left: 43px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .cs_con #M .box .box-body .session_body > span:nth-of-type(1) {
   font-size: 14px;
@@ -9504,7 +9527,7 @@ table tr span {
 }
 .cs_con #B .box .box-body .policy_body > div:nth-of-type(5) {
   margin-top: 30px;
-  margin-left: -42px;
+  margin-left: -28px;
 }
 .cs_con #B .box .box-body .policy_body > div:nth-of-type(5) > span:nth-of-type(1) {
   font-size: 14px;
@@ -9836,11 +9859,21 @@ table tr span {
   margin-left: 102px;
 }
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(5) {
-  margin-left: 57px;
+  margin-left: 66px;
+  font-size: 12px;
+}
+.cs_con #B #modal-default2 .modal-body > div:nth-of-type(5) > p {
+  margin-bottom: 0px;
 }
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(5) > p > span:nth-of-type(1) {
   font-size: 12px;
-  color: #505050;
+  margin-left: -5px;
+}
+.cs_con #B #modal-default2 .modal-body > div:nth-of-type(5) > p > span:nth-of-type(1) > span:nth-of-type(1) {
+  vertical-align: -20%;
+  color: red;
+  font-size: 20px;
+  margin-right: 1px;
 }
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(5) > p > input {
   margin-top: 20px;
@@ -9850,6 +9883,11 @@ table tr span {
   border: 1px solid #ccc;
   font-size: 12px;
   margin-left: 7px;
+}
+.cs_con #B #modal-default2 .modal-body > div:nth-of-type(5) > span {
+  font-size: 12px;
+  color: #a4abb5;
+  margin-left: 102px;
 }
 .cs_con #B #web .modal-body > div:nth-of-type(1) {
   margin-top: 10px;
@@ -10422,29 +10460,10 @@ table tr span {
   border: 1px solid #ccc;
   font-size: 12px;
 }
-.u #edituser .modal-body .u-emial,
-.u #modal-adduser .modal-body .u-emial {
-  margin-top: 10px;
-  margin-left: 90px;
-}
-.u #edituser .modal-body .u-emial span,
-.u #modal-adduser .modal-body .u-emial span {
-  font-size: 13.5px;
-  color: #505050;
-}
-.u #edituser .modal-body .u-emial input,
-.u #modal-adduser .modal-body .u-emial input {
-  margin-top: -10px;
-  width: 209px;
-  height: 30px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  font-size: 12px;
-}
 .u #edituser .modal-body .u-tel,
 .u #modal-adduser .modal-body .u-tel {
-  margin-top: 13px;
-  margin-left: 86px;
+  margin-top: -2px;
+  margin-left: 87px;
 }
 .u #edituser .modal-body .u-tel p span:nth-of-type(1),
 .u #modal-adduser .modal-body .u-tel p span:nth-of-type(1) {
@@ -10466,9 +10485,83 @@ table tr span {
   border: 1px solid #ccc;
   font-size: 12px;
 }
+.u #edituser .modal-body .u-relevation1,
+.u #modal-adduser .modal-body .u-relevation1 {
+  margin-left: 85px;
+  margin-top: 5px;
+  font-size: 12px;
+  position: relative;
+  height: 40px;
+}
+.u #edituser .modal-body .u-relevation1 > span:nth-of-type(1),
+.u #modal-adduser .modal-body .u-relevation1 > span:nth-of-type(1) {
+  position: absolute;
+  top: 8px;
+}
+.u #edituser .modal-body .u-relevation1 > span:nth-of-type(2),
+.u #modal-adduser .modal-body .u-relevation1 > span:nth-of-type(2) {
+  position: absolute;
+  left: 285px;
+  top: 8px;
+}
+.u #edituser .modal-body .u-relevation1 div:nth-of-type(1),
+.u #modal-adduser .modal-body .u-relevation1 div:nth-of-type(1) {
+  position: absolute;
+  border-right: none;
+  width: 30px;
+  height: 30px;
+  left: 53px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+.u #edituser .modal-body .u-relevation1 div:nth-of-type(1) i,
+.u #modal-adduser .modal-body .u-relevation1 div:nth-of-type(1) i {
+  position: absolute;
+  font-size: 16px;
+  left: 7px;
+}
+.u #edituser .modal-body .u-relevation1 div:nth-of-type(2),
+.u #modal-adduser .modal-body .u-relevation1 div:nth-of-type(2) {
+  position: absolute;
+  left: 169px;
+  top: -4px;
+  font-size: 25px;
+}
+.u #edituser .modal-body .u-relevation1 input:nth-of-type(1),
+.u #modal-adduser .modal-body .u-relevation1 input:nth-of-type(1) {
+  position: absolute;
+  left: 83px;
+  width: 80px;
+  height: 30px;
+  border-radius: 2px;
+  padding-top: 3px;
+  padding-right: 6px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+}
+.u #edituser .modal-body .u-relevation1 input:nth-of-type(2),
+.u #modal-adduser .modal-body .u-relevation1 input:nth-of-type(2) {
+  position: absolute;
+  left: 182px;
+  width: 80px;
+  height: 30px;
+  border-radius: 3px;
+  padding-top: 3px;
+  padding-right: 6px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+}
+.u #edituser .modal-body .u-relevation1 input:nth-of-type(3),
+.u #modal-adduser .modal-body .u-relevation1 input:nth-of-type(3) {
+  position: absolute;
+  left: 270px;
+  top: 10px;
+  border-radius: 3px;
+}
 .u #edituser .modal-body .u-method,
 .u #modal-adduser .modal-body .u-method {
-  margin-left: 73px;
+  margin-left: 75px;
+  margin-top: 7px;
 }
 .u #edituser .modal-body .u-method > span,
 .u #modal-adduser .modal-body .u-method > span {
@@ -10563,14 +10656,27 @@ table tr span {
   border: 1px solid #ccc;
   font-size: 12px;
 }
-.u #modal-primary4 .modal-body .u-wexin,
-.u #modal-primary .modal-body .u-wexin {
-  margin-top: 20px;
-  margin-left: 100px;
+.u #modal-primary4 .modal-body .u-emial,
+.u #modal-primary .modal-body .u-emial {
+  margin-top: 10px;
+  margin-left: 90px;
+}
+.u #modal-primary4 .modal-body .u-emial span,
+.u #modal-primary .modal-body .u-emial span {
+  font-size: 13.5px;
+  color: #505050;
+}
+.u #modal-primary4 .modal-body .u-emial input,
+.u #modal-primary .modal-body .u-emial input {
+  margin-top: -10px;
+  width: 209px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 12px;
 }
 .u #modal-primary4 .modal-body .u-qq,
 .u #modal-primary .modal-body .u-qq {
-  margin-top: 38px;
   margin-left: 108px;
 }
 .u #modal-primary4 .modal-body .u-remarks,
@@ -10592,78 +10698,5 @@ table tr span {
   width: 210px;
   height: 80px;
   resize: none;
-}
-.u #modal-primary4 .modal-body .u-relevation1,
-.u #modal-primary .modal-body .u-relevation1 {
-  margin-left: 85px;
-  margin-top: 5px;
-  font-size: 12px;
-  position: relative;
-  height: 10px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 > span:nth-of-type(1),
-.u #modal-primary .modal-body .u-relevation1 > span:nth-of-type(1) {
-  position: absolute;
-  top: 15px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 > span:nth-of-type(2),
-.u #modal-primary .modal-body .u-relevation1 > span:nth-of-type(2) {
-  position: absolute;
-  left: 285px;
-  top: 15px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 div:nth-of-type(1),
-.u #modal-primary .modal-body .u-relevation1 div:nth-of-type(1) {
-  position: absolute;
-  border-right: none;
-  width: 30px;
-  height: 30px;
-  left: 53px;
-  background-color: #fff;
-  border-radius: 3px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 div:nth-of-type(1) i,
-.u #modal-primary .modal-body .u-relevation1 div:nth-of-type(1) i {
-  position: absolute;
-  font-size: 16px;
-  left: 9px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 div:nth-of-type(2),
-.u #modal-primary .modal-body .u-relevation1 div:nth-of-type(2) {
-  position: absolute;
-  left: 169px;
-  top: -4px;
-  font-size: 25px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 input:nth-of-type(1),
-.u #modal-primary .modal-body .u-relevation1 input:nth-of-type(1) {
-  position: absolute;
-  left: 83px;
-  width: 80px;
-  height: 30px;
-  border-radius: 3px;
-  padding-top: 3px;
-  padding-right: 6px;
-  padding-bottom: 3px;
-  padding-left: 6px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 input:nth-of-type(2),
-.u #modal-primary .modal-body .u-relevation1 input:nth-of-type(2) {
-  position: absolute;
-  left: 182px;
-  width: 80px;
-  height: 30px;
-  border-radius: 3px;
-  padding-top: 3px;
-  padding-right: 6px;
-  padding-bottom: 3px;
-  padding-left: 6px;
-}
-.u #modal-primary4 .modal-body .u-relevation1 input:nth-of-type(3),
-.u #modal-primary .modal-body .u-relevation1 input:nth-of-type(3) {
-  position: absolute;
-  left: 270px;
-  top: 13px;
-  border-radius: 3px;
 }
 /*# sourceMappingURL=main.css.map */

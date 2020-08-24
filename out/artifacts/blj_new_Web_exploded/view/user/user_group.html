@@ -123,7 +123,8 @@
 <!--                    </div>-->
                  <div class="ug-editdesc">
                      <label class="laa"><span>描述：</span></label>
-                     <textarea  id="edit_desc" style="font-size: 12px;"></textarea><span style="color: red;font-size: 12px" id="Vedit_desc"></span>
+                     <textarea  id="edit_desc" maxlength="128" style="font-size: 12px;"></textarea><span style="color: red;font-size: 12px" id="Vedit_desc"></span>
+                     <p style="font-size: 12px;color: #a4abb5;margin-left: 148px;">长度为1-128个汉字或字符</p>
                  </div> 
               </div>
               <div class="modal-footer">
@@ -311,9 +312,10 @@
                             <span aria-hidden="true">&times;</span></button>
                         <span class="modal-title">提示</span>
                     </div>
-                    <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
-                        <p style="margin-left: -62px;" id="uploadError"></p>
-                    </div><br>
+                    <div style="height: 200px;overflow-y: auto;text-align: center">
+                        <p id="uploadError">
+                        </p>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                         <button type="button" id="uploadInfo" class="btn newaddbtn" data-dismiss="modal" >确定</button>

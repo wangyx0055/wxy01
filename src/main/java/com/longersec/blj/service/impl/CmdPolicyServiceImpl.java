@@ -51,8 +51,8 @@ public class CmdPolicyServiceImpl implements CmdPolicyService{
 	}
 
 	@Override
-	public List<Object> findAll(CmdPolicy cmdPolicy,String sname ,Integer type ,String stat,String cot ,int page_start, int page_length) {
-		return CmdPolicyDao.findAll(cmdPolicy,sname,type,stat,cot,page_start, page_length);
+	public List<Object> findAll(CmdPolicy cmdPolicy,String sname ,Integer type ,String stat,String cot ,int page_start, int page_length,List<Integer> depart_ids) {
+		return CmdPolicyDao.findAll(cmdPolicy,sname,type,stat,cot,page_start, page_length,depart_ids);
 	}
 
 	@Override

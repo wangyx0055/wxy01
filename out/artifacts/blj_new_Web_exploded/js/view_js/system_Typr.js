@@ -172,6 +172,7 @@ $('#new_System').on('show.bs.modal', function (event) {
         $('#param').val('');
         $('#os_type').val('0');
         $('#description').val('');
+        $('#edit_id').val('');
     }
     $("#Sys_name").text("");
     $("#Vparam").text("");
@@ -187,7 +188,7 @@ $('#edit_btn').off().click(function() {
     	checkSys_name();
         var flag=true;
         var p2=/^(\w|[\u4E00-\u9FA5]|-|@){1,32}$/;
-        var p3=/^\S{0,64}$/;
+        var p3=/^\S{0,128}$/;
         var Tname=$("#name").val();
         if(Tname==''){
             $("#Sys_name").text("请输入系统名称");
@@ -293,7 +294,7 @@ $("#name").blur(function () {
     }
 });
 $("#description").blur(function () {
-    var p3=/^\S{0,64}$/;
+    var p3=/^\S{0,128}$/;
     if($("#description").val()!=""&&!p3.test($("#description").val())){
         $("#Vdescription").text("超过限制长度");
     }

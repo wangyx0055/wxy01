@@ -169,6 +169,7 @@ let departmentList = function(field,value){
 	        });
 	        $table.treegrid('getRootNodes').treegrid('expand');
             $('#department div').tooltip();
+
 	    },
 	    onCheck:function(row){
             const datas = $table.bootstrapTable('getData');
@@ -233,7 +234,7 @@ let regexp = {
     name:/^([A-Za-z]|[\u4e00-\u9fa5]|\.|\-|\@|\_|[0-9]){1,32}$/,
 };
 $("#description").blur(function () {
-    if($("#description").val().length >64){
+    if($("#description").val().length >128){
         $("#Vdescription").text("超过限制长度");
     }
 });
@@ -481,13 +482,16 @@ $("#upload").off().on("click", function () {
                 $("#modal-danger .modal-body").text('导入失败!');
                 $("#modal-danger").modal();
             }
-            reloadDepartment();
             setTimeout(function () {
                 if (data.errorInfo.length !== 0) {
                     $("#modal-uploadInfo").modal();
-                    $('#uploadError').text(data.errorInfo+"----详细请看文档");
+                    for(let item of data.errorInfo) {
+                        $('#uploadError').append(item+"<br/>");
+                    }
+                    $('#uploadError').append("----详细请看文档和日志");
                 }
             },1500)
+            reloadDepartment();
         },
         error: function () {
         }

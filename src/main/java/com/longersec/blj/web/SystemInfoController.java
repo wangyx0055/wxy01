@@ -281,8 +281,13 @@ public class SystemInfoController {
 		result.put("appprogramct", apppubProgramService.total());
 		
 		result.put("visitByDay", loginLogService.selectLast7Day());
+
+		result.put("visitByMonth", loginLogService.selectLast30Day());
+
+
 		result.put("visitByUser", loginLogService.selectByUser());
-		
+		result.put("visitByUserMonth", loginLogService.selectByUserMonth());
+
 		result.put("devicesByType", deviceService.totalByDeviceType());
 		result.put("apppubByProgram", apppubAccountService.totalByProgram());
 		

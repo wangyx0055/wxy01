@@ -42,12 +42,14 @@ public class CmdPolicyUserController {
 	
 	@RequestMapping("/findCmdPolicyUserAndUser")
 	@ResponseBody
-	public JSONObject findCmdPolicyUserAndUser(@RequestParam("policy_id") Integer policy_id) {
+	public JSONObject findCmdPolicyUserAndUser(@RequestParam("policy_id") Integer policy_id,
+	                                           @RequestParam(value = "page_start",required = false)int page_start,
+	                                           @RequestParam(value ="page_length",required = false)int page_length) {
 		ArrayList<Users> resultCmdPolicyUsers = new ArrayList<Users>();
 		ArrayList<Users> resultUsers = new ArrayList<Users>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
 		resultCmdPolicyUsers = (ArrayList<Users>) cmdPolicyUserService.selectById(policy_id);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment());
+		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultCmdPolicyUsers);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultCmdPolicyUsers);
