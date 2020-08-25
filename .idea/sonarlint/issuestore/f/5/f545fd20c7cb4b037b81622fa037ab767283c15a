@@ -1,0 +1,5 @@
+
+q	java:S116	"WRename this field "get_datetime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ÔºÜûÿÿÿÿ
+h	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Íç¿ûÿÿÿÿ
+c	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°•Ò‡
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Íç¿ûÿÿÿÿ

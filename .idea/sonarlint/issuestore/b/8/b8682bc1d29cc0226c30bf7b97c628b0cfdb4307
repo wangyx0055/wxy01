@@ -1,0 +1,37 @@
+
+o	java:S116"ZRename this field "connection_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Æ•³
+h	java:S100k"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•¼à÷ùÿÿÿÿ
+e	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùı¹D
+k	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÒÖìùÿÿÿÿ
+c	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ï‘ı
+f	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û•ºÃ
+r	java:S116"]Rename this field "sharing_profile_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ààöÛ
+c	java:S100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÚ­Æ
+o	java:S116"URename this field "history_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş¤Ï—ÿÿÿÿÿ
+m	java:S116"XRename this field "connection_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üı«û
+k	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•¼à÷ùÿÿÿÿ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çâ€ğ
+h	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÅãùüÿÿÿÿ
+c	java:S100c"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğĞ¿Ì
+c	java:S100W"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÜ˜‰
+l	java:S116"RRename this field "user_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â†âèùÿÿÿÿ
+h	java:S100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óíìÿÿÿÿÿ
+b	java:S100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Æøp
+b	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠãíO
+b	java:S100;"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùı¹D
+c	java:S100_"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§°Õì
+p	java:S116"VRename this field "remote_host" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷¡ö¡ûÿÿÿÿ
+e	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠãíO
+f	java:S117c"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğĞ¿Ì
+c	java:S100["NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§‡£
+y	java:S116"_Rename this field "sharing_profile_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øşñ•ûÿÿÿÿ
+o	java:S116"URename this field "start_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘™ãøÿÿÿÿ
+k	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óíìÿÿÿÿÿ
+f	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒ ê¢
+m	java:S116"SRename this field "end_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë÷ªøÿÿÿÿ
+c	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒ ê¢
+h	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÒÖìùÿÿÿÿ
+h	java:S100O"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠÙĞùÿÿÿÿ
+f	java:S117["QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§‡£
+c	java:S100S"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û•ºÃ
+c	java:S100g"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀÚ˜¡

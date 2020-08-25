@@ -1,0 +1,30 @@
+
+g	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£îÛ€
+o
+java:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(•¢žô
+Y
+java:S1126³"BReplace this if-then-else statement by a single method invocation.(’æ­Î
+d
+java:S1192P"IDefine a constant instead of duplicating this literal "success" 20 times.(ÈçâÙÿÿÿÿÿ
+V	java:S125y"<This block of commented-out lines of code should be removed.(¼ÆŸ†ùÿÿÿÿ
+R	java:S125£"<This block of commented-out lines of code should be removed.(ÿ¹«•
+k	java:S117Z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š›€Çúÿÿÿÿ
+f	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+F
+java:S5411‹"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+i
+java:S18542"NRemove this useless assignment to local variable "resultCrontabScriptConfigs".(à¹çœýÿÿÿÿ
+f	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¬¦“
+X
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.AccessPolicy'.(ú®ò®
+k	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+D
+java:S1125‹"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+Y
+java:S1126½"BReplace this if-then-else statement by a single method invocation.(ïö€û
+k	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+t
+java:S22932"YReplace the type specification in this constructor call with the diamond operator ("<>").(à¹çœýÿÿÿÿ
+g	java:S117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+k	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æê‹›ûÿÿÿÿ
+g	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£îÛ€

@@ -254,7 +254,9 @@ $(function () {
                 { "data": "id" ,"render": function(data){
                         return '<input type="checkbox" name="chk[]" value='+data+'>';
                     }},
-                { "data": "appservername" },
+                { "data": "appservername","render":function (data) {
+                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                    }},
                 { "data": "depart_name" ,
                     "render" : function(data, type,row, mata) {
                         return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'

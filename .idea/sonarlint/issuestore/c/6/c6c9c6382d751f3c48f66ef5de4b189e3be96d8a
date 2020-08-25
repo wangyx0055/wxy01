@@ -1,0 +1,17 @@
+
+h	java:S100Y"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èëìùşÿÿÿÿ
+h	java:S100^"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú·›ùÿÿÿÿ
+l	java:S116"WRename this field "cmddanger_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä£
+j	java:S116"PRename this field "_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ââÈûıÿÿÿÿ
+h	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¡ç¿ùÿÿÿÿ
+c	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×³íŞ
+n	java:S116"TRename this field "record_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£œ‚üÿÿÿÿ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒŠÂ½
+k	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èëìùşÿÿÿÿ
+c	java:S100c"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ—Ö¹
+n	java:S116"TRename this field "is_apppub" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ êÒûÿÿÿÿ
+h	java:S100O"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤‹íØüÿÿÿÿ
+h	java:S100T"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ëàøÿÿÿÿ
+k	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¡ç¿ùÿÿÿÿ
+k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤‹íØüÿÿÿÿ
+f	java:S117c"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ—Ö¹

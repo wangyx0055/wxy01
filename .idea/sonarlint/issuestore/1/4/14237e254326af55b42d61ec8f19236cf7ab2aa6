@@ -1,0 +1,13 @@
+
+V	java:S125'"<This block of commented-out lines of code should be removed.(ÂÛõøÿÿÿÿ
+g	java:S116"RRename this field "MenuDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßâ‹à
+M
+java:S1135"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S1135"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸¢¼ƒ
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸¢¼ƒ
+M
+java:S1135!"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+A
+java:S1168("+Return an empty collection instead of null.(¥¹ï

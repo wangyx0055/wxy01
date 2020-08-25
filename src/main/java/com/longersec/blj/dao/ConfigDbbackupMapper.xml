@@ -76,8 +76,8 @@
 		truncate table lsblj_backup_log;
 		truncate table lsblj_change_password_log;
 		truncate table lsblj_change_password_policy;
-		truncate table lsblj_change_password_policy_apppub;
-		truncate table lsblj_change_password_policy_device;
+		truncate table lsblj_change_password_policy_apppub_account;
+		truncate table lsblj_change_password_policy_device_account;
 		truncate table lsblj_change_password_policy_group;
 		truncate table lsblj_cmd_policy;
 		truncate table lsblj_cmd_policy_apppub;
@@ -136,9 +136,14 @@
 		truncate table lsblj_user_role;
 		
 		delete from lsblj_department where id>1;
-		update lsblj_department set `count`=0,`device_count`=0;
+		update lsblj_department set `count`=0,`device_count`=0,`description`='';
 		delete from lsblj_role where id > 5;
 		delete from lsblj_role_menu where role_id not in(select id from lsblj_role);
 		delete from lsblj_user where id>3;
+		
+		alter table lsblj_department AUTO_INCREMENT=2;
+		alter table lsblj_user AUTO_INCREMENT=4;
+		alter table lsblj_role AUTO_INCREMENT=6;
+		
 	</update>
 </mapper>

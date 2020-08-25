@@ -108,7 +108,7 @@ public class CrontabScriptLogController {
 			}else{
 				operatorLog.setResult("失败");
 			}
-			result.put("success", r?true:false);
+			result.put("success", r);
 		}else{
 			result.put("success",false);
 			operatorLog.setResult("失败");
@@ -136,7 +136,7 @@ public class CrontabScriptLogController {
 			}else{
 				operatorLog.setResult("失败");
 			}
-			result.put("success", r?true:false);
+			result.put("success", r);
 		}else{
 			result.put("success",false);
 		}

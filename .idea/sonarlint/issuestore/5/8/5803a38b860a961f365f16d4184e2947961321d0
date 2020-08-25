@@ -1,0 +1,35 @@
+
+f	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Âã
+f	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ´ºè
+f	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğâ‡ë
+f	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÍÇª
+f	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğâ‡ë
+f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊßµÌ
+V
+java:S1128"@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²
+M
+java:S1135C"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+f	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÍÇª
+M
+java:S1135"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+f	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ´ºè
+f	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğâ‡ë
+f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊßµÌ
+k	java:S116"VRename this field "LoginLogDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ†Áå
+f	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Âã
+f	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÍÇª
+M
+java:S1135"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S11354"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+f	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÍÇª
+f	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Âã
+f	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğâ‡ë
+M
+java:S1135$"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊßµÌ
+M
+java:S1135W"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+f	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Âã
+M
+java:S1135^"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ

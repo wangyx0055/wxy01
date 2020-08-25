@@ -25,7 +25,7 @@ public interface CmdPolicyDao {
 
     public CmdPolicy checkName(@Param("name") String name);
     
-    public List<String> getCommandsByDeviceAndUser(@Param("device_account_id") Integer device_account_id, @Param("user_id")Integer user_id, @Param("group_id")Integer group_id);
+    public List<String> getCommandsByDeviceAndUser(@Param("device_account_id") Integer device_account_id, @Param("user_id")Integer user_id);
 
     public CmdPolicy getById(@Param("id")Integer id);
 }

@@ -1,0 +1,46 @@
+
+r	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ8¢í¡œÂ.
+e
+java:S1126”"BReplace this if-then-else statement by a single method invocation.(¦Ï«„ùÿÿÿÿ8¢í¡œÂ.
+`
+java:S1126Š"BReplace this if-then-else statement by a single method invocation.(úúôŠ8¢í¡œÂ.
+[	java:S106µ"9Replace this use of System.out or System.err by a logger.(×ÿøÿÿÿÿ8¢í¡œÂ.
+9
+java:S1643ì"Use a StringBuilder instead.(¹èÓ8¢í¡œÂ.
+^	java:S125«"<This block of commented-out lines of code should be removed.(õ‹Ş¶øÿÿÿÿ8¢í¡œÂ.
+k
+java:S1192Z"IDefine a constant instead of duplicating this literal "success" 19 times.(ÈçâÙÿÿÿÿÿ8¢í¡œÂ.
+n	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚¼æ³8¢í¡œÂ.
+t
+java:S3776o"RRefactor this method to reduce its Cognitive Complexity from 38 to the 15 allowed.(€øİêûÿÿÿÿ8¢í¡œÂ.
+v
+java:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(ùç‡–8¢í¡œÂ.
+9
+java:S1643æ"Use a StringBuilder instead.(¹èÓ8¢í¡œÂ.
+t
+java:S37762"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¤ğóèÿÿÿÿÿ8¢í¡œÂ.
+n	java:S117Ø"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸8¢í¡œÂ.
+v
+java:S2293d"YReplace the type specification in this constructor call with the diamond operator ("<>").(Œ²ìÂ8¢í¡œÂ.
+r	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ8¢í¡œÂ.
+m	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÍÃß8¢í¡œÂ.
+G
+java:S1481‰")Remove this unused "name" local variable.(‚á“‹8¢í¡œÂ.
+m	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ8¢í¡œÂ.
+v
+java:S2293<"YReplace the type specification in this constructor call with the diamond operator ("<>").(Œ²ìÂ8¢í¡œÂ.
+V
+java:S1854‰"8Remove this useless assignment to local variable "name".(‚á“‹8¢í¡œÂ.
+G
+java:S1481³")Remove this unused "name" local variable.(‚á“‹8¢í¡œÂ.
+i
+java:S1192"FDefine a constant instead of duplicating this literal "error" 4 times.(¯¼ÿ°ÿÿÿÿÿ8¢í¡œÂ.
+]
+java:S1854;"@Remove this useless assignment to local variable "resultGroups".(ùç‡–8¢í¡œÂ.
+n	java:S117‰"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚¼æ³8¢í¡œÂ.
+k
+java:S1192“"MDefine a constant instead of duplicating this literal "errorMessage" 4 times.(’·ßÈ8¢í¡œÂ.
+W
+java:S1854d":Remove this useless assignment to local variable "groups".(Œ²ìÂ8¢í¡œÂ.
+V
+java:S1854³"8Remove this useless assignment to local variable "name".(‚á“‹8¢í¡œÂ.

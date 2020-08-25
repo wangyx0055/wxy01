@@ -1,0 +1,41 @@
+
+f	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+Z
+java:S18541"?Remove this useless assignment to local variable "resultUsers".(õ‚­•ÿÿÿÿÿ
+f	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éËõ³
+c
+java:S18540"HRemove this useless assignment to local variable "resultCmdPolicyUsers".(Õá²×úÿÿÿÿ
+f	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃàİÃ
+k	java:S117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôáÍµûÿÿÿÿ
+o
+java:S2293D"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÒãŒ
+f	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆúöØ
+k	java:S117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôáÍµûÿÿÿÿ
+^
+java:S1854D"HRemove this useless assignment to local variable "resultCmdPolicyUsers".(ÒãŒ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+k	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èä¢øÿÿÿÿ
+t
+java:S2293E"YReplace the type specification in this constructor call with the diamond operator ("<>").(çŸ‹Áÿÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+e	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—šA
+f	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³æ£ù
+k	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+t
+java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(Õá²×úÿÿÿÿ
+t
+java:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ‚­•ÿÿÿÿÿ
+C
+java:S1125^"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+f	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Í‹Ü
+f	java:S117t"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ„•°
+d
+java:S11929"IDefine a constant instead of duplicating this literal "success" 10 times.(ÈçâÙÿÿÿÿÿ
+E
+java:S5411^"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ

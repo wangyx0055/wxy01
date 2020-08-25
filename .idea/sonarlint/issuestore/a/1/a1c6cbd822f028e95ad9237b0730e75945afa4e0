@@ -1,0 +1,36 @@
+
+@
+java:S5411m"*Use the primitive boolean expression here.(€ÔÍñ
+f	java:S117w"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+]
+java:S1854:"GRemove this useless assignment to local variable "resultConfigLdapAds".(‹Ì…¹
+U
+java:S1155™">Use isEmpty() to check whether the collection is empty or not.(÷Êí—
+k	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+F
+java:S5411"*Use the primitive boolean expression here.(œ¬Ş¨úÿÿÿÿ
+>
+java:S1125m"(Remove the literal "true" boolean value.(€ÔÍñ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+n
+java:S3776…"RRefactor this method to reduce its Cognitive Complexity from 40 to the 15 allowed.(Ùâ§úÿÿÿÿ
+g
+java:S1128"LRemove this unused import 'org.apache.shiro.web.session.HttpServletSession'.(éàó™şÿÿÿÿ
+@
+java:S5411X"*Use the primitive boolean expression here.(€ÔÍñ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+>
+java:S1125X"(Remove the literal "true" boolean value.(€ÔÍñ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+d
+java:S1192D"IDefine a constant instead of duplicating this literal "success" 22 times.(‹ƒ øÿÿÿÿ
+f	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+o
+java:S2293:"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹Ì…¹
+t
+java:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(öÇò—ùÿÿÿÿ
+n
+java:S1192³"WDefine a constant instead of duplicating this literal "æ¥è‡ªLDAP/ADåŸŸåŒæ­¥" 3 times.(ùÅ›ƒ

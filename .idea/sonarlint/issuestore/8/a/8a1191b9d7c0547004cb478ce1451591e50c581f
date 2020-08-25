@@ -1,0 +1,10 @@
+
+V	java:S107"<Method has 8 parameters, which is greater than 7 authorized.(íüœÇşÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íüœÇşÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÌñç
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íüœÇşÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÌñç
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÌñç
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íüœÇşÿÿÿÿ
+X
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.AccessPolicy'.(ú®ò®

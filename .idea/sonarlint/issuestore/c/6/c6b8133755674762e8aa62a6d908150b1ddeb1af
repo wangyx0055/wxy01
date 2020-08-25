@@ -1,0 +1,7 @@
+
+IWeb:AvoidCommentedOutCodeCheck/"Remove this commented out code.(÷Î¹š
+HWeb:BoldAndItalicTagsCheckI"Replace this <i> tag by <em>.(Öõãëþÿÿÿÿ
+HWeb:TableWithoutCaptionCheckO" Add a description to this table.(‡ˆ¤‰
+:	Web:S5256O"%Add "<th>" headers to this "<table>".(‡ˆ¤‰
+GWeb:ImgWithoutAltCheckg"%Add an "alt" attribute to this image.(ÉñÒ½
+NWeb:AvoidCommentedOutCodeCheckq"Remove this commented out code.(Ý¦ŽÕüÿÿÿÿ

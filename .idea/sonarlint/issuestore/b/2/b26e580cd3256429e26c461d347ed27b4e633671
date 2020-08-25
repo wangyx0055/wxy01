@@ -1,0 +1,9 @@
+
+c	java:S100;"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ş¥¼
+f	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ş¥¼
+m	java:S116"SRename this field "ssh_sftp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃºïÑıÿÿÿÿ
+b	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íŞáC
+q	java:S116"WRename this field "control_port" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æèÌ±ıÿÿÿÿ
+h	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áû†Æúÿÿÿÿ
+e	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íŞáC
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ç

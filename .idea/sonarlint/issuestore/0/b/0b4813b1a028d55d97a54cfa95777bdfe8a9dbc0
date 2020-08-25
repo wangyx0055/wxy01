@@ -1,0 +1,66 @@
+
+A
+java:S1075f"&Remove this hard-coded path-delimiter.(¬ï·şÿÿÿÿ
+d
+java:S2095u"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(…Ğşµ
+g	java:S117£"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘¶µÔ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñš³úÿÿÿÿ
+D
+java:S1128")Remove this unused import 'java.net.URL'.(ñìÁ„üÿÿÿÿ
+j
+java:S4042—"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ
+l	java:S117ƒ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä×Şşÿÿÿÿ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+=
+java:S1075¦"&Remove this hard-coded path-delimiter.(Ğ‹²»
+M
+java:S1481."2Remove this unused "crontabScript" local variable.(ÛËÒ¿úÿÿÿÿ
+N	java:S106Q"9Replace this use of System.out or System.err by a logger.(··Ûë
+M
+java:S1128"2Remove this unused import 'net.sf.json.JSONArray'.(å¶ÿÿÿÿÿ
+\
+java:S1854."ARemove this useless assignment to local variable "crontabScript".(ÛËÒ¿úÿÿÿÿ
+<
+java:S1075b"&Remove this hard-coded path-delimiter.(‘Ï–
+f	java:S117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…—
+=
+java:S1075Ä"&Remove this hard-coded path-delimiter.(‘Ï–
+B
+java:S1075†"&Remove this hard-coded path-delimiter.(¹•ÎÄşÿÿÿÿ
+b
+java:S1192‚"KDefine a constant instead of duplicating this literal "chunkIndex" 4 times.(¦¬ ”
+]
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.DeviceRecord'.(˜©Öğøÿÿÿÿ
+j
+java:S4042÷"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ
+<
+java:S10753"&Remove this hard-coded path-delimiter.(‘Ï–
+B
+java:S1075ó"&Remove this hard-coded path-delimiter.(¹•ÎÄşÿÿÿÿ
+V	java:S899—";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ
+d
+java:S2095‹"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(À«â
+a	java:S112ƒ"FDefine and throw a dedicated exception instead of using a generic one.(Ä×Şşÿÿÿÿ
+d
+java:S2095D"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(…Ğşµ
+V	java:S899÷";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ
+e
+java:S2095×"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(…Ğşµ
+e
+java:S1192-"ODefine a constant instead of duplicating this literal "fileUploadPath" 7 times.(Âªô¯
+d
+java:S2095«"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(À«â
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+B
+java:S1075È"&Remove this hard-coded path-delimiter.(¬ï·şÿÿÿÿ
+]
+java:S11921"GDefine a constant instead of duplicating this literal "yyyyMM" 3 times.(ôòá«
+\	java:S112£"FDefine and throw a dedicated exception instead of using a generic one.(‘¶µÔ
+A
+java:S10757"&Remove this hard-coded path-delimiter.(¬ï·şÿÿÿÿ
+=
+java:S1075’"&Remove this hard-coded path-delimiter.(Ğ‹²»
+d
+java:S1192"HDefine a constant instead of duplicating this literal "success" 8 times.(‹ƒ øÿÿÿÿ

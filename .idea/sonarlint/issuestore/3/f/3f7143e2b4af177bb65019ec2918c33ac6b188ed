@@ -1,0 +1,9 @@
+
+p	java:S116"VRename this field "create_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚µñ™˛ˇˇˇˇ
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÒ´>
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ÉÑy
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ÉÑy
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÉòæ
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÒ´>
+c	java:S100	"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ÕΩÙ
+m	java:S116"XRename this field "lsblj_user_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å‰Ë‡

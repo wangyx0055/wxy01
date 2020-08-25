@@ -1,0 +1,21 @@
+
+C
+java:S1125@"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+E
+java:S5411L"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+f	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+E
+java:S5411@"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+C
+java:S1125L"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+c
+java:S1854&"HRemove this useless assignment to local variable "resultUserFavourites".(ÄÆÄ–şÿÿÿÿ
+t
+java:S2293&"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÄÆÄ–şÿÿÿÿ
+f	java:S117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+o
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(ºº‡ì
+d
+java:S11920"IDefine a constant instead of duplicating this literal "success" 15 times.(ÈçâÙÿÿÿÿÿ
+f	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸

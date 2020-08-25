@@ -1,0 +1,15 @@
+
+k	java:S116"VRename this field "depart_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èïÔØ
+~
+java:S26373"c"name" is marked "javax.validation.constraints.NotNull" but is not initialized in this constructor.(Ë…±Şşÿÿÿÿ
+c	java:S100g"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ƒ˜¾
+e	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óƒ„y
+h	java:S100w"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”—Ù¹ûÿÿÿÿ
+c	java:S100c"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æç¿‹
+b	java:S100k"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óƒ„y
+j	java:S116"URename this field "creator_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àı¸÷
+c	java:S100{"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°åØù
+f	java:S117c"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æç¿‹
+f	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°åØù
+c	java:S100_"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š÷‹
+p	java:S116"VRename this field "create_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âµ–ªşÿÿÿÿ

@@ -13,30 +13,28 @@ public interface DeviceService {
 
 	Integer selectOldDepartment(int id);
 
-	public boolean addDevice(Device device);
+	boolean addDevice(Device device);
 
-	public boolean editDevice(Device device);
+	boolean editDevice(Device device);
 
-	public boolean delDevice(List<Integer> ids);
+	boolean delDevice(List<Integer> ids);
 
 	boolean deleteUselessDevice(int department);
 
-	public List<Object> findAll(Device device, int page_start, int page_length,List<Integer> depart_ids);
+	List<Object> findAll(Device device, int page_start, int page_length,List<Integer> depart_ids);
 
-	public Device checkip(String ip);
+	Device checkip(String ip);
 	
-	public Device getById(Integer id);
+	Device getById(Integer id);
 	
-	public int total();
+	int total();
 	
-	public List<Map<String, Integer>> totalByDeviceType();
+	List<Map<String, Integer>> totalByDeviceType();
 
     Device checkname(String name);
 
     boolean insertMore(Device device);
 
     boolean editDeviceList(ArrayList<Device> updatedevices);
-
-	ArrayList<Device> findDeviceGroup(int i);
 }
 

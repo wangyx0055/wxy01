@@ -1,0 +1,37 @@
+
+l	java:S117á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+h
+java:S3776b"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(üúòÚ
+t
+java:S22935"YReplace the type specification in this constructor call with the diamond operator ("<>").(á¨êßùÿÿÿÿ
+^
+java:S18544"HRemove this useless assignment to local variable "resultApppubAccounts".(¸“¦£
+d
+java:S1192Q"IDefine a constant instead of duplicating this literal "success" 14 times.(ÈçâÙÿÿÿÿÿ
+F
+java:S5411‰"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+W	java:S125¸"<This block of commented-out lines of code should be removed.(ÑƒÍØıÿÿÿÿ
+V
+java:S1128
+";Remove this unused import 'com.longersec.blj.domain.Group'.(×„Ôéÿÿÿÿÿ
+f	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+o
+java:S22934"YReplace the type specification in this constructor call with the diamond operator ("<>").(¸“¦£
+k	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+u
+java:S2293ä"YReplace the type specification in this constructor call with the diamond operator ("<>").(á¨êßùÿÿÿÿ
+k	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+_
+java:S1854ã"HRemove this useless assignment to local variable "resultApppubAccounts".(¸“¦£
+k	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úå‚Áüÿÿÿÿ
+g	java:S117â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+p
+java:S2293ã"YReplace the type specification in this constructor call with the diamond operator ("<>").(¸“¦£
+r
+java:S2159Ò"VRemove this call to "equals"; comparisons between unrelated types always return false.(æ°Áåÿÿÿÿÿ
+^
+java:S1126Ö"BReplace this if-then-else statement by a single method invocation.(Œ¡¯şÿÿÿÿ
+E
+java:S5411y"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ

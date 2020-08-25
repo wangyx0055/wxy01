@@ -10,9 +10,13 @@ function ifaceDhcp(v){
     $('#ipv'+v+'gateway')[0].disabled	= true;
     if(v==4){
         $('#ipv'+v+'netmask')[0].disabled	= true;
+        $('#Vipv'+v+'netmask').text("");
+        $('#ipv'+v+'netmask').val("");
     }
-    $("#Vipv6addr").text("");
-    $("#ipv6addr").val("");
+    $('#Vipv'+v+'addr').text("");
+    $('#ipv'+v+'addr').val("");
+    $('#Vipv'+v+'gateway').text("");
+    $('#ipv'+v+'gateway').val("");
 }
 
 //ipv4和ipv6的切换
@@ -102,26 +106,29 @@ $(function () {
         var p1=/^\d{1,65535}$/;
         var p2=/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/;
         if(nport==""){
-         $("#Vnetworkport").text("请输入端口号");
-          flag=false;
+            $("#Vnetworkport").text("请输入端口号");
+            flag=false;
         }else if(nport<1||nport>65535||!p1.test(nport)){
             $("#Vnetworkport").text("请输入1-65535之间的数字");
             flag=false;
         }
         if(nip==""){
-          $("#Vnetworkip").text("请输入IPv4地址");
+            $("#Vnetworkip").text("请输入IPv4地址");
             flag=false;
         }else if(!p2.test(nip)){
             $("#Vnetworkip").text("请输入有效的IPv4地址");
             flag=false;
         }
-         return flag;
+        return flag;
     }
-	function checkIpv4() {
+    function checkIpv4() {
         var flag=true;
         var nip=$("#ipv4addr").val();
         var p2=/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/;
-        if(nip==""){
+        if($("#ipv4dhcp")[0].checked){
+            $("#Vipv4addr").text("");
+        }
+        else if(nip==""){
             $("#Vipv4addr").text("请输入IPv4地址");
             flag=false;
         }else if(!p2.test(nip)){
@@ -135,6 +142,9 @@ $(function () {
         var nip6=$("#ipv6addr").val();
         var p3=/^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\/\d{1,3}\s*$/;
         // var p3=/^(([\da-fA-F]{1,4}):){8}$/;
+        if($("#ipv6dhcp")[0].checked || $("#ipv6enable")[0].checked){
+            $("#Vipv6addr").text("");
+        }else
         if(nip6==""){
             $("#Vipv6addr").text("请输入IPv6地址");
             flag=false;
@@ -144,11 +154,13 @@ $(function () {
         }
         return flag;
     }
-	function checkIpv4netmask() {
+    function checkIpv4netmask() {
         var flag=true;
         var nip=$("#ipv4netmask").val();
         var p2=/^((128|192)|2(24|4[08]|5[245]))(\.(0|(128|192)|2((24)|(4[08])|(5[245])))){3}$/;
-        if(nip==""){
+        if($("#ipv4dhcp")[0].checked){
+            $("#Vipv4addr").text("");
+        }else if(nip==""){
             $("#Vipv4netmask").text("请输入子网掩码");
             flag=false;
         }else if(!p2.test(nip)){
@@ -159,14 +171,14 @@ $(function () {
     }
     //网关格式4
     function checkGate4(){
-       var flag=true;
-       var ipv4gateway=$("#ipv4gateway").val();
-       var p2=/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/;
-       if(ipv4gateway!=""&&!p2.test(ipv4gateway)){
-        $("#Vipv4gateway").text("请输入有效的网关");
-        flag=false;
-      }
-      return flag;
+        var flag=true;
+        var ipv4gateway=$("#ipv4gateway").val();
+        var p2=/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/;
+        if(ipv4gateway!=""&&!p2.test(ipv4gateway)){
+            $("#Vipv4gateway").text("请输入有效的网关");
+            flag=false;
+        }
+        return flag;
     }
     function checkGate6(){
         var flag=true;
@@ -191,26 +203,26 @@ $(function () {
         $("#Vipv6gateway").text("");
     });
 
-	$("#ipv4addr").blur(function(){
-		checkIpv4();
-	})
-    $("#ipv6addr").blur(function(){
-        checkIpv6();
+    $("#ipv4addr").blur(function(){
+        checkIpv4();
     })
     $("#ipv6addr").blur(function(){
         checkIpv6();
     })
-	$("#ipv4netmask").blur(function(){
-		checkIpv4netmask();
-	})
-	
+    $("#ipv6addr").blur(function(){
+        checkIpv6();
+    })
+    $("#ipv4netmask").blur(function(){
+        checkIpv4netmask();
+    })
+
     $("#ipv4addr").focus(function () {
         $("#Vipv4addr").text("");
     });
     $("#ipv6addr").focus(function () {
         $("#Vipv6addr").text("");
     });
-	$("#ipv4netmask").focus(function () {
+    $("#ipv4netmask").focus(function () {
         $("#Vipv4netmask").text("");
     });
     $("#networkip").focus(function () {
@@ -328,7 +340,7 @@ $(function () {
         })
     });
 
-     _network = function () {
+    _network = function () {
         $('#interfaceList').DataTable({
             'paging': true,
             "iDisplayLength": 10,
@@ -356,21 +368,21 @@ $(function () {
             "columns": [
                 {"data": "device"},
                 {"data": "name", render:function(data, type, row, meta){
-					return row.ipv4addr+"<br>"+row.ipv6addr;
-				}},
+                        return row.ipv4addr+"<br>"+row.ipv6addr;
+                    }},
                 {"data": "name", render:function(data, type, row, meta){
-					return row.ipv4netmask+"<br>"+row.ipv6netmask;
-				}},
+                        return row.ipv4netmask+"<br>"+row.ipv6netmask;
+                    }},
                 {"data": "name", render:function(data, type, row, meta){
-					return row.ipv4gateway+"<br>"+row.ipv6gateway;
-				}},
+                        return row.ipv4gateway+"<br>"+row.ipv6gateway;
+                    }},
                 {"data": "onboot", render:function(data, type, row, meta){
-					return data==1?'启用':'禁用';
-				}},
+                        return data==1?'启用':'禁用';
+                    }},
                 {
                     "data": "id", "render": function (data, type, row, meta) {
                         return '<a class="newcss1" data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-interface" style="line-height:2px;margin-right:20px;cursor:pointer;">编辑</a>'+
-                               '<a class="newcss1" data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-restart" style="line-height:2px;cursor:pointer;">重启</a>';
+                            '<a class="newcss1" data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-restart" style="line-height:2px;cursor:pointer;">重启</a>';
                     }
                 },
             ]
@@ -452,9 +464,9 @@ $(function () {
         })
     };
     $('#saveInterface').click(function () {
-		if(!checkIpv4()||!checkIpv4netmask()||!checkIpv6()){
-			return ;
-		}
+        if(!checkIpv4()||!checkIpv4netmask()||!checkIpv6()){
+            return ;
+        }
         $.ajax({
             url: "../../configNetwork/editConfigNetwork",
             type: "POST",
@@ -497,8 +509,8 @@ $(function () {
         $('#delRouteId').val($('#routeList').DataTable().row('#' + i).nodes(i).data()[i].id);
     });
 
-        $('#modal-editroute').on('show.bs.modal', function (event) {
-            //子网掩码显示
+    $('#modal-editroute').on('show.bs.modal', function (event) {
+        //子网掩码显示
         var button = $(event.relatedTarget); // Button that triggered the modal
         i = button.data('row');
         if (i != null) {
@@ -506,11 +518,9 @@ $(function () {
             $('#v4')[0].checked = $('#routeList').DataTable().row('#' + i).nodes(i).data()[i].device_type == 0 ? true : false;
             $('#v6')[0].checked = $('#routeList').DataTable().row('#' + i).nodes(i).data()[i].device_type == 1 ? true : false;
             if($('#v4')[0].checked===true){
-                console.log("v4");
                 $("#ipv4_mask").show();
                 $('#routeNetmask').val($('#routeList').DataTable().row('#' + i).nodes(i).data()[i].netmask);
             }else if($('#v6')[0].checked===true){
-                console.log("v6");
                 $("#ipv4_mask").hide();
                 $('#routeNetmask').val("");
             }
@@ -555,19 +565,21 @@ $(function () {
             $('#ipv4dhcp')[0].checked = true;
             ifaceDhcp(4);
         }
-        if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6enable == '0') {
+        if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6enable == '0' && $('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6autoconf == 'no') {
             $('#ipv6enable')[0].checked = true;
-            ifaceStatic(6);
-        }
-        if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6autoconf == 'yes') {
             ifaceDhcp(6);
-            $('#ipv6addr').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6addr+'/'+$('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6netmask);
-            $('#ipv6gateway').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6gateway);
-        } else if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6autoconf == 'no') {
-            $('#ipv6static')[0].checked = true;
-            ifaceStatic(6);
-            $('#ipv6addr').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6addr+'/'+$('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6netmask);
-            $('#ipv6gateway').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6gateway);
+        }
+        if(!$('#ipv6enable')[0].checked){
+            if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6autoconf == 'yes') {
+                ifaceDhcp(6);
+                $('#ipv6addr').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6addr+$('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6netmask);
+                $('#ipv6gateway').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6gateway);
+            } else if ($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6autoconf == 'no') {
+                $('#ipv6static')[0].checked = true;
+                ifaceStatic(6);
+                $('#ipv6addr').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6addr+'/'+$('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6netmask);
+                $('#ipv6gateway').val($('#interfaceList').DataTable().row('#' + i).nodes(i).data()[i].ipv6gateway);
+            }
         }
     });
 });
@@ -590,9 +602,9 @@ function checkIPName(){
 }
 //验证
 var regexp = {
-      ipv4:/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/,
-      ipv6:/^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/,
-      ip3:/^((128|192)|2(24|4[08]|5[245]))(\.(0|(128|192)|2((24)|(4[08])|(5[245])))){3}$/,
+    ipv4:/^(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])\.(\d|[1-9]\d|1\d{2}|2[0-5][0-5])$/,
+    ipv6:/^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$/,
+    ip3:/^((128|192)|2(24|4[08]|5[245]))(\.(0|(128|192)|2((24)|(4[08])|(5[245])))){3}$/,
 }
 $('#routeDestIp').blur(function(){
     var destIp1=$("#routeDestIp").val();

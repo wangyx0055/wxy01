@@ -609,7 +609,7 @@ public class OperatorController {
 		//this.addGConnParameter(gconnection_id, "font-name", "DroidSansMono");
     	switch (deviceRecord.getProtocol_id()) {
 		case 1:
-			List<String> commands = cmdPolicyService.getCommandsByDeviceAndUser(deviceAccount.getId(), user.getId(), user.getGroupid());
+			List<String> commands = cmdPolicyService.getCommandsByDeviceAndUser(deviceAccount.getId(), user.getId());
 			this.addGConnParameter(gconnection_id, "policy-commands", String.join("\n", commands)+"\n");
 			break;
 		case 2:

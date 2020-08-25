@@ -3,7 +3,7 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.longersec.blj.dao.UserDao">  <!--namespace是加载配置文件所找的路径,通常设置为文件所在包+文件名形式-->
 	<sql id="zd">
-		lsblj_user.`id`, `role_id`, `username`, `realname`, `ldap_dn`, `avatar`, `status`, `fail_count`, `lock_time`, `last_chpass`, `email`, `mobile`, `qq`, `wechat`,  `local_auth`, `finger_auth`, `sms_auth`, `radius_auth`, `dynamic_auth`, `ldap_auth`, `ad_auth`, `wechat_auth`, `email_auth`, `auth_type`, `last_login_ip`, `last_change_password`, `department`, `resolution`, `rdpdisk`, `session_title`, `groupid`, `google_auth_key`, `google_auth_token_used`,`sms_code`,`valid_datetime_start`, `valid_long`, `valid_datetime_end`
+		lsblj_user.`id`, `role_id`, `username`, `realname`, `ldap_dn`, `avatar`, `status`, `fail_count`, `lock_time`, `last_chpass`, `email`, `mobile`, `qq`, `wechat`,  `local_auth`, `finger_auth`, `sms_auth`, `radius_auth`, `dynamic_auth`, `ldap_auth`, `ad_auth`, `wechat_auth`, `email_auth`, `auth_type`, `last_login_ip`, `last_change_password`, `department`, `resolution`, `rdpdisk`, `session_title`, `google_auth_key`, `google_auth_token_used`,`sms_code`,`valid_datetime_start`, `valid_long`, `valid_datetime_end`
 	</sql>
 
 	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.User">
@@ -14,7 +14,6 @@
 		<result column="ldap_dn" jdbcType="VARCHAR" property="ldap_dn"/>
 		<result column="avatar" jdbcType="VARCHAR" property="avatar"/>
 		<result column="password" jdbcType="VARCHAR" property="password"/>
-		<result column="groupid" jdbcType="VARCHAR" property="groupid"/>
 		<result column="status" jdbcType="INTEGER" property="status"/>
 		<result column="fail_count" jdbcType="INTEGER" property="fail_count"/>
 		<result column="lock_time" jdbcType="INTEGER" property="lock_time"/>
@@ -70,7 +69,6 @@
 		<if test="avatar != null">`avatar`=#{avatar},</if>
 		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
 		<if test="status != null">`status`=#{status},</if>
-		<if test="groupid != null">`groupid`=#{groupid},</if>
 		<if test="fail_count != null">`fail_count`=#{fail_count},</if>
 		<if test="lock_time != null">`lock_time`=#{lock_time},</if>
 		<if test="last_chpass != null">`last_chpass`=#{last_chpass},</if>
@@ -119,7 +117,6 @@
 		<if test="avatar != null">`avatar`=#{avatar},</if>
 		<if test="password != null and password != ''">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
 		<if test="status != null">`status`=#{status},</if>
-		<if test="groupid != null">`groupid`=#{groupid},</if>
 		<if test="fail_count != null">`fail_count`=#{fail_count},</if>
 		<if test="lock_time != null">`lock_time`=#{lock_time},</if>
 		<if test="last_chpass != null">`last_chpass`=#{last_chpass},</if>
@@ -199,7 +196,6 @@
 		 <if test="user.rolename != null">AND lsblj_role.name like CONCAT('%',#{user.rolename},'%') </if>
 		<if test="user.username != null"> AND `username` like CONCAT('%',#{user.username},'%')</if>
 		<if test="user.depart_name != null"> AND lsblj_department.`name` like CONCAT('%',#{user.depart_name},'%')</if>
-<!-- 	<if test="user.groupname != null"> AND lsblj_group.name like CONCAT('%',#{user.groupname},'%')</if> -->
 		<if test="user.realname != null"> AND `realname` like CONCAT('%',#{user.realname},'%')</if>
 		<if test="user.status != null"> AND `status` like CONCAT('%',#{user.status},'%')</if>
 		<if test="user.searchall != null">
@@ -207,7 +203,6 @@
 				lsblj_role.name like CONCAT('%',#{user.searchall},'%')
 				or `username` like CONCAT('%',#{user.searchall},'%')
 				or lsblj_department.`name` like CONCAT('%',#{user.searchall},'%')
-<!-- 				or lsblj_group.name like CONCAT('%',#{user.searchall},'%') -->
 				or `status` like CONCAT('%',#{user.searchall},'%')
 				or `realname` like CONCAT('%',#{user.searchall},'%')
 				or `status` like CONCAT('%',#{user.searchall},'%')
@@ -290,16 +285,9 @@
             select count(*) count from lsblj_user;
     </select>
 
-    <select id="getCounts" resultType="java.lang.Integer">
-            select count(*) from lsblj_user where groupid=#{group_id}
-    </select>
 
     <select id="checkUser" resultType="com.longersec.blj.domain.User">
         select * from lsblj_user where role_id=#{id} limit 1;
-    </select>
-
-    <select id="finduserGroup" resultMap="users">
-        SELECT id as user_id,username,realname FROM lsblj_user where groupid = #{i}
     </select>
 
     <insert id="insertMore">

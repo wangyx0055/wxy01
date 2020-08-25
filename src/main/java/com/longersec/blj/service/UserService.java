@@ -38,18 +38,16 @@ public interface UserService {
 
     public User checkMobile(String mobile, Integer id);
 
-    public Boolean editstatus(User user);
+    Boolean editstatus(User user);
     
-    public int total();
+    int total();
 
-    public User checkUser(Integer id);
+    User checkUser(Integer id);
 
     boolean insertMore(User user);
 
     boolean editUserList(User user);
 
-    ArrayList<Users> finduserGroup(int i);
-
-    public User checkADUsername(String username);
+    User checkADUsername(String username);
 }
 

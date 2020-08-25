@@ -472,8 +472,6 @@ $('#modal-primary1').on('show.bs.modal',function(event){
 
 
 $('#relevance-cmd').click(function(){
-	console.log($('#primary1_id').val());
-	console.log($('#edit_cmdname').val());
 		var reg=/[\u4E00-\u9FFF|@#$%&。￥]+/;
 		var edit_cmdname=$("#edit_cmdname").val();
 		if(edit_cmdname!=""&&reg.test(edit_cmdname)){
@@ -947,7 +945,6 @@ $("#relevance-device").click(function(){
 			}
 		},
 		error:function(){
-			console.log(fail)
 		}
 	})
 })
@@ -1208,7 +1205,6 @@ $('#modal-default99').on('show.bs.modal', function (event) {
 	var button = $(event.relatedTarget);
 	var  i = button.data('row');
 	$('#edit_id1').val($('#example3').DataTable().row('#' + i).nodes(i).data()[i].id);
-	console.log($('#edit_id1').val());
 	$('#edit_name1').val($('#example3').DataTable().row('#' + i).nodes(i).data()[i].name);
 	$('#edit_cmd1').val($('#example3').DataTable().row('#' + i).nodes(i).data()[i].cmd);
 	$('#Veditname').text("");
@@ -1225,13 +1221,11 @@ $('#modal-default11').on('show.bs.modal', function (event) {
 });
 $('#delAllButton2').click(function(){
 	var obj = document.getElementsByName('chk1[]');
-	console.log(obj);
 	var ids= new Array();
 	for (i in obj){
 		if(obj[i].checked)
 			ids.push(obj[i].value);
 	}
-	console.log(ids);
 	if(ids.length==0){
 		$("#modal-hint.modal-title").text('失败');
 		$("#modal-hint.modal-body").text('请选择要删除的信息');
@@ -1269,7 +1263,6 @@ $('#delAllButton2').click(function(){
 	})
 });
 $('#delButton').click(function(){
-	console.log($('#del_id11').val());
 	$.ajax({
 		url:"../../cmdgroup/delCmdgroup",
 		type:"POST",
@@ -1296,8 +1289,6 @@ $('#delButton').click(function(){
 	})
 });
 $('#editButton1').click(function(){
-	console.log($('#edit_id1').val());
-	console.log($('#edit_cmd1').val())
 		if ($('#edit_name1').val()==""){
 			$('#Veditname').text('请输入命令集名称');
 			return;
@@ -1612,18 +1603,14 @@ function editStatus(status,id) {
 			id: id,
 			status: status,
 		},
-		success:function(data){
-			if (data.success){
-				loadAJAX('#example2');
-			}else {
-				loadAJAX('#example2');
-			}
+		success:function(){
+			loadAJAX('#example2');
 		}
 	})
 }
 
 function switchcase(o,id){
-	if(o.innerText=="启用"){
+	if(o.innerText === "启用"){
 		o.innerText="禁用";
 		editStatus(1,id);
 	}else{

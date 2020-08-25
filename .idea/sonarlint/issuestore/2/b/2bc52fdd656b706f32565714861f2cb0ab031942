@@ -1,0 +1,9 @@
+
+IWeb:AvoidCommentedOutCodeCheck/"Remove this commented out code.(ìÖßÌ
+MWeb:TableWithoutCaptionCheckB" Add a description to this table.(ãÍÖ®ùÿÿÿÿ
+?	Web:S5256B"%Add "<th>" headers to this "<table>".(ãÍÖ®ùÿÿÿÿ
+HWeb:TableWithoutCaptionChecke" Add a description to this table.(°º£ø
+:	Web:S5256e"%Add "<th>" headers to this "<table>".(°º£ø
+NWeb:TableWithoutCaptionCheck‡" Add a description to this table.(Æâ¬¬ÿÿÿÿÿ
+@	Web:S5256‡"%Add "<th>" headers to this "<table>".(Æâ¬¬ÿÿÿÿÿ
+TWeb:FrameWithoutTitleCheckµ"-Add a "title" attribute to this <iframe> tag.(È•±³

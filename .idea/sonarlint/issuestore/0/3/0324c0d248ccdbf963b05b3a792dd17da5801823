@@ -1,0 +1,9 @@
+
+h	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®æµ€þÿÿÿÿ
+k	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®æµ€þÿÿÿÿ
+f	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´‘þä
+c	java:S1003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´‘þä
+n	java:S116"TRename this field "file_path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øÃýˆúÿÿÿÿ
+k	java:S116"VRename this field "upload_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅÉ¨”
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Öª›
+h	java:S100/"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôìÍ­þÿÿÿÿ

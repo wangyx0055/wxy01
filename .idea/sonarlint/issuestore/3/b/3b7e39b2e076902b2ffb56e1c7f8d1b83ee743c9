@@ -1,0 +1,41 @@
+
+D
+java:S1125…"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+F
+java:S5411­"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+q
+java:S1192t"VDefine a constant instead of duplicating this literal "å‘½ä»¤é›†æ§åˆ¶ç­–ç•¥" 3 times.(‹çÿùÿÿÿÿ
+Y
+java:S1854?"CRemove this useless assignment to local variable "resultCmdgroups".(«Ô°Â
+d
+java:S1192]"IDefine a constant instead of duplicating this literal "success" 21 times.(ÈçâÙÿÿÿÿÿ
+g	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+f	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k	java:S117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+F
+java:S5411…"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+F
+java:S5411¤"*Use the primitive boolean expression here.(òÖ¬áûÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+Y
+java:S1126æ"BReplace this if-then-else statement by a single method invocation.(Š‹·Ÿ
+k	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úå‚Áüÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+X
+java:S1126Ü"BReplace this if-then-else statement by a single method invocation.(îÃõj
+k	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+k	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+t
+java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(—Èé„øÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+V
+java:S1128"@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²
+o
+java:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(«Ô°Â
+D
+java:S1125­"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ

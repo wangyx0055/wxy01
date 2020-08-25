@@ -1,0 +1,64 @@
+
+o
+java:S1192˜"SDefine a constant instead of duplicating this literal "å‘½ä»¤æ§åˆ¶ç­–ç•¥" 4 times.(ì’Ä”ıÿÿÿÿ
+d
+java:S1192l"IDefine a constant instead of duplicating this literal "success" 27 times.(ÈçâÙÿÿÿÿÿ
+_
+java:S1854O"DRemove this useless assignment to local variable "resultCmdPolicys".(™¿×ïüÿÿÿÿ
+o
+java:S2293P"YReplace the type specification in this constructor call with the diamond operator ("<>").(³åÉ 
+X
+java:S1126¯"BReplace this if-then-else statement by a single method invocation.(ˆä»p
+E
+java:S5411x"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+l	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óµ‰Øşÿÿÿÿ
+?
+java:S1125×"(Remove the literal "true" boolean value.(€ÔÍñ
+l	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+t
+java:S2293O"YReplace the type specification in this constructor call with the diamond operator ("<>").(™¿×ïüÿÿÿÿ
+]
+java:S1126x"BReplace this if-then-else statement by a single method invocation.(‘çŒ¡üÿÿÿÿ
+3
+java:S1643"Use a StringBuilder instead.(ãÏÄ¦
+f	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+?
+java:S1125³"(Remove the literal "true" boolean value.(º‹””
+l	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óµ‰Øşÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+A
+java:S10688"&Remove this unused "id" private field.( ºØ¶úÿÿÿÿ
+k	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+l	java:S117¿"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û‚¬ãüÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+g	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ„•°
+Y
+java:S1854ò"=Remove this useless assignment to local variable "cmdPolicy".(×êîùÿÿÿÿ
+l	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óµ‰Øşÿÿÿÿ
+l	java:S117‰"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û‚¬ãüÿÿÿÿ
+n
+java:S3776‚"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(óµ‰Øşÿÿÿÿ
+k	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+l	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óµ‰Øşÿÿÿÿ
+k	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úå‚Áüÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+^
+java:S1126¹"BReplace this if-then-else statement by a single method invocation.(æ»Óøÿÿÿÿ
+J
+java:S1481ò".Remove this unused "cmdPolicy" local variable.(×êîùÿÿÿÿ
+Q
+java:S2209è"5Change this instance-reference to a static reference.(İ¬Ñ³ùÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+k	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+N	java:S106Ü"9Replace this use of System.out or System.err by a logger.(€ƒĞ
+A
+java:S5411×"*Use the primitive boolean expression here.(€ÔÍñ
+F
+java:S5411÷"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+l	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óµ‰Øşÿÿÿÿ
+R
+java:S1128"<Remove this unused import 'com.longersec.blj.utils.KeyUtil'.(ó­œ

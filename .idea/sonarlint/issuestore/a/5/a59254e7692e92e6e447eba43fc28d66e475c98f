@@ -1,0 +1,5 @@
+
+k	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äºøÿÿÿÿ
+r	java:S116	"XRename this field "command_group" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èşÏşûÿÿÿÿ
+h	java:S100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äºøÿÿÿÿ
+c	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸§¿§

@@ -1,0 +1,26 @@
+
+f	java:S117b"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+d
+java:S11925"IDefine a constant instead of duplicating this literal "success" 11 times.(ÈçâÙÿÿÿÿÿ
+n
+java:S2293,"YReplace the type specification in this constructor call with the diamond operator ("<>").(ğ«Èe
+E
+java:S5411V"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+C
+java:S1125C"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+k	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+f	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+E
+java:S5411C"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+o
+java:S2293+"YReplace the type specification in this constructor call with the diamond operator ("<>").(”áüÕ
+]
+java:S1126V"BReplace this if-then-else statement by a single method invocation.(‘çŒ¡üÿÿÿÿ
+\
+java:S1854+"FRemove this useless assignment to local variable "resultConfigEmails".(”áüÕ

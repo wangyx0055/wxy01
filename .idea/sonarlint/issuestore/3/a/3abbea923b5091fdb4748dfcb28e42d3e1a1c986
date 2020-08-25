@@ -1,0 +1,13 @@
+
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şŒ°
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀÉ šøÿÿÿÿ
+V
+java:S1128	"@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şŒ°
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ÂÔÃ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀÉ šøÿÿÿÿ
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù™ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ŠŸŸ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅŸŸ˜ùÿÿÿÿ
+j
+java:S1128"ORemove this unused import 'com.longersec.blj.dao.AccessPolicyDeviceAccountDao'.(Õ‚ÿÿÿÿÿÿÿ

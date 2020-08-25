@@ -1,0 +1,28 @@
+
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+C
+java:S5411"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+C
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+m
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(±¡Î™
+A
+java:S1125"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+A
+java:S1125"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+r
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(±Å üÿÿÿÿ
+C
+java:S5411"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+b
+java:S1192"IDefine a constant instead of duplicating this literal "success" 11 times.(ÈçâÙÿÿÿÿÿ
+k
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+h
+java:S1854"TRemove this useless assignment to local variable "resultChangePasswordPolicyGroups".(±¡Î™
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+b
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+i
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ

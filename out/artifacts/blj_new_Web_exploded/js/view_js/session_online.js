@@ -166,5 +166,9 @@ $(function () {
                 _devicesonline();
             }
         })
-    })
+    });
+    if(window.location.toString().indexOf('#web')>0){
+        $('.nav.nav-tabs li:eq(1) a').tab('show');
+        _webonline();
+    }
 })

@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.druid.stat.TableStat.Name;
 import com.longersec.blj.domain.ChangePasswordPolicy;
 import com.longersec.blj.domain.OperatorLog;
-import com.longersec.blj.service.ChangePasswordPolicyDeviceService;
+import com.longersec.blj.service.ChangePasswordPolicyDeviceAccountService;
 import com.longersec.blj.service.ChangePasswordPolicyGroupService;
 import com.longersec.blj.service.ChangePasswordPolicyService;
 import com.longersec.blj.service.ConfigService;
@@ -46,7 +46,7 @@ public class ChangePasswordPolicyController {
 	@Autowired
 	private ChangePasswordPolicyGroupService changePasswordPolicyGroupService;
 	@Autowired
-	private ChangePasswordPolicyDeviceService changePasswordPolicyDeviceService;
+	private ChangePasswordPolicyDeviceAccountService changePasswordPolicyDeviceAccountService;
 
 	@RequestMapping("/listChangePasswordPolicy")
 	@ResponseBody
@@ -99,7 +99,7 @@ public class ChangePasswordPolicyController {
 		operatorLogService.addOperatorLog(operatorLog);
 		Boolean r = changePasswordPolicyService.addChangePasswordPolicy(changePasswordPolicy);
 		if(devices!=null) {
-			changePasswordPolicyDeviceService.addChangePasswordPolicyDevice(changePasswordPolicy.getId(),devices);
+			changePasswordPolicyDeviceAccountService.addChangePasswordPolicyDeviceAccount(changePasswordPolicy.getId(),devices);
 		}
 		if(devicegroup!=null) {
 			changePasswordPolicyGroupService.addChangePasswordPolicyGroup(changePasswordPolicy.getId(),devicegroup );

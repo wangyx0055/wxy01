@@ -30,7 +30,6 @@ public class IndexController {
 
     @RequestMapping("/view/index/index")
     public String index() {
-    	
         return "view/index";
     }
 
@@ -208,4 +207,6 @@ public class IndexController {
     public String authorize(){
         return "/view/work_manage/authorize";
     }
+    @RequestMapping("/view/work_manage/approve")
+    public String approve(){ return "/view/wrok_manage/approve";}
 }

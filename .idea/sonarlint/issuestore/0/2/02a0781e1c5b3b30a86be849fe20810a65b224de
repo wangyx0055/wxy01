@@ -1,0 +1,30 @@
+
+t
+java:S2293%"YReplace the type specification in this constructor call with the diamond operator ("<>").(´Î£òşÿÿÿÿ
+o
+java:S2293c"YReplace the type specification in this constructor call with the diamond operator ("<>").(¡Äœ‘
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+d
+java:S1192/"IDefine a constant instead of duplicating this literal "success" 12 times.(ÈçâÙÿÿÿÿÿ
+E
+java:S5411I"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+^
+java:S1854%"CRemove this useless assignment to local variable "resultProtocols".(´Î£òşÿÿÿÿ
+o
+java:S2293&"YReplace the type specification in this constructor call with the diamond operator ("<>").(¡Äœ‘
+S
+java:S1854c"=Remove this useless assignment to local variable "protocols".(¡Äœ‘
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+f	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+C
+java:S1125="(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+C
+java:S1125I"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+E
+java:S5411="*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ

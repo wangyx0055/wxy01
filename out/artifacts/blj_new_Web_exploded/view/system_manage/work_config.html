@@ -6,12 +6,12 @@
     <style>
         .radio_style{
             font-weight: 500;
-            font-size: 14px;
+            font-size: 12px;
         }
         .slide-btn{
             width: 42px;
             height: 16px;
-            vertical-align: -2px;
+            vertical-align: -4px;
             display:inline-block;
             background-color: #8080808c;
             border-radius:10px;
@@ -39,7 +39,7 @@
             display: inline-block;
             padding: 2px 2px;
             border-radius: 15px;
-
+            margin-top: 1px;
         }
 
         .inner-on .right,.inner-off .right{
@@ -65,9 +65,9 @@
         <div class="new-line-color" style="width: 57px;margin-left: 8px;position: absolute"></div>
         <hr  style="border: 0;border-bottom: 1px solid #E8E8E8;width: 100%;margin-left: 8px;margin-top: 0px;">
         <div class="box-body">
-           <div style="margin-top: 20px;margin-left: 187px;font-size: 14px;"> <span>工单申请范围: &nbsp;<span>本部门</span></span></div>
-           <div style="margin-top: 20px;margin-left: 187px;font-size: 14px;"> <span>工单过期时间: &nbsp;<span id="fail_time">1</span><span>小时</span></span></div>
-           <div style="margin-top: 20px;margin-left: 187px;font-size: 14px;"> <span>过期审批策略: &nbsp;<span id="fail_strategy">允许</span></span></div>
+           <div style="margin-top: 20px;margin-left: 187px;font-size: 14px;"> <span>工单申请范围: &nbsp;<span id="range_page"></span></span></div>
+            <div style="margin-top: 20px;margin-left: 187px;font-size: 14px;"> <span>工单过期时间: &nbsp;<span id="fail_time"></span><span>小时</span></span></div>
+           <div style="margin-top: 20px;margin-left: 187px;font-size: 14px;"> <span>过期审批策略: &nbsp;<span id="fail_strategy"></span></span></div>
         </div>
 <!--        <div style="height: 26px;margin-top: 25px;margin-left: 9px;">
             &lt;!&ndash; 文字前面的蓝条条 &ndash;&gt;
@@ -113,13 +113,13 @@
          </div>-->
         <div class="box-body">
             <div style="margin-left: 212px;margin-top: 20px;">
-                <span style="font-size: 14px;">审批方式：&nbsp;<span>多人审批</span></span>
+                <span style="font-size: 14px;">审批方式：&nbsp;<span id="page_mode"></span></span>
             </div>
             <div style="margin-left: 212px;margin-top: 20px;" id="authorize_level1">
-                <span style="font-size: 14px;">审批级数：&nbsp;<span>1</span></span>
+                <span style="font-size: 14px;">审批级数：&nbsp;<span id="level_page"></span></span>
             </div>
         <div style="margin-left: 212px;margin-top: 20px;">
-        <span style="font-size: 14px;">终审节点：&nbsp;<span>启用</span></span>
+        <span style="font-size: 14px;">终审节点：&nbsp;<span id="page_author_type"></span></span>
          </div>
         </div>
     </div>
@@ -130,26 +130,26 @@
                 <div class="modal-header" style="background-color: #f7f7f7">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    <span class="modal-title" style="font-size:16px">基本配置编辑</span>
+                    <span class="modal-title" style="font-size:16px">基本配置</span>
                 </div>
                 <div class="modal-body">
-                    <div style="margin-left: 60px;margin-top: 40px;">
+                    <div style="margin-left: 60px;margin-top: 40px;font-size: 12px;">
                         <span>工单申请范围：</span>
-                       <label class="radio_style"> <input th:type="radio" name="mode_range" style="margin-right: 6px;vertical-align: -1px;"><span>部门</span></label>&nbsp;&nbsp;&nbsp;
-                       <label class="radio_style"> <input th:type="radio" name="mode_range" style="margin-right: 6px;vertical-align: -1px;"><span>本部门及以下部门</span></label>&nbsp;&nbsp;&nbsp;
-                       <label class="radio_style"> <input th:type="radio" name="mode_range" style="margin-right: 6px;vertical-align: -1px;"><span>全部</span></label>
-                        <p style="font-size: 12px;color: #a4abb5;margin-left: 101px;">设置申请访问授权工单时，能够查看到的资源范围</p>
+                       <label class="radio_style"> <input th:type="radio" name="mode_range" style="margin-right: 6px;vertical-align: -1px;" value="0"><span>部门</span></label>&nbsp;&nbsp;&nbsp;
+                       <label class="radio_style"> <input th:type="radio" name="mode_range" style="margin-right: 6px;vertical-align: -1px;" value="1"><span>本部门及以下部门</span></label>&nbsp;&nbsp;&nbsp;
+                       <label class="radio_style"> <input th:type="radio" name="mode_range" style="margin-right: 6px;vertical-align: -1px;" value="2"><span>全部</span></label>
+                        <p style="font-size: 12px;color: #a4abb5;margin-left: 88px;">设置申请访问授权工单时，能够查看到的资源范围</p>
                     </div>
-                    <div style="margin-left: 60px;margin-top: 20px;">
+                    <div style="margin-left: 60px;margin-top: 20px;font-size: 12px;">
                         <span>工单过期时间：</span>
-                        <input style="width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;"> 小时
-                        <p style="font-size: 12px;color: #a4abb5;margin-left: 101px;">有效期为: 0-72小时,0代表永不过期</p>
+                        <input id="Expired" style="width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;"> 小时<span id="Vtime" style="color: red;font-size:12px;margin-left: 14px;"></span>
+                        <p style="font-size: 12px;color: #a4abb5;margin-left: 88px;">有效期为: 0-72小时,0代表永不过期</p>
                     </div>
-                    <div style="margin-left: 60px;margin-top: 20px;">
+                    <div style="margin-left: 60px;margin-top: 20px;font-size: 12px;">
                         <span>过期审批策略：</span>
-                       <select style="width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;">
-                           <option>允许</option>
-                           <option>拒绝</option>
+                       <select id="outdate_action" style="width: 190px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;">
+                           <option value="1">允许</option>
+                           <option value="0">拒绝</option>
                        </select>
                     </div>
                     <!--<div style="margin-left: 60px;margin-top: 40px;margin-bottom: 20px;">
@@ -292,31 +292,31 @@
                 <div class="modal-header" style="background-color: #f7f7f7">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    <span class="modal-title" style="font-size:16px">审批流程编辑</span>
+                    <span class="modal-title" style="font-size:16px">审批流程</span>
                 </div>
                 <div class="modal-body">
-                    <div style="margin-left: 70px">
+                    <div style="margin-left: 70px;font-size: 12px;">
                         <span class="sign_emphasize">*</span>
                         <span>审批方式：</span>
-                        <label class="radio_style"> <input th:type="radio" name="author_type" style="margin-right: 6px;vertical-align: -1px;"><span>多人审批</span></label>
-                        <p style="font-size: 12px;color: #a4abb5;margin-left: 86px;">任意一人批准，则审批通过；任意一人驳回，则审批不通过</p>
-                        <label class="radio_style" style="margin-left: 83px;"><input th:type="radio" name="author_type" style="margin-right: 6px;vertical-align: -1px;"><span>会签审批</span></label>
-                        <p style="font-size: 12px;color: #a4abb5;margin-left: 86px;">所有人批准，则审批通过；任意一人驳回，则审批不通过</p>
+                        <label class="radio_style"> <input th:type="radio" name="author_type" style="margin-right: 6px;vertical-align: -2px;"><span>多人审批</span></label>
+                        <p style="font-size: 12px;color: #a4abb5;margin-left: 75px;margin-top: -5px;">任意一人批准，则审批通过；任意一人驳回，则审批不通过</p>
+                        <label class="radio_style" style="margin-left: 73px;"><input th:type="radio" name="author_type" style="margin-right: 6px;vertical-align: -2px;"><span>会签审批</span></label>
+                        <p style="font-size: 12px;color: #a4abb5;margin-left: 75px;margin-top: -5px;">所有人批准，则审批通过；任意一人驳回，则审批不通过</p>
                     </div>
 
-                    <div style="margin-left: 70px;margin-top: 20px;" id="authorize_level">
+                    <div style="margin-left: 70px;margin-top: 20px;font-size: 12px" id="authorize_level">
                         <span class="sign_emphasize">*</span>
                         <span>审批级数：</span>
-                        <select style="width: 170px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px; ">
+                        <select id="level" style="width: 170px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px; ">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <p style="font-size: 12px;color: #a4abb5;margin-left: 86px;">设置最大审批级数</p>
+                        <p style="font-size: 12px;color: #a4abb5;margin-left: 73px;">设置最大审批级数</p>
                     </div>
-                    <div style="margin-left: 70px;margin-top: 20px;">
+                    <div style="margin-left: 70px;margin-top: 20px;font-size: 12px">
                         <span class="sign_emphasize">*</span>
                         <span>终审节点：</span>
                         <div class="slide-btn" id="innerbtn">
@@ -325,7 +325,7 @@
                                 <span class="left" ></span>
                             </div>
                         </div>
-                        <p style="font-size: 12px;color: #a4abb5;margin-left: 86px;">开启终审节点，则需要系统管理员进行最终审批</p>
+                        <p style="font-size: 12px;color: #a4abb5;margin-left: 73px;margin-top: -7px;">开启终审节点，则需要系统管理员进行最终审批</p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -384,27 +384,9 @@
                     <input type="hidden" id="del_log" />
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
 </div>
 </body>
-<script>
-</script>
-<script type="text/javascript">
-    //开启关闭按钮
-    document.getElementById("innerbtn").onclick = function() {
-        var btn = document.getElementById("inner");
-        if (btn.className == "inner-on") {
-            btn.style.left = 27 + "px";
-            btn.className = "inner-off";
-            this.style.backgroundColor="#1494F7";
-        }else{
-            btn.style.left = 2+"px";
-            btn.className = "inner-on";
-            this.style.backgroundColor="#8080808c";
-        }
-    }
-</script>
+<script src="../../js/view_js/work_config.js"></script>
 </html>

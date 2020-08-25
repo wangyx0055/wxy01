@@ -1,6 +1,5 @@
 window.onload=function(){
 	 var url = window.location.href;
-	 console.log(url);
          $('.fa_asset').addClass('active');
          $('.asset_treeview').addClass('active menu-open');
      
@@ -12,7 +11,7 @@ $(function () {
     //将字符串以？分割成数组
     var args = sHref.split('?');
     //判断数组的第一个元素是否==完整的url地址
-    if (args[0] == sHref) {
+    if (args[0] === sHref) {
         //如果==，说明没有可查询的参数，则返回一个空串，函数执行结束
         return "";
     }
@@ -26,7 +25,7 @@ $(function () {
         //将arg 的 第一个元素作为key值，第二个元素作为value值，存储在obj对象中
         obj[arg[0]] = arg[1];
     }
-    id = obj[arg[0]];
+    let id = obj[arg[0]];
     var apppub_server_id = id;
 //正则判断
 let regexp = {

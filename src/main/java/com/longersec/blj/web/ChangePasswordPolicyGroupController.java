@@ -1,12 +1,16 @@
 package com.longersec.blj.web;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.longersec.blj.domain.DTO.DeviceGroup;
+import com.longersec.blj.domain.DTO.UserGroup;
+import com.longersec.blj.domain.DTO.Users;
+import com.longersec.blj.domain.User;
+import com.longersec.blj.service.GroupService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,67 +34,63 @@ public class ChangePasswordPolicyGroupController {
 
 	@Autowired
 	private ChangePasswordPolicyGroupService changePasswordPolicyGroupService;
+	
+	@Autowired
+	private GroupService groupService;
 
-	@RequestMapping("/listChangePasswordPolicyGroup")
+	@RequestMapping("/editChangePasswordPolicyDeviceGroup")
 	@ResponseBody
-	public JSONObject listChangePasswordPolicyGroup(ChangePasswordPolicyGroup changePasswordPolicyGroup,HttpServletRequest request, HttpSession session) {
-		int page_start = Integer.parseInt(request.getParameter("start"));
-		int page_length = Integer.parseInt(request.getParameter("length"));
-		ArrayList<Object> resultChangePasswordPolicyGroups = new ArrayList<Object>();
-		ArrayList<ChangePasswordPolicyGroup> changePasswordPolicyGroups = new ArrayList<ChangePasswordPolicyGroup>();
-		long total = 0;
-		resultChangePasswordPolicyGroups = (ArrayList<Object>)changePasswordPolicyGroupService.findAll(changePasswordPolicyGroup, page_start, page_length);
-		if(CollectionUtils.isNotEmpty(resultChangePasswordPolicyGroups)) {
-			changePasswordPolicyGroups = (ArrayList<ChangePasswordPolicyGroup>)resultChangePasswordPolicyGroups.get(0);
-			total = ((ArrayList<Long>) resultChangePasswordPolicyGroups.get(1)).get(0);
-		}
-		JSONArray jsonArray = JSONArray.fromObject(changePasswordPolicyGroups);
+	public JSONObject editChangePasswordPolicyDeviceGroup(@RequestParam(value = "devicegroup[]",required = false) Integer[] devicegroup,@RequestParam(value = "policy_id") Integer policy_id,HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
-		result.accumulate("recordsTotal", total);
-		result.accumulate("recordsFiltered", total);
-		result.accumulate("data", jsonArray);
+		int type = 1;
+		boolean r = true;
+		changePasswordPolicyGroupService.deleteBypolicy_id(policy_id,type);
+		if(devicegroup != null) {
+			r = changePasswordPolicyGroupService.editChangePasswordPolicyDeviceGroup(policy_id, Arrays.asList(devicegroup));
+		}
+		result.put("success", r);
 		return result;
 	}
 
-	@RequestMapping("/addChangePasswordPolicyGroup")
+	@RequestMapping("/findChangePasswordPolicyGroupAndUser")
 	@ResponseBody
-	public JSONObject addChangePasswordPolicyGroup(ChangePasswordPolicyGroup changePasswordPolicyGroup, HttpServletRequest request, HttpSession session) {
+	public JSONObject findChangePasswordPolicyGroupAndUser(@RequestParam("policy_id")Integer policy_id,
+	                                               @RequestParam(value = "page_start",required = false)int page_start,
+	                                               @RequestParam(value ="page_length",required = false)int page_length) {
+		ArrayList<UserGroup> resultChangePasswordPolicyGroups = new ArrayList<UserGroup>();
+		ArrayList<UserGroup> resultGroups = new ArrayList<UserGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
+		resultChangePasswordPolicyGroups = (ArrayList<UserGroup>) changePasswordPolicyGroupService.selectById(policy_id);
+		resultGroups = (ArrayList<UserGroup>)groupService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
+		resultGroups.removeAll(resultChangePasswordPolicyGroups);
+		JSONArray jsonArray_p_users = JSONArray.fromObject(resultChangePasswordPolicyGroups);
+		JSONArray jsonArray_users = JSONArray.fromObject(resultGroups);
+
 		result.accumulate("success", true);
-		if(result.getBoolean("success")) {
-			Boolean r = changePasswordPolicyGroupService.addChangePasswordPolicyGroup(changePasswordPolicyGroup);
-			result.accumulate("success", r?true:false);
-		}
+		result.accumulate("data_users", jsonArray_users);
+		result.accumulate("data_p_users", jsonArray_p_users);
 		return result;
 	}
-
-	@RequestMapping("/editChangePasswordPolicyGroup")
+	
+	@RequestMapping("/findChangePasswordPolicyDeviceGroupAndUser")
 	@ResponseBody
-	public JSONObject editChangePasswordPolicyGroup(ChangePasswordPolicyGroup changePasswordPolicyGroup, HttpServletRequest request, HttpSession session) {
+	public JSONObject findChangePasswordPolicyDeviceGroupAndUser(@RequestParam("policy_id")Integer policy_id,
+	                                                     @RequestParam(value = "page_start",required = false)int page_start,
+	                                                     @RequestParam(value ="page_length",required = false)int page_length) {
+		ArrayList<DeviceGroup> resultChangePasswordPolicyDeviceGroups = new ArrayList<DeviceGroup>();
+		ArrayList<DeviceGroup> resultDeviceGroups = new ArrayList<DeviceGroup>();
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
+		resultChangePasswordPolicyDeviceGroups = (ArrayList<DeviceGroup>) changePasswordPolicyGroupService.selectBydIdDevice(policy_id);
+		resultDeviceGroups = (ArrayList<DeviceGroup>)groupService.selectNameAnddId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
+		resultDeviceGroups.removeAll(resultChangePasswordPolicyDeviceGroups);
+		JSONArray jsonArray_p_dgroups = JSONArray.fromObject(resultChangePasswordPolicyDeviceGroups);
+		JSONArray jsonArray_dgroups = JSONArray.fromObject(resultDeviceGroups);
+		
 		result.accumulate("success", true);
-		if(result.getBoolean("success")) {
-			Boolean r = changePasswordPolicyGroupService.editChangePasswordPolicyGroup(changePasswordPolicyGroup);
-			result.accumulate("success", r?true:false);
-		}
-		return result;
-	}
-
-	@RequestMapping("/delChangePasswordPolicyGroup")
-	@ResponseBody
-	public JSONObject delChangePasswordPolicyGroup(@RequestParam(value = "ids[]") Integer[] ids, HttpServletRequest request, HttpSession session) {
-		JSONObject result = new JSONObject();
-		List<Integer> _ids =  Arrays.asList(ids);
-		result.accumulate("success", true);
-		if(_ids.isEmpty()) {
-			result.accumulate("success", false);
-			result.accumulate("msg", "id不能为空");
-		}
-		if(result.getBoolean("success")) {
-			Boolean r = changePasswordPolicyGroupService.delChangePasswordPolicyGroup(_ids);
-			result.accumulate("success", r);
-		}
+		result.accumulate("data_dgroups", jsonArray_dgroups);
+		result.accumulate("data_p_dgroups", jsonArray_p_dgroups);
 		return result;
 	}
 }

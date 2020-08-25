@@ -8,7 +8,6 @@ function AlertLog() {
     $('#downFile2')[0].click();
 }
 $(function () {
-	
     var _loginlog = function (field, value){
         $('#loginlog').DataTable({
             'paging': true,
@@ -143,6 +142,7 @@ $(function () {
     };
     $("#sousuoanniusystem").click(function () {
         _systemlog($('#systemOption').val(), $('#systemSearch').val());
+        console.log(window.location.toString());
     });
 
 
@@ -254,4 +254,4 @@ $(function () {
 		$('.nav.nav-tabs li:eq(2) a').tab('show');
 		_alertslog();
 	}
-})
+});

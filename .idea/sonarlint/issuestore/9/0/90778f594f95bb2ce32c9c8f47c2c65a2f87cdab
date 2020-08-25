@@ -1,0 +1,37 @@
+
+f	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¾íÓ
+f
+java:S1128"KRemove this unused import 'org.apache.commons.collections.CollectionUtils'.(’õĞğùÿÿÿÿ
+k	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×«”‘øÿÿÿÿ
+k	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èä¢øÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+f	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+f	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃàİÃ
+_
+java:S1128"DRemove this unused import 'com.longersec.blj.service.DeviceService'.(Ô²É÷ıÿÿÿÿ
+>
+java:S1125G"(Remove the literal "true" boolean value.(€ÔÍñ
+o
+java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô½¦
+k	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íƒÃûÿÿÿÿ
+e
+java:S1128"ORemove this unused import 'com.longersec.blj.domain.CrontabScriptConfigDevice'.(ƒº†õ
+c
+java:S11929"HDefine a constant instead of duplicating this literal "success" 9 times.(ÈçâÙÿÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+[
+java:S18541"@Remove this useless assignment to local variable "resultDevice".(ùÑµúøÿÿÿÿ
+f	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÿ·ò
+k	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íƒÃûÿÿÿÿ
+e	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î¹Í(
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+t
+java:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(ùÑµúøÿÿÿÿ
+f	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¾íÓ
+b
+java:S18540"LRemove this useless assignment to local variable "resultAccessPolicyDevice".(Ô½¦

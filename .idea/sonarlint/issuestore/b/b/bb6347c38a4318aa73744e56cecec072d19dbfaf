@@ -1,0 +1,24 @@
+
+f	java:S117r"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“±½ý
+U
+java:S1854'"?Remove this useless assignment to local variable "page_length".(š«õŠ
+Y
+java:S1854&">Remove this useless assignment to local variable "page_start".(¯É‚¥øÿÿÿÿ
+F
+java:S5411‡"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+f	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+J
+java:S1481&"/Remove this unused "page_start" local variable.(¯É‚¥øÿÿÿÿ
+o
+java:S2293)"YReplace the type specification in this constructor call with the diamond operator ("<>").(«Ëâ‡
+t
+java:S2293("YReplace the type specification in this constructor call with the diamond operator ("<>").(þÐ÷¸üÿÿÿÿ
+f	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+f	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“±½ý
+_
+java:S1854("DRemove this useless assignment to local variable "resultConfigLogs".(þÐ÷¸üÿÿÿÿ
+F
+java:S1481'"0Remove this unused "page_length" local variable.(š«õŠ
+c
+java:S11923"HDefine a constant instead of duplicating this literal "success" 7 times.(ÈçâÙÿÿÿÿÿ

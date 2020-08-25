@@ -7,19 +7,17 @@ import com.longersec.blj.domain.DTO.UserGroup;
 
 public interface CmdPolicyGroupService {
 
-	public boolean addCmdPolicyGroup(Integer policy_id,List<Integer> usergroup,List<Integer> devicegroup);
+	Boolean addCmdPolicyGroup(Integer policy_id,List<Integer> usergroup,List<Integer> devicegroup);
 	
-	public boolean editCmdPolicyUserGroup(Integer policy_id,List<Integer> usergroup);
+	Boolean editCmdPolicyUserGroup(Integer policy_id,List<Integer> usergroup);
 	
-	public boolean editCmdPolicyDeviceGroup(Integer policy_id,List<Integer> devicegroup);
+	Boolean editCmdPolicyDeviceGroup(Integer policy_id,List<Integer> devicegroup);
 
-	public boolean delCmdPolicyGroup(List<String> ids);
+	List<Object> findAll(CmdPolicyGroup cmdPolicyGroup, int page_start, int page_length);
 
-	public List<Object> findAll(CmdPolicyGroup cmdPolicyGroup, int page_start, int page_length);
-
-	public List<UserGroup> selectByIdUser(Integer policy_id);
+	List<UserGroup> selectByIdUser(Integer policy_id);
 	
-	public List<DeviceGroup> selectBydIdDevice(Integer policy_id);
+	List<DeviceGroup> selectBydIdDevice(Integer policy_id);
 	
 	Boolean deleteBypolicy_id(Integer policy_id,int type);
 }

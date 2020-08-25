@@ -1,0 +1,13 @@
+
+>
+java:S54135")Verify that "remove()" is used correctly.(Ù¼ô7
+t
+java:S2293,"YReplace the type specification in this constructor call with the diamond operator ("<>").(¤·÷¿úÿÿÿÿ
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(î˜ÖÄþÿÿÿÿ
+M	java:S106#"9Replace this use of System.out or System.err by a logger.(›çË;
+`
+java:S1128"ERemove this unused import 'com.longersec.blj.service.SessionService'.(Ž÷µûøÿÿÿÿ
+f	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ë˜Á
+V	java:S125+"<This block of commented-out lines of code should be removed.(Úªœžøÿÿÿÿ
+”
+java:S1130@"yRemove the declaration of thrown exception 'org.apache.shiro.authc.AuthenticationException' which is a runtime exception.(¡ïË»ùÿÿÿÿ

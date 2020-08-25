@@ -61,20 +61,18 @@ public class ConfigNetworkServiceImpl implements ConfigNetworkService{
 	@Override
 	public String getNameByInterface(String ethx, String name) {
 		// TODO Auto-generated method stub
-		
 		String interfaceFile = configService.getByName("interfacePath").getValue()+"/ifcfg-"+ethx;
         File f = new File(interfaceFile);
         String str = "";
-        if(f.isFile()&&f.getName().indexOf("ifcfg-")>=0&&f.getName().substring(0,6).equals("ifcfg-")){
-            HashMap<String, String> netConfigHashMap = new HashMap<String, String>();
-            FileInputStream inputStream;
+        if(f.isFile()&& f.getName().contains("ifcfg-") &&f.getName().substring(0,6).equals("ifcfg-")){
+	        FileInputStream inputStream;
 			try {
 				inputStream = new FileInputStream(f.getAbsoluteFile());
 
 	            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 	            while(( str = bufferedReader.readLine()) != null)
 				{
-	            	if(str.toLowerCase().indexOf(name+"=")>=0) {
+	            	if(str.toLowerCase().contains(name + "=")) {
 	    	            bufferedReader.close();
 						return str.substring(name.length()+1).trim();
 					}

@@ -1,0 +1,5 @@
+
+f	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°åØù
+c	java:S100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°åØù
+h	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”—Ù¹ûÿÿÿÿ
+k	java:S116"VRename this field "depart_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èïÔØ

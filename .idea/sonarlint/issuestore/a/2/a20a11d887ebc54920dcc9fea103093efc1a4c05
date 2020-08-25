@@ -1,0 +1,18 @@
+
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+k	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+t
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ù˜¾†ÿÿÿÿÿ
+f	java:S117P"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ„•°
+c
+java:S11920"HDefine a constant instead of duplicating this literal "success" 9 times.(ÈçâÙÿÿÿÿÿ
+C
+java:S1125>"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+f	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+_
+java:S1854&"JRemove this useless assignment to local variable "resultCmdPolicyApppubs".(Ê¸òZ
+n
+java:S2293&"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ê¸òZ
+E
+java:S5411>"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ

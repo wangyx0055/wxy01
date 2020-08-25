@@ -1612,18 +1612,14 @@ function editStatus(status,id) {
 			id: id,
 			status: status,
 		},
-		success:function(data){
-			if (data.success){
-				loadAJAX('#example2');
-			}else {
-				loadAJAX('#example2');
-			}
+		success:function(){
+			loadAJAX('#example2');
 		}
 	})
 }
 
 function switchcase(o,id){
-	if(o.innerText=="启用"){
+	if(o.innerText === "启用"){
 		o.innerText="禁用";
 		editStatus(1,id);
 	}else{

@@ -1,0 +1,20 @@
+
+a
+java:S1854'"FRemove this useless assignment to local variable "resultCmdgroupCmds".(âïšÝÿÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ðÿûÿÿÿÿ
+t
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(âïšÝÿÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+t
+java:S2293("YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ·ƒÇþÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àýÿÿÿÿ
+c
+java:S11921"HDefine a constant instead of duplicating this literal "success" 7 times.(ÈçâÙÿÿÿÿÿ
+k	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+f	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸

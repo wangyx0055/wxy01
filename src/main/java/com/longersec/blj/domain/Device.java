@@ -26,15 +26,9 @@ public class Device {
 	
 	private String ipv6;
 
-	private String super_account;
-
-	private String super_password;
-
 	private Integer status;
 
 	private Integer account_count;
-
-	private Integer groupid;
 
 	private String description;
 
@@ -46,7 +40,6 @@ public class Device {
 	private Integer login_method;
 
 	private Integer protocol_id;
-
 
 	private Integer department;
 
@@ -65,6 +58,10 @@ public class Device {
 	private Integer file_id;
 
 	private String ssh_password;
+
+	private String account;
+
+	private String password;
 
 	public Integer getFile_id() {
 		return file_id;
@@ -145,23 +142,6 @@ public class Device {
 	public void setIpv6(String ipv6) {
 		this.ipv6 = ipv6;
 	}
-
-	public String getSuper_account() {
-		return super_account;
-	}
-
-	public void setSuper_account(String super_account) {
-		this.super_account = super_account;
-	}
-
-	public String getSuper_password() {
-		return super_password;
-	}
-
-	public void setSuper_password(String super_password) {
-		this.super_password = super_password;
-	}
-
 	public Integer getStatus() {
 		return status;
 	}
@@ -176,14 +156,6 @@ public class Device {
 
 	public void setAccount_count(Integer account_count) {
 		this.account_count = account_count;
-	}
-
-	public Integer getGroupid() {
-		return groupid;
-	}
-
-	public void setGroupid(Integer groupid) {
-		this.groupid = groupid;
 	}
 
 	public String getDescription() {
@@ -282,6 +254,22 @@ public class Device {
 		this.topName = topName;
 	}
 
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		return "Device{" +
@@ -293,11 +281,8 @@ public class Device {
 				", ip='" + ip + '\'' +
 				", port=" + port +
 				", ipv6='" + ipv6 + '\'' +
-				", super_account='" + super_account + '\'' +
-				", super_password='" + super_password + '\'' +
 				", status=" + status +
 				", account_count=" + account_count +
-				", groupid=" + groupid +
 				", description='" + description + '\'' +
 				", creator_id=" + creator_id +
 				", create_time=" + create_time +

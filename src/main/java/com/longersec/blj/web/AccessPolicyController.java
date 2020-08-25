@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.longersec.blj.domain.ApppubAccount;
 import com.longersec.blj.domain.User;
 import com.longersec.blj.service.*;
 import org.apache.commons.collections.CollectionUtils;

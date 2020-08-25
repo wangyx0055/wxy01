@@ -1,0 +1,7 @@
+
+q	java:S116"WRename this field "refresh_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜í†™ýÿÿÿÿ
+c	java:S100*"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ð‹ð‘
+,
+java:S1700"Rename field "session"(þ¨Êž
+h	java:S100."NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È¶Ð»ÿÿÿÿÿ
+k	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È¶Ð»ÿÿÿÿÿ

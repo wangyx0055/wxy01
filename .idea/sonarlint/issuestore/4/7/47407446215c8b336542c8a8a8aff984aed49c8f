@@ -1,0 +1,13 @@
+
+n	java:S116"YRename this field "app_account_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ãá
+c	java:S100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆúÑ
+q	java:S116	"WRename this field "account_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(††É“ùÿÿÿÿ
+c	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â§ÿï
+f	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆúÑ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„Ó˜±şÿÿÿÿ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²×Æ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²×Æ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£í“ö
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£í“ö
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À­ôÉ
+w	java:S116"]Rename this field "apppub_resource_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¯‘Âøÿÿÿÿ

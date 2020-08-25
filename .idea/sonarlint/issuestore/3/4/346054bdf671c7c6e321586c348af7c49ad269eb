@@ -1,0 +1,20 @@
+
+N	java:S106X"9Replace this use of System.out or System.err by a logger.(êü³ö
+M
+java:S1128"8Remove this unused import 'org.apache.http.HttpRequest'.(Ÿÿ“
+^
+java:S1192;"HDefine a constant instead of duplicating this literal "success" 3 times.(á÷Ê
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+g
+java:S1192A"LDefine a constant instead of duplicating this literal "cn-hangzhou" 3 times.(À†Ãùÿÿÿÿ
+H
+java:S1135M"2Complete the task associated to this TODO comment.(ø£·Ä
+M
+java:S1135K"2Complete the task associated to this TODO comment.(Ü÷ÅÒÿÿÿÿÿ
+f	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·åÂæ
+S	java:S106\"9Replace this use of System.out or System.err by a logger.(É°­øÿÿÿÿ
+N	java:S106Q"9Replace this use of System.out or System.err by a logger.(¸µ»±
+f	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸òÊ
+l
+java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ

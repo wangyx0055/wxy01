@@ -1,0 +1,8 @@
+
+n	java:S116
+"TRename this field "parent_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œŠ¾Šùÿÿÿÿ
+c	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î±À¹
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÐÍñ’ýÿÿÿÿ
+f	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î±À¹
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÞÉ‹Ù
+k	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û©åŠýÿÿÿÿ

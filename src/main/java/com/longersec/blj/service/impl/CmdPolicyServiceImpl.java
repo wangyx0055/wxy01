@@ -61,8 +61,8 @@ public class CmdPolicyServiceImpl implements CmdPolicyService{
 	}
 	
 	@Override
-	public List<String> getCommandsByDeviceAndUser(Integer device_account_id, Integer user_id, Integer group_id){
-		return CmdPolicyDao.getCommandsByDeviceAndUser(device_account_id, user_id, group_id);
+	public List<String> getCommandsByDeviceAndUser(Integer device_account_id, Integer user_id){
+		return CmdPolicyDao.getCommandsByDeviceAndUser(device_account_id, user_id);
 	}
 
 	@Override

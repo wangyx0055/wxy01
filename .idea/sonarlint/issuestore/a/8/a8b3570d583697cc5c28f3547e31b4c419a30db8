@@ -1,0 +1,26 @@
+
+E
+java:S5411["*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+C
+java:S1125I"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+f	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+E
+java:S5411I"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+f	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+d
+java:S11925"IDefine a constant instead of duplicating this literal "success" 14 times.(ÈçâÙÿÿÿÿÿ
+C
+java:S1125["(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+t
+java:S2293+"YReplace the type specification in this constructor call with the diamond operator ("<>").(ğë·úÿÿÿÿ
+b
+java:S1854+"GRemove this useless assignment to local variable "resultConfigRadiuss".(ğë·úÿÿÿÿ
+t
+java:S2293,"YReplace the type specification in this constructor call with the diamond operator ("<>").(ö”üÿÿÿÿ

@@ -1,0 +1,38 @@
+
+D
+java:S1125Ç"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+Y
+java:S1126ƒ"BReplace this if-then-else statement by a single method invocation.(¨Ùæ
+3
+java:S1643×"Use a StringBuilder instead.(Ãæº‡
+k	java:S117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+k	java:S117r"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÓÌôûÿÿÿÿ
+o
+java:S2293S"YReplace the type specification in this constructor call with the diamond operator ("<>").(ç”Ÿû
+m
+java:S3776r"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(òÓÌôûÿÿÿÿ
+d
+java:S1192i"IDefine a constant instead of duplicating this literal "success" 23 times.(ÈçâÙÿÿÿÿÿ
+k	java:S117r"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÓÌôûÿÿÿÿ
+Y
+java:S1126ù"BReplace this if-then-else statement by a single method invocation.(”¥Ö‚
+A
+java:S10680"&Remove this unused "id" private field.( ºØ¶úÿÿÿÿ
+k	java:S117r"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÓÌôûÿÿÿÿ
+k	java:S117r"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÓÌôûÿÿÿÿ
+o
+java:S1192‡"SDefine a constant instead of duplicating this literal "è®¿é—®æ§åˆ¶ç­–ç•¥" 3 times.(¹¾Ôâşÿÿÿÿ
+]
+java:S1854S"GRemove this useless assignment to local variable "resultAccessPolicys".(ç”Ÿû
+g	java:S117Ò"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ„•°
+k	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úå‚Áüÿÿÿÿ
+^
+java:S1126¨"BReplace this if-then-else statement by a single method invocation.(‘çŒ¡üÿÿÿÿ
+f	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+D
+java:S1125š"(Remove the literal "true" boolean value.(¢Ÿ„”ûÿÿÿÿ
+k	java:S117r"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÓÌôûÿÿÿÿ
+k	java:S117Q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+t
+java:S2293T"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞÔÛÑøÿÿÿÿ
+k	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ

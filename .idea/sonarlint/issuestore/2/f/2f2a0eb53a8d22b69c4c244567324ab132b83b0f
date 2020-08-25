@@ -1,0 +1,11 @@
+
+\javascript:S1481";Remove the declaration of the unused 'date_range' variable.(¾ÿÀ¦øÿÿÿÿ
+Yjavascript:S1854"8Remove this useless assignment to variable "date_range".(¾ÿÀ¦øÿÿÿÿ
+7javascript:S1116x"Unnecessary semicolon.(ôŸìúÿÿÿÿ
+„javascript:S2692Æ"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+„javascript:S2692Á"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+?javascript:S2814×"'columns' is already defined.(ÿşŠìşÿÿÿÿ
+„javascript:S2692¸"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+yjavascript:S2703ş"WAdd the "let", "const" or "var" keyword to this declaration of "i" to make it explicit.(¸÷ùúÿÿÿÿ
+~javascript:S2703Å"\Add the "let", "const" or "var" keyword to this declaration of "$_date" to make it explicit.(ŞùÁÏÿÿÿÿÿ
+yjavascript:S2703’"\Add the "let", "const" or "var" keyword to this declaration of "option" to make it explicit.(ÖÑù‰

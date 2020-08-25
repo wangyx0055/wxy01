@@ -388,12 +388,12 @@ public class UploadController {
                     device.setDescription(temp[4].trim());
                     if ("".equals(temp[5].trim()) || "".equals(temp[6].trim())) {
                         device.setLogin_method(1);
-                        device.setSuper_account(temp[5].trim());
-                        device.setSuper_password(temp[6].trim());
+                        device.setAccount(temp[5]);
+                        device.setPassword(temp[6]);
                     } else {
                         device.setLogin_method(0);
-                        device.setSuper_account(temp[5].trim());
-                        device.setSuper_password(temp[6].trim());
+                        device.setAccount(temp[5]);
+                        device.setPassword(temp[6]);
                     }
                     device.setProtocol_id(byName.getId());
                     device.setPort(Integer.parseInt(temp[8].trim()));
@@ -401,8 +401,8 @@ public class UploadController {
                     User p_user = (User) SecurityUtils.getSubject().getPrincipal();
                     device.setCreator_id(p_user.getId());
                     DeviceAccount deviceAccount = new DeviceAccount();
-                    deviceAccount.setUsername(device.getSuper_account());
-                    deviceAccount.setPassword(device.getSuper_password());
+                    deviceAccount.setUsername(device.getAccount());
+                    deviceAccount.setPassword(device.getPassword());
                     deviceAccount.setPort(device.getPort());
                     deviceAccount.setProtocol_id(device.getProtocol_id());
                     deviceAccount.setSsh_key(device.getSsh_key());
@@ -415,12 +415,12 @@ public class UploadController {
                         device.setId(checkName.getId());
                         deviceService.editDevice(device);
                         //检查设备账号重名
-                        DeviceAccount deviceAccount1 = deviceAccountService.checkaccountById(device.getId(),device.getSuper_account());
+                        DeviceAccount deviceAccount1 = deviceAccountService.checkaccountById(device.getId(),device.getAccount());
                         if (deviceAccount1 != null) {
                             deviceAccount.setDevice_id(deviceAccount1.getDevice_id());
                             deviceAccount.setId(deviceAccount1.getId());
                             b = deviceAccountService.editDeviceAccount(deviceAccount);
-                            operatorLog.setDetails("更新设备["+device.getName()+"]和更新设备账号["+device.getSuper_account()+"]");
+                            operatorLog.setDetails("更新设备["+device.getName()+"]和更新设备账号["+device.getAccount()+"]");
                             if (b) {
                                 length++;
                                 operatorLog.setResult("成功");
@@ -430,7 +430,7 @@ public class UploadController {
                         } else {
                             deviceAccount.setDevice_id(checkName.getId());
                             b = deviceAccountService.addDeviceAccount(deviceAccount);
-                            operatorLog.setDetails("更新设备["+device.getName()+"]和新建设备账号["+device.getSuper_account()+"]");
+                            operatorLog.setDetails("更新设备["+device.getName()+"]和新建设备账号["+device.getAccount()+"]");
                             if (b) {
                                 length++;
                                 operatorLog.setResult("成功");
@@ -440,7 +440,7 @@ public class UploadController {
                         }
                     }else {
                         b = deviceService.addDevice(device);
-                        operatorLog.setDetails("导入设备["+device.getName()+"]和设备账号["+device.getSuper_account()+"]");
+                        operatorLog.setDetails("导入设备["+device.getName()+"]和设备账号["+device.getAccount()+"]");
                         if (b) {
                             length++;
                             operatorLog.setResult("成功");

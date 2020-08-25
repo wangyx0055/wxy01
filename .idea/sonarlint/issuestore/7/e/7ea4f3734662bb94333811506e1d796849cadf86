@@ -1,0 +1,73 @@
+
+S
+java:S1854°"<Remove this useless assignment to local variable "objects1".(ÿÒü
+C
+java:S1481±",Remove this unused "objects" local variable.(şŸò˜
+Y
+java:S1126œ"BReplace this if-then-else statement by a single method invocation.(§äœì
+o
+java:S22935"YReplace the type specification in this constructor call with the diamond operator ("<>").(®×ó
+t
+java:S22934"YReplace the type specification in this constructor call with the diamond operator ("<>").(©‡ºÑıÿÿÿÿ
+g	java:S117Ğ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÁÒº
+f	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤˜îö
+l	java:S117¡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰›–ºşÿÿÿÿ
+Q
+java:S1854Ü"5Remove this useless assignment to local variable "b".(¶Ò»Ïıÿÿÿÿ
+k	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+l	java:S117÷"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰›–ºşÿÿÿÿ
+K
+java:S1117b"6Rename "ip" which hides the field declared at line 45.(ö„
+C
+java:S1481€"'Remove this unused "b1" local variable.(ÊğÑµÿÿÿÿÿ
+f	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+<
+java:S1068-"&Remove this unused "ip" private field.(ŞáïÈ
+^
+java:S1126’"BReplace this if-then-else statement by a single method invocation.(“®¹ııÿÿÿÿ
+\
+java:S18544"ARemove this useless assignment to local variable "resultDevices".(©‡ºÑıÿÿÿÿ
+^
+java:S1126ñ"BReplace this if-then-else statement by a single method invocation.(“®¹ııÿÿÿÿ
+d
+java:S1192Q"IDefine a constant instead of duplicating this literal "success" 45 times.(ÈçâÙÿÿÿÿÿ
+K
+java:S1172¦"4Remove this unused method parameter "deviceService".(¢Äòê
+B
+java:S1481Ü"&Remove this unused "b" local variable.(¶Ò»Ïıÿÿÿÿ
+r
+java:S2159Í"VRemove this call to "equals"; comparisons between unrelated types always return false.(Ö‘ï†üÿÿÿÿ
+g	java:S117‘"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎËÑ
+g	java:S117˜"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎËÑ
+l	java:S117ğ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰›–ºşÿÿÿÿ
+W	java:S125¶"<This block of commented-out lines of code should be removed.(ÑÏªõûÿÿÿÿ
+k	java:S117c"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰›–ºşÿÿÿÿ
+F
+java:S5411¯"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+3
+java:S1643Ñ"Use a StringBuilder instead.(èå¸«
+R
+java:S1854€"6Remove this useless assignment to local variable "b1".(ÊğÑµÿÿÿÿÿ
+e	java:S117Z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑÃÿ
+D
+java:S1481°"-Remove this unused "objects1" local variable.(ÿÒü
+S	java:S107¦"=Method has 12 parameters, which is greater than 7 authorized.(¢Äòê
+K
+java:S1066Ø"/Merge this if statement with the enclosing one.(Ãš›±şÿÿÿÿ
+E
+java:S5411"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+Y
+java:S1126û"BReplace this if-then-else statement by a single method invocation.(§äœì
+l	java:S117“"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Ù²ÿÿÿÿÿ
+R	java:S125¢"<This block of commented-out lines of code should be removed.(ˆ™
+W	java:S125¤"<This block of commented-out lines of code should be removed.(Ä¨Õùÿÿÿÿ
+F
+java:S1066ß"/Merge this if statement with the enclosing one.(¹³ê’
+k	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+k	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úå‚Áüÿÿÿÿ
+k	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+i
+java:S3776¦"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¢Äòê
+g	java:S117Ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+R
+java:S1854±";Remove this useless assignment to local variable "objects".(şŸò˜

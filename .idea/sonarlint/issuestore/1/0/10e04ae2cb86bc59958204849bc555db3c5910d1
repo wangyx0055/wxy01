@@ -1,0 +1,36 @@
+
+^
+java:S1126Ò"BReplace this if-then-else statement by a single method invocation.(Ôû©êøÿÿÿÿ
+g	java:S117¿"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßı•ë
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+o
+java:S2293A"YReplace the type specification in this constructor call with the diamond operator ("<>").(Àÿé’
+F
+java:S5411„"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+E
+java:S5411r"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+d
+java:S1192S"IDefine a constant instead of duplicating this literal "success" 22 times.(ÈçâÙÿÿÿÿÿ
+g	java:S117˜"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+^
+java:S1126¹"BReplace this if-then-else statement by a single method invocation.(óï½ıÿÿÿÿ
+k	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+f	java:S117¸"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒ´„&
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+]
+java:S1854@"GRemove this useless assignment to local variable "resultApppubServers".(ïÆ¾Á
+g	java:S117Ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿ú
+h
+java:S3776b"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ô¡µÔ
+k	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úå‚Áüÿÿÿÿ
+X
+java:S1126Ã"BReplace this if-then-else statement by a single method invocation.(ÂšŒ}
+o
+java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(ïÆ¾Á
+f	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+k	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ

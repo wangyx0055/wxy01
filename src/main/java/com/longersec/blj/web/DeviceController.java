@@ -87,7 +87,7 @@ public class DeviceController {
 
 	@RequestMapping("/addDevice")
 	@ResponseBody
-	public JSONObject addDevice(@Validated Device device,@RequestParam(value = "super_password1",required = false)String super_password1,BindingResult errorResult,HttpServletRequest request, HttpSession session) {
+	public JSONObject addDevice(@Validated Device device,BindingResult errorResult,HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
 		Map<String, Object> resultMap = Validator.fieldValidate(errorResult);
 		OperatorLog operatorLog = Operator_log.log(request, session);
@@ -120,11 +120,6 @@ public class DeviceController {
 		if (_device!=null){
 			result.put("success",false);
 			result.put("isIp","IP地址重复");
-		}
-
-		if (!super_password1.equals(device.getSuper_password())){
-			result.put("success",false);
-			result.put("errorPwd","密码不一致");
 		}
 
 		if (resultMap==null && result.getBoolean("success")) {

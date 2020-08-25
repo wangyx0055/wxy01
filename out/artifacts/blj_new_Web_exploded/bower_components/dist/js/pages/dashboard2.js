@@ -1,4 +1,22 @@
 $(function () {
+	function licenseInfo(){
+		$.ajax({
+			url:"../../systeminfo/licenseinfo",
+			type:"POST",
+			data:{
+				'':(new Date()).getTime()
+			},
+			success:function(data){
+				$('#lic_customename').text(data.name);
+				$('#lic_versiontype').text(data.versiontyp);
+				$('#lic_productid').text(data.productid);
+				$('#lic_devicenumber').text(data.devices);
+				$('#lic_expireddate').text(data.endtimestr);
+			},
+			error:function(){}
+		})
+	}
+	licenseInfo();
   /* ChartJS
    * -------
    * Here we will create a few charts using ChartJS
@@ -89,10 +107,10 @@ function _visitByUser(data){
             text: '',
         },
 		grid: {
-			left: '1%',
-			right: '4%',
+			left: '0%',
+			right: '2%',
 			bottom: '0%',
-			top:'15%',
+			top:'12%',
 			containLabel: true
 		},
         xAxis: {
@@ -223,10 +241,10 @@ function _visitByUser(data){
 				text: '',
 			},
 			grid: {
-				left: '1%',
-				right: '4%',
+				left: '0%',
+				right: '2%',
 				bottom: '0%',
-				top:'15%',
+				top:'12%',
 				containLabel: true
 			},
 			xAxis: {
@@ -393,7 +411,6 @@ $.ajax({
         
         /*devicesByType(data.devicesByType,data.devicect);*/
       /*  apppubByProgram(data.apppubByProgram,data.appprogramct);*/
-
         $('#text30increate').html(data.getTextTotal);
     	$('#text30increatepercent').html(data.device30DayTextIncrease);
     	$('#graph30increate').html(data.getGraphTotal);
@@ -474,7 +491,7 @@ function webonline(){
 	    },
 	    success:function(data){
 	    	data = data.data;
-	    	console.log(data)
+	    	console.log(data);
 	    	for(var i=0; i<data.length; i++){
 	    		$('#onlineuser'+(i+1)+'name').html(data[i].username);
 	    		$('#onlineuser'+(i+1)+'time').html(data[i].logintime);

@@ -1,0 +1,28 @@
+
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+E
+java:S5411K"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+k	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+t
+java:S2293("YReplace the type specification in this constructor call with the diamond operator ("<>").(š±óıÿÿÿÿ
+C
+java:S1125?"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+d
+java:S11921"IDefine a constant instead of duplicating this literal "success" 11 times.(ÈçâÙÿÿÿÿÿ
+o
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(Úè×
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+C
+java:S1125K"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+Z
+java:S1854'"DRemove this useless assignment to local variable "resultIpGroupIps".(Úè×
+E
+java:S5411?"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ

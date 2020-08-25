@@ -1,0 +1,7 @@
+
+c	java:S100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é†ù
+c	java:S100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙËÓ¨
+f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é†ù
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ŞÉ‹Ù
+l	java:S116
+"RRename this field "menu_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ‘¾Ôüÿÿÿÿ

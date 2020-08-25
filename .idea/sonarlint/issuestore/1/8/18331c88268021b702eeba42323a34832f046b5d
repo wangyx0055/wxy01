@@ -1,0 +1,39 @@
+
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+d
+java:S11923"IDefine a constant instead of duplicating this literal "success" 20 times.(ÈçâÙÿÿÿÿÿ
+E
+java:S5411X"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+o
+java:S2293)"YReplace the type specification in this constructor call with the diamond operator ("<>").(±Ñíç
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+[
+java:S1854)"ERemove this useless assignment to local variable "resultDeviceTypes".(±Ñíç
+o
+java:S2293*"YReplace the type specification in this constructor call with the diamond operator ("<>").(æÆŞ
+f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+C
+java:S1125L"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+E
+java:S5411L"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+f	java:S117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+U
+java:S1854<"?Remove this useless assignment to local variable "deviceTypes".(æÆŞ
+X
+java:S1126‚"BReplace this if-then-else statement by a single method invocation.(Á¨|
+C
+java:S1125X"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+V
+java:S1128
+";Remove this unused import 'com.longersec.blj.domain.Group'.(×„Ôéÿÿÿÿÿ
+X
+java:S1126x"BReplace this if-then-else statement by a single method invocation.(ËÍ™Û
+k	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+o
+java:S2293<"YReplace the type specification in this constructor call with the diamond operator ("<>").(æÆŞ

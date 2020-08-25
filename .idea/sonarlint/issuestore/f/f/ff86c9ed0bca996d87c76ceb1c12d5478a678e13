@@ -1,0 +1,21 @@
+
+f	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃàİÃ
+f	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á’§ò
+t
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ‚­•ÿÿÿÿÿ
+f	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆúöØ
+f	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“¦àü
+e	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—šA
+`
+java:S1854&"KRemove this useless assignment to local variable "resultAccessPolicyUsers".(Ü°ÑB
+k	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èä¢øÿÿÿÿ
+Z
+java:S1854'"?Remove this useless assignment to local variable "resultUsers".(õ‚­•ÿÿÿÿÿ
+k	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èìĞıÿÿÿÿ
+Y
+java:S1128"CRemove this unused import 'com.longersec.blj.service.GroupService'.(ê¤…ª
+c
+java:S11920"HDefine a constant instead of duplicating this literal "success" 3 times.(ÈçâÙÿÿÿÿÿ
+k	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èìĞıÿÿÿÿ
+n
+java:S2293&"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ü°ÑB

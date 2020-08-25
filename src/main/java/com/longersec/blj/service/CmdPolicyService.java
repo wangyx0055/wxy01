@@ -24,7 +24,7 @@ public interface CmdPolicyService {
 
     public CmdPolicy checkName(String name);
     
-    public List<String> getCommandsByDeviceAndUser(Integer device_account_id, Integer user_id, Integer group_id);
+    public List<String> getCommandsByDeviceAndUser(Integer device_account_id, Integer user_id);
     
     public CmdPolicy getById(Integer id);
 }

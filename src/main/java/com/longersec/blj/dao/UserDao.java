@@ -11,49 +11,45 @@ import com.longersec.blj.domain.User;
 
 public interface UserDao {
 
-	public boolean editUser(User user);
+	boolean editUser(User user);
 
-	public boolean addUser(User user);
+	boolean addUser(User user);
 
-	public boolean delUser(List<Integer> ids);
+	boolean delUser(List<Integer> ids);
 
-	public List<Object> findAll(@Param("user")User user, @Param("page_start")int page_start, @Param("page_length")int page_length,@Param("depart_ids") List<Integer> depart_ids);
+	List<Object> findAll(@Param("user")User user, @Param("page_start")int page_start, @Param("page_length")int page_length,@Param("depart_ids") List<Integer> depart_ids);
 
 	int selectOldDepartment(@Param("id") int id);
 
 	boolean deleteUselessUser(@Param("department") int department);
 		
-	public List<Users> selectNameAndId(@Param("id")Integer id, @Param("page_start")int page_start, @Param("page_length")int page_length);
+	List<Users> selectNameAndId(@Param("id")Integer id, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
-    public User checkLogin(String username);
+	User checkLogin(String username);
     
-    public User getUserByID(String id);
+    User getUserByID(String id);
     
-    public List<User> checkName();
+    List<User> checkName();
     
-    public boolean editName(User user) ;
+    boolean editName(User user) ;
     
-    public User checkUsername(@Param("username")String username, @Param("id")Integer id) ;
-    
-    public User checkEmail(@Param("email")String email, @Param("id")Integer id) ;
-    
-    public User checkMobile(@Param("mobile")String mobile, @Param("id")Integer id) ;
+    User checkUsername(@Param("username")String username, @Param("id")Integer id) ;
 
-    public Boolean editstatus(User user);
-
-    public List<User> selectAll(@Param("id") int id);
+    User checkEmail(@Param("email")String email, @Param("id")Integer id) ;
     
-    public int total();
+    User checkMobile(@Param("mobile")String mobile, @Param("id")Integer id) ;
 
-    public int getCounts(int group_id);
+    Boolean editstatus(User user);
 
-    public User checkUser(Integer id);
+    List<User> selectAll(@Param("id") int id);
+    
+    int total();
+
+    User checkUser(Integer id);
 
     boolean insertMore(User user);
 
     boolean editUserList(User user);
 
-    ArrayList<Users> finduserGroup(int i);
-
-    public User checkADUsername(@Param("username") String username);
+    User checkADUsername(@Param("username") String username);
 }

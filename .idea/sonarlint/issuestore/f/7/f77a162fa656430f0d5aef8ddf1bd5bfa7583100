@@ -1,0 +1,11 @@
+
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İçúüÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ´¿¶
+k	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øí–™ûÿÿÿÿ
+f	java:S117""QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«±ı†
+d
+java:S1128"NRemove this unused import 'com.longersec.blj.domain.CrontabScriptConfigGroup'.(ìŠğ–
+f	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ğÀÏ
+€	java:S116"fRename this field "CrontabScriptConfigGroupDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²­™ïÿÿÿÿÿ
+k	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—€Ó˜ıÿÿÿÿ
+f	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„±ÇŠ

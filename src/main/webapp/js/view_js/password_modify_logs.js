@@ -26,10 +26,7 @@ $(function () {
                     if(data==0)
                         return "失败";
                     else
-                        return "成功";}},
-            { "data": "id", "render": function(data,type,row,meta){
-                    return '<A data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-primary2" class="newcss2" style="margin-left: -5px;cursor: pointer">删除</A>';
-                }}
+                        return "成功";}}
         ]
     });
     $('#modal-primary2').on('show.bs.modal', function (event) {

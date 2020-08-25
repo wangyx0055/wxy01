@@ -1,0 +1,35 @@
+
+_
+java:S1128
+"IRemove this unused import 'com.longersec.blj.domain.CrontabScriptConfig'.(¿Ÿïš
+g
+java:S18541"LRemove this useless assignment to local variable "resultCrontabCommandLogs".(ãÚ¨×ıÿÿÿÿ
+C
+java:S1125X"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+\
+java:S1128"FRemove this unused import 'com.longersec.blj.utils.SystemCommandUtil'.(ƒ¾¨è
+d
+java:S1192F"IDefine a constant instead of duplicating this literal "success" 11 times.(ÈçâÙÿÿÿÿÿ
+E
+java:S5411X"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+o
+java:S22932"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ò Ãı
+C
+java:S1125d"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+Z
+java:S1128"DRemove this unused import 'com.longersec.blj.service.ConfigService'.(Å¨¶
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+t
+java:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(ãÚ¨×ıÿÿÿÿ
+E
+java:S5411d"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+k	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+f	java:S117m"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸

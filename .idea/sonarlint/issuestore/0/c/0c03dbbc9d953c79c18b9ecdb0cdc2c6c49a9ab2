@@ -1,0 +1,75 @@
+
+B
+java:S1659–"&Declare "outSize1" on a separate line.(Ø±Ç¿ıÿÿÿÿ
+h	java:S116 "SRename this field "cpu_used" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã»¼ö
+p	java:S116""VRename this field "cpu_userate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·º¤ÿÿÿÿÿ
+Q
+java:S1128";Remove this unused import 'oshi.json.hardware.HWDiskStore'.(ğşˆ•
+n	java:S116&"YRename this field "memory_userate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»»Áş
+j	java:S116)"URename this field "disk_total" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”Àü®
+I
+java:S1874¾"-Remove this use of "Float"; it is deprecated.(ä½¶şÿÿÿÿ
+Z
+java:S2184V"DCast one of the operands of this subtraction operation to a "float".(³„ù—
+N
+java:S2589é"7Remove this expression which always evaluates to "true"(Úñı
+d	java:S100â"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å‚ó÷
+t	java:S116."ZRename this field "network_userate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è³Ÿêûÿÿÿÿ
+D
+java:S1874h".Remove this use of "Double"; it is deprecated.(°²åõ
+g	java:S117å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«Ì•÷
+]
+java:S2184¿"ACast one of the operands of this division operation to a "float".(¤¼¡úÿÿÿÿ
+R	java:S125"<This block of commented-out lines of code should be removed.(Ìå¥
+Q
+java:S1141£"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+k	java:S116$"VRename this field "memory_used" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ğ•¿
+9
+java:S1659Œ""Declare "pro2" on a separate line.(ÂÀõ»
+;
+java:S2129¾"Remove this "Float" constructor(ä½¶şÿÿÿÿ
+l	java:S117ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èÎ™«úÿÿÿÿ
+R	java:S125›"<This block of commented-out lines of code should be removed.(ÛÌ¶¯
+S
+java:S2589ë"7Remove this expression which always evaluates to "true"(åï·èøÿÿÿÿ
+y
+java:S1450."^Remove the "network_userate" field and declare it as a local variable in the relevant methods.(è³Ÿêûÿÿÿÿ
+I
+java:S1874½"-Remove this use of "Float"; it is deprecated.(®½üÿÿÿÿ
+;
+java:S2129½"Remove this "Float" constructor(®½üÿÿÿÿ
+n	java:S116("TRename this field "disk_used" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øéªÿÿÿÿÿ
+E
+java:S1128
+"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+]
+java:S2142¥"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+N
+java:S2589í"7Remove this expression which always evaluates to "true"(çŞõä
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹ŸéÂ
+g	java:S117Ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ»€ÿ
+W	java:S125´"<This block of commented-out lines of code should be removed.(–İèüÿÿÿÿ
+l	java:S117æ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”É£Íùÿÿÿÿ
+n	java:S116!"TRename this field "cpu_total" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÉ¡­ıÿÿÿÿ
+9
+java:S2153½"Remove the boxing to "Float".(®½üÿÿÿÿ
+l	java:S116,"WRename this field "network_send" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÈßı
+9
+java:S2153¾"Remove the boxing to "Float".(ä½¶şÿÿÿÿ
+k	java:S116%"WRename this field "memory_total" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¾èi
+6
+java:S2129h" Remove this "Double" constructor(°²åõ
+f	java:S117ä"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆàœO
+s	java:S116"YRename this field "network_device" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞüŸşÿÿÿÿ
+4
+java:S2153h"Remove the boxing to "Double".(°²åõ
+I
+java:S1128	".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+=
+java:S1659¯"&Declare "outSize2" on a separate line.(Ø±•õ
+W	java:S125¬"<This block of commented-out lines of code should be removed.(™É¥Óÿÿÿÿÿ
+N
+java:S2589ï"7Remove this expression which always evaluates to "true"(ƒøô¾
+l	java:S116*"WRename this field "disk_userate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›‹Òà
+Q	java:S125}"<This block of commented-out lines of code should be removed.(¨ÆÚ™
+t	java:S116-"ZRename this field "network_receive" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Èøÿÿÿÿ

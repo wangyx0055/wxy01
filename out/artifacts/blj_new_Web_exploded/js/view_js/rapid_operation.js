@@ -116,6 +116,7 @@ $('#modal-primary3').on('show.bs.modal', function (event) {
     let page_start2 =0;
     let button = $(event.relatedTarget) // Button that triggered the modal
     let i = button.data('row');
+    $("#modal-primary3 .modal-title").text("关联设备["+$('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].name+"]");
     $('#modal8_id').val($('#scripts_table').DataTable().row('#' + i).nodes(i).data()[i].id);
     $.ajax({
         url:"../../crontabScriptConfigDevice/findCrontScriptConfigDevice",

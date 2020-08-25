@@ -18,9 +18,9 @@ public interface AccessPolicyDeviceAccountDao {
 
 	public List<Deviceaccess> selectById(@Param("policy_id")Integer policy_id);
 
-	int selectAccessPolicyDeviceCounts(@Param("policy_id") int policy_id);
+	Integer selectAccessPolicyDeviceCounts(@Param("policy_id") Integer policy_id);
 
 	public Boolean deleteBypolicy_id(@Param("policy_id")Integer policy_id);
 
-    int selectBydeviceId(@Param("item") int item);
+	Integer selectBydeviceId(@Param("item") Integer item);
 }

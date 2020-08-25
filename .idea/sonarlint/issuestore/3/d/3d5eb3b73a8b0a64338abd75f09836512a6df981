@@ -1,0 +1,41 @@
+
+m	java:S116"XRename this field "connection_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üı«û
+h	java:S100m"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì–Áêüÿÿÿÿ
+h	java:S100u"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îï‡Îøÿÿÿÿ
+h	java:S100E"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¼Ëùÿÿÿÿ
+k	java:S117m"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì–Áêüÿÿÿÿ
+h	java:S100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óíìÿÿÿÿÿ
+t	java:S116"ZRename this field "max_connections" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºåòüÿÿÿÿ
+k	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é“¨Ìûÿÿÿÿ
+v	java:S116"\Rename this field "connection_weight" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¡•øÿÿÿÿ
+c	java:S1005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î±À¹
+c	java:S100A"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò±‰˜
+o	java:S116"URename this field "proxy_port" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë„Şûÿÿÿÿÿ
+c	java:S100I"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈïÙŸ
+n	java:S116	"TRename this field "parent_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œŠ¾Šùÿÿÿÿ
+h	java:S100Q"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏøÎàøÿÿÿÿ
+c	java:S100U"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çÿØš
+h	java:S100i"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œØ³•ÿÿÿÿÿ
+h	java:S100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÒÖìùÿÿÿÿ
+h	java:S100Y"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™—ˆÖıÿÿÿÿ
+h	java:S100M"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é“¨Ìûÿÿÿÿ
+s	java:S116"YRename this field "proxy_hostname" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«õ…´ùÿÿÿÿ
+h	java:S1001"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞÍñ’ıÿÿÿÿ
+h	java:S100q"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍÎ‘Îüÿÿÿÿ
+f	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çÿØš
+c	java:S100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÚ­Æ
+b	java:S100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Æøp
+k	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ÷Ê¤ıÿÿÿÿ
+k	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¼Ëùÿÿÿÿ
+o	java:S116"ZRename this field "connection_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Æ•³
+x	java:S116"cRename this field "max_connections_per_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Èé
+r	java:S116"XRename this field "failover_only" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¹„ïùÿÿÿÿ
+k	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÒÖìùÿÿÿÿ
+c	java:S100a"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àİòĞ
+f	java:S117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Á™ı
+k	java:S117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îï‡Îøÿÿÿÿ
+h	java:S100]"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ÷Ê¤ıÿÿÿÿ
+c	java:S100e"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Á™ı
+f	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î±À¹
+k	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óíìÿÿÿÿÿ
+w	java:S116"bRename this field "proxy_encryption_method" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬­•“

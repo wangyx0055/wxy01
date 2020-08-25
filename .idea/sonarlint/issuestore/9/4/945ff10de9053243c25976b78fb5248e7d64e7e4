@@ -1,0 +1,13 @@
+
+c	java:S100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª‚‡ã
+v	java:S116"aRename this field "lsblj_device_record_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ûò
+h	java:S100R"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ¯õÿÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¡ç¿ùÿÿÿÿ
+j	java:S116"PRename this field "_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ââÈûıÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¡ç¿ùÿÿÿÿ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒŠÂ½
+h	java:S1006"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿È¥Éúÿÿÿÿ
+w	java:S116"]Rename this field "lsblj_cmddanger_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£…èíıÿÿÿÿ
+b	java:S100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¶İ
+e	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¶İ
+k	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ¯õÿÿÿÿÿ

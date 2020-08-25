@@ -1,0 +1,8 @@
+
+Pjavascript:S1481Ð"3Remove the declaration of the unused 'p1' variable.(÷Õáô
+Mjavascript:S1854Ð"0Remove this useless assignment to variable "p1".(÷Õáô
+[javascript:S1481Ñ"9Remove the declaration of the unused 'newPassw' variable.(”´‹„ÿÿÿÿÿ
+Xjavascript:S1854Ñ"6Remove this useless assignment to variable "newPassw".(”´‹„ÿÿÿÿÿ
+Gjavascript:S2814ì"%'password_verify' is already defined.(£ê™—úÿÿÿÿ
+Tjavascript:S2814ñ"2'password_newuser_forcechange' is already defined.(ªÂÑÒüÿÿÿÿ
+sjavascript:S2703S"WAdd the "let", "const" or "var" keyword to this declaration of "k" to make it explicit.(Ô–ÁÆ

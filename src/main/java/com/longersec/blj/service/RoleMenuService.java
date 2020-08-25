@@ -5,13 +5,13 @@ import com.longersec.blj.domain.RoleMenu;
 
 public interface RoleMenuService {
 
-	public boolean addRoleMenu(RoleMenu roleMenu);
+	boolean addRoleMenu(RoleMenu roleMenu);
 
-	public boolean editRoleMenu(RoleMenu roleMenu);
+	boolean editRoleMenu(RoleMenu roleMenu);
 
-	public boolean delRoleMenu(Integer id);
+	boolean delRoleMenu(Integer id);
 
-	public List<Object> findAll(RoleMenu roleMenu, int page_start, int page_length);
+	List<Object> findAll(RoleMenu roleMenu, int page_start, int page_length);
 
 }
 

@@ -1,34 +1,31 @@
 package com.longersec.blj.web;
 
-import java.util.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.longersec.blj.dao.DeviceDao;
-import com.longersec.blj.dao.UserDao;
-import com.longersec.blj.domain.DTO.Users;
-import com.longersec.blj.domain.Device;
-import com.longersec.blj.service.*;
+import com.longersec.blj.domain.Group;
+import com.longersec.blj.domain.OperatorLog;
+import com.longersec.blj.domain.User;
+import com.longersec.blj.service.DepartmentService;
+import com.longersec.blj.service.GroupService;
+import com.longersec.blj.service.OperatorLogService;
+import com.longersec.blj.utils.Operator_log;
+import com.longersec.blj.utils.Validator;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import com.longersec.blj.domain.Group;
-import com.longersec.blj.domain.OperatorLog;
-import com.longersec.blj.domain.User;
-import com.longersec.blj.utils.Operator_log;
-import com.longersec.blj.utils.Validator;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -40,18 +37,12 @@ public class GroupController {
 
 	@Autowired
 	private GroupService groupService;
+
 	@Autowired
 	private OperatorLogService operatorLogService;
-	@Autowired
-	private UserDao userDao;
-	@Autowired
-	private DeviceDao deviceDao;
+
 	@Autowired
 	private DepartmentService departmentService;
-	@Autowired
-	private UserService userService;
-	@Autowired
-	private DeviceService deviceService;
 
 	
 	@RequestMapping("/listGroup")
@@ -237,24 +228,12 @@ public class GroupController {
 			operatorLog.setModule("用户组");
 			for (Integer _id : ids){
 				groups += groupService.selectById(_id, type)+",";
-				int counts = userDao.getCounts(_id);
-				if (counts!=0){
-					result.put("msg", "请删除组下用户");
-					result.put("success", false);
-					break;
-				}
 			}
 			operatorLog.setDetails("删除用户组["+groups.substring(0,groups.length()-1)+"]");
 		}else {
 			operatorLog.setModule("设备组");
 			for (Integer _id : ids){
 				groups += groupService.selectById(_id, type)+",";
-				int counts = deviceDao.getCounts(_id);
-				if (counts!=0){
-					result.put("msg", "请删除组下设备");
-					result.put("success", false);
-					break;
-				}
 			}
 			operatorLog.setDetails("删除设备组["+groups.substring(0,groups.length()-1)+"]");
 		}
@@ -302,34 +281,6 @@ public class GroupController {
 			}
 		}
 
-		return result;
-	}
-
-	@RequestMapping("/finduserGroup")
-	@ResponseBody
-	public JSONObject finduserGroup(@RequestParam("pid") Integer pid ,@RequestParam("type")Integer type){
-
-		ArrayList<Users> data_users = new ArrayList<Users>();
-		ArrayList<Users> data_p_users = new ArrayList<Users>();
-		JSONArray jsonArray = null;
-		JSONArray jsonArray1 = null;
-		if (type==0){
-			data_users = userService.finduserGroup(0);
-			data_p_users = userService.finduserGroup(pid);
-			jsonArray = JSONArray.fromObject(data_users);
-			jsonArray1 = JSONArray.fromObject(data_p_users);
-		}else if (type==1){
-			ArrayList<Device> data_devices = deviceService.findDeviceGroup(0);
-			ArrayList<Device> data_p_devices = deviceService.findDeviceGroup(pid);
-			jsonArray = JSONArray.fromObject(data_devices);
-			jsonArray1 = JSONArray.fromObject(data_p_devices);
-		}
-
-
-		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
-		result.accumulate("data", jsonArray);
-		result.accumulate("data_p", jsonArray1);
 		return result;
 	}
 }

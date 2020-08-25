@@ -1,0 +1,32 @@
+
+[
+java:S1854="@Remove this useless assignment to local variable "resultDevice".(ùÑµúøÿÿÿÿ
+f	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃàİÃ
+C
+java:S1125U"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+f	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒİ¸ÿ
+k	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×«”‘øÿÿÿÿ
+k	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼èáüÿÿÿÿ
+b
+java:S1854<"LRemove this useless assignment to local variable "resultAccessPolicyDevice".(Ô½¦
+e	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—šA
+k	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼èáüÿÿÿÿ
+o
+java:S2293<"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô½¦
+k	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èä¢øÿÿÿÿ
+e	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î¹Í(
+o
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(œÙøÉ
+t
+java:S2293="YReplace the type specification in this constructor call with the diamond operator ("<>").(ùÑµúøÿÿÿÿ
+h
+java:S1854&"MRemove this useless assignment to local variable "resultAccessPolicyDevices".(‹ÆÓøûÿÿÿÿ
+t
+java:S2293&"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹ÆÓøûÿÿÿÿ
+f	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ„•°
+f	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿµÂµ
+d
+java:S11920"IDefine a constant instead of duplicating this literal "success" 10 times.(ÈçâÙÿÿÿÿÿ
+k	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èğŠúüÿÿÿÿ
+t	java:S116"_Rename this field "DeviceAccountService" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á±ºº
+r	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ¼Õ™ùÿÿÿÿ8†¸áÂ.

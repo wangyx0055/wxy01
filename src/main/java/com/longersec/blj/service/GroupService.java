@@ -12,27 +12,25 @@ import org.apache.ibatis.annotations.Param;
 
 public interface GroupService {
 
-	public boolean addGroup(Group group);
+	boolean addGroup(Group group);
 	
-	public boolean editGroup(Group group);
+	boolean editGroup(Group group);
 
-	public boolean delGroup(List<Integer> ids);
+	boolean delGroup(List<Integer> ids);
 
-	public List<Object> findAll(Group group, int page_start, int page_length, Integer id);
+	List<Object> findAll(Group group, int page_start, int page_length, Integer id);
 	
-	public List<UserGroup> selectNameAndId(Integer id, int page_start, int page_length);
+	List<UserGroup> selectNameAndId(Integer id, int page_start, int page_length);
 
-	public List<UserGroup> selectNameAndIdTop();
+	List<UserGroup> selectNameAndIdTop();
 
-	public List<DeviceGroup> selectNameAndIdTop1();
+	List<DeviceGroup> selectNameAndIdTop1();
 
-	public List<DeviceGroup> selectNameAnddId(Integer id,int page_start, int page_length);
+	List<DeviceGroup> selectNameAnddId(Integer id,int page_start, int page_length);
 
-	public Group checkname(Group group);
-	
-	public List<UserGroup> select_two(int type);
+	Group checkname(Group group);
 
-	public ArrayList<Group> listByType(Integer type,Integer id);
+	ArrayList<Group> listByType(Integer type,Integer id);
 
     boolean insertMore(Group group);
 
@@ -40,7 +38,7 @@ public interface GroupService {
 
 	boolean editGroupList(Group group);
 
-    public String selectById(Integer groupid, int type);
+	String selectById(Integer groupid, int type);
 
 	boolean updateGroupCount(int count, int group_id);
 }

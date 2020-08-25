@@ -69,15 +69,14 @@ public class UserRealm extends AuthorizingRealm {
         Subject current_user =  SecurityUtils.getSubject();
         Session session = current_user.getSession();
 		User user  = (User) session.getAttribute("user");
+        if (user == null){
+            return null;
+        }
 		String rolename = roleDao.selectByid(user.getRole_id());
 		if (rolename!=null){
 		    user.setRolename(rolename);
         }
-        if (user == null){
-            return null;
-        }
         session.setAttribute("loginUser",session.getAttribute("user"));
-
         return new SimpleAuthenticationInfo(user,usertoken.getPassword(),"");
     }
 }

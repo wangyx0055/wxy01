@@ -1,0 +1,9 @@
+
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÙÎýþÿÿÿÿ
+h	java:S116"TRename this field "policy_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(žŸÈS
+h	java:S100	"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éÀŒíùÿÿÿÿ
+q	java:S116"\Rename this field "device_account_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è«Ýè
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†¡‡Îúÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½”¹Ãýÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†¡‡Îúÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½”¹Ãýÿÿÿÿ

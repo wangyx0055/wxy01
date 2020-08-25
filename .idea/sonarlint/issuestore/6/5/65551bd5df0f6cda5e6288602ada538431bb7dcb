@@ -1,0 +1,165 @@
+
+D
+java:S1128$")Remove this unused import 'java.net.URL'.(ñìÁ„üÿÿÿÿ
+g	java:S117â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Üõöê
+W
+java:S1854—"@Remove this useless assignment to local variable "configLogins".(ÇÑ÷Ú
+O	java:S106Õ"9Replace this use of System.out or System.err by a logger.(Ã É
+G
+java:S1481±"+Remove this unused "height" local variable.(ğØ§÷ÿÿÿÿÿ
+@
+java:S1905¶")Remove this unnecessary cast to "Config".(˜éşı
+T
+java:S4973v"9Use the "equals" method if value comparison was intended.(Ö¾ùÿÿÿÿ
+m
+java:S3776_"RRefactor this method to reduce its Cognitive Complexity from 85 to the 15 allowed.(œµ•·úÿÿÿÿ
+Q
+java:S2479—":Remove the non-escaped \u0009 character from this literal.(ÂÆ½›
+N
+java:S1135Æ"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+N
+java:S1135Í"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+C
+java:S1874Ÿ",Remove this use of "Date"; it is deprecated.(ÂôÛ…
+]
+java:S1854"FRemove this useless assignment to local variable "resultConfigLogins".(­ÄúÉ
+`
+java:S11284"JRemove this unused import 'org.apache.shiro.authc.LockedAccountException'.(ò¬Šë
+p
+java:S2293—"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇÑ÷Ú
+V
+java:S2479":Remove the non-escaped \u0009 character from this literal.(––êÎÿÿÿÿÿ
+[
+java:S1858¥"?"group" returns a string, there's no need to call "toString()".(ş¼ÎÅÿÿÿÿÿ
+C
+java:S1905˜"'Remove this unnecessary cast to "List".(¯—¬İøÿÿÿÿ
+c
+java:S1192x"HDefine a constant instead of duplicating this literal "/login" 18 times.(ıï”Ùÿÿÿÿÿ
+g	java:S117“"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸéÛÓ
+
+java:S1192¼"eDefine a constant instead of duplicating this literal "tmp_dynamic_auth_qrcode_image_userid" 4 times.(è˜¥Èûÿÿÿÿ
+Q
+java:S1854¦":Remove this useless assignment to local variable "result".(ˆáŒƒ
+P
+java:S4973€"9Use the "equals" method if value comparison was intended.(¢±„ı
+b
+java:S2184É"FCast one of the operands of this multiplication operation to a "long".(îƒÊ§ûÿÿÿÿ
+e
+java:S1192b"JDefine a constant instead of duplicating this literal "dpassword" 3 times.(¯İ”¶ùÿÿÿÿ
+R
+java:S1854´";Remove this useless assignment to local variable "configs".(ÊšÖ
+\
+java:S1128"ARemove this unused import 'com.longersec.blj.domain.OperatorLog'.(Š —¼úÿÿÿÿ
+O	java:S106¢"9Replace this use of System.out or System.err by a logger.(óƒø„
+A
+java:S1481°"*Remove this unused "width" local variable.(†ªÊû
+`
+java:S1192ˆ"IDefine a constant instead of duplicating this literal "sms_auth" 3 times.(ÃÁÚí
+J
+java:S1128!"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ
+V
+java:S2479š":Remove the non-escaped \u0009 character from this literal.(Öä÷îşÿÿÿÿ
+U
+java:S4973…"9Use the "equals" method if value comparison was intended.(Õ¢¬ÿùÿÿÿÿ
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(­ÄúÉ
+h
+java:S3776’"RRefactor this method to reduce its Cognitive Complexity from 31 to the 15 allowed.(ùºâI
+]
+java:S1128"BRemove this unused import 'com.longersec.blj.service.UtilService'.(òåÚŒûÿÿÿÿ
+V
+java:S2479˜":Remove the non-escaped \u0009 character from this literal.(…‹ıÿÿÿÿ
+W
+java:S1854"@Remove this useless assignment to local variable "configLogins".(ÇÑ÷Ú
+V
+java:S1854±":Remove this useless assignment to local variable "height".(ğØ§÷ÿÿÿÿÿ
+_
+java:S1192”"HDefine a constant instead of duplicating this literal "success" 9 times.(“Õ¶
+P
+java:S1854°"9Remove this useless assignment to local variable "width".(†ªÊû
+\
+java:S1128"ARemove this unused import 'com.longersec.blj.utils.Operator_log'.(áØÔ„úÿÿÿÿ
+d
+java:S1128B"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+Q
+java:S2479 ":Remove the non-escaped \u0009 character from this literal.(åˆ´é
+a
+java:S1192f"KDefine a constant instead of duplicating this literal "logintoken" 5 times.(ÛÈ³
+`
+java:S1192•"IDefine a constant instead of duplicating this literal "loginkey" 4 times.(§ø‡ı
+f
+java:S11285"KRemove this unused import 'org.apache.shiro.authc.UnknownAccountException'.(‚£¾ıÿÿÿÿ
+M
+java:S1135m"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+p
+java:S2293–"YReplace the type specification in this constructor call with the diamond operator ("<>").(­ÄúÉ
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇÑ÷Ú
+O
+java:S4973"9Use the "equals" method if value comparison was intended.(¡ÈÓE
+J
+java:S1905š".Remove this unnecessary cast to "AppLoginkey".(Ï½©œûÿÿÿÿ
+Q
+java:S2479":Remove the non-escaped \u0009 character from this literal.(ÖáÌõ
+l	java:S117¡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®—µ¥ıÿÿÿÿ
+P
+java:S4973Š"9Use the "equals" method if value comparison was intended.(åñç
+M
+java:S1128'"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ
+M
+java:S1128"2Remove this unused import 'net.sf.json.JSONArray'.(å¶ÿÿÿÿÿ
+O	java:S106÷"9Replace this use of System.out or System.err by a logger.(¥áõ‡
+X
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.AccessPolicy'.(ú®ò®
+U
+java:S1128"":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ
+l	java:S117Ú"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ßì¹şÿÿÿÿ
+V
+java:S2479Ÿ":Remove the non-escaped \u0009 character from this literal.(àÂûÿÿÿÿ
+@
+java:S1905Ù")Remove this unnecessary cast to "Config".(˜éşı
+R	java:S125º"<This block of commented-out lines of code should be removed.(¤ûæ
+V	java:S125`"<This block of commented-out lines of code should be removed.(Šôå”üÿÿÿÿ
+a
+java:S1192†"JDefine a constant instead of duplicating this literal "auth_type" 5 times.(ÓŒ†‹
+l
+java:S11283"QRemove this unused import 'org.apache.shiro.authc.IncorrectCredentialsException'.(Ù’€ùÿÿÿÿ
+[
+java:S1128"@Remove this unused import 'com.sun.tools.javac.resources.javac'.(òŒÁ§ÿÿÿÿÿ
+T	java:S106Ó"9Replace this use of System.out or System.err by a logger.(ä¯û±ùÿÿÿÿ
+c
+java:S1192"LDefine a constant instead of duplicating this literal "finger_auth" 4 times.(û´ç
+l	java:S117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğè¦Úüÿÿÿÿ
+f	java:S117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø¯é‚
+Q
+java:S2479œ":Remove the non-escaped \u0009 character from this literal.(ºØµğ
+g	java:S117ö"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãŠÓÜ
+P
+java:S1191"5Use classes from the Java API instead of Sun classes.(òŒÁ§ÿÿÿÿÿ
+Q
+java:S2479™":Remove the non-escaped \u0009 character from this literal.(î°Øª
+p
+java:S2293¸"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ¹¥´
+N
+java:S1135ñ"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+T
+java:S1128">Remove this unused import 'com.longersec.blj.domain.AlertLog'.(ÅÛõ¼
+W
+java:S1126î"AReplace this if-then-else statement by a single return statement.(å¥«(
+p
+java:S2293Ö"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÊšÖ
+C
+java:S1874",Remove this use of "Date"; it is deprecated.(ü‡»
+]
+java:S1854–"FRemove this useless assignment to local variable "resultConfigLogins".(­ÄúÉ
+g	java:S117¶"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Üõöê
+V
+java:S2479›":Remove the non-escaped \u0009 character from this literal.(æ¬Å¯ıÿÿÿÿ
+b
+java:S2184¨"FCast one of the operands of this multiplication operation to a "long".(îƒÊ§ûÿÿÿÿ
+i
+java:S1192…"MDefine a constant instead of duplicating this literal "dynamic_auth" 3 times.(âÃÙ»şÿÿÿÿ
+p
+java:S2293´"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÊšÖ
+K
+java:S1128&"5Remove this unused import 'java.text.ParseException'.(ñ®ï•

@@ -1,0 +1,10 @@
+
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°—Ü
+’
+java:S1319"|The type of the "listApppubservers" object should be an interface such as "List" rather than the implementation "ArrayList".(ô²ö÷
+¢
+java:S1319"†The type of the "updatelistlistApppubservers" object should be an interface such as "List" rather than the implementation "ArrayList".(¥Ú¨Ðùÿÿÿÿ
+V
+java:S1128"@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°—Ü
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°—Ü

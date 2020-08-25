@@ -189,7 +189,7 @@ function resetC(){
     $("#Vdevicename").text('');
 }
 var regexp = {
-    name:/^([A-Za-z]|[\u4e00-\u9fa5]|\-|\@|\_|[0-9]){0,32}$/,
+    name:/^([A-Za-z]|[\u4e00-\u9fa5]|\-|\@|\_||\.|[0-9]){0,32}$/,
     length:/^\S{0,32}$/,
     length_des:/^\S{0,64}$/,
     port: /^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]{1}|6553[0-5])$/,
@@ -829,7 +829,7 @@ $('#editdeviceButton').off().click(function(){
     }
     password = $('#_edit_device_password').val();
     password1 = $('#_edit_device_password1').val();
-    super_account = $('#_edit_device_super_account').val();
+    account = $('#_edit_device_super_account').val();
     if ($('#edit_device_login_method').val()==='11' && $('#edit_device_protocol').val()!=='1') {
         if (password == "" || password1 == "") {
             if (password == "") {
@@ -873,9 +873,9 @@ $('#editdeviceButton').off().click(function(){
                 groupid:$('#edit_device_group').val(),
                 description:$('#edit_device_description').val(),
                 login_method:login_method,
-                super_account:super_account,
-                super_password:password,
-                super_password1:password1,
+                account:account,
+                password:password,
+				is_super:$('#is_super')[0].checked?1:0,
                 protocol_id:$('#edit_device_protocol').find("option:selected").val(),
                 port:$('#edit_device_port').val(),
                 ssh_key:$('#edit_device_ssh_key').find("option:selected").val(),
@@ -1424,6 +1424,7 @@ function deviceaccount(device_id){
                     password:password,
                     querypassword:_password,
                     file_id:$('#file_id').val(),
+					is_super:$('#is_super')[0].checked?1:0,
                     protocol_id:$('#edit_account_protocol').val(),
                     port:$('#edit_account_port').val(),
                     ssh_key:$('#edit_account_ssh_key').val(),

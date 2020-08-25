@@ -62,7 +62,6 @@
   <script>
       $(document).ready(function (){
      let rolename=$("#rolename").text();
-          console.log(rolename);
           if(rolename=="系统管理员"){
            $("#log_link").css("display","inline-block");
           }
@@ -75,7 +74,6 @@
               success: function(data) {
                   $('#log_link').html('');
                   const datas = data.data;
-                  console.log(datas)
                   datas.sort(function (a,b) {
                       if(a.sort === b.sort){//如果sort相同，按照age的降序
                           return b.name - a.name

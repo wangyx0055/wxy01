@@ -19,37 +19,26 @@ public class CmdPolicyGroupServiceImpl implements CmdPolicyGroupService{
 	private CmdPolicyGroupDao CmdPolicyGroupDao;
 
 	@Override
-	public boolean delCmdPolicyGroup(List<String> ids) {
-		// TODO Auto-generated method stub
-		return this.CmdPolicyGroupDao.delCmdPolicyGroup(ids);
-	}
-
-	@Override
 	public List<Object> findAll(CmdPolicyGroup cmdPolicyGroup, int page_start, int page_length) {
 		return CmdPolicyGroupDao.findAll(cmdPolicyGroup, page_start, page_length);
 	}
 
 	@Override
-	public boolean addCmdPolicyGroup(Integer policy_id,List<Integer> usergroup,List<Integer> devicegroup) {
-		// TODO Auto-generated method stub
+	public Boolean addCmdPolicyGroup(Integer policy_id,List<Integer> usergroup,List<Integer> devicegroup) {
 		Boolean flag,flag1;
 		flag = CmdPolicyGroupDao.addCmdPolicyUserGroup(policy_id,usergroup);
 		flag1 = CmdPolicyGroupDao.addCmdPolicyDeviceGroup(policy_id,devicegroup);
-		if (flag == flag1){
-			return true;
-		}else{
-			return false;
-		}
+		return flag.equals(flag1);
 	}
 
 	@Override
-	public boolean editCmdPolicyUserGroup(Integer policy_id, List<Integer> devicegroup) {
+	public Boolean editCmdPolicyUserGroup(Integer policy_id, List<Integer> devicegroup) {
 		// TODO Auto-generated method stub
 		return this.CmdPolicyGroupDao.editCmdPolicyUserGroup(policy_id, devicegroup);
 	}
 	
 	@Override
-	public boolean editCmdPolicyDeviceGroup(Integer policy_id, List<Integer> devicegroup) {
+	public Boolean editCmdPolicyDeviceGroup(Integer policy_id, List<Integer> devicegroup) {
 		// TODO Auto-generated method stub
 		return this.CmdPolicyGroupDao.editCmdPolicyDeviceGroup(policy_id, devicegroup);
 	}

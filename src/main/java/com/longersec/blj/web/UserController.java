@@ -554,7 +554,6 @@ public class UserController {
 		if(result.getBoolean("success")){
 			user.setGoogle_auth_token_used(0);
 			user.setGoogle_auth_key(GoogleAuthenticatorUtil.createSecretKey());
-			user.setGroupid(((User)(userService.getUserByID(user.getId().toString()))).getGroupid());
 			Boolean r = userService.editUser(user);
 			result.put("success", r?true:false);
 			if (r==false){

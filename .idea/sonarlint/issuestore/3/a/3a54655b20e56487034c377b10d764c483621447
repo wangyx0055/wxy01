@@ -1,0 +1,18 @@
+
+5
+java:S1640"Convert this Map to an EnumMap.(‰ÅÉŸ
+‡
+java:S1130A"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(…§Ë½ıÿÿÿÿ
+‚
+java:S1130)"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ù¼©á
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¥À°óÿÿÿÿÿ
+M
+java:S11354"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+U
+java:S1118":Add a private constructor to hide the implicit public one.(¿²Ö—øÿÿÿÿ
+t
+java:S14887"^Immediately return this expression instead of assigning it to the temporary variable "base64".(À™İ¢
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ø¦çëıÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÕËÉÚşÿÿÿÿ
+E
+java:S3740"/Provide the parametrized type for this generic.(‰ÅÉŸ

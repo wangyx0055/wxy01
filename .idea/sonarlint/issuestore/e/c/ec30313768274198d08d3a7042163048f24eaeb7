@@ -1,0 +1,287 @@
+
+C
+java:S1481é"'Remove this unused "b1" local variable.(šÎé¼ÿÿÿÿÿ
+R
+java:S1854Ï";Remove this useless assignment to local variable "objects".(Áõı¶
+A
+java:S5411‹"*Use the primitive boolean expression here.(€ÔÍñ
+F
+java:S5411Ì"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+R	java:S107æ"<Method has 8 parameters, which is greater than 7 authorized.(†«ÁÈ
+F
+java:S5411¯"*Use the primitive boolean expression here.(á¥ÿÿÿÿÿ
+C
+java:S1481Ï",Remove this unused "objects" local variable.(Áõı¶
+4
+java:S1128"Remove this duplicated import.(‘óßÅ
+c
+java:S1192±"LDefine a constant instead of duplicating this literal "</arg3>\r\n" 3 times.(£àÉ®
+Q
+java:S2479Ë":Remove the non-escaped \u0009 character from this literal.(£àÉ®
+]
+java:S1854½"FRemove this useless assignment to local variable "resultConfigLogins".(­ÄúÉ
+?
+java:S1125®"(Remove the literal "true" boolean value.(€ÔÍñ
+[
+java:S1858ß"?"group" returns a string, there's no need to call "toString()".(íÿ›şüÿÿÿÿ
+n
+java:S3776•"RRefactor this method to reduce its Cognitive Complexity from 82 to the 15 allowed.(”™¸Íÿÿÿÿÿ
+W	java:S125ÿ"<This block of commented-out lines of code should be removed.(ÍÊÖƒûÿÿÿÿ
+Ñ
+java:S1192­"´Define a constant instead of duplicating this literal "å¯†ç å¤æ‚åº¦ï¼šå¯†ç é•¿åº¦ä¸º8-32ä¸ªå­—ç¬¦ï¼Œä¸”åŒ…å«å¤§å°å†™å­—æ¯ã€æ•°å­—å’Œç‰¹æ®Šå­—ç¬¦ï¼Œä¸æ”¯æŒç©ºæ ¼" 3 times.(æÙöİúÿÿÿÿ
+Q
+java:S2479é":Remove the non-escaped \u0009 character from this literal.(–£î
+i
+java:S1871±"MThis branch's code block is the same as the block for the branch on line 170.(Æ»¥¸ùÿÿÿÿ
+O
+java:S1854\"9Remove this useless assignment to local variable "_user".(ş¢ô
+F
+java:S1066¿"/Merge this if statement with the enclosing one.(®Ÿ ´
+O	java:S106Ú"9Replace this use of System.out or System.err by a logger.(­«§ì
+Q
+java:S2479Å":Remove the non-escaped \u0009 character from this literal.(È£é²
+Q
+java:S2479ã":Remove the non-escaped \u0009 character from this literal.(ñ°Òí
+F
+java:S5411İ"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+V
+java:S2479Ê":Remove the non-escaped \u0009 character from this literal.(ô†€Ëøÿÿÿÿ
+p
+java:S2293¾"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇÑ÷Ú
+P
+java:S2479³":Remove the non-escaped \u0009 character from this literal.(Ù‡Ç=
+?
+java:S1125‹"(Remove the literal "true" boolean value.(€ÔÍñ
+[
+java:S1854İ"DRemove this useless assignment to local variable "resultJsonObject".(±ø™
+Q
+java:S2479±":Remove the non-escaped \u0009 character from this literal.(£àÉ®
+Q
+java:S2479Î":Remove the non-escaped \u0009 character from this literal.(ÆûÚ—
+V
+java:S2479Ó":Remove the non-escaped \u0009 character from this literal.(Öä÷îşÿÿÿÿ
+W	java:S125ô"<This block of commented-out lines of code should be removed.(Ùƒ¦úùÿÿÿÿ
+t
+java:S2293Z"YReplace the type specification in this constructor call with the diamond operator ("<>").(´²€¦ùÿÿÿÿ
+Z
+java:S1854Y"?Remove this useless assignment to local variable "resultUsers".(„€¼©øÿÿÿÿ
+A
+java:S5411®"*Use the primitive boolean expression here.(€ÔÍñ
+V
+java:S2479¯":Remove the non-escaped \u0009 character from this literal.(æ¬Å¯ıÿÿÿÿ
+O	java:S106º"9Replace this use of System.out or System.err by a logger.(óƒø„
+V
+java:S2479Ì":Remove the non-escaped \u0009 character from this literal.(’äø‰üÿÿÿÿ
+Q
+java:S2479š":Remove the non-escaped \u0009 character from this literal.(ñ°Òí
+V
+java:S2479ç":Remove the non-escaped \u0009 character from this literal.(°Éøúÿÿÿÿÿ
+k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+V
+java:S1858¿"?"group" returns a string, there's no need to call "toString()".(®Ÿ ´
+E
+java:S1125Œ")Remove the literal "false" boolean value.(á¥ÿÿÿÿÿ
+O	java:S106Ô"9Replace this use of System.out or System.err by a logger.(óƒø„
+p
+java:S2293¤"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇÑ÷Ú
+V
+java:S2479æ":Remove the non-escaped \u0009 character from this literal.(æ¬Å¯ıÿÿÿÿ
+P
+java:S2479¶":Remove the non-escaped \u0009 character from this literal.(áĞ«
+V
+java:S2479È":Remove the non-escaped \u0009 character from this literal.(Öä÷îşÿÿÿÿ
+W
+java:S1854¤"@Remove this useless assignment to local variable "configLogins".(ÇÑ÷Ú
+b
+java:S1192‰"FDefine a constant instead of duplicating this literal "UTF-8" 6 times.(…¢Şøÿÿÿÿ
+9
+java:S1128"Remove this duplicated import.(£¾àÏûÿÿÿÿ
+P
+java:S2479Ñ":Remove the non-escaped \u0009 character from this literal.(Ÿƒ»(
+h
+java:S1192²"LDefine a constant instead of duplicating this literal "</arg4>\r\n" 3 times.(’äø‰üÿÿÿÿ
+Q
+java:S2479Ñ":Remove the non-escaped \u0009 character from this literal.(ñ°Òí
+d
+java:S1192t"IDefine a constant instead of duplicating this literal "success" 34 times.(ÈçâÙÿÿÿÿÿ
+Q
+java:S2479«":Remove the non-escaped \u0009 character from this literal.(È£é²
+[
+java:S1854¦"DRemove this useless assignment to local variable "resultJsonObject".(±ø™
+9
+java:S1128
+"Remove this duplicated import.(¬ºÉÈùÿÿÿÿ
+p
+java:S2293£"YReplace the type specification in this constructor call with the diamond operator ("<>").(­ÄúÉ
+V
+java:S2479É":Remove the non-escaped \u0009 character from this literal.(æ¬Å¯ıÿÿÿÿ
+W
+java:S1854¼"@Remove this useless assignment to local variable "configLogins".(ÇÑ÷Ú
+O	java:S106Ú"9Replace this use of System.out or System.err by a logger.(óƒø„
+f	java:S117P"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+T	java:S106ö"9Replace this use of System.out or System.err by a logger.(—½¥Ìüÿÿÿÿ
+P
+java:S2479Ğ":Remove the non-escaped \u0009 character from this literal.(áĞ«
+Q
+java:S2479¬":Remove the non-escaped \u0009 character from this literal.(ñ°Òí
+V
+java:S2479®":Remove the non-escaped \u0009 character from this literal.(Öä÷îşÿÿÿÿ
+s
+java:S1192¤"WDefine a constant instead of duplicating this literal "<return>(.*?)</return>" 5 times.(õÕøÿÿÿÿ
+V
+java:S2479ê":Remove the non-escaped \u0009 character from this literal.(…ÓŸèşÿÿÿÿ
+P
+java:S2479 ":Remove the non-escaped \u0009 character from this literal.(Ÿƒ»(
+l	java:S117¸"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¹Ş‰üÿÿÿÿ
+I
+java:S1481Î"-Remove this unused "objects1" local variable.(á„æŞøÿÿÿÿ
+V
+java:S2479Ô":Remove the non-escaped \u0009 character from this literal.(æ¬Å¯ıÿÿÿÿ
+F
+java:S1066Ù"/Merge this if statement with the enclosing one.(®Ÿ ´
+V
+java:S1858õ"?"group" returns a string, there's no need to call "toString()".(®Ÿ ´
+V
+java:S2479›":Remove the non-escaped \u0009 character from this literal.(°¿ıÿÿÿÿ
+Q
+java:S2479":Remove the non-escaped \u0009 character from this literal.(«‡É«
+Q
+java:S2479â":Remove the non-escaped \u0009 character from this literal.(È£é²
+V
+java:S2479²":Remove the non-escaped \u0009 character from this literal.(’äø‰üÿÿÿÿ
+p
+java:S2293½"YReplace the type specification in this constructor call with the diamond operator ("<>").(­ÄúÉ
+Q
+java:S2479í":Remove the non-escaped \u0009 character from this literal.(åˆ´é
+k	java:S117~"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+?
+java:S1125ù"(Remove the literal "true" boolean value.(€ÔÍñ
+c
+java:S1192"LDefine a constant instead of duplicating this literal "</arg2>\r\n" 3 times.(«‡É«
+]
+java:S1854£"FRemove this useless assignment to local variable "resultConfigLogins".(­ÄúÉ
+f	java:S117˜"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İèÜ'
+V
+java:S2479ä":Remove the non-escaped \u0009 character from this literal.(‰şùÿÿÿÿ
+O	java:S106ï"9Replace this use of System.out or System.err by a logger.(óƒø„
+P
+java:S2479Ç":Remove the non-escaped \u0009 character from this literal.(³ƒb
+]
+java:S1854»"FRemove this useless assignment to local variable "resultConfigLogins".(­ÄúÉ
+V
+java:S2479°":Remove the non-escaped \u0009 character from this literal.(ÄÃ¯úÿÿÿÿ
+b
+java:S1192³"LDefine a constant instead of duplicating this literal "</arg5>\r\n" 3 times.(Ù‡Ç=
+Q
+java:S2479™":Remove the non-escaped \u0009 character from this literal.(È£é²
+V
+java:S2479":Remove the non-escaped \u0009 character from this literal.(æ¬Å¯ıÿÿÿÿ
+9
+java:S1128	"Remove this duplicated import.(Š —¼úÿÿÿÿ
+E
+java:S1125¯")Remove the literal "false" boolean value.(á¥ÿÿÿÿÿ
+=
+java:S1172æ"&Remove these unused method parameters.(†«ÁÈ
+W	java:S125¾"<This block of commented-out lines of code should be removed.(Ùƒ¦úùÿÿÿÿ
+F
+java:S5411ç"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+l	java:S117¸"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×¹Ş‰üÿÿÿÿ
+h
+java:S1192œ"LDefine a constant instead of duplicating this literal "</arg0>\r\n" 5 times.(Öä÷îşÿÿÿÿ
+u
+java:S1192¯"YDefine a constant instead of duplicating this literal "æ¬¡è®¾ç½®çš„å¯†ç ç›¸åŒ" 3 times.(àÂÁÊıÿÿÿÿ
+g	java:S117‘"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+Û
+java:S1192˜"¾Define a constant instead of duplicating this literal "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.biolink.biokee.com/\">\r\n" 5 times.(Ç²Ó¨ÿÿÿÿÿ
+t
+java:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(„€¼©øÿÿÿÿ
+U
+java:S4719‰"9Replace charset name argument with StandardCharsets.UTF_8(…¢Şøÿÿÿÿ
+V
+java:S2479è":Remove the non-escaped \u0009 character from this literal.(´³çÕøÿÿÿÿ
+P
+java:S2479·":Remove the non-escaped \u0009 character from this literal.(Ÿƒ»(
+p
+java:S2293»"YReplace the type specification in this constructor call with the diamond operator ("<>").(­ÄúÉ
+P
+java:S2479×":Remove the non-escaped \u0009 character from this literal.(Ÿƒ»(
+[
+java:S1858¨"?"group" returns a string, there's no need to call "toString()".(áòş—üÿÿÿÿ
+h
+java:S1192"LDefine a constant instead of duplicating this literal "</arg1>\r\n" 5 times.(æ¬Å¯ıÿÿÿÿ
+p
+java:S2293¼"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇÑ÷Ú
+P
+java:S2479Í":Remove the non-escaped \u0009 character from this literal.(Ù‡Ç=
+Q
+java:S2479Ø":Remove the non-escaped \u0009 character from this literal.(åˆ´é
+Q
+java:S2479´":Remove the non-escaped \u0009 character from this literal.(ÆûÚ—
+Q
+java:S2479ë":Remove the non-escaped \u0009 character from this literal.(–½«Ü
+Q
+java:S2479Ò":Remove the non-escaped \u0009 character from this literal.(åˆ´é
+V
+java:S2479Õ":Remove the non-escaped \u0009 character from this literal.(çÏøÿÿÿÿ
+P
+java:S2479­":Remove the non-escaped \u0009 character from this literal.(³ƒb
+k	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úå‚Áüÿÿÿÿ
+Q
+java:S2479¸":Remove the non-escaped \u0009 character from this literal.(åˆ´é
+k	java:S117Q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+F
+java:S5411­"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+P
+java:S2479ì":Remove the non-escaped \u0009 character from this literal.(Ÿƒ»(
+V
+java:S1858Ù"?"group" returns a string, there's no need to call "toString()".(®Ÿ ´
+@
+java:S1481\"*Remove this unused "_user" local variable.(ş¢ô
+l	java:S117¢"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®—µ¥ıÿÿÿÿ
+F
+java:S5411Œ"*Use the primitive boolean expression here.(á¥ÿÿÿÿÿ
+V
+java:S2479œ":Remove the non-escaped \u0009 character from this literal.(Öä÷îşÿÿÿÿ
+k	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ‡Ä¼øÿÿÿÿ
+R
+java:S1854é"6Remove this useless assignment to local variable "b1".(šÎé¼ÿÿÿÿÿ
+V
+java:S2479Ÿ":Remove the non-escaped \u0009 character from this literal.(É§Ó”ıÿÿÿÿ
+P
+java:S2479Ï":Remove the non-escaped \u0009 character from this literal.(õºú
+V
+java:S2479å":Remove the non-escaped \u0009 character from this literal.(Öä÷îşÿÿÿÿ
+Y
+java:S1126„"BReplace this if-then-else statement by a single method invocation.(ÚÀşõ
+W	java:S125Ø"<This block of commented-out lines of code should be removed.(Ùƒ¦úùÿÿÿÿ
+V
+java:S2479Ò":Remove the non-escaped \u0009 character from this literal.(Ğäè”ùÿÿÿÿ
+V
+java:S2479Ö":Remove the non-escaped \u0009 character from this literal.(Ÿõúÿÿÿÿ
+r
+java:S1192¯"VDefine a constant instead of duplicating this literal "æ–°å¯†ç ä¸èƒ½ä¸å‰" 3 times.(àÂÁÊıÿÿÿÿ
+P
+java:S2479µ":Remove the non-escaped \u0009 character from this literal.(õºú
+O	java:S106£"9Replace this use of System.out or System.err by a logger.(óƒø„
+W
+java:S1854¾"@Remove this useless assignment to local variable "configLogins".(ÇÑ÷Ú
+:
+java:S1905"'Remove this unnecessary cast to "User".(½íÍ
+
+A
+java:S5411ù"*Use the primitive boolean expression here.(€ÔÍñ
+X
+java:S1854Î"<Remove this useless assignment to local variable "objects1".(á„æŞøÿÿÿÿ
+L
+java:S1481İ"5Remove this unused "resultJsonObject" local variable.(±ø™
+T	java:S106À"9Replace this use of System.out or System.err by a logger.(ëƒÿàùÿÿÿÿ
+l	java:S117Ù"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®—µ¥ıÿÿÿÿ
+f	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş¢ô
+Q
+java:S2479Ğ":Remove the non-escaped \u0009 character from this literal.(È£é²
+Q
+java:S2479¡":Remove the non-escaped \u0009 character from this literal.(åˆ´é
+Q
+java:S2479Æ":Remove the non-escaped \u0009 character from this literal.(ñ°Òí
+F
+java:S1066õ"/Merge this if statement with the enclosing one.(®Ÿ ´

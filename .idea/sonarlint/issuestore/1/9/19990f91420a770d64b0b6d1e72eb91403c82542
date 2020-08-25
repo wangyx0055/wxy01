@@ -1,0 +1,29 @@
+
+w
+java:S1488@"\Immediately return this expression instead of assigning it to the temporary variable "user".(îë¯şÿÿÿÿ
+l	java:S116"RRename this field "UserDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸¿Ê¤ıÿÿÿÿ
+M
+java:S1135^"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S1135&"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S1135X"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+k	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­‚µÅûÿÿÿÿ
+M
+java:S1135R"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+U
+java:S1128":Remove this unused import 'com.longersec.blj.dao.RoleDao'.(¶›¥¹ûÿÿÿÿ
+V
+java:S1128";Remove this unused import 'com.longersec.blj.dao.GroupDao'.(÷—µıÿÿÿÿ
+M
+java:S1135d"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S1135L"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+k	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­‚µÅûÿÿÿÿ
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÂüÿÿÿÿ
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÂüÿÿÿÿ
+M
+java:S1135F"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÂüÿÿÿÿ
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÆÉı›Â.

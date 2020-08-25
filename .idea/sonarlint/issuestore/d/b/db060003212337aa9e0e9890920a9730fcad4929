@@ -1,0 +1,11 @@
+
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΐΙ ψÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΐΙ ψÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ή
+Z
+java:S1128"?Remove this unused import 'com.longersec.blj.domain.DTO.Users'.(ΰξ³ώÿÿÿÿ
+k	java:S117
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Χώϊÿÿÿÿ
+j
+java:S1128"HRemove this unused import 'com.longersec.blj.domain.AccessPolicyApppub'.(Ώªÿÿÿÿÿ8ªθ²Β.
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ινεϊÿÿÿÿ

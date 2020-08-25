@@ -1,0 +1,95 @@
+
+F
+java:S3740Ó"/Provide the parametrized type for this generic.(ÒòÒ
+l	java:S117ë"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›¯ûÕÿÿÿÿÿ
+p
+java:S3012æ"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(ÕÕÙÌ
+C
+java:S14812"(Remove this unused "obj" local variable.(İ‡´§øÿÿÿÿ
+|
+java:S1192M"aDefine a constant instead of duplicating this literal "com.sun.jndi.ldap.LdapCtxFactory" 3 times.(ƒÒ¹íúÿÿÿÿ
+d
+java:S1854x"IRemove this useless assignment to local variable "UF_DONT_EXPIRE_PASSWD".(×´™Øÿÿÿÿÿ
+S
+java:S4719"<Replace charset name argument with StandardCharsets.UTF_16LE(œµ²Ù
+K
+java:S1066±"/Merge this if statement with the enclosing one.(„»Éüÿÿÿÿ
+O	java:S106‡"9Replace this use of System.out or System.err by a logger.(âãñ–
+Q	java:S125""<This block of commented-out lines of code should be removed.(Ø†°¡
+g	java:S117³"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ªé
+p
+java:S2293°"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ï‹¯Ø
+k	java:S117x"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×´™Øÿÿÿÿÿ
+T
+java:S1197ÿ"8Move the array designator from the variable to the type.(´àÚÂúÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏÔëûÿÿÿÿ
+b
+java:S1192V"GDefine a constant instead of duplicating this literal "simple" 3 times.(ÉÕøÚùÿÿÿÿ
+J
+java:S1172Ñ"3Remove this unused method parameter "configLdapAd".(²¥ğä
+R
+java:S18542"7Remove this useless assignment to local variable "obj".(İ‡´§øÿÿÿÿ
+a
+java:S1858Æ"E"getUsername" returns a string, there's no need to call "toString()".(ÈÜçÅıÿÿÿÿ
+V	java:S125 "<This block of commented-out lines of code should be removed.(ÏÀÆûúÿÿÿÿ
+O	java:S106Ï"9Replace this use of System.out or System.err by a logger.(Å×õ§
+T
+java:S1197"8Move the array designator from the variable to the type.(ŒŒ›üÿÿÿÿ
+Y
+java:S1858Æ"="get" returns a string, there's no need to call "toString()".(ÈÜçÅıÿÿÿÿ
+m
+java:S1149°"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(Ï‹¯Ø
+g	java:S117ä"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÄÊş
+e	java:S117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¦ù-
+†
+java:S1319Ú"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÂÅ¬@
+n	java:S127È"XRefactor the code in order to not assign to this loop counter from within the loop body.(Â¨•ù
+g	java:S117é"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£×ıÇ
+g	java:S117â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ûó¤¡
+d
+java:S1854v"IRemove this useless assignment to local variable "UF_PASSWD_CANT_CHANGE".(çö„òøÿÿÿÿ
+V
+java:S1854†":Remove this useless assignment to local variable "result".(¯üšÌùÿÿÿÿ
+g	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÄõµ
+N
+java:S1135¦"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+h
+java:S3776Ú"RRefactor this method to reduce its Cognitive Complexity from 35 to the 15 allowed.(ÂÅ¬@
+N
+java:S1172."3Remove this unused method parameter "userpassword".(ú¥ºúûÿÿÿÿ
+T	java:S106¢"9Replace this use of System.out or System.err by a logger.(‘é·×üÿÿÿÿ
+U
+java:S1481x":Remove this unused "UF_DONT_EXPIRE_PASSWD" local variable.(×´™Øÿÿÿÿÿ
+O	java:S106Ó"9Replace this use of System.out or System.err by a logger.(ÛéÔ
+e	java:S117w"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áû§Z
+K
+java:S3740Ô"/Provide the parametrized type for this generic.(á¥êÿÿÿÿÿ
+k	java:S117v"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çö„òøÿÿÿÿ
+G
+java:S1481†"+Remove this unused "result" local variable.(¯üšÌùÿÿÿÿ
+l	java:S117›"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÉŒùÿÿÿÿ
+k	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÒ¹íúÿÿÿÿ
+N
+java:S1128"8Remove this unused import 'javax.naming.InitialContext'.(Àÿ£ø
+K
+java:S3740Ş"/Provide the parametrized type for this generic.(Ã¢Ôµúÿÿÿÿ
+
+java:S1130."uRemove the declaration of thrown exception 'javax.naming.NamingException', as it cannot be thrown from method's body.(ú¥ºúûÿÿÿÿ
+O	java:S106Á"9Replace this use of System.out or System.err by a logger.(‡…×
+T	java:S106¤"9Replace this use of System.out or System.err by a logger.(“¦üÿÿÿÿ
+U
+java:S1481v":Remove this unused "UF_PASSWD_CANT_CHANGE" local variable.(çö„òøÿÿÿÿ
+f	java:S117y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëáâ
+T	java:S106›"9Replace this use of System.out or System.err by a logger.(ªéÎöÿÿÿÿÿ
+K
+java:S1066¥"/Merge this if statement with the enclosing one.(´‡÷ıÿÿÿÿ
+E
+java:S1905"/Remove this unnecessary cast to "SearchResult".(‚¯²{
+K
+java:S1066™"/Merge this if statement with the enclosing one.(†ˆß¿ûÿÿÿÿ
+V	java:S125="<This block of commented-out lines of code should be removed.(Õ÷óíÿÿÿÿÿ
+f	java:S117t"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È€Î±
+3
+java:S1643ì"Use a StringBuilder instead.(ôÀŠæ
+i
+java:S11927"SDefine a constant instead of duplicating this literal "userAccountControl" 3 times.(œëÍ½

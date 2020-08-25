@@ -742,12 +742,15 @@ table tr span {
   font-size: 12.5px;
 }
 /*页面小标题*/
+.with-border .box-title .new-header {
+  font-size: 14px!important;
+}
 .new-header {
   padding-left: 15px;
   border-left: 3px solid #1494F7;
   line-height: 1!important;
   display: inline-block !important;
-  font-size: 14px!important;
+  font-size: 16px!important;
 }
 /*下拉框树*/
 #tree ul li {
@@ -10006,34 +10009,30 @@ table tr span {
   background-color: white;
   margin-top: 11px;
   border-radius: 3px;
-  height: 385px;
+  height: 253px;
 }
 .index_body .box_visit .visit_hr {
-  border: 0.7px solid #E8E8E8;
+  border: 0.4px solid #E8E8E8;
   right: 0;
-  left: 40px;
+  left: 20px;
   margin: 0px;
   position: absolute;
 }
 .index_body .box_visit > div {
-  height: 88px;
+  height: 45px;
   margin-top: -10px;
 }
 .index_body .box_visit > div > img {
-  width: 50px;
-  height: 50px;
-  margin-top: 16px;
-  margin-left: 15px;
+  width: 45px;
+  height: 45px;
+  margin-top: 10px;
+  margin-left: 43px;
 }
 .index_body .box_visit > div > div {
   float: right;
   position: absolute;
-  margin-left: 110px;
-  margin-top: -50px;
-}
-.index_body .box_visit > div > div > span:nth-of-type(1) {
-  color: black;
-  font-size: 14px;
+  margin-left: 51px;
+  margin-top: 5px;
 }
 .index_body .box_visit > div > div > span:nth-of-type(1) > span {
   color: red;
@@ -10042,8 +10041,9 @@ table tr span {
 }
 .index_body .box_visit > div > div > span:nth-of-type(2) {
   color: #1494F7;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
+  margin-left: 119px;
 }
 .index_body .products-list .product-info .product-title {
   color: #454040;

@@ -118,9 +118,9 @@
 	<select id="findAll" resultMap="BaseResultMap, deviceAccountRecordCounts">
 		SELECT 
 		SQL_CALC_FOUND_ROWS 
-		'' password ,a.*,d.ip,d.name device_name,g.name groupname,t.name typename, p.name protocolname,'' password
+		'' password ,a.*,d.ip,d.name device_name,t.name typename, p.name protocolname,'' password
 		FROM lsblj_device_account a LEFT JOIN lsblj_device d ON a.device_id=d.id
-		    LEFT JOIN lsblj_group g ON d.groupid=g.id LEFT JOIN lsblj_device_type t ON d.os_type=t.id
+		    LEFT JOIN lsblj_device_type t ON d.os_type=t.id
 		    LEFT JOIN lsblj_protocol p ON a.protocol_id=p.id
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start},#{page_length}

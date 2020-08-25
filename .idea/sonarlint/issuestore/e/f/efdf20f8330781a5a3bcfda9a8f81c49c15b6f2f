@@ -1,0 +1,65 @@
+
+^
+java:S1126µ"BReplace this if-then-else statement by a single method invocation.(øÔ÷ºûÿÿÿÿ
+t
+java:S22938"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÙšúÿÿÿÿ
+=
+java:S1481“"&Remove this unused "d" local variable.(•¯û
+u
+java:S2293Å"YReplace the type specification in this constructor call with the diamond operator ("<>").(Óû†Úøÿÿÿÿ
+d
+java:S1854Ä"HRemove this useless assignment to local variable "resultDeviceAccounts".(ßÙšúÿÿÿÿ
+]
+java:S11927"GDefine a constant instead of duplicating this literal "length" 3 times.(š«õŠ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+f	java:S117y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+l	java:S117¥"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…šú·şÿÿÿÿ
+a
+java:S1128"KRemove this unused import 'com.longersec.blj.service.UserGroupUserService'.(‡éî
+]
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.DeviceRecord'.(˜©Öğøÿÿÿÿ
+k	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+^
+java:S1126«"BReplace this if-then-else statement by a single method invocation.(é‡«ÿÿÿÿÿ
+u
+java:S2293Ä"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÙšúÿÿÿÿ
+f	java:S117j"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+f	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+l	java:S117Â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+g	java:S117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıø·¬
+g	java:S117Ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+W
+java:S1128"<Remove this unused import 'com.longersec.blj.domain.Device'.(ö©Ø›üÿÿÿÿ
+g	java:S117¤"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æºŞ¼
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+d
+java:S1192B"IDefine a constant instead of duplicating this literal "success" 20 times.(ÈçâÙÿÿÿÿÿ
+c
+java:S18548"HRemove this useless assignment to local variable "resultDeviceAccounts".(ßÙšúÿÿÿÿ
+c
+java:S1854z"HRemove this useless assignment to local variable "resultDeviceAccounts".(ßÙšúÿÿÿÿ
+g	java:S117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıø·¬
+k
+java:S1192D"PDefine a constant instead of duplicating this literal "recordsFiltered" 3 times.(º´¦¶şÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+t
+java:S2293{"YReplace the type specification in this constructor call with the diamond operator ("<>").(Óû†Úøÿÿÿÿ
+L
+java:S1854“"5Remove this useless assignment to local variable "d".(•¯û
+h
+java:S1192C"MDefine a constant instead of duplicating this literal "recordsTotal" 3 times.(®Ü»Øşÿÿÿÿ
+t
+java:S22939"YReplace the type specification in this constructor call with the diamond operator ("<>").(Óû†Úøÿÿÿÿ
+f	java:S117w"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÊ¥ÿ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+t
+java:S2293z"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÙšúÿÿÿÿ
+a
+java:S11926"FDefine a constant instead of duplicating this literal "start" 3 times.(¯É‚¥øÿÿÿÿ
+k	java:S117x"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ

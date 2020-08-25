@@ -1,0 +1,13 @@
+
+7javascript:S1116m"Unnecessary semicolon.(ôŸìúÿÿÿÿ
+„javascript:S2692ë"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+„javascript:S2692Ä"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+Qjavascript:S1481­"5Remove the declaration of the unused 'data' variable.(ŞÅ±]
+Njavascript:S1854­"2Remove this useless assignment to variable "data".(ŞÅ±]
+„javascript:S2692‡"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+„javascript:S2692"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+Ojavascript:S1854æ"2Remove this useless assignment to variable "strs".(êÉÜ
+Ojavascript:S1854–"2Remove this useless assignment to variable "strs".(êÉÜ
+Ojavascript:S1854Æ"2Remove this useless assignment to variable "strs".(êÉÜ
+yjavascript:S2703”"\Add the "let", "const" or "var" keyword to this declaration of "option" to make it explicit.(ÖÑù‰
+~javascript:S2703ê"\Add the "let", "const" or "var" keyword to this declaration of "$_date" to make it explicit.(»üÍÿÿÿÿÿ

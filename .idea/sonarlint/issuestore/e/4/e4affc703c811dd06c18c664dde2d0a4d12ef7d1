@@ -1,0 +1,7 @@
+
+c	java:S100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ôÌß
+j	java:S116"URename this field "log_manage" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ÇûÙ
+f	java:S117""QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ôÌß
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïÆ“–
+„
+java:S2637"i"log_manage" is marked "javax.validation.constraints.NotNull" but is not initialized in this constructor.(´•ôÃûÿÿÿÿ

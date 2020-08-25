@@ -1,0 +1,164 @@
+
+e
+java:S1192£"IDefine a constant instead of duplicating this literal "success" 20 times.(ÈçâÙÿÿÿÿÿ
+g	java:S117¼"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+J
+java:S1481¡".Remove this unused "jsonArray" local variable.(ˆ¶£œúÿÿÿÿ
+e
+java:S1192L"ODefine a constant instead of duplicating this literal "ipv6_autoconf=" 6 times.(¤å·Í
+3
+java:S1643ú"Use a StringBuilder instead.(¬ò®
+F
+java:S5411"*Use the primitive boolean expression here.(è¥Ğÿÿÿÿÿ
+c
+java:S18549"HRemove this useless assignment to local variable "resultConfigNetworks".(à²‡£ÿÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+D
+java:S1125±"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+k
+java:S1192Ë"ODefine a constant instead of duplicating this literal "IPV6_AUTOCONF=" 3 times.(¬îÇ¸üÿÿÿÿ
+]
+java:S1858ƒ"F"getParameter" returns a string, there's no need to call "toString()".(®æ—Ô
+]
+java:S1192V"GDefine a constant instead of duplicating this literal "ifcfg-" 4 times.(‡Ü
+3
+java:S1643ˆ"Use a StringBuilder instead.(ï±œí
+A
+java:S5411š"*Use the primitive boolean expression here.(‰¥óõ
+R
+java:S1854["7Remove this useless assignment to local variable "str".(ÙÀÚÎùÿÿÿÿ
+a
+java:S1192z"KDefine a constant instead of duplicating this literal "bootproto=" 3 times.(àˆÑ¸
+F
+java:S14818"0Remove this unused "page_length" local variable.(š«õŠ
+b
+java:S2095Z"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ÕÃà·
+]
+java:S1192^"GDefine a constant instead of duplicating this literal "device" 3 times.(“’„§
+\
+java:S2147¯"ECombine this catch with the one at line 299, which has the same body.(ï­£Ä
+M
+java:S2692€"10 is a valid index, but is ignored by this check.(„äğÅùÿÿÿÿ
+@
+java:S1481;"*Remove this unused "total" local variable.(â—˜¯
+h
+java:S2095Y"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(€Ñçòüÿÿÿÿ
+k	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+f	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+g
+java:S1192‡"PDefine a constant instead of duplicating this literal "ipv6_defaultgw=" 3 times.(¬•Õ
+S
+java:S1854á"7Remove this useless assignment to local variable "str".(ÙÀÚÎùÿÿÿÿ
+g	java:S117ì"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·›Ûÿ
+b
+java:S1192e"LDefine a constant instead of duplicating this literal "ipv6netmask" 3 times.(îˆÁØ
+Y
+java:S18547">Remove this useless assignment to local variable "page_start".(¯É‚¥øÿÿÿÿ
+N
+java:S1135±"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+F
+java:S5411±"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+F
+java:S5411”"*Use the primitive boolean expression here.(òû¢œüÿÿÿÿ
+t
+java:S2293W"YReplace the type specification in this constructor call with the diamond operator ("<>").(€äÀøÿÿÿÿÿ
+8
+java:S1643ƒ"Use a StringBuilder instead.(Ëïş ûÿÿÿÿ
+J
+java:S14817"/Remove this unused "page_start" local variable.(¯É‚¥øÿÿÿÿ
+8
+java:S1643÷"Use a StringBuilder instead.(¦—‡Ğüÿÿÿÿ
+R
+java:S1128"7Remove this unused import 'org.aspectj.weaver.ast.Var'.(˜Ä¥Ùùÿÿÿÿ
+c
+java:S1192k"MDefine a constant instead of duplicating this literal "ipv6autoconf" 3 times.(è¥à
+f	java:S117ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–º·%
+l	java:S117ë"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ß€ÿÿÿÿÿ
+W	java:S125Ó"<This block of commented-out lines of code should be removed.(ì½ñÿúÿÿÿÿ
+t
+java:S22939"YReplace the type specification in this constructor call with the diamond operator ("<>").(à²‡£ÿÿÿÿÿ
+l	java:S117î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ¾óıÿÿÿÿ
+\
+java:S2147˜"ECombine this catch with the one at line 149, which has the same body.(ï­£Ä
+3
+java:S1643€"Use a StringBuilder instead.(ˆñÅ
+R	java:S125œ"<This block of commented-out lines of code should be removed.(Ÿ›Ì®
+@
+java:S5411‹"*Use the primitive boolean expression here.(Ø—í1
+^
+java:S1192r"HDefine a constant instead of duplicating this literal "ipaddr=" 3 times.(â›à
+]
+java:S1858ƒ"F"getParameter" returns a string, there's no need to call "toString()".(®æ—Ô
+X
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.ApppubServer'.(·²µï
+l	java:S117é"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿç¡Úúÿÿÿÿ
+8
+java:S1643†"Use a StringBuilder instead.(ü†¦Åøÿÿÿÿ
+3
+java:S1643ô"Use a StringBuilder instead.(şã¯á
+Y
+java:S1854¡"=Remove this useless assignment to local variable "jsonArray".(ˆ¶£œúÿÿÿÿ
+T	java:S106¼"9Replace this use of System.out or System.err by a logger.(¥ğá¬şÿÿÿÿ
+_
+java:S1192t"IDefine a constant instead of duplicating this literal "netmask=" 3 times.(ü¶Øõ
+3
+java:S1643É"Use a StringBuilder instead.(ªÑ£ô
+o
+java:S2293<"YReplace the type specification in this constructor call with the diamond operator ("<>").(ùåÊŸ
+N
+java:S1135­"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+g	java:S117è"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞØ—ÿ
+g
+java:S1192J"QDefine a constant instead of duplicating this literal "networking_ipv6=" 3 times.(«Õ»•
+g	java:S117í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İúİª
+F
+java:S5411—"*Use the primitive boolean expression here.(—ğ¿İûÿÿÿÿ
+h
+java:S3776¸"RRefactor this method to reduce its Cognitive Complexity from 50 to the 15 allowed.(ÜÎôY
+8
+java:S1643Ë"Use a StringBuilder instead.(¬îÇ¸üÿÿÿÿ
+h
+java:S2095¥"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(±íîğşÿÿÿÿ
+N
+java:S1135™"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+8
+java:S1643Í"Use a StringBuilder instead.(¿Šñãşÿÿÿÿ
+_
+java:S1192d"IDefine a constant instead of duplicating this literal "ipv6addr" 3 times.(š­ú›
+u
+java:S2293İ"YReplace the type specification in this constructor call with the diamond operator ("<>").(€äÀøÿÿÿÿÿ
+F
+java:S5411‘"*Use the primitive boolean expression here.(¾·¡ùÿÿÿÿ
+T
+java:S14819"9Remove this unused "resultConfigNetworks" local variable.(à²‡£ÿÿÿÿÿ
+R	java:S125Ë"<This block of commented-out lines of code should be removed.(¿‰¹¦
+`
+java:S1192~"JDefine a constant instead of duplicating this literal "ipv6addr=" 3 times.(’Ã÷º
+N
+java:S1135–"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+3
+java:S1643ı"Use a StringBuilder instead.(å¶è•
+n
+java:S2293:"YReplace the type specification in this constructor call with the diamond operator ("<>").(½ıĞ
+d
+java:S1192v"IDefine a constant instead of duplicating this literal "gateway=" 3 times.(ˆİÄ„úÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+A
+java:S5411"*Use the primitive boolean expression here.(ÅÊÖ×
+n
+java:S1192á"RDefine a constant instead of duplicating this literal "IPè¾“å…¥ä¸æ­£ç¡®" 3 times.(·î‡´ıÿÿÿÿ
+h
+java:S37766"RRefactor this method to reduce its Cognitive Complexity from 45 to the 15 allowed.(ãŸö¾
+c
+java:S2095à"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ÕÃà·
+d
+java:S2095¤"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(õ§İèıÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+`
+java:S1192i"JDefine a constant instead of duplicating this literal "bootproto" 3 times.(ÒÖóí
+U
+java:S18548"?Remove this useless assignment to local variable "page_length".(š«õŠ
+Q	java:S125£"<This block of commented-out lines of code should be removed.(­ÀƒW

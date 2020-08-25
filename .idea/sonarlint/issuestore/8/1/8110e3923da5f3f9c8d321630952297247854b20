@@ -1,0 +1,14 @@
+
+NWeb:AvoidCommentedOutCodeCheck;"Remove this commented out code.(ÕÉ›Ãıÿÿÿÿ
+CWeb:BoldAndItalicTagsCheckY"Replace this <i> tag by <em>.(Ò¯àÔ
+CWeb:BoldAndItalicTagsCheckt"Replace this <i> tag by <em>.(Ò¯àÔ
+DWeb:BoldAndItalicTagsCheck"Replace this <i> tag by <em>.(Ò¯àÔ
+IWeb:TableWithoutCaptionCheck«" Add a description to this table.(’¸—
+;	Web:S5256«"%Add "<th>" headers to this "<table>".(’¸—
+NWeb:TableWithoutCaptionCheckü" Add a description to this table.(¾üõ¢úÿÿÿÿ
+@	Web:S5256ü"%Add "<th>" headers to this "<table>".(¾üõ¢úÿÿÿÿ
+?	Web:S1827ÿ")Remove this deprecated "width" attribute.(ÎÒÛ”
+D	Web:S1827")Remove this deprecated "width" attribute.(¾€ı¶úÿÿÿÿ
+?	Web:S1827‚")Remove this deprecated "width" attribute.(ÃÎ£º
+?	Web:S1827ƒ")Remove this deprecated "width" attribute.(Œ¥Â÷
+TWeb:FrameWithoutTitleCheckÖ"-Add a "title" attribute to this <iframe> tag.(¬‘ö…

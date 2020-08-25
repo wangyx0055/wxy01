@@ -1,0 +1,18 @@
+
+f	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+E
+java:S5411?"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+o
+java:S2293#"YReplace the type specification in this constructor call with the diamond operator ("<>").(¿¦Óˆ
+E
+java:S5411q"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+f	java:S117""QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+E
+java:S5411V"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+c
+java:S1192-"HDefine a constant instead of duplicating this literal "success" 7 times.(ÈçâÙÿÿÿÿÿ
+k	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+Z
+java:S1854#"DRemove this useless assignment to local variable "resultSshScripts".(¿¦Óˆ
+o
+java:S2293$"YReplace the type specification in this constructor call with the diamond operator ("<>").(«°™ç

@@ -1,0 +1,13 @@
+
+n
+java:S1128"SRemove this unused import 'org.apache.shiro.subject.support.DefaultSubjectContext'.(Ì°¿ýøÿÿÿÿ
+t
+java:S2293\"YReplace the type specification in this constructor call with the diamond operator ("<>").(àÛ¦ÿÿÿÿÿ
+–
+java:S1130+"{Remove the declaration of thrown exception 'org.apache.shiro.session.UnknownSessionException' which is a runtime exception.(·ª›µûÿÿÿÿ
+M
+java:S1135x"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+A
+java:S1168Y"+Return an empty collection instead of null.(¥¹ï
+T
+java:S1155X">Use isEmpty() to check whether the collection is empty or not.(»ÎÙŽ

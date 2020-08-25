@@ -1,0 +1,19 @@
+
+NWeb:AvoidCommentedOutCodeCheck"Remove this commented out code.(İ€ì»ÿÿÿÿÿ
+HWeb:TableWithoutCaptionCheck" Add a description to this table.(’¸—
+:	Web:S5256"%Add "<th>" headers to this "<table>".(’¸—
+NWeb:AvoidCommentedOutCodeCheck="Remove this commented out code.(İ€ì»ÿÿÿÿÿ
+HWeb:TableWithoutCaptionCheckE" Add a description to this table.(ÀÔËÃ
+:	Web:S5256E"%Add "<th>" headers to this "<table>".(ÀÔËÃ
+OWeb:AvoidCommentedOutCodeCheck"Remove this commented out code.(Á°»Úùÿÿÿÿ
+IWeb:TableWithoutCaptionCheck…" Add a description to this table.(»ÃÂ„
+m Web:TableHeaderHasIdOrScopeCheckˆ";Add either an 'id' or a 'scope' attribute to this <th> tag.(ìºÛıÿÿÿÿ
+h Web:TableHeaderHasIdOrScopeCheck‰";Add either an 'id' or a 'scope' attribute to this <th> tag.(‘ªíÏ
+m Web:TableHeaderHasIdOrScopeCheckŠ";Add either an 'id' or a 'scope' attribute to this <th> tag.(“¤¸şÿÿÿÿ
+m Web:TableHeaderHasIdOrScopeCheck‹";Add either an 'id' or a 'scope' attribute to this <th> tag.(äÚµ©úÿÿÿÿ
+IWeb:TableWithoutCaptionCheckú" Add a description to this table.(ËŞ§î
+m Web:TableHeaderHasIdOrScopeCheckı";Add either an 'id' or a 'scope' attribute to this <th> tag.(ìºÛıÿÿÿÿ
+h Web:TableHeaderHasIdOrScopeCheckş";Add either an 'id' or a 'scope' attribute to this <th> tag.(ë¡…¢
+m Web:TableHeaderHasIdOrScopeCheckÿ";Add either an 'id' or a 'scope' attribute to this <th> tag.(“¤¸şÿÿÿÿ
+m Web:TableHeaderHasIdOrScopeCheck€";Add either an 'id' or a 'scope' attribute to this <th> tag.(äÚµ©úÿÿÿÿ
+D	Web:S1827Ù")Remove this deprecated "width" attribute.(Íé´òüÿÿÿÿ

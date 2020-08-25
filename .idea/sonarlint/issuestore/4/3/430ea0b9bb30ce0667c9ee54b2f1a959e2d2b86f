@@ -1,0 +1,5 @@
+
+p	java:S116"[Rename this field "apppub_server_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öß€Í
+h	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿßâŸüÿÿÿÿ
+h	java:S100/"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú‚îúÿÿÿÿ
+k	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú‚îúÿÿÿÿ

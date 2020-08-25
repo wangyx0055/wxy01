@@ -10,11 +10,8 @@
 		<result column="ip" jdbcType="VARCHAR" property="ip"/>
 		<result column="port" jdbcType="INTEGER" property="port"/>
 		<result column="ipv6" jdbcType="VARCHAR" property="ipv6"/>
-		<result column="super_account" jdbcType="VARCHAR" property="super_account"/>
-		<result column="super_password" jdbcType="BLOB" property="super_password"/>
 		<result column="status" jdbcType="INTEGER" property="status"/>
 		<result column="account_count" jdbcType="INTEGER" property="account_count"/>
-		<result column="groupid" jdbcType="VARCHAR" property="groupid"/>
 	<!--	<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>-->
 		<result column="description" jdbcType="VARCHAR" property="description"/>
 		<result column="creator_id" jdbcType="INTEGER" property="creator_id"/>
@@ -40,12 +37,8 @@
 		<if test="name != null">`name`=#{name},</if>
 		<if test="ip != null">`ip`=#{ip},</if>
 		<if test="port != null">`port`=#{port},</if>
-		<if test="ipv6 != null">`ipv6`=#{ipv6},</if>
-		<if test="super_account != null">`super_account`=#{super_account},</if>
-		<if test="super_password != null">`super_password`=AES_ENCRYPT(#{super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
-		<if test="status != null">`status`=#{status},</if>
+		<if test="ipv6 != null">`ipv6`=#{ipv6},</if><if test="status != null">`status`=#{status},</if>
 		<if test="account_count != null">`account_count`=#{account_count},</if>
-		<if test="groupid != null">`groupid`=#{groupid},</if>
 		<if test="description != null">`description`=#{description},</if>
 		<if test="creator_id != null">`creator_id`=#{creator_id},</if>
 		<if test="create_time != null">`create_time`=#{create_time},</if>
@@ -153,17 +146,11 @@
     <select id="totalByDeviceType" resultType="java.util.Map">
             select IFNULL(b.name,'其他') name,count(*) count 
             	from lsblj_device a LEFT JOIN lsblj_device_type b ON a.os_type = b.id 
-            	GROUP BY a.os_type ORDER BY count LIMIT 4;
+            	GROUP BY a.os_type ORDER BY count DESC LIMIT 4;
     </select>
 
-	<select id="getCounts" resultType="java.lang.Integer">
-            select count(*) from lsblj_device where groupid=#{group_id}
-    </select>
     <select id="checkSys_type" resultType="com.longersec.blj.domain.Device">
 		select * from lsblj_device where os_type=#{item} limit 1;
-	</select>
-    <select id="findDeviceGroup" resultType="com.longersec.blj.domain.Device">
-		select * from lsblj_device where groupid=#{i}
 	</select>
 
     <insert id="insertMore">
@@ -173,8 +160,6 @@
 		    <if test="name != null">`name`=#{name},</if>
 		    <if test="ip != null">`ip`=#{ip},</if>
 		    <if test="port != null">`port`=#{port},</if>
-		    <if test="super_account != null">`super_account`=#{super_account},</if>
-		    <if test="super_password != null">`super_password`=AES_ENCRYPT(#{super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
 		    <if test="account_count != null">`account_count`=0,</if>
 		    <if test="description != null">`description`=#{description},</if>
 		    <if test="login_method != null">`login_method`=#{login_method},</if>
@@ -194,12 +179,8 @@
 			<if test="item.name != null">`name`=#{item.name},</if>
 			<if test="item.ip != null">`ip`=#{item.ip},</if>
 			<if test="item.port != null">`port`=#{item.port},</if>
-			<if test="item.super_account != null">`super_account`=#{item.super_account},</if>
-			<if test="item.super_password != null">`super_password`=AES_ENCRYPT(#{item.super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
 			<if test="item.account_count != null">`account_count`=#{item.account_count},</if>
-			<if test="item.groupid != null">`groupid`=#{item.groupid},</if>
 			<if test="item.description != null">`description`=#{item.description},</if>
-		<!--	<if test="item.depart_name != null">`depart_name`=#{item.depart_name},</if>-->
 			<if test="item.login_method != null">`login_method`=#{item.login_method},</if>
 			<if test="item.protocol_id != null">`protocol_id`=#{item.protocol_id},</if>
 			<if test="item.department != null">`department`=#{item.department},</if>
@@ -208,6 +189,4 @@
 		where id=#{item.id};
 		</foreach>
 	</update>
-
-
 </mapper>

@@ -1,0 +1,72 @@
+
+e
+java:S20952"OUse try-with-resources or close this "DefaultHttpClient" in a "finally" clause.(óÐšÏ
+u
+java:S2293‘"YReplace the type specification in this constructor call with the diamond operator ("<>").(¾ìÅÖûÿÿÿÿ
+R	java:S125²"<This block of commented-out lines of code should be removed.(îÞÕ»
+8
+java:S1643ÿ"Use a StringBuilder instead.(¶øÐ©øÿÿÿÿ
+B
+java:S1128"-Remove this unused import 'org.slf4j.Logger'.(íØ®6
+T
+java:S1197ã"8Move the array designator from the variable to the type.(žËÆ˜ûÿÿÿÿ
+P
+java:S4719i":Replace Charset.forName() call with StandardCharsets.UTF_8(åÇú
+Z
+java:S1155—">Use isEmpty() to check whether the collection is empty or not.(É€°Îøÿÿÿÿ
+\
+java:S11929"FDefine a constant instead of duplicating this literal "UTF-8" 5 times.(Üºö¬
+`	java:S112\"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+g	java:S101*"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ßÐ¶‡ùÿÿÿÿ
+f
+java:S2259Ë"JA "NullPointerException" could be thrown; "httpResponse" is nullable here.(’ÕžÁûÿÿÿÿ
+K
+java:S3740’"/Provide the parametrized type for this generic.(ÿï˜‡ûÿÿÿÿ
+M
+java:S1128"2Remove this unused import 'net.sf.json.JSONArray'.(å¶ÿÿÿÿÿ
+e
+java:S2095x"OUse try-with-resources or close this "DefaultHttpClient" in a "finally" clause.(óÐšÏ
+A
+java:S1128	"+Remove this unused import 'java.util.Date'.(¸…¼ü
+I
+java:S1128
+".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+U
+java:S1118*":Add a private constructor to hide the implicit public one.(ßÐ¶‡ùÿÿÿÿ
+h
+java:S3776Ž"RRefactor this method to reduce its Cognitive Complexity from 90 to the 15 allowed.(§èÜX
+H
+java:S1481d"-Remove this unused "response" local variable.(û™™Ÿúÿÿÿÿ
+P
+java:S4719S":Replace Charset.forName() call with StandardCharsets.UTF_8(åÇú
+f	java:S117Ž"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§èÜX
+2
+java:S1643ý"Use a StringBuilder instead.(ãðô/
+Y
+java:S1128!"CRemove this unused import 'org.apache.http.client.methods.HttpPut'.(È¤Á‚
+g
+java:S1192R"QDefine a constant instead of duplicating this literal "application/json" 3 times.(ñ¤–ø
+T
+java:S1197ê"8Move the array designator from the variable to the type.(ûÕ§«úÿÿÿÿ
+G
+java:S1128"1Remove this unused import 'java.util.Properties'.(¬µŽ²
+\
+java:S2147ƒ"ECombine this catch with the one at line 129, which has the same body.(ï­£Ä
+U
+java:S1155ù">Use isEmpty() to check whether the collection is empty or not.(È­ÝÊ
+P
+java:S1128(":Remove this unused import 'org.apache.http.protocol.HTTP'.(×…Æ‹
+`	java:S112q"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+c
+java:S2095Ž"GUse try-with-resources or close this "SSLClient" in a "finally" clause.(¨Éë‘úÿÿÿÿ
+Z
+java:S2147>"DCombine this catch with the one at line 60, which has the same body.(ï­£Ä
+8
+java:S1643Û"Use a StringBuilder instead.(É§ç”üÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'org.slf4j.LoggerFactory'.(–ÿÚÞ
+P
+java:S4719ç"9Replace charset name argument with StandardCharsets.UTF_8(¢ëªâ
+V	java:S125"<This block of commented-out lines of code should be removed.(¸ëúüýÿÿÿÿ
+c
+java:S1192Q"MDefine a constant instead of duplicating this literal "Content-type" 3 times.(òãá‚

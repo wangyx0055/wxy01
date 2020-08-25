@@ -60,11 +60,6 @@ public class GroupServiceImpl implements GroupService{
 	public List<DeviceGroup> selectNameAnddId(Integer id,int page_start, int page_length) {
 		return GroupDao.selectNameAnddId(id, page_start,  page_length);
 	}
-	
-	@Override
-	public List<UserGroup> select_two(int type) {
-		return GroupDao.select_two(type);
-	}
 
 	@Override
 	public ArrayList<Group> listByType(Integer type,Integer id) {

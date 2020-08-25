@@ -1,0 +1,12 @@
+
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8³Ñø›Â.
+\
+java:S1128"ARemove this unused import 'org.apache.ibatis.annotations.Delete'.(¦‹è‹øÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İúã¸
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İúã¸
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İúã¸
+\
+java:S1128"ARemove this unused import 'org.apache.ibatis.annotations.Insert'.(Æò±™şÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôüüÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôüüÿÿÿÿ

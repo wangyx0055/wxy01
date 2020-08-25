@@ -1,0 +1,5 @@
+
+c	java:S100A"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ‡û¢
+f	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ‡û¢
+c	java:S100="NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íâÙ×
+l	java:S116"RRename this field "os_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙøŒÿÿÿÿÿ

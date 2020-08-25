@@ -1,0 +1,10 @@
+
+h	java:S100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÊéùÿÿÿÿ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö·Ô
+b	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íå•#
+e	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íå•#
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÀºßùÿÿÿÿ
+k	java:S116"VRename this field "favorite_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä•ªÇ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÀºßùÿÿÿÿ
+p	java:S116
+"VRename this field "protocol_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘½¥Ûùÿÿÿÿ

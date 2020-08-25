@@ -1,0 +1,23 @@
+
+ˆ
+java:S1319"mThe type of the "where" object should be an interface such as "Map" rather than the implementation "HashMap".(¨ËäÂÿÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹İÒ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹İÒ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èéí†
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ËäÂÿÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÇõÿ
+k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£„Ôôüÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ËäÂÿÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èéí†
+]
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.DeviceRecord'.(˜©Öğøÿÿÿÿ
+X
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.ApppubServer'.(·²µï
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÇõÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÇõÿ
+U
+java:S1128	":Remove this unused import 'com.longersec.blj.domain.User'.(¬ºÉÈùÿÿÿÿ
+
+java:S1319"uThe type of the "policy_ids" object should be an interface such as "List" rather than the implementation "ArrayList".(¨ËäÂÿÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹İÒ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ËäÂÿÿÿÿÿ

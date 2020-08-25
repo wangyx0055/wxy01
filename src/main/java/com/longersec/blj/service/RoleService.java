@@ -8,18 +8,18 @@ import com.longersec.blj.domain.Role;
 
 public interface RoleService {
 
-	public boolean addRole(Role role,Integer[] list);
+	boolean addRole(Role role,Integer[] list);
 
-	public boolean editRole(Role role);
+	boolean editRole(Role role);
 
-	public boolean delRole(Integer ids);
+	boolean delRole(Integer ids);
 
-	public List<RoleMenuDTO> findAll();
+	List<RoleMenuDTO> findAll();
 
-    public ArrayList<Role> list();
+	ArrayList<Role> list();
 
-    public Role checkname(String name);
+	Role checkname(String name);
 
-	public String selectByid(Integer role_id);
+	String selectByid(Integer role_id);
 }
 

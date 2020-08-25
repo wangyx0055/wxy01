@@ -1,0 +1,55 @@
+
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestPart'.(æñ³şÿÿÿÿ
+p
+java:S2293Õ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ĞÔ†›
+^
+java:S5361Y"HReplace this call to "replaceAll()" by a call to the "replace()" method.(øŠ«°
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+f	java:S117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+Y
+java:S1126¨"BReplace this if-then-else statement by a single method invocation.(ˆêŞ•
+f	java:S117Ğ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡´¡x
+d
+java:S1192H"IDefine a constant instead of duplicating this literal "success" 22 times.(ÈçâÙÿÿÿÿÿ
+J
+java:S1128"5Remove this unused import 'java.io.FileOutputStream'.(˜«ªg
+^
+java:S1126"BReplace this if-then-else statement by a single method invocation.(¶¬·²üÿÿÿÿ
+N
+java:S1135÷"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+g	java:S117·"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+T	java:S106ë"9Replace this use of System.out or System.err by a logger.(¡è§ùÿÿÿÿ
+o
+java:S2293Ô"YReplace the type specification in this constructor call with the diamond operator ("<>").(ıä¥{
+T	java:S106‰"9Replace this use of System.out or System.err by a logger.(†ŠÛùÿÿÿÿ
+l	java:S117Ò"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+k	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+T	java:S106í"9Replace this use of System.out or System.err by a logger.(¸šñÙüÿÿÿÿ
+P
+java:S4719ï"9Replace charset name argument with StandardCharsets.UTF_8(°ø›Æ
+m
+java:S3776W"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ê£–Üşÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+M
+java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ
+E
+java:S5411u"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+F
+java:S5411„"*Use the primitive boolean expression here.(‘çŒ¡üÿÿÿÿ
+]
+java:S1854>"HRemove this useless assignment to local variable "resultApppubPrograms".(ıä¥{
+T	java:S106û"9Replace this use of System.out or System.err by a logger.(¸šñÙüÿÿÿÿ
+^
+java:S1854Ô"HRemove this useless assignment to local variable "resultApppubPrograms".(ıä¥{
+o
+java:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(ĞÔ†›
+g	java:S117Ó"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+T	java:S106ş"9Replace this use of System.out or System.err by a logger.(†ŠÛùÿÿÿÿ
+g	java:S117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ø›Æ
+n
+java:S2293>"YReplace the type specification in this constructor call with the diamond operator ("<>").(ıä¥{

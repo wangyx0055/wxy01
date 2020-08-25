@@ -1,0 +1,53 @@
+
+4
+java:S11286"Remove this duplicated import.(¸Å‰Î
+T	java:S106"9Replace this use of System.out or System.err by a logger.(¨ü©‹úÿÿÿÿ
+c
+java:S1192…"LDefine a constant instead of duplicating this literal "cpu_userate" 6 times.(û¦’ó
+i
+java:S2095µ"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(†ê¢¹ÿÿÿÿÿ
+T	java:S106›"9Replace this use of System.out or System.err by a logger.(ôÔ‰Áşÿÿÿÿ
+T	java:S106"9Replace this use of System.out or System.err by a logger.(Ğò¹³ıÿÿÿÿ
+m
+java:S3776s"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(Ÿë¡Ğûÿÿÿÿ
+X
+java:S1075ë"ARefactor your code to get this URI from a customizable parameter.(‰¡ïã
+j
+java:S1192‚"SDefine a constant instead of duplicating this literal "yyy-MM-dd HH:mm:00" 3 times.(¢ ÎŞ
+N
+java:S1135‚"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+A
+java:S5411ê"*Use the primitive boolean expression here.(€“¹’
+d
+java:S1128/"IRemove this unused import 'com.longersec.blj.service.OperatorLogService'.(¼ÂúŞøÿÿÿÿ
+X
+java:S1075ø"ARefactor your code to get this URI from a customizable parameter.(ÿç
+g
+java:S1192›"KDefine a constant instead of duplicating this literal "%,é˜ˆå€¼:" 12 times.(÷‡İêúÿÿÿÿ
+c
+java:S1192¤"GDefine a constant instead of duplicating this literal "system" 6 times.(¥¯‹¿ÿÿÿÿÿ
+k
+java:S1192Œ"ODefine a constant instead of duplicating this literal "memory_userate" 6 times.(”ó¦ıüÿÿÿÿ
+N
+java:S1135Ï"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+i
+java:S1192»"MDefine a constant instead of duplicating this literal "lsbljSendSms" 3 times.(­Á»Éùÿÿÿÿ
+A
+java:S5411÷"*Use the primitive boolean expression here.(€“¹’
+A
+java:S5411î"*Use the primitive boolean expression here.(€“¹’
+X
+java:S1075ï"ARefactor your code to get this URI from a customizable parameter.(ÿç
+T	java:S106Ÿ"9Replace this use of System.out or System.err by a logger.(ì³²€ÿÿÿÿÿ
+i
+java:S1192“"MDefine a constant instead of duplicating this literal "disk_userate" 6 times.(›Ñû£ûÿÿÿÿ
+d
+java:S1192ë"MDefine a constant instead of duplicating this literal "/tmp/license" 3 times.(‰¡ïã
+N
+java:S11288"8Remove this unused import 'cn.hutool.system.SystemUtil'.(†å
+k
+java:S1192²"ODefine a constant instead of duplicating this literal "lsbljSendEmail" 3 times.(ô©Üğşÿÿÿÿ
+c
+java:S1192¢"GDefine a constant instead of duplicating this literal "System" 3 times.(ÜÚÓŸşÿÿÿÿ
+O	java:S106Ä"9Replace this use of System.out or System.err by a logger.(ğ’ª
+T	java:S106œ"9Replace this use of System.out or System.err by a logger.(•Ñİëÿÿÿÿÿ

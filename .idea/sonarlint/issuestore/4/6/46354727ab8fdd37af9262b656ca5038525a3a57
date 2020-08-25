@@ -1,0 +1,47 @@
+
+f	java:S117x"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ„•°
+f	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Â¦
+o
+java:S22935"YReplace the type specification in this constructor call with the diamond operator ("<>").(Æüâá
+[
+java:S1854K"@Remove this useless assignment to local variable "resultDevice".(ùÑµúøÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+Z
+java:S1128"?Remove this unused import 'com.longersec.blj.domain.DTO.Users'.(àœî³şÿÿÿÿ
+e
+java:S18544"JRemove this useless assignment to local variable "resultCmdPolicyDevices".(ıêÓæüÿÿÿÿ
+f	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½Â¦
+f	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ‰ÿ
+k	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èä¢øÿÿÿÿ
+k	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+f	java:S117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃàİÃ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+k	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Úñüûÿÿÿÿ
+d
+java:S1192>"IDefine a constant instead of duplicating this literal "success" 10 times.(ÈçâÙÿÿÿÿÿ
+f	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ‰ÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+C
+java:S1125b"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+_
+java:S1128"DRemove this unused import 'com.longersec.blj.service.DeviceService'.(Ô²É÷ıÿÿÿÿ
+t
+java:S22934"YReplace the type specification in this constructor call with the diamond operator ("<>").(ıêÓæüÿÿÿÿ
+j
+java:S1128"TRemove this unused import 'com.longersec.blj.service.impl.DeviceAccountServiceImpl'.(›¤Ë
+f	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+t
+java:S2293J"YReplace the type specification in this constructor call with the diamond operator ("<>").(‰†Ó¢ûÿÿÿÿ
+k	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×«”‘øÿÿÿÿ
+f	java:S117Q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğë©×
+d
+java:S1854J"IRemove this useless assignment to local variable "resultCmdPolicyDevice".(‰†Ó¢ûÿÿÿÿ
+E
+java:S5411b"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+t
+java:S2293K"YReplace the type specification in this constructor call with the diamond operator ("<>").(ùÑµúøÿÿÿÿ

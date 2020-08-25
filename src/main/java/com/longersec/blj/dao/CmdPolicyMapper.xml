@@ -167,7 +167,7 @@
 			WHERE p.id IS NOT NULL AND policy_id IN(
 				SELECT policy_id FROM lsblj_cmd_policy_user where user_id=#{user_id}
 				UNION 
-				SELECT policy_id FROM lsblj_cmd_policy_group where group_id=#{group_id}
+				SELECT policy_id FROM lsblj_cmd_policy_group where group_id IN(select group_id from lsblj_group_user where user_id=#{user_id})
 			) 
 			AND policy_id IN(
 				SELECT policy_id FROM lsblj_cmd_policy_device_account WHERE device_account_id=#{device_account_id}

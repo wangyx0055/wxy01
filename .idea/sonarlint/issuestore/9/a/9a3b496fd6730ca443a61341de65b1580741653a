@@ -1,0 +1,10 @@
+
+8javascript:S1116ƒ"Unnecessary semicolon.(ôŸìúÿÿÿÿ
+„javascript:S2692Ğ"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+„javascript:S2692ì"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+„javascript:S2692‡"bThis check ignores index 0; consider using 'includes' method to make this check safe and explicit.(Óã¨ìüÿÿÿÿ
+yjavascript:S2703"\Add the "let", "const" or "var" keyword to this declaration of "values" to make it explicit.(´äˆÂ
+xjavascript:S2703`"WAdd the "let", "const" or "var" keyword to this declaration of "i" to make it explicit.(¸÷ùúÿÿÿÿ
+yjavascript:S2703€"\Add the "let", "const" or "var" keyword to this declaration of "labels" to make it explicit.(µ¿«
+yjavascript:S2703‡"\Add the "let", "const" or "var" keyword to this declaration of "option" to make it explicit.(ÖÑù‰
+yjavascript:S2703Ï"\Add the "let", "const" or "var" keyword to this declaration of "$_date" to make it explicit.(Ì˜ò

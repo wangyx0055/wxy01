@@ -1,0 +1,49 @@
+
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+J
+java:S14810"/Remove this unused "page_start" local variable.(¯É‚¥øÿÿÿÿ
+f	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+1
+java:S36269"Remove this redundant jump.(ÉŠ©ƒ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+k	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+L
+java:S14812"6Remove this unused "resultSysSessions" local variable.(îÏİÌ
+[
+java:S1128"@Remove this unused import 'com.longersec.blj.domain.SysSession'.(í¼äÈùÿÿÿÿ
+[
+java:S18542"ERemove this useless assignment to local variable "resultSysSessions".(îÏİÌ
+U
+java:S1128"?Remove this unused import 'cn.hutool.core.codec.Base64Encoder'.(­Ü‡È
+f	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üº¼ì
+o
+java:S22932"YReplace the type specification in this constructor call with the diamond operator ("<>").(îÏİÌ
+f
+java:S1128"KRemove this unused import 'org.apache.commons.collections.CollectionUtils'.(’õĞğùÿÿÿÿ
+o
+java:S2293_"YReplace the type specification in this constructor call with the diamond operator ("<>").(üº¼ì
+E
+java:S1128	"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+S	java:S106;"9Replace this use of System.out or System.err by a logger.(ˆœûşÿÿÿÿ
+a
+java:S1128"FRemove this unused import 'com.longersec.blj.utils.SerializableUtils'.(üé¸•ıÿÿÿÿ
+U
+java:S18541"?Remove this useless assignment to local variable "page_length".(š«õŠ
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+Z
+java:S1128"?Remove this unused import 'com.longersec.blj.utils.JSBtoAAtoB'.(‡Ğê›øÿÿÿÿ
+F
+java:S14811"0Remove this unused "page_length" local variable.(š«õŠ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+S	java:S106<"9Replace this use of System.out or System.err by a logger.(ë©Ú‚úÿÿÿÿ
+N	java:S106="9Replace this use of System.out or System.err by a logger.(¶•«²
+c
+java:S1192T"HDefine a constant instead of duplicating this literal "success" 3 times.(ÈçâÙÿÿÿÿÿ
+Y
+java:S18540">Remove this useless assignment to local variable "page_start".(¯É‚¥øÿÿÿÿ

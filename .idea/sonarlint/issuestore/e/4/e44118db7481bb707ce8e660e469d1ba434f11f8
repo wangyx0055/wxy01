@@ -1,0 +1,30 @@
+
+X
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.ApppubServer'.(·²µï
+b
+java:S2095I"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ÕÃà·
+h
+java:S2095G"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(€Ñçòüÿÿÿÿ
+P
+java:S1481D"5Remove this unused "netConfigHashMap" local variable.(€äÀøÿÿÿÿÿ
+M
+java:S1135?"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+_
+java:S1854D"DRemove this useless assignment to local variable "netConfigHashMap".(€äÀøÿÿÿÿÿ
+t
+java:S2293D"YReplace the type specification in this constructor call with the diamond operator ("<>").(€äÀøÿÿÿÿÿ
+f	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šİ÷·
+M
+java:S1135)"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S1135/"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+M
+java:S1135S"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+u	java:S116"[Rename this field "ConfigNetworkDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÜÜÙüÿÿÿÿ
+f	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šİ÷·
+M
+java:S1135#"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+U
+java:S1128":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ
+a
+java:S1128"FRemove this unused import 'com.longersec.blj.domain.ConfigAlertLevel'.(­½ö©ÿÿÿÿÿ

@@ -1,0 +1,21 @@
+
+K
+java:S1128"0Remove this unused import 'java.util.Map.Entry'.(±şê¾úÿÿÿÿ
+S	java:S1069"9Replace this use of System.out or System.err by a logger.(Ë•¤Ğüÿÿÿÿ
+n
+java:S1128
+"SRemove this unused import 'org.apache.shiro.subject.support.DefaultSubjectContext'.(Ì°¿ıøÿÿÿÿ
+Z
+java:S1128"DRemove this unused import 'com.longersec.blj.service.ConfigService'.(Å¨¶
+M
+java:S1135>"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+V	java:S125<"<This block of commented-out lines of code should be removed.(Úä¼Óşÿÿÿÿ
+M
+java:S1128"2Remove this unused import 'net.sf.json.JSONArray'.(å¶ÿÿÿÿÿ
+b	java:S101!"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÒÑ½
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+Q	java:S110!"<This class has 8 parents which is greater than 5 authorized.(ÒÑ½
+M
+java:S1135H"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ
+N	java:S1060"9Replace this use of System.out or System.err by a logger.(âğŞ†

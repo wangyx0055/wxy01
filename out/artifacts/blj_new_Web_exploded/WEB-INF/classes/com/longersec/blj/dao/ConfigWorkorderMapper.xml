@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.ConfigWorkorderDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.ConfigWorkorder">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="range" jdbcType="INTEGER" property="range"/>
+		<result column="dead_hours" jdbcType="INTEGER" property="dead_hours"/>
+		<result column="outdate_action" jdbcType="INTEGER" property="outdate_action"/>
+		<result column="mode" jdbcType="INTEGER" property="mode"/>
+		<result column="level" jdbcType="INTEGER" property="level"/>
+		<result column="endaudit" jdbcType="INTEGER" property="endaudit"/>
+		<result column="update_time" jdbcType="VARCHAR" property="update_time"/>
+	</resultMap>
+
+	<resultMap id="configWorkorderRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<update id="editConfigWorkorder" parameterType="com.longersec.blj.domain.ConfigWorkorder">
+		UPDATE lsblj_config_workorder
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="range != null">`range`=#{range},</if>
+		<if test="dead_hours != null">`dead_hours`=#{dead_hours},</if>
+		<if test="outdate_action != null">`outdate_action`=#{outdate_action},</if>
+		<if test="mode != null">`mode`=#{mode},</if>
+		<if test="level != null">`level`=#{level},</if>
+		<if test="endaudit != null">`endaudit`=#{endaudit},</if>
+		<if test="update_time != null">`update_time`=#{update_time},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT `range`,dead_hours,outdate_action,`mode`,`level`,`endaudit` FROM lsblj_config_workorder where id=#{id}
+	</select>
+</mapper>

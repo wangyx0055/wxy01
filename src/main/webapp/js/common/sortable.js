@@ -4,7 +4,6 @@ $("#sortable").sortable({   
 		stop: function() {
 			//记录sort后的id顺序数组
 			let arr = $("#sortable").sortable('toArray');
-			console.log(arr);
 			//拖拽后利用localStorage记录顺序
 			localStorage.arr = arr;
 		}

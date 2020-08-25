@@ -45,8 +45,8 @@ public class DeviceServiceImpl implements DeviceService{
 		boolean a = DeviceDao.addDevice(device);
 		deviceAccount.setDevice_id(device.getId());
 		deviceAccount.setLogin_method(device.getLogin_method());
-		deviceAccount.setUsername(device.getSuper_account());
-		deviceAccount.setPassword(device.getSuper_password());
+		deviceAccount.setUsername(device.getAccount());
+		deviceAccount.setPassword(device.getPassword());
 		deviceAccount.setProtocol_id(device.getProtocol_id());
 		deviceAccount.setPort(device.getPort());
 		deviceAccount.setSsh_key(device.getSsh_key());
@@ -109,10 +109,5 @@ public class DeviceServiceImpl implements DeviceService{
 	@Override
 	public boolean editDeviceList(ArrayList<Device> updatedevices) {
 		return DeviceDao.editDeviceList(updatedevices);
-	}
-
-	@Override
-	public ArrayList<Device> findDeviceGroup(int i) {
-		return DeviceDao.findDeviceGroup(i);
 	}
 }

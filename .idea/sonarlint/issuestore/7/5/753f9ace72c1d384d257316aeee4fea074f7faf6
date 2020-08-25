@@ -1,0 +1,177 @@
+
+l	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄøÃûÿÿÿÿ
+p
+java:S2293Ù"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+Z
+java:S1854ó"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+a
+java:S1192€"JDefine a constant instead of duplicating this literal "sourceips" 3 times.(•ÖÅß
+V
+java:S4719ã":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+o
+java:S2293Ú"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+p
+java:S2293¸"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+l	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄøÃûÿÿÿÿ
+Z
+java:S1854À"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+t	java:S116+"ZRename this field "ApppubServerDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿©Îîÿÿÿÿÿ
+V
+java:S4719è":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+_
+java:S1192?"IDefine a constant instead of duplicating this literal "vehicle" 26 times.(Œ§»í
+m
+java:S1192é"VDefine a constant instead of duplicating this literal "2020-03-18 18:15:49.0" 3 times.(¸—ˆ‡
+e
+java:S1192İ"IDefine a constant instead of duplicating this literal "username" 4 times.(ë­¢áÿÿÿÿÿ
+b
+java:S1192@"GDefine a constant instead of duplicating this literal "UTF-8" 26 times.(¨¨ÒŠûÿÿÿÿ
+l	java:S117ˆ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºª…œşÿÿÿÿ
+g	java:S117Ò"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑôĞ
+l	java:S117ˆ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºª…œşÿÿÿÿ
+g	java:S117î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÉö•
+u	java:S1161"[Rename this field "ApppubAccountDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Åşºßúÿÿÿÿ
+f	java:S117Ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÅ“ 
+V
+java:S4719‚":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+Z
+java:S1854"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+V
+java:S4719Ñ":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+p
+java:S2293ó"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+p
+java:S2293§"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+a
+java:S1192ş"JDefine a constant instead of duplicating this literal "successes" 3 times.(Ğï‚Ë
+Z
+java:S1854ô"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+e
+java:S1192À"IDefine a constant instead of duplicating this literal "interval" 5 times.(Ñè’§ÿÿÿÿÿ
+W	java:S125‘"<This block of commented-out lines of code should be removed.(½Íµåûÿÿÿÿ
+o
+java:S2293¹"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+V
+java:S4719£":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+H
+java:S1905×",Remove this unnecessary cast to "ArrayList".(€àÂÊùÿÿÿÿ
+U
+java:S4719Z":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+`
+java:S3358¾"DExtract this nested ternary operation into an independent statement.(¬‡¯‚ùÿÿÿÿ
+l	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É×Îºøÿÿÿÿ
+Z
+java:S1854Õ"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+Z
+java:S1854"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+V
+java:S4719¼":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+o
+java:S2293ª"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+l	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É×Îºøÿÿÿÿ
+]
+java:S1192Ç"FDefine a constant instead of duplicating this literal "total" 7 times.(±’µ®
+U
+java:S4719o":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+V
+java:S4719†":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+V
+java:S4719È":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+W	java:S125”"<This block of commented-out lines of code should be removed.(¦æ»•şÿÿÿÿ
+g	java:S117í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼£ÅÕ
+Z
+java:S1854Ù"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+e
+java:S1192Ş"IDefine a constant instead of duplicating this literal "realname" 4 times.(È°şçûÿÿÿÿ
+l	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§×ê¶ÿÿÿÿÿ
+Y
+java:S1854¡"=Remove this useless assignment to local variable "principal".(¦šàúÿÿÿÿ
+V
+java:S4719Ò":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+{	java:S116/"aRename this field "CrontabScriptConfigDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³·Ö“ıÿÿÿÿ
+f	java:S117Ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÅ“ 
+V
+java:S4719†":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+J
+java:S1481æ".Remove this unused "principal" local variable.(¦šàúÿÿÿÿ
+Z
+java:S1854§"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+V
+java:S4719Á":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+b
+java:S1192ü"FDefine a constant instead of duplicating this literal "users" 4 times.(ºê¾µÿÿÿÿÿ
+o
+java:S2293Ö"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+J
+java:S1481Ë".Remove this unused "principal" local variable.(¦šàúÿÿÿÿ
+Y
+java:S1854æ"=Remove this useless assignment to local variable "principal".(¦šàúÿÿÿÿ
+U
+java:S4719@":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+V
+java:S4719³":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+V
+java:S4719ğ":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+p
+java:S2293ô"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+V
+java:S4719š":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+p
+java:S2293À"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+J
+java:S1481¡".Remove this unused "principal" local variable.(¦šàúÿÿÿÿ
+V
+java:S4719´":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+o
+java:S2293¨"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+g	java:S117î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÉö•
+Y
+java:S1854Ë"=Remove this useless assignment to local variable "principal".(¦šàúÿÿÿÿ
+Z
+java:S1854©"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+Z
+java:S1854¸"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+V
+java:S4719ï":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+g	java:S117í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼£ÅÕ
+p
+java:S2293Õ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+o
+java:S2293õ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+o
+java:S2293ô"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+b
+java:S1192ÿ"FDefine a constant instead of duplicating this literal "fails" 3 times.(ñ”÷Úúÿÿÿÿ
+V
+java:S4719·":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+l	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§×ê¶ÿÿÿÿÿ
+V
+java:S4719Õ":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+h
+java:S1192ñ"LDefine a constant instead of duplicating this literal "æ¥æºIPæ•°" 3 times.(ƒÃÜåøÿÿÿÿ
+V
+java:S4719‹":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+o
+java:S2293Á"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛôÁ	
+V
+java:S4719Š":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+V
+java:S4719¥":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+u	java:S116-"[Rename this field "ApppubProgramDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬Š–ºıÿÿÿÿ
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+V
+java:S4719":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ
+p
+java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+g	java:S117Ò"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑôĞ
+V
+java:S4719":Replace Charset.forName() call with StandardCharsets.UTF_8(¨¨ÒŠûÿÿÿÿ

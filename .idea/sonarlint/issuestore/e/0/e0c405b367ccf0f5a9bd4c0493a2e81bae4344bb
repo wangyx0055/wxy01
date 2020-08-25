@@ -1,0 +1,11 @@
+
+[
+java:S1128"FRemove this unused import 'com.longersec.blj.domain.DTO.Deviceaccess'.(ŒŠ‰j
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õƒ¢Åþÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õƒ¢Åþÿÿÿÿ
+Z
+java:S1128	"?Remove this unused import 'com.longersec.blj.domain.DTO.Users'.(àœî³þÿÿÿÿ
+V
+java:S1128
+"@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õƒ¢Åþÿÿÿÿ

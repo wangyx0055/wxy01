@@ -1,0 +1,9 @@
+
+i	java:S116"TRename this field "config_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Âì
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Ò·æ
+q	java:S116"\Rename this field "device_account_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è«İè
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Ò·æ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ğì”úÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ğì”úÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½¾ÑÁşÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÙÎışÿÿÿÿ

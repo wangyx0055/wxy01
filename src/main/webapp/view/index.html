@@ -165,6 +165,7 @@
              <!-- /.box -->
                 </div>
                 <!-- /.col -->
+               <!-- 最近资产访问量-->
                 <div class="col-md-4">
                     <div class="box">
                         <div class="box-header with-border">
@@ -177,7 +178,6 @@
                         <!-- /.box-header -->
                         <div class="box-body" style="margin-top: 0px !important;">
                             <div class="row">
-                                <!--最近用户访问量-->
                                 <div class="col-md-12" id="assetsChart" style="height:210px;">
                                 </div>
                                 <!-- /.col -->
@@ -190,30 +190,38 @@
                     </div>
                     <!-- /.box -->
                 </div>
+               <!-- 待审批工单-->
                 <div class="col-md-4">
                     <div class="box">
                         <div class="box-header with-border">
                             <span class="box-title new-header" >待审批工单</span>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body" style="margin-top: 0px !important;height:235px;">
+                        <div class="box-body" style="margin-top: 0px !important;height: 235px;">
                             <ul class="products-list product-list-in-box" style="margin-left: 20px;">
                                 <li class="item"  id="allow1">
-                                    <div class="alow_user" style="float:left;">
+                                    <div class="alow_user" style="float:left;margin-left: 24px;">
                                        <span>admin</span>
                                     </div>
-                                    <div class="alow_massage" style="float:left;margin-left: 220px;">
-                                        <span class="product-time"  id="alow_number">202008201608076699482</span>
-                                        <span class="product-description"  id="alow_type" style="font-size: 12px;">访问授权工单</span>
+                                    <div class="alow_massage" style="float:left;margin-left: 190px;margin-top: -25px;">
+                                        <span class="product-time"  id="alow_number1">202008201608076699482</span>
+                                        <span class="product-description"  id="alow_type1" style="font-size: 12px;">访问授权工单</span>
                                     </div>
                                 </li>
-                                <li class="item"  id="allow2">
+                               <li class="item"  id="allow2">
+                                   <div class="alow_user" style="float:left;margin-left: 24px;">
+                                       <span>admin</span>
+                                   </div>
+                                   <div class="alow_massage" style="float:left;margin-left: 190px;margin-top: -25px;">
+                                       <span class="product-time"  id="alow_number2">202008201608076699482</span>
+                                       <span class="product-description"  id="alow_type2" style="font-size: 12px;">命令授权工单</span>
+                                   </div>
                                 </li>
-                                <li class="item"  id="allow3">
+                               <li class="item"  id="allow3">
                                 </li>
-                                <li class="item"  id="allow4">
+                                <!--  <li class="item"  id="allow4">
 
-                                </li>
+                                 </li>-->
                             </ul>
                             <!-- /.row -->
                         </div>
@@ -248,6 +256,7 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
+               <!-- 累计资产访问量-->
                 <div class="col-md-4">
                     <!-- MAP & BOX PANE -->
                     <div class="box">
@@ -269,9 +278,53 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
+                <!--访问量统计-->
+                <div class="col-md-4">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="box">
+                    <div class="box-header with-border">
+                        <span class="box-title new-header">访问量统计</span>
+                    </div>
+                    <div class="box box-default">
+                        <div class="box_visit">
+                            <div>
+                                <div>
+                                    <span style="font-size: 14px;">图形访问 30天增长   &nbsp<span id="graph30increatepercent" style="font-size: 16px;font-weight: 600"></span></span>
+                                    <span id="graph30increate"></span>
+                                </div>
+                            </div>
+                            <hr class="visit_hr">
+                            <br>
+                            <div>
+                                <div>
+                                    <span style="font-size: 14px;">字符访问 30天增长   &nbsp<span id="text30increatepercent" style="font-size: 16px;font-weight: 600">0</span></span>
+                                    <span id="text30increate">0</span>
+                                </div>
+                            </div>
+                            <hr class="visit_hr">
+                            <br>
+                            <div>
+                                <div>
+                                    <span style="font-size: 14px;">应用操作 30天增长   &nbsp<span id="apppub30increatepercent" style="font-size: 16px;font-weight: 600">0</span></span>
+                                    <span  id="apppub30increate">0</span>
+                                </div>
+                            </div>
+                            <hr class="visit_hr">
+                            <br>
+                            <div>
+                                <div>
+                                    <span style="font-size: 14px;">文件传输 30天增长   &nbsp<span id="filetransfer30increatepercent" style="font-size: 16px;font-weight: 600">0</span></span>
+                                    <span id="filetransfer30increate">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
           <div class="row">
-            <div class="col-md-6">
+              <!--系统状态-->
+            <div class="col-md-4">
                 <div class="box box-default">
                     <div class="box-header with-border" style="margin-top: 0px !important;">
                         <span class="box-title new-header">系统状态</span>
@@ -311,108 +364,110 @@
 
                 <!--/.direct-chat -->
             </div>
-            <!-- /应用类型 -->
-<!--            <div class="col-md-4">-->
-<!--                &lt;!&ndash; USERS LIST &ndash;&gt;-->
-<!--                <div class="box box-default">-->
-<!--                    <div class="box-header with-border">-->
-<!--                          <span class="box-title new-header">应用类型</span>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; /.box-header &ndash;&gt;-->
-<!--                    <div class="box-body" style="margin-top: 0px !important;">-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-md-6">-->
-<!--                                <div class="chart-responsive">-->
-<!--                                    <canvas id="pieChart2" height="150"></canvas>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; /chart-responsive &ndash;&gt;-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; /.col &ndash;&gt;-->
-<!--                            <div class="col-md-6">-->
-<!--                                <ul class="chart-legend clearfix" id="apppubByTypeName">-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; /.col &ndash;&gt;-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; /.row &ndash;&gt;-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; /.box-body &ndash;&gt;-->
-<!--                    <div class="box-footer no-padding" style="height: 163px;" >-->
-<!--                        <ul class="nav nav-pills nav-stacked" id="apppubByTypeValue">-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; /.footer &ndash;&gt;-->
-<!--                </div>-->
-<!--                &lt;!&ndash;/.box &ndash;&gt;-->
-<!--            </div>-->
-        <!-- 应用类型  -->
             <!-- /.col -->
-
-                <div class="col-md-6">
+              <!--许可信息-->
+              <div class="col-md-4">
+                  <!-- Info Boxes Style 2 -->
+                  <div class="box">
+                      <div class="box-header with-border">
+                          <span class="box-title new-header">许可信息</span>
+                      </div>
+                      <div class="box-body" style="height: 384px;">
+                          <div style="margin-top: 70px;margin-left: 80px;">
+                          <div>
+                              <span>客户名称：</span>
+                              <span id="lic_customename"></span>
+                          </div><br>
+                          <div style="margin-top: 10px;">
+                              <span>授权类型：</span>
+                              <span id="lic_versiontype"></span>
+                          </div><br>
+                          <div style="margin-top: 10px;">
+                              <span style="margin-left: 15px;">产品ID：</span>
+                              <span id="lic_productid"></span>
+                          </div><br>
+                          <div style="margin-top: 10px;">
+                              <span style="margin-left: -14px;">授权资源数：</span>
+                              <span id="lic_devicenumber"></span>
+                          </div><br>
+                          <div style="margin-top: 10px;">
+                              <span>过期时间：</span>
+                              <span id="lic_expireddate"></span>
+                          </div><br>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+              <!--在线用户-->
+              <div class="col-md-4">
                   <div class="box box-default">
-                <div style="background-color:white;border-radius: 3px;">
-                 <div class="box-header with-border">
-                                <span class="box-title new-header" >实时在线用户</span>
-                             <!--    <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                </div> -->
-                            </div>
-                            <div class="box-body" style="height:333px;">
-                                <ul class="products-list product-list-in-box" style="margin-left: 20px;">
-                                	<li class="item" style="margin-top: 10px;display:none;" id="onlineuser1">
-                                        <div class="product-img">
-                                            <img id="onlineuser1image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser1name">admin</span>
-                                                  <span class="product-time"  id="onlineuser1time">2019/12/01 23:53:01</span></span></a>
-                                            <span class="product-description"  id="onlineuser1info">test1 127.0.0.1</span>
-                                        </div>
-                                    </li>
-                                      <li class="item" style="margin-top: 10px;display:none;" id="onlineuser2">
-                                        <div class="product-img">
-                                            <img id="onlineuser2image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser2name">admin</span>
-                                                  <span class="product-time"  id="onlineuser2time">2019/12/01 23:53:01</span></span></a>
-                                            <span class="product-description"  id="onlineuser2info">test1 127.0.0.1</span>
-                                        </div>
-                                    </li><li class="item" style="margin-top: 10px;display:none;" id="onlineuser3">
-                                        <div class="product-img">
-                                            <img id="onlineuser3image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser3name">admin</span>
-                                                  <span class="product-time"   id="onlineuser3time">2019/12/01 23:53:01</span></span></a>
-                                            <span class="product-description"  id="onlineuser3info">test1 127.0.0.1</span>
-                                        </div>
-                                    </li><li class="item" style="margin-top: 10px;display:none;" id="onlineuser4">
-                                        <div class="product-img">
-                                            <img id="onlineuser4image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title" ><span id="onlineuser4name">admin</span>
-                                                  <span class="product-time"  id="onlineuser4time">2019/12/01 23:53:01</span></span></a>
-                                            <span class="product-description"  id="onlineuser4info">test1 127.0.0.1</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                </div>
-                  <!-- /.box-body -->
-                   <div class="box-footer">
-                  <button class="newaddbtn2" style="float: right">查看访问记录>></button>
-                     </div>
-                     <!-- /.box-footer -->
-                </div>
-               <!--  用户 -->
-                    <!-- /.box -->
-                </div>
-                <!-- /.col md-4-->
-            </div>
+                      <div style="background-color:white;border-radius: 3px;">
+                          <div class="box-header with-border">
+                              <span class="box-title new-header" >实时在线用户</span>
+                              <!--    <div class="box-tools pull-right">
+                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                     </button>
+                                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                 </div> -->
+                          </div>
+                          <div class="box-body" style="height:333px;">
+                              <ul class="products-list product-list-in-box" style="margin-left: 20px;">
+                                  <li class="item" style="margin-top: 10px;display:none;" id="onlineuser1">
+                                      <div class="product-img">
+                                          <img id="onlineuser1image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                      </div>
+                                      <div class="product-info">
+                                          <a href="javascript:void(0)" class="product-title" ><span id="onlineuser1name">admin</span>
+                                              <span class="product-time"  id="onlineuser1time">2019/12/01 23:53:01</span></span></a>
+                                          <span class="product-description"  id="onlineuser1info">test1 127.0.0.1</span>
+                                      </div>
+                                  </li>
+                                  <li class="item" style="margin-top: 10px;display:none;" id="onlineuser2">
+                                      <div class="product-img">
+                                          <img id="onlineuser2image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                      </div>
+                                      <div class="product-info">
+                                          <a href="javascript:void(0)" class="product-title" ><span id="onlineuser2name">admin</span>
+                                              <span class="product-time"  id="onlineuser2time">2019/12/01 23:53:01</span></span></a>
+                                          <span class="product-description"  id="onlineuser2info">test1 127.0.0.1</span>
+                                      </div>
+                                  </li><li class="item" style="margin-top: 10px;display:none;" id="onlineuser3">
+                                  <div class="product-img">
+                                      <img id="onlineuser3image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                  </div>
+                                  <div class="product-info">
+                                      <a href="javascript:void(0)" class="product-title" ><span id="onlineuser3name">admin</span>
+                                          <span class="product-time"   id="onlineuser3time">2019/12/01 23:53:01</span></span></a>
+                                      <span class="product-description"  id="onlineuser3info">test1 127.0.0.1</span>
+                                  </div>
+                              </li><li class="item" style="margin-top: 10px;display:none;" id="onlineuser4">
+                                  <div class="product-img">
+                                      <img id="onlineuser4image" src="../../bower_components/dist/img/admin.png" alt="Product Image">
+                                  </div>
+                                  <div class="product-info">
+                                      <a href="javascript:void(0)" class="product-title" ><span id="onlineuser4name">admin</span>
+                                          <span class="product-time"  id="onlineuser4time">2019/12/01 23:53:01</span></span></a>
+                                      <span class="product-description"  id="onlineuser4info">test1 127.0.0.1</span>
+                                  </div>
+                              </li>
+                              </ul>
+                          </div>
+                          <!-- /.box-body -->
+                          <div class="box-footer">
+                              <a href="../../view/audit_manage/sessions_online#web">
+                                  <button  class="newaddbtn2" id="visite_record" style="float: right">查看访问记录>></button>
+                              </a>
+
+                          </div>
+                          <!-- /.box-footer -->
+                      </div>
+                      <!--  用户 -->
+                      <!-- /.box -->
+                  </div>
+                  <!-- /.col md-4-->
+              </div>
           </div>
+           <!-- 实时会话-->
             <div class="box">
                 <div class="box-header with-border">
                 <span class="box-title new-header">实时会话</span>

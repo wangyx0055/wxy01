@@ -1,0 +1,11 @@
+
+IWeb:AvoidCommentedOutCodeCheck8"Remove this commented out code.(÷Àõî
+IWeb:AvoidCommentedOutCodeCheck<"Remove this commented out code.(ş®Ïß
+CWeb:BoldAndItalicTagsCheckP"Replace this <i> tag by <em>.(›½´
+IWeb:AvoidCommentedOutCodeCheckV"Remove this commented out code.(µ’ï¶
+HWeb:TableWithoutCaptionCheckY" Add a description to this table.(˜½Ûù
+:	Web:S5256Y"%Add "<th>" headers to this "<table>".(˜½Ûù
+HWeb:ImgWithoutAltCheck£"%Add an "alt" attribute to this image.(¦ö³¼
+MWeb:ImgWithoutAltCheck¾"%Add an "alt" attribute to this image.(ïÏ³øøÿÿÿÿ
+MWeb:ImgWithoutAltCheckĞ"%Add an "alt" attribute to this image.(À¿É¯ûÿÿÿÿ
+MWeb:ImgWithoutAltCheckë"%Add an "alt" attribute to this image.(ïÏ³øøÿÿÿÿ

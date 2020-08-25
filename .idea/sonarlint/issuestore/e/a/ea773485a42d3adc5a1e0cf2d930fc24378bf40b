@@ -1,0 +1,41 @@
+
+t
+java:S2293/"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÂŠúÿÿÿÿ
+f	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†œö§
+X
+java:S1854C"=Remove this useless assignment to local variable "resultCmd".(¨—ïÂøÿÿÿÿ
+E
+java:S5411Y"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+f	java:S117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ½üĞ
+o
+java:S2293B"YReplace the type specification in this constructor call with the diamond operator ("<>").(…¹ã
+f	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+e	java:S117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞË´W
+Z
+java:S1128"?Remove this unused import 'com.longersec.blj.domain.DTO.Users'.(àœî³şÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+k	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+k	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú™¯üÿÿÿÿÿ
+k	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú™¯üÿÿÿÿÿ
+d
+java:S11928"IDefine a constant instead of duplicating this literal "success" 10 times.(ÈçâÙÿÿÿÿÿ
+o
+java:S2293."YReplace the type specification in this constructor call with the diamond operator ("<>").(»“á•
+t
+java:S2293C"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨—ïÂøÿÿÿÿ
+f	java:S117m"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ„•°
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+f	java:S117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼™‡ò
+C
+java:S1125Y"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+]
+java:S1854."GRemove this useless assignment to local variable "resultCmdPolicyCmds".(»“á•
+f	java:S117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ½üĞ
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+\
+java:S1854B"FRemove this useless assignment to local variable "resultCmdPolicyCmd".(…¹ã

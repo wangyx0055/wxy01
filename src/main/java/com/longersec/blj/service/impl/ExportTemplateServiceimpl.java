@@ -121,8 +121,8 @@ class ExportTemplateServiceImpl implements ExportTemplateService {
         data.setTypename("Linux");
         data.setDepart_name("华中大区");
         data.setDescription("描述");
-        data.setSuper_account("test");
-        data.setSuper_password("testtest");
+        data.setAccount("test");
+        data.setPassword("testtest");
         data.setProtocolname("SSH");
         data.setPort(22);
         data.setSsh_key(1);
@@ -132,8 +132,8 @@ class ExportTemplateServiceImpl implements ExportTemplateService {
         csvWriter.write(data.getTypename());
         csvWriter.write(data.getDepart_name());
         csvWriter.write(data.getDescription());
-        csvWriter.write(data.getSuper_account());
-        csvWriter.write(data.getSuper_password());
+        csvWriter.write(data.getAccount());
+        csvWriter.write(data.getPassword());
         csvWriter.write(data.getProtocolname());
         csvWriter.write(data.getPort().toString());
         csvWriter.write(data.getSsh_key().toString());

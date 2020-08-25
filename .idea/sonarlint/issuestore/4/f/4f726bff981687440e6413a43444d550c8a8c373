@@ -1,0 +1,15 @@
+
+]javascript:S1481E"<Remove the declaration of the unused 'device_port' variable.(¢Ô¹‡ÿÿÿÿÿ
+Zjavascript:S1854E"9Remove this useless assignment to variable "device_port".(¢Ô¹‡ÿÿÿÿÿ
+}javascript:S3923¨"[Remove this conditional structure or edit its code blocks so that they're not all the same.(”’á©úÿÿÿÿ
+Ljavascript:S1117­"0'regexp' is already declared in the upper scope.(þÝò~
+Ljavascript:S1117ç"0'regexp' is already declared in the upper scope.(þÝò~
+Ljavascript:S1117ù"0'regexp' is already declared in the upper scope.(þÝò~
+Ljavascript:S1117™"0'regexp' is already declared in the upper scope.(þÝò~
+Ljavascript:S1117®"0'regexp' is already declared in the upper scope.(þÝò~
+“javascript:S2681Ö"vThis line will not be executed conditionally; only the first statement will be. The rest will execute unconditionally.(ˆé 
+ojavascript:S1871„"MThis branch's code block is the same as the block for the branch on line 769.(°£„Ïÿÿÿÿÿ
+Ljavascript:S1117•"0'regexp' is already declared in the upper scope.(þÝò~
+2javascript:S108™"Empty block statement.(å¥ž‡
+|javascript:S2703­"ZAdd the "let", "const" or "var" keyword to this declaration of "flag" to make it explicit.(³ÖÉÿÿÿÿÿ
+yjavascript:S2703"WAdd the "let", "const" or "var" keyword to this declaration of "i" to make it explicit.(¸÷ùŽúÿÿÿÿ

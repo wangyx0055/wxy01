@@ -1,0 +1,32 @@
+
+C
+java:S1125a"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+R
+java:S1128"<Remove this unused import 'com.longersec.blj.utils.KeyUtil'.(ó­œ
+T	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(¸šñÙüÿÿÿÿ
+C
+java:S1125O"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+E
+java:S5411a"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+d
+java:S1192:"IDefine a constant instead of duplicating this literal "success" 15 times.(ÈçâÙÿÿÿÿÿ
+E
+java:S5411O"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+k	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+t
+java:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(•î‹İşÿÿÿÿ
+f	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+o
+java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜Ùã§
+]
+java:S18540"GRemove this useless assignment to local variable "resultConfigSyslogs".(˜Ùã§
+T	java:S106†"9Replace this use of System.out or System.err by a logger.(¸šñÙüÿÿÿÿ
+Z
+java:S1128"DRemove this unused import 'com.longersec.blj.utils.SystemUsageUtil'.(”Ÿñ
+f	java:S117j"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ

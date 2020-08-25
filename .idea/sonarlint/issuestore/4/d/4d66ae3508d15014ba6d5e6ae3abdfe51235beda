@@ -1,0 +1,6 @@
+
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¥›·ıÿÿÿÿ
+k	java:S116	"VRename this field "cmdgroup_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÉÉ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãâäøÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãâäøÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ŞÉ‹Ù

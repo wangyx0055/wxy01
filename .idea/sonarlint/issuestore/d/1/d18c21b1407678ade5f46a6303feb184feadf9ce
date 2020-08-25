@@ -1,0 +1,6 @@
+
+^javascript:S1126Ó"AReplace this if-then-else statement by a single return statement.( ¼ƒÈ
+[javascript:S1481ù"9Remove the declaration of the unused 'username' variable.(åìÁúÿÿÿÿ
+Xjavascript:S1854ù"6Remove this useless assignment to variable "username".(åìÁúÿÿÿÿ
+2javascript:S108‡"Empty block statement.(á¢–¬
+xjavascript:S2703V"\Add the "let", "const" or "var" keyword to this declaration of "verify" to make it explicit.(ÊáÊ

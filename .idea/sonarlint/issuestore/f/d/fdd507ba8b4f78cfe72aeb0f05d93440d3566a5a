@@ -1,0 +1,15 @@
+
+k	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘üÒışÿÿÿÿ
+V
+java:S1128";Remove this unused import 'com.longersec.blj.dao.GroupDao'.(÷—µıÿÿÿÿ
+\
+java:S11268"AReplace this if-then-else statement by a single return statement.(®Œ½Êüÿÿÿÿ
+k	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘üÒışÿÿÿÿ
+[
+java:S1128	"FRemove this unused import 'com.longersec.blj.domain.DTO.Deviceaccess'.(ŒŠ‰j
+n	java:S116"TRename this field "DeviceDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«®Ïäøÿÿÿÿ
+Z
+java:S1128"?Remove this unused import 'com.longersec.blj.domain.DTO.Users'.(àœî³şÿÿÿÿ
+k	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘üÒışÿÿÿÿ
+U
+java:S1128":Remove this unused import 'com.longersec.blj.domain.User'.(¬ºÉÈùÿÿÿÿ

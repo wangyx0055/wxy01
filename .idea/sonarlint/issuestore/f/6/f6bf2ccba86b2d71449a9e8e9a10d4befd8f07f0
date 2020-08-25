@@ -1,0 +1,20 @@
+
+f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÑôş
+Z
+java:S1854*"?Remove this useless assignment to local variable "resultUsers".(õ‚­•ÿÿÿÿÿ
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓæŸ®
+f	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º–Ô
+f	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÄ¸î
+f	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆúöØ
+t
+java:S2293*"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ‚­•ÿÿÿÿÿ
+c
+java:S11922"HDefine a constant instead of duplicating this literal "success" 3 times.(ÈçâÙÿÿÿÿÿ
+f	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º–Ô
+t
+java:S2293)"YReplace the type specification in this constructor call with the diamond operator ("<>").(£·Øüÿÿÿÿ
+f	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô÷ ¤
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¢ä»
+e	java:S117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—šA
+c
+java:S1854)"HRemove this useless assignment to local variable "resultUserGroupUsers".(£·Øüÿÿÿÿ

@@ -1,0 +1,74 @@
+
+E
+java:S5411L"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+p
+java:S2293“"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+u
+java:S2293”"YReplace the type specification in this constructor call with the diamond operator ("<>").(ı¯ÂÏùÿÿÿÿ
+]
+java:S1192'"GDefine a constant instead of duplicating this literal "length" 5 times.(š«õŠ
+k	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Î£şøÿÿÿÿ
+f	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®›¡Í
+f	java:S117|"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+Z
+java:S1854“"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+f	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+f	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®›¡Í
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+Y
+java:S1854g"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+t
+java:S2293("YReplace the type specification in this constructor call with the diamond operator ("<>").(¯Š´ùÿÿÿÿ
+u
+java:S2293ª"YReplace the type specification in this constructor call with the diamond operator ("<>").(ı¯ÂÏùÿÿÿÿ
+g	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+f	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«î—æ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÏ‚Ìùÿÿÿÿ
+g	java:S117¨"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+b
+java:S1854("GRemove this useless assignment to local variable "resultDeviceRecords".(¯Š´ùÿÿÿÿ
+C
+java:S1125L"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+t
+java:S2293h"YReplace the type specification in this constructor call with the diamond operator ("<>").(ı¯ÂÏùÿÿÿÿ
+o
+java:S2293}"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+g	java:S117¦"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“îç©
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+f	java:S117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+h
+java:S11923"MDefine a constant instead of duplicating this literal "recordsTotal" 5 times.(®Ü»Øşÿÿÿÿ
+p
+java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+a
+java:S1192e"FDefine a constant instead of duplicating this literal "start" 4 times.(¯É‚¥øÿÿÿÿ
+C
+java:S1125@"(Remove the literal "true" boolean value.(Æ¾Åíşÿÿÿÿ
+t
+java:S2293~"YReplace the type specification in this constructor call with the diamond operator ("<>").(ı¯ÂÏùÿÿÿÿ
+o
+java:S2293g"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßÂÜÖ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+k
+java:S11924"PDefine a constant instead of duplicating this literal "recordsFiltered" 5 times.(º´¦¶şÿÿÿÿ
+l	java:S117‘"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+Z
+java:S1854©"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+l	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+Y
+java:S1854}"CRemove this useless assignment to local variable "resultLoginLogs".(ßÂÜÖ
+d
+java:S11922"IDefine a constant instead of duplicating this literal "success" 15 times.(ÈçâÙÿÿÿÿÿ
+g	java:S117¦"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“îç©
+k	java:S117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+k	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Î£şøÿÿÿÿ
+k	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+t
+java:S2293)"YReplace the type specification in this constructor call with the diamond operator ("<>").(‡¤ŒÓùÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÏ‚Ìùÿÿÿÿ
+f	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸

@@ -1,0 +1,44 @@
+
+\
+java:S1126'"AReplace this if-then-else statement by a single return statement.(Ï¤¡Óûÿÿÿÿ
+f	java:S117q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌºØû
+M
+java:S1135["2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+f	java:S117v"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äã„ã
+M
+java:S1135g"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+f	java:S117q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌºØû
+f	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àõ´é
+M
+java:S11350"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+W
+java:S11267"AReplace this if-then-else statement by a single return statement.(¦ÿÚ 
+k	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¶¢éüÿÿÿÿ
+>
+java:S11257"(Remove the literal "true" boolean value.(¦ÿÚ 
+M
+java:S1135O"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+M
+java:S1135U"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+k	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çä“Óþÿÿÿÿ
+k	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…šú·þÿÿÿÿ
+f	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àõ´é
+>
+java:S11257"(Remove the literal "true" boolean value.(¦ÿÚ 
+f	java:S117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Ó¥š
+k	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¶¢éüÿÿÿÿ
+]
+java:S1128"BRemove this unused import 'com.longersec.blj.domain.DeviceRecord'.(˜©Öðøÿÿÿÿ
+k	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¶¢éüÿÿÿÿ
+e	java:S117Z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿî§ 
+M
+java:S1135"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ
+k	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çä“Óþÿÿÿÿ
+p	java:S116"[Rename this field "DeviceAccountDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”Šð¤
+k	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…šú·þÿÿÿÿ
+k	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çä“Óþÿÿÿÿ
+f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ñ‘ 
+f	java:S117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©Ó¥š
+f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ñ‘ 
+M
+java:S1135a"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ

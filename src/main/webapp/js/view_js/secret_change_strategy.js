@@ -457,10 +457,12 @@ $('#modal-primary1').on('show.bs.modal', function (event) {
     var i = button.data('row');
     $('#modal1_id').val($('#policyList').DataTable().row('#' + i).nodes(i).data()[i].id);
     $.ajax({
-        url: "../../accessPolicyDeviceAccount/findAccessPolicyDeviceAccountAndUser",
+        url: "../../changePasswordPolicyDeviceAccount/findChangePasswordPolicyDeviceAccountAndUser",
         type: "POST",
         data: {
             policy_id: $('#modal1_id').val(),
+			page_start:0,
+			page_length:1000
         },
         success: function (data) {
             var arr = data.data_device;
@@ -490,10 +492,12 @@ $('#modal-primary2').on('show.bs.modal', function (event) {
     var i = button.data('row');
     $('#modal2_id').val($('#policyList').DataTable().row('#' + i).nodes(i).data()[i].id);
     $.ajax({
-        url:  "../../accessPolicyGroup/findAccessPolicyDeviceGroupAndUser",
+        url:  "../../changePasswordPolicyGroup/findChangePasswordPolicyDeviceGroupAndUser",
         type: "POST",
         data: {
             policy_id: $('#modal2_id').val(),
+			page_start:0,
+			page_length:1000
         },
         success: function (data) {
             var arr = data.data_dgroups;
@@ -522,7 +526,7 @@ $("#relevance-device").click(function () {
         selecteddevice.push(this.value);
     });
     $.ajax({
-        url: "../../accessPolicyDeviceAccount/editAccessPolicyDeviceAccount",
+        url: "../../changePasswordPolicyDeviceAccount/editChangePasswordPolicyDeviceAccount",
         type: "POST",
         data: {
             policy_id: $('#modal1_id').val(),
@@ -551,7 +555,7 @@ $("#relevance-device-group").click(function () {
         selecteddevicegroup.push(this.value);
     })
     $.ajax({
-        url: "../../accessPolicyGroup/editAccessPolicyDeviceGroup",
+        url: "../../changePasswordPolicyGroup/editChangePasswordPolicyDeviceGroup",
         type: "POST",
         data: {
             policy_id: $('#modal2_id').val(),

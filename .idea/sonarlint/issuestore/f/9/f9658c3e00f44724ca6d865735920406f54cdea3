@@ -1,0 +1,22 @@
+
+IWeb:AvoidCommentedOutCodeCheck/"Remove this commented out code.(¼„â¿
+NWeb:AvoidCommentedOutCodeCheckM"Remove this commented out code.(ÑòİŸùÿÿÿÿ
+IWeb:AvoidCommentedOutCodeCheckN"Remove this commented out code.(‰¶Üß
+IWeb:AvoidCommentedOutCodeCheckO"Remove this commented out code.(Èµö‰
+NWeb:AvoidCommentedOutCodeCheckP"Remove this commented out code.(¸é»üÿÿÿÿ
+IWeb:AvoidCommentedOutCodeCheckR"Remove this commented out code.(Ëå¹ü
+NWeb:AvoidCommentedOutCodeCheckS"Remove this commented out code.(°®‘ªşÿÿÿÿ
+IWeb:AvoidCommentedOutCodeCheckT"Remove this commented out code.(‹ü­½
+NWeb:AvoidCommentedOutCodeCheckU"Remove this commented out code.(îã¥şÿÿÿÿ
+IWeb:AvoidCommentedOutCodeCheckV"Remove this commented out code.(‹ü­½
+IWeb:AvoidCommentedOutCodeCheckW"Remove this commented out code.(‹ü­½
+IWeb:AvoidCommentedOutCodeCheckX"Remove this commented out code.(‹ü­½
+HWeb:TableWithoutCaptionCheckY" Add a description to this table.(ÑôŞƒ
+:	Web:S5256Y"%Add "<th>" headers to this "<table>".(ÑôŞƒ
+>	Web:S1827\")Remove this deprecated "width" attribute.(í§¦´
+>	Web:S1827]")Remove this deprecated "width" attribute.(ÌËÂ¹
+C	Web:S1827^")Remove this deprecated "width" attribute.(¿“ù«ûÿÿÿÿ
+C	Web:S1827_")Remove this deprecated "width" attribute.(ÿÅ›‹úÿÿÿÿ
+>	Web:S1827`")Remove this deprecated "width" attribute.(Èë‚—
+C	Web:S1827a")Remove this deprecated "width" attribute.(×¿™ÿÿÿÿÿ
+OWeb:AvoidCommentedOutCodeCheck"Remove this commented out code.(İ¦Õüÿÿÿÿ

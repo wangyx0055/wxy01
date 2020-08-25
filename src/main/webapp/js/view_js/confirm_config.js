@@ -69,7 +69,7 @@ $(function() {
             $('#ad_edit_status').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].status);
             $('#ad_edit_username').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].username);
             $('#ad_edit_administrator').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].administrator);
-            $('#ad_edit_password').attr("placeholder","\xa0********");
+            $('#ad_edit_password').val("xxxxxx");
             $('#ad_edit_filter_department').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].filter_department);
             $('#ad_edit_filter_username').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].filter_username);
             $('#ad_edit_filter_loginname').val($('#ldapadtable').DataTable().row('#' + i).nodes(i).data()[i].filter_loginname);

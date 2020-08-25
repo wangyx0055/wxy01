@@ -1,0 +1,11 @@
+
+V
+java:S1128"@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ëæ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ëæ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éóÖ‹øÿÿÿÿ
+^
+java:S1128"CRemove this unused import 'com.longersec.blj.domain.ApppubAccount'.(ÿµ±şıÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(¹ıĞï
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éóÖ‹øÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éóÖ‹øÿÿÿÿ

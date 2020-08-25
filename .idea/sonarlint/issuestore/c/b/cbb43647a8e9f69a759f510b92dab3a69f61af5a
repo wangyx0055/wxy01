@@ -1,0 +1,12 @@
+
+HWeb:TableWithoutCaptionCheck@" Add a description to this table.(½æø
+:	Web:S5256@"%Add "<th>" headers to this "<table>".(½æø
+NWeb:AvoidCommentedOutCodeCheckf"Remove this commented out code.(«Ê²ÿÿÿÿÿ
+IWeb:AvoidCommentedOutCodeCheckg"Remove this commented out code.(ú±àĞ
+IWeb:AvoidCommentedOutCodeCheckh"Remove this commented out code.(œá•¤
+IWeb:AvoidCommentedOutCodeChecki"Remove this commented out code.(ûóÏæ
+NWeb:AvoidCommentedOutCodeCheckj"Remove this commented out code.(Á¿Íáÿÿÿÿÿ
+NWeb:AvoidCommentedOutCodeCheckk"Remove this commented out code.(Ã¿í°úÿÿÿÿ
+IWeb:AvoidCommentedOutCodeCheckl"Remove this commented out code.(‹ü­½
+MWeb:ImgWithoutAltCheckõ"%Add an "alt" attribute to this image.(Œâ’øùÿÿÿÿ
+MWeb:ImgWithoutAltCheck"%Add an "alt" attribute to this image.(¨§ÚŒûÿÿÿÿ

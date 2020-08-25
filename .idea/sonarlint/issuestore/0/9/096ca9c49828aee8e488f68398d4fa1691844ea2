@@ -1,38 +1,38 @@
 
-h
-java:S1192›"LDefine a constant instead of duplicating this literal "TopDeptNull" 3 times.(û¨„üÿÿÿÿ
-r
-java:S1192›"VDefine a constant instead of duplicating this literal "ä¸Šçº§éƒ¨é—¨ä¸å­˜åœ¨" 3 times.(û¨„üÿÿÿÿ
-j
-java:S1192¡"SDefine a constant instead of duplicating this literal "éƒ¨é—¨åç§°é‡å¤" 4 times.(¤ï¬¤
-e
-java:S1192¡"NDefine a constant instead of duplicating this literal "DuplicateName" 4 times.(¤ï¬¤
-e
-java:S1192†"IDefine a constant instead of duplicating this literal "success" 18 times.(ÈçâÙÿÿÿÿÿ
 Z
 java:S1155">Use isEmpty() to check whether the collection is empty or not.(¨®…ùÿÿÿÿ
-k	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
-f	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ©©›
-k	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
-f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
-k	java:S117["QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
-l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”‡¸¸ÿÿÿÿÿ
-g	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıàÔ
-l	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”‡¸¸ÿÿÿÿÿ
-g	java:S117Ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıàÔ
-g	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
-g	java:S117·"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıàÔ
 g	java:S117¸"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µáÃÂ
-g	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ì•ï
+f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
 g	java:S117ü"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã›ÓÌ
-g
-java:S3776R"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ü²á
-n
-java:S3776Æ"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(Ê‚Õüùÿÿÿÿ
+g	java:S117Ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıàÔ
+g	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıàÔ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”‡¸¸ÿÿÿÿÿ
 n
 java:S3776µ"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Ÿ£¡İûÿÿÿÿ
+k	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
 N
 java:S1854ş"8Remove this useless assignment to local variable "list".(ÌùÓ
 ?
 java:S1481ş")Remove this unused "list" local variable.(ÌùÓ
+g	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+l	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”‡¸¸ÿÿÿÿÿ
+g	java:S117·"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıàÔ
+k	java:S117["QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ÂŸşúÿÿÿÿ
+g	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ì•ï
+k	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+h
+java:S1192›"LDefine a constant instead of duplicating this literal "TopDeptNull" 3 times.(û¨„üÿÿÿÿ
+f	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ©©›
 P	java:S125H"<This block of commented-out lines of code should be removed.(ı‹æ
+e
+java:S1192¡"NDefine a constant instead of duplicating this literal "DuplicateName" 4 times.(¤ï¬¤
+n
+java:S3776Æ"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(Ê‚Õüùÿÿÿÿ
+r
+java:S1192›"VDefine a constant instead of duplicating this literal "ä¸Šçº§éƒ¨é—¨ä¸å­˜åœ¨" 3 times.(û¨„üÿÿÿÿ
+j
+java:S1192¡"SDefine a constant instead of duplicating this literal "éƒ¨é—¨åç§°é‡å¤" 4 times.(¤ï¬¤
+g
+java:S3776R"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ü²á
+e
+java:S1192†"IDefine a constant instead of duplicating this literal "success" 18 times.(ÈçâÙÿÿÿÿÿ

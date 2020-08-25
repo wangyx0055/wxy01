@@ -1,0 +1,10 @@
+
+NWeb:AvoidCommentedOutCodeCheck4"Remove this commented out code.(î°‰«ÿÿÿÿÿ
+NWeb:AvoidCommentedOutCodeCheckE"Remove this commented out code.(‹òá¤ıÿÿÿÿ
+NWeb:AvoidCommentedOutCodeCheckZ"Remove this commented out code.( ÷œüÿÿÿÿ
+MWeb:TableWithoutCaptionCheck\" Add a description to this table.(ŠÄÓûùÿÿÿÿ
+?	Web:S5256\"%Add "<th>" headers to this "<table>".(ŠÄÓûùÿÿÿÿ
+MWeb:TableWithoutCaptionCheckz" Add a description to this table.(Ššü§øÿÿÿÿ
+?	Web:S5256z"%Add "<th>" headers to this "<table>".(Ššü§øÿÿÿÿ
+YWeb:FrameWithoutTitleCheckî"-Add a "title" attribute to this <iframe> tag.(Š¹©åùÿÿÿÿ
+YWeb:FrameWithoutTitleCheckï"-Add a "title" attribute to this <iframe> tag.(¿ôãóùÿÿÿÿ

@@ -1,0 +1,61 @@
+
+i	java:S100–"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªåÔÇÿÿÿÿÿ
+C
+java:S1874¤"-Remove this use of "UTF_8"; it is deprecated.(¿«ŒJ
+d
+java:S1192E"IDefine a constant instead of duplicating this literal "success" 13 times.(ÈçâÙÿÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+D
+java:S1874¦"-Remove this use of "UTF_8"; it is deprecated.(ÕîÙé
+^
+java:S1126®"BReplace this if-then-else statement by a single method invocation.(ºå™‰üÿÿÿÿ
+l	java:S117­"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›­è¬şÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+P
+java:S1874›"9Remove this use of "DefaultHttpClient"; it is deprecated.(è—ÄŒ
+S
+java:S2589¨"7Remove this expression which always evaluates to "true"(ˆµ–¯ÿÿÿÿÿ
+f	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š«õŠ
+S
+java:S1128"=Remove this unused import 'org.apache.http.util.EntityUtils'.(Å‹»
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ
+C
+java:S1125_"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+t
+java:S2293<"YReplace the type specification in this constructor call with the diamond operator ("<>").(ãôáâøÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢é©ûÿÿÿÿ
+B
+java:S1481…"+Remove this unused "config" local variable.(¥€õ¬
+Q
+java:S1854…":Remove this useless assignment to local variable "config".(¥€õ¬
+N
+java:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+2
+java:S3626‘"Remove this redundant jump.(ûÁİ…
+l	java:S117–"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªåÔÇÿÿÿÿÿ
+o
+java:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ãƒ«î
+T	java:S106Š"9Replace this use of System.out or System.err by a logger.(¥óÖõûÿÿÿÿ
+f	java:S117h"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ƒÅ¸
+k	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯É‚¥øÿÿÿÿ
+E
+java:S5411S"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+1
+java:S3626}"Remove this redundant jump.(ûÁİ…
+E
+java:S5411_"*Use the primitive boolean expression here.(Û‰¬ÿÿÿÿÿ
+f
+java:S2095›"OUse try-with-resources or close this "DefaultHttpClient" in a "finally" clause.(è—ÄŒ
+D
+java:S1874©"-Remove this use of "UTF_8"; it is deprecated.(Â¼½
+]
+java:S1854;"GRemove this useless assignment to local variable "resultLiveSessionss".(Ãƒ«î
+d
+java:S1128"IRemove this unused import 'org.springframework.web.servlet.ModelAndView'.(Ç¨ÿäûÿÿÿÿ
+C
+java:S1125S"(Remove the literal "true" boolean value.(Û‰¬ÿÿÿÿÿ
+Q
+java:S1128";Remove this unused import 'org.apache.shiro.SecurityUtils'.(ı™ß

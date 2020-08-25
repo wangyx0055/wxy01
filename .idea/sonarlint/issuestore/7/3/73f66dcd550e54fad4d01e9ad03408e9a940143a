@@ -1,0 +1,11 @@
+
+CWeb:BoldAndItalicTagsCheck`"Replace this <i> tag by <em>.(›½´
+MWeb:TableWithoutCaptionChecki" Add a description to this table.(ºï¡¬úÿÿÿÿ
+?	Web:S5256i"%Add "<th>" headers to this "<table>".(ºï¡¬úÿÿÿÿ
+OWeb:AvoidCommentedOutCodeChecké"Remove this commented out code.(¤ÒÔµıÿÿÿÿ
+OWeb:AvoidCommentedOutCodeCheck’"Remove this commented out code.(ˆÈîøÿÿÿÿ
+OWeb:AvoidCommentedOutCodeCheck•"Remove this commented out code.(áã‹ şÿÿÿÿ
+DWeb:BoldAndItalicTagsCheck©"Replace this <i> tag by <em>.(Ò¯àÔ
+OWeb:AvoidCommentedOutCodeCheckÆ"Remove this commented out code.(””Œ“øÿÿÿÿ
+J	Web:S1827 "/Remove this deprecated "frameborder" attribute.(€È¹çúÿÿÿÿ
+YWeb:FrameWithoutTitleCheck "-Add a "title" attribute to this <iframe> tag.(€È¹çúÿÿÿÿ

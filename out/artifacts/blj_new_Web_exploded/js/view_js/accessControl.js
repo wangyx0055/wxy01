@@ -383,18 +383,14 @@ function editStatus(status, id) {
             id: id,
             status: status,
         },
-        success: function (data) {
-            if (data.success) {
-                loadAJAX('#example2');
-            } else {
-                loadAJAX('#example2');
-            }
+        success: function () {
+            loadAJAX('#example2');
         }
     })
 }
 //修改启用禁用并且调用编辑状态的ajax
 function switchcase(o, id) {
-    if (o.innerText == "启用") {
+    if (o.innerText === "启用") {
         o.innerText = "禁用";
         editStatus(1, id);
     } else {
@@ -549,9 +545,7 @@ $('#modal-default').on('show.bs.modal', function (event) {
 });
 // 编辑
 $('#modal-default5').on('show.bs.modal', function (event) {
-	/*console.log($('#edit_monday_time').val());
-	console.log("ha");*/
-    var button = $(event.relatedTarget) // Button that triggered the modal
+    var button = $(event.relatedTarget);
     var i = button.data('row');
     $('#judge_editname').text('');
     $('#Vedit_black').text('');
@@ -883,10 +877,7 @@ $('.black').focus(function(){
 // edit
 $('#default5-edit').click(function () {
     function blurStart() {
-      /*  console.log($('#judge_editname').text() == "");*/
-        console.log($('#judge_editname').text());
-    	console.log($('#Vedit_black').text());
-        return $('#judge_editname').text() == "" && $('#Vedit_black').text() == "";      
+        return $('#judge_editname').text() === "" && $('#Vedit_black').text() === "";
     }
     //判断是白名单还是黑名单
     let eips = '';
@@ -1111,7 +1102,6 @@ $('#modal-primary7').on('show.bs.modal', function (event) {
                 let viewH =$(this).height(),//可见高度
                     contentH =$(this).get(0).scrollHeight,//内容高度
                     scrollTop =$(this).scrollTop();//滚动高度
-                console.log(contentH - viewH - scrollTop)
                 if(contentH - viewH - scrollTop <= 60) {
                     page_start += 500;
                     $.ajax({

@@ -1,0 +1,13 @@
+
+c	java:S100="NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì´Ë«
+c	java:S100M"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶™ã™
+c	java:S100A"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İÂÁ
+f	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶™ã™
+o	java:S116"URename this field "fail_count" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú’Ç¢ÿÿÿÿÿ
+m	java:S116"SRename this field "alert_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô¥ÿ”ûÿÿÿÿ
+h	java:S1009"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğøçµûÿÿÿÿ
+h	java:S100E"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µÙ»Ÿúÿÿÿÿ
+f	java:S117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì´Ë«
+h	java:S100I"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ªÈòúÿÿÿÿ
+n	java:S116"TRename this field "send_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¡ìüÿÿÿÿ
+k	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µÙ»Ÿúÿÿÿÿ

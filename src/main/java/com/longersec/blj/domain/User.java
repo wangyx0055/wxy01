@@ -37,9 +37,6 @@ public class User implements java.io.Serializable{
 	private Integer lock_time;
 
 	private Integer last_chpass;
-
-
-	private Integer groupid;
 	
 	@Email(message = "邮箱格式错误")
 	private String email;
@@ -497,14 +494,6 @@ public class User implements java.io.Serializable{
 		this.depart_name = depart_name;
 	}
 
-	public Integer getGroupid() {
-		return groupid;
-	}
-
-	public void setGroupid(Integer groupid) {
-		this.groupid = groupid;
-	}
-
 	public Integer getGoogle_auth_token_used() {
 		return google_auth_token_used;
 	}
@@ -545,7 +534,6 @@ public class User implements java.io.Serializable{
 				", fail_count=" + fail_count +
 				", lock_time=" + lock_time +
 				", last_chpass=" + last_chpass +
-				", groupid=" + groupid +
 				", email='" + email + '\'' +
 				", mobile='" + mobile + '\'' +
 				", qq='" + qq + '\'' +

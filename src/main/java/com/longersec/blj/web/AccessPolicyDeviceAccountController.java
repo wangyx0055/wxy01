@@ -33,8 +33,8 @@ public class AccessPolicyDeviceAccountController {
 	@RequestMapping("/listAccessPolicyDeviceAccount")
 	@ResponseBody
 	public JSONObject listAccessPolicyDevice(AccessPolicyDeviceAccount accessPolicyDeviceAccount,HttpServletRequest request, HttpSession session) {
-		int page_start = Integer.parseInt(request.getParameter("start"));
-		int page_length = Integer.parseInt(request.getParameter("length"));
+		Integer page_start = Integer.parseInt(request.getParameter("start"));
+		Integer page_length = Integer.parseInt(request.getParameter("length"));
 		ArrayList<Object> resultAccessPolicyDevices = new ArrayList<Object>();
 		ArrayList<AccessPolicyDeviceAccount> accessPolicyDevices = new ArrayList<AccessPolicyDeviceAccount>();
 		long total = 0;
