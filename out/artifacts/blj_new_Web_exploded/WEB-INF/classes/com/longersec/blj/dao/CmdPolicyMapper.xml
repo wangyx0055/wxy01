@@ -125,7 +125,7 @@
 	<select id="findAll" resultMap="BaseResultMap, cmdPolicyRecordCounts" resultType="java.lang.Object">
 		SELECT 
 		SQL_CALC_FOUND_ROWS 
-		GROUP_CONCAT(c.command order by p.id asc SEPARATOR '\n') cmd,p.* ,ld.name depart_name FROM lsblj_cmd_policy p
+		GROUP_CONCAT(c.command  SEPARATOR '\n') cmd,p.* ,ld.name depart_name FROM lsblj_cmd_policy p
 		LEFT JOIN lsblj_cmd_policy_cmd c ON p.id=c.policy_id
 		LEFT JOIN lsblj_department ld ON p.department_id = ld.id
 		where 1
@@ -171,9 +171,14 @@
 			) 
 			AND policy_id IN(
 				SELECT policy_id FROM lsblj_cmd_policy_device_account WHERE device_account_id=#{device_account_id}
+				UNION 
+				SELECT policy_id FROM lsblj_cmd_policy_group WHERE group_id IN(
+					select group_id from lsblj_group_device_account where device_account_id=#{device_account_id}
+				)
 			)
-			 AND longtime=1 OR ( longtime=0 AND NOW() &gt;=concat(valid_datetime_start," 00:00:00") AND NOW() &lt;=concat(valid_datetime_end," 23:59:59") )
-		UNION DISTINCT 
+			AND longtime=1 OR ( longtime=0 AND NOW() &gt;=concat(valid_datetime_start," 00:00:00") AND NOW() &lt;=concat(valid_datetime_end," 23:59:59") )
+		  
+		  UNION DISTINCT 
 			SELECT  
 			CONCAT('-',p.id,'-',p.alert_level,'-',p.alert_methods,'-',p.execute_action,'-',c.command) cmd FROM lsblj_cmd_policy_cmdgroup pc
 			LEFT JOIN lsblj_cmd_policy p ON p.id=pc.policy_id AND p.id IS NOT NULL 
@@ -181,11 +186,14 @@
 			WHERE p.id IS NOT NULL AND policy_id IN(
 					SELECT policy_id FROM lsblj_cmd_policy_user where user_id=#{user_id}
 					UNION 
-					SELECT policy_id FROM lsblj_cmd_policy_group where group_id=#{group_id}
-					
+					SELECT policy_id FROM lsblj_cmd_policy_group where group_id IN(select group_id from lsblj_group_user where user_id=#{user_id})
 			) 
 			AND policy_id IN(
 				SELECT policy_id FROM lsblj_cmd_policy_device_account WHERE device_account_id=#{device_account_id}
+				UNION 
+				SELECT policy_id FROM lsblj_cmd_policy_group WHERE group_id IN(
+					select group_id from lsblj_group_device_account where device_account_id=#{device_account_id}
+				)
 			)
 			AND longtime=1 OR ( longtime=0 AND NOW() &gt;=concat(valid_datetime_start," 00:00:00") AND NOW() &lt;=concat(valid_datetime_end," 23:59:59") )
 		

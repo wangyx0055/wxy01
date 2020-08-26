@@ -1,25 +1,6 @@
 package com.longersec.blj.utils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-
-import javax.servlet.http.HttpServletRequest;
-
-import net.sf.json.JSONArray;
-//import org.json.JSONObject;
 import net.sf.json.JSONObject;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -30,15 +11,24 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class httpClient {
 	 /**
      * Get请求，方便到一个url接口来获取结果
@@ -126,8 +116,6 @@ public class httpClient {
             if(entity != null){
                 result = EntityUtils.toString(entity, "UTF-8");
             }
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -135,14 +123,14 @@ public class httpClient {
     }
     
     public static String doPost(String url, Map<String, String> map, String charset) {
-        HttpClient httpClient = null;
-        HttpPost httpPost = null;
+        HttpClient httpClient;
+        HttpPost httpPost;
         String result = null;
         try {
             httpClient = new SSLClient();
             httpPost = new HttpPost(url);
             //设置参数
-            List<NameValuePair> list = new ArrayList<NameValuePair>();
+            List<NameValuePair> list = new ArrayList<>();
             Iterator iterator = map.entrySet().iterator();
             while (iterator.hasNext()) {
                 Entry<String, String> elem = (Entry<String, String>) iterator.next();
@@ -199,8 +187,9 @@ public class httpClient {
         } catch (Exception e) {  
             e.printStackTrace();  
         }finally{  
-            try {  
-                httpResponse.close();  
+            try {
+                assert httpResponse != null;
+                httpResponse.close();
             } catch (IOException e) {  
                 e.printStackTrace();  
             }  

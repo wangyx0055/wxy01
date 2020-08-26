@@ -49,8 +49,8 @@
 	</select>
 	
 	<select id="selectById" resultMap="cmd">
-	  SELECT 
-	  p.cmdgroup_id , u.name 
+	  SELECT
+	  p.cmdgroup_id , u.name
 	  FROM lsblj_cmd_policy_cmdgroup p , lsblj_cmdgroup u
 	  where policy_id = #{policy_id}
 	        and p.cmdgroup_id = u.id;

@@ -47,8 +47,6 @@ public class GroupDeviceAccountController {
 		resultDeviceAccount.removeAll(resultGroupDeviceAccount);
 		JSONArray jsonArray_p_device = JSONArray.fromObject(resultGroupDeviceAccount);
 		JSONArray jsonArray_device = JSONArray.fromObject(resultDeviceAccount);
-
-		result.accumulate("success", true);
 		result.accumulate("data_device", jsonArray_device);
 		result.accumulate("data_p_device", jsonArray_p_device);
 		return result;

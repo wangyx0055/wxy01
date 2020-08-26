@@ -202,7 +202,7 @@ $('#modal-default3').on('show.bs.modal', function (event) {
     $('#name2').html($('#deviceList').DataTable().row('#' + i).nodes(i).data()[i].name);
     $('#account_count2').html($('#deviceList').DataTable().row('#' + i).nodes(i).data()[i].account_count);
     $('#protocal2').html($('#deviceList').DataTable().row('#' + i).nodes(i).data()[i].protocolname);
-    $('#os_type2').html($('#deviceList').DataTable().row('#' + i).nodes(i).data()[i].typename);
+    $('#device_type2').html($('#deviceList').DataTable().row('#' + i).nodes(i).data()[i].typename);
     $("#Vadmin_id").text("");
     $("#Vmanage_password").text("");
     $("#admin_id").val("");

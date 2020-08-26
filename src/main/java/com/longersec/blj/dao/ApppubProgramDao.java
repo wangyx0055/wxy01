@@ -1,32 +1,25 @@
 package com.longersec.blj.dao;
 
 import java.util.List;
-
-import com.longersec.blj.domain.ApppubServer;
-import com.longersec.blj.domain.DeviceAccount;
 import org.apache.ibatis.annotations.Param;
-
-import com.longersec.blj.domain.ApppubAccount;
 import com.longersec.blj.domain.ApppubProgram;
 
 public interface ApppubProgramDao {
-	public List<ApppubProgram> selectAll();
-	public boolean editApppubProgram(ApppubProgram apppubProgram);
+	List<ApppubProgram> selectAll();
+	boolean editApppubProgram(ApppubProgram apppubProgram);
 
-	public boolean addApppubProgram(ApppubProgram apppubProgram);
+	boolean addApppubProgram(ApppubProgram apppubProgram);
 
-	public boolean delApppubProgram(List<Integer> ids);
+	boolean delApppubProgram(List<Integer> ids);
 
-	public List<Object> findAll(@Param("apppubProgram")ApppubProgram apppubProgram,@Param("sname")String sname,@Param("type")Integer type, @Param("page_start")int page_start, @Param("page_length")int page_length);
+	List<Object> findAll(@Param("apppubProgram")ApppubProgram apppubProgram,@Param("sname")String sname,@Param("type")Integer type, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
-//	public List<Object> queryApppubProgramById(@Param("apppub_server_id") Integer apppub_server_id);
+	List<Object> queryApppubProgramById(@Param("apppub_server_id") int apppub_server_id, @Param("apppubProgram")ApppubProgram apppubProgram, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
-	public List<Object> queryApppubProgramById(@Param("apppub_server_id") int apppub_server_id, @Param("apppubProgram")ApppubProgram apppubProgram, @Param("page_start")int page_start, @Param("page_length")int page_length);
-
-    public int total();
-    public ApppubProgram getById(@Param("id") Integer id);
+	int total();
+	ApppubProgram getById(@Param("id") Integer id);
     
-	public ApppubProgram checkAppName(String name);
+    ApppubProgram checkAppName(String name);
 
-	public ApppubProgram getApppubProgramByName (@Param("name") String name);
+    ApppubProgram getApppubProgramByName (@Param("name") String name);
 }

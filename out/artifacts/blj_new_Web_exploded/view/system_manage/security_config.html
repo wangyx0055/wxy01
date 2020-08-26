@@ -159,7 +159,7 @@
                     <div id="safe_password_verify">
                         <input type="checkbox"  class="input" value="0" name="strength" id="strength">
                     </div>
-                    <span class="pass_sign1">开启强密码校验，密码长度为8-32个字符，<br><span>且包含大小写字母、数字和特殊字符，不支持空格</span>
+                    <span class="pass_sign1">开启强密码校验，密码长度为8-32个<br><span>字符，且包含大小写字母、数字和特殊字符，不支持空格</span>
                     </span>
                 </div>
                 <div>
@@ -180,14 +180,13 @@
                     <p><span><span>*</span>密码修改周期：</span>
                         <input type="text" id="password_cycle">&nbsp;天&nbsp;&nbsp;<span id="VPWD_password_cycle" class="sign_red"></span>
                     </p>
-                    <span>有效值0-365。如果设置为0，则账户密码<br><span>永不过期，否则当达到修改周期后须修改密码</span>
-  						</span>
+                    <span>有效值0-365。如果设置为0，代表账号密码永不过期，否则当达到修改周期后须修改密码</span>
                 </div>
                 <div>
                     <p><span><span>*</span>到期提醒时间：</span>
                         <input type="text" id="fail_warn">&nbsp;天&nbsp;&nbsp;<span id="Vfail_warn1" class="sign_red"></span>
                     </p>
-                    <span>有效值0-5</span>
+                    <span>有效值0-7。如果设置为0，代表无需提醒</span>
                 </div>
 <!--                <div>-->
 <!--                    <p><span>新用户默认密码：</span>-->

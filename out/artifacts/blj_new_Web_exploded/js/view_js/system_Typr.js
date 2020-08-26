@@ -27,8 +27,10 @@ var systemlist = function(field,value){
         },
         "columns": [
             { "data": "id" ,"render": function(data,type,row,meta){
-                    return '<input type="checkbox" name="chk[]" value='+data+'>';
+                    return (row.id === 1|| row.id === 2|| row.id === 3|| row.id === 4|| row.id === 5|| row.id === 6|| row.id === 7|| row.id === 8|| row.id === 9) ?'':
+                        '<input type="checkbox" name="chk[]" value='+data+'>';
                 }},
+            {"data": "id"},
             { "data": "name" ,
                 "render" : function(data, type,
                                     row, mata) {
@@ -56,7 +58,8 @@ var systemlist = function(field,value){
 
             { "data": "id", "render": function(data,type,row,meta){
                     return '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#new_System" class="newcss1" style="cursor:pointer;" >编辑</a> '+
-                        '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-delsys" class="newcss2" style="margin-left: 20px;cursor:pointer;">删除</a>';
+                        ((row.id === 1|| row.id === 2|| row.id === 3|| row.id === 4|| row.id === 5|| row.id === 6|| row.id === 7|| row.id === 8|| row.id === 9) ? '' :
+                            '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-delsys" class="newcss2" style="margin-left: 20px;cursor:pointer;">删除</a>');
                 }}
         ],
         "fnDrawCallback": function( settings, json ) {
@@ -162,15 +165,24 @@ $('#new_System').on('show.bs.modal', function (event) {
         $('#new_System .modal-title').text('编辑系统类型');
         i = button.data('row');
         $('#edit_id').val($('#System_list').DataTable().row('#' + i).nodes(i).data()[i].id);
+        if($('#edit_id').val()<10){
+            $('#name').prop("readOnly",true);
+            $('#device_type').prop("disabled",true);
+        }else {
+            $('#name').prop("readOnly",false);
+            $('#device_type').prop("disabled",false);
+        }
         $('#name').val($('#System_list').DataTable().row('#' + i).nodes(i).data()[i].name);
         $('#param').val($('#System_list').DataTable().row('#' + i).nodes(i).data()[i].param);
-        $('#os_type').val($('#System_list').DataTable().row('#' + i).nodes(i).data()[i].os_type);
+        $('#device_type').val($('#System_list').DataTable().row('#' + i).nodes(i).data()[i].device_type);
         $('#description').val($('#System_list').DataTable().row('#' + i).nodes(i).data()[i].description);
     }else{
         $('#new_System .modal-title').text('新建系统类型');
+        $('#name').prop("readOnly",false);
+        $('#device_type').prop("disabled",false);
         $('#name').val('');
         $('#param').val('');
-        $('#os_type').val('0');
+        $('#device_type').val('0');
         $('#description').val('');
         $('#edit_id').val('');
     }
@@ -219,7 +231,7 @@ $('#edit_btn').off().click(function() {
                 id:$('#edit_id').val(),
                 name:$('#name').val(),
                 param:$('#param').val(),
-                os_type:$('#os_type').find("option:selected").val(),
+                device_type:$('#device_type').find("option:selected").val(),
                 description:$('#description').val(),
             },
             success:function(data){

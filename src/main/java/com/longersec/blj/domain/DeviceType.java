@@ -8,7 +8,7 @@ public class DeviceType {
 
 	private String param;
 
-	private Integer os_type;
+	private Integer device_type;
 
 	private String description;
 
@@ -28,7 +28,7 @@ public class DeviceType {
 				"id=" + id +
 				", name='" + name + '\'' +
 				", param='" + param + '\'' +
-				", os_type=" + os_type +
+				", device_type=" + device_type +
 				", description='" + description + '\'' +
 				", searchAll='" + searchAll + '\'' +
 				'}';
@@ -57,13 +57,13 @@ public class DeviceType {
 	public void setParam(String param) {
 		this.param = param;
 	}
-
-	public Integer getOs_type() {
-		return os_type;
+	
+	public Integer getDevice_type() {
+		return device_type;
 	}
 
-	public void setOs_type(Integer os_type) {
-		this.os_type = os_type;
+	public void setDevice_type(Integer device_type) {
+		this.device_type = device_type;
 	}
 
 	public String getDescription() {

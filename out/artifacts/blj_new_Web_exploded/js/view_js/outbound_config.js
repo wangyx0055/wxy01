@@ -503,7 +503,7 @@ $('#telephone2').focus(function () {
                     $('#sms_id').val(data.data[0].id);
                     $('#aip_Id').val(data.data[0].access_key_id);
                     $('#api_Secret').val(data.data[0].access_key_secret);
-                    $('#sign').val(data.data[0].sign_name);massageType
+                    $('#sign').val(data.data[0].sign_name);
                     $('#example_code').val(data.data[0].template_code);
                     $('#aip_Id1').text(data.data[0].access_key_id);
                     $('#massageType').text(data.data[0].type==1?"阿里云":"");

@@ -3,8 +3,6 @@ package com.longersec.blj.config;
 import com.longersec.blj.dao.MenuDao;
 import com.longersec.blj.dao.RoleDao;
 import com.longersec.blj.domain.User;
-import com.longersec.blj.service.SessionService;
-import com.longersec.blj.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -21,8 +19,6 @@ import java.util.List;
 
 //自定义的UserRealm
 public class UserRealm extends AuthorizingRealm {
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private MenuDao menuDao;
@@ -32,16 +28,12 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("执行了=》授权：doGetAuthorizationInfo");
-
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        
         //获取当前登陆的对象
         Subject subject = SecurityUtils.getSubject();
         User user = (User) subject.getPrincipal();//拿到user对象
         List<String> resources = menuDao.findSources(user.getId());
-        //System.out.println(resources);
-        List<String> menuSources = new ArrayList<String>();
+        List<String> menuSources = new ArrayList<>();
 
         for (String res:resources){
             String[] menus = res.split("-");
@@ -62,10 +54,7 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("执行了=》认证：doGetAuthorizationInfo");
         UsernamePasswordToken usertoken = (UsernamePasswordToken) authenticationToken;
-
-        
         Subject current_user =  SecurityUtils.getSubject();
         Session session = current_user.getSession();
 		User user  = (User) session.getAttribute("user");

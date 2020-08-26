@@ -13,10 +13,10 @@ import java.util.BitSet;
  */
 @Slf4j
 public class EncodeUtils {
-    private static int BYTE_SIZE = 8;
-    public static String CODE_UTF8 = "UTF-8";
-    public static String CODE_UTF8_BOM = "UTF-8_BOM";
-    public static String CODE_GBK = "GBK";
+    private static final int BYTE_SIZE = 8;
+    public static final String CODE_UTF8 = "UTF-8";
+    public static final String CODE_UTF8_BOM = "UTF-8_BOM";
+    public static final String CODE_GBK = "GBK";
  
     /**
      * 通过文件全名称获取编码集名称

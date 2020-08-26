@@ -164,12 +164,8 @@ function editstatus(status,id) {
             id: id,
             status: status,
         },
-        success:function(data){
-            if (data.success){
-                loadAJAX('#deviceaccount');
-            }else {
-                loadAJAX('#deviceaccount');
-            }
+        success:function(){
+            loadAJAX('#deviceaccount');
         }
     })
 }
@@ -390,9 +386,9 @@ $('#edit_device_description').focus(function(){
     $('#Vedit_device_description').text('');
 })
 //监听系统类型选择框
-$('#edit_device_os_type').change(function () {
-    if ($('#edit_device_os_type').val()!=null){
-        $('#Vos_type').text('');
+$('#edit_device_device_type').change(function () {
+    if ($('#edit_device_device_type').val()!=null){
+        $('#Vdevice_type').text('');
     }
 })
 //监听设备组选择框
@@ -689,8 +685,8 @@ $("#next").click(function(){
     $('#file_id').val(0);
     fileInput1('');
    //系统类型为windows时协议类型为rdp
-    let _os_type = $('#edit_device_os_type option:selected').text().toUpperCase();
-    if (_os_type==="WINDOWS"){
+    let _device_type = $('#edit_device_device_type option:selected').text().toUpperCase();
+    if (_device_type==="WINDOWS"){
         $('#edit_device_protocol').val('2');
         $('#edit_device_port').val("3389");
         $('#div55').css("display",'none');
@@ -730,7 +726,7 @@ $("#_editdeviceButton").off().click(function(){
                 id:$('#edit_device_id').val(),
                 name:$('#edit_device_name').val(),
                 ip:$('#edit_device_ip').val(),
-                os_type:$('#edit_device_os_type').find("option:selected").val(),
+                device_type:$('#edit_device_device_type').find("option:selected").val(),
                 department:$('#depart_id').val(),
                 description:$('#edit_device_description').val(),
             },
@@ -868,7 +864,7 @@ $('#editdeviceButton').off().click(function(){
                 id:$('#edit_device_id').val(),
                 name:$('#edit_device_name').val(),
                 ip:$('#edit_device_ip').val(),
-                os_type:$('#edit_device_os_type').find("option:selected").val(),
+                device_type:$('#edit_device_device_type').find("option:selected").val(),
                 department:$('#depart_id').val(),
                 groupid:$('#edit_device_group').val(),
                 description:$('#edit_device_description').val(),
@@ -1001,13 +997,13 @@ $("#newDevice").click(function(){
     $('#depart_id').val(topNode.id );
     $('#depart_name').val(topNode.text);
     $('#edit_device_ip').val('');
-    $('#edit_device_os_type').val('51');
+    $('#edit_device_device_type').val('51');
     $('#edit_device_group').val('');
     $('#edit_device_description').val('');
     $('#Vname').text('');
     $('#Vlogin').text('');
     $('#Vgroup').text('');
-    $('#Vos_type').text('');
+    $('#Vdevice_type').text('');
     $('#Vip').text('');
     $('#VdepartName').text('');
 });
@@ -1030,7 +1026,7 @@ $('#modal-editdevice').on('show.bs.modal', function (event) {
         $('#depart_name').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].depart_name);
         $('#depart_id').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].department);
         $('#edit_device_ip').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].ip);
-        $('#edit_device_os_type').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].os_type);
+        $('#edit_device_device_type').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].device_type);
         $('#edit_device_group').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].groupid);
         $('#edit_device_description').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].description);
         $('#edit_device_login_method').val($('#devices').DataTable().row('#' + i).nodes(i).data()[i].login_method);
@@ -1043,7 +1039,7 @@ $('#modal-editdevice').on('show.bs.modal', function (event) {
         $('#Vname').text('');
         $('#Vlogin').text('');
         $('#Vgroup').text('');
-        $('#Vos_type').text('');
+        $('#Vdevice_type').text('');
         $('#Vport').text('');
         $('#Vip').text('');
     }else{
@@ -1071,7 +1067,7 @@ $.ajax({
     success:function(data){
         if (data.success){
             for (var i = 0; i < data.data.length; i++){
-                $("#edit_device_os_type").append("<option  value='"+data.data[i].id+"'>"+data.data[i].name+"</option>");
+                $("#edit_device_device_type").append("<option  value='"+data.data[i].id+"'>"+data.data[i].name+"</option>");
             }
         }
     }

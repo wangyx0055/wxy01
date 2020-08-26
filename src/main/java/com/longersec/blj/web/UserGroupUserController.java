@@ -5,6 +5,7 @@ import com.longersec.blj.domain.User;
 import com.longersec.blj.service.GroupService;
 import com.longersec.blj.service.UserGroupUserService;
 import com.longersec.blj.service.UserService;
+import com.longersec.blj.utils.BljConstant;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
@@ -38,29 +39,16 @@ public class UserGroupUserController {
 	public JSONObject findUserGroupUser(@RequestParam("group_id") Integer group_id,
 	                                    @RequestParam(value = "page_start",required = false)Integer page_start,
 	                                    @RequestParam(value ="page_length",required = false)Integer page_length) {
-		ArrayList<Users> resultUserGroupUsers = new ArrayList<Users>();
-		ArrayList<Users> resultUsers = new ArrayList<Users>();
 		User users = (User) SecurityUtils.getSubject().getPrincipal();
-		resultUserGroupUsers = (ArrayList<Users>) userGroupUserService.selectById(group_id);
-		resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment(),page_start,page_length);
+		ArrayList<Users> resultUserGroupUsers = (ArrayList<Users>) userGroupUserService.selectById(group_id);
+		ArrayList<Users> resultUsers = (ArrayList<Users>) userService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		JSONObject result = new JSONObject();
 		resultUsers.removeAll(resultUserGroupUsers);
 		JSONArray jsonArray_p_users = JSONArray.fromObject(resultUserGroupUsers);
 		JSONArray jsonArray_users = JSONArray.fromObject(resultUsers);
-		result.accumulate("success", true);
+		result.accumulate(BljConstant.SUCCESS, true);
 		result.accumulate("data_users", jsonArray_users);
 		result.accumulate("data_p_users", jsonArray_p_users);
-		return result;
-	}
-
-	@RequestMapping("/addUserGroupUser")
-	@ResponseBody
-	public JSONObject addUserGroupUser(@RequestParam(value = "users[]") Integer[] _users, HttpServletRequest request, HttpSession session) {
-		JSONObject result = new JSONObject();
-		List<Integer> users =  Arrays.asList(_users);
-		Integer policy_id = null;
-		Boolean r = userGroupUserService.addUsergroupUser(policy_id,users);
-		result.put("success", r);
 		return result;
 	}
 
@@ -75,7 +63,7 @@ public class UserGroupUserController {
 		}
 		int selectAccessPolicyUserCounts = userGroupUserService.selectUsergroupUserCounts(group_id);
 		boolean groupCount = groupService.updateGroupCount(selectAccessPolicyUserCounts, group_id);
-		result.put("success", r && groupCount);
+		result.put(BljConstant.SUCCESS, r && groupCount);
 		return result;
 	}
 }

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>工单审批</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- my css -->
+    <link rel="stylesheet" href="../../bower_components/dist/css/main/main.css">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../bower_components/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../bower_components/dist/css/skins/_all-skins.min.css">
+    <script src="../../js/html5shiv.min.js"></script>
+    <script src="../../js/respond.min.js"></script>
+    <!-- Google Font -->
+    <link rel="stylesheet" href="../../bower_components/treeview/font.css">
+    <style>
+        .ranges{
+            display: none;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini author"  >
+<div class="wrapper">
+    <header class="main-header">
+        <div th:replace="/view/common/header :: header"></div>
+    </header>
+    <aside class="main-sidebar">
+        <div th:replace="view/common/menu :: menu"></div>
+    </aside>
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box" style="box-shadow: none;border-top: none">
+                        <div class="box-header">
+                            <span class="box-title new-header">工单审批</span>
+                        </div>
+                        <hr style="border-top:solid 1px #e9e9e9 ;margin-top: 4px;margin-left: -10px;width: 101.6% ">
+
+                        <!-- /.box-header -->
+                        <div class="box-body" style="margin-top: -33px">
+                            <div class="input-group margin">
+                                <select class="form-control" id="Distinguish">
+                                    <option>自动识别</option>
+                                    <option>工单号</option>
+                                    <option>工单类型</option>
+                                    <option>申请时间</option>
+                                    <option>工单状态</option>
+                                    <option>创建者</option>
+                                </select>
+                                <input type="text" class="form-control" id="searchId">
+                                <span class="input-group-btn">
+	                    <i class="glyphicon glyphicon-search"> <span class="glyphicon glyphicon-search"></span></i>
+	                    <button type="button" class="btn  pull-left newaddbtn" id="search" style="margin-left: -2px;">搜索</button>
+	                    </span>
+                            </div>
+                            <div class="new-add-style">
+                              <!--  <button type="button" class="btn  newaddbtn" data-toggle="modal" data-target="#modal-primary" id="newT">新建</button>-->
+                                <!-- <button type="button" class="btn btn-default newaddbtn2"  data-toggle="modal"  data-target="#modal-default"  data-dismiss="modal" onclick="resetFileInput()">导入</button>
+                                 <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" data-toggle="modal"  data-target="#modal-default1" id="_export">导出</button>-->
+                            </div>
+                            <table id="example2" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <td><span>选择</span></td>
+                                    <td><span>工单号</span></td>
+                                    <td><span>工单类型</span></td>
+                                    <td><span>申请时间</span></td>
+                                    <td><span>工单状态</span></td>
+                                    <td><span>申请内容</span></td>
+                                    <td><span>创建者</span></td>
+                                    <td><span>操作</span></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox" name="chk"></td>
+                                    <td>13223456789045678</td>
+                                    <td>已过期</td>
+                                    <td>2020-08-20 15:57:11</td>
+                                    <td>访问授权</td>
+                                    <td>root...</td>
+                                    <td>test3</td>
+                                    <td><a class="newcss1" data-target="#work_approve" data-toggle="modal" style="margin-right: 15px;cursor: pointer">查看</a><a class="newcss1" data-toggle="modal" data-target="#modal_default8" style="margin-right: 15px;cursor: pointer">批准</a><a class="newcss1" data-target="#modal_default2" data-toggle="modal" style="margin-right: 15px;cursor: pointer">驳回</a><a class="newcss2" data-target="#modal_default" data-toggle="modal"  style="cursor: pointer">撤销</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="chk"></td>
+                                    <td>13223456789045678</td>
+                                    <td>已过期</td>
+                                    <td>2020-08-20 15:57:11</td>
+                                    <td>访问授权</td>
+                                    <td>root...</td>
+                                    <td>test3</td>
+                                    <td><a class="newcss1" data-target="#work_approve" data-toggle="modal" style="margin-right: 15px;cursor: pointer">查看</a><a class="newcss1" data-toggle="modal" data-target="#modal_default8" style="margin-right: 15px;cursor: pointer">批准</a><a class="newcss1" data-target="#modal_default2" data-toggle="modal" style="margin-right: 15px;cursor: pointer">驳回</a><a class="newcss2" data-target="#modal_default" data-toggle="modal"  style="cursor: pointer">撤销</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="chk"></td>
+                                    <td>13223456789045678</td>
+                                    <td>已过期</td>
+                                    <td>2020-08-20 15:57:11</td>
+                                    <td>访问授权</td>
+                                    <td>root...</td>
+                                    <td>test3</td>
+                                    <td><a class="newcss1" data-target="#work_approve" data-toggle="modal" style="margin-right: 15px;cursor: pointer">查看</a><a class="newcss1" data-toggle="modal" data-target="#modal_default8" style="margin-right: 15px;cursor: pointer">批准</a><a class="newcss1" data-target="#modal_default2" data-toggle="modal" style="margin-right: 15px;cursor: pointer">驳回</a><a class="newcss2" data-target="#modal_default" data-toggle="modal"  style="cursor: pointer">撤销</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <form style="margin-top: 20px;">
+                                <input type="checkbox" id="checkAll" onclick="sel('chk[]')">
+                                <button type="button" class="btn btn-default pull-left newaddbtn2" data-dismiss="modal" data-toggle="modal" data-target="#modal_deAll">删除</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--查看-->
+            <div class="modal modal-hides" id="work_approve">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #f7f7f7">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title" style="font-size:18px">详细信息</span>
+                        </div>
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#a" data-toggle="tab">基本信息</a></li>
+                                <li><a href="#b" data-toggle="tab">设备账号</a></li>
+                                <li><a href="#c" data-toggle="tab">审批人列表</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="a">
+                                <div class="modal-body" style="height: 400px;">
+                                    <div style="margin-top: 20px;margin-left: 78px;font-size: 12px;">
+                                        <span >工单号：</span><span>202008201608076699482</span>
+                                    </div>
+                                    <div style="margin-top: 25px;margin-left: 66px;font-size: 12px;">
+                                        <span >工单类型：</span><span>访问授权</span>
+                                    </div>
+                                    <div style="margin-top: 25px;margin-left: 90px;font-size: 12px;">
+                                        <span >状态：</span><span>审批中</span>
+                                    </div>
+                                    <div style="margin-top: 20px;margin-left: 78px;font-size: 12px;">
+                                        <span >申请者：</span><span>test33</span>
+                                    </div>
+                                    <div style="margin-top: 25px;margin-left: 66px;font-size: 12px;">
+                                        <span >申请时间：</span><span>2020-08-20 16:08:07</span>
+                                    </div>
+                                    <div style="margin-top: 25px;margin-left: 66px;font-size: 12px;">
+                                        <span >运维时间：</span><span>2020-08-11 16:08:16~2020-08-22 16:08:20</span>
+                                    </div>
+                                    <div style="margin-top: 25px;margin-left: 66px;font-size: 12px;">
+                                        <span >文件传输：</span><span>允许上传，允许下载</span>
+                                    </div>
+                                    <div style="margin-top: 25px;margin-left: 66px;font-size: 12px;">
+                                        <span >工单备注：</span><span>备注</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="b">
+                                <div class="modal-body" style="height: 400px;">
+                                    <table id="device_table" class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <td><span>设备账号</span></td>
+                                            <td><span>部门</span></td>
+                                            <td><span>关联设备</span></td>
+                                            <td><span>设备地址</span></td>
+                                            <td><span>端口</span></td>
+                                            <td><span>协议</span></td>
+                                            <td><span>状态</span></td>
+                                            <td><span>登录方式</span></td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>root</td>
+                                            <td>总部</td>
+                                            <td>windows</td>
+                                            <td>59.110.158.77</td>
+                                            <td>25</td>
+                                            <td>RDP</td>
+                                            <td>正常</td>
+                                            <td>手动登录</td>
+                                        </tr>
+                                        <tr>
+                                            <td>root</td>
+                                            <td>总部</td>
+                                            <td>windows</td>
+                                            <td>59.110.158.77</td>
+                                            <td>25</td>
+                                            <td>FTP</td>
+                                            <td>未知</td>
+                                            <td>自动登录</td>
+                                        </tr>
+                                        <tr>
+                                            <td>root</td>
+                                            <td>总部</td>
+                                            <td>Linux</td>
+                                            <td>59.110.158.77</td>
+                                            <td>6</td>
+                                            <td>RDP</td>
+                                            <td>正常</td>
+                                            <td>手动登录</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="c">
+                                <div class="modal-body" style="height: 400px;">
+                                    <table id="approve_poeple" class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <td><span>审批节点</span></td>
+                                            <td><span>用户名</span></td>
+                                            <td><span>姓名</span></td>
+                                            <td><span>部门</span></td>
+                                            <td><span>审批时间</span></td>
+                                            <td><span>审批结果</span></td>
+                                            <td><span>备注</span></td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>admin</td>
+                                            <td>ybl</td>
+                                            <td>测试部</td>
+                                            <td>-</td>
+                                            <td>待审批</td>
+                                            <td>备注</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>test</td>
+                                            <td>wenb</td>
+                                            <td>测试部</td>
+                                            <td>-</td>
+                                            <td>审批中</td>
+                                            <td>备注</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>admin3</td>
+                                            <td>eferg</td>
+                                            <td>测试部</td>
+                                            <td>-</td>
+                                            <td>待审批</td>
+                                            <td>备注</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary5" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+<!--驳回-->
+            <div class="modal modal-hides" id="modal_default2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">驳回工单</span>
+                        </div>
+                        <div class="modal-body">
+                            <div style="margin-top: 20px;margin-left: 80px;">
+                                <span style="font-size: 12px;vertical-align: top;">审批备注: </span>
+                                <textarea style="width: 260px;height: 80px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;resize: none"></textarea>
+                                <p style="font-size: 12px;color: #a4abb5;margin-left: 56px;">备注最长128个汉字或字符</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn newaddbtn pull-right" id="resubmit"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
+                            <input type="hidden" id="resubmit_work" />
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+ <!--批准-->
+            <div class="modal modal-hides" id="modal_default8">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">批准工单</span>
+                        </div>
+                        <div class="modal-body">
+                            <div style="margin-top: 20px;margin-left: 80px;">
+                                <span style="font-size: 12px;vertical-align: top;">审批备注: </span>
+                                <textarea style="width: 260px;height: 80px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;resize: none"></textarea>
+                                <p style="font-size: 12px;color: #a4abb5;margin-left: 56px;">备注最长128个汉字或字符</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn newaddbtn pull-right" id="approveWork"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
+                            <input type="hidden" id="approve_work" />
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+<!--撤销-->
+            <div class="modal modal-hides" id="modal_default">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">撤销工单</span>
+                        </div>
+                        <div class="modal-body">
+                            <div style="margin-top: 20px;margin-left: 80px;">
+                                <span style="font-size: 12px;vertical-align: top;">审批备注: </span>
+                                <textarea style="width: 260px;height: 80px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;padding-left:8px;resize: none"></textarea>
+                                <p style="font-size: 12px;color: #a4abb5;margin-left: 56px;">备注最长128个汉字或字符</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn newaddbtn pull-right" id="dismissWork"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
+                            <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
+                            <input type="hidden" id="dismiss_work" />
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <footer class="main-footer">
+        <div th:replace="/view/common/footer :: footer"></div>
+    </footer>
+</div>
+<!-- jQuery 3 -->
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script src="../../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../../js/common/common.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- date-range-picker -->
+<script src="../../bower_components/moment/min/moment.min.js"></script>
+<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../bower_components/dist/js/adminlte.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="../../bower_components/dist/js/demo.js"></script>
+<script src="../../bower_components/dist/js/checkAll.js"></script>
+<script src="../../js/common/modal.js"></script>
+<script>
+    function init() {
+        //定义locale汉化插件
+        var locale = {
+            format: "YYYY-MM-DD HH:mm",
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                '七月', '八月', '九月', '十月', '十一月', '十二月'
+            ],
+            applyLabel: '确定', //确定按钮文本
+            cancelLabel: '取消', //取消按钮文本
+            showClose:false,
+            startView:0,
+            minView: 0,
+            minuteStep:5
+        };
+        //日期控件初始化
+        $('#effect_time').daterangepicker(
+            {
+                'locale': locale,
+                "autoApply": true,
+                timePicker: true, //显示时间
+                timePicker24Hour: true, //时间制
+                "autoclose": true,
+                showDropdowns: true, //年月份下拉框
+                singleDatePicker: true,
+            }
+        );
+        $('#fail_time').daterangepicker(
+            {
+                'locale': locale,
+                "autoApply": true,
+                timePicker: true, //显示时间
+                timePicker24Hour: true, //时间制
+                "autoclose": true,
+                singleDatePicker: true,
+            }
+        );
+    }
+    $(document).ready(function() {
+        init();
+    });
+</script>
+</body>
+</html>

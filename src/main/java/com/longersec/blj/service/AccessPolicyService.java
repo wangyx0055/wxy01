@@ -10,20 +10,20 @@ import com.longersec.blj.domain.User;
 
 public interface AccessPolicyService {
 
-	public Integer addAccessPolicy(AccessPolicy accessPolicy);
+	Integer addAccessPolicy(AccessPolicy accessPolicy);
 
-	public boolean editStatus(@Param("status")Integer status,@Param("id")Integer id);
+	boolean editStatus(@Param("status")Integer status,@Param("id")Integer id);
 
-	public boolean editAccessPolicy(AccessPolicy accessPolicy);
+	boolean editAccessPolicy(AccessPolicy accessPolicy);
 
-	public boolean delAccessPolicy(List<String> ids);
+	boolean delAccessPolicy(List<String> ids);
 
-	public List<Object> findAll(AccessPolicy accessPolicy, String sname , String stat , Integer type, int page_start, int page_length, List<Integer> depart_ids);
+	List<Object> findAll(AccessPolicy accessPolicy, String sname , String stat , Integer type, int page_start, int page_length, List<Integer> depart_ids);
     
-    public List<AccessPolicy> getUserPolicy(Integer userid, Integer device_account_id, Integer apppub_account_id);
+	List<AccessPolicy> getUserPolicy(Integer userid, Integer device_account_id, Integer apppub_account_id);
     
-    public AccessPolicy getById(@Param("id")Integer id);
+	AccessPolicy getById(@Param("id")Integer id);
 
-    public AccessPolicy checkname(String name);
+	AccessPolicy checkname(String name);
 }
 

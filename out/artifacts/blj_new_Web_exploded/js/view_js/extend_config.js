@@ -195,9 +195,12 @@ $("#log_name").blur(function () {
     link_name();
 });
 function link_url(){
+    var url=/^(http(s)?:\/\/).{1,128}$/;
     var link_url=/^.{1,128}$/;
     if($("#log_manage").val() === ""){
         $("#Vlog_manage").text("请输入链接地址");
+    }else if(!url.test($("#log_manage").val())){
+        $("#Vlog_manage").text("请输入有效的链接地址");
     }else if(!link_url.test($("#log_manage").val())){
         $("#Vlog_manage").text("输入超出限制长度");
     }
@@ -210,8 +213,8 @@ function link_sort(){
     let sort=/^[1-9]$/;
     if (log_sort.length ===0 ) {
         $("#Vlog_sort").text("请输入排序");
-    } else if(log_sort !== "" && !sort.test(log_sort)&&(log_sort<1||log_sort>99)){
-        $("#Vlog_sort").text("请输入1-99之间的数字");
+    } else if(log_sort !== "" && !sort.test(log_sort)&&(log_sort<1||log_sort>10)){
+        $("#Vlog_sort").text("请输入1-10之间的数字");
     }/*else{
         $.ajax({
             url: "../../configLog/checksort",

@@ -216,7 +216,6 @@ $.ajax({
             if (data.data[0].status == 0) {
                 $('#radius_status input[name="radiusone"]').get(0).checked = true;
                 $('#radius_status1').html("开启");
-
             } else {
                 $('#radius_status input[name="radiusone"]').get(1).checked = true;
                 $('#radius_status1').html("关闭");
@@ -390,16 +389,14 @@ $.ajax({
         if (data.success) {
             $('#biont_id').val(data.data[0].id);
             $('#biont_url1').html(data.data[0].url);
-		/*	if (data.data[0].status == 1) {
+			if (data.data[0].status == 1) {
                 $('#finger_status input[name="fingerstatus"]').get(0).checked = true;
                 $('#finger_status1').html("开启");
 
             } else {
                 $('#finger_status input[name="fingerstatus"]').get(1).checked = true;
                 $('#finger_status1').html("关闭");
-            }*/
-            $('#finger_status input[name="fingerstatus"]').get(0).checked = true;
-            $('#finger_status1').html("开启");
+            }
         } else {
             $("#modal-danger .modal-title").text('失败');
             $("#modal-danger .modal-body").text("编辑失败!");
@@ -472,7 +469,7 @@ function shownumber(){
     $('#ad_edit_filter_department').val('');
     $('#ad_edit_filter_username').val('');
     $('#ad_edit_filter_loginname').val('');
-    $('#ad_edit_realname').val('');
+    $('#ad_edit_realname option:first').attr("selected","selected");
     $('#ad_edit_mobile').val('');
     $('#ad_edit_cover').val('');
     $('#ad_edit_email').val('');
@@ -558,7 +555,7 @@ function CheckRecv(){
     var ad_url=$("#biont_url").val();
 /*    var p2 = /^(?=^.{3,255}$)[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+$/;*/
       var p2 = /^(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4][0-9]|25[0-5])$/;
-      var p3=/^(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?$/;
+      var p3 = /^(http|https):\/\/[\w\-_]+(\.[\w\-_]+)+(:\d{1,6})?$/;
     if(ad_url==""){
         $('#Finger_url').text("请输入地址或域名");
         flag = false;

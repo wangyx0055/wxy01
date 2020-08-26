@@ -742,9 +742,6 @@ table tr span {
   font-size: 12.5px;
 }
 /*页面小标题*/
-.with-border .box-title .new-header {
-  font-size: 14px!important;
-}
 .new-header {
   padding-left: 15px;
   border-left: 3px solid #1494F7;
@@ -782,10 +779,10 @@ table tr span {
 .sign_emphasize {
   color: red;
   font-size: 20px;
-  vertical-align: -20%;
+  vertical-align: -25%;
 }
 .sign_red {
-  color: red;
+  color: red!important;
   font-size: 12px;
 }
 .caret {
@@ -9763,6 +9760,8 @@ table tr span {
   margin-left: 112px;
   font-size: 12px;
   color: #a4abb5;
+  display: inline-block;
+  width: 195px;
 }
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(2) {
   margin-left: 55px;
@@ -9784,6 +9783,9 @@ table tr span {
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(2) #safe_password_newuser_forcechange .pass_sign2 {
   font-size: 12px;
   color: #a4abb5;
+  display: inline-block;
+  width: 195px;
+  vertical-align: -15px;
 }
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(3) {
   margin-top: 20px;
@@ -9855,6 +9857,8 @@ table tr span {
   font-size: 12px;
   color: #a4abb5;
   margin-left: 102px;
+  display: inline-block;
+  width: 216px;
 }
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(4) > span:nth-of-type(1) > span {
   font-size: 12px;
@@ -9890,7 +9894,7 @@ table tr span {
 .cs_con #B #modal-default2 .modal-body > div:nth-of-type(5) > span {
   font-size: 12px;
   color: #a4abb5;
-  margin-left: 102px;
+  margin-left: 98px;
 }
 .cs_con #B #web .modal-body > div:nth-of-type(1) {
   margin-top: 10px;
@@ -9975,6 +9979,13 @@ table tr span {
   font-size: 12px;
 }
 /*index*/
+.index_body .index-header {
+  padding-left: 15px;
+  border-left: 3px solid #1494F7;
+  line-height: 1!important;
+  display: inline-block !important;
+  font-size: 14px!important;
+}
 .index_body .info_line {
   position: absolute;
   width: 2px;
@@ -10029,10 +10040,10 @@ table tr span {
   margin-left: 43px;
 }
 .index_body .box_visit > div > div {
-  float: right;
   position: absolute;
   margin-left: 51px;
-  margin-top: 5px;
+  margin-top: 11px;
+  width: 100%;
 }
 .index_body .box_visit > div > div > span:nth-of-type(1) > span {
   color: red;
@@ -10048,17 +10059,23 @@ table tr span {
 .index_body .products-list .product-info .product-title {
   color: #454040;
 }
+.index_body .products-list .product-info .product-title .login_name {
+  width: 50%;
+  float: left;
+}
 .index_body .products-list .product-info .product-title .product-time {
-  background-color: #009ffd38;
   color: #1494F7;
-  float: right;
-  font-size: 13px;
-  margin-top: 10px;
+  font-size: 12px;
   position: absolute;
-  margin-left: 150px;
+  margin-left: 66px;
+  padding-left: 43px;
+  width: 50%;
+  float: right;
+  text-align: right;
 }
 .index_body .products-list .product-info .product-description {
   color: #5a5454;
+  font-size: 12px;
 }
 /*role_mamnage*/
 .rm .col-md-9 {
@@ -10083,6 +10100,7 @@ table tr span {
 .rm .col-md-9 .nav-tabs-custom #A .post .rm-username {
   margin-left: 10px;
   width: 180px;
+  padding-left: 8px;
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -10497,6 +10515,7 @@ table tr span {
 .u #modal-adduser .modal-body .u-relevation1 > span:nth-of-type(1) {
   position: absolute;
   top: 8px;
+  color: #505050;
 }
 .u #edituser .modal-body .u-relevation1 > span:nth-of-type(2),
 .u #modal-adduser .modal-body .u-relevation1 > span:nth-of-type(2) {

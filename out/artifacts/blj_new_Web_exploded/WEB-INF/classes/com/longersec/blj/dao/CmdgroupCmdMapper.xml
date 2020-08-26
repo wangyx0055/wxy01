@@ -23,7 +23,6 @@
 	<update id="editCmdgroupCmd" parameterType="com.longersec.blj.domain.CmdgroupCmd">
 		UPDATE lsblj_cmdgroup_cmd
 		<set>
-		
 		<if test="group_id != null">`group_id`=#{group_id},</if>
 		<if test="command != null">`command`=#{command},</if>
 		</set>

@@ -144,13 +144,13 @@ public class DeviceController {
 	@RequestMapping("/editDevice")
 	@ResponseBody
 	public JSONObject editDevice(@RequestParam("id")int id,@RequestParam("name")String name,@RequestParam("ip")String ip,
-								 @RequestParam("os_type")int os_type,@RequestParam("department")int department,@RequestParam("description")String description,HttpServletRequest request, HttpSession session) {
+								 @RequestParam("device_type")int device_type,@RequestParam("department")int department,@RequestParam("description")String description,HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
 		Device device = new Device();
 		device.setId(id);
 		device.setName(name);
 		device.setDepartment(department);
-		device.setOs_type(os_type);
+		device.setDevice_type(device_type);
 		device.setIp(ip);
 		device.setDescription(description);
 		OperatorLog operatorLog = Operator_log.log(request, session);
@@ -291,7 +291,7 @@ public class DeviceController {
 		return result;
 	}
 
-	public static Map<String, Object> checkDeviceExport(DeviceService deviceService, DeviceTypeService deviceTypeService, ProtocolDao protocolDao , String name, String ip, String osType, String description,
+	public static Map<String, Object> checkDeviceExport(DeviceService deviceService, DeviceTypeService deviceTypeService, ProtocolDao protocolDao , String name, String ip, String DeviceType, String description,
 	                                                    String account, String password, String protocolname, int port, int sshKey){
 		Map<String, Object> errorMap = new HashMap<>(16);
 		if(name == null || "".equals(name)) {
@@ -299,13 +299,13 @@ public class DeviceController {
 			errorMap.put("success", false);
 			return errorMap;
 		}
-		int checOsType = deviceTypeService.checOsType(osType);
-		if(checOsType == 0) {
-			errorMap.put("info",  osType+":系统类型不存在");
+		int checDeviceType = deviceTypeService.checDeviceType(DeviceType);
+		if(checDeviceType == 0) {
+			errorMap.put("info",  DeviceType+":系统类型不存在");
 			errorMap.put("success", false);
 			return errorMap;
 		} else {
-			errorMap.put("ostype",checOsType);
+			errorMap.put("devicetype",checDeviceType);
 		}
 /*		Device checkip = deviceService.checkip(ip);
 		if (checkip != null) {

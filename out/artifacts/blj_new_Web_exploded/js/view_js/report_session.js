@@ -761,11 +761,11 @@ $('#app_table').DataTable({
 
 //会话
 //命令
-$("#modal-command").on('show.bs.modal', function (event) {
+/*$("#modal-command").on('show.bs.modal', function (event) {
      var button = $(event.relatedTarget);
      i = button.data('row');
      var title=$('#C-table').DataTable().row('#' + i).nodes(i).data()[i].command;
      console.log(title);
      $("#modal-command .modal-title").text("统计数据["+""+title+"]");
-});
+});*/
 //告警

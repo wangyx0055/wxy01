@@ -255,22 +255,24 @@ $(function () {
                         return '<input type="checkbox" name="chk[]" value='+data+'>';
                     }},
                 { "data": "appservername","render":function (data) {
-                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
                     }},
                 { "data": "depart_name" ,
                     "render" : function(data, type,row, mata) {
-                        return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'
+                        return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'
                             +data
                             + '</div>';
                     }},
-                { "data": "name" },
+                { "data": "name" , "render":function (data) {
+                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                    }},
                 { "data": "appprogramname"},
                 { "data": "username" },
                 { "data": "url","render":function (data) {
-                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
                     }},
                 { "data": "desc","render":function (data) {
-                          return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                          return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
                       }},
                 { "data": "id", "render": function(data,type,row,meta){
                         return '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-editapp" class="newcss1" style="cursor:pointer">编辑</a> '+
@@ -936,6 +938,15 @@ $('#delAllButton2').click(function(){
     })
 });
 
+//清空数据
+$('#_export').click(function(){
+    $('#queryPsw').val("");
+    $('#PswRep').text("");
+});
+$('#queryPsw').focus(function () {
+    $('#PswRep').text("");
+});
+
 //导出应用服务器表格
 $('#export').click(function(){
     $.ajax({
@@ -969,6 +980,15 @@ $('#export').click(function(){
         }
     })
 })
+
+//清空数据
+$('#_export1').click(function(){
+    $('#queryPsw1').val("");
+    $('#PswRep1').text("");
+});
+$('#queryPsw1').focus(function () {
+    $('#PswRep1').text("");
+});
 //导出应用发布表格
 $('#export1').click(function(){
     $.ajax({
@@ -1087,12 +1107,19 @@ $.ajax({
         }
     }
 });
+
+$("#apppub_edit_ser_name").change(function(){
+    getAppProgram();
+});
+
 function getAppProgram(){
-	//获取应用程序列表
+    let options=$("#apppub_edit_ser_name option:selected");
+    //获取应用程序列表
 	$.ajax({
-	    url:"../../apppubProgram/listApppubProgram",
+	    url:"../../apppubProgram/queryApppubProgramById",
 	    type:"POST",
 	    data:{
+            apppub_server_id:options.val(),
 	        start:0,
 	        length:100,
 	        type:1,
@@ -1107,7 +1134,6 @@ function getAppProgram(){
 	    }
 	});
 }
-getAppProgram();
 //点击空白关闭tree控件
 $('#modal-editserver').click(function(event){
     $('#tree').css("display","none");

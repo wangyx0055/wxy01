@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.HighriskCommandDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.HighriskCommand">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="object" jdbcType="INTEGER" property="object"/>
+		<result column="command" jdbcType="VARCHAR" property="command"/>
+		<result column="description" jdbcType="VARCHAR" property="description"/>
+		<result column="level" jdbcType="INTEGER" property="level"/>
+		<result column="action" jdbcType="INTEGER" property="action"/>
+		<result column="update_time" jdbcType="VARCHAR" property="update_time"/>
+	</resultMap>
+
+	<resultMap id="highriskCommandRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addHighriskCommand" parameterType="com.longersec.blj.domain.HighriskCommand">
+		INSERT INTO lsblj_highrisk_command
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="object != null">`object`=#{object},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="description != null">`description`=#{description},</if>
+		<if test="level != null">`level`=#{level},</if>
+		<if test="action != null">`action`=#{action},</if>
+		<if test="update_time != null">`update_time`=#{update_time},</if>
+		</set>
+	</insert>
+
+	<update id="editHighriskCommand" parameterType="com.longersec.blj.domain.HighriskCommand">
+		UPDATE lsblj_highrisk_command
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="object != null">`object`=#{object},</if>
+		<if test="command != null">`command`=#{command},</if>
+		<if test="description != null">`description`=#{description},</if>
+		<if test="level != null">`level`=#{level},</if>
+		<if test="action != null">`action`=#{action},</if>
+		<if test="update_time != null">`update_time`=#{update_time},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delHighriskCommand" parameterType="java.util.List">
+		DELETE FROM lsblj_highrisk_command
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, highriskCommandRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_highrisk_command 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_highrisk_command where id=#{id}
+	</select>
+</mapper>

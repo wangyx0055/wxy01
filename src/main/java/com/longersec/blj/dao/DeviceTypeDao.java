@@ -21,6 +21,6 @@ public interface DeviceTypeDao {
 
 	String checknameById(Integer id);
 
-	int checOsType(@Param("name") String name);
+	int checDeviceType(@Param("name") String name);
 
 }

@@ -6,7 +6,7 @@
 		<id column="id" jdbcType="INTEGER" property="id"/>
 		<result column="name" jdbcType="VARCHAR" property="name"/>
 		<result column="param" jdbcType="VARCHAR" property="param"/>
-		<result column="os_type" jdbcType="INTEGER" property="os_type"/>
+		<result column="device_type" jdbcType="INTEGER" property="device_type"/>
 		<result column="description" jdbcType="VARCHAR" property="description"/>
 	</resultMap>
 
@@ -20,7 +20,7 @@
 		
 		<if test="name != null">`name`=#{name},</if>
 		<if test="param != null">`param`=#{param},</if>
-		<if test="os_type != null">`os_type`=#{os_type},</if>
+		<if test="device_type != null">`device_type`=#{device_type},</if>
 		<if test="description != null">`description`=#{description},</if>
 		</set>
 	</insert>
@@ -31,7 +31,7 @@
 
 			<if test="name != null">`name`=#{name},</if>
 			<if test="param != null">`param`=#{param},</if>
-			<if test="os_type != null">`os_type`=#{os_type},</if>
+			<if test="device_type != null">`device_type`=#{device_type},</if>
 			<if test="description != null">`description`=#{description},</if>
 		</set>
 		where id=#{id}
@@ -74,7 +74,7 @@
 		select * from lsblj_device_type where  name = #{name}
 		limit 1;
 	</select>
-	<select id="checOsType" resultType="java.lang.Integer">
+	<select id="checDeviceType" resultType="java.lang.Integer">
 		select id from lsblj_device_type where  name = #{name}
 		limit 1;
 	</select>

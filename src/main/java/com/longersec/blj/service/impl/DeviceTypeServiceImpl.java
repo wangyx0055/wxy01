@@ -63,7 +63,7 @@ public class DeviceTypeServiceImpl implements DeviceTypeService{
 	}
 
 	@Override
-	public int checOsType(String name) {
-		return DeviceTypeDao.checOsType(name);
+	public int checDeviceType(String name) {
+		return DeviceTypeDao.checDeviceType(name);
 	}
 }

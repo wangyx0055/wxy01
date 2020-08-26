@@ -131,7 +131,8 @@
     </select>
 
 	<select id="checkName" resultType="java.lang.Integer">
-		select count(*) from lsblj_apppub_account where id != #{id} and name=#{name};
+		select count(*) from lsblj_apppub_account where
+		<if test="id != null">id != #{id} and</if>   name = #{name};
 	</select>
 
 	<select id="getApppubAccountByName" resultType="com.longersec.blj.domain.ApppubAccount">
@@ -265,10 +266,12 @@
 			 AND (pro.name like CONCAT('%',#{apppubAccount.appprogramname},'%'))
 			</if>
 			<if test="apppubAccount.username != null and apppubAccount.username != ''">
-			 AND (user_apppub_account.username like CONCAT('%',#{apppubAccount.username},'%'))
+			 AND (user.username like CONCAT('%',#{apppubAccount.username},'%'))
 			</if>
 			<if test="apppubAccount.searchAll != null and apppubAccount.searchAll != ''">
-			 AND (a.name like CONCAT('%',#{apppubAccount.searchAll},'%') OR pro.name like CONCAT('%',#{apppubAccount.searchAll},'%') OR user_apppub_account.username like CONCAT('%',#{apppubAccount.searchAll},'%'))
+			 AND (a.name like CONCAT('%',#{apppubAccount.searchAll},'%')
+			 OR pro.name like CONCAT('%',#{apppubAccount.searchAll},'%')
+			 OR user.username like CONCAT('%',#{apppubAccount.searchAll},'%'))
 			</if>
 			ORDER BY a.name ASC 
 			<if test="page_start != null and page_length != null">

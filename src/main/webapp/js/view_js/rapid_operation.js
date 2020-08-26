@@ -446,9 +446,6 @@ var _scripts_table= function (field,value){
             {"data": "command","render": function (data,type,row,meta) {
                     return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">' +data + '</div>';
                 }},
-            {"data": "description","render":function (data) {
-                    return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
-                }},
             {"data": "status","render":function (data) {
             	// return data==0?'否':'是';
                     if(data==0){
@@ -473,6 +470,9 @@ var _scripts_table= function (field,value){
                     +exec_method
                     + '</div>';
             }},
+            {"data": "description","render":function (data) {
+                    return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                }},
             {
                 "data": "id", "render": function (data, type, row, meta) {
                     return '<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1"  data-target="#modal-primary8" style="cursor:pointer;vertical-align: bottom;">编辑</a>' +

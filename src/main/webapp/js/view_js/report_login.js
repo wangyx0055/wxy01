@@ -148,7 +148,7 @@ $(function() {
         option = {
             title : {
                 text : title,
-                left : 'center',
+                left : 'right',
                 textStyle : {
                     fontWeight : '400',
                     fontSize : '14',
@@ -376,7 +376,7 @@ $(function() {
         option = {
             title : {
                 text : title,
-                left : 'center',
+                left : 'right',
                 textStyle : {
                     fontWeight : '400',
                     fontSize : '14',
@@ -575,7 +575,7 @@ $(function() {
         option = {
             title : {
                 text : title,
-                left : 'center',
+                left : 'right',
                 textStyle : {
                     fontWeight : '400',
                     fontSize : '14',

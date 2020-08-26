@@ -23,7 +23,7 @@ public class ApppubAccountServiceImpl implements ApppubAccountService{
 	@Override
 	public boolean editApppubAccount(ApppubAccount apppubAccount) {
 		// TODO Auto-generated method stub
-		return this.ApppubAccountDao.editApppubAccount(apppubAccount);
+		return ApppubAccountDao.editApppubAccount(apppubAccount);
 	}
 
 	@Override

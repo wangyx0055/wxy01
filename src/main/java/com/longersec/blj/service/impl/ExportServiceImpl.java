@@ -110,17 +110,25 @@ public class ExportServiceImpl implements ExportService {
         File tempFile = File.createTempFile("vehicle", ".csv");
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
-        String[] headers = {"ID","服务器名称","服务器地址","端口","账号","密码","描述"};
+        String[] headers = {"ID","服务器名称","服务器地址","部门","端口","描述"};
         csvWriter.writeRecord(headers);
         User principal = (User)SecurityUtils.getSubject().getPrincipal();
         ArrayList<ApppubServer> datas = (ArrayList<ApppubServer>) ApppubServerDao.selectAll(principal.getDepartment());
+        StringBuilder stringBuilder = null;
         for (ApppubServer data : datas) {
+            stringBuilder = new StringBuilder();
+            if (data.getDepartment() != 0) {
+                List<String> allParentName = departmentDao.findAllParentName(data.getDepartment());
+                for (Object strings : allParentName) {
+                    stringBuilder.append(strings).append("/");
+                }
+                data.setDepart_name(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
+            }
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getName());
             csvWriter.write(data.getIp());
+            csvWriter.write(data.getDepart_name());
             csvWriter.write(data.getPort().toString());
-            csvWriter.write(data.getAccount());
-            csvWriter.write("");
             csvWriter.write(data.getDesc());
             csvWriter.endRecord();
         }
@@ -137,7 +145,16 @@ public class ExportServiceImpl implements ExportService {
         csvWriter.writeRecord(headers);
         User principal = (User)SecurityUtils.getSubject().getPrincipal();
         ArrayList<ApppubAccount> datas = (ArrayList<ApppubAccount>) ApppubAccountDao.selectAll(principal.getDepartment());
+        StringBuilder stringBuilder = null;
         for (ApppubAccount data : datas) {
+            stringBuilder = new StringBuilder();
+            if (data.getDepartment() != 0) {
+                List<String> allParentName = departmentDao.findAllParentName(data.getDepartment());
+                for (Object strings : allParentName) {
+                    stringBuilder.append(strings).append("/");
+                }
+                data.setDepart_name(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
+            }
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getAppservername());
             csvWriter.write(data.getDepart_name());
@@ -178,13 +195,23 @@ public class ExportServiceImpl implements ExportService {
         File tempFile = File.createTempFile("vehicle", ".csv");
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
-        String[] headers = {"ID","任务名称","命令/脚本","描述","执行方式"};
+        String[] headers = {"ID","任务名称","部门","命令/脚本","描述","执行方式"};
         User principal = (User)SecurityUtils.getSubject().getPrincipal();
         csvWriter.writeRecord(headers);
         ArrayList<CrontabScriptConfig> datas = (ArrayList<CrontabScriptConfig>) CrontabScriptConfigDao.selectAll(principal.getDepartment());
+        StringBuilder stringBuilder = null;
         for (CrontabScriptConfig data : datas) {
+            stringBuilder = new StringBuilder();
+            if (data.getDepartment() != 0) {
+                List<String> allParentName = departmentDao.findAllParentName(data.getDepartment());
+                for (Object strings : allParentName) {
+                    stringBuilder.append(strings).append("/");
+                }
+                data.setTopName(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
+            }
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getName());
+            csvWriter.write(data.getTopName());
             csvWriter.write(data.getCommand());
             csvWriter.write(data.getDescription());
             csvWriter.write(data.getExec_method()==0?"手动执行":(data.getExec_method()==1?"定时执行":"周期执行"));
@@ -295,7 +322,7 @@ public class ExportServiceImpl implements ExportService {
             csvWriter.write(data.getIp());
             csvWriter.write(data.getName());
             csvWriter.write(data.getGroupname());
-            csvWriter.write(data.getOs_type().toString());
+            csvWriter.write(data.getDevice_type().toString());
             csvWriter.write(data.getProtocolname());
             csvWriter.write(data.getAccount_count().toString());
             csvWriter.endRecord();
@@ -310,22 +337,33 @@ public class ExportServiceImpl implements ExportService {
         File tempFile = File.createTempFile("vehicle", ".csv");
         CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
         // 写表头
-        String[] headers = {"ID", "用户名","姓名","部门名称","角色","状态","邮箱","QQ","微信","手机号码"};
+        String[] headers = {"ID", "用户名","姓名","部门名称","角色","状态","邮箱","QQ","微信","手机号码","描述"};
         csvWriter.writeRecord(headers);
         User principal = (User)SecurityUtils.getSubject().getPrincipal();
         ArrayList<User> datas = (ArrayList<User>) userDao.selectAll(principal.getDepartment());
+        StringBuilder stringBuilder = null;
         for (User data : datas) {
+            stringBuilder = new StringBuilder();
+            if (data.getDepartment() != 0) {
+                List<String> allParentName = departmentDao.findAllParentName(data.getDepartment());
+                for (Object strings : allParentName) {
+                    stringBuilder.append(strings).append("/");
+                }
+                data.setTopName(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
+
+            }
             //这里如果数据不是String类型，请进行转换
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getUsername());
             csvWriter.write(data.getRealname());
-            csvWriter.write(data.getDepart_name());
+            csvWriter.write(data.getTopName());
             csvWriter.write(data.getRolename());
-            csvWriter.write(data.getStatus()==1?"已禁用":"已启用");
+            csvWriter.write(data.getStatus()==0?"已禁用":"已启用");
             csvWriter.write(data.getEmail());
             csvWriter.write(data.getQq());
             csvWriter.write(data.getWechat());
             csvWriter.write(data.getMobile());
+            csvWriter.write(data.getDescription());
             csvWriter.endRecord();
         }
         csvWriter.close();
@@ -341,11 +379,20 @@ public class ExportServiceImpl implements ExportService {
         csvWriter.writeRecord(headers);
         User principal = (User)SecurityUtils.getSubject().getPrincipal();
         ArrayList<Group> datas = (ArrayList<Group>) groupDao.listByType(type,principal.getDepartment());
+        StringBuilder stringBuilder = null;
         for (Group data : datas) {
+            stringBuilder = new StringBuilder();
+            if (data.getDepartment() != 0) {
+                List<String> allParentName = departmentDao.findAllParentName(data.getDepartment());
+                for (Object strings : allParentName) {
+                    stringBuilder.append(strings).append("/");
+                }
+                data.setTopName(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
+            }
             //这里如果数据不是String类型，请进行转换
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getName());
-            csvWriter.write(data.getDepart_name());
+            csvWriter.write(data.getTopName());
             csvWriter.write(data.getDesc());
             csvWriter.write(data.getCount().toString());
             csvWriter.endRecord();
@@ -363,15 +410,23 @@ public class ExportServiceImpl implements ExportService {
         csvWriter.writeRecord(headers);
         User principal = (User)SecurityUtils.getSubject().getPrincipal();
         ArrayList<Device> datas = (ArrayList<Device>) deviceDao.selectAll(principal.getDepartment());
+        StringBuilder stringBuilder = null;
         for (Device data : datas) {
+            stringBuilder = new StringBuilder();
+            if (data.getDepartment() != 0) {
+                List<String> allParentName = departmentDao.findAllParentName(data.getDepartment());
+                for (Object strings : allParentName) {
+                    stringBuilder.append(strings).append("/");
+                }
+                data.setTopName(stringBuilder.substring(0,stringBuilder.length()>1?stringBuilder.length()-1:stringBuilder.length()));
+            }
             //这里如果数据不是String类型，请进行转换
-            String checknameById = deviceTypeDao.checknameById(data.getOs_type());
-            String departmentDaoName = departmentDao.findName(data.getDepartment());
+            String checknameById = deviceTypeDao.checknameById(data.getDevice_type());
             csvWriter.write(data.getId().toString());
             csvWriter.write(data.getName());
             csvWriter.write(data.getIp());
             csvWriter.write(checknameById);
-            csvWriter.write(departmentDaoName);
+            csvWriter.write(data.getTopName());
             csvWriter.write(data.getDescription());
             csvWriter.write(data.getAccount_count().toString());
             csvWriter.endRecord();

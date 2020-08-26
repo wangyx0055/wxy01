@@ -81,7 +81,7 @@ public class UploadController {
                 group.setDepartment(udepartment);
                 if ("".equals(group.getName())) {
                     result.put("errorInfo", group.getName() + "组名称不能为空");
-                    operatorLog.setDetails(type == 0 ? group.getName() + "组名称不能为空" : group.getName() + "组名称不能为空");
+                    operatorLog.setDetails(type == 0 ? group.getName() + "用户组名称不能为空" : group.getName() + "设备组名称不能为空");
                     operatorLog.setResult("失败");
                     operatorLogService.addOperatorLog(operatorLog);
                     continue;
@@ -304,7 +304,7 @@ public class UploadController {
                     }
                     if (update == 0) {
                         b =  departmentService.insertMore(department1);
-                        operatorLog.setDetails("导入部门["+department1.getName()+"],上级部门为:["+department1.getParent_name()==""?"根部门":department1.getParent_name()+"]");
+                        operatorLog.setDetails(("导入部门[" + department1.getName() + "],上级部门为:[" + department1.getParent_name()).equals("") ?"根部门":department1.getParent_name()+"]");
                     }
                     operatorLog.setResult(b?"成功":"失败");
                 } else {
@@ -384,7 +384,7 @@ public class UploadController {
                     Protocol byName = protocolDao.getByName(temp[7].trim());
                     device.setName(temp[0].trim());
                     device.setIp(temp[1].trim());
-                    device.setOs_type((Integer) checkDeviceExport.get("ostype"));
+                    device.setDevice_type((Integer) checkDeviceExport.get("devicetype"));
                     device.setDescription(temp[4].trim());
                     if ("".equals(temp[5].trim()) || "".equals(temp[6].trim())) {
                         device.setLogin_method(1);
@@ -666,12 +666,11 @@ public class UploadController {
 
     public static Set<String> importCsv(File file) throws IOException {
         InputStream ins= new FileInputStream(file);
-        Set<String> data = new HashSet<String>();
+        Set<String> data = new HashSet<>();
         BufferedReader br = null;
-        InputStreamReader isr = null;
+        InputStreamReader isr;
         byte[] b = new byte[3];
         ins.read(b);
-        ins.close();
         try {
 	        String encodeType = EncodeUtils.getEncode(file.getAbsolutePath(), true);
 	        if ("UTF-8".equals(encodeType)){
@@ -692,11 +691,8 @@ public class UploadController {
         } catch (Exception e) {
             System.out.println("CSVUtils.importCsv error:"+e);
         }finally{
-            try {
+                ins.close();
                 br.close();
-            } catch (IOException e) {
-                System.out.println("CSVUtils.importCsv close BufferedReader error:"+e);
-            }
         }
         return data;
     }

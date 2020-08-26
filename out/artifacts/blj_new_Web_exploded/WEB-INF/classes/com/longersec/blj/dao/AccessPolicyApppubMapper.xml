@@ -35,8 +35,7 @@
 	<select id="selectById" resultMap="app">
 		SELECT
 		p.apppub_account_id,u.name,s.name apppubserver FROM lsblj_access_policy_apppub_account p,lsblj_apppub_account u, lsblj_apppub_server s 
-		where policy_id = #{policy_id}
-		and p.apppub_account_id=u.id and u.apppub_server_id=s.id;
+		where policy_id = #{policy_id} and p.apppub_account_id=u.id and u.apppub_server_id=s.id;
 	</select>
 	
 	<delete id="deleteBypolicy_id" parameterType="java.util.List">

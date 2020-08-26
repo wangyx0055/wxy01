@@ -30,7 +30,7 @@ function resetC(){
 var regexp = {
     name:/^([A-Za-z0-9]|[\u4e00-\u9fa5]|@|_){0,64}$/,
     length:/^\S{0,128}$/,
-    length_des:/^\S{0,64}$/,
+    length_des:/^\S{0,128}$/,
 }
 //失去焦点，移出输入框
 $('#edit_name').blur(function(){

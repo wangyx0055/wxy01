@@ -64,11 +64,11 @@ $(function () {
 	        },
 	        "columns": [
 	            { "data": "config_name" },
-                { "data": "depart_name" , "render" : function(data, type,row, mata) {
-                        return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'
-                            +data
-                            + '</div>';
-                    }},
+                // { "data": "depart_name" , "render" : function(data, type,row, mata) {
+                //         return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'
+                //             +data
+                //             + '</div>';
+                //     }},
 	            { "data": "command" },
                 { "data": "config_method","render":function (data, type, row, meta) {
                         /*	return data==0?'手动执行':(data==1?'定时执行,时间:'+row.exec_datetime:'定期执行,周期:'+exec_cycle(data));*/

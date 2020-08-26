@@ -135,9 +135,9 @@ $('#export').click(function(){
 $('.nav.nav-tabs li').each(function() {
     $(this).click(function() {
         if ($(this).children().attr('href') == '#F') {
-            _deviceAccountList("day", "", "");
+            _deviceAccountList("day", "");
         } else {
-            _apppubAccountList("day", "", "");
+            _apppubAccountList("day", "");
         }
     })
 })

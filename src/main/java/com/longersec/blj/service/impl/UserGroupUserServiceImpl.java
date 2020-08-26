@@ -2,7 +2,6 @@ package com.longersec.blj.service.impl;
 
 import com.longersec.blj.dao.UserGroupUserDao;
 import com.longersec.blj.domain.DTO.Users;
-import com.longersec.blj.domain.UserGroupUser;
 import com.longersec.blj.service.UserGroupUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +18,6 @@ public class UserGroupUserServiceImpl implements UserGroupUserService {
 	@Override
 	public boolean editUsergroupUser(Integer group_id, List<Integer> users) {
 		return userGroupUserDao.editUsergroupUser(group_id, users);
-	}
-
-	@Override
-	public boolean addUsergroupUser(Integer group_id, List<Integer> users) {
-		return userGroupUserDao.addUsergroupUser(group_id, users);
-	}
-
-	@Override
-	public List<Object> findAll(UserGroupUser userGroupUser, int page_start, int page_length) {
-		return userGroupUserDao.findAll(userGroupUser, page_start, page_length);
 	}
 
 	@Override

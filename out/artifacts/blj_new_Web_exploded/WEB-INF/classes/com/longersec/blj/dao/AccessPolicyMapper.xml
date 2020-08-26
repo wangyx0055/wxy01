@@ -133,7 +133,7 @@
 	</select>
     
     <select id="getUserPolicy" resultMap="BaseResultMap">
-    	SELECT * FROM lsblj_access_policy 
+    	SELECT lsblj_access_policy.* FROM lsblj_access_policy 
 			where 
 					status=1
 					
@@ -147,7 +147,11 @@
 						UNION SELECT policy_id FROM lsblj_access_policy_group where group_id IN(select group_id from lsblj_group_user where user_id=#{userid} ) AND type!=1
 					) 
 					<if test="device_account_id !=null and device_account_id !=0">
-						AND id IN(SELECT policy_id FROM lsblj_access_policy_device_account WHERE device_account_id=#{device_account_id})
+						AND id IN(
+							SELECT policy_id FROM lsblj_access_policy_device_account WHERE device_account_id=#{device_account_id}
+							UNION 
+							SELECT policy_id FROM lsblj_access_policy_group WHERE group_id IN(select group_id from lsblj_group_device_account where device_account_id=#{device_account_id})
+						)
 					</if>
 					
 					<if test="apppub_account_id !=null and apppub_account_id !=0">

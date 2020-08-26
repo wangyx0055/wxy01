@@ -93,7 +93,6 @@ public class LoginController {
 	
     @RequestMapping("/checkLogin")
     public String checkLogin(@RequestParam("username") String username,@RequestParam(value="password", required=false) String password,  Model model,HttpServletRequest request,HttpSession session,HttpServletResponse response){
-    	//String smspassword = request.getParameter("smspassword");
     	String smscode = request.getParameter("smscode");
     	String dpassword = request.getParameter("dpassword");
     	String fingerpassword = request.getParameter("fingerpassword");
@@ -115,7 +114,7 @@ public class LoginController {
     	session.setAttribute("logintoken", logintoken);
     	model.addAttribute("logintoken", logintoken);
     	username = username.trim();
-    	if(username==null||username=="") {
+    	if(username.equals("")) {
             model.addAttribute("msg","请输入用户名");
             return "/login";
     	}
@@ -125,38 +124,38 @@ public class LoginController {
             return "/login";
     	}
     	if(user.getDynamic_auth()==1) {
-    		if(dpassword==null||dpassword=="") {
+    		if(dpassword==null|| dpassword.equals("")) {
                 model.addAttribute("msg","请输入动态密码");
                 return "/login";
         	}
     	}else if(user.getSms_auth()==1) {
-    		if(smscode==null||smscode=="") {
+    		if(smscode==null|| smscode.equals("")) {
                 model.addAttribute("msg","请输入短信验证码");
                 return "/login";
         	}
     	}else if(user.getFinger_auth()==1) {
-    		if(user.getLocal_auth()==1&&(fingerpassword==null||fingerpassword=="") ){
+    		if(user.getLocal_auth()==1&&(fingerpassword==null|| fingerpassword.equals("")) ){
                 model.addAttribute("msg","请输入用户密码");
                 return "/login";
         	}
     	}else {
-    		if(password==null||password=="") {
+    		if(password==null|| password.equals("")) {
                 model.addAttribute("msg","请输入密码");
                 return "/login";
         	}
     	}
     	LoginLog loginlog =new LoginLog();
     	ConfigLogin configLogin = new ConfigLogin();
-    	ArrayList<Object> resultConfigLogins = new ArrayList<Object>();
-    	ArrayList<ConfigLogin> configLogins = new ArrayList<ConfigLogin>();
+    	ArrayList<Object> resultConfigLogins;
+    	ArrayList<ConfigLogin> configLogins;
     	
     	if(user.getValid_long()!=1) {
         	int nowtime = (int)(System.currentTimeMillis()/1000);
     		String[] symd = user.getValid_datetime_start().split("-");
     		String[] eymd = user.getValid_datetime_end().split("-");
     		
-    		if(nowtime<(new Date(Integer.valueOf(symd[0])-1900,Integer.valueOf(symd[1])-1,Integer.valueOf(symd[2])).getTime())/1000
-				|| nowtime>(new Date(Integer.valueOf(eymd[0])-1900,Integer.valueOf(eymd[1])-1,Integer.valueOf(eymd[2])+1).getTime())/1000
+    		if(nowtime<(new Date(Integer.parseInt(symd[0])-1900,Integer.parseInt(symd[1])-1,Integer.parseInt(symd[2])).getTime())/1000
+				|| nowtime>(new Date(Integer.parseInt(eymd[0])-1900,Integer.parseInt(eymd[1])-1,Integer.parseInt(eymd[2])+1).getTime())/1000
 					){
 				 model.addAttribute("msg","不在登录日期范围");
 			        return "/login";
@@ -171,7 +170,7 @@ public class LoginController {
     	loginlog.setProtocol("web");
     	loginlog.setLogin_datetime(Long.toString(System.currentTimeMillis()/1000));
     	if(login_type!=null) {
-    		switch (Integer.valueOf(login_type)) {
+    		switch (Integer.parseInt(login_type)) {
 			case 0:
 				loginlog.setLogin_type("静态密码");
 				break;
@@ -437,7 +436,7 @@ public class LoginController {
 				subject.isPermitted("user");
 				int role_id = user.getRole_id();
 				List<String> resources = roleMenuDao.findByIdAse(role_id);
-				ArrayList<Integer> ids = new ArrayList<Integer>();
+				ArrayList<Integer> ids = new ArrayList<>();
 				ids.add(appLoginkey.getId());
 				//appLoginkeyService.delAppLoginkey(ids);
 				try {
@@ -467,7 +466,7 @@ public class LoginController {
         	System.out.println("apiLogin :"+username+' '+password+ ' '+(request.getParameter("dpassword")!=null?request.getParameter("dpassword"):"no dynamic code"));
         	String result = this.checkLogin(username, password, model, request, session, response);
         	System.out.println("apiLogin result:"+result);
-        	if(result.indexOf("login")<0) {
+        	if(!result.contains("login")) {
         		String key = KeyUtil.genUniqueKey();
         		User user = userService.checkLogin(username);
         		AppLoginkey appLoginkey = new AppLoginkey();
@@ -485,7 +484,7 @@ public class LoginController {
 	}
     
     @RequestMapping({"/","/login.html","login"})
-	public String login( Model model,HttpServletRequest request,HttpSession session){
+	public String login( Model model,HttpSession session){
     	String logintoken = KeyUtil.genUniqueKey();
     	session.setAttribute("logintoken", logintoken);
     	model.addAttribute("logintoken", logintoken);
@@ -499,7 +498,7 @@ public class LoginController {
     }
 
     @RequestMapping("/loginout")
-    public String loginout(Model model,HttpServletRequest request,HttpSession session){
+    public String loginout(){
         //获取当前用户
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
@@ -508,7 +507,7 @@ public class LoginController {
     
     @RequestMapping("/userLoginType")
     @ResponseBody
-    public JSONObject userLoginType(User user, HttpServletRequest request, HttpSession session) {
+    public JSONObject userLoginType(User user) {
     	 user = userService.checkLogin(user.getUsername());
     	 JSONObject result = new JSONObject();
     	 result.put("success", false);
@@ -619,9 +618,6 @@ public class LoginController {
     
     private boolean dynamicAuthCheck(String userid, String code) {
     	User user = userService.getUserByID(userid);
-    	if(GoogleAuthenticatorUtil.verify(user.getGoogle_auth_key(), code)) {
-    		return true;
-    	}
-    	return false;
+	    return GoogleAuthenticatorUtil.verify(user.getGoogle_auth_key(), code);
     } 
 }

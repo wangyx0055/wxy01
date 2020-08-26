@@ -16,13 +16,6 @@
 		<result column="realname" jdbcType="VARCHAR" property="realname"/>
 	</resultMap>
 
-	<insert id="addUsergroupUser" parameterType="com.longersec.blj.domain.UserGroupUser">
-		INSERT INTO lsblj_group_user(group_id, user_id) values
-		<foreach collection="users" item="item" separator=",">
-		(#{group_id},#{item})
-		</foreach>
-	</insert>
-
 	<insert id="editUsergroupUser" parameterType="com.longersec.blj.domain.UserGroupUser">
 		INSERT INTO lsblj_group_user(group_id, user_id) values
 		<foreach collection="users" item="item" separator=",">
@@ -34,24 +27,6 @@
 		select count(*) from `lsblj_group_user` where group_id	= #{group_id};
 	</select>
 
-	<delete id="delUsergroupUser" parameterType="java.util.List">
-		DELETE FROM lsblj_group_user
-		where id IN (
-		<foreach collection="list" item="item" separator=",">
-		#{item},
-		</foreach>
-		0)
-	</delete>
-	
-	<select id="findAll" resultMap="BaseResultMap, userGroupUserRecordCounts" resultType="java.lang.Object">
-		SELECT 
-		SQL_CALC_FOUND_ROWS 
-		* FROM lsblj_group_user
-		<if test="page_start != null and page_length != null">
-		LIMIT #{page_start},#{page_length}
-		</if>
-		;SELECT found_rows() AS recordCounts;
-	</select>
 	
 	<select id="selectById" resultMap="users">
 		SELECT

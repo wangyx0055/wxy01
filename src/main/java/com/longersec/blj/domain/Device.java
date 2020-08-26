@@ -11,7 +11,7 @@ public class Device {
 	private String searchAll;
 	
 	@NotNull(message = "系统类型不能为空")
-	private Integer os_type;
+	private Integer device_type;
 
 	private String os_ver;
 
@@ -95,12 +95,12 @@ public class Device {
 		this.searchAll = searchAll;
 	}
 
-	public Integer getOs_type() {
-		return os_type;
+	public Integer getDevice_type() {
+		return device_type;
 	}
 
-	public void setOs_type(Integer os_type) {
-		this.os_type = os_type;
+	public void setDevice_type(Integer device_type) {
+		this.device_type = device_type;
 	}
 
 	public String getOs_ver() {
@@ -275,7 +275,7 @@ public class Device {
 		return "Device{" +
 				"id=" + id +
 				", searchAll='" + searchAll + '\'' +
-				", os_type=" + os_type +
+				", device_type=" + device_type +
 				", os_ver='" + os_ver + '\'' +
 				", name='" + name + '\'' +
 				", ip='" + ip + '\'' +

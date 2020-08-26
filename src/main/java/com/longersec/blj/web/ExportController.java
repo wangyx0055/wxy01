@@ -12,7 +12,6 @@ import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -550,7 +549,7 @@ public void exprotApppubApp(HttpServletResponse response, HttpServletRequest req
         JSONObject result = new JSONObject();
         result.put("success", true);
         result.put("msg", "");
-        if (password==""){
+        if (password.equals("")){
             result.put("success", false);
             result.put("msg", "密码不能为空");
         }else {
@@ -573,11 +572,11 @@ public void exprotApppubApp(HttpServletResponse response, HttpServletRequest req
     public JSONObject checkDevicePa(@RequestParam("username") String username, @RequestParam("password") String password, Integer device_account_id, Integer app_account_id, HttpServletResponse response, HttpSession session) throws IOException {
         JSONObject result = new JSONObject();
         result.put("success", true);
-        if (password==""){
+        if (password.equals("")){
             result.put("success", false);
             result.put("msg1", "请输入管理员密码");
         }
-        if (username==""){
+        if (username.equals("")){
             result.put("success", false);
             result.put("msg2", "请输入管理员ID");
         }

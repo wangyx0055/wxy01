@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.WorkorderApplyDeviceAccountDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.WorkorderApplyDeviceAccount">
+		<result column="workorder_apply_id" jdbcType="INTEGER" property="workorder_apply_id"/>
+		<result column="device_account_id" jdbcType="INTEGER" property="device_account_id"/>
+	</resultMap>
+
+	<resultMap id="devices" type="com.longersec.blj.domain.DTO.Deviceaccess">
+		<id column="device_account_id" jdbcType="INTEGER" property="device_account_id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
+		<result column="device_name" jdbcType="VARCHAR" property="device_name"/>
+	</resultMap>
+
+	<resultMap id="workorderApplyDeviceAccountRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addWorkorderApplyDeviceAccount" parameterType="com.longersec.blj.domain.WorkorderApplyDeviceAccount">
+		INSERT INTO lsblj_workorder_apply_device_account(workorder_apply_id, device_account_id) values
+		<foreach collection="devices" item="item" separator=",">
+			(#{workorder_apply_id},#{item})
+		</foreach>
+	</insert>
+
+	<select id="selectById" resultMap="devices">
+		SELECT
+			da.device_account_id device_account_id,u.username username, d.name device_name, p.name protocol_name
+		FROM lsblj_workorder_apply_device_account da,lsblj_device_account u,lsblj_device d,lsblj_protocol p
+		WHERE da.workorder_apply_id = #{workorder_apply_id}
+		  AND da.device_account_id=u.id
+		  AND d.id=u.device_id
+		  AND u.protocol_id=p.id
+	</select>
+
+	<delete id="deleteByWorkorder_id">
+		DELETE FROM lsblj_workorder_apply_device_account where workorder_apply_id = #{workorder_apply_id};
+	</delete>
+</mapper>

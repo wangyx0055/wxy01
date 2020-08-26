@@ -120,7 +120,7 @@
 		SQL_CALC_FOUND_ROWS 
 		'' password ,a.*,d.ip,d.name device_name,t.name typename, p.name protocolname,'' password
 		FROM lsblj_device_account a LEFT JOIN lsblj_device d ON a.device_id=d.id
-		    LEFT JOIN lsblj_device_type t ON d.os_type=t.id
+		    LEFT JOIN lsblj_device_type t ON d.device_type=t.id
 		    LEFT JOIN lsblj_protocol p ON a.protocol_id=p.id
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start},#{page_length}
@@ -232,7 +232,7 @@
 	</resultMap>
 	
 	<select id="selectNameAndId" resultMap="devices">
-		SELECT da.id as device_account_id ,da.username,da.protocol_id as protocol_id,d.name device_name,p.name protocol_name
+		SELECT da.id as device_account_id ,da.username,d.name device_name,p.name protocol_name
 		FROM lsblj_device_account da ,lsblj_device d INNER JOIN (SELECT id,`name`,parent_id,`count`,`device_count` FROM
 		 lsblj_department ld,
 		(SELECT @id :=#{id}) pd
@@ -323,21 +323,24 @@
 			
 			LEFT JOIN lsblj_user user ON user.id=user_device_account.user_id 
 			
-			WHERE user_device_account.device_account_id is not null  and p.id is not null 
+			WHERE user_device_account.device_account_id is not null  and p.id is not null
 			<if test="deviceAccount.searchAll !=null and deviceAccount.searchAll != ''">
-			 AND (s.ip like CONCAT('%',#{deviceAccount.searchAll},'%') OR s.name like CONCAT('%',#{deviceAccount.searchAll},'%') OR user_device_account.username like CONCAT('%',#{deviceAccount.searchAll},'%') OR a.username like CONCAT('%',#{deviceAccount.searchAll},'%'))
+			 AND (s.`ip` like CONCAT('%',#{deviceAccount.searchAll},'%')
+			 OR s.`name` like CONCAT('%',#{deviceAccount.searchAll},'%')
+			 OR user.`username` like CONCAT('%',#{deviceAccount.searchAll},'%')
+			 OR a.`username` like CONCAT('%',#{deviceAccount.searchAll},'%'))
 			</if>
 			<if test="deviceAccount.device_name !=null and deviceAccount.device_name != ''">
-			 AND (s.name like CONCAT('%',#{deviceAccount.device_name},'%'))
+			 AND (s.`name` like CONCAT('%',#{deviceAccount.device_name},'%'))
 			 </if>
 			<if test="deviceAccount.ip !=null and deviceAccount.ip != ''">
-			 AND (s.ip like CONCAT('%',#{deviceAccount.device_ip},'%') )
+			 AND (s.`ip` like CONCAT('%',#{deviceAccount.device_ip},'%') )
 			 </if>
 			<if test="deviceAccount.device_username !=null and deviceAccount.device_username != ''">
-			 AND (a.username like CONCAT('%',#{deviceAccount.username},'%'))
+			 AND (a.`username` like CONCAT('%',#{deviceAccount.username},'%'))
 			</if>
 			<if test="deviceAccount.username !=null and deviceAccount.username != ''">
-			 AND (user.username like CONCAT('%',#{deviceAccount.username},'%'))
+			 AND (user.`username` like CONCAT('%',#{deviceAccount.username},'%'))
 			</if>
 			<if test="page_start != null and page_length != null">
 				LIMIT #{page_start},#{page_length}

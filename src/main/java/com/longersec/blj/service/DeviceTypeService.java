@@ -18,6 +18,6 @@ public interface DeviceTypeService {
 
     DeviceType checkname(String name);
 
-	int checOsType(String name);
+	int checDeviceType(String name);
 }
 

@@ -4,7 +4,7 @@
 <mapper namespace="com.longersec.blj.dao.DeviceDao">
 	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.Device">
 		<id column="id" jdbcType="INTEGER" property="id"/>
-		<result column="os_type" jdbcType="INTEGER" property="os_type"/>
+		<result column="device_type" jdbcType="INTEGER" property="device_type"/>
 		<result column="os_ver" jdbcType="VARCHAR" property="os_ver"/>
 		<result column="name" jdbcType="VARCHAR" property="name"/>
 		<result column="ip" jdbcType="VARCHAR" property="ip"/>
@@ -32,7 +32,7 @@
 	<insert id="addDevice" keyProperty="id" useGeneratedKeys="true" parameterType="com.longersec.blj.domain.Device">
 		INSERT INTO lsblj_device
 		<set>
-		<if test="os_type != null">`os_type`=#{os_type},</if>
+		<if test="device_type != null">`device_type`=#{device_type},</if>
 		<if test="os_ver != null">`os_ver`=#{os_ver},</if>
 		<if test="name != null">`name`=#{name},</if>
 		<if test="ip != null">`ip`=#{ip},</if>
@@ -52,7 +52,7 @@
 	<update id="editDevice" parameterType="com.longersec.blj.domain.Device">
 		UPDATE lsblj_device
 		<set>
-		<if test="os_type != null">`os_type`=#{os_type},</if>
+		<if test="device_type != null">`device_type`=#{device_type},</if>
 		<if test="name != null">`name`=#{name},</if>
 		<if test="ip != null">`ip`=#{ip},</if>
 		<if test="department != null">`department`=#{department},</if>
@@ -92,7 +92,7 @@
 		_device.*,lsblj_department.name depart_name, lsblj_department.id department,lsblj_device_type.name typename,lsblj_protocol.name protocolname  FROM lsblj_device as _device
 		LEFT JOIN lsblj_department ON _device.department=lsblj_department.id
 		LEFT JOIN lsblj_protocol on _device.protocol_id=lsblj_protocol.id
-		LEFT JOIN lsblj_device_type on _device.os_type=lsblj_device_type.id
+		LEFT JOIN lsblj_device_type on _device.device_type=lsblj_device_type.id
 		where 1
 		<if test="device.name!=null">AND _device.name like CONCAT('%',#{device.name},'%')</if>
 		<if test="device.ip!=null">AND `ip` like CONCAT('%',#{device.ip},'%')</if>
@@ -145,18 +145,18 @@
 
     <select id="totalByDeviceType" resultType="java.util.Map">
             select IFNULL(b.name,'其他') name,count(*) count 
-            	from lsblj_device a LEFT JOIN lsblj_device_type b ON a.os_type = b.id 
-            	GROUP BY a.os_type ORDER BY count DESC LIMIT 4;
+            	from lsblj_device a LEFT JOIN lsblj_device_type b ON a.device_type = b.id 
+            	GROUP BY a.device_type ORDER BY count DESC LIMIT 4;
     </select>
 
     <select id="checkSys_type" resultType="com.longersec.blj.domain.Device">
-		select * from lsblj_device where os_type=#{item} limit 1;
+		select * from lsblj_device where device_type=#{item} limit 1;
 	</select>
 
     <insert id="insertMore">
 		INSERT INTO lsblj_device
 	    <set>
-		    <if test="os_type != null">`os_type`=#{os_type},</if>
+		    <if test="device_type != null">`device_type`=#{device_type},</if>
 		    <if test="name != null">`name`=#{name},</if>
 		    <if test="ip != null">`ip`=#{ip},</if>
 		    <if test="port != null">`port`=#{port},</if>
@@ -175,7 +175,7 @@
 		UPDATE lsblj_device
 		<set>
 
-			<if test="item.os_type != null">`os_type`=#{item.os_type},</if>
+			<if test="item.device_type != null">`device_type`=#{item.device_type},</if>
 			<if test="item.name != null">`name`=#{item.name},</if>
 			<if test="item.ip != null">`ip`=#{item.ip},</if>
 			<if test="item.port != null">`port`=#{item.port},</if>

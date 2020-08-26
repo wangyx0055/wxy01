@@ -6,15 +6,12 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import cn.hutool.core.util.NumberUtil;
 import net.sf.json.JSONObject;
 import oshi.json.SystemInfo;
 import oshi.json.hardware.CentralProcessor;
 import oshi.json.hardware.GlobalMemory;
-import oshi.json.hardware.HWDiskStore;
 import oshi.json.hardware.HardwareAbstractionLayer;
 
 /**
@@ -128,8 +125,8 @@ public class SystemUsageUtil {
         String[] data = lines[1].split(" +");
         double total = Double.parseDouble(data[4].replace("%", ""));
 
-        this.disk_used = Long.valueOf(data[2]);
-        this.disk_total = Long.valueOf(data[1]);
+        this.disk_used = Long.parseLong(data[2]);
+        this.disk_total = Long.parseLong(data[1]);
         this.disk_userate = total / 100;
         
         return total / 100;
@@ -176,8 +173,7 @@ public class SystemUsageUtil {
             while((line=in2.readLine()) != null){    
                 line = line.trim();
                 if(line.startsWith("eth0")){
-                    String[] temp = line.split("\\s+"); 
-                    //System.out.println("test2"+temp);
+                    String[] temp = line.split("\\s+");
                     inSize2 = Long.parseLong(temp[1])/8;
                     outSize2 = Long.parseLong(temp[9])/8;
                     break;
@@ -230,16 +226,15 @@ public class SystemUsageUtil {
     	long T = G * 1024;
     	if(size<=K) {
     		return size + "B";
-    	}else if(size>K&&size<=M) {
+    	}else if(size <= M) {
     		return size/K + "KB";
-    	}else if(size>M&&size<=G) {
+    	}else if(size <= G) {
     		return size/M + "MB";
-    	}else if(size>G&&size<=T) {
+    	}else if(size <= T) {
     		return size/G + "GB";
-    	}else if(size>T) {
+    	}else {
     		return size/T + "TB";
     	}
-    	return "";
     }
 }
 

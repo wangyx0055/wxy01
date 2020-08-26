@@ -208,5 +208,5 @@ public class IndexController {
         return "/view/work_manage/authorize";
     }
     @RequestMapping("/view/work_manage/approve")
-    public String approve(){ return "/view/wrok_manage/approve";}
+    public String approve(){ return "/view/work_manage/approve";}
 }

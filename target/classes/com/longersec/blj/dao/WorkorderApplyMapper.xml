@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.WorkorderApplyDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.WorkorderApply">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="start" jdbcType="VARCHAR" property="start"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="end" jdbcType="VARCHAR" property="end"/>
+		<result column="upload" jdbcType="INTEGER" property="upload"/>
+		<result column="download" jdbcType="INTEGER" property="download"/>
+		<result column="filemanage" jdbcType="INTEGER" property="filemanage"/>
+		<result column="up_clipboard" jdbcType="INTEGER" property="up_clipboard"/>
+		<result column="down_clipboard" jdbcType="INTEGER" property="down_clipboard"/>
+		<result column="watermark" jdbcType="INTEGER" property="watermark"/>
+		<result column="description" jdbcType="VARCHAR" property="description"/>
+		<result column="result" jdbcType="INTEGER" property="result"/>
+		<result column="reason" jdbcType="VARCHAR" property="reason"/>
+		<result column="update_time" jdbcType="VARCHAR" property="update_time"/>
+	</resultMap>
+
+	<resultMap id="workorderApplyRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addWorkorderApply" parameterType="com.longersec.blj.domain.WorkorderApply">
+		INSERT INTO lsblj_workorder_apply
+		<set>
+			<if test="id != null">`id`=#{id},</if>
+			<if test="start != null">`start`=#{start},</if>
+			<if test="end != null">`end`=#{end},</if>
+			<if test="upload != null">`upload`=#{upload},</if>
+			<if test="download != null">`download`=#{download},</if>
+			<if test="filemanage != null">`filemanage`=#{filemanage},</if>
+			<if test="up_clipboard != null">`up_clipboard`=#{up_clipboard},</if>
+			<if test="down_clipboard != null">`down_clipboard`=#{down_clipboard},</if>
+			<if test="watermark != null">`watermark`=#{watermark},</if>
+			<if test="description != null">`description`=#{description},</if>
+			<if test="result != null">`result`=#{result},</if>
+			<if test="reason != null">`reason`=#{reason},</if>
+			<if test="update_time != null">`update_time`=#{update_time},</if>
+		</set>
+	</insert>
+
+	<update id="editWorkorderApply" parameterType="com.longersec.blj.domain.WorkorderApply">
+		UPDATE lsblj_workorder_apply
+		<set>
+			<if test="id != null">`id`=#{id},</if>
+			<if test="start != null">`start`=#{start},</if>
+			<if test="end != null">`end`=#{end},</if>
+			<if test="upload != null">`upload`=#{upload},</if>
+			<if test="download != null">`download`=#{download},</if>
+			<if test="filemanage != null">`filemanage`=#{filemanage},</if>
+			<if test="up_clipboard != null">`up_clipboard`=#{up_clipboard},</if>
+			<if test="down_clipboard != null">`down_clipboard`=#{down_clipboard},</if>
+			<if test="watermark != null">`watermark`=#{watermark},</if>
+			<if test="description != null">`description`=#{description},</if>
+			<if test="result != null">`result`=#{result},</if>
+			<if test="reason != null">`reason`=#{reason},</if>
+			<if test="update_time != null">`update_time`=#{update_time},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delWorkorderApply" parameterType="java.util.List">
+		DELETE FROM lsblj_workorder_apply
+		where id IN (
+		<foreach collection="list" item="item" >
+			#{item},
+		</foreach>
+		0);
+		DELETE from `lsblj_workorder_apply_device_account` where workorder_apply_id not in(select id from `lsblj_workorder_apply`);
+	</delete>
+
+	<select id="findAll" resultMap="BaseResultMap, workorderApplyRecordCounts" resultType="java.lang.Object">
+		SELECT
+		SQL_CALC_FOUND_ROWS *
+		FROM lsblj_workorder_apply
+		where 1
+		<if test="workorderApply.name != null">AND name like CONCAT('%',#{workorderApply.name},'%') </if>
+		<!--<if test="workorderApply.update_time != null"> AND `workorderApply.update_time` like CONCAT('%',#{user.username},'%')</if>-->
+		<if test="workorderApply.result != null"> AND result like CONCAT('%',#{workorderApply.result},'%')</if>
+		<if test="workorderApply.searchAll != null">
+			AND (
+			    name like CONCAT('%',#{workorderApply.searchAll},'%')
+				or result like CONCAT('%',#{workorderApply.searchAll},'%')
+				or description like CONCAT('%',#{workorderApply.searchAll},'%')
+			)
+		</if>
+		<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_workorder_apply where id=#{id}
+	</select>
+
+	<select id="selectWorkDept" resultType="java.lang.Integer">
+		SELECT `range` FROM `lsblj_config_workorder` WHERE id =1;
+	</select>
+</mapper>

@@ -164,12 +164,8 @@ public class AccessPolicyController {
 	@ResponseBody
 	public JSONObject editStatus(@RequestParam(value = "status")Integer status, @RequestParam(value = "id")Integer id){
 		JSONObject result = new JSONObject();
-		Boolean r = accessPolicyService.editStatus(status,id);
-		if (r){
-			result.put("success", true);
-		}else{
-			result.put("success", false);
-		}
+		boolean r = accessPolicyService.editStatus(status,id);
+		result.put("success", r);
 		return result;
 	}
 
@@ -239,7 +235,6 @@ public class AccessPolicyController {
 	@ResponseBody
 	public JSONObject checkname(@RequestParam(value = "name") String name,@RequestParam(value = "id" ,required = false)Integer id){
 		JSONObject result = new JSONObject();
-
 		result.put("success", true);
 		if (id==null){
 			result.put("success", false);

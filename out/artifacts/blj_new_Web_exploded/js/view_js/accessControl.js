@@ -264,7 +264,6 @@ let locale = {
     "daysOfWeek": ["日", "一", "二", "三", "四", "五", "六"],
     "monthNames": ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
     "firstDay": 1,
-
 };
 //初始化显示当前时间
 let date = new Date();
@@ -476,7 +475,9 @@ function AutoSearch(){
                     return '<input name="chk[]" type="checkbox" value=' + data + '>';
                 }
             },
-            {"data": "name"},
+            {"data": "name","render":function (data,type, row, meta) {
+                    return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                }},
             {"data": "depart_name","render":function (data,type, row, meta) {
                     return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+row.topName+'">'+data+'</div>'
                 }},
@@ -524,11 +525,11 @@ function AutoSearch(){
                 os[i].addEventListener("click",function () {
                     let count = 0;
                     for (let j = 0; j <os.length ; j++) {
-                        if (os[j].checked==true){
+                        if (os[j].checked===true){
                             count++
                         }
                     }
-                    allSelects.checked=(count == os.length)
+                    allSelects.checked=(count === os.length)
                 })
             }
             //提示工具

@@ -57,7 +57,6 @@ public class resourceCheckFilter extends AccessControlFilter {
         	System.out.println("修改密码");
         	try {
         		httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/view/operation_manage/self.html");
-        	 	//response.sendRedirect(request.getContextPath()+"/view/operation_manage/self.html");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

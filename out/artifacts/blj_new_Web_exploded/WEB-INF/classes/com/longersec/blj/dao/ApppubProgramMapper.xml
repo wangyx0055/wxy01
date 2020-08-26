@@ -48,7 +48,7 @@
 			#{item}
 		</foreach>
 	</delete>
-	<select id="findAll" resultMap="BaseResultMap, apppubProgramRecordCounts">
+	<select id="findAll" resultMap="BaseResultMap, apppubProgramRecordCounts" resultType="java.lang.Object">
 		SELECT
 		SQL_CALC_FOUND_ROWS
 		* FROM lsblj_apppub_program
