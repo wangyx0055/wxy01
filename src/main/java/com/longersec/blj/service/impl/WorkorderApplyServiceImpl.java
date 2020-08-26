@@ -18,7 +18,6 @@ public class WorkorderApplyServiceImpl implements WorkorderApplyService{
 
 	@Override
 	public boolean editWorkorderApply(WorkorderApply workorderApply) {
-		// TODO Auto-generated method stub
 		return this.WorkorderApplyDao.editWorkorderApply(workorderApply);
 	}
 
@@ -40,6 +39,11 @@ public class WorkorderApplyServiceImpl implements WorkorderApplyService{
 	@Override
 	public int selectWorkDept() {
 		return WorkorderApplyDao.selectWorkDept();
+	}
+
+	@Override
+	public boolean updateResult(int result, int id) {
+		return WorkorderApplyDao.updateResult(result,id);
 	}
 
 }

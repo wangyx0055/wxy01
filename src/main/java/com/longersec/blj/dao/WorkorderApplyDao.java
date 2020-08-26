@@ -16,4 +16,7 @@ public interface WorkorderApplyDao {
 
 	/**查询工单作用部门范围 **/
 	int selectWorkDept();
+
+	/**更新状态 **/
+	boolean updateResult(@Param("result")int result,@Param("id")int id);
 }

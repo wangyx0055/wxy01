@@ -2,6 +2,7 @@ package com.longersec.blj.service;
 
 import java.util.List;
 import com.longersec.blj.domain.WorkorderApply;
+import org.apache.ibatis.annotations.Param;
 
 public interface WorkorderApplyService {
 
@@ -15,5 +16,8 @@ public interface WorkorderApplyService {
 
 	/**查询工单作用部门范围 **/
 	int selectWorkDept();
+
+	/**更新状态 **/
+	boolean updateResult(int result,int id);
 }
 

@@ -1,7 +1,7 @@
 function init() {
 	//定义locale汉化插件
 	let locale = {
-		format: "YYYY-MM-DD HH:mm",
+		format: "YYYY-MM-DD HH:mm:ss",
 		"applyLabel": "确定",
 		"cancelLabel": "取消",
 		"fromLabel": "起始时间",
@@ -15,7 +15,7 @@ function init() {
 	let day = date.getDate();
 	let month = date.getMonth() + 1;
 	let year = date.getFullYear();
-	let minDate = year + "-" + month + "-" + day;
+	let minDate = year + "-" + month + "-" + day +date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
 	//日期控件初始化
 	$('#effect_time').daterangepicker({
 		locale: locale,
@@ -23,6 +23,7 @@ function init() {
 		timePicker: true, //显示时间
 		timePicker24Hour: true, //时间制
 		showDropdowns: true, //年月份下拉框
+		timePickerSeconds:true,
 		singleDatePicker: true,
 		startDate: minDate,
 		minDate: minDate
@@ -33,6 +34,7 @@ function init() {
 		singleDatePicker: true,
 		timePicker: true, //显示时间
 		timePicker24Hour: true, //时间制
+		timePickerSeconds:true,
 		startDate: minDate,
 		minDate: $('#effect_time').val(),//动态获取截止日期的最小取值范围
 	});
@@ -43,9 +45,47 @@ function init() {
 				autoApply: false,
 				timePicker: true, //显示时间
 				timePicker24Hour: true, //时间制
+				timePickerSeconds:true,
 				singleDatePicker: true,
 				startDate: minDate,
 				minDate: $('#effect_time').val(),//动态获取截止日期的最小取值范围
+			}
+		);
+	});
+
+	//日期控件初始化
+	$('#effect_time1').daterangepicker({
+		locale: locale,
+		autoApply: false,
+		timePicker: true, //显示时间
+		timePicker24Hour: true, //时间制
+		timePickerSeconds:true,
+		showDropdowns: true, //年月份下拉框
+		singleDatePicker: true,
+		startDate: minDate,
+		minDate: minDate
+	});
+	$('#fail_time1').daterangepicker({
+		locale: locale,
+		autoApply: false,
+		singleDatePicker: true,
+		timePicker: true, //显示时间
+		timePicker24Hour: true, //时间制
+		timePickerSeconds:true,
+		startDate: minDate,
+		minDate: $('#effect_time1').val(),//动态获取截止日期的最小取值范围
+	});
+	$('#effect_time1').blur(() => {
+		$('#fail_time').daterangepicker(
+			{
+				locale: locale,
+				autoApply: false,
+				timePicker: true, //显示时间
+				timePicker24Hour: true, //时间制
+				timePickerSeconds:true,
+				singleDatePicker: true,
+				startDate: minDate,
+				minDate: $('#effect_time1').val(),//动态获取截止日期的最小取值范围
 			}
 		);
 	});
@@ -53,7 +93,17 @@ function init() {
 $(document).ready(function() {
 	init();
 });
+//关联设备每次加载多少
 const page_length = 500;
+//mysql datetime去掉最后的.0
+function time_Format(dateTime){
+	let i = dateTime.indexOf(".");
+ 	if (i === -1) {
+ 		return dateTime;
+    }
+	return dateTime.substring(0,i);
+}
+
 //根据条件查询
 var _scripts_table= function (field,value){
 	$('#example2').DataTable({
@@ -155,11 +205,12 @@ $('#addWork').click(function () {
 		success: function (data) {
 			if (data.success) {
 				$("#modal-success .modal-title").text('成功');
-				$("#modal-success .modal-body").text('新建成功!');
+				$("#modal-success .modal-body").text('添加成功!');
 				$("#modal-success").modal();
+				$('#modal-primary5').modal('hide');
 			} else {
 				$("#modal-danger .modal-title").text('失败');
-				$("#modal-danger .modal-body").text('新建失败!');
+				$("#modal-danger .modal-body").text('添加失败!');
 				$("#modal-danger").modal();
 			}
 			loadAJAX('#example2');
@@ -171,8 +222,9 @@ $('#modal-primary1').on('show.bs.modal',function (event) {
 	let button = $(event.relatedTarget);
 	let i = button.data('row');
 	$('#authorize_id1').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
-	$('#effect_time1').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].start);
-	$('#fail_time1').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].end);
+	$('#effect_time1').val(time_Format($('#example2').DataTable().row('#' + i).nodes(i).data()[i].start));
+	$('#name').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].name);
+	$('#fail_time1').val(time_Format($('#example2').DataTable().row('#' + i).nodes(i).data()[i].end));
 	$('#upload1').prop("checked",$('#example2').DataTable().row('#' + i).nodes(i).data()[i].upload===0?false:true);
 	$('#download1').prop("checked",$('#example2').DataTable().row('#' + i).nodes(i).data()[i].download===0?false:true);
 	$('#filemanage1').prop("checked",$('#example2').DataTable().row('#' + i).nodes(i).data()[i].filemanage===0?false:true);
@@ -184,7 +236,7 @@ $('#modal-primary1').on('show.bs.modal',function (event) {
 //编辑授权工单
 $('#authorButton1').click(function () {
 $.ajax({
-	url: "../../workorderApply/addWorkorderApply",
+	url: "../../workorderApply/editWorkorderApply",
 	type: "POST",
 	data: {
 		id:$('#authorize_id1').val(),
@@ -203,6 +255,7 @@ $.ajax({
 			$("#modal-success .modal-title").text('成功');
 			$("#modal-success .modal-body").text('编辑成功!');
 			$("#modal-success").modal();
+			$('#modal-primary1').modal('hide');
 		} else {
 			$("#modal-danger .modal-title").text('失败');
 			$("#modal-danger .modal-body").text('编辑失败!');
@@ -432,26 +485,27 @@ $('#delAllWork').click(function () {
 
 
 //授权工单的撤回
-$('#modal_default').on('show.bs.modal', function (event) {
+$('#modal-withdraw').on('show.bs.modal', function (event) {
 	let button = $(event.relatedTarget);
 	let i = button.data('row');
-	$('#submit_work').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
+	$('#withdraw_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 });
 $('#withdraw').click(function () {
 	$.ajax({
-		url: "../../workorderApply/delWorkorderApply",
+		url: "../../workorderApply/updateResult",
 		type: "POST",
 		data: {
+			id:$('#withdraw_id').val(),
 			result:0
 		},
 		success: function (data) {
 			if (data.success) {
 				$("#modal-success .modal-title").text('成功');
-				$("#modal-success .modal-body").text('操作成功!');
+				$("#modal-success .modal-body").text('撤回成功!');
 				$("#modal-success").modal();
 			} else {
 				$("#modal-danger .modal-title").text('失败');
-				$("#modal-danger .modal-body").text('操作失败!');
+				$("#modal-danger .modal-body").text('撤回失败!');
 				$("#modal-danger").modal();
 			}
 			loadAJAX('#example2');
@@ -462,16 +516,17 @@ $('#withdraw').click(function () {
 	})
 });
 //授权工单的提交
-$('#modal-withdraw').on('show.bs.modal', function (event) {
+$('#modal_default8').on('show.bs.modal', function (event) {
 	let button = $(event.relatedTarget);
 	let i = button.data('row');
-	$('#withdraw_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
+	$('#submit_work').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
 });
 $('#submitWork').click(function () {
 	$.ajax({
-		url: "../../workorderApply/delWorkorderApply",
+		url: "../../workorderApply/updateResult",
 		type: "POST",
 		data: {
+			id:$('#submit_work').val(),
 			result:1
 		},
 		success: function (data) {

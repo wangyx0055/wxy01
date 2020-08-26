@@ -1,5 +1,6 @@
 package com.longersec.blj.web;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,9 +8,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.longersec.blj.dao.WorkorderApplyDeviceAccountDao;
 import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.service.OperatorLogService;
+import com.longersec.blj.service.WorkorderApplyDeviceAccountService;
 import com.longersec.blj.utils.BljConstant;
+import com.longersec.blj.utils.KeyUtil;
 import com.longersec.blj.utils.Operator_log;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +34,15 @@ public class WorkorderApplyController {
 	private WorkorderApplyService workorderApplyService;
 
 	@Autowired
+	private WorkorderApplyDeviceAccountDao workorderApplyDeviceAccountDao;
+	
+	@Autowired
 	private OperatorLogService operatorLogService;
 
 	JSONObject result = null;
 	@RequestMapping("/listWorkorderApply")
 	@ResponseBody
-	public JSONObject listWorkorderApply(WorkorderApply workorderApply,HttpServletRequest request, HttpSession session) {
+	public JSONObject listWorkorderApply(WorkorderApply workorderApply,HttpServletRequest request) {
 		int page_start = Integer.parseInt(request.getParameter("start"));
 		int page_length = Integer.parseInt(request.getParameter("length"));
 		ArrayList<WorkorderApply> workorderApplys = new ArrayList<>();
@@ -58,25 +65,46 @@ public class WorkorderApplyController {
 
 	@RequestMapping("/addWorkorderApply")
 	@ResponseBody
-	public JSONObject addWorkorderApply(WorkorderApply workorderApply, HttpServletRequest request, HttpSession session) {
-		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
-		if(result.getBoolean("success")) {
-			Boolean r = workorderApplyService.addWorkorderApply(workorderApply);
-			result.accumulate("success", r?true:false);
+	public JSONObject addWorkorderApply(WorkorderApply workorderApply,@RequestParam(value = "devices",required = false)Integer[] device,
+	                                    HttpServletRequest request, HttpSession session) {
+		//操作日志
+		OperatorLog operatorLog = Operator_log.log(request, session);
+		operatorLog.setModule("授权工单");
+		operatorLog.setContent("添加");
+		result = new JSONObject();
+		//更新时间
+		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		workorderApply.setUpdate_time(dateFormat.format(System.currentTimeMillis()));
+		//设置工单名称
+		workorderApply.setName(KeyUtil.genUniqueKey());
+		operatorLog.setDetails("添加授权工单["+workorderApply.getName()+"]");
+		boolean r = workorderApplyService.addWorkorderApply(workorderApply);
+		boolean d = true;
+		if (device != null){
+			d = workorderApplyDeviceAccountDao.addWorkorderApplyDeviceAccount(workorderApply.getId(),Arrays.asList(device));
 		}
+		result.put(BljConstant.SUCCESS, r && d);
+		operatorLog.setResult(r&& d?"成功":"失败");
+		operatorLogService.addOperatorLog(operatorLog);
 		return result;
 	}
 
 	@RequestMapping("/editWorkorderApply")
 	@ResponseBody
 	public JSONObject editWorkorderApply(WorkorderApply workorderApply, HttpServletRequest request, HttpSession session) {
-		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
-		if(result.getBoolean("success")) {
-			Boolean r = workorderApplyService.editWorkorderApply(workorderApply);
-			result.accumulate("success", r?true:false);
-		}
+		//操作日志
+		OperatorLog operatorLog = Operator_log.log(request, session);
+		operatorLog.setModule("授权工单");
+		operatorLog.setContent("编辑");
+		operatorLog.setDetails("编辑授权工单["+workorderApply.getName()+"]");
+		//更新时间
+		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		workorderApply.setUpdate_time(dateFormat.format(System.currentTimeMillis()));
+		result = new JSONObject();
+		boolean r = workorderApplyService.editWorkorderApply(workorderApply);
+		result.accumulate(BljConstant.SUCCESS, r);
+		operatorLog.setResult(r?"成功":"失败");
+		operatorLogService.addOperatorLog(operatorLog);
 		return result;
 	}
 
@@ -97,8 +125,24 @@ public class WorkorderApplyController {
 			return result;
 		}
 		Boolean r = workorderApplyService.delWorkorderApply(_ids);
-		result.put("success", r);
+		result.put(BljConstant.SUCCESS, r);
 		operatorLog.setDetails("删除授权工单的id为:["+ids+"]");
+		operatorLog.setResult(r?"成功":"失败");
+		operatorLogService.addOperatorLog(operatorLog);
+		return result;
+	}
+
+	@RequestMapping("/updateResult")
+	@ResponseBody
+	public JSONObject updateResult(@RequestParam("id")int id, @RequestParam("result")int results,HttpServletRequest request, HttpSession session) {
+		//操作日志
+		OperatorLog operatorLog = Operator_log.log(request, session);
+		operatorLog.setModule("授权工单");
+		operatorLog.setContent("更新");
+		operatorLog.setDetails("更新状态");
+		result = new JSONObject();
+		boolean r = workorderApplyService.updateResult(results,id);
+		result.put(BljConstant.SUCCESS, r);
 		operatorLog.setResult(r?"成功":"失败");
 		operatorLogService.addOperatorLog(operatorLog);
 		return result;
