@@ -80,6 +80,9 @@
           <element id="library" level="project" name="Maven: com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0" />
           <element id="library" level="project" name="Maven: org.springframework.ldap:spring-ldap-core:2.3.2.RELEASE" />
           <element id="library" level="project" name="Maven: com.cedarsoft.commons:license:8.9.1" />
+          <element id="library" level="project" name="javax-xml-soap-1.6.0" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.12" />
+          <element id="library" level="project" name="license (3)" />
         </element>
       </element>
     </root>

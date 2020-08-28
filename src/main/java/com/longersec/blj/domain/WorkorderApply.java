@@ -8,6 +8,10 @@ public class WorkorderApply {
 
 	private String name;
 
+	private String apply_username;
+
+	private String apply_realname;
+
 	private Integer type;
 
 	private String start;
@@ -179,20 +183,38 @@ public class WorkorderApply {
 		this.type = type;
 	}
 
+	public String getApply_username() {
+		return apply_username;
+	}
+
+	public void setApply_username(String apply_username) {
+		this.apply_username = apply_username;
+	}
+
+	public String getApply_realname() {
+		return apply_realname;
+	}
+
+	public void setApply_realname(String apply_realname) {
+		this.apply_realname = apply_realname;
+	}
+
 	@Override
 	public String toString() {
 		return "WorkorderApply{" +
 				"id=" + id +
-				"apply_user_id=" + apply_user_id +
-				"type=" + type +
+				", apply_user_id=" + apply_user_id +
 				", name='" + name + '\'' +
+				", apply_username='" + apply_username + '\'' +
+				", apply_realname='" + apply_realname + '\'' +
+				", type=" + type +
 				", start='" + start + '\'' +
 				", end='" + end + '\'' +
 				", upload=" + upload +
 				", download=" + download +
 				", filemanage=" + filemanage +
-				", up_clipboard=" + up_clipboard +
 				", searchAll='" + searchAll + '\'' +
+				", up_clipboard=" + up_clipboard +
 				", down_clipboard=" + down_clipboard +
 				", watermark=" + watermark +
 				", description='" + description + '\'' +

@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <title>回访详情</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" href="../../bower_components/dist/css/style.css">
+    <!--[if lt IE 9]>  <link rel="stylesheet" type="text/css" href="../../bower_components/dist/css/ie8.css"><![endif]-->
+    <link rel="stylesheet" type="text/css" href="../../bower_components/dist/css/playback.css">
+</head>
+
+<body>
+<div class="row-box">
+    <div class="m-left">
+        <h3 class="tit">回访详情</h3>
+        <div class="test"  id="test_host">Linux测试机</div>
+        <div class="info">
+            <p>登录协议：<span id="protocol">SSH</span></p>
+            <p>设备地址：<span id="device_ip">59.110.158.77</span></p>
+            <p>设备账号：<span id="device_username">root</span></p>
+        </div>
+        <div class="info info-1">
+            <p>登录协议：<span>SSH</span></p>
+            <p>设备地址：<span>59.110.158.77</span></p>
+            <p>设备账号：<span>root</span></p>
+        </div>
+        <div class="m-record">
+            <ul class="ul-tab TAB_CLICK" id=".m-taber">
+                <li class="l1 on">
+                    <a href="javascript:;" class="con">
+                        <i class="icon"></i>
+                        运维记录
+                    </a>
+                </li>
+                <li class="l2">
+                    <a href="javascript:;" class="con">
+                        <i class="icon"></i>
+                        文件传输
+                    </a>
+                </li>
+                <li class="l3">
+                    <a href="javascript:;" class="con">
+                        <i class="icon"></i>
+                        参与用户
+                    </a>
+                </li>
+            </ul>
+            <div class="m-taber">
+                <div class="soBox">
+                    <form action="">
+                        <input type="text" class="inp" placeholder="输入操作指令">
+                        <input type="submit" class="btn" value="搜索">
+                    </form>
+                </div>
+                <dl class="m-command">
+                    <dt>
+                        <span>全部</span>
+                        <span>命令</span>
+                    </dt>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                </dl>
+                <div class="page">
+                    <span>共<em>00</em>条指令</span>
+                    <ul class="ul-arrow">
+                        <li><a href=""><img src="../../images/z-p4.png" alt=""></a></li>
+                        <li><a href=""><img src="../../images/z-p5.png" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="m-taber">
+                <div class="soBox">
+                    <form action="">
+                        <input type="text" class="inp" placeholder="输入操作指令">
+                        <input type="submit" class="btn" value="搜索">
+                    </form>
+                </div>
+                <dl class="m-command">
+                    <dt>
+                        <span>4545全部</span>
+                        <span>命令</span>
+                    </dt>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                </dl>
+                <div class="page">
+                    <span>共<em>00</em>条指令</span>
+                    <ul class="ul-arrow">
+                        <li><a href=""><img src="../../images/z-p4.png" alt=""></a></li>
+                        <li><a href=""><img src="../../images/z-p5.png" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="m-taber">
+                <div class="soBox">
+                    <form action="">
+                        <input type="text" class="inp" placeholder="输入操作指令">
+                        <input type="submit" class="btn" value="搜索">
+                    </form>
+                </div>
+                <dl class="m-command">
+                    <dt>
+                        <span>121全部</span>
+                        <span>命令</span>
+                    </dt>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                    <dd>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dd>
+                </dl>
+                <div class="page">
+                    <span>共<em>00</em>条指令</span>
+                    <ul class="ul-arrow">
+                        <li><a href=""><img src="../../images/z-p4.png" alt=""></a></li>
+                        <li><a href=""><img src="../../images/z-p5.png" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-video" style="background-color: white">
+        <!-- <video src="video/video1.mp4" class="video"></video> -->
+        <!--   <div id="dplayer" class="video"></div>
+           <em class="play"></em>-->
+        <div id="player">
+            <div id="display">
+                <div class="notification-container">
+                    <div class="seek-notification">
+                        <p>
+                            Seek in progress...
+                            <button id="cancel-seek">Cancel</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="play-pause">Play</button>
+                <input id="position-slider" type="range">
+                <span id="position">00:00</span>
+                <span>/</span>
+                <span id="duration">00:00</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Guacamole recording player -->
+
+
+</div>
+<script src="../../bower_components/plugins/jQueryUI/jquery.js"></script>
+<script type="text/javascript" src="../../js/playback.js"></script>
+<script>
+</script>
+<script src="../../bower_components/plugins/jQueryUI/DPlayer.min.js"></script>
+<script>
+    const dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        hotkey: true,
+        screenshot: true,
+        mutex: true,
+        video: {
+            url: 'https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4',
+        }
+    });
+    $('.m-video .play').click(function() {
+        dp.play();
+        var self = this;
+    });
+    dp.on('play', function() {
+        $('.m-video .play').fadeOut();
+    });
+    dp.on('pause', function() {
+        $('.m-video .play').fadeIn();
+    });
+
+</script>
+</body>
+
+</html>

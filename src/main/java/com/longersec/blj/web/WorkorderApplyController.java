@@ -91,6 +91,8 @@ public class WorkorderApplyController {
 		//获取当前系统用户
 		User principal = (User)SecurityUtils.getSubject().getPrincipal();
 		workorderApply.setApply_user_id(principal.getId());
+		workorderApply.setApply_username(principal.getUsername());
+		workorderApply.setApply_realname(principal.getRealname());
 		operatorLog.setDetails("添加授权工单["+workorderApply.getName()+"]");
 		boolean r = workorderApplyService.addWorkorderApply(workorderApply);
 		boolean d = workorderApplyDeviceAccountDao.addWorkorderApplyDeviceAccount(workorderApply.getId(),Arrays.asList(_devices));

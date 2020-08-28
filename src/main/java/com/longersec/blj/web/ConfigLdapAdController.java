@@ -143,101 +143,106 @@ public class ConfigLdapAdController {
 			result.put("error","认证失败!");
 			return result;
 		}
-			//拿到AD域查询结果集
-			ArrayList<User> userArrayList = adOperate.searchUser(configLdapAd);
+		//添加成功条数初始化
+		int addSuccess = 0;
+		//拿到AD域查询结果集
+		ArrayList<User> userArrayList = adOperate.searchUser(configLdapAd);
 
-			//检测是否返回有结果集
-			if(userArrayList.size()!=0){
-
-			for(int i=0;i<userArrayList.size();i++) {
-				//将获取的DN传到AdOperate中dnOperate方法进行处理，获得处理结果
-				List<String> departmentList = adOperate.dnOperate(configLdapAd, userArrayList.get(i).getLdap_dn());
-				//部门过滤判断
-				if(departmentList==null){
-					continue;
-				}
-				//默认初始父ID为总部的ID
-				int parentId = 1;
-				for (int j = 0; j < departmentList.size(); j++) {
-					//查找Name和父ID的结果集
-					Department department = departmentService.selectByNameAndParentId(departmentList.get(j), parentId);
-					//没有的话创建部门
-					if (department == null) {
-						Department department1 = new Department();
-						department1.setName(departmentList.get(j));
-						department1.setParent_id(parentId);
-						department1.setCreate_id(user.getId());
-						department1.setCreate_time((int) System.currentTimeMillis());
-						department1.setDescription("LDAP/AD域同步");
-						//添加日志
-						OperatorLog operatorLog = Operator_log.log(request, session);
-						operatorLog.setModule("认证配置");
-						operatorLog.setDetails("增加部门"+"["+departmentList.get(j)+"],"+"来自LDAP/AD域同步");
-						operatorLog.setContent("添加");
-						boolean addDepartment =departmentService.addDepartment(department1);
-						//根据返回值判断
-						if(addDepartment){
-							operatorLog.setResult("成功");
-							result.put("success",true);
-						} else {
-							operatorLog.setResult("失败");
-							result.put("success",false);
-						}
-						operatorLogService.addOperatorLog(operatorLog);
-						//拿到创建后的部门ID作为下一个部门的父级部门ID
-						Department department2 = departmentService.selectByNameAndParentId(departmentList.get(j), parentId);
-						parentId = department2.getId();
-					}else {
-						//如果已有部门,拿到此部门ID作为搜索下级部门的父ID
-						parentId = department.getId();
-					}
-				}
-				//判断是否有同名用户，有只进行更新操作，更新字段：Ldap_dn,Department
-				User isEdit = userService.checkADUsername(userArrayList.get(i).getUsername());
-				if (isEdit != null) {
-					User user1 = new User();
-					user1.setId(isEdit.getId());
-					user1.setLdap_dn(userArrayList.get(i).getLdap_dn());
-					//部门处理完毕，获得最后的部门ID作为用户的department
-					user1.setDepartment(parentId);
+		for(int i=0;i<userArrayList.size();i++) {
+			//将获取的DN传到AdOperate中dnOperate方法进行处理，获得处理结果
+			List<String> departmentList = adOperate.dnOperate(configLdapAd, userArrayList.get(i).getLdap_dn());
+			//部门过滤判断
+			if(departmentList==null){
+				continue;
+			}
+			//用户Username判断，Username为空则不执行后续操作
+			if(userArrayList.get(i).getUsername()==null){
+				addSuccess = addSuccess+1;
+				continue;
+			}
+			//默认初始父ID为总部的ID
+			int parentId = 1;
+			for (int j = 0; j < departmentList.size(); j++) {
+				//查找Name和父ID的结果集
+				Department department = departmentService.selectByNameAndParentId(departmentList.get(j), parentId);
+				//没有的话创建部门
+				if (department == null) {
+					Department department1 = new Department();
+					department1.setName(departmentList.get(j));
+					department1.setParent_id(parentId);
+					department1.setCreate_id(user.getId());
+					department1.setCreate_time((int) System.currentTimeMillis());
+					department1.setDescription("LDAP/AD域同步");
 					//添加日志
 					OperatorLog operatorLog = Operator_log.log(request, session);
 					operatorLog.setModule("认证配置");
-					operatorLog.setDetails("编辑用户"+"["+isEdit.getUsername()+"],"+"来自LDAP/AD域同步");
-					operatorLog.setContent("编辑");
-					boolean editUser = userService.editUser(user1);
-					if(editUser){
-						operatorLog.setResult("成功");
-						//更新部门人数，原有的部门人数减 1 ,新增加的部门人数加 1
-						UpdateDepartmentCount.userUpdateDepartmentCount(departmentService,isEdit.getDepartment(),-1);
-						UpdateDepartmentCount.userUpdateDepartmentCount(departmentService,parentId,1);
-						result.put("success",true);
-					} else {
-						operatorLog.setResult("失败");
-						result.put("success",false);
-					}
-					operatorLogService.addOperatorLog(operatorLog);
-				} else {
-					//部门处理完毕，获得最后的部门ID作为用户的department
-					userArrayList.get(i).setDepartment(parentId);
-					//添加日志
-					OperatorLog operatorLog = Operator_log.log(request, session);
-					operatorLog.setModule("认证配置");
-					operatorLog.setDetails("添加用户"+"["+userArrayList.get(i).getUsername()+"],"+"来自LDAP/AD域同步");
+					operatorLog.setDetails("增加部门"+"["+departmentList.get(j)+"],"+"来自LDAP/AD域同步");
 					operatorLog.setContent("添加");
-					boolean addUser = userService.addUser(userArrayList.get(i));
-					if(addUser){
+					boolean addDepartment =departmentService.addDepartment(department1);
+					//根据返回值判断
+					if(addDepartment){
 						operatorLog.setResult("成功");
-						//更新部门人数
-						UpdateDepartmentCount.userUpdateDepartmentCount(departmentService,parentId,1);
 						result.put("success",true);
 					} else {
 						operatorLog.setResult("失败");
 						result.put("success",false);
 					}
 					operatorLogService.addOperatorLog(operatorLog);
+					//拿到创建后的部门ID作为下一个部门的父级部门ID
+					Department department2 = departmentService.selectByNameAndParentId(departmentList.get(j), parentId);
+					parentId = department2.getId();
+				}else {
+					//如果已有部门,拿到此部门ID作为搜索下级部门的父ID
+					parentId = department.getId();
 				}
 			}
+			//判断是否有同名用户，有只进行更新操作，更新字段：Ldap_dn,Department
+			User isEdit = userService.checkADUsername(userArrayList.get(i).getUsername());
+			if (isEdit != null) {
+				User user1 = new User();
+				user1.setId(isEdit.getId());
+				user1.setLdap_dn(userArrayList.get(i).getLdap_dn());
+				//部门处理完毕，获得最后的部门ID作为用户的department
+				user1.setDepartment(parentId);
+				//添加日志
+				OperatorLog operatorLog = Operator_log.log(request, session);
+				operatorLog.setModule("认证配置");
+				operatorLog.setDetails("编辑用户"+"["+isEdit.getUsername()+"],"+"来自LDAP/AD域同步");
+				operatorLog.setContent("编辑");
+				boolean editUser = userService.editUser(user1);
+				if(editUser){
+					operatorLog.setResult("成功");
+					//更新部门人数，原有的部门人数减 1 ,新增加的部门人数加 1
+					UpdateDepartmentCount.userUpdateDepartmentCount(departmentService,isEdit.getDepartment(),-1);
+					UpdateDepartmentCount.userUpdateDepartmentCount(departmentService,parentId,1);
+					result.put("success",true);
+				} else {
+					operatorLog.setResult("失败");
+					result.put("success",false);
+				}
+				operatorLogService.addOperatorLog(operatorLog);
+			} else {
+				//部门处理完毕，获得最后的部门ID作为用户的department
+				userArrayList.get(i).setDepartment(parentId);
+				//添加日志
+				OperatorLog operatorLog = Operator_log.log(request, session);
+				operatorLog.setModule("认证配置");
+				operatorLog.setDetails("添加用户"+"["+userArrayList.get(i).getUsername()+"],"+"来自LDAP/AD域同步");
+				operatorLog.setContent("添加");
+				boolean addUser = userService.addUser(userArrayList.get(i));
+				if(addUser){
+					operatorLog.setResult("成功");
+					//更新部门人数
+					UpdateDepartmentCount.userUpdateDepartmentCount(departmentService,parentId,1);
+					result.put("success",true);
+				} else {
+					operatorLog.setResult("失败");
+					result.put("success",false);
+				}
+				operatorLogService.addOperatorLog(operatorLog);
+			}
+		}
+		if(addSuccess==0){
 			OperatorLog operatorLog = Operator_log.log(request, session);
 			operatorLog.setModule("认证配置");
 			operatorLog.setDetails("LDAP/AD域同步成功");
@@ -245,7 +250,17 @@ public class ConfigLdapAdController {
 			operatorLog.setResult("成功");
 			operatorLogService.addOperatorLog(operatorLog);
 			result.put("success", true);
-		}else{
+			result.put("successInfo", "同步成功!");
+		}else if(userArrayList.size()>addSuccess && addSuccess!=0){
+			result.put("success", true);
+			result.put("successInfo", "部分成功!");
+			OperatorLog operatorLog = Operator_log.log(request, session);
+			operatorLog.setModule("认证配置");
+			operatorLog.setDetails("LDAP/AD域同步成功");
+			operatorLog.setContent("同步");
+			operatorLog.setResult("成功");
+			operatorLogService.addOperatorLog(operatorLog);
+		}else {
 			result.put("success", false);
 			result.put("error","同步失败!");
 			OperatorLog operatorLog = Operator_log.log(request, session);

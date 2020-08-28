@@ -8,6 +8,8 @@
 		<id column="apply_user_id" jdbcType="INTEGER" property="apply_user_id"/>
 		<result column="start" jdbcType="VARCHAR" property="start"/>
 		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="apply_realname" jdbcType="VARCHAR" property="apply_realname"/>
+		<result column="apply_username" jdbcType="VARCHAR" property="apply_username"/>
 		<result column="end" jdbcType="VARCHAR" property="end"/>
 		<result column="upload" jdbcType="INTEGER" property="upload"/>
 		<result column="download" jdbcType="INTEGER" property="download"/>
@@ -35,6 +37,8 @@
 			<if test="apply_user_id != null">`apply_user_id`=#{apply_user_id},</if>
 			<if test="end != null">`end`=#{end},</if>
 			<if test="name != null">`name`=#{name},</if>
+			<if test="apply_realname != null">`apply_realname`=#{apply_realname},</if>
+			<if test="apply_username != null">`apply_username`=#{apply_username},</if>
 			<if test="upload != null">`upload`=#{upload},</if>
 			<if test="download != null">`download`=#{download},</if>
 			<if test="filemanage != null">`filemanage`=#{filemanage},</if>
@@ -94,6 +98,7 @@
 				or description like CONCAT('%',#{workorderApply.searchAll},'%')
 			)
 		</if>
+		order by update_time desc
 		<if test="page_start != null and page_length != null">
 			LIMIT #{page_start},#{page_length}
 		</if>

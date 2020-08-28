@@ -113,7 +113,7 @@
 	</select>
 
 	<select id="getCrontabCommandLog" resultMap="BaseResultMap">
-		SELECT * FROM lsblj_crontab_command_log where id=#{id}
+		SELECT command,exec_datetime,result,device_name,device_ip,device_port,device_username,IF(end_datetime='0000-00-00 00:00:00',0,end_datetime) end_datetime,department FROM lsblj_crontab_command_log where id=#{id}
 	</select>
 
 	<select id="getById" resultMap="BaseResultMap">

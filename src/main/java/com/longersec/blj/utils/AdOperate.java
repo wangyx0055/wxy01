@@ -221,7 +221,8 @@ public class AdOperate {
 
 		List<String> split = new ArrayList();
 
-		String returnValue = configLdapAd.getUsername();
+		String returnUserName = configLdapAd.getUsername();
+		String returnRealName = configLdapAd.getRealname();
 
 		String filter_username = "";
 		filter_username = configLdapAd.getFilter_username();
@@ -272,47 +273,49 @@ public class AdOperate {
 				User user = new User();
 				if (Attrs != null) {
 
+					//拿出结果集中各属性的值
 					String distinguishedname = Attrs.get("distinguishedname").toString();
 					String distinguishedName = distinguishedname.substring(0, distinguishedname.indexOf(":"));
 					String newDistinguishedName = distinguishedname.substring(distinguishedName.length()+2,distinguishedname.length());
 
+					String newCN = "";
+					String newSN = "";
+					String newUID = "";
 
 					if (Attrs.get("cn")!=null){
-						if(returnValue.equals("CN")||returnValue.equals("")) {
 						String cn = Attrs.get("cn").toString();
 						String CN = cn.substring(0, cn.indexOf(":"));
-						String newCN = cn.substring(CN.length() + 2, cn.length());
-							user.setUsername(newCN);
-							user.setRealname(newCN);
-							user.setRole_id(1);
-							user.setLdap_dn(newDistinguishedName);
-							userArrayList.add(user);
-						}
+						newCN = cn.substring(CN.length() + 2, cn.length());
 					}
 					if (Attrs.get("sn")!=null){
-						if(returnValue.equals("SN")){
 						String sn = Attrs.get("sn").toString();
 						String SN = sn.substring(0, sn.indexOf(":"));
-						String newSN = sn.substring(SN.length()+2,sn.length());
-							user.setUsername(newSN);
-							user.setRealname(newSN);
-							user.setRole_id(1);
-							user.setLdap_dn(newDistinguishedName);
-							userArrayList.add(user);
-						}
+						newSN = sn.substring(SN.length()+2,sn.length());
 					}
 					if (Attrs.get("uid")!=null){
-						if(returnValue.equals("UID")) {
 						String uid = Attrs.get("uid").toString();
 						String UID = uid.substring(0, uid.indexOf(":"));
-						String newUID = uid.substring(UID.length()+2,uid.length());
-							user.setUsername(newUID);
-							user.setRealname(newUID);
-							user.setRole_id(1);
-							user.setLdap_dn(newDistinguishedName);
-							userArrayList.add(user);
-						}
+						newUID = uid.substring(UID.length()+2,uid.length());
 					}
+
+					if(returnRealName.equals("CN") && newCN.length()!=0){
+						user.setRealname(newCN);
+					}else if(returnRealName.equals("SN") && newSN.length()!=0){
+						user.setRealname(newSN);
+					}else if(returnRealName.equals("UID") && newUID.length()!=0){
+						user.setRealname(newUID);
+					}
+
+					if(returnUserName.equals("CN") && newCN.length()!=0){
+						user.setUsername(newCN);
+					}else if(returnUserName.equals("SN") && newSN.length()!=0){
+						user.setUsername(newSN);
+					}else if(returnUserName.equals("UID") && newUID.length()!=0){
+						user.setUsername(newUID);
+					}
+					user.setRole_id(1);
+					user.setLdap_dn(newDistinguishedName);
+					userArrayList.add(user);
 				}//if
 			}
 		ctx.close();
@@ -323,7 +326,7 @@ public class AdOperate {
 		//用户过滤
 		for(int j =0;j<userArrayList.size();j++){
 			for(int k=0;k<split.size();k++){
-				if(userArrayList.get(j).getUsername().toString().equals(split.get(k).toString())){
+				if(userArrayList.get(j).getUsername()!=null && userArrayList.get(j).getUsername().toString().equals(split.get(k).toString())){
 					userArrayList.remove(j);
 					j--;
 					break;

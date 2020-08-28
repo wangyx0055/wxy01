@@ -83,6 +83,7 @@
           <element id="library" level="project" name="Maven: com.aliyun:aliyun-java-sdk-core:3.7.1" />
           <element id="library" level="project" name="Maven: com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0" />
           <element id="library" level="project" name="Maven: org.springframework.ldap:spring-ldap-core:2.3.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.12" />
         </element>
       </element>
       <element id="directory" name="META-INF">
