@@ -42,8 +42,23 @@ public class WorkorderApplyServiceImpl implements WorkorderApplyService{
 	}
 
 	@Override
-	public boolean updateResult(int result, int id) {
-		return WorkorderApplyDao.updateResult(result,id);
+	public boolean updateResult(int result, int id,int dateline) {
+		return WorkorderApplyDao.updateResult(result,id,dateline);
+	}
+
+	@Override
+	public WorkorderApply getById(Integer id) {
+		return WorkorderApplyDao.getById(id);
+	}
+
+	@Override
+	public String selectCmd(int id) {
+		return WorkorderApplyDao.selectCmd(id);
+	}
+
+	@Override
+	public int selectDeadLine() {
+		return WorkorderApplyDao.selectDeadLine();
 	}
 
 }

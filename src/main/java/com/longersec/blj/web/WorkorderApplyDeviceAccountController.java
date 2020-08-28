@@ -1,11 +1,13 @@
 package com.longersec.blj.web;
 
 import com.longersec.blj.domain.DTO.Deviceaccess;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.domain.WorkorderApplyDeviceAccount;
 import com.longersec.blj.service.DeviceAccountService;
 import com.longersec.blj.service.WorkorderApplyDeviceAccountService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +33,9 @@ public class WorkorderApplyDeviceAccountController {
 	public JSONObject listWorkorderApplyDeviceAccount(@RequestParam("workorder_apply_id") Integer workorder_apply_id,
 	                                                  @RequestParam(value = "page_start",required = false)Integer page_start,
 	                                                  @RequestParam(value ="page_length",required = false)Integer page_length) {
-		ArrayList<WorkorderApplyDeviceAccount> resultWorkorderApplyDeviceAccount = (ArrayList<WorkorderApplyDeviceAccount>) workorderApplyDeviceAccountService.selectById(workorder_apply_id);
-		ArrayList<Deviceaccess> resultDeviceAccount = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId(1,page_start,page_length);
+		User users = (User) SecurityUtils.getSubject().getPrincipal();
+		ArrayList<Deviceaccess> resultWorkorderApplyDeviceAccount = (ArrayList<Deviceaccess>) workorderApplyDeviceAccountService.selectById(workorder_apply_id);
+		ArrayList<Deviceaccess> resultDeviceAccount = (ArrayList<Deviceaccess>) deviceAccountService.selectNameAndId(users.getDepartment(),page_start,page_length);
 		result = new JSONObject();
 		resultDeviceAccount.removeAll(resultWorkorderApplyDeviceAccount);
 		JSONArray jsonArray_p_device = JSONArray.fromObject(resultWorkorderApplyDeviceAccount);

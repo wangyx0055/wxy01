@@ -18,9 +18,10 @@
  */
 
 #player{
-    width: 88%;
-    float: right!important;
-    margin-right:20px;
+    width: 86%;
+    float: left!important;
+    margin-top: 55%;
+    margin-left: 5%;
 }
 
 #display {
@@ -125,30 +126,30 @@
     min-height: 550px;
     padding-left: 5px;
     margin-left: 0px;
-	
+
 }
 .list-group {
-	padding-inline-start: 10px;
+    padding-inline-start: 10px;
 }
 .list-group li{
-	display: block;
+    display: block;
 }
 .list-group .commands{
-	padding-left: 0px;
+    padding-left: 0px;
     margin-top: 10px;
 }
 .tooltip-inner{
-	word-wrap:break-word;
+    word-wrap:break-word;
 }
 .list-group .commands .each_command{
-	text-overflow:ellipsis;
-	overflow:hidden;
-	white-space:nowrap;
-	width:180px;
-	margin-left:0px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+    width:180px;
+    margin-left:0px;
 }
-table > tbody {    
-	font-family: NotoSansHans-Regular;
+table > tbody {
+    font-family: NotoSansHans-Regular;
     font-size: 12px;
     color: black;
 }

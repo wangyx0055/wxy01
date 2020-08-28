@@ -1,16 +1,16 @@
 package com.longersec.blj.service.impl;
 
-import java.util.Arrays;
-import java.util.List;
-
+import com.longersec.blj.dao.WorkorderApplyDeviceAccountDao;
+import com.longersec.blj.domain.DTO.Deviceaccess;
+import com.longersec.blj.service.WorkorderApplyDeviceAccountService;
 import com.longersec.blj.utils.BljConstant;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.longersec.blj.dao.WorkorderApplyDeviceAccountDao;
-import com.longersec.blj.domain.WorkorderApplyDeviceAccount;
-import com.longersec.blj.service.WorkorderApplyDeviceAccountService;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 @Service
@@ -34,7 +34,7 @@ public class WorkorderApplyDeviceAccountServiceImpl implements WorkorderApplyDev
 
 
 	@Override
-	public List<WorkorderApplyDeviceAccount> selectById(Integer workorder_apply_id) {
+	public List<Deviceaccess> selectById(Integer workorder_apply_id) {
 		return WorkorderApplyDeviceAccountDao.selectById(workorder_apply_id);
 	}
 

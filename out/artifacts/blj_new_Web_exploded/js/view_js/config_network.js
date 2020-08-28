@@ -95,10 +95,10 @@ $(function () {
         if(nip==""){
             $("#Vnetworkip").text("请输入IPv4地址");
             flag=false;
-        }else if(nip.length<13 && !p2.test(nip)){
+        }else if(nip.length<16 && !p2.test(nip)){
             $("#Vnetworkip").text("请输入有效的IPv4地址");
             flag=false;
-        }else if(nip.length>13){
+        }else if(nip.length>16){
             if(!p3.test(nip)){
                 $("#Vnetworkip").text("请输入有效的IPv6地址");
                 flag=false;
@@ -124,10 +124,10 @@ $(function () {
         if(nip==""){
             $("#Vnetworkip").text("请输入IPv4地址");
             flag=false;
-        }else if(nip.length<13 && !p2.test(nip)){
+        }else if(nip.length<16 && !p2.test(nip)){
             $("#Vnetworkip").text("请输入有效的IPv4地址");
             flag=false;
-        }else if(nip.length>13 && !p3.test(nip)){
+        }else if(nip.length>16 && !p3.test(nip)){
             $("#Vnetworkip").text("请输入有效的IPv6地址");
             flag=false;
         }

@@ -75,10 +75,11 @@
                                 <table id="example2" class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <td><span>选择</span></td>
-                                        <td><span>工单号</span></td>
-                                        <td><span>申请时间</span></td>
-                                        <td><span>状态</span></td>
+                                        <td style="width: 30px;"><span>选择</span></td>
+                                        <td style="width: 180px;"><span>工单号</span></td>
+                                        <td style="width: 120px;"><span>工单类型</span></td>
+                                        <td style="width: 180px;"><span>申请时间</span></td>
+                                        <td style="width: 80px;"><span>状态</span></td>
                                         <td><span>描述</span></td>
                                         <td><span>操作</span></td>
                                     </tr>
@@ -329,6 +330,7 @@
                             <button type="button" class="btn newaddbtn pull-right" id="submitWork"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
                             <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
                             <input type="hidden" id="submit_work" />
+                            <input type="hidden" id="submit_status" />
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -351,6 +353,7 @@
                             <button type="button" class="btn newaddbtn pull-right" id="withdraw"  data-dismiss="modal" style="margin-left: 10px;height: 30px;color: #fff;font-size: 12px">确定</button>
                             <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" style="height: 30px;font-size: 12px;">取消</button>
                             <input type="hidden" id="withdraw_id" />
+                            <input type="hidden" id="withdraw_status" />
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -423,8 +426,45 @@
                 </div>
                 <!-- /.modal-dialog -->
             </div>
+            <!--提示关联设备不能为空-->
+            <div class="modal modal-hides" id="modal-default3">
+                <div class="modal-dialog">
+                    <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">提示</span>
+                        </div>
+                        <div style="margin-left: 90px;margin-top: 10px;">
+                            <p id="warn_info"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--关联命令 -->
+            <div class="modal modal-hides" id="modal-primary2">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="padding-right: 1px;">
+                        <div class="modal-header">
+                            <input type="hidden" id="primary2_id">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <span class="modal-title">关联命令</span>
+                        </div>
+                        <div class="modal-body" style="height: 150px;overflow: auto;margin-left: 12px;">
+                            <div id="cmd">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn newaddbtn" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- /.content -->
     </div>
     <footer class="main-footer">
         <div th:replace="/view/common/footer :: footer"></div>
@@ -453,7 +493,6 @@
 <script src="../../bower_components/dist/js/checkAll.js"></script>
 <script src="../../js/common/modal.js"></script>
 <script src="../../js/common/relative.js"></script>
-<script src="../../js/common/regExpUtil.js"></script>
 <script src="../../js/view_js/authorize.js"></script>
 </body>
 </html>

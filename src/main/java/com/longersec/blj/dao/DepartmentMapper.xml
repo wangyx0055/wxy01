@@ -14,9 +14,27 @@
 		<result column="parent_name" jdbcType="VARCHAR" property="parent_name"/>
 	</resultMap>
 
+	<resultMap id="BaseResultMap1" type="com.longersec.blj.domain.DTO.DepartDTO">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="text" jdbcType="VARCHAR" property="text"/>
+<!--		<result column="count" jdbcType="INTEGER" property="count"/>
+		<result column="device_count" jdbcType="INTEGER" property="device_count"/>-->
+		<result column="parent_id" jdbcType="INTEGER" property="parent_id"/>
+<!--		<result column="description" jdbcType="VARCHAR" property="description"/>-->
+	</resultMap>
+
 	<resultMap id="departmentRecordCounts" type="java.lang.Long">
 		<result column="recordCounts" jdbcType="BIGINT"/>
 	</resultMap>
+
+	<resultMap id="DepartmentWithChildren" type="com.longersec.blj.domain.DTO.DepartDTO" extends="BaseResultMap1">
+		<collection property="nodes" ofType="com.longersec.blj.domain.DTO.DepartDTO"
+		            select="com.longersec.blj.dao.DepartmentDao.getAllDepartmentsByParentId" column="id"/>
+	</resultMap>
+
+	<select id="getAllDepartmentsByParentId" resultMap="DepartmentWithChildren">
+	select id,name as text ,parent_id from lsblj_department where parent_id=#{id};
+	</select>
 
 	<insert id="addDepartment" parameterType="com.longersec.blj.domain.Department">
 		INSERT INTO lsblj_department

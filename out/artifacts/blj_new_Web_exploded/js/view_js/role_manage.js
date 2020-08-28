@@ -464,6 +464,10 @@ function editid(id){
     if ($('#msg'+id+'').text()!=""){
         return;
     }
+    if($('#name'+id+'').val()==""){
+        $('#Error'+id+'').text("用户名不能为空")
+        return;
+    }
     if (userids.length==0){
         $('#Error'+id+'').text("请选择权限")
         return;

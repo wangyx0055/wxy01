@@ -18,6 +18,14 @@ public interface WorkorderApplyService {
 	int selectWorkDept();
 
 	/**更新状态 **/
-	boolean updateResult(int result,int id);
+	boolean updateResult(int result,int id,int dateline);
+
+	/**工单提交截止日期 **/
+	int selectDeadLine();
+	
+	WorkorderApply getById(Integer id);
+
+	/** 命令工单的命令**/
+	String selectCmd(int id);
 }
 

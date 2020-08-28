@@ -150,7 +150,7 @@ function checkApp(){
     if ($('#judge_name').text()!=""){
         flag=false;
     }
-  return flag;
+    return flag;
 }
 //根据条件搜索,默认自动识别
 $(function () {
@@ -192,11 +192,11 @@ $(function () {
                     }},
                 {"data": "desc","render":function (data) {
                         return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
-                }},
+                    }},
                 {
                     "data": "id", "render": function (data, type, row, meta) {
                         return '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-default4" class="newcss1" style="margin-left:0px;cursor:pointer;" onclick="apppubProgram('+row.id+')">程序列表</a>'+
-                        '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-editserver" class="newcss1" style="margin-left: 20px;cursor:pointer;">编辑</a>' +
+                            '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-editserver" class="newcss1" style="margin-left: 20px;cursor:pointer;">编辑</a>' +
                             '<a data-toggle="modal" data-row="' + meta.row + '" data-target="#modal-delserver" class="newcss2" style="margin-left: 20px;cursor:pointer;">删除</a>';
                     }
                 }
@@ -272,8 +272,8 @@ $(function () {
                         return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
                     }},
                 { "data": "desc","render":function (data) {
-                          return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
-                      }},
+                        return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                    }},
                 { "data": "id", "render": function(data,type,row,meta){
                         return '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-editapp" class="newcss1" style="cursor:pointer">编辑</a> '+
                             '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-delapp" class="newcss2" style="cursor:pointer;margin-left: 20px">删除</a> ';
@@ -351,18 +351,18 @@ $('#downTemplate1').click(function(){
 
 //应用服务器上传点击事件
 function openFile() {
-  $('#Vfile').text();
-  $('#btn_file').click();
+    $('#Vfile').text();
+    $('#btn_file').click();
 
-  $('#btn_file').change(function(){
-      var file = $("#btn_file").val();
-      var fileName = getFileName(file);
-      function getFileName(o){
-          var pos=o.lastIndexOf("\\");
-          return o.substring(pos+1);
-      }
-      $("#filename").html(fileName);
-  })
+    $('#btn_file').change(function(){
+        var file = $("#btn_file").val();
+        var fileName = getFileName(file);
+        function getFileName(o){
+            var pos=o.lastIndexOf("\\");
+            return o.substring(pos+1);
+        }
+        $("#filename").html(fileName);
+    })
 }
 
 function resetFileInput1(){
@@ -389,46 +389,46 @@ function openFile1() {
 
 //应用服务器导入
 $("#upload").on("click", function () {
-  var s = $('#btn_file')[0].files[0];
-  if(!s){
-      $('#Vfile').text('请上传文件');
-      return;
-  }
+    var s = $('#btn_file')[0].files[0];
+    if(!s){
+        $('#Vfile').text('请上传文件');
+        return;
+    }
 
-  var formData = new FormData();
-  formData.append("file_data", s);
-  formData.append("type", 0);
-  $("#modal-upload .modal-title").text('状态');
-  $("#modal-upload .modal-body").text('正在导入...');
-  $("#modal-upload").modal();
-  $.ajax({
-      url: "../../upload/apppubserver",
-      type: 'POST',
-      cache: false,
-      data: formData,
-      processData: false,
-      contentType: false,
-      textEncoding: 'GBK',
-      success: function (data) {
-          if (data.success){
-              $("#modal-default2").modal('hide');
-              $("#modal-upload").modal('hide');
-              $("#modal-success .modal-title").text('成功');
-              $("#modal-success .modal-body").text('导入成功!');
-              $("#modal-success").modal();
-              loadAJAX('#appserver');
+    var formData = new FormData();
+    formData.append("file_data", s);
+    formData.append("type", 0);
+    $("#modal-upload .modal-title").text('状态');
+    $("#modal-upload .modal-body").text('正在导入...');
+    $("#modal-upload").modal();
+    $.ajax({
+        url: "../../upload/apppubserver",
+        type: 'POST',
+        cache: false,
+        data: formData,
+        processData: false,
+        contentType: false,
+        textEncoding: 'GBK',
+        success: function (data) {
+            if (data.success){
+                $("#modal-default2").modal('hide');
+                $("#modal-upload").modal('hide');
+                $("#modal-success .modal-title").text('成功');
+                $("#modal-success .modal-body").text('导入成功!');
+                $("#modal-success").modal();
+                loadAJAX('#appserver');
 
-          }else {
-              $("#modal-upload").modal('hide');
-              $("#modal-danger .modal-title").text('失败');
-              $("#modal-danger .modal-body").text('导入失败!');
-              $("#modal-danger").modal();
-          }
-      },
-      error: function () {
+            }else {
+                $("#modal-upload").modal('hide');
+                $("#modal-danger .modal-title").text('失败');
+                $("#modal-danger .modal-body").text('导入失败!');
+                $("#modal-danger").modal();
+            }
+        },
+        error: function () {
 
-      }
-  });
+        }
+    });
 });
 
 //应用发布导入
@@ -1060,34 +1060,34 @@ function apppubProgram(apppub_server_id) {
 
 function synchronizerApp(){
 
-        $("#modal-upload .modal-title").text('状态');
-        $("#modal-upload .modal-body").text('正在同步...');
-        $("#modal-upload").modal();
-        $.ajax({
-            url:"../../apppubProgram/fetchApps?id="+$('#appprogram_server_id').val(),
-            type:"POST",
-            success:function(data){
-                if(data.success){
-                        $('#modal-editdeviceaccount').modal('hide');
-                        $("#modal-upload").modal('hide');
-                        $("#modal-success .modal-title").text('成功');
-                        $("#modal-success .modal-body").text('同步成功!');
-                        $("#modal-success").modal();
-                        loadAJAX('#deviceaccount');
-						getAppProgram();
-                }
-                else{
-                        $('#modal-editdeviceaccount').modal('hide');
-                        $("#modal-upload").modal('hide');
-                        $("#modal-danger .modal-title").text('失败');
-                        $("#modal-danger .modal-body").text('同步失败!');
-                        $("#modal-danger").modal();
-                        loadAJAX('#deviceaccount');
-                    }
-            },
-            error:function(){
+    $("#modal-upload .modal-title").text('状态');
+    $("#modal-upload .modal-body").text('正在同步...');
+    $("#modal-upload").modal();
+    $.ajax({
+        url:"../../apppubProgram/fetchApps?id="+$('#appprogram_server_id').val(),
+        type:"POST",
+        success:function(data){
+            if(data.success){
+                $('#modal-editdeviceaccount').modal('hide');
+                $("#modal-upload").modal('hide');
+                $("#modal-success .modal-title").text('成功');
+                $("#modal-success .modal-body").text('同步成功!');
+                $("#modal-success").modal();
+                loadAJAX('#deviceaccount');
+                getAppProgram();
             }
-        })
+            else{
+                $('#modal-editdeviceaccount').modal('hide');
+                $("#modal-upload").modal('hide');
+                $("#modal-danger .modal-title").text('失败');
+                $("#modal-danger .modal-body").text('同步失败!');
+                $("#modal-danger").modal();
+                loadAJAX('#deviceaccount');
+            }
+        },
+        error:function(){
+        }
+    })
 }
 
 //获取服务器列表
@@ -1115,24 +1115,24 @@ $("#apppub_edit_ser_name").change(function(){
 function getAppProgram(){
     let options=$("#apppub_edit_ser_name option:selected");
     //获取应用程序列表
-	$.ajax({
-	    url:"../../apppubProgram/queryApppubProgramById",
-	    type:"POST",
-	    data:{
+    $.ajax({
+        url:"../../apppubProgram/queryApppubProgramById",
+        type:"POST",
+        data:{
             apppub_server_id:options.val(),
-	        start:0,
-	        length:100,
-	        type:1,
-	    },
-	    success:function(data){
-	        if (data.success){
-				$('#edit_app')[0].options.length = 0;
-	            for (var i = 0; i < data.data.length; i++){
-	                $('#edit_app').append('<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>');
-	            }
-	        }
-	    }
-	});
+            start:0,
+            length:100,
+            type:1,
+        },
+        success:function(data){
+            if (data.success){
+                $('#edit_app')[0].options.length = 0;
+                for (var i = 0; i < data.data.length; i++){
+                    $('#edit_app').append('<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>');
+                }
+            }
+        }
+    });
 }
 //点击空白关闭tree控件
 $('#modal-editserver').click(function(event){

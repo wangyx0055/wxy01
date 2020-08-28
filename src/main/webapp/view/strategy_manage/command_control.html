@@ -653,35 +653,34 @@
         </div>            
       </div>
       <!-- default-->
-       <!-- 新建策略里的关联命令 -->
-    <div class="modal modal-hides" id="modal-primary1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-              <input type="hidden" id="primary1_id">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <span class="modal-title">关联命令</span>
-              </div>
-              <div class="modal-body">
-              <div>
-                  <p><span style="display: inline-block;vertical-align: top">命令/参数：</span>
-                  <textarea id="edit_cmdname" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>&nbsp;&nbsp;<span id="Vedit_cmdname" class="sign_red">sdhb</span>
-                  <div  style="width: 370px;">
-                  <p style="color:#a4abb5;margin-left: 65px;">支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
-                  </div>
-              </div>
-              <br>
-              </div>
-                <div class="modal-footer">
-                    <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
-                    <button id="relevance-cmd"  class="btn newaddbtn">确定</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
+   <!-- 新建策略里的关联命令 -->
+  <div class="modal modal-hides" id="modal-primary1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <input type="hidden" id="primary1_id">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <span class="modal-title">关联命令</span>
           </div>
-          <!-- /.modal-dialog -->
-    </div>
+          <div class="modal-body">
+          <div>
+              <p><span style="display: inline-block;vertical-align: top">命令/参数：</span>
+              <textarea id="edit_cmdname" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>&nbsp;&nbsp;<span id="Vedit_cmdname" class="sign_red">sdhb</span>
+              <div  style="width: 370px;">
+              <p style="color:#a4abb5;margin-left: 65px;">支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
+              </div>
+          </div>
+          <br>
+          </div>
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                <button id="relevance-cmd"  class="btn newaddbtn">确定</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+  </div>
   <!-- 新建策略里的关联命令集 -->
   <div class="modal modal-hides" id="modal-primary2">
       <div class="modal-dialog">
@@ -1164,57 +1163,55 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-        <!-- 命令集-->
-        <div class="modal modal-hides" id="modal-default44">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                        <span class="modal-title">导出命令集</span>
-                    </div>
-                    <div class="modal-body" >
-                        <div style="margin-top: 20px;margin-left: 80px;">
-                            <p><span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;">*</span>
-                                <span style="font-size: 12px;color: #505050;">用户密码：</span>
-                                <input type="password" placeholder="&nbsp;&nbsp;&nbsp;请输入用户密码" id="queryPsw1" style="margin-top: -10px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;"><span style="color: red;font-size: 12px;" id="PswRep1"></span></p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
-                        <button type="button"  class="btn newaddbtn"  id="export1">确定</button>
-
-                    </div>
-                    <!-- /.modal-content -->
+    <!-- 命令集-->
+    <div class="modal modal-hides" id="modal-default44">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">导出命令集</span>
                 </div>
-                <!-- /.modal-dialog -->
-            </div>
-        </div>
-        <div class="modal modal-hides" id="modal-default22">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                        <span class="modal-title">导入命令集</span>
+                <div class="modal-body" >
+                    <div style="margin-top: 20px;margin-left: 80px;">
+                        <p><span style="color: red;font-size: 20px;vertical-align: -20%;margin-right: -2px;">*</span>
+                            <span style="font-size: 12px;color: #505050;">用户密码：</span>
+                            <input type="password" placeholder="&nbsp;&nbsp;&nbsp;请输入用户密码" id="queryPsw1" style="margin-top: -10px;width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;font-size: 12px;"><span style="color: red;font-size: 12px;" id="PswRep1"></span></p>
                     </div>
-                    <div class="u-download" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>下载模板:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击下载</button></span>
-                    </div><br>
-                    <div class="u-upload" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>上传文件:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击上传</button></span>
-                    </div><br>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
-                        <button type="button"  class="btn newaddbtn"  data-dismiss="modal">确定</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button"  class="btn newaddbtn"  id="export1">确定</button>
+
                 </div>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
         </div>
-
+    </div>
+    <div class="modal modal-hides" id="modal-default22">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">导入命令集</span>
+                </div>
+                <div class="u-download" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>下载模板:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击下载</button></span>
+                </div><br>
+                <div class="u-upload" style="margin-left: 100px; margin-top: 25px;font-size: 12px;"><span>上传文件:<button type="button" class="btn newaddbtn pull-right" style="margin-right: 360px;height: 30px;margin-top: -5px;">点击上传</button></span>
+                </div><br>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                    <button type="button"  class="btn newaddbtn"  data-dismiss="modal">确定</button>
+                </div>
             </div>
-          </div>
+            <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
+    </div>
+        </div>
+      </div>
       </section>
     </div>
      <footer class="main-footer">

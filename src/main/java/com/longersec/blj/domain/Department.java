@@ -5,6 +5,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -21,6 +23,15 @@ public class Department {
 	@NotEmpty(message = "部门名称不能为空")
 	private String name;
 
+	private List<Department> children = new ArrayList<>();
+
+	public List<Department> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Department> children) {
+		this.children = children;
+	}
 
 	private Integer count;
 

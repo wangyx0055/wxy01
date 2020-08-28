@@ -130,4 +130,10 @@ public class UserServiceImpl implements UserService{
 	public User checkADUsername(String username) {
 		return UserDao.checkADUsername(username);
 	}
+
+	@Override
+	public User selectByDepartment(Integer department_id) {
+		// TODO Auto-generated method stub
+		return UserDao.selectByDepartment(department_id);
+	}
 }

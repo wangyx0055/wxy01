@@ -26,6 +26,55 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="../../bower_components/treeview/font.css">
     <link rel="stylesheet" href="../../bower_components/treeview/jquery.treegrid.min.css">
+    <style>
+    .fileinput-remove-button .hidden-xs{
+      display: none;
+    }
+    .fileinput-upload-button .hidden-xs{
+        display: none;
+    }
+    .kv-fileinput-caption{
+        height: 34px
+        margin-top: 0px;
+    }
+    .glyphicon-folder-open{
+        display: none;
+    }
+   .btn-file{
+       border: none;
+       border-radius: 3px;
+       background-color: #1494F7;
+       padding-right: 17px;
+       padding-top: 5px;
+       height: 34px;
+       margin-bottom: -1px;
+   }
+    .btn-file:hover{
+        border: none;
+        border-radius: 3px;
+        background-color: #1494F7;
+        padding-right: 17px;
+        padding-top: 5px;
+        height: 34px;
+        margin-bottom: -1px;
+    }
+    .btn-file:active{
+        border: none;
+        border-radius: 3px;
+        background-color: #1494F7;
+        padding-right: 17px;
+        padding-top: 5px;
+        height: 34px;
+        margin-bottom: -1px;
+    }
+    .btn-file >.hidden-xs{
+        color: white!important;
+        font-size:12px!important;
+    }
+    .progress-bar-success{
+       background-color: #1494F7;
+        }
+    </style>
 </head>
 <style>
     #div23 .file-input{
@@ -462,7 +511,7 @@
                          <input type="hidden" id="file_id" value="" name="file_id" />
                          <input id="scriptfile-input" type="file" name="scriptfile">
                          &nbsp;<span id="Vupload_file" style="color: red;font-size:12px;"></span>
-                         <button type="button" id="down" class="btn newaddbtn">下载脚本</button>
+                         <button type="button" id="down" class="btn newaddbtn" style="margin-top:-53px;margin-bottom: 30px;margin-left: 300px;">下载脚本</button>
                          <div id="sshpass" style="margin-left: -56px;margin-bottom: 20px;margin-top: 9px;">
                              <span style="font-size: 12px;color: #505050">key密钥：
                          <input id="edit_sshkey" type="password" size="30px" style="width: 210px;height: 30px;border-radius: 3px;border: 1px solid #ccc;">&nbsp;&nbsp;<span id="Vsshkey" style="color: red;font-size:12px;"></span></span>

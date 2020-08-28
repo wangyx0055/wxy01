@@ -380,6 +380,16 @@ $.ajax({
     },
     error:function(){}
 });
+
+    var visit=$("#total_visit>button");
+	visit[0].onclick=function() {
+		this.setAttribute("class","week-time");
+		document.getElementById('total-visit-month').setAttribute("class","month-time");
+	};
+	visit[1].onclick=function() {
+		document.getElementById('total-visit-week').setAttribute("class","week-time-click");
+		this.setAttribute("class","month-time-click");
+	};
 //数据回显
 $.ajax({
     url:"../../systeminfo/sysdata",
@@ -395,12 +405,13 @@ $.ajax({
       /*  apppubByProgram(data.apppubByProgram,data.appprogramct);*/
 
         $('#text30increate').html(data.getTextTotal);
-    	$('#text30increatepercent').html(data.device30DayTextIncrease);
+    	$('#text30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+data.device30DayTextIncrease);
     	$('#graph30increate').html(data.getGraphTotal);
-    	$('#graph30increatepercent').html(data.device30DayGraphIncrease);
+    	$('#graph30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+data.device30DayGraphIncrease);
     	$('#apppub30increate').html(data.getApppubRecordTotal);
-    	$('#apppub30increatepercent').html(data.apppub30DayIncrease);
+    	$('#apppub30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+data.apppub30DayIncrease);
         $('#filetransfer30increate').html(0);
+        $('#filetransfer30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+0);
         //最近用户
         let user=$("#lated_user>button");
 		_visitByDay(data.visitByDay);

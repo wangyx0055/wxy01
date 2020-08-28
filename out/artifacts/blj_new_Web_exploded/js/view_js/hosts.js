@@ -2,6 +2,10 @@ let topNode = {id:0,text:''};
 $('#down').click(function(){
     window.location.href="../../file/downSsh?file_id="+$('#file_id').val()
 });
+window.onload=function(){
+//文件上传选择
+    $('.hidden-xs').text('选择');
+};
 var fileInput = function(file_id){
     $("#scriptfile-input").fileinput({
         uploadUrl: "../../file/uploadSsh",
@@ -11,16 +15,23 @@ var fileInput = function(file_id){
         uploadExtraData: {
             'uploadToken': new Date().getTime(), // for access control / security
         },
+        layoutTemplates: {
+            actionUpload: '',//就是让文件上传中的文件去除上传按钮
+            actionDelete: '',//去除删除按钮
+        },
         maxFileCount: 1,
         language: 'zh',
         allowedPreviewTypes: ['html','text'],    // allow only images
-        showCancel: true,
+        showCancel: false,
         showPreview: false,
+        showUpload: false,//是否显示上传按钮
         initialPreviewAsData: true,
         overwriteInitial: false,
         initialPreviewDownloadUrl:false,
         theme: 'fas',
         deleteUrl: "../../file/deleteSsh?file_id="+file_id
+    }).on('filebatchselected', function () {
+        $(this).fileinput("upload");
     }).on('fileuploaded', function(event, previewId, index, fileId) {
         console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
         $('#file_id').val(arguments[1].response['file-id']);
@@ -29,9 +40,9 @@ var fileInput = function(file_id){
         console.log('File Upload Error', 'ID: ' + data.fileId + ', Thumb ID: ' + data.previewId);
     }).on('filebatchuploadcomplete', function(event, preview, config, tags, extraData) {
         console.log('File Batch Uploaded', preview, config, tags, extraData);
-    }).on('filesuccessremove', function(event, id) {
+    }).on('filesuccessremove', function() {
         console.log('Uploaded thumbnail successfully removed');
-    });
+    })
 }
 var fileInput1 = function(file_id){
     $("#scriptfile-input1").fileinput({
@@ -42,16 +53,23 @@ var fileInput1 = function(file_id){
         uploadExtraData: {
             'uploadToken': new Date().getTime(), // for access control / security
         },
+        layoutTemplates: {
+            actionUpload: '',//就是让文件上传中的文件去除上传按钮
+            actionDelete: '',//去除删除按钮
+        },
         maxFileCount: 1,
         language: 'zh',
         allowedPreviewTypes: ['html','text'],    // allow only images
-        showCancel: true,
+        showCancel: false,
         showPreview: false,
+        showUpload: false,//是否显示上传按钮
         initialPreviewAsData: true,
         overwriteInitial: false,
         initialPreviewDownloadUrl:false,
         theme: 'fas',
         deleteUrl: "../../file/deleteSsh?file_id="+file_id
+    }).on('filebatchselected', function () {
+        $(this).fileinput("upload");
     }).on('fileuploaded', function(event, previewId, index, fileId) {
         console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
         $('#file_id1').val(arguments[1].response['file-id']);
@@ -150,6 +168,7 @@ function  showSsh(v){
         $('#div23').show();
         $("#key_name").text("");
         $("#Vupload_file").text("");
+        $('.hidden-xs').text('选择');
     }else if(v==='1'){
         $('#div23').hide();
         $("#key_name").text("");
@@ -709,6 +728,7 @@ function  showSSHKEY(v){
     if(v==="0"){
         $('#div55').css("display",'block');
         $("#Vupload_file1").text("");
+        $('.hidden-xs').text('选择');
     }else if(v==='1'){
         $('#div55').css("display",'none');
         $("#Vupload_file1").text(" ");
@@ -1284,6 +1304,7 @@ function deviceaccount(device_id){
         var button = $(event.relatedTarget) // Button that triggered the modal
         if(button.data('row')!=undefined&&button.data('row')!=null){
             $('#modal-editdeviceaccount .modal-title').text('编辑账号');
+            $('.hidden-xs').text('选择');
             i = button.data('row');
             $('#edit_account_id').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].id);
             $('#edit_account_port').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].port);

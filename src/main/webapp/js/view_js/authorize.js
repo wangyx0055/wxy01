@@ -103,6 +103,16 @@ function time_Format(dateTime){
     }
 	return dateTime.substring(0,i);
 }
+//工单状态
+function status(result){
+	switch (result) {
+		case 0:return '未提交';
+		case 1:return '已提交';
+		case 2:return '审批中';
+		case 3:return '审批拒绝';
+		case 10:return '审批通过';
+	}
+}
 
 //根据条件查询
 var _scripts_table= function (field,value){
@@ -136,23 +146,26 @@ var _scripts_table= function (field,value){
 				return '<input type="checkbox" name="chk[]" value=' + data + '>';
 			}},
 			{"data": "name"},
+			{"data": "type","render":function(data){
+				return 	data===0?"访问工单":"命令工单";
+			}},
 			{"data": "update_time","render": function (data) {
-					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+time_Format(data)+'</div>'
 
 			}},
 			{"data": "result","render":function (data) {
-					return  '<div>' +(data===0?"等待申请":(data===1?"审批中":"审批通过")) + '</div>';
+					return  '<div>' +status(data)+ '</div>';
 			}},
 			{"data": "description","render":function (data) {
-					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 200px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
 			}},
 			{
 				"data": "id", "render": function (data, type, row, meta) {
 					return '<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1"  data-target="#modal-primary1" style="cursor:pointer;vertical-align: bottom;">编辑</a>' +
-						'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-primary8" style="margin-left: 20px;cursor:pointer;">关联设备</a>' +
+						(row.type === 0 ?'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-primary8" style="margin-left: 20px;cursor:pointer;">关联设备</a>':'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-primary2" style="margin-left: 20px;cursor:pointer;">关联命令</a>') +
 						'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-withdraw"  style="margin-left: 20px;cursor:pointer;">撤回</a>' +
 						'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1"  data-target="#modal_default8" style="margin-left: 20px;cursor:pointer;">提交</a>' +
-						'<a  data-toggle="modal"  data-row="'+meta.row+'"  class="newcss2" data-target="#modal_default" style="margin-left: 20px;cursor:pointer">删除</a>'
+						(data !== 0?'':'<a  data-toggle="modal"  data-row="'+meta.row+'"  class="newcss2" data-target="#modal_default" style="margin-left: 20px;cursor:pointer">删除</a>')
 				}
 			}
 		],
@@ -183,14 +196,21 @@ $('#search').click(function () {
 
 //新建授权工单
 $('#addWork').click(function () {
-	let selectedDevice = [];
+	$('#add_device').html('');
+	let selecteddevice = [];
 	$('#add_device1 input').each(function () {
-		selectedDevice.push(this.value);
+		selecteddevice.push(this.value);
 	});
+	if (selecteddevice.length ===  0){
+		$('#warn_info').text("请关联至少一个设备");
+		$("#modal-default3").modal();
+		return;
+	}
 	$.ajax({
 		url: "../../workorderApply/addWorkorderApply",
 		type: "POST",
 		data: {
+			devices:selecteddevice,
 			start:$('#effect_time').val(),
 			end:$('#fail_time').val(),
 			upload:$('#upload').prop("checked")===true?1:0,
@@ -200,7 +220,6 @@ $('#addWork').click(function () {
 			down_clipboard:$('#down_clipboard').prop("checked")===true?1:0,
 			watermark:$('#watermark').prop("checked")===true?1:0,
 			description:$('#description').val(),
-			devices: selectedDevice
 		},
 		success: function (data) {
 			if (data.success) {
@@ -265,7 +284,7 @@ $.ajax({
 	}
 })
 });
-
+let listDeviceAccount = null;
 //新建设备的回显
 $('#modal-primary5').on('show.bs.modal',function () {
 	let page_start7 = 0;
@@ -273,7 +292,6 @@ $('#modal-primary5').on('show.bs.modal',function () {
 	$.ajax({
 		url: "../../deviceAccount/listDeviceAccountNameIp",
 		type: "POST",
-		async: true,
 		dataType: "json",
 		data: {
 			start: page_start7,
@@ -483,20 +501,26 @@ $('#delAllWork').click(function () {
 	})
 });
 
-
 //授权工单的撤回
 $('#modal-withdraw').on('show.bs.modal', function (event) {
 	let button = $(event.relatedTarget);
 	let i = button.data('row');
 	$('#withdraw_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
+	$('#withdraw_status').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].result);
 });
 $('#withdraw').click(function () {
+	if ($('#withdraw_status').val() > 1) {
+		$('#warn_info').text("此工单不能撤回");
+		$("#modal-default3").modal();
+		return;
+	}
 	$.ajax({
 		url: "../../workorderApply/updateResult",
 		type: "POST",
 		data: {
 			id:$('#withdraw_id').val(),
-			result:0
+			result:0,
+			status:$('#withdraw_status').val()
 		},
 		success: function (data) {
 			if (data.success) {
@@ -520,14 +544,21 @@ $('#modal_default8').on('show.bs.modal', function (event) {
 	let button = $(event.relatedTarget);
 	let i = button.data('row');
 	$('#submit_work').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id);
+	$('#submit_status').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].result);
 });
 $('#submitWork').click(function () {
+	if ($('#submit_status').val() !== '0') {
+		$('#warn_info').text("您已经提交了这个工单");
+		$("#modal-default3").modal();
+		return;
+	}
 	$.ajax({
 		url: "../../workorderApply/updateResult",
 		type: "POST",
 		data: {
 			id:$('#submit_work').val(),
-			result:1
+			result:1,
+			status:$('#submit_status').val()
 		},
 		success: function (data) {
 			if (data.success) {
@@ -558,4 +589,20 @@ $('#newT').click(function () {
 	$('#description').val('');
 	$('#add_device').html('');
 	$('#add_device1').html('');
+});
+//回显关联命令
+$('#modal-primary2').on('show.bs.modal',function (event) {
+	let button = $(event.relatedTarget);
+	let i = button.data('row');
+	$('#primary2_id').val($('#example2').DataTable().row('#' + i).nodes(i).data()[i].id)
+	$.ajax({
+		url:"../../workorderApply/listCmd",
+		type:"POST",
+		data:{
+			id:$('#primary2_id').val(),
+		},
+		success:function (data) {
+			$('#cmd').html(data.cmd===""?"暂无命令":data.cmd);
+		}
+	});
 });

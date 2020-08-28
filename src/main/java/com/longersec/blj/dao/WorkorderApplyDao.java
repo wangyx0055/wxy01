@@ -18,5 +18,13 @@ public interface WorkorderApplyDao {
 	int selectWorkDept();
 
 	/**更新状态 **/
-	boolean updateResult(@Param("result")int result,@Param("id")int id);
+	boolean updateResult(@Param("result")int result,@Param("id")int id,@Param("dateline")int dateline);
+
+	/**工单提交截止日期 **/
+	int selectDeadLine();
+	
+	WorkorderApply getById(@Param("id")Integer id);
+
+	/** 命令工单的命令**/
+	String selectCmd(@Param("id")int id);
 }

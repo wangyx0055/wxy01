@@ -339,6 +339,15 @@ public class AdOperate {
 		List<String> baseDList = new ArrayList();
 		List<String> dnList = new ArrayList();
 
+		List<String> split = new ArrayList();
+
+		String filter_department = "";
+		filter_department = configLdapAd.getFilter_department();
+		String[] splitFilter_department = filter_department.split(",");
+		for(int i=0;i<splitFilter_department.length;i++){
+			split.add(splitFilter_department[i]);
+		}
+
 		//获取"DC="字符串的出现次数
 		int strlen=dnStr.length();
 		String afterstr=dnStr.replace("DC=","dc");
@@ -371,6 +380,14 @@ public class AdOperate {
 		//获取次级的部门列表
 		for(int i=newDnStr.length-3;i>0;i--){
 			dnList.add(newDnStr[i]);
+		}
+
+		for(int j =0;j<dnList.size();j++){
+			for(int k=0;k<split.size();k++){
+				if(dnList.get(j).toString().equals(split.get(k).toString())){
+					return null;
+				}
+			}
 		}
 
 		return dnList;

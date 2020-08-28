@@ -14,6 +14,8 @@ public interface DepartmentDao {
 
 	boolean addDepartment(Department department);
 
+	List<DepartDTO> getAllDepartmentsByParentId(@Param("id")int id);
+
 	boolean delDepartment(List<Integer> ids);
 
 	List<Department> selectAll();

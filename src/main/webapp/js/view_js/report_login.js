@@ -575,7 +575,7 @@ $(function() {
         option = {
             title : {
                 text : title,
-                left : 'right',
+                left : 'center',
                 textStyle : {
                     fontWeight : '400',
                     fontSize : '14',

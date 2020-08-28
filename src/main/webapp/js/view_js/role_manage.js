@@ -464,6 +464,10 @@ function editid(id){
     if ($('#msg'+id+'').text()!=""){
         return;
     }
+    if($('#name'+id+'').val()==""){
+        $('#Error'+id+'').text("角色名不能为空")
+        return;
+    }
     if (userids.length==0){
         $('#Error'+id+'').text("请选择权限")
         return;
@@ -501,18 +505,17 @@ function Fon(id) {
     }
     //获取输入的名字
     let username = $('#name'+id+'').val();
+    if (username==""){
+        $('#msg'+id+'').text('角色名不能为空');
+    }
     //判断是否符合规则
     if (!regexp.name.test(username)){
         //不符合
-        if (username==""){
-            $('#msg'+id+'').text('角色名不能为空');
-        }else{
             $('#msg'+id+'').text('角色名格式不正确');
             if (!regexp.length.test(username)){
                 $('#msg'+id+'').text("最长32个字符")
             }
         }
-    }
 }
 
 function on(id) {
@@ -541,19 +544,17 @@ function clearInput() {
         }
         //获取输入的名字
         let username = $('#name').val();
+        if ($('#name').val()=="") {
+            $('#isexistR').text('角色名不能为空');
+        }
         //判断是否符合规则
         if (!regexp.name.test(username)) {
             //不符合
-            if (username == "") {
-                $('#isexistR').text('角色名不能为空');
-            } else {
-                $('#isexistR').text('角色名格式不正确');
-                if (!regexp.length.test(username)) {
-                    $('#isexistR').text("最长32个字符")
-                }
+            $('#isexistR').text('角色名格式不正确');
+            if (!regexp.length.test(username)) {
+                $('#isexistR').text("最长32个字符")
             }
         }
-
         $.ajax({
             url:"../../role/checkname",
             type:"POST",

@@ -52,4 +52,6 @@ public interface UserDao {
     boolean editUserList(User user);
 
     User checkADUsername(@Param("username") String username);
+
+    User selectByDepartment(@Param("department_id") Integer department_id);
 }

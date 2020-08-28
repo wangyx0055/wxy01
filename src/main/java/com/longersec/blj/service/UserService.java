@@ -49,5 +49,7 @@ public interface UserService {
     boolean editUserList(User user);
 
     User checkADUsername(String username);
+
+    User selectByDepartment(Integer department_id);
 }
 

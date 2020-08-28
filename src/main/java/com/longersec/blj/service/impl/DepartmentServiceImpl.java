@@ -27,6 +27,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
+	public List<DepartDTO> getAllDepartmentsByParentId(int id) {
+		return DepartmentDao.getAllDepartmentsByParentId(id);
+	}
+
+	@Override
 	public boolean addDepartment(Department department) {
 		return this.DepartmentDao.addDepartment(department);
 	}

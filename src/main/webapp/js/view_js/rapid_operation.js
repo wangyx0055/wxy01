@@ -437,14 +437,16 @@ var _scripts_table= function (field,value){
                     return '<input type="checkbox" name="chk[]" value=' + data + '>';
                 }
             },
-            {"data": "name"},
+            {"data": "name","render":function (data) {
+                    return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+                }},
             { "data": "depart_name" , "render" : function(data, type,row, mata) {
-                    return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'
+                    return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100px;" data-html="true" data-toggle="tooltip" title="'+row.topName+'">'
                         +data
                         + '</div>';
                 }},
             {"data": "command","render": function (data,type,row,meta) {
-                    return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+data+'">' +data + '</div>';
+                    return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100px;" data-html="true" data-toggle="tooltip" title="'+data+'">' +data + '</div>';
                 }},
             {"data": "status","render":function (data) {
             	// return data==0?'否':'是';
@@ -453,7 +455,7 @@ var _scripts_table= function (field,value){
                     }else{
                         status='是';
                     }
-                    return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+status+'">'
+                    return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:50px;" data-html="true" data-toggle="tooltip" title="'+status+'">'
                         +status
                         + '</div>';
             }},
@@ -466,7 +468,7 @@ var _scripts_table= function (field,value){
             	}else{
             		exec_method='定期执行,周期:'+exec_cycle(data);
             	}
-            	return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:150px;" data-html="true" data-toggle="tooltip" title="'+exec_method+'">'
+            	return  '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100px;" data-html="true" data-toggle="tooltip" title="'+exec_method+'">'
                     +exec_method
                     + '</div>';
             }},
@@ -868,6 +870,7 @@ function showSSHKEY1(v){
         $('#div11').css("display","block");
         $('#div10').css("display","none");
         $('#typeName').val(1);
+        $('.hidden-xs').text('选择');
     }
 }
 //时间选择器
@@ -933,6 +936,8 @@ var fileInput = function(file_id){
         initialPreviewDownloadUrl:false,
         theme: 'fas',
         deleteUrl: "../../file/deleteFile?file_id="+file_id
+    }).on('filebatchselected', function () {
+        $(this).fileinput("upload");
     }).on('fileuploaded', function(event, previewId, index, fileId) {
         console.log('File Uploaded', 'ID: ' + fileId + ', Thumb ID: ' + previewId);
         $('#file_id').val(arguments[1].response['file-id']);

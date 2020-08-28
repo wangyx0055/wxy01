@@ -14,6 +14,8 @@ public interface DepartmentService {
 
 	boolean editDepartment(Department department);
 
+	List<DepartDTO> getAllDepartmentsByParentId(int id);
+
 	boolean delDepartment(List<Integer> ids);
 
 	List<Object> findAll(Department department, int id, int page_start, int page_length);

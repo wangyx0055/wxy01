@@ -115,7 +115,7 @@
 		DELETE  FROM lsblj_cmd_policy_device_account WHERE device_account_id NOT IN (SELECT id FROM lsblj_device_account);
 	</delete>
 	
-	<select id="findAll" resultMap="BaseResultMap, deviceAccountRecordCounts">
+	<select id="findAll" resultMap="BaseResultMap, deviceAccountRecordCounts" resultType="java.lang.Object">
 		SELECT 
 		SQL_CALC_FOUND_ROWS 
 		'' password ,a.*,d.ip,d.name device_name,t.name typename, p.name protocolname,'' password
@@ -128,7 +128,7 @@
 		;SELECT found_rows() AS recordCounts;
 	</select>
 	
-	<select id="queryByDeviceId" resultMap="BaseResultMap, deviceAccountRecordCounts">
+	<select id="queryByDeviceId" resultMap="BaseResultMap, deviceAccountRecordCounts" resultType="java.lang.Object">
 		SELECT
 		SQL_CALC_FOUND_ROWS
 		lsblj_device_account.id,lsblj_device_account.file_id,username,'' password,device_id,port,protocol_id,is_super,ssh_key,status,login_method,
@@ -238,9 +238,7 @@
 		(SELECT @id :=#{id}) pd
 		 WHERE (FIND_IN_SET( parent_id, @id ) > 0 AND @id := CONCAT( @id, ',', id )) OR id = #{id}) T ON d.department=T.id, lsblj_protocol p
 		WHERE da.device_id=d.id AND da.protocol_id=p.id ORDER BY da.username
-		<if test="page_start != -1 and page_length != -1">
 			LIMIT #{page_start},#{page_length}
-		</if>
 	</select>
 	
     <select id="total" resultType="java.lang.Integer">

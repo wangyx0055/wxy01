@@ -8,6 +8,19 @@ const RegExpUtil = (function () {
 		const reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
 		return this.RegCheck(str, reg);
 	};
+
+	/** ipv4**/
+	RegExpUtil.prototype.checkIpv4 = function (str) {
+		const reg = new RegExp("^(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])$"); //正则表达式
+		return this.RegCheck(str, reg);
+	};
+
+	/** ipv6**/
+	RegExpUtil.prototype.checkIpv6 = function (str) {
+		const reg = new RegExp("^\\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?\\s*$"); //正则表达式
+		return this.RegCheck(str, reg);
+	};
+
 	/**
 	 *检查用户名
 	 * 只包含中文、英文、下划线
@@ -62,16 +75,35 @@ const RegExpUtil = (function () {
 })();
 
 //调用
+//ipv4
 const regExpUtil = new RegExpUtil();
-const reg = "";
+const reg = "1.0.0.0";
+if (regExpUtil.checkIpv4(reg) ==="null") {
+	console.log("输入不能为空");
+}else if (regExpUtil.checkIpv4(reg) ==="false"){
+	console.log("格式错误");
+}else {
+	console.log("格式正确")
+}
+//ipv6
+const reg1 = "2001:0db8:85a3:08d3:1319:8a2e:0374";
+if (regExpUtil.checkIpv6(reg1) ==="null") {
+	console.log("输入不能为空");
+}else if (regExpUtil.checkIpv6(reg1) ==="false"){
+	console.log("格式错误");
+}else {
+	console.log("格式正确")
+}
+/*const reg = "";
 if (regExpUtil.checkEmail(reg) ==="null") {
 	console.log("输入不能为空");
 }else if (regExpUtil.checkEmail(reg) ==="false"){
 	console.log("格式错误");
 } else {
 	console.log("格式正确")
-}
+}*/
 //带有长度限制
+/*
 const regLength = "哈56价格低4531_wd";
 if (regExpUtil.checkName(regLength,10) ==="null") {
 	console.log("输入不能为空");
@@ -82,4 +114,5 @@ if (regExpUtil.checkName(regLength,10) ==="null") {
 }else {
 	console.log("格式正确")
 }
+*/
 

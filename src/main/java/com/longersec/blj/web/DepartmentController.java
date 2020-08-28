@@ -63,14 +63,21 @@ public class DepartmentController {
 		return result;
 	}
 
+	@RequestMapping("/find")
+	@ResponseBody
+	public JSONObject find() {
+		result = new JSONObject();
+		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+		ArrayList<DepartDTO> departments = (ArrayList<DepartDTO>) departmentService.getAllDepartmentsByParentId(p_user.getDepartment());
+		result.put("data",departments);
+		return result;
+	}
+
 	@RequestMapping("/findParentName")
 	@ResponseBody
 	public JSONObject findParentName(@RequestParam(value = "parent_id") int parent_id) {
 		result = new JSONObject();
 		Department department = departmentService.findParentName(parent_id);
-		/*//自动更新部门用户和设备数量
-		UpdateDepartmentCount.AutoUpdateDepartmentDeviceCounts(departmentService);
-		UpdateDepartmentCount.AutoUpdateDepartmentUserCounts(departmentService);*/
 		result.put("name","");
 		if(department!=null)
 			result.put("name",department.getParent_name());

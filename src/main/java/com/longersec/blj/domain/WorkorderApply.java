@@ -4,7 +4,11 @@ public class WorkorderApply {
 
 	private Integer id;
 
+	private Integer apply_user_id;
+
 	private String name;
+
+	private Integer type;
 
 	private String start;
 
@@ -158,10 +162,29 @@ public class WorkorderApply {
 		this.searchAll = searchAll;
 	}
 
+	public Integer getApply_user_id() {
+		return apply_user_id;
+	}
+
+	public void setApply_user_id(Integer apply_user_id) {
+		this.apply_user_id = apply_user_id;
+	}
+
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "WorkorderApply{" +
 				"id=" + id +
+				"apply_user_id=" + apply_user_id +
+				"type=" + type +
 				", name='" + name + '\'' +
 				", start='" + start + '\'' +
 				", end='" + end + '\'' +

@@ -227,9 +227,9 @@
 	
 	<delete id="deleteUselessUser">
 		DELETE FROM `lsblj_user` WHERE department = #{department} and id NOT IN(1,2,3);
-		DELETE FROM lsblj_group_user WHERE user_id NOT IN (SELECT id FROM lsblj_user);
-		DELETE FROM lsblj_access_policy_user WHERE user_id NOT IN (SELECT id FROM lsblj_user);
-		DELETE  FROM lsblj_cmd_policy_user WHERE user_id NOT IN (SELECT id FROM lsblj_user);
+		DELETE FROM `lsblj_group_user` WHERE user_id NOT IN (SELECT id FROM lsblj_user);
+		DELETE FROM `lsblj_access_policy_user` WHERE user_id NOT IN (SELECT id FROM lsblj_user);
+		DELETE FROM `lsblj_cmd_policy_user` WHERE user_id NOT IN (SELECT id FROM lsblj_user);
 	</delete>
 
 	<select id="selectNameAndId" resultMap="users">
@@ -270,6 +270,7 @@
         select <include refid="zd"/>, CAST(AES_DECRYPT(password,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) password
         from lsblj_user where id = #{id}
     </select>
+    
     <select id="selectAll" resultType="com.longersec.blj.domain.User">
         SELECT
         SQL_CALC_FOUND_ROWS
@@ -322,5 +323,8 @@
             </set>
             where id=#{id};
     </update>
-
+	
+    <select id="selectByDepartment" resultType="com.longersec.blj.domain.User">
+    	SELECT id,username,realname,email,mobile from lsblj_user where department=#{department_id}
+    </select>
 </mapper>

@@ -7,6 +7,24 @@ $(function () {
   // -----------------------
   // - MONTHLY SALES CHART -
 	// -----------------------
+//许可信息
+	function licenseInfo(){
+		$.ajax({
+			url:"../../systeminfo/licenseinfo",
+			type:"POST",
+			data:{
+				'':(new Date()).getTime()
+			},
+			success:function(data){
+				$('#lic_customename').text(data.name);
+				$('#lic_versiontype').text(data.versiontyp);
+				$('#lic_devicenumber').text(data.devices);
+				$('#lic_expireddate').text(data.endtimestr);
+			},
+			error:function(){}
+		})
+	}
+	licenseInfo();
 //最近用户访问本周/月
 function _visitByDay(data){
 	let labels=[];
@@ -276,7 +294,7 @@ function _visitByUser(data){
 		myChart.setOption(option);
 	}
 //系统状态CPU
-function  cpuSystem(data){
+function  cpuSystem(){
 	var myChart = echarts.init(document.getElementById('cpuChart'));
 	var option = {
 			color:['#448AFF','#AFE5FF'],
@@ -284,14 +302,15 @@ function  cpuSystem(data){
 			{
 				type: 'pie',   //类型 pie表示饼图
 				center: ['50%', '50%'], //设置饼的原心坐标 不设置就会默认在中心的位置
-				radius: ['60%', '100%'],  //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
+				radius: ['75%', '100%'],  //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
 				hoverAnimation: false, //鼠标移入变大
 				avoidLabelOverlap: false,
 				label: {formatter: data.cpu_userate*100+'%',
 						position: 'center',
-					    color:'black'
+					    color:'black',
+					    fontSize:'6px',
 				},  //提示文字
-				data: [data.cpu_used,data.cpu_total-data.cpu_used]
+				data: [ data.cpu_used,data.cpu_total-data.cpu_used]
 			}
         ],
 };
@@ -306,7 +325,7 @@ function  cpuSystem(data){
 				{
 					type: 'pie',   //类型 pie表示饼图
 					center: ['50%', '50%'], //设置饼的原心坐标 不设置就会默认在中心的位置
-					radius: ['60%', '100%'], //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
+					radius: ['75%', '100%'],  //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
 					hoverAnimation: false, //鼠标移入变大
 					label: {
 						    formatter: data.memory_used_human+'/'+data.memory_total_human,
@@ -329,7 +348,7 @@ function  cpuSystem(data){
 				{
 					type: 'pie',   //类型 pie表示饼图
 					center: ['50%', '50%'], //设置饼的原心坐标 不设置就会默认在中心的位置
-					radius:  ['60%', '100%'],  //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
+					radius: ['75%', '100%'],   //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
 					hoverAnimation: false, //鼠标移入变大
 					label: {
 						    formatter: data.disk_used_human+'/'+data.disk_total_human,
@@ -353,7 +372,7 @@ function  infoSystem(data){
 				{
 					type: 'pie',   //类型 pie表示饼图
 					center: ['50%', '50%'], //设置饼的原心坐标 不设置就会默认在中心的位置
-					radius:  ['60%', '100%'],  //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
+					radius: ['75%', '100%'],   //饼图的半径,第一项是内半径,第二项是外半径,内半径为0就是真的饼,不是环形
 					hoverAnimation: false, //鼠标移入变大
 					label: {
 					     	formatter: data.network_receive_human+'/'+data.network_send_human,
@@ -380,6 +399,16 @@ $.ajax({
     },
     error:function(){}
 });
+
+    var visit=$("#total_visit>button");
+	visit[0].onclick=function() {
+		this.setAttribute("class","week-time");
+		document.getElementById('total-visit-month').setAttribute("class","month-time");
+	};
+	visit[1].onclick=function() {
+		document.getElementById('total-visit-week').setAttribute("class","week-time-click");
+		this.setAttribute("class","month-time-click");
+	};
 //数据回显
 $.ajax({
     url:"../../systeminfo/sysdata",
@@ -395,12 +424,13 @@ $.ajax({
       /*  apppubByProgram(data.apppubByProgram,data.appprogramct);*/
 
         $('#text30increate').html(data.getTextTotal);
-    	$('#text30increatepercent').html(data.device30DayTextIncrease);
+    	$('#text30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+data.device30DayTextIncrease);
     	$('#graph30increate').html(data.getGraphTotal);
-    	$('#graph30increatepercent').html(data.device30DayGraphIncrease);
+    	$('#graph30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+data.device30DayGraphIncrease);
     	$('#apppub30increate').html(data.getApppubRecordTotal);
-    	$('#apppub30increatepercent').html(data.apppub30DayIncrease);
+    	$('#apppub30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+data.apppub30DayIncrease);
         $('#filetransfer30increate').html(0);
+        $('#filetransfer30increatepercent').html("<span style='color: black;font-weight: 500;font-size: 12px;'>30天增长</span>"+0);
         //最近用户
         let user=$("#lated_user>button");
 		_visitByDay(data.visitByDay);

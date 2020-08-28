@@ -399,11 +399,6 @@ public class ConfigNetworkController {
 	public JSONObject ltcpdump(HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
 		result.accumulate("success", true);
-		if(request.getParameter("option")==null) {
-			result.put("msg", "请输入参数");
-			result.put("success", false);
-			return result;
-		}
 		String msgString = SystemCommandUtil.execCmd("tcpdump "+request.getParameter("option"));
 		result.put("msg", msgString);
 		return result;

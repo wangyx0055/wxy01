@@ -12,6 +12,7 @@
 		<result column="username" jdbcType="VARCHAR" property="username"/>
 		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
 		<result column="device_name" jdbcType="VARCHAR" property="device_name"/>
+		<result column="department" jdbcType="INTEGER" property="department"/>
 	</resultMap>
 
 	<resultMap id="workorderApplyDeviceAccountRecordCounts" type="java.lang.Long">
@@ -27,7 +28,7 @@
 
 	<select id="selectById" resultMap="devices">
 		SELECT
-			da.device_account_id device_account_id,u.username username, d.name device_name, p.name protocol_name
+			da.device_account_id device_account_id,u.username username, d.name device_name, p.name protocol_name,d.department 
 		FROM lsblj_workorder_apply_device_account da,lsblj_device_account u,lsblj_device d,lsblj_protocol p
 		WHERE da.workorder_apply_id = #{workorder_apply_id}
 		  AND da.device_account_id=u.id

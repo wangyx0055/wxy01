@@ -1,5 +1,7 @@
 package com.longersec.blj.utils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
 public class KeyUtil {
@@ -29,5 +31,12 @@ public class KeyUtil {
     	}
     	return stb.toString();
     }
+
+	/** 不重复的工单号 **/
+	public static synchronized String workName() {
+		String smsText = String.format("%04d",new Random().nextInt(9999));
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		return simpleDateFormat.format(System.currentTimeMillis())+smsText;
+	}
 
 }

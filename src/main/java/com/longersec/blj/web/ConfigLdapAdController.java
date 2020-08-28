@@ -146,23 +146,19 @@ public class ConfigLdapAdController {
 			//拿到AD域查询结果集
 			ArrayList<User> userArrayList = adOperate.searchUser(configLdapAd);
 
-			//部门过滤判断
-			boolean isAddDepartment = true;
-
 			//检测是否返回有结果集
 			if(userArrayList.size()!=0){
 
 			for(int i=0;i<userArrayList.size();i++) {
 				//将获取的DN传到AdOperate中dnOperate方法进行处理，获得处理结果
 				List<String> departmentList = adOperate.dnOperate(configLdapAd, userArrayList.get(i).getLdap_dn());
+				//部门过滤判断
+				if(departmentList==null){
+					continue;
+				}
 				//默认初始父ID为总部的ID
 				int parentId = 1;
 				for (int j = 0; j < departmentList.size(); j++) {
-					//部门过滤
-					isAddDepartment = departmentList.get(j).equals(configLdapAd.getFilter_department());
-					if(isAddDepartment){
-						break;
-					}
 					//查找Name和父ID的结果集
 					Department department = departmentService.selectByNameAndParentId(departmentList.get(j), parentId);
 					//没有的话创建部门
@@ -195,9 +191,6 @@ public class ConfigLdapAdController {
 						//如果已有部门,拿到此部门ID作为搜索下级部门的父ID
 						parentId = department.getId();
 					}
-				}
-				if(isAddDepartment){
-					continue;
 				}
 				//判断是否有同名用户，有只进行更新操作，更新字段：Ldap_dn,Department
 				User isEdit = userService.checkADUsername(userArrayList.get(i).getUsername());

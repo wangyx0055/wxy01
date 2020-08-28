@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longersec.blj.dao.UserMessageDao">
+	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.UserMessage">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="from_user_id" jdbcType="INTEGER" property="from_user_id"/>
+		<result column="to_user_id" jdbcType="INTEGER" property="to_user_id"/>
+		<result column="module" jdbcType="VARCHAR" property="module"/>
+		<result column="module_id" jdbcType="INTEGER" property="module_id"/>
+		<result column="create_time" jdbcType="VARCHAR" property="create_time"/>
+	</resultMap>
+
+	<resultMap id="userMessageRecordCounts" type="java.lang.Long">
+		<result column="recordCounts" jdbcType="BIGINT"/>
+	</resultMap>
+
+	<insert id="addUserMessage" parameterType="com.longersec.blj.domain.UserMessage">
+		INSERT INTO lsblj_user_message
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="from_user_id != null">`from_user_id`=#{from_user_id},</if>
+		<if test="to_user_id != null">`to_user_id`=#{to_user_id},</if>
+		<if test="module != null">`module`=#{module},</if>
+		<if test="module_id != null">`module_id`=#{module_id},</if>
+		<if test="create_time != null">`create_time`=#{create_time},</if>
+		</set>
+	</insert>
+
+	<update id="editUserMessage" parameterType="com.longersec.blj.domain.UserMessage">
+		UPDATE lsblj_user_message
+		<set>
+		<if test="id != null">`id`=#{id},</if>
+		<if test="from_user_id != null">`from_user_id`=#{from_user_id},</if>
+		<if test="to_user_id != null">`to_user_id`=#{to_user_id},</if>
+		<if test="module != null">`module`=#{module},</if>
+		<if test="module_id != null">`module_id`=#{module_id},</if>
+		<if test="create_time != null">`create_time`=#{create_time},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="delUserMessage" parameterType="java.util.List">
+		DELETE FROM lsblj_user_message
+		where id IN (
+		<foreach collection="list" item="item" separator=",">
+		#{item},
+		</foreach>
+		0)
+	</delete>
+	<select id="findAll" resultMap="BaseResultMap, userMessageRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		* FROM lsblj_user_message 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_user_message where id=#{id}
+	</select>
+</mapper>

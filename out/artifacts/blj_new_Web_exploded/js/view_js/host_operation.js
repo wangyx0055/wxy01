@@ -36,7 +36,7 @@ var _userlist = function(search,searchvalue,data,datavalue){
             { "data": "protocol"},
             { "data": "username" },
             { "data": "ip","render":function(data,type,row,meta){
-                    return '<img src="../../bower_components/dist/img/link.png" style="width: 25px; height: 25px;margin-left: 15px;" data-toggle="modal" data-target="#modal-success">';
+                    return '<img src="../../bower_components/dist/img/link.png" style="width: 25px; height: 25px;margin-left: 15px;" onclick="connectTest(\''+row.ip+'\','+row.port+')">';
                 }},
             { "data": "id","render": function(data,type,row,meta){
             		if(row.protocol_id==5||row.protocol_id==6){
@@ -114,6 +114,27 @@ function ftplogin(id)
 	        	$('#ftp_password').text(data.password);
 	            $('#modal-ftp-login').modal();
 	        }
+	    }
+	})
+}
+function connectTest(ip,port){
+	$.ajax({
+	    url:"../../configNetwork/lportest",
+	    type:"POST",
+	    data:{
+			ip:ip,
+			port:port
+	    },
+	    success:function(data){
+	        if(data.msg.indexOf('open')){
+				$("#modal-success .modal-title").text('成功');
+                $("#modal-success .modal-body").text('连接成功!');
+                $("#modal-success").modal();
+			}else{
+				$("#modal-danger .modal-title").text('失败');
+                $("#modal-danger .modal-body").text(data.msg?data.msg:'连接失败!');
+                $("#modal-danger").modal();
+			}
 	    }
 	})
 }

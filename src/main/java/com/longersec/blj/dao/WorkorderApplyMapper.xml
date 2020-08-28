@@ -4,6 +4,8 @@
 <mapper namespace="com.longersec.blj.dao.WorkorderApplyDao">
 	<resultMap id="BaseResultMap" type="com.longersec.blj.domain.WorkorderApply">
 		<id column="id" jdbcType="INTEGER" property="id"/>
+		<id column="type" jdbcType="INTEGER" property="type"/>
+		<id column="apply_user_id" jdbcType="INTEGER" property="apply_user_id"/>
 		<result column="start" jdbcType="VARCHAR" property="start"/>
 		<result column="name" jdbcType="VARCHAR" property="name"/>
 		<result column="end" jdbcType="VARCHAR" property="end"/>
@@ -30,6 +32,7 @@
 		INSERT INTO lsblj_workorder_apply
 		<set>
 			<if test="start != null">`start`=#{start},</if>
+			<if test="apply_user_id != null">`apply_user_id`=#{apply_user_id},</if>
 			<if test="end != null">`end`=#{end},</if>
 			<if test="name != null">`name`=#{name},</if>
 			<if test="upload != null">`upload`=#{upload},</if>
@@ -80,7 +83,7 @@
 		SELECT
 		SQL_CALC_FOUND_ROWS *
 		FROM lsblj_workorder_apply
-		where 1
+		where  apply_user_id=#{workorderApply.apply_user_id}
 		<if test="workorderApply.name != null">AND name like CONCAT('%',#{workorderApply.name},'%') </if>
 		<!--<if test="workorderApply.update_time != null"> AND `workorderApply.update_time` like CONCAT('%',#{user.username},'%')</if>-->
 		<if test="workorderApply.result != null"> AND result like CONCAT('%',#{workorderApply.result},'%')</if>
@@ -102,6 +105,22 @@
 	</select>
 
 	<update id="updateResult">
-		UPDATE `lsblj_workorder_apply` SET result = #{result} WHERE id =#{id}
+		UPDATE `lsblj_workorder_apply` SET result = #{result}
+		<if test="dateline != -1">
+			,deadline = (SELECT DATE_ADD(NOW(),INTERVAL #{dateline} HOUR))
+		</if>
+		WHERE id =#{id}
 	</update>
+	
+	<select id="getById" resultType="com.longersec.blj.domain.WorkorderApply">
+		SELECT * FROM `lsblj_workorder_apply` where id=#{id}
+	</select>
+
+	<select id="selectDeadLine" resultType="java.lang.Integer">
+		SELECT dead_hours FROM `lsblj_config_workorder` WHERE id = 1;
+	</select>
+
+	<select id="selectCmd" resultType="java.lang.String">
+		select command from `lsblj_workorder_apply` where id = #{id}
+	</select>
 </mapper>

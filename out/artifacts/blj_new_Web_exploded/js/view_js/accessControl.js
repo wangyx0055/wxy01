@@ -12,7 +12,6 @@ $('#modal-default3').on('show.bs.modal', function (event) {
     $.ajax({
         url: "../../user/listUser",
         type: "POST",
-        async: true,
         dataType: "json",
         data: {
             start: page_start5,
@@ -58,7 +57,6 @@ $('#modal-default3').on('show.bs.modal', function (event) {
     $.ajax({
         url: "../../group/listGroup",
         type: "POST",
-        async: true,
         dataType: "json",
         data: {
             "type": 0,
@@ -112,7 +110,6 @@ $('#modal-primary3').on('show.bs.modal', function (event) {
     $.ajax({
         url: "../../deviceAccount/listDeviceAccountNameIp",
         type: "POST",
-        async: true,
         dataType: "json",
         data: {
             start: page_start7,
@@ -158,7 +155,6 @@ $('#modal-primary3').on('show.bs.modal', function (event) {
     $.ajax({
         url: "../../group/listGroup",
         type: "POST",
-        async: true,
         dataType: "json",
         data: {
             type: 1,
@@ -209,7 +205,6 @@ $('#modal-primary3').on('show.bs.modal', function (event) {
     $.ajax({
         url:"../../apppubAccount/listApppubAccount",
         type: "POST",
-        async: true,
         dataType: "json",
         data: {
             start: page_start9,

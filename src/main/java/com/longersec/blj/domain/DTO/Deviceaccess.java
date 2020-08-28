@@ -12,6 +12,8 @@ public class Deviceaccess {
      private String device_name;
      
      private String protocol_name;
+     
+     private Integer department;
 
 	public String getDevice_name() {
 		return device_name;
@@ -51,12 +53,19 @@ public class Deviceaccess {
 		this.protocol_name = protocol_name;
 	}
 
+	public Integer getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Integer department) {
+		this.department = department;
+	}
+
 	@Override
 	public String toString() {
 		return "Deviceaccess{" +
 				"username='" + username + '\'' +
 				", device_account_id='" + device_account_id + '\'' +
-				", protocol_id='" + protocol_id + '\'' +
 				", device_name='" + device_name + '\'' +
 				'}';
 	}
@@ -72,13 +81,12 @@ public class Deviceaccess {
 		Deviceaccess that = (Deviceaccess) o;
 		return Objects.equals(username, that.username) &&
 				Objects.equals(device_account_id, that.device_account_id) &&
-				Objects.equals(protocol_id, that.protocol_id) &&
 				Objects.equals(device_name, that.device_name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(username, device_account_id, protocol_id, device_name);
+		return Objects.hash(username, device_account_id, device_name);
 	}
 
 }
