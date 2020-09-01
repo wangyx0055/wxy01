@@ -219,7 +219,11 @@ public class ApppubProgramController {
 		}
 		JSONArray jsonArray = JSONArray.fromObject(apppubPrograms);
 		JSONObject result = new JSONObject();
-		result.accumulate("success", true);
+		if(total==0){
+			result.accumulate("success", false);
+		}else {
+			result.accumulate("success", true);
+		}
 		result.accumulate("recordsTotal", total);
 		result.accumulate("recordsFiltered", total);
 		result.accumulate("data", jsonArray);

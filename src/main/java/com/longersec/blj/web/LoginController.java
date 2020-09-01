@@ -15,7 +15,9 @@ import com.longersec.blj.service.AlertLogService;
 import com.longersec.blj.service.AppLoginkeyService;
 import com.longersec.blj.service.ConfigFingerService;
 import com.longersec.blj.service.ConfigLoginService;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.service.ConfigService;
+import com.longersec.blj.service.DepartmentService;
 import com.longersec.blj.service.LoginLogService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.service.UserService;
@@ -24,6 +26,7 @@ import com.longersec.blj.utils.GoogleAuthenticatorUtil;
 import com.longersec.blj.utils.KeyUtil;
 import com.longersec.blj.utils.Operator_log;
 import com.longersec.blj.utils.QRCodeUtils;
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.httpClient;
 import com.sun.tools.javac.resources.javac;
 
@@ -89,6 +92,10 @@ public class LoginController {
 	private ConfigFingerService configFingerService;
 	@Autowired
 	private SessionDAO sessionDAO;
+	@Autowired
+	private DepartmentService departmentService;
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 	
 	
     @RequestMapping("/checkLogin")
@@ -110,6 +117,33 @@ public class LoginController {
 			}
     		return "";
     	}
+    	
+    	
+    	
+    	
+
+        
+    	try {
+    		String json = "333333";
+            System.out.println("加密前源数据————" + json);
+            // 生成32位16进制密钥
+            String key = "9A8159B49AB10B5BA55BC477B1C0E79E";
+            System.out.println(key + "-----生成key");
+            String cipher = Sm4Utils.encryptEcb(key, json);
+            System.out.println("加密串---" + cipher);
+            System.out.println(Sm4Utils.verifyEcb(key, cipher, json));
+            json = Sm4Utils.decryptEcb(key, cipher);
+            System.out.println("解密后数据---" + json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	String logintoken = KeyUtil.genUniqueKey();
     	session.setAttribute("logintoken", logintoken);
     	model.addAttribute("logintoken", logintoken);
@@ -235,6 +269,15 @@ public class LoginController {
             model.addAttribute("msg","账号被锁定");
             return "/login";
     	}
+    	
+    	if(departmentService.getById(user.getDepartment())==null) {
+        	loginlog.setDetails("部门不存在");
+    		loginlog.setStatus(0);
+    		loginlog.setResult("失败");
+    		loginLogService.addLoginLog(loginlog);
+            model.addAttribute("msg","部门不存在");
+            return "/login";
+    	}
     	int total_online = 0;
     	
 
@@ -242,7 +285,7 @@ public class LoginController {
         //操作日志
         
 		try {
-			String db_password = user.getPassword();
+			String db_password = Sm4Utils.decryptEcb(configPasswordEncryptKeyService.getKey(),user.getPassword());
 			System.out.println(db_password);
 			user.setPassword(null);
 			boolean result = false;

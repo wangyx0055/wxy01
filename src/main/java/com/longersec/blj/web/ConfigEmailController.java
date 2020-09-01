@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.Validator;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.longersec.blj.domain.ConfigEmail;
 import com.longersec.blj.service.ConfigEmailService;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -34,6 +37,8 @@ public class ConfigEmailController {
 
 	@Autowired
 	private ConfigEmailService configEmailService;
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 	@RequestMapping("/listConfigEmail")
 	@ResponseBody
@@ -81,6 +86,9 @@ public class ConfigEmailController {
 		}
 		if(configEmail.getPassword().equals("xxxxxx")) {
 			configEmail.setPassword(null);
+		}
+		if(configEmail.getPassword()!=null) {
+			configEmail.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), configEmail.getPassword()));
 		}
 		Boolean r = configEmailService.editConfigEmail(configEmail);
 		if (r){

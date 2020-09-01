@@ -4,10 +4,12 @@ import com.longersec.blj.domain.ApppubAccount;
 import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.domain.User;
 import com.longersec.blj.service.ApppubAccountService;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.service.DepartmentService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.utils.BljConstant;
 import com.longersec.blj.utils.Operator_log;
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.Validator;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -36,6 +38,8 @@ public class ApppubAccountController {
 	private ApppubAccountService apppubAccountService;
 	@Autowired
 	private DepartmentService departmentService;
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 	JSONObject result = null;
 	@RequestMapping("/listApppubAccount")
@@ -111,6 +115,7 @@ public class ApppubAccountController {
 			operatorLog.setDetails("添加发布应用["+apppubAccount.getName()+"]");
 			operatorLog.setContent("添加");
 			if(resultMap == null && checksum ==0){
+				apppubAccount.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), apppubAccount.getPassword()));
 				r = apppubAccountService.addApppubAccount(apppubAccount);
 				operatorLog.setResult(r?"成功":"失败");
 				result.put(BljConstant.SUCCESS, r);
@@ -122,6 +127,7 @@ public class ApppubAccountController {
 			operatorLog.setDetails("编辑发布应用["+apppubAccount.getName()+"]");
 			operatorLog.setContent("编辑");
 			if (resultMap == null && checksum ==0){
+				apppubAccount.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), apppubAccount.getPassword()));
 				r = apppubAccountService.editApppubAccount(apppubAccount);
 				operatorLog.setResult(r?"成功":"失败");
 				result.put(BljConstant.SUCCESS, r);

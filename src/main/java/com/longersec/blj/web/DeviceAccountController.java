@@ -13,6 +13,7 @@ import com.longersec.blj.domain.User;
 import com.longersec.blj.service.GroupDeviceAccountService;
 import com.longersec.blj.service.GroupService;
 import com.longersec.blj.service.UserGroupUserService;
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.SecurityUtils;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.longersec.blj.domain.DeviceAccount;
 import com.longersec.blj.domain.DeviceRecord;
 import com.longersec.blj.domain.DTO.Deviceaccess;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.service.DeviceAccountService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -47,6 +49,9 @@ public class DeviceAccountController {
 
 	@Autowired
 	private DeviceAccountService deviceAccountService;
+	
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 	@RequestMapping("/listDeviceAccount")
 	@ResponseBody
@@ -87,6 +92,7 @@ public class DeviceAccountController {
 	@ResponseBody
 	public JSONObject addDeviceAccount(DeviceAccount deviceAccount, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
+			deviceAccount.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), deviceAccount.getPassword()));
 			Boolean r = deviceAccountService.addDeviceAccount(deviceAccount);
 			result.put("success", r);
 		return result;
@@ -96,6 +102,7 @@ public class DeviceAccountController {
 	@ResponseBody
 	public JSONObject editDeviceAccount(DeviceAccount deviceAccount, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
+			deviceAccount.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), deviceAccount.getPassword()));
 			Boolean r = deviceAccountService.editDeviceAccount(deviceAccount);
 			result.put("success", r);
 		return result;

@@ -1,10 +1,10 @@
 package com.longersec.blj.web;
 
-import com.longersec.blj.domain.DTO.DepartDTO;
 import com.longersec.blj.domain.Department;
 import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.domain.User;
 import com.longersec.blj.service.*;
+import com.longersec.blj.utils.BljConstant;
 import com.longersec.blj.utils.Operator_log;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import com.longersec.blj.utils.Validator;
@@ -56,21 +56,7 @@ public class DepartmentController {
 	@RequestMapping("/findAll")
 	@ResponseBody
 	public JSONObject findAll() {
-		result = new JSONObject();
-		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
-		ArrayList<DepartDTO> departments = departmentService.findIdName(p_user.getDepartment());
-		result.put("data",departments);
-		return result;
-	}
-
-	@RequestMapping("/find")
-	@ResponseBody
-	public JSONObject find() {
-		result = new JSONObject();
-		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
-		ArrayList<DepartDTO> departments = (ArrayList<DepartDTO>) departmentService.getAllDepartmentsByParentId(p_user.getDepartment());
-		result.put("data",departments);
-		return result;
+		return departmentService.getAllDepartmentsByParentId();
 	}
 
 	@RequestMapping("/findParentName")
@@ -87,36 +73,29 @@ public class DepartmentController {
 	@RequestMapping("/listDepartment")
 	@ResponseBody
 	public JSONObject listDepartment(Department department,HttpServletRequest request) {
-		int page_start = Integer.parseInt(request.getParameter("start"));
-		int page_length = Integer.parseInt(request.getParameter("length"));
-		ArrayList<Object> resultDepartments;
-		ArrayList<Department> departments = new ArrayList<>();
 		ArrayList<Department> departmentTemp = new ArrayList<>();
-		long total = 0;
 		Integer thisId;
 		//根据权限查询
 		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
-		resultDepartments = (ArrayList<Object>)departmentService.findAll(department, p_user.getDepartment(), page_start, page_length);
+		ArrayList<Department> resultDepartments = departmentService.findAll(department, p_user.getDepartment());
 		List<Integer> selectTopId = departmentService.selectTopId(p_user.getDepartment());
 		if(CollectionUtils.isNotEmpty(resultDepartments)) {
-			departments = (ArrayList<Department>)resultDepartments.get(0);
 			//把根节点的父id赋值为0,不然前台没有数据
-			for (Department department1:departments) {
+			for (Department department1:resultDepartments) {
 				if (department1.getId().equals( p_user.getDepartment())) {
 					department1.setParent_id(0);
 				}
 			}
-			total = ((ArrayList<Long>) resultDepartments.get(1)).get(0);
 		}
 		//默认查询条件为空,不执行复杂的查询,提高效率
 		boolean flag;
 		flag = department.getSearchAll() != null && "".equals(department.getSearchAll()) || department.getName() != null && "".equals(department.getName()) ||
 				department.getName() == null && department.getSearchAll() == null;
 		if(flag) {
-			departmentTemp.addAll(departments);
+			departmentTemp.addAll(resultDepartments);
 		} else {
 			//遍历搜索出的结果
-			for (Department value : departments) {
+			for (Department value : resultDepartments) {
 				thisId = value.getId();
 				//查找上级和下级部门
 				List<Department> subNodes = departmentService.findSubNodes(thisId);
@@ -138,10 +117,7 @@ public class DepartmentController {
 		departmentTemp.clear();
 		JSONArray jsonArray = JSONArray.fromObject(allDepartments);
 		result = new JSONObject();
-		result.accumulate("success", true);
-		result.accumulate("recordsTotal", total);
-		result.accumulate("recordsFiltered", total);
-		result.accumulate("data", jsonArray);
+		result.put("data", jsonArray);
 		return result;
 	}
 
@@ -197,6 +173,8 @@ public class DepartmentController {
 			}
 			operatorLogService.addOperatorLog(operatorLog);
 		}
+		//插入部门缓存表根据部门id
+		departmentService.cacheDepartmentId();
 		return result;
 	}
 
@@ -271,6 +249,8 @@ public class DepartmentController {
 			}
 			operatorLogService.addOperatorLog(operatorLog);
 		}
+		//插入部门缓存表根据部门id
+		departmentService.cacheDepartmentId();
 		return result;
 	}
 
@@ -308,6 +288,8 @@ public class DepartmentController {
 			operatorLog.setDetails("删除部门["+stringBuilder.substring(0,stringBuilder.length()>0?stringBuilder.length()-1:stringBuilder.length())+"]");
 		}
 		operatorLogService.addOperatorLog(operatorLog);
+		//插入部门缓存表根据部门id
+		departmentService.cacheDepartmentId();
 		return result;
 	}
 
@@ -403,6 +385,7 @@ public class DepartmentController {
 		return errorMap;
 	}
 
+	/** 更新部门数量**/
 	@RequestMapping("/update")
 	@ResponseBody
 	public JSONObject checkDepartmentName(){
@@ -413,4 +396,5 @@ public class DepartmentController {
 		result.put("success",true);
 		return result;
 	}
+
 }

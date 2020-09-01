@@ -324,6 +324,8 @@ public class UploadController {
         }catch (Exception e){
             result.put("success", false);
         }
+        //插入部门缓存表根据部门id
+        departmentService.cacheDepartmentId();
         //UpdateDepartmentCount.AutoUpdateDepartmentUserCounts(departmentService);
         result.put("errorInfo",errorInfo);
         return result;

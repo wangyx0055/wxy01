@@ -1,17 +1,18 @@
 package com.longersec.blj.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import com.longersec.blj.dao.DepartmentDao;
 import com.longersec.blj.domain.DTO.DepartDTO;
 import com.longersec.blj.domain.Department;
+import com.longersec.blj.domain.User;
 import com.longersec.blj.service.DepartmentService;
-import com.longersec.blj.utils.TreeUtil;
+import net.sf.json.JSONObject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.longersec.blj.dao.DepartmentDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Transactional
@@ -27,8 +28,29 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
-	public List<DepartDTO> getAllDepartmentsByParentId(int id) {
-		return DepartmentDao.getAllDepartmentsByParentId(id);
+	public JSONObject getAllDepartmentsByParentId() {
+		JSONObject result = new JSONObject();
+		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+		DepartDTO idParent = (DepartDTO) DepartmentDao.findIdParent(p_user.getDepartment());
+		ArrayList<DepartDTO> departments = (ArrayList<DepartDTO>) DepartmentDao.getAllDepartmentsByParentId(p_user.getDepartment());
+		idParent.setNodes(departments);
+		ArrayList<DepartDTO> departDTOS = new ArrayList<>();
+		departDTOS.add(0,idParent);
+		result.put("data",departDTOS);
+		return result;
+	}
+
+	@Override
+	public boolean cacheDepartmentId() {
+		//查询所有部门id
+		List<Integer> integers1 = DepartmentDao.selectAllDepartmentid();
+		for (Integer i : integers1) {
+			//查询所有父级id
+			List<Integer> integers = DepartmentDao.selectParentIdForCache(i);
+			//先删除在插入
+			DepartmentDao.cacheDepartmentId(integers, i);
+		}
+		return true;
 	}
 
 	@Override
@@ -42,16 +64,21 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
-	public List<Object> findAll(Department department, int id, int page_start, int page_length) {
-		return DepartmentDao.findAll(department, id, page_start, page_length);
+	public 	ArrayList<Department> findAll(Department department, int id) {
+		return DepartmentDao.findAll(department, id);
 	}
 
 	@Override
-	public ArrayList<DepartDTO> findIdName(int depart_id) {
-		ArrayList<DepartDTO> list = DepartmentDao.findIdName(depart_id);
-		ArrayList<DepartDTO> Tree_list = DepartmentDao.findIdParent(depart_id);
-		Tree_list.addAll(list);
-		return (ArrayList<DepartDTO>) TreeUtil.rebuildList2Tree(Tree_list);
+	public List<Integer> getAllIdByParentId(Integer id) {
+		User p_user = (User) SecurityUtils.getSubject().getPrincipal();
+		List<Integer> allIdByParentId = DepartmentDao.getAllIdByParentId(id);
+		allIdByParentId.add(p_user.getDepartment());
+		return allIdByParentId;
+	}
+
+	@Override
+	public List<Integer> selectAllDepartmentid() {
+		return DepartmentDao.selectAllDepartmentid();
 	}
 
 	@Override

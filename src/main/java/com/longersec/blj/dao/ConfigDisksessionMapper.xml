@@ -35,7 +35,7 @@
 		<if test="session_backup_host != null">`session_backup_host`=#{session_backup_host},</if>
 		<if test="session_backup_port != null">`session_backup_port`=#{session_backup_port},</if>
 		<if test="session_backup_username != null">`session_backup_username`=#{session_backup_username},</if>
-		<if test="session_backup_password != null">`session_backup_password`=AES_ENCRYPT(#{session_backup_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="session_backup_password != null">`session_backup_password`=#{session_backup_password},</if>
 		<if test="session_backup_path != null">`session_backup_path`=#{session_backup_path},</if>
 		<if test="session_backup_iscompress != null">`session_backup_iscompress`=#{session_backup_iscompress},</if>
 		</set>
@@ -53,7 +53,7 @@
 		<if test="session_backup_host != null">`session_backup_host`=#{session_backup_host},</if>
 		<if test="session_backup_port != null">`session_backup_port`=#{session_backup_port},</if>
 		<if test="session_backup_username != null">`session_backup_username`=#{session_backup_username},</if>
-		<if test="session_backup_password != null">`session_backup_password`=AES_ENCRYPT(#{session_backup_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="session_backup_password != null">`session_backup_password`=#{session_backup_password},</if>
 		<if test="session_backup_path != null">`session_backup_path`=#{session_backup_path},</if>
 		<if test="session_backup_iscompress != null">`session_backup_iscompress`=#{session_backup_iscompress},</if>
 		</set>

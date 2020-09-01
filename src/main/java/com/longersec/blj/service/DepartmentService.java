@@ -1,12 +1,12 @@
 package com.longersec.blj.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import com.longersec.blj.domain.DTO.DepartDTO;
 import com.longersec.blj.domain.Department;
+import net.sf.json.JSONObject;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public interface DepartmentService {
 
@@ -14,13 +14,22 @@ public interface DepartmentService {
 
 	boolean editDepartment(Department department);
 
-	List<DepartDTO> getAllDepartmentsByParentId(int id);
+	/** 获取某个部门下的所有子部门**/
+	JSONObject getAllDepartmentsByParentId();
+
+	/**先执行删除,插入部门缓存表 **/
+	boolean cacheDepartmentId();
 
 	boolean delDepartment(List<Integer> ids);
 
-	List<Object> findAll(Department department, int id, int page_start, int page_length);
+	ArrayList<Department> findAll(Department department, int id);
 
-    ArrayList<DepartDTO> findIdName(int depart_id);
+	/** 获取某个部门下的所有id**/
+	List<Integer> getAllIdByParentId(Integer id);
+
+
+	/** 查询所有部门id**/
+	List<Integer> selectAllDepartmentid();
 
 	String findName(int id);
 

@@ -29,8 +29,6 @@
 		<if test="domain != null">`domain`=#{domain},</if>
 		<if test="type != null">`type`=#{type},</if>
 		<if test="template_code != null">`template_code`=#{template_code},</if>
-<!--		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>-->
-<!--		<if test="url != null">`url`=#{url},</if>-->
 		</set>
 	</insert>
 

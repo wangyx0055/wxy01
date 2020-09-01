@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public interface DepartmentDao {
 
@@ -16,13 +15,14 @@ public interface DepartmentDao {
 
 	List<DepartDTO> getAllDepartmentsByParentId(@Param("id")int id);
 
+	/** 获取某个部门下的所有id**/
+	List<Integer> getAllIdByParentId(@Param("id")Integer id);
+
 	boolean delDepartment(List<Integer> ids);
 
 	List<Department> selectAll();
 
-	List<Object> findAll(@Param("department")Department department, @Param("id")int id, @Param("page_start")int page_start, @Param("page_length")int page_length);
-
-    ArrayList<DepartDTO> findIdName(int depart_id);
+	ArrayList<Department> findAll(@Param("department")Department department, @Param("id")int id);
 
 	/** 查询上级部门名称**/
 	Department findParentName(@Param("parent_id")int parent_id);
@@ -44,6 +44,12 @@ public interface DepartmentDao {
 
 	/** 删除无用的部门 **/
 	boolean deleteUselessDepartments();
+
+	/**查询所有父级id **/
+	List<Integer> selectParentIdForCache(@Param("department_id")int department_id);
+
+	/**先执行删除,插入部门缓存表 **/
+	boolean cacheDepartmentId(@Param("ids")List<Integer> ids,@Param("department_id")int department_id);
 
 	/**查询所有用户 **/
 	List<Integer> selectUserId();
@@ -67,12 +73,15 @@ public interface DepartmentDao {
 
     List<Integer> selectById(int depart_id);
 
-	ArrayList<DepartDTO> findIdParent(int depart_id);
+	Object findIdParent(int depart_id);
 
 	String findName(int id);
 
 	/** 查询部门所有上级部门名称**/
 	List<String> findAllParentName(@Param("id") int id);
+
+	/** 查询所有部门id**/
+	List<Integer> selectAllDepartmentid();
 
 	/**查询登录角色所拥有的部门id **/
 	List<Integer> selectTopId(@Param("id") int id);

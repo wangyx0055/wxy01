@@ -13,6 +13,7 @@ import com.longersec.blj.domain.*;
 import com.longersec.blj.service.*;
 import com.longersec.blj.utils.GoogleAuthenticatorUtil;
 import com.longersec.blj.utils.Operator_log;
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import com.longersec.blj.utils.Validator;
 import com.longersec.blj.utils.httpClient;
@@ -72,6 +73,9 @@ public class UserController {
 	
 	@Autowired
 	private ConfigFingerService configFingerService;
+	
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 	@RequestMapping("/listUser")
 	@ResponseBody
@@ -200,6 +204,7 @@ public class UserController {
 			if (resultMap==null) {
 				//查询旧的部门id
 				int selectOldDepartment = userService.selectOldDepartment(user.getId());
+				user.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), user.getPassword()));
 				r = userService.editUser(user);
 				if(r) {
 					//更新部门用户数量-先减少在增加
@@ -226,6 +231,7 @@ public class UserController {
 			//判断数据
 			User isexitU = userService.checkLogin(user.getUsername());
 			if (resultMap==null && isexitU==null) {
+				user.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), user.getPassword()));
 				r = userService.addUser(user);
 				//是否操作成功
 				if(r) {

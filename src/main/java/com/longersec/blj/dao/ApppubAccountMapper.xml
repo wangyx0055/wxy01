@@ -29,7 +29,7 @@
 		<if test="name != null">`name`=#{name},</if>
 		<if test="username != null">`username`=#{username},</if>
 		<if test="department != null">`department`=#{department},</if>
-		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null">`password`=#{password},</if>
 		<if test="apppub_program_id != null">`apppub_program_id`=#{apppub_program_id},</if>
 		<if test="apppub_server_id != null">`apppub_server_id`=#{apppub_server_id},</if>
 		<if test="url != null">`url`=#{url},</if>
@@ -44,7 +44,7 @@
 		<if test="name != null">`name`=#{name},</if>
 		<if test="username != null">`username`=#{username},</if>
 		<if test="department != null">`department`=#{department},</if>
-		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null">`password`=#{password},</if>
 		<if test="apppub_program_id != null">`apppub_program_id`=#{apppub_program_id},</if>
 		<if test="apppub_server_id != null">`apppub_server_id`=#{apppub_server_id},</if>
 		<if test="url != null">`url`=#{url},</if>
@@ -287,7 +287,7 @@
 			<if test="name != null">`name`=#{name},</if>
 			<if test="username != null">`username`=#{username},</if>
 			<if test="department != null">`department`=#{department},</if>
-			<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+			<if test="password != null">`password`=#{password},</if>
 			<if test="apppub_program_id != null">`apppub_program_id`=#{apppub_program_id},</if>
 			<if test="apppub_server_id != null">`apppub_server_id`=#{apppub_server_id},</if>
 			<if test="url != null">`url`=#{url},</if>
@@ -303,7 +303,7 @@
 				<if test="item.name != null">`name`=#{item.name},</if>
 				<if test="item.username != null">`username`=#{item.username},</if>
 				<if test="item.department != null">`department`=#{item.department},</if>
-				<if test="item.password != null">`password`=AES_ENCRYPT(#{item.password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+				<if test="item.password != null">`password`=#{item.password},</if>
 				<if test="item.apppub_program_id != null">`apppub_program_id`=#{item.apppub_program_id},</if>
 				<if test="item.apppub_server_id != null">`apppub_server_id`=#{item.apppub_server_id},</if>
 				<if test="item.url != null">`url`=#{item.url},</if>

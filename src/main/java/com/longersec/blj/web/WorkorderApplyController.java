@@ -96,9 +96,7 @@ public class WorkorderApplyController {
 		operatorLog.setDetails("添加授权工单["+workorderApply.getName()+"]");
 		boolean r = workorderApplyService.addWorkorderApply(workorderApply);
 		boolean d = workorderApplyDeviceAccountDao.addWorkorderApplyDeviceAccount(workorderApply.getId(),Arrays.asList(_devices));
-		if(r&&d) {
-			workorderAuditLogService.createWorkorderAuditLog(workorderApply.getId());
-		}
+		
 		result.put(BljConstant.SUCCESS, r && d);
 		operatorLog.setResult(r&& d?"成功":"失败");
 		operatorLogService.addOperatorLog(operatorLog);
@@ -153,6 +151,7 @@ public class WorkorderApplyController {
 		operatorLog.setModule("授权工单");
 		operatorLog.setContent("更新");
 		result = new JSONObject();
+		boolean isSubmit = false;
 		if (results == 0 &&  status > 1){
 			result.put(BljConstant.SUCCESS, false);
 			operatorLog.setResult("失败");
@@ -168,10 +167,16 @@ public class WorkorderApplyController {
 			operatorLogService.addOperatorLog(operatorLog);
 			return result;
 		} else {
+			isSubmit = true;
 			selectDeadLine = workorderApplyService.selectDeadLine();
 		}
 		operatorLog.setDetails("更新状态");
 		boolean r = workorderApplyService.updateResult(results,id,selectDeadLine);
+		if(r&&isSubmit) {
+			workorderAuditLogService.createWorkorderAuditLog(id);
+		}else if(r&&results==0) {
+			workorderAuditLogService.clearWorkorderAuditLog(id);
+		}
 		result.put(BljConstant.SUCCESS, r);
 		operatorLog.setResult(r?"成功":"失败");
 		operatorLogService.addOperatorLog(operatorLog);

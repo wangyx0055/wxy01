@@ -5,15 +5,25 @@ import java.util.Objects;
 public class Deviceaccess {
      private String username;
      
+     private Integer workorder_apply_id;
+     
      private Integer device_account_id;
      
      private Integer protocol_id;
+     
+     private Integer port;
 
      private String device_name;
      
      private String protocol_name;
      
+     private String ip;
+     
      private Integer department;
+     
+     private String depart_name;
+     
+     private String topName;
 
 	public String getDevice_name() {
 		return device_name;
@@ -21,6 +31,14 @@ public class Deviceaccess {
 
 	public void setDevice_name(String device_name) {
 		this.device_name = device_name;
+	}
+
+	public Integer getWorkorder_apply_id() {
+		return workorder_apply_id;
+	}
+
+	public void setWorkorder_apply_id(Integer workorder_apply_id) {
+		this.workorder_apply_id = workorder_apply_id;
 	}
 
 	public String getUsername() {
@@ -59,6 +77,39 @@ public class Deviceaccess {
 
 	public void setDepartment(Integer department) {
 		this.department = department;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public Integer getPort() {
+		return port;
+	}
+
+	public void setPort(Integer port) {
+		this.port = port;
+	}
+	
+
+	public String getDepart_name() {
+		return depart_name;
+	}
+
+	public void setDepart_name(String depart_name) {
+		this.depart_name = depart_name;
+	}
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
 	}
 
 	@Override

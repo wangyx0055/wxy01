@@ -196,11 +196,11 @@
 	</select>
 
 	<select id="selectByUserMonth" resultType="java.util.Map">
-		SELECT username, realname, count(*) ct
+		    SELECT username, realname, count(*) ct
 			FROM lsblj_login_log
 			WHERE user_id IN(SELECT id FROM lsblj_user)
 			GROUP BY username
-			ORDER BY ct DESC LIMIT 20
+			ORDER BY ct DESC LIMIT 5
 	</select>
 
 	<select id="selectByHour" resultMap="reportMap, loginLogRecordCounts" resultType="java.lang.Object">

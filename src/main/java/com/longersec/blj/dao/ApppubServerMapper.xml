@@ -127,7 +127,7 @@
 				`ip`=#{item.ip},
 				`port`=#{item.port},
 				`account`=#{item.account},
-				`password`=AES_ENCRYPT(#{item.password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),
+				`password`=#{item.password},
 				`desc`=#{item.desc};
 			</set>
 		</foreach>

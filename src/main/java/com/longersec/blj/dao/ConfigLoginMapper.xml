@@ -44,7 +44,7 @@
 		<if test="web_timeout != null">`web_timeout`=#{web_timeout},</if>
 		<if test="same_user != null">`same_user`=#{same_user},</if>
 		<if test="password_verification_times != null">`password_verification_times`=#{password_verification_times},</if>
-		<if test="new_user_default_password != null">`new_user_default_password`=AES_ENCRYPT(#{new_user_default_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="new_user_default_password != null">`new_user_default_password`=#{new_user_default_password},</if>
 		</set>
 	</insert>
 
@@ -67,7 +67,7 @@
 		<if test="web_timeout != null">`web_timeout`=#{web_timeout},</if>
 		<if test="same_user != null">`same_user`=#{same_user},</if>
 		<if test="password_verification_times != null">`password_verification_times`=#{password_verification_times},</if>
-		<if test="new_user_default_password != null">`new_user_default_password`=AES_ENCRYPT(#{new_user_default_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="new_user_default_password != null">`new_user_default_password`=#{new_user_default_password},</if>
 		<if test="admin_login_ip != null">`admin_login_ip`=#{admin_login_ip},</if>
 		</set>
 		where id=#{id}

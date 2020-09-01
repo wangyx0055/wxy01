@@ -67,7 +67,7 @@
 		<if test="realname != null">`realname`=#{realname},</if>
 		<if test="ldap_dn != null">`ldap_dn`=#{ldap_dn},</if>
 		<if test="avatar != null">`avatar`=#{avatar},</if>
-		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null">`password`=#{password},</if>
 		<if test="status != null">`status`=#{status},</if>
 		<if test="fail_count != null">`fail_count`=#{fail_count},</if>
 		<if test="lock_time != null">`lock_time`=#{lock_time},</if>
@@ -115,7 +115,7 @@
 		<if test="ldap_dn != null">`ldap_dn`=#{ldap_dn},</if>
 		<if test="depart_name != null">`depart_name`=#{depart_name},</if>
 		<if test="avatar != null">`avatar`=#{avatar},</if>
-		<if test="password != null and password != ''">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null and password != ''">`password`=#{password},</if>
 		<if test="status != null">`status`=#{status},</if>
 		<if test="fail_count != null">`fail_count`=#{fail_count},</if>
 		<if test="lock_time != null">`lock_time`=#{lock_time},</if>
@@ -241,7 +241,7 @@
 	</select>
 
 	<select id="checkLogin" resultType="com.longersec.blj.domain.User" parameterType="String">
-       select <include refid="zd"/>, CAST(AES_DECRYPT(password,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) password  
+       select <include refid="zd"/>, `password` 
         from lsblj_user where username = #{username} limit 1
     </select>
 
@@ -296,7 +296,7 @@
 	    <set>
 		    <if test="role_id != null">`role_id`=#{role_id},</if>
 		    <if test="username != null">`username`=#{username},</if>
-		    <if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		    <if test="password != null">`password`=#{password},</if>
 		    <if test="realname != null">`realname`=#{realname},</if>
 		    <if test="department != null">`department`=#{department},</if>
 		    <if test="email != null">`email`=#{email},</if>
@@ -312,7 +312,7 @@
             <set>
             <if test="role_id != null">`role_id`=#{role_id},</if>
             <if test="username != null">`username`=#{username},</if>
-            <if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+            <if test="password != null">`password`=#{password},</if>
             <if test="realname != null">`realname`=#{realname},</if>
             <if test="department != null">`department`=#{department},</if>
             <if test="email != null">`email`=#{email},</if>
@@ -325,6 +325,6 @@
     </update>
 	
     <select id="selectByDepartment" resultType="com.longersec.blj.domain.User">
-    	SELECT id,username,realname,email,mobile from lsblj_user where department=#{department_id}
+    	SELECT id,username,realname,email,mobile from lsblj_user where department=#{department_id} LIMIT 1
     </select>
 </mapper>

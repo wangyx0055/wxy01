@@ -11,6 +11,7 @@ import com.longersec.blj.service.DepartmentService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.service.UserService;
 import com.longersec.blj.utils.Operator_log;
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.UpdateDepartmentCount;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.SecurityUtils;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.longersec.blj.domain.ConfigLdapAd;
 import com.longersec.blj.service.ConfigLdapAdService;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.utils.Validator;
 import com.longersec.blj.utils.AdOperate;
 
@@ -49,6 +51,8 @@ public class ConfigLdapAdController {
 	private DepartmentService departmentService;
 	@Autowired
 	private OperatorLogService operatorLogService;
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 	@RequestMapping("/listConfigLdapAd")
 	@ResponseBody
@@ -104,6 +108,9 @@ public class ConfigLdapAdController {
 		if(result.getBoolean("success")) {
 			if(configLdapAd.getPassword().equals("xxxxxx")) {
 				configLdapAd.setPassword(null);
+			}
+			if(configLdapAd.getPassword()!=null) {
+				configLdapAd.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), configLdapAd.getPassword()));
 			}
 			Boolean r = configLdapAdService.editConfigLdapAd(configLdapAd);
 			result.put("success", r?true:false);

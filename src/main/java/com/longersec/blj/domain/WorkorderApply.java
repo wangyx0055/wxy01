@@ -40,6 +40,10 @@ public class WorkorderApply {
 
 	private String update_time;
 
+	private String command;
+	
+	private Integer isAudit;
+
 
 
 	public WorkorderApply() {
@@ -52,6 +56,14 @@ public class WorkorderApply {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getIsAudit() {
+		return isAudit;
+	}
+
+	public void setIsAudit(Integer isAudit) {
+		this.isAudit = isAudit;
 	}
 
 	public String getStart() {
@@ -197,6 +209,14 @@ public class WorkorderApply {
 
 	public void setApply_realname(String apply_realname) {
 		this.apply_realname = apply_realname;
+	}
+	
+	public String getCommand() {
+		return command;
+	}
+
+	public void setCommand(String command) {
+		this.command = command;
 	}
 
 	@Override

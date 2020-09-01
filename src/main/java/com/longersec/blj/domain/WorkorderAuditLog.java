@@ -8,6 +8,10 @@ public class WorkorderAuditLog {
 
 	private Integer audit_user_id;
 
+	private String audit_username;
+
+	private String audit_realname;
+
 	private Integer audit_result;
 
 	private String audit_datetime;
@@ -15,8 +19,16 @@ public class WorkorderAuditLog {
 	private Integer step;
 	
 	private Integer department;
+	
+	private String depart_name;
 
 	private String submit_datetime;
+	
+	private String audit_comment;
+	
+	private String topName;
+	
+	private Integer device_account_id;
 
 
 
@@ -30,6 +42,22 @@ public class WorkorderAuditLog {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getDevice_account_id() {
+		return device_account_id;
+	}
+
+	public void setDevice_account_id(Integer device_account_id) {
+		this.device_account_id = device_account_id;
+	}
+
+	public String getTopName() {
+		return topName;
+	}
+
+	public void setTopName(String topName) {
+		this.topName = topName;
 	}
 
 	public Integer getWorkorder_apply_id() {
@@ -86,6 +114,38 @@ public class WorkorderAuditLog {
 
 	public void setSubmit_datetime(String submit_datetime) {
 		this.submit_datetime = submit_datetime;
+	}
+
+	public String getAudit_comment() {
+		return audit_comment;
+	}
+
+	public void setAudit_comment(String audit_comment) {
+		this.audit_comment = audit_comment;
+	}
+
+	public String getAudit_username() {
+		return audit_username;
+	}
+
+	public void setAudit_username(String audit_username) {
+		this.audit_username = audit_username;
+	}
+
+	public String getAudit_realname() {
+		return audit_realname;
+	}
+
+	public void setAudit_realname(String audit_realname) {
+		this.audit_realname = audit_realname;
+	}
+
+	public String getDepart_name() {
+		return depart_name;
+	}
+
+	public void setDepart_name(String depart_name) {
+		this.depart_name = depart_name;
 	}
 
 	@Override

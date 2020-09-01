@@ -22,7 +22,7 @@
 		<if test="ssl != null">`ssl`=#{ssl},</if>
 		<if test="port != null">`port`=#{port},</if>
 		<if test="username != null">`username`=#{username},</if>
-		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null">`password`=#{password},</if>
 		</set>
 	</insert>
 
@@ -33,7 +33,7 @@
 		<if test="ssl != null">`ssl`=#{ssl},</if>
 		<if test="port != null">`port`=#{port},</if>
 		<if test="username != null">`username`=#{username},</if>
-		<if test="password != null">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null">`password`=#{password},</if>
 		</set>
 		where id=#{id}
 	</update>

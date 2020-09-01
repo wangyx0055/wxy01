@@ -6,21 +6,94 @@
 		<id column="id" jdbcType="INTEGER" property="id"/>
 		<result column="workorder_apply_id" jdbcType="INTEGER" property="workorder_apply_id"/>
 		<result column="audit_user_id" jdbcType="INTEGER" property="audit_user_id"/>
+		<result column="audit_username" jdbcType="VARCHAR" property="audit_username"/>
+		<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>
+		<result column="audit_realname" jdbcType="VARCHAR" property="audit_realname"/>
 		<result column="audit_result" jdbcType="INTEGER" property="audit_result"/>
 		<result column="audit_datetime" jdbcType="VARCHAR" property="audit_datetime"/>
+		<result column="device_account_id" jdbcType="INTEGER" property="device_account_id"/>
+		<result column="deadline" jdbcType="VARCHAR" property="deadline"/>
 		<result column="step" jdbcType="INTEGER" property="step"/>
 	</resultMap>
 
 	<resultMap id="workorderAuditLogRecordCounts" type="java.lang.Long">
 		<result column="recordCounts" jdbcType="BIGINT"/>
 	</resultMap>
+	
+	
+	<select id="findAll" resultMap="BaseResultMap, workorderAuditLogRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		IF(audit_result>0,IFNULL(u.username,audit_username),u2.username) audit_username, 
+		IF(audit_result>0,IFNULL(u.realname,audit_realname),u2.realname) audit_realname,
+		d.name depart_name,
+		l.* 
+		FROM lsblj_workorder_audit_log l 
+		LEFT JOIN lsblj_user u ON l.audit_user_id=u.id 
+		LEFT JOIN (
+			select GROUP_CONCAT(id) id, GROUP_CONCAT(username) username,GROUP_CONCAT(realname) realname, department 
+			FROM lsblj_user WHERE role_id=5 GROUP BY department 
+			UNION 
+			select 1,username,realname,0 FROM lsblj_user where id=1 
+		) u2 ON u2.department=l.department
+		LEFT JOIN lsblj_department d ON l.department=d.id 
+		WHERE 1 
+		<if test="workorderAuditLog.workorder_apply_id != null"> AND `workorder_apply_id`=#{workorderAuditLog.workorder_apply_id}</if>
+		<if test="workorderAuditLog.device_account_id != null"> AND `device_account_id`=#{workorderAuditLog.device_account_id}</if>
+		<if test="workorderAuditLog.audit_user_id != null"> AND `audit_user_id`=#{workorderAuditLog.audit_user_id}</if>
+		<if test="workorderAuditLog.audit_result != null"> AND `audit_result`=#{workorderAuditLog.audit_result}</if>
+		<if test="workorderAuditLog.step != null"> AND `step`=#{step}</if>
+		<if test="workorderAuditLog.department != null"> 
+			AND l.device_account_id IN(
+				SELECT a.id FROM lsblj_device_account a,lsblj_device b WHERE a.device_id=b.id AND b.department IN(SELECT department_id FROM lsblj_department_cache where parent_id = #{workorderAuditLog.department})
+			)
+		</if>
+		ORDER BY l.id ASC 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="listAuditPeople" resultMap="BaseResultMap, workorderAuditLogRecordCounts">
+		SELECT 
+		SQL_CALC_FOUND_ROWS 
+		IF(audit_result>0,IFNULL(u.username,audit_username),u2.username) audit_username, 
+		IF(audit_result>0,IFNULL(u.realname,audit_realname),u2.realname) audit_realname,
+		d.name depart_name,
+		l.* 
+		FROM lsblj_workorder_audit_log l 
+		LEFT JOIN lsblj_user u ON l.audit_user_id=u.id 
+		LEFT JOIN (
+			select GROUP_CONCAT(id) id, GROUP_CONCAT(username) username,GROUP_CONCAT(realname) realname, department 
+			FROM lsblj_user WHERE role_id=5 GROUP BY department 
+			UNION 
+			select 1,username,realname,0 FROM lsblj_user where id=1 
+		) u2 ON u2.department=l.department
+		LEFT JOIN lsblj_department d ON l.department=d.id 
+		WHERE 1 
+		<if test="workorderAuditLog.workorder_apply_id != null"> AND `workorder_apply_id`=#{workorderAuditLog.workorder_apply_id}</if>
+		<if test="workorderAuditLog.audit_user_id != null"> AND `audit_user_id`=#{workorderAuditLog.audit_user_id}</if>
+		<if test="workorderAuditLog.audit_result != null"> AND `audit_result`=#{workorderAuditLog.audit_result}</if>
+		<if test="workorderAuditLog.step != null"> AND `step`=#{step}</if>
+		GROUP BY IF(audit_result>0,IFNULL(u.username,audit_username),u2.username) 
+		ORDER BY l.id ASC 
+		<if test="page_start != null and page_length != null">
+		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
 
 	<insert id="addWorkorderAuditLog" parameterType="com.longersec.blj.domain.WorkorderAuditLog">
 		INSERT INTO lsblj_workorder_audit_log
 		<set>
 		<if test="id != null">`id`=#{id},</if>
 		<if test="workorder_apply_id != null">`workorder_apply_id`=#{workorder_apply_id},</if>
+		<if test="department != null">`department`=#{department},</if>
 		<if test="audit_user_id != null">`audit_user_id`=#{audit_user_id},</if>
+		<if test="audit_username != null">`audit_username`=#{audit_username},</if>
+		<if test="audit_realname != null">`audit_realname`=#{audit_realname},</if>
+		<if test="device_account_id != null">`device_account_id`=#{device_account_id},</if>
 		<if test="audit_result != null">`audit_result`=#{audit_result},</if>
 		<if test="audit_datetime != null">`audit_datetime`=#{audit_datetime},</if>
 		<if test="step != null">`step`=#{step},</if>
@@ -32,14 +105,26 @@
 		<set>
 		<if test="id != null">`id`=#{id},</if>
 		<if test="workorder_apply_id != null">`workorder_apply_id`=#{workorder_apply_id},</if>
+		<if test="department != null">`department`=#{department},</if>
 		<if test="audit_user_id != null">`audit_user_id`=#{audit_user_id},</if>
+		<if test="audit_username != null">`audit_username`=#{audit_username},</if>
+		<if test="audit_realname != null">`audit_realname`=#{audit_realname},</if>
+		<if test="device_account_id != null">`device_account_id`=#{device_account_id},</if>
 		<if test="audit_result != null">`audit_result`=#{audit_result},</if>
 		<if test="audit_datetime != null">`audit_datetime`=#{audit_datetime},</if>
+		<if test="audit_comment != null">`audit_comment`=#{audit_comment},</if>
 		<if test="step != null">`step`=#{step},</if>
 		</set>
-		where id=#{id}
+		where department=#{department} and workorder_apply_id=#{workorder_apply_id} and audit_result=0 
 	</update>
-
+	
+	
+	
+	<delete id="clearWorkorderAuditLog" parameterType="java.util.List">
+		DELETE FROM lsblj_workorder_audit_log
+		where workorder_apply_id=#{workorder_apply_id}
+	</delete> 
+	
 	<delete id="delWorkorderAuditLog" parameterType="java.util.List">
 		DELETE FROM lsblj_workorder_audit_log
 		where id IN (
@@ -47,17 +132,94 @@
 		#{item},
 		</foreach>
 		0)
-	</delete>
-	<select id="findAll" resultMap="BaseResultMap, workorderAuditLogRecordCounts">
+	</delete> 
+	<select id="getById" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_workorder_audit_log where id=#{id}
+	</select>
+	
+	<resultMap id="WorkorderApplyMap" type="com.longersec.blj.domain.WorkorderApply">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="start" jdbcType="VARCHAR" property="start"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+		<result column="apply_user_id" jdbcType="INTEGER" property="apply_user_id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="end" jdbcType="VARCHAR" property="end"/>
+		<result column="upload" jdbcType="INTEGER" property="upload"/>
+		<result column="download" jdbcType="INTEGER" property="download"/>
+		<result column="filemanage" jdbcType="INTEGER" property="filemanage"/>
+		<result column="up_clipboard" jdbcType="INTEGER" property="up_clipboard"/>
+		<result column="down_clipboard" jdbcType="INTEGER" property="down_clipboard"/>
+		<result column="watermark" jdbcType="INTEGER" property="watermark"/>
+		<result column="description" jdbcType="VARCHAR" property="description"/>
+		<result column="result" jdbcType="INTEGER" property="result"/>
+		<result column="reason" jdbcType="VARCHAR" property="reason"/>
+		<result column="update_time" jdbcType="VARCHAR" property="update_time"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="realname" jdbcType="VARCHAR" property="realname"/>
+		<result column="command" jdbcType="VARCHAR" property="command"/>
+		<result column="isAudit" jdbcType="INTEGER" property="isAudit"/>
+	</resultMap>
+	<select id="listWorkorderApply" resultMap="WorkorderApplyMap, workorderAuditLogRecordCounts">
 		SELECT 
 		SQL_CALC_FOUND_ROWS 
-		* FROM lsblj_workorder_audit_log 
+		IFNULL(u.username,apply_username) apply_username,IFNULL(u.realname,apply_realname) apply_realname,b.*,a.isAudit
+		 FROM lsblj_workorder_apply b
+		LEFT JOIN lsblj_user u ON b.apply_user_id=u.id
+		<if test="workorderAuditLog.department != null">
+		 LEFT JOIN (
+		 	SELECT workorder_apply_id,
+		 		SUM(IF(audit_result!=0,1,0))+SUM(IF(`department`=#{workorderAuditLog.department}, 1, 0))-SUM(IF(`department`=#{workorderAuditLog.department}, step, 0)) isAudit 
+		 		FROM lsblj_workorder_audit_log 
+				WHERE IF(0=#{workorderAuditLog.department},1,device_account_id IN(SELECT a.id FROM lsblj_device_account a,lsblj_device b WHERE a.device_id=b.id AND b.department IN(SELECT department_id FROM lsblj_department_cache where parent_id = #{workorderAuditLog.department})))
+		 		GROUP BY workorder_apply_id 
+		 ) a ON a.workorder_apply_id=b.id AND IF(Exists(SELECT mode FROM lsblj_config_workorder WHERE id=1 AND mode=1) AND 0!=#{workorderAuditLog.department},a.isAudit>=0,1)
+		</if>
+		WHERE b.id is not null  and result > 0 
+		<if test="workorderAuditLog.workorder_apply_id != null"> AND `workorder_apply_id`=#{workorderAuditLog.workorder_apply_id}</if>
+		<if test="workorderAuditLog.audit_user_id != null"> AND `audit_user_id`=#{workorderAuditLog.audit_user_id}</if>
+		<if test="workorderAuditLog.audit_result != null"> AND `audit_result`=#{workorderAuditLog.audit_result}</if>
+		<if test="workorderAuditLog.step != null"> AND `step`=#{step}</if>
+		<if test="workorderAuditLog.department != null"> AND (a.workorder_apply_id is not null OR 0=#{workorderAuditLog.department})</if>
+		ORDER BY b.update_time DESC 
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start},#{page_length}
 		</if>
 		;SELECT found_rows() AS recordCounts;
 	</select>
-	<select id="getById" resultMap="BaseResultMap">
-		SELECT * FROM lsblj_workorder_audit_log where id=#{id}
+
+	<select id="getApprovingApply" resultMap="BaseResultMap">
+		SELECT * FROM lsblj_workorder_audit_log 
+			WHERE workorder_apply_id=#{workorderAuditLog.workorder_apply_id} and department=#{workorderAuditLog.department} 
+			LIMIT 1;
+	</select>
+	
+	<resultMap id="devices" type="com.longersec.blj.domain.DTO.Deviceaccess">
+		<id column="device_account_id" jdbcType="INTEGER" property="device_account_id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="protocol_id" jdbcType="INTEGER" property="protocol_id"/>
+		<result column="device_account_id" jdbcType="INTEGER" property="device_account_id"/>
+		<result column="workorder_apply_id" jdbcType="INTEGER" property="workorder_apply_id"/>
+		<result column="device_name" jdbcType="VARCHAR" property="device_name"/>
+		<result column="ip" jdbcType="VARCHAR" property="ip"/>
+		<result column="port" jdbcType="INTEGER" property="port"/>
+		<result column="department" jdbcType="INTEGER" property="department"/>
+		<result column="depart_name" jdbcType="VARCHAR" property="depart_name"/>
+	</resultMap>
+	<select id="listWorkorderApplyDeviceAccount" resultMap="devices, workorderAuditLogRecordCounts">
+		SELECT SQL_CALC_FOUND_ROWS da.workorder_apply_id,da.device_account_id device_account_id,u.username username,d.ip, d.name device_name,u.protocol_id, p.name protocol_name,d.department,u.port,dp.name depart_name 
+		FROM lsblj_workorder_apply_device_account da,lsblj_device_account u,lsblj_device d,lsblj_protocol p,lsblj_department dp
+		WHERE da.workorder_apply_id = #{workorderAuditLog.workorder_apply_id}
+		  AND da.device_account_id=u.id
+		  AND d.id=u.device_id
+		  AND u.protocol_id=p.id
+		  AND d.department = dp.id 
+		  <if test="workorderAuditLog.department != null"> AND `department` IN(SELECT department_id FROM lsblj_department_cache where parent_id = #{workorderAuditLog.department})</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+	
+	<select id="getNoAudit" resultType="java.lang.Integer">
+		SELECT 1 ct FROM lsblj_workorder_audit_log 
+		WHERE workorder_apply_id=#{workorderAuditLog.workorder_apply_id}
+		HAVING COUNT(IF(audit_result=0,1,NULL))=0 OR COUNT(IF(audit_result=1,1,NULL))>0
 	</select>
 </mapper>

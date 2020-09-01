@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.longersec.blj.dao.WorkorderAuditLogDao;
 import com.longersec.blj.domain.ConfigWorkorder;
+import com.longersec.blj.domain.Department;
 import com.longersec.blj.domain.User;
 import com.longersec.blj.domain.WorkorderApply;
 import com.longersec.blj.domain.WorkorderAuditLog;
 import com.longersec.blj.domain.DTO.Deviceaccess;
 import com.longersec.blj.service.ConfigWorkorderService;
+import com.longersec.blj.service.DepartmentService;
 import com.longersec.blj.service.UserService;
 import com.longersec.blj.service.WorkorderApplyDeviceAccountService;
 import com.longersec.blj.service.WorkorderApplyService;
@@ -34,6 +36,8 @@ public class WorkorderAuditLogServiceImpl implements WorkorderAuditLogService{
 	private WorkorderApplyDeviceAccountService workorderApplyDeviceAccountService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private DepartmentService departmentService;
 
 	@Override
 	public boolean editWorkorderAuditLog(WorkorderAuditLog workorderAuditLog) {
@@ -59,6 +63,12 @@ public class WorkorderAuditLogServiceImpl implements WorkorderAuditLogService{
 	}
 
 	@Override
+	public List<Object> listAuditPeople(WorkorderAuditLog workorderAuditLog, int page_start, int page_length) {
+		// TODO Auto-generated method stub
+		return WorkorderAuditLogDao.listAuditPeople(workorderAuditLog, page_start, page_length);
+	}
+
+	@Override
 	public WorkorderAuditLog getById(Integer id) {
 		return WorkorderAuditLogDao.getById(id);
 	}
@@ -68,29 +78,80 @@ public class WorkorderAuditLogServiceImpl implements WorkorderAuditLogService{
 		// TODO Auto-generated method stub
 		boolean result = false;
 		ConfigWorkorder configWorkorder = configWorkorderService.getById(1);
-		WorkorderApply workorderApply = workorderApplyService.getById(id);
 		ArrayList<Deviceaccess>  devices = (ArrayList<Deviceaccess>) workorderApplyDeviceAccountService.selectById(id);
+		WorkorderAuditLogDao.clearWorkorderAuditLog(id);
 		for (Deviceaccess deviceaccess : devices) {
 			int i=1;
-			int department_id = deviceaccess.getDepartment();
-			for(; i<=configWorkorder.getLevel(); i++) {
-				if(deviceaccess.getDepartment()==null) {//未找到设备所属部门
-					break;
+			Integer department_id = deviceaccess.getDepartment();
+			if(department_id>1) {
+
+				for(; i<=configWorkorder.getLevel(); i++) {//找上级部门管理员
+					User user = userService.selectByDepartment(department_id);
+					if(user!=null) {
+						
+					}
+					WorkorderAuditLog workorderAuditLog = new WorkorderAuditLog();
+					workorderAuditLog.setWorkorder_apply_id(id);
+					workorderAuditLog.setDevice_account_id(deviceaccess.getDevice_account_id());
+					workorderAuditLog.setDepartment(department_id);
+					workorderAuditLog.setStep(i);
+					WorkorderAuditLogDao.addWorkorderAuditLog(workorderAuditLog);
+					Department d = departmentService.selectParentId(department_id);
+					if(d==null) {
+						break;
+					}
+					department_id = d.getParent_id();
 				}
-				User user = userService.selectByDepartment(department_id);
+				
+				if(configWorkorder.getEndaudit()==1) {
+					WorkorderAuditLog workorderAuditLog = new WorkorderAuditLog();
+					workorderAuditLog.setWorkorder_apply_id(id);
+					workorderAuditLog.setDevice_account_id(deviceaccess.getDevice_account_id());
+					workorderAuditLog.setDepartment(0);
+					workorderAuditLog.setStep(i);
+					WorkorderAuditLogDao.addWorkorderAuditLog(workorderAuditLog);
+				}
+			}else if(department_id==1){
 				WorkorderAuditLog workorderAuditLog = new WorkorderAuditLog();
-				workorderAuditLog.setDepartment(department_id);
-				workorderAuditLog.setStep(i);
-				WorkorderAuditLogDao.addWorkorderAuditLog(workorderAuditLog);
-			}
-			if(configWorkorder.getEndaudit()==1) {
-				WorkorderAuditLog workorderAuditLog = new WorkorderAuditLog();
+				workorderAuditLog.setWorkorder_apply_id(id);
+				workorderAuditLog.setDevice_account_id(deviceaccess.getDevice_account_id());
 				workorderAuditLog.setDepartment(0);
 				workorderAuditLog.setStep(i);
 				WorkorderAuditLogDao.addWorkorderAuditLog(workorderAuditLog);
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public List<Object> listWorkorderApply(WorkorderAuditLog workorderAuditLog, int page_start, int page_length) {
+		// TODO Auto-generated method stub
+		return WorkorderAuditLogDao.listWorkorderApply(workorderAuditLog, page_start, page_length);
+	}
+
+	@Override
+	public WorkorderAuditLog getApprovingApply(WorkorderAuditLog workorderAuditLog) {
+		// TODO Auto-generated method stub
+		return WorkorderAuditLogDao.getApprovingApply(workorderAuditLog);
+	}
+
+	@Override
+	public List<Object> listWorkorderApplyDeviceAccount(WorkorderAuditLog workorderAuditLog, int page_start,
+			int page_length) {
+		// TODO Auto-generated method stub
+		return WorkorderAuditLogDao.listWorkorderApplyDeviceAccount(workorderAuditLog, page_start, page_length);
+	}
+
+	@Override
+	public Integer getNoAudit(int workorder_apply_id) {
+		// TODO Auto-generated method stub
+		return WorkorderAuditLogDao.getNoAudit(workorder_apply_id);
+	}
+
+	@Override
+	public boolean clearWorkorderAuditLog(int workorder_apply_id) {
+		// TODO Auto-generated method stub
+		return WorkorderAuditLogDao.clearWorkorderAuditLog(workorder_apply_id);
 	}
 
 }

@@ -44,8 +44,8 @@
 		<set>
 		<if test="file_id != null">`file_id`=#{file_id},</if>
 		<if test="username != null">`username`=#{username},</if>
-		<if test="password != null and password != ''">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
-		<if test="ssh_password != null and ssh_password != ''">`ssh_password`=AES_ENCRYPT(#{ssh_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null and password != ''">`password`=#{password},</if>
+		<if test="ssh_password != null and ssh_password != ''">`ssh_password`=#{ssh_password},</if>
 		<if test="device_id != null">`device_id`=#{device_id},</if>
 		<if test="port != null">`port`=#{port},</if>
 		<if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
@@ -61,8 +61,8 @@
 		<set>
 		<if test="file_id != null">`file_id`=#{file_id},</if>
 		<if test="username != null">`username`=#{username},</if>
-		<if test="password != null and password != ''">`password`=AES_ENCRYPT(#{password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
-			<if test="ssh_password != null and ssh_password != ''">`ssh_password`=AES_ENCRYPT(#{ssh_password},(select aeskey from lsblj_config_password_encrypt_key limit 1)),</if>
+		<if test="password != null and password != ''">`password`=#{password},</if>
+			<if test="ssh_password != null and ssh_password != ''">`ssh_password`=#{ssh_password},</if>
 		<if test="device_id != null">`device_id`=#{device_id},</if>
 		<if test="port != null">`port`=#{port},</if>
 		<if test="protocol_id != null">`protocol_id`=#{protocol_id},</if>
@@ -264,9 +264,6 @@
 	<select id="checkaccountById" resultType="com.longersec.blj.domain.DeviceAccount">
 		select *  from lsblj_device_account where device_id=#{device_id} and username = #{username};
 	</select>
-<!--	(#{item.super_account},#{AES_ENCRYPT(#{item.super_password},(select aeskey from lsblj_config_password_encrypt_key limit 1))},#{select id from lsblj_device where ip=#{item.name} LIMIT 1 },#{item.port},#{item.protocol_id},#{item.ssh_key},#{item.login_method})-->
-<!--	INSERT INTO lsblj_device_account (username  , password,device_id,port,protocol_id,ssh_key,login_method)-->
-<!--	values-->
 	<insert id="insertMore">
 
 		<foreach collection="ArrayList" item="item" index="index" >
