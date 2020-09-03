@@ -57,10 +57,10 @@ var _scripts_table= function (field,value){
 					return  '<div>' +status(data)+ '</div>';
 			}},
 			{"data": "apply_username","render":function (data) {
-					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 200px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
 			}},
 			{"data": "apply_realname","render":function (data) {
-					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 200px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
 			}},
 			{
 				"data": "id", "render": function (data, type, row, meta) {
@@ -122,7 +122,9 @@ var _device_table= function (apply_id){
 			}
 		},
 		"columns": [
-			{"data": "username"},
+			{"data": "username", "render":function(data, type,row, meta){
+				return data==''?'空用户':data;
+			}},
 			{"data": "device_name"},
 			{"data": "ip"},
             { "data": "depart_name" , "render" : function(data, type,row, meta) {

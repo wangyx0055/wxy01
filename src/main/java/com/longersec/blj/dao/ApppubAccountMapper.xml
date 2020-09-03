@@ -155,7 +155,7 @@
 	</select>
 
 	<select id="getById" resultMap="BaseResultMap">
-		SELECT (AES_DECRYPT(password,(select aeskey from lsblj_config_password_encrypt_key limit 1)))password,lsblj_apppub_account.*  
+		SELECT lsblj_apppub_account.*  
 		  FROM lsblj_apppub_account WHERE id = #{id}
 	</select>
 	

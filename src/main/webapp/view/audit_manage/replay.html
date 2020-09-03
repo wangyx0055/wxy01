@@ -1,227 +1,181 @@
-<!DOCTYPE HTML>
-<html>
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <title>回放</title>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="../bower_components/dist/css/playback.css">
-    <!-- my css -->
-    <link rel="stylesheet"
-          href="../bower_components/dist/css/main/main.css">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet"
-          href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <meta charset="utf-8" />
+    <title>回访详情</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Ionicons -->
-    <link rel="stylesheet"
-          href="../bower_components/Ionicons/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet"
-          href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet"
-          href="../bower_components/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-           folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet"
-          href="../bower_components/dist/css/skins/_all-skins.min.css">
-    <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <style>
-        .nav-tabs-custom > .nav-tabs > li {
-            border: none!important;
-            background: rgba(0, 0, 0, 0.02);
-            border-bottom: none !important;
-            margin-bottom: -1px !important;
-            border-left: 0px !important;
-            border-top: none !important;
-            border-right: 0px!important;
-            border-radius: 0px!important;
-            margin-right: 0px!important;
-        }
-        .nav-tabs-custom > .nav-tabs .active{
-            border: none!important;
-            background: rgba(0, 0, 0, 0.02);
-            border-bottom: none !important;
-            margin-bottom: -1px !important;
-            border-left: 0px !important;
-            border-top: 1.5px solid #1494F7 !important;
-            border-right: 1px solid #E8E8E8!important;
-            border-radius: 0px!important;
-            margin-right: 0px!important;
-            margin-top: -1px;
-        }
-        .controls span{
-        	color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../bower_components/dist/css/style.css">
+    <!--[if lt IE 9]>  <link rel="stylesheet" type="text/css" href="../../bower_components/dist/css/ie8.css"><![endif]-->
+    <link rel="stylesheet" type="text/css" href="../bower_components/dist/css/playback.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
+
 </head>
 
 <body>
-<div id="player" style="width:82%;background-color: #333;">
-
-    <!-- Player display -->
-    <div id="display" style="float:right;">
-    </div>
-
-    <!-- Player controls -->
-    <div class="controls" style="margin:0 auto;">
-        <div class="notification-container" style="display:none;">
-            <div class="seek-notification">
-                <p>
-                    Seek in progress...
-                    <button id="cancel-seek">Cancel</button>
-                </p>
-            </div>
+<div class="row-box">
+    <div class="m-left">
+        <h3 class="tit">回访详情</h3>
+        <div th:if="${isapppub} eq 0" class="test"  id="device_name" th:text="${record.device_name}">Linux测试机</div>
+        <div th:if="${isapppub} eq 1" class="test"  id="device_name" th:text="${record.device_name}">Linux测试机</div>
+        <div class="info">
+            <p>登录协议：<span id="protocol" th:text="${record.protocol_name}"></span></p>
+            <p>设备地址：<span id="device_ip" th:text="${record.device_ip}"></span></p>
+            <p>设备账号：<span id="device_username" th:text="${record.device_username}"></span></p>
         </div>
-        <button id="play-pause">播放</button>
-        <input id="position-slider" type="range">
-        <span id="position">00:00</span>
-        <span>/</span>
-        <span id="duration">00:00</span>
-    </div>
-</div>
-<div id="command">
-    <div class="list-group">
-        <div style="height: 40px;width:200px;border-bottom: 1px solid #E8E8E8;margin-top: 10px;font-size: 12px;margin-left: 10px;">
-            <span style="font-size: 16px;font-family: Microsoft YaHei;font-weight: 400; color: rgba(0,0,0,1);line-height: 24px;">详情</span>
+        <div class="info info-1">
+            <p>运维用户：<span id="username" th:text="${record.username}"></span></p>
+            <p>开始时间：<span id="start" th:text="${record.start}"></span></p>
+            <p>结束时间：<span id="end" th:text="${record.end}"></span></p>
         </div>
-        <div style="height: 120px;width:200px;border-bottom: 1px solid #E8E8E8;margin-top: 10px;margin-left: 10px;">
-            <div th:if="${isapppub} eq 0" style="background-color: #1494F7;border: none;border-radius: 3px;height:30px;width:80px;padding-top: 5px;text-align: center;"><span style="font-size: 12px;color: white;" id="device_name" th:text="${record.device_name}"></span>
-            </div>
-            <div th:if="${isapppub} eq 1" style="background-color: #1494F7;border: none;border-radius: 3px;height:30px;width:80px;padding-top: 5px;text-align: center;"><span style="font-size: 12px;color: white;" id="app_name" th:text="${record.name}"></span>
-            </div>
-            <div th:if="${isapppub} eq 0" style="margin-top: 10px;font-size: 12px;" id="device_info">
-                <div style="margin-bottom: -10px;">
-                    登录协议:
-                    <span id="protocol" th:text="${record.protocol_name}"></span>
-                </div><br>
-                <div style="margin-bottom: -10px;">
-                    设备地址:
-                    <span id="device_ip" th:text="${record.device_ip}"></span>
-                </div><br>
-                <div>设备账号:
-                    <span id="device_username" th:text="${record.device_username}"></span>
-                </div>
-            </div>
-            <div th:if="${isapppub} gt 0" style="margin-top: 10px;font-size: 12px;" id="app_info">
-                <div style="margin-bottom: -10px;">
-                    登录协议:
-                    <span>应用发布</span>
-                </div><br>
-                <div style="margin-bottom: -10px;">
-                    服&nbsp;&nbsp;务&nbsp;&nbsp;器:
-                    <span id="apppub_name" th:text="${record.server_ip}"></span>
-                </div><br>
-                <div>程序名称:
-                    <span id="apppub_program" th:text="${record.program}"></span>
-                </div>
-            </div>
-        </div>
-        <div style="height: 80px;margin-top: 10px;font-size: 12px;margin-left: 10px;">
-            <div>
-                <div style="margin-bottom: -10px;">运维用户:<span id="username" th:text="${record.username}"></span>
-                </div><br>
-                <div style="margin-bottom: -10px;">开始时间:<span id="start" th:text="${record.start}"></span>
-                </div><br>
-                <div style="margin-bottom: 10px;">结束时间:<span id="end" th:text="${record.end}"></span>
-                </div>
-            </div>
-        </div>
-        <div class="nav-tabs-custom" style="width:212px;border: 1px solid #D9D9D9;border-radius: 0px;margin-left: 5px; ">
-            <ul class="nav nav-tabs" style="margin-left: 0px!important;">
-                <li class="active" style="width: 70px;" id="oprate">
-                    <a href="#operate_recode" data-toggle="tab" style="padding:2px"> <div style="width: 22px;height: 22px;margin-left: 20px;margin-bottom: 5px;background:rgba(245,245,245,1);"> <img src="../images/recode.png"  style="width: 21px;height: 20px;margin-left: 2px;margin-top: 2px;"></div>
-                   <span style="font-size: 12px;">运维记录</span></a>
+        <div class="m-record">
+            <ul class="ul-tab TAB_CLICK" id=".m-taber">
+                <li class="l1 on">
+                    <a href="javascript:;" class="con">
+                        <i class="icon"></i>
+                        运维记录
+                    </a>
                 </li>
-                <li id="transport" style="width: 70px;">
-                    <a href="#file_transport"  data-toggle="tab" style="padding:2px"> <div style="width: 22px;height: 22px;margin-left: 20px;margin-bottom: 5px;background:rgba(245,245,245,1);"> <img src="../images/tran1.png"  style="width: 21px;height: 20px;margin-left: 2px;margin-top: 2px;"></div>
-                        <span style="font-size: 12px;">文件传输</span></a>
+                <li class="l2">
+                    <a href="javascript:;" class="con">
+                        <i class="icon"></i>
+                        文件传输
+                    </a>
                 </li>
-                <li id="user" style="width: 70px;">
-                    <a href="#jion_user" data-toggle="tab" style="padding:2px"> <div style="width: 22px;height: 22px;margin-left: 20px;margin-bottom: 5px;background:rgba(245,245,245,1);"> <img src="../images/muser1.png"  style="width: 21px;height: 20px;margin-left: 2px;margin-top: 2px;"></div>
-                        <span style="font-size: 12px;">参与用户</span></a>
+                <li class="l3">
+                    <a href="javascript:;" class="con">
+                        <i class="icon"></i>
+                        参与用户
+                    </a>
                 </li>
             </ul>
-            <div class="tab-content">
-                <div class="active tab-pane" id="operate_recode">
-                        <input type="text" class="form-control" placeholder="输入操作指令" style="width: 190px;height: 30px;text-align: left;margin-top:10px;border: 1px solid #E5E5E5;border-radius: 1px;font-size: 12px;"><nobr></nobr>
-                        <button class="newaddbtn btn" style="float: right;margin-top: -30px;border-radius: 1px;">搜索</button>
-                            <div style="margin-top: 20px;">
-                                <table id="commands" class="table table-hover" >
-                                    <thead>
-                                    <tr>
-                                        <td><span style="font-weight: bold;color:rgba(51,51,51,1);">时间</span></td>
-                                        <td><span style="font-weight: bold;color:rgba(51,51,51,1);">命令</span></td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                             </div>
+            <div class="m-taber">
+                <div class="soBox">
+                    <form action="">
+                        <input type="text" class="inp" placeholder="输入操作指令">
+                        <input type="submit" class="btn" value="搜索">
+                    </form>
                 </div>
-                <div class=" tab-pane" id="file_transport">
-                    <input type="text" class="form-control" placeholder="输入操作指令" style="width: 190px;height: 30px;text-align: left;margin-top:10px;border: 1px solid #E5E5E5;border-radius: 1px;font-size: 12px;"><nobr></nobr>
-                    <button class="newaddbtn btn" style="float: right;margin-top: -30px;border-radius: 1px;">搜索</button>
-                    <div style="margin-top: 20px;">
-                        <table  class="table table-hover" >
-                            <thead>
-                            <tr>
-                                <td><span style="font-weight: bold;color:rgba(51,51,51,1);">时间</span></td>
-                                <td><span style="font-weight: bold;color:rgba(51,51,51,1);">命令</span></td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+                <dl class="m-command" id="commands">
+                    <dt>
+                        <span>时间</span>
+                        <span>命令</span>
+                    </dt>
+                </dl>
+                <div class="page">
+                    <span>共<em>00</em>条指令</span>
+                    <ul class="ul-arrow">
+                        <li><a href=""><img src="../images/z-p4.png" alt=""></a></li>
+                        <li><a href=""><img src="../images/z-p5.png" alt=""></a></li>
+                    </ul>
                 </div>
-                <div class=" tab-pane" id="jion_user">
-                    <input type="text" class="form-control" placeholder="输入操作指令" style="width: 190px;height: 30px;text-align: left;margin-top:10px;border: 1px solid #E5E5E5;border-radius: 1px;font-size: 12px;"><nobr></nobr>
-                    <button class="newaddbtn btn" style="float: right;margin-top: -30px;border-radius: 1px;">搜索</button>
-                    <div style="margin-top: 20px;">
-                        <table  class="table table-hover" >
-                            <thead>
-                            <tr>
-                                <td><span style="font-weight: bold;color:rgba(51,51,51,1);">时间</span></td>
-                                <td><span style="font-weight: bold;color:rgba(51,51,51,1);">命令</span></td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            <div class="m-taber">
+                <div class="soBox">
+                    <form action="">
+                        <input type="text" class="inp" placeholder="输入操作指令">
+                        <input type="submit" class="btn" value="搜索">
+                    </form>
                 </div>
-          </div>
-      </div>
+                <dl class="m-command">
+                    <dt>
+                        <span>时间</span>
+                        <span>文件</span>
+                    </dt>
+                </dl>
+                <div class="page">
+                    <span>共<em>00</em>条指令</span>
+                    <ul class="ul-arrow">
+                        <li><a href=""><img src="../images/z-p4.png" alt=""></a></li>
+                        <li><a href=""><img src="../images/z-p5.png" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="m-taber">
+                <div class="soBox">
+                    <form action="">
+                        <input type="text" class="inp" placeholder="输入操作指令">
+                        <input type="submit" class="btn" value="搜索">
+                    </form>
+                </div>
+                <dl class="m-command">
+                    <dt>
+                        <span>用户</span>
+                        <span>姓名</span>
+                    </dt>
+                </dl>
+                <div class="page">
+                    <span>共<em>00</em>条指令</span>
+                    <ul class="ul-arrow">
+                        <li><a href=""><img src="../images/z-p4.png" alt=""></a></li>
+                        <li><a href=""><img src="../images/z-p5.png" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="m-video" style="background-color: white;">
+        <div id="player">
+            <div id="display">
+                <div class="notification-container">
+                    <div class="seek-notification">
+                        <p>
+                            Seek in progress...
+                            <button id="cancel-seek">取消</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="controls">
+               <!-- <input id="position-slider" type="range">-->
+                <div class="container" style="background-color: #f0f0f0;width: 100%;height: 5px;">
+                    <div class="skills js"></div>
+                </div>
+            </div>
+            <div id="play_cont">
+                <div style="float:left;margin-left: 10px;">
+                    <i class="fa fa-play" style="margin-right: 10px;"></i>
+                    <span id="position">00:00</span>
+                    <span>/</span>
+                    <span id="duration">00:00</span>
+                </div>
+                <div style="float: right;margin-right: 10px;" >
+                    <span style="margin-right: 10px;cursor: pointer">倍速</span>
+                    <i class="fa fa-arrow-circle-down" style="margin-right: 5px;"></i>
+                    <i class="fa   fa-cog" style="margin-right: 5px;"></i>
+                    <i class="fa fa-arrows-alt"></i>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Guacamole recording player -->
+
+
+</div>
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
-<script src="../../js/common/common.js"></script>
+<script src="../js/common/common.js"></script>
 <!-- Bootstrap 3.3.7 -->
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript"  src="../js/all.min.js"></script>
-<script type="text/javascript" src="../js/playback.js"></script>
-<script>
-var _protocol = function (data) {
-    if (data == 1) {
-        return "SSH";
-    } else if (data == 2) {
-        return "RDP";
-    } else if (data == 3) {
-        return "TELNET";
-    } else if (data == 4) {
-        return "VNC";
-    }
-}
 
-$('#cancel-seek').click();
+<script src="../js/all.min.js"></script>
+<script src="../js/playback.js"></script>
+<!--<script src="../../bower_components/plugins/jQueryUI/DPlayer.min.js"></script>-->
+<script>
 if(location.href.indexOf('isapppub=1')>0){
 	Replay('../Operator/appReplay?recordid='+ [[${recordid}]]);
 	_commands(1, [[${recordid}]],'','');
@@ -229,27 +183,7 @@ if(location.href.indexOf('isapppub=1')>0){
 	Replay('../Operator/deviceReplay?recordid='+ [[${recordid}]]);
 	_commands(0, [[${recordid}]],'','');
 }
-$('#start').html('[[${record.start}]]');
-$('#end').html('[[${record.end}]]');
-</script>
-<script>
-$(function () {
-    $("#oprate").click(function () {
-        $("#oprate img").attr('src', '../images/recode2.png');
-        $("#transport img").attr('src', '../images/tran1.png');
-        $("#user img").attr('src', '../images/muser1.png');
-    });
-    $("#transport").click(function () {
-        $("#oprate img").attr('src', '../images/recode1.png');
-        $("#transport img").attr('src', '../images/tran2.png');
-        $("#user img").attr('src', '../images/muser1.png');
-    });
-    $("#user").click(function () {
-        $("#oprate img").attr('src', '../images/recode1.png');
-        $("#transport img").attr('src', '../images/tran1.png');
-        $("#user img").attr('src', '../images/muser2.png');
-    })
-})
 </script>
 </body>
+
 </html>

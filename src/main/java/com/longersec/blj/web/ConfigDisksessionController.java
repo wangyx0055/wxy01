@@ -26,7 +26,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.longersec.blj.domain.ConfigDisksession;
 import com.longersec.blj.service.ConfigDisksessionService;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.service.ConfigService;
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.SystemCommandUtil;
 import com.longersec.blj.utils.SystemUsageUtil;
 import com.longersec.blj.utils.Validator;
@@ -47,6 +49,9 @@ public class ConfigDisksessionController {
 	private ConfigDisksessionService configDisksessionService;
 	@Autowired
 	private ConfigService configService;
+	
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 	@RequestMapping("/listConfigDisksession")
 	@ResponseBody
@@ -108,6 +113,9 @@ public class ConfigDisksessionController {
 			if(result.getBoolean("success")) {
 				if(configDisksession.getSession_backup_password().equals("xxxxxx")){
 					configDisksession.setSession_backup_password(null);
+				}
+				if(configDisksession.getSession_backup_password()!=null) {
+					configDisksession.setSession_backup_password(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(),configDisksession.getSession_backup_password()));
 				}
 
 				Boolean r = configDisksessionService.editConfigDisksession(configDisksession);

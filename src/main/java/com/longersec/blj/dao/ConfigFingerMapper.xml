@@ -47,8 +47,7 @@
 	</delete>
 	<select id="findAll" resultMap="BaseResultMap, configFingerRecordCounts">
 		SELECT 
-		SQL_CALC_FOUND_ROWS 
-		CAST(AES_DECRYPT(pwd,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) pwd,id,url,status,endpoint   FROM lsblj_config_finger 
+		SQL_CALC_FOUND_ROWS pwd,id,url,status,endpoint   FROM lsblj_config_finger 
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start},#{page_length}
 		</if>
@@ -57,6 +56,6 @@
 	
 
 	<select id="getById" resultMap="BaseResultMap">
-		SELECT CAST(AES_DECRYPT(pwd,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) pwd,id,url,status,endpoint FROM lsblj_config_finger where id =#{id};
+		SELECT pwd,id,url,status,endpoint FROM lsblj_config_finger where id =#{id};
 	</select>
 </mapper>

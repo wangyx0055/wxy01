@@ -53,6 +53,7 @@ import com.longersec.blj.service.ApppubRecordService;
 import com.longersec.blj.service.ApppubServerService;
 import com.longersec.blj.service.CmdPolicyService;
 import com.longersec.blj.service.ConfigDisksessionService;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.service.ConfigService;
 import com.longersec.blj.service.DeviceAccountService;
 import com.longersec.blj.service.DeviceRecordService;
@@ -63,6 +64,7 @@ import com.longersec.blj.service.ProtocolService;
 import com.longersec.blj.service.UserService;
 import com.longersec.blj.utils.AdOperate;
 import com.longersec.blj.utils.JSBtoAAtoB;
+import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.SystemCommandUtil;
 import com.longersec.blj.utils.SystemUsageUtil;
 import com.longersec.blj.utils.httpClient;
@@ -106,6 +108,8 @@ public class OperatorController {
 	private ApppubProgramService apppubProgramService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
     @RequestMapping("/deviceList")
     @ResponseBody
@@ -278,6 +282,7 @@ public class OperatorController {
     	if(device_account_id!=null) {
     		//设备账号
         	DeviceAccount deviceAccount = deviceAccountService.getById(device_account_id);
+        	deviceAccount.setPassword(Sm4Utils.decryptEcb(configPasswordEncryptKeyService.getKey(), deviceAccount.getPassword()));
         	//获取设备信息
 			Device device = deviceService.getById(deviceAccount.getDevice_id());
         	Date dNow = new Date();

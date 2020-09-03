@@ -533,6 +533,7 @@ $('#editButton1').click(function(){
             }
             loadAJAX('#appserver');
             loadAJAX('#apppub');
+            getAppProgram();
         },
         error:function(){
             $("#modal-danger .modal-body").text('失败!');
@@ -1175,14 +1176,10 @@ getAppProgram();
 
 $(function () {
     $("#close1").click(function() {
-        if($("#edit_app").val()==null){
-            getAppProgram();
-        }
+        getAppProgram();
     })
     $("#close2").click(function() {
-        if($("#edit_app").val()==null){
-            getAppProgram();
-        }
+        getAppProgram();
     })
 })
 

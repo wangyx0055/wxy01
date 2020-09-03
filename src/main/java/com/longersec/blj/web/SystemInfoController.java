@@ -51,7 +51,6 @@ import com.longersec.blj.service.SystemUsageService;
 import com.longersec.blj.service.UserService;
 import com.longersec.blj.utils.SystemCommandUtil;
 import com.longersec.blj.utils.SystemUsageUtil;
-import com.longersec.blj.license.License;
 
 import cn.hutool.system.SystemUtil;
 import net.sf.json.JSONObject;

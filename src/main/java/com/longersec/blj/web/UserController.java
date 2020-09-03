@@ -175,14 +175,14 @@ public class UserController {
 			//密码校检
 			if(configLogin.getPassword_verify()==1&&!user.getPassword().matches(regex7)) {
 				result.accumulate("msg","密码复杂度：密码长度为8-32个字符，且包含大小写字母、数字和特殊字符，不支持空格");
-			}else if(user.getId()!=null&&configLogin.getPassword_verification_times()>0&&userPasswordLogService.findUserPassordLastCertainTimes(user.getPlain_password(), configLogin.getPassword_verification_times(), user.getId())>0) {
+			}else if(user.getId()!=null&&configLogin.getPassword_verification_times()>0&&userPasswordLogService.findUserPassordLastCertainTimes(user.getPassword(), configLogin.getPassword_verification_times(), user.getId())>0) {
 				result.accumulate("msg","新密码不能与前"+configLogin.getPassword_verification_times()+"次设置的密码相同");
 			}
 		}else if (user.getId()==null){//新建用户
 			//密码校检
 			if(configLogin.getPassword_verify()==1&&!user.getPassword().matches(regex7)) {
 				result.accumulate("msg","密码复杂度：密码长度为8-32个字符，且包含大小写字母、数字和特殊字符，不支持空格");
-			}else if(user.getId()!=null&&configLogin.getPassword_verification_times()>0&&userPasswordLogService.findUserPassordLastCertainTimes(user.getPlain_password(), configLogin.getPassword_verification_times(), user.getId())>0) {
+			}else if(user.getId()!=null&&configLogin.getPassword_verification_times()>0&&userPasswordLogService.findUserPassordLastCertainTimes(user.getPassword(), configLogin.getPassword_verification_times(), user.getId())>0) {
 				result.accumulate("msg","新密码不能与前"+configLogin.getPassword_verification_times()+"次设置的密码相同");
 			}
 		}
@@ -478,13 +478,13 @@ public class UserController {
 		operatorLog.setContent("编辑");
 		//是否操作成功
 		user1.setLast_change_password((int)(System.currentTimeMillis()/1000));
-		user1.setPassword(new_password);
+		user1.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), new_password));
 		Boolean r = userService.editUser(user1);
 		if(r) {
 			session.setAttribute("forceChangePassword", null);
 			UserPasswordLog userPasswordLog = new UserPasswordLog();
 			userPasswordLog.setCreate_time((int)(System.currentTimeMillis()/1000));
-			userPasswordLog.setPassword(request.getParameter("present_password"));
+			userPasswordLog.setPassword(user1.getPassword());
 			userPasswordLog.setLsblj_user_id(user1.getId());
 			userPasswordLogService.addUserPasswordLog(userPasswordLog);
 			operatorLog.setResult("成功");
@@ -599,7 +599,7 @@ public class UserController {
 					"				   <soapenv:Body>\r\n" + 
 					"				      <ws:getEnroll>\r\n" + 
 					"				         <arg0>"+configFinger.getEndpoint()+"</arg0>\r\n" + 
-					"				         <arg1>"+configFinger.getPwd()+"</arg1>\r\n" + 
+					"				         <arg1>"+Sm4Utils.decryptEcb(configPasswordEncryptKeyService.getKey(), configFinger.getPwd())+"</arg1>\r\n" + 
 					"				         <arg2>"+userid+"</arg2>\r\n" + 
 					"				      </ws:getEnroll>\r\n" + 
 					"				   </soapenv:Body>\r\n" + 

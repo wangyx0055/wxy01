@@ -37,7 +37,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -117,31 +117,6 @@ public class LoginController {
 			}
     		return "";
     	}
-    	
-    	
-    	
-    	
-
-        
-    	try {
-    		String json = "333333";
-            System.out.println("加密前源数据————" + json);
-            // 生成32位16进制密钥
-            String key = "9A8159B49AB10B5BA55BC477B1C0E79E";
-            System.out.println(key + "-----生成key");
-            String cipher = Sm4Utils.encryptEcb(key, json);
-            System.out.println("加密串---" + cipher);
-            System.out.println(Sm4Utils.verifyEcb(key, cipher, json));
-            json = Sm4Utils.decryptEcb(key, cipher);
-            System.out.println("解密后数据---" + json);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    	
-    	
-    	
-    	
-    	
     	
     	
     	String logintoken = KeyUtil.genUniqueKey();
@@ -361,6 +336,18 @@ public class LoginController {
 		    		loginlog.setResult("失败");
 		    		loginLogService.addLoginLog(loginlog);
 		            model.addAttribute("msg","超过相同用户在线数");
+		            
+		            AlertLog alertLog = new AlertLog();
+		            alertLog.setDangerlevel(0);
+		            alertLog.setProtocol("web");
+		            alertLog.setUsername(user.getUsername());
+		            alertLog.setRealname(user.getRealname());
+		            alertLog.setPolicy("登录策略");
+		            alertLog.setSource_ip(httpClient.getRemortIP(request));
+		            alertLog.setOperate_datetime(Integer.toString((int)(System.currentTimeMillis()/1000)));
+		            alertLog.setAlert_times("0");
+		            alertLog.setCommand("超过在线人数");
+		            alertLogService.addAlertLog(alertLog);
 		            return "/login";
 				}
 				
