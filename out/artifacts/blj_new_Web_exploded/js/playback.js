@@ -18,6 +18,8 @@
  */
 var recording;
 var recordingDisplay;
+var page_start = 0;
+var page_length = 10;
 function Replay(url){
 
 	(function initExamplePlayer() {
@@ -196,7 +198,6 @@ function Replay(url){
 
 	        // Scale display to fit width of container
 	        recordingDisplay.scale(display.offsetWidth / width);
-			$('.controls').css('margin-top',display.offsetWidth/2.1+'px')
 
 	    };
 
@@ -256,6 +257,27 @@ function getKeys(url){
 
 
 var _commands = function(isapppub, record_id, field, value) {
+	$.ajax({
+	    url: "../recordCommand/listRecordCommand?is_apppub="+isapppub+"&record_id="+record_id,
+	    type: "POST",
+	    data:{
+			start: page_start,
+			length: page_length
+	    },
+	    success:function(data){
+			$('#commands').html('');
+			var data = data['data'];
+	    	for(key in data){
+	    		$('#commands').append('<dd><span><div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:70px;" onclick="setVideoPos('+data[key].relatime+')" data-html="true" data-toggle="tooltip" title="时间:'+data[key]._time+'">'+data[key]._time.substring(11)+'</div></span><span>'+data[key].command+'</span></dd>')
+	    	}
+	    	//$('.list-group .commands div').tooltip();
+			page_start = page_start+page_length;
+	    },
+	    error:function(){
+
+	    }
+	})
+	/*
     $('#commands')
         .DataTable(
             {
@@ -308,7 +330,7 @@ var _commands = function(isapppub, record_id, field, value) {
                     $('#commands div').tooltip();
                 }
             });
-
+	*/
 }
 
 $("#sousuoId").click(function() {

@@ -2,11 +2,13 @@ package com.longersec.blj.web;
 
 import com.longersec.blj.domain.*;
 import com.longersec.blj.service.ApppubAccountService;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.service.DeviceAccountService;
 import com.longersec.blj.service.ExportService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.service.UserService;
 import com.longersec.blj.utils.Operator_log;
+import com.longersec.blj.utils.Sm4Utils;
 
 import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
@@ -40,6 +42,9 @@ public class ExportController {
     
     @Autowired
     private OperatorLogService operatorLogService;
+	
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 
     @RequestMapping(value = "/operatorLog", method = RequestMethod.GET)
@@ -555,6 +560,7 @@ public void exprotApppubApp(HttpServletResponse response, HttpServletRequest req
         }else {
             User current_u = (User) SecurityUtils.getSubject().getPrincipal();
             User _user = userService.checkLogin(current_u.getUsername());
+            _user.setPassword(Sm4Utils.decryptEcb(configPasswordEncryptKeyService.getKey(), _user.getPassword()));
             if (password.equals(_user.getPassword())  && result.getBoolean("success")){
                 result.put("success", true);
             }else {
@@ -584,6 +590,7 @@ public void exprotApppubApp(HttpServletResponse response, HttpServletRequest req
         if (result.getBoolean("success")){
             //User current_u = (User) SecurityUtils.getSubject().getPrincipal();
             User _user = userService.checkLogin(username);
+            _user.setPassword(Sm4Utils.decryptEcb(configPasswordEncryptKeyService.getKey(), _user.getPassword()));
             if (password.equals(_user.getPassword())){
             	if(device_account_id!=null) {
             		DeviceAccount device_account = deviceAccountService.getById(device_account_id);

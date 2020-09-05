@@ -165,7 +165,7 @@ function AutoSearch() {
                 }},*/
             { "data": "id", "render": function(data,type,row,meta){
                     return '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-editapp" class="newcss1" style="cursor:pointer">编辑</a> '+
-                        '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-delapp" class="newcss2" style="cursor:pointer;margin-left: 20px">删除</a> ';
+                        	'<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-delapp" class="newcss2" style="cursor:pointer;margin-left: 20px">删除</a> ';
                 }}
         ],
         "fnDrawCallback": function() {

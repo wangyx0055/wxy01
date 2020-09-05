@@ -127,12 +127,12 @@ a:hover{color:#ff4b59}
 ::-o-scrollbar-track{-webkit-box-shadow:inset 0 0 5px rgba(0,0,0,.2);border-radius:10px;background:#ededed}
 body,html{min-width:1200px}
 .row-box{overflow:hidden}
-.m-left{overflow-y:auto;width:290px;padding:0 20px 20px;float:left;position:absolute;left:0;top:0;bottom:0}
+.m-left{overflow-y:auto;width:290px;padding:0 5px 0px;float:left;position:absolute;left:0;top:0;bottom:0;border: 1px solid #dbdbdb;}
 .m-left .tit{padding:19px 0 10px;border-bottom:1px solid #dbdbdb;line-height:24px;font-size:18px;color:#000}
 .m-left .test{width:110px;height:36px;margin:11px 0 10px;line-height:36px;background-color:#1494f7;font-size:14px;color:#fff;text-align:center;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px}
 .m-left .info{padding-bottom:6px;margin-bottom:5px;border-bottom:1px solid #dbdbdb;line-height:24px;font-size:14px;color:#333}
 .m-left .info-1{border:none;margin-bottom:9px}
-.m-record{overflow:hidden;border:1px solid #dbdbdb;border-top:none}
+.m-record{overflow:hidden;border-top:none;}
 .ul-tab{overflow:hidden;border-bottom:1px solid #dbdbdb}
 .ul-tab li{float:left;width:33.33%;border-top:1px solid #dbdbdb;background-color:#f5f5f5}
 .ul-tab .con{display:block;padding:11px 0 10px;border-top:1px solid transparent;text-align:center;font-size:14px;color:#333}
@@ -147,7 +147,7 @@ body,html{min-width:1200px}
 .soBox{position:relative;overflow:hidden;margin:10px 0;padding-right:62px}
 .soBox .inp{display:block;width:100%;height:32px;border:1px solid #dbdbdb;border-right:none;padding:0 10px;font-size:14px;color:#333}
 .soBox .btn{position:absolute;right:0;top:0;bottom:0;z-index:2;line-height:32px;background-color:#1494f7;width:61px;font-size:14px;color:#fff;text-align:center;cursor:pointer}
-.m-command{overflow:hidden}
+.m-command{overflow:auto;}
 .m-command dt{overflow:hidden;line-height:32px;background-color:#f5f5f5}
 .m-command dt span{font-weight:700}
 .m-command span{width:50%;float:left;padding:0 10px;font-size:14px;color:#333}

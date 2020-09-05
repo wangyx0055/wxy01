@@ -166,12 +166,14 @@ function Replay(url){
 
 	    // If playing, the play/pause button should read "Pause"
 	    recording.onplay = function() {
-	        playPause.textContent = '暂停';
+	        //playPause.textContent = '暂停';
+			$(playPause).removeClass('fa-play').addClass('fa-pause');
 	    };
 
 	    // If paused, the play/pause button should read "Play"
 	    recording.onpause = function() {
-	        playPause.textContent = '播放';
+	        //playPause.textContent = '播放';
+			$(playPause).removeClass('fa-pause').addClass('fa-play');
 	    };
 
 	    // Toggle play/pause when display or button are clicked
@@ -339,6 +341,9 @@ $("#sousuoId").click(function() {
 
 $(document).ready(function() {
 	// 选项卡 鼠标点击
+	$('#display').css('height', (document.documentElement.clientHeight-50)+"px").css('width', (document.documentElement.clientWidth-300)+"px");
+	$('#player').css('height', (document.documentElement.clientHeight-50)+"px").css('width', (document.documentElement.clientWidth-300)+"px");
+	$('.m-left').css('height', (document.documentElement.clientHeight-10)+"px")
 	$(".TAB_CLICK li").click(function() {
 		var tab = $(this).parent(".TAB_CLICK");
 		var con = tab.attr("id");

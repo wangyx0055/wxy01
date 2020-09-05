@@ -113,7 +113,7 @@
 	<select id="findAll" resultMap="BaseResultMap, loginLogRecordCounts" resultType="java.lang.Object">
 		SELECT
 		SQL_CALC_FOUND_ROWS
-		DATE_FORMAT(FROM_UNIXTIME(login_datetime),"%Y-%m-%d") login_datetime,lsblj_login_log.* FROM lsblj_login_log
+		DATE_FORMAT(FROM_UNIXTIME(login_datetime),"%Y-%c-%d %H:%i:%S") login_datetime,lsblj_login_log.* FROM lsblj_login_log
 		where 1
 		<if test="loginLog.source_ip != null"> AND source_ip like CONCAT('%',#{loginLog.source_ip},'%')</if>
 		<if test="loginLog.username != null"> AND `username` like CONCAT('%',#{loginLog.username},'%')</if>

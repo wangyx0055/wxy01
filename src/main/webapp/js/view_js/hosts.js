@@ -708,16 +708,12 @@ $("#next").click(function(){
         $('#pass3').css("display","block");
         $('#div22').css("display",'none');
         $('#pass4').css("display","block");
-        document.getElementById("xing5").style.color = "red";
-        document.getElementById("xing6").style.color = "red";
     } else{
         $('#edit_device_protocol').val('1');
         $('#edit_device_port').val("22");
         $('#div55').css("display",'none');
         $('#div22').css("display",'block');
         $('#edit_device_ssh_key').val('1');
-        document.getElementById("xing5").style.color = "white";
-        document.getElementById("xing6").style.color = "white";
     }
 });
 function  showSSHKEY(v){
@@ -1289,9 +1285,10 @@ function deviceaccount(device_id){
             },
             { "data": "id", "render": function(data,type,row,meta){
                     {
-                        return'<a class="newcss1"   data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-editdeviceaccount" style="line-height: 2px;cursor: pointer" onclick="clearText()">编辑</a>'+
-                            '<a  class="newcss1" onclick="switchcase(this,'+row.id+')"   data-row="'+meta.row+'" style="line-height: 2px;margin-left: 10px;cursor: pointer">' + (row.status == 0?'禁用':'启用')+'</a> '+
-                            '<a class="newcss2"    data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-deldeviceaccount" style="line-height: 2px;margin-left: 10px;cursor: pointer">删除</a>';
+                        return'<a class="newcss1" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-editdeviceaccount" style="line-height: 2px;cursor: pointer" onclick="clearText()">编辑</a>'+
+                            '<a class="newcss1" onclick="switchcase(this,'+row.id+')" data-row="'+meta.row+'" style="line-height: 2px;margin-left: 10px;cursor: pointer">' + (row.status == 0?'禁用':'启用')+'</a> '+
+                            '<a href="../../Operator/testDeviceLogin?device_account_id='+data+'" target="_blank" class="newcss1" data-row="'+meta.row+'" style="line-height: 2px;margin-left: 10px;cursor: pointer">' + '登录测试'+'</a> '+
+                            '<a class="newcss2" data-row="'+meta.row+'" data-toggle="modal" data-target="#modal-deldeviceaccount" style="line-height: 2px;margin-left: 10px;cursor: pointer">删除</a>';
                     }
 
                 }}
@@ -1308,8 +1305,8 @@ function deviceaccount(device_id){
             if(login_value ==0){
                 $('#edit_account_login_method').val("33");
                 $('#_edit_account_username').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].username);
-                $('#_edit_account_password').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].password);
-                $('#_edit_account_password1').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].password);
+                $('#_edit_account_password').val('******');
+                $('#_edit_account_password1').val('******');
                 $('#_edit_account_password').attr("placeholder","\xa0\xa0\xa0********");
                 $('#_edit_account_password1').attr("placeholder","\xa0\xa0\xa0********");
                 document.getElementById("xing1").style.color="red";
@@ -1321,13 +1318,11 @@ function deviceaccount(device_id){
                 document.getElementById("xing3").style.color="white";
                 $('#edit_account_login_method').val("44");
                 $('#_edit_account_username').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].username);
-                $('#_edit_account_password').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].password);
-                $('#_edit_account_password1').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].password);
+                $('#_edit_account_password').val('******');
+                $('#_edit_account_password1').val('******');
                 if ($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].username!=""){
                     $('#_edit_account_password').attr("placeholder","\xa0\xa0\xa0********");
                     $('#_edit_account_password1').attr("placeholder","\xa0\xa0\xa0********");
-                    $('#_edit_account_password').val("");
-                    $('#_edit_account_password1').val("");
                 }
             }
             $('#edit_account_protocol').val($('#deviceaccount').DataTable().row('#' + i).nodes(i).data()[i].protocol_id);
@@ -1584,9 +1579,7 @@ function show1(v){
         document.getElementById("xing4").style.color = "red";
         document.getElementById("xing5").style.color = "red";
         document.getElementById("xing6").style.color = "red";
-    }
-    else if
-    (v==='13'){
+    } else if (v==='13'){
         document.getElementById("xing4").style.color="white";
         document.getElementById("xing5").style.color="white";
         document.getElementById("xing6").style.color="white";

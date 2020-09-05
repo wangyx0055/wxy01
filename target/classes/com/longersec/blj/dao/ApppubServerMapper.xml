@@ -116,7 +116,7 @@
 	</select>
 	
 	<select id="getById" resultMap="BaseResultMap">
-		SELECT CAST(AES_DECRYPT(password,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) password,lsblj_apppub_server.* FROM lsblj_apppub_server WHERE id = #{id}
+		SELECT lsblj_apppub_server.* FROM lsblj_apppub_server WHERE id = #{id}
 	</select>
 	
 	<insert id="insertMore">

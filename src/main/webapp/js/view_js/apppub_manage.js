@@ -276,7 +276,8 @@ $(function () {
                       }},
                 { "data": "id", "render": function(data,type,row,meta){
                         return '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-editapp" class="newcss1" style="cursor:pointer">编辑</a> '+
-                            '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-delapp" class="newcss2" style="cursor:pointer;margin-left: 20px">删除</a> ';
+                            '<a href="../../Operator/testDeviceLogin?apppub_account_id='+data+'" target="_blank" class="newcss1" data-row="'+meta.row+'" style="line-height: 2px;margin-left: 10px;cursor: pointer">' + '登录测试'+'</a> '+
+                            '<a data-toggle="modal" data-row="'+meta.row+'" data-target="#modal-delapp" class="newcss2" style="cursor:pointer;margin-left: 10px">删除</a> ';
                     }}
             ],
             "fnDrawCallback": function() {

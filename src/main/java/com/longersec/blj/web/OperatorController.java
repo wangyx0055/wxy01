@@ -319,7 +319,7 @@ public class OperatorController {
         	}
             
         	DeviceRecord deviceRecord = new DeviceRecord();
-        	deviceRecord.setClient_ip(httpClient.getRemortIP(request));
+        	deviceRecord.setClient_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
         	deviceRecord.setDevice_ip(device.getIp());
         	deviceRecord.setDevice_name(device.getName());
         	deviceRecord.setDevice_username(deviceAccount.getUsername());
@@ -344,6 +344,204 @@ public class OperatorController {
     		gConnectionService.addGConnection(gConnection);
     		int gconnection_id = gConnection.getConnection_id();
     		this.addGConnectionParameters(gconnection_id, deviceRecord, deviceAccount, accessPolicies.get(0), session);
+    		
+    		try {
+    			//String hashString = new sun.misc.BASE64Encoder().encode(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+deviceRecord.getDevice_username()+"@"+deviceRecord.getDevice_name()+"("+deviceRecord.getDevice_ip()+")"+"\0"+request.getContextPath()).getBytes());
+    			String hashString = Base64.encodeBase64String(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+deviceRecord.getDevice_username()+"@"+deviceRecord.getDevice_name()+"("+deviceRecord.getDevice_ip()+")"+"\0"+request.getContextPath()).getBytes());
+    			if(deviceAccount.getProtocol_id()==5||deviceAccount.getProtocol_id()==6) {
+    				response.setContentType("multipart/form-data");
+    				response.setCharacterEncoding("UTF-8");
+    				response.setContentType("text/json");
+    				ServletOutputStream out;
+    				out = response.getOutputStream();
+    				JSONObject jsonObject = new JSONObject();
+    				jsonObject.put("success", true);
+    				jsonObject.put("ip", httpClient.getServerIp(request));
+    				if(deviceAccount.getProtocol_id()==5) {
+    					jsonObject.put("port", configService.getByName("ftpPort").getValue());
+    				}else {
+    					jsonObject.put("port", configService.getByName("sftpPort").getValue());
+    				}
+    				
+    				jsonObject.put("username", gconnection_id);
+    				jsonObject.put("password", gconnection_id);
+					out.write(jsonObject.toString().getBytes());
+					out.flush();
+					out.close();
+					return ;
+        		} else {
+        			response.sendRedirect("/cLogin/#/client/"+hashString);
+        		}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}else if(apppub_account_id != null) {
+    		//设备账号
+    		
+        	ApppubAccount apppubAccount = apppubAccountService.getById(apppub_account_id);
+        	ApppubProgram apppubProgram = apppubProgramService.getById(apppubAccount.getApppub_program_id());
+        	ApppubServer apppubServer = apppubServerService.getById(apppubAccount.getApppub_server_id());
+        	
+        	/*//"ldaps://WIN-NH8NPMU1DK2.lsblj.cn:636"
+    		AdOperate adOperate = new AdOperate("ldaps://"+apppubServer.getName()+":"+apppubServer.getAdport(), apppubServer.getAccount()+"@lsblj.cn", apppubServer.getPassword(), "DC=lsblj,DC=cn");
+    		user = userService.getUserByID(user.getId().toString());
+			adOperate.addUser(user.getUsername(), user.getPassword());
+    		*/
+        	user = userService.getUserByID(user.getId().toString());
+        	JSONObject jsonObject = new JSONObject();
+        	jsonObject.put("dn", "cn="+user.getUsername()+",OU=apppubusers,DC=lsblj,DC=cn");
+        	jsonObject.put("password", user.getPassword());
+        	jsonObject.put("upn", user.getUsername()+"@lsblj.cn");
+        	jsonObject.put("cn", user.getUsername());
+        	jsonObject.put("group", "CN=apppub,DC=lsblj,DC=cn");
+        	String resultString = com.longersec.blj.utils.httpClient.doPost("http://"+apppubServer.getIp()+":20616/aduser.php", jsonObject, "UTF-8");
+        	
+        	Date dNow = new Date();
+            SimpleDateFormat ft = new SimpleDateFormat ("YYYYMMddhhmmssS");
+            String timeString = ft.format(dNow);
+        	String logfileString = config.getValue()+"/text/apppub-"+apppub_account_id+"-"+timeString;
+        	String videofileString = config.getValue()+"/videos/apppub-"+apppub_account_id+"-"+timeString;
+
+    		//int diskUsage = new Double(systemUsageUtil.getDiskUsage()*100).intValue();
+        	int diskUsage = 0;
+        	if(diskUsage>configDisksession.getDisk_max_persent()) {
+        		if(configDisksession.getDisk_write_type()==0) {
+        			logfileString = "";
+        			videofileString = "";
+        		}else {
+        			ArrayList<ApppubRecord> records = new ArrayList<ApppubRecord>();
+        			records = (ArrayList<ApppubRecord>)apppubRecordService.getEarlyRecord();
+        			for (ApppubRecord apppubRecord : records) {
+        				File file = new File(apppubRecord.getLog_file());
+        				File file2 = new File(apppubRecord.getVideo_file());
+        				if(file.exists()&&file2.exists()) {
+        					file.delete();
+        					file2.delete();
+        					ApppubRecord upApppubRecord = new ApppubRecord();
+        					upApppubRecord.setLog_file("");
+        					upApppubRecord.setLog_file_size(0);
+        					upApppubRecord.setVideo_file("");
+        					upApppubRecord.setVideofile_size(0);
+        					apppubRecordService.editApppubRecord(upApppubRecord);
+        					break;
+        				}
+					}
+        		}
+        	}
+            
+        	ApppubRecord apppubRecord = new ApppubRecord();
+        	apppubRecord.setName(apppubAccount.getName());
+        	apppubRecord.setClient_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
+        	apppubRecord.setServer_ip(apppubServer.getIp());
+        	apppubRecord.setApppub_username(apppubAccount.getUsername());
+        	apppubRecord.setPort(apppubServer.getPort());
+        	apppubRecord.setStart(Integer.toString((int)(System.currentTimeMillis()/1000)));
+        	apppubRecord.setEnd(Integer.toString((int)(System.currentTimeMillis()/1000)));
+        	apppubRecord.setUser_id(user.getId());
+        	apppubRecord.setUsername(user.getUsername());
+        	apppubRecord.setRealname(user.getRealname());
+        	apppubRecord.setVideo_file(videofileString);
+        	apppubRecord.setProgram(apppubProgram.getName());
+        	apppubRecord.setProgrampath(apppubProgram.getPath());
+        	apppubRecordService.addApppubRecord(apppubRecord);
+       
+    		gConnection.setConnection_name(apppubRecord.getId()+"-"+apppubAccount.getId()+"-"+apppubAccount.getUsername());
+    		gConnection.setProtocol("rdp");
+    		gConnectionService.addGConnection(gConnection);
+    		int gconnection_id = gConnection.getConnection_id();
+    		this.addGConnectionApppubParameters(gconnection_id, apppubRecord, apppubAccount, accessPolicies.get(0), session);
+    		String hashString = new sun.misc.BASE64Encoder().encode(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+apppubRecord.getApppub_username()+"@"+apppubRecord.getServer_ip()+"("+apppubRecord.getServer_ip()+")"+"\0"+request.getContextPath()).getBytes());
+
+    		try {
+				response.sendRedirect("/cLogin/#/client/"+hashString);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+		return ;
+	}
+    
+
+    
+    @RequestMapping("/testDeviceLogin")
+    public void testDeviceLogin(HttpServletRequest request,HttpServletResponse response, HttpSession session, Integer device_account_id, Integer apppub_account_id) {
+    	JSONObject  result = new JSONObject();
+    	result.put("success","false");
+    	GConnection gConnection = new GConnection();
+		User user = (User) session.getAttribute("loginUser");
+		ConfigDisksession configDisksession = configDisksessionService.get();
+		Config config = new Config();
+		config = configService.getByName("recordpath");//寻找授权策略
+		if(user.getRole_id()!=2&&user.getRole_id()!=5) {
+			return ;
+		}
+    	if(device_account_id!=null) {
+    		//设备账号
+        	DeviceAccount deviceAccount = deviceAccountService.getById(device_account_id);
+        	deviceAccount.setPassword(Sm4Utils.decryptEcb(configPasswordEncryptKeyService.getKey(), deviceAccount.getPassword()));
+        	//获取设备信息
+			Device device = deviceService.getById(deviceAccount.getDevice_id());
+        	Date dNow = new Date();
+            SimpleDateFormat ft = new SimpleDateFormat ("YYYYMMddhhmmssS");
+            String timeString = ft.format(dNow);
+        	String logfileString = config.getValue()+"/text/"+device.getIp()+"-"+deviceAccount.getUsername()+"-"+timeString;
+        	String videofileString = config.getValue()+"/videos/"+device.getIp()+"-"+deviceAccount.getUsername()+"-"+timeString;
+
+    		//int diskUsage = new Double(systemUsageUtil.getDiskUsage()*100).intValue();
+        	int diskUsage = 0;
+        	if(diskUsage>configDisksession.getDisk_max_persent()) {
+        		if(configDisksession.getDisk_write_type()==0) {
+        			logfileString = "";
+        			videofileString = "";
+        		}else {
+        			ArrayList<DeviceRecord> records = new ArrayList<DeviceRecord>();
+        			records = (ArrayList<DeviceRecord>)deviceRecordService.getEarlyRecord();
+        			for (DeviceRecord deviceRecord : records) {
+        				File file = new File(deviceRecord.getLog_file());
+        				File file2 = new File(deviceRecord.getVideo_file());
+        				if(file.exists()&&file2.exists()) {
+        					file.delete();
+        					file2.delete();
+        					DeviceRecord upDeviceRecord = new DeviceRecord();
+        					deviceRecord.setLog_file("");
+        					deviceRecord.setLog_file_size(0);
+        					deviceRecord.setVideo_file("");
+        					deviceRecord.setVideo_file_size(0);
+        					deviceRecordService.editDeviceRecord(upDeviceRecord);
+        					break;
+        				}
+					}
+        		}
+        	}
+            
+        	DeviceRecord deviceRecord = new DeviceRecord();
+        	deviceRecord.setClient_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
+        	deviceRecord.setDevice_ip(device.getIp());
+        	deviceRecord.setDevice_name(device.getName());
+        	deviceRecord.setDevice_username(deviceAccount.getUsername());
+        	deviceRecord.setProtocol_id(deviceAccount.getProtocol_id());
+        	deviceRecord.setPort(deviceAccount.getPort());
+        	deviceRecord.setStart(Integer.toString((int)(System.currentTimeMillis()/1000)));
+        	deviceRecord.setEnd(Integer.toString((int)(System.currentTimeMillis()/1000)));
+        	deviceRecord.setUser_id(user.getId());
+        	deviceRecord.setUsername(user.getUsername());
+        	deviceRecord.setRealname(user.getRealname());
+        	deviceRecord.setAuth_type(session.getAttribute("login_type").toString());
+        	
+        	gConnection.setConnection_name(deviceAccount.getId()+"-"+deviceAccount.getDevice_id()+"-"+deviceAccount.getUsername());
+        	if(!(deviceAccount.getProtocol_id()==5||deviceAccount.getProtocol_id()==6)) {
+            	deviceRecord.setLog_file(logfileString);
+            	deviceRecord.setVideo_file(videofileString);
+            	gConnection.setConnection_name(deviceAccount.getId().toString());
+        	}
+        	deviceRecordService.addDeviceRecord(deviceRecord);
+
+    		gConnection.setProtocol(protocolService.getById(deviceAccount.getProtocol_id()).toLowerCase());
+    		gConnectionService.addGConnection(gConnection);
+    		int gconnection_id = gConnection.getConnection_id();
+    		this.addGConnectionParameters(gconnection_id, deviceRecord, deviceAccount, null, session);
     		
     		try {
     			//String hashString = new sun.misc.BASE64Encoder().encode(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+deviceRecord.getDevice_username()+"@"+deviceRecord.getDevice_name()+"("+deviceRecord.getDevice_ip()+")"+"\0"+request.getContextPath()).getBytes());
@@ -432,7 +630,7 @@ public class OperatorController {
             
         	ApppubRecord apppubRecord = new ApppubRecord();
         	apppubRecord.setName(apppubAccount.getName());
-        	apppubRecord.setClient_ip(httpClient.getRemortIP(request));
+        	apppubRecord.setClient_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
         	apppubRecord.setServer_ip(apppubServer.getIp());
         	apppubRecord.setApppub_username(apppubAccount.getUsername());
         	apppubRecord.setPort(apppubServer.getPort());
@@ -450,7 +648,7 @@ public class OperatorController {
     		gConnection.setProtocol("rdp");
     		gConnectionService.addGConnection(gConnection);
     		int gconnection_id = gConnection.getConnection_id();
-    		this.addGConnectionApppubParameters(gconnection_id, apppubRecord, apppubAccount, accessPolicies.get(0), session);
+    		this.addGConnectionApppubParameters(gconnection_id, apppubRecord, apppubAccount, null, session);
     		String hashString = new sun.misc.BASE64Encoder().encode(new String(gconnection_id+"\0c\0"+configService.getByName("connectDataSource").getValue()+"\0u"+user.getId()+"\0"+apppubRecord.getApppub_username()+"@"+apppubRecord.getServer_ip()+"("+apppubRecord.getServer_ip()+")"+"\0"+request.getContextPath()).getBytes());
 
     		try {

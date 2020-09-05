@@ -708,16 +708,12 @@ $("#next").click(function(){
         $('#pass3').css("display","block");
         $('#div22').css("display",'none');
         $('#pass4').css("display","block");
-        document.getElementById("xing5").style.color = "red";
-        document.getElementById("xing6").style.color = "red";
     } else{
         $('#edit_device_protocol').val('1');
         $('#edit_device_port').val("22");
         $('#div55').css("display",'none');
         $('#div22').css("display",'block');
         $('#edit_device_ssh_key').val('1');
-        document.getElementById("xing5").style.color = "white";
-        document.getElementById("xing6").style.color = "white";
     }
 });
 function  showSSHKEY(v){
@@ -1584,9 +1580,7 @@ function show1(v){
         document.getElementById("xing4").style.color = "red";
         document.getElementById("xing5").style.color = "red";
         document.getElementById("xing6").style.color = "red";
-    }
-    else if
-    (v==='13'){
+    } else if (v==='13'){
         document.getElementById("xing4").style.color="white";
         document.getElementById("xing5").style.color="white";
         document.getElementById("xing6").style.color="white";

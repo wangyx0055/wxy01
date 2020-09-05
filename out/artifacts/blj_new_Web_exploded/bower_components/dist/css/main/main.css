@@ -7027,7 +7027,7 @@ table tr span {
 }
 .cs_con #G #ad-edit-group2 .modal-body > div:nth-of-type(1) > span:nth-of-type(2) lable:nth-of-type(2) input {
   vertical-align: -1px;
-  margin-left: 19px;
+  margin-left: 17px;
 }
 .cs_con #G #ad-edit-group2 .modal-body > div:nth-of-type(2) > span:nth-of-type(1) {
   font-size: 12px;
@@ -7143,7 +7143,6 @@ table tr span {
   font-size: 12px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  margin-left: -2px;
 }
 .cs_con #G #ad-edit-group2 .modal-body #div7 > p:nth-of-type(3) {
   font-size: 12px;
@@ -7160,7 +7159,7 @@ table tr span {
   border-radius: 3px;
   border: 1px solid #ccc;
   font-size: 12px;
-  margin-left: -14px;
+  margin-left: -12px;
 }
 .cs_con #G #ad-edit-group2 .modal-body #div7 .more_ad {
   font-size: 12px;
@@ -7219,7 +7218,6 @@ table tr span {
   margin-left: 66px;
 }
 .cs_con #G #ad_edit_p .modal-body .box-body #ad_edit_filter_username {
-  margin-top: 15px;
   font-size: 12px;
   width: 210px;
   height: 30px;

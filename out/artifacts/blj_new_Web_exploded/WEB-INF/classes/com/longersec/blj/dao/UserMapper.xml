@@ -267,7 +267,7 @@
     </select>
     
     <select id="getUserByID" resultType="com.longersec.blj.domain.User" parameterType="String">
-        select <include refid="zd"/>, CAST(AES_DECRYPT(password,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) password
+        select <include refid="zd"/>,password
         from lsblj_user where id = #{id}
     </select>
     

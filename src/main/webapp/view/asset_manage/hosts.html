@@ -409,8 +409,8 @@
           <!--设备账号列表-->
         <div class="modal modal-hides" id="modal-default4">
           <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header" style="background-color:#f7f7f7;width: 598px;">
+            <div class="modal-content" style="width: 638px;">
+              <div class="modal-header" style="background-color:#f7f7f7;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
                 <span class="modal-title" >设备账号</span>
@@ -504,7 +504,7 @@
                  <div id="div20" style="margin-left: 1px;">
                  <div>
                   <span>SSH Key：</span>
-                  <select name="lo" id="edit_account_ssh_key" style="width: 210px;" onclick="showSsh(this.value)">
+                  <select name="lo" id="edit_account_ssh_key" style="width: 210px;" onchange="showSsh(this.value)">
                   <option value="0">是</option>
                   <option value="1" selected="selected">否</option>
                    </select>
@@ -525,8 +525,8 @@
                 <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
                    <button type="button" id="editDeviceAccountButton" class="btn newaddbtn">确定</button>
 
-                <input type="hidden" id="edit_account_id">
-                <input type="hidden" id="_edit_device_id">
+                <input type="hidden" id="edit_account_id" value="0">
+                <input type="hidden" id="_edit_device_id" value="0">
                  </div>
             <!-- /.modal-content -->
             </div>
@@ -642,6 +642,7 @@
 <script src="../../bower_components/dist/js/checkAll.js"></script>
 <!-- my js -->
 <script src="../../js/common/modal.js"></script>
+<script src="../../js/common/utils.js"></script>
 <script src="../../js/bootstrap-treeview.js"></script>
 <script src="../../js/view_js/hosts.js"></script>
 <script src="../../js/fileinput.min.js"></script>

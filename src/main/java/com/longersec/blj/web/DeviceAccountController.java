@@ -102,7 +102,9 @@ public class DeviceAccountController {
 	@ResponseBody
 	public JSONObject editDeviceAccount(DeviceAccount deviceAccount, HttpServletRequest request, HttpSession session) {
 		JSONObject result = new JSONObject();
-			deviceAccount.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), deviceAccount.getPassword()));
+			if(!deviceAccount.getPassword().equals("******")) {
+				deviceAccount.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), deviceAccount.getPassword()));
+			}
 			Boolean r = deviceAccountService.editDeviceAccount(deviceAccount);
 			result.put("success", r);
 		return result;

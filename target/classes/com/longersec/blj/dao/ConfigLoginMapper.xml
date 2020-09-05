@@ -83,8 +83,7 @@
 	</delete>
 	<select id="findAll" resultMap="BaseResultMap, configLoginRecordCounts">
 		SELECT 
-		SQL_CALC_FOUND_ROWS 
-		AES_DECRYPT(new_user_default_password,(select aeskey from lsblj_config_password_encrypt_key limit 1)) new_user_default_password, lsblj_config_login.* FROM lsblj_config_login 
+		SQL_CALC_FOUND_ROWS lsblj_config_login.* FROM lsblj_config_login 
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start,jdbcType=INTEGER},#{page_length,jdbcType=INTEGER}
 		</if>

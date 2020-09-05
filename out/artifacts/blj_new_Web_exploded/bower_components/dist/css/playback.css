@@ -18,16 +18,19 @@
  */
 
 #player{
-    width: 86%;
+    width: 88%;
     float: left!important;
-    margin-top: 55%;
+    position: absolute;
     margin-left: 5%;
+    bottom: 0;
 }
 
 #display {
     position: relative;
     width:100%;
     height:100%;
+    min-height:630px;
+/*    background-color:#000;*/
 }
 
 #player .notification-container {
@@ -62,9 +65,9 @@
 }
 
 #player .controls {
-
+/*
     width: 100%;
-    margin-right:20px;
+    margin-right:20px;*/
     /* IE10 */
     display: -ms-flexbox;
     -ms-flex-align: center;

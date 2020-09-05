@@ -22,7 +22,7 @@ function listAll(){
 			$('#fail_time').text(data.data.dead_hours);
 			$('#level_page').text(data.data.level);
 			$('#fail_strategy').text(data.data.outdate_action === 1?"允许":"拒绝");
-			$('#page_mode').text(data.data.mode===1?"会议审批":"多人审批");
+			$('#page_mode').text(data.data.mode===1?"会签审批":"多人审批");
 			$('#page_author_type').text(data.data.endaudit===1?"启用":"禁用");
 		}
 	})

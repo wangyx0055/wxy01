@@ -218,7 +218,7 @@
 	</select>
 	
 	<select id="getById" resultMap="BaseResultMap">
-		SELECT id,username,CAST(AES_DECRYPT(password,(select aeskey from lsblj_config_password_encrypt_key limit 1)) AS VARCHAR(200)) password,device_id,port,protocol_id,is_super,ssh_key,status,login_method 
+		SELECT id,username,password,device_id,port,protocol_id,is_super,ssh_key,status,login_method 
 		  FROM lsblj_device_account WHERE id = #{id}
 	</select>
 	

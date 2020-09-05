@@ -171,7 +171,7 @@ public class LoginController {
 			}
     	}
     	
-    	loginlog.setSource_ip(httpClient.getRemortIP(request));
+    	loginlog.setSource_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
     	loginlog.setDepartment(user.getDepartment());
     	loginlog.setUsername(user.getUsername());
     	loginlog.setUser_id(user.getId());
@@ -343,7 +343,7 @@ public class LoginController {
 		            alertLog.setUsername(user.getUsername());
 		            alertLog.setRealname(user.getRealname());
 		            alertLog.setPolicy("登录策略");
-		            alertLog.setSource_ip(httpClient.getRemortIP(request));
+		            alertLog.setSource_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
 		            alertLog.setOperate_datetime(Integer.toString((int)(System.currentTimeMillis()/1000)));
 		            alertLog.setAlert_times("0");
 		            alertLog.setCommand("超过在线人数");
@@ -362,7 +362,7 @@ public class LoginController {
 						) {
 					session.setAttribute("forceChangePassword", "true");
 				}
-				user.setLast_login_ip(httpClient.getRemortIP(request));
+				user.setLast_login_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
 				user.setSms_code("");
 				session.setAttribute("user", user);
 				session.setAttribute("login_smscode", null);

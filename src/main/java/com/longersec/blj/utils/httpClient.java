@@ -248,8 +248,13 @@ public class httpClient {
         } else return "List is null!!!";
     }
     
+    public static String getServerIp(final HttpServletRequest request){
+		return request.getHeader("Host");
+	}
+    
     public static String getRemortIP(HttpServletRequest request) {
-    	/*if (request.getHeader("x-forwarded-for") == null) {
+    	/*
+    	 * if (request.getHeader("x-forwarded-for") == null) {
     		return request.getRemoteAddr();
     	}
     	return request.getHeader("x-forwarded-for");
@@ -286,7 +291,7 @@ public class httpClient {
 	 */
 	public static Long getRemotePort(final HttpServletRequest request){
 		try{
-			String port = request.getHeader("remote-port");
+			String port = request.getHeader("X-Real-Port");
 			if( !port.isEmpty()) {
 				try{
 					return Long.parseLong(port);

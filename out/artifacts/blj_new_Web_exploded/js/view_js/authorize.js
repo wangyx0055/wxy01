@@ -168,7 +168,7 @@ var _scripts_table= function (field,value){
 				"data": "id", "render": function (data, type, row, meta) {
 					if(row.result<=0){
 						return (row.type === 0 ?('<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1"  data-target="#modal-primary1" style="cursor:pointer;vertical-align: bottom;">编辑</a>' +
-						'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-primary8" style="margin-left: 20px;cursor:pointer;">关联设备</a>'):'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-primary2" style="cursor:pointer;">查看命令</a>') +
+						'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-primary8" style="margin-left: 20px;cursor:pointer;">设备账号</a>'):'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1" data-target="#modal-primary2" style="cursor:pointer;">查看命令</a>') +
 						
 						'<a data-toggle="modal" data-row="'+meta.row+'" class="newcss1"  data-target="#modal_default8" style="margin-left: 20px;cursor:pointer;">提交</a>' +
 						'<a  data-toggle="modal"  data-row="'+meta.row+'"  class="newcss2" data-target="#modal_default" style="margin-left: 20px;cursor:pointer">删除</a>'
@@ -646,7 +646,9 @@ var _device_table= function (apply_id){
 			}
 		},
 		"columns": [
-			{"data": "username"},
+			{"data": "username" , "render":function(data, type,row, meta){
+				return data==''?'空用户':data;
+			}},
 			{"data": "device_name"},
 			{"data": "ip"},
             { "data": "depart_name" , "render" : function(data, type,row, meta) {

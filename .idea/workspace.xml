@@ -8,6 +8,53 @@
   <component name="ChangeListManager">
     <list default="true" id="68d5ec52-ef25-4837-aa9c-10bee323f309" name="Default Changelist" comment="l">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ApppubServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ConfigFingerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ConfigFingerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ConfigLoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/ConfigLoginMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserPasswordLog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/dao/UserPasswordLog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/httpClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/utils/httpClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ConfigDisksessionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/ConfigDisksessionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/OperatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/OperatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/SystemInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/SystemInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/com/longersec/blj/web/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/license.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/WEB-INF/classes/license.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/main/main.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/playback.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/bower_components/dist/css/playback.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/playback.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/playback.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/apppub_manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/apppub_manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/approve.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/approve.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/authorize.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/authorize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/hosts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/work_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/js/view_js/work_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/replay.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/replay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/replay2.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/audit_manage/replay2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/confirm_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/system_manage/confirm_config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/work_manage/approve.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/work_manage/approve.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/work_manage/authorize.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/blj_new_Web_exploded/view/work_manage/authorize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/view_js/hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/view_js/hosts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/work_manage/approve.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/work_manage/approve.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ApppubServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigFingerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigFingerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigLoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/ConfigLoginMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/DeviceAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/LoginLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserPasswordLog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/dao/UserPasswordLog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/httpClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/utils/httpClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigDisksessionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/ConfigDisksessionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/OperatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/OperatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/SystemInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/SystemInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/longersec/blj/web/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/license.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/license.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,6 +442,9 @@
       <workItem from="1598958228491" duration="125000" />
       <workItem from="1598958473372" duration="1237000" />
       <workItem from="1599029680615" duration="87000" />
+      <workItem from="1599099247623" duration="519000" />
+      <workItem from="1599122578344" duration="959000" />
+      <workItem from="1599268507049" duration="125000" />
     </task>
     <servers />
   </component>
@@ -483,102 +533,102 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="102" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1598421155041" />
-    <state width="1278" height="208" key="GridCell.Tab.0.bottom" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.0.bottom" timestamp="1599124476347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112985" />
     <state width="1278" height="300" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690253565" />
-    <state width="1278" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.0.center" timestamp="1598959721465">
+    <state width="1278" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599124476347" />
+    <state width="1278" height="208" key="GridCell.Tab.0.center" timestamp="1599124476346">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112982" />
     <state width="1278" height="300" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690253565" />
-    <state width="1278" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598959721465" />
-    <state width="1278" height="208" key="GridCell.Tab.0.left" timestamp="1598959721465">
+    <state width="1278" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599124476346" />
+    <state width="1278" height="208" key="GridCell.Tab.0.left" timestamp="1599124476346">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112981" />
     <state width="1278" height="300" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690253564" />
-    <state width="1278" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598959721465" />
-    <state width="1278" height="208" key="GridCell.Tab.0.right" timestamp="1598959721465">
+    <state width="1278" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599124476346" />
+    <state width="1278" height="208" key="GridCell.Tab.0.right" timestamp="1599124476346">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112982" />
     <state width="1278" height="300" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690253565" />
-    <state width="1278" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598959721465" />
-    <state width="1278" height="208" key="GridCell.Tab.1.bottom" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599124476346" />
+    <state width="1278" height="208" key="GridCell.Tab.1.bottom" timestamp="1599124476347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.1.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.1.bottom/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690417063" />
-    <state width="1278" height="208" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.1.center" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599124476347" />
+    <state width="1278" height="208" key="GridCell.Tab.1.center" timestamp="1599124476347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.1.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.1.center/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690417063" />
-    <state width="1278" height="208" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.1.left" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1599124476347" />
+    <state width="1278" height="208" key="GridCell.Tab.1.left" timestamp="1599124476347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.1.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.1.left/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690417063" />
-    <state width="1278" height="208" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.1.right" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1599124476347" />
+    <state width="1278" height="208" key="GridCell.Tab.1.right" timestamp="1599124476347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.1.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.1.right/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690417063" />
-    <state width="1278" height="208" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.2.bottom" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599124476347" />
+    <state width="1278" height="208" key="GridCell.Tab.2.bottom" timestamp="1599124476349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.2.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.2.bottom/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690811277" />
-    <state width="1278" height="208" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.2.center" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599124476349" />
+    <state width="1278" height="208" key="GridCell.Tab.2.center" timestamp="1599124476349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.2.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.2.center/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690811276" />
-    <state width="1278" height="208" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.2.left" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1599124476349" />
+    <state width="1278" height="208" key="GridCell.Tab.2.left" timestamp="1599124476349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.2.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.2.left/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690811276" />
-    <state width="1278" height="208" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.2.right" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1599124476349" />
+    <state width="1278" height="208" key="GridCell.Tab.2.right" timestamp="1599124476349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.2.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112988" />
     <state width="1278" height="300" key="GridCell.Tab.2.right/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690811276" />
-    <state width="1278" height="208" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.3.bottom" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1599124476349" />
+    <state width="1278" height="208" key="GridCell.Tab.3.bottom" timestamp="1599124476349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.3.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112995" />
     <state width="1278" height="300" key="GridCell.Tab.3.bottom/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690012881" />
-    <state width="1278" height="208" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.3.center" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599124476349" />
+    <state width="1278" height="208" key="GridCell.Tab.3.center" timestamp="1599124476348">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.3.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112994" />
     <state width="1278" height="300" key="GridCell.Tab.3.center/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690012881" />
-    <state width="1278" height="208" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.3.left" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1599124476348" />
+    <state width="1278" height="208" key="GridCell.Tab.3.left" timestamp="1599124476347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.3.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112994" />
     <state width="1278" height="300" key="GridCell.Tab.3.left/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690012881" />
-    <state width="1278" height="208" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
-    <state width="1278" height="208" key="GridCell.Tab.3.right" timestamp="1598959721466">
+    <state width="1278" height="208" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1599124476347" />
+    <state width="1278" height="208" key="GridCell.Tab.3.right" timestamp="1599124476349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1614" height="300" key="GridCell.Tab.3.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1598694112994" />
     <state width="1278" height="300" key="GridCell.Tab.3.right/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1598690012881" />
-    <state width="1278" height="208" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1598959721466" />
+    <state width="1278" height="208" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1599124476349" />
     <state width="1278" height="317" key="GridCell.Tab.4.bottom" timestamp="1598402639235">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
