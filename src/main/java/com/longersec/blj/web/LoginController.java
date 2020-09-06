@@ -255,7 +255,6 @@ public class LoginController {
     	}
     	int total_online = 0;
     	
-
         Subject subject = SecurityUtils.getSubject();
         //操作日志
         

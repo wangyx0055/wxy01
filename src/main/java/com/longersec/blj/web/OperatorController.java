@@ -45,6 +45,7 @@ import com.longersec.blj.domain.DeviceAccount;
 import com.longersec.blj.domain.DeviceRecord;
 import com.longersec.blj.domain.GConnection;
 import com.longersec.blj.domain.GConnectionParameter;
+import com.longersec.blj.domain.LoginLog;
 import com.longersec.blj.domain.User;
 import com.longersec.blj.service.AccessPolicyService;
 import com.longersec.blj.service.ApppubAccountService;
@@ -60,9 +61,11 @@ import com.longersec.blj.service.DeviceRecordService;
 import com.longersec.blj.service.DeviceService;
 import com.longersec.blj.service.GConnectionParameterService;
 import com.longersec.blj.service.GConnectionService;
+import com.longersec.blj.service.LoginLogService;
 import com.longersec.blj.service.ProtocolService;
 import com.longersec.blj.service.UserService;
 import com.longersec.blj.utils.AdOperate;
+import com.longersec.blj.utils.BljConstant;
 import com.longersec.blj.utils.JSBtoAAtoB;
 import com.longersec.blj.utils.Sm4Utils;
 import com.longersec.blj.utils.SystemCommandUtil;
@@ -110,6 +113,8 @@ public class OperatorController {
 	private UserService userService;
 	@Autowired
 	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
+	@Autowired
+	private LoginLogService loginLogService;
 
     @RequestMapping("/deviceList")
     @ResponseBody
@@ -332,6 +337,19 @@ public class OperatorController {
         	deviceRecord.setRealname(user.getRealname());
         	deviceRecord.setAuth_type(session.getAttribute("login_type").toString());
         	
+        	LoginLog loginLog = new LoginLog();
+        	loginLog.setSource_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
+        	loginLog.setDepartment(user.getDepartment());
+        	loginLog.setUsername(user.getUsername());
+        	loginLog.setUser_id(user.getId());
+        	loginLog.setRealname(user.getRealname());
+        	loginLog.setProtocol(BljConstant.protocol(deviceRecord.getProtocol_id()));
+        	loginLog.setLogin_datetime(Long.toString(System.currentTimeMillis()/1000));
+        	loginLog.setStatus(1);
+        	loginLog.setLogin_type("web");
+        	loginLog.setResult("成功");
+        	loginLogService.addLoginLog(loginLog);
+        	
         	gConnection.setConnection_name(deviceAccount.getId()+"-"+deviceAccount.getDevice_id()+"-"+deviceAccount.getUsername());
         	if(!(deviceAccount.getProtocol_id()==5||deviceAccount.getProtocol_id()==6)) {
             	deviceRecord.setLog_file(logfileString);
@@ -445,6 +463,19 @@ public class OperatorController {
         	apppubRecord.setProgram(apppubProgram.getName());
         	apppubRecord.setProgrampath(apppubProgram.getPath());
         	apppubRecordService.addApppubRecord(apppubRecord);
+        	
+        	LoginLog loginLog = new LoginLog();
+        	loginLog.setSource_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
+        	loginLog.setDepartment(user.getDepartment());
+        	loginLog.setUsername(user.getUsername());
+        	loginLog.setUser_id(user.getId());
+        	loginLog.setRealname(user.getRealname());
+        	loginLog.setProtocol("应用发布");
+        	loginLog.setLogin_datetime(Long.toString(System.currentTimeMillis()/1000));
+        	loginLog.setStatus(1);
+        	loginLog.setLogin_type("web");
+        	loginLog.setResult("成功");
+        	loginLogService.addLoginLog(loginLog);
        
     		gConnection.setConnection_name(apppubRecord.getId()+"-"+apppubAccount.getId()+"-"+apppubAccount.getUsername());
     		gConnection.setProtocol("rdp");
@@ -529,6 +560,20 @@ public class OperatorController {
         	deviceRecord.setUsername(user.getUsername());
         	deviceRecord.setRealname(user.getRealname());
         	deviceRecord.setAuth_type(session.getAttribute("login_type").toString());
+        	
+        	LoginLog loginLog = new LoginLog();
+        	loginLog.setSource_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
+        	loginLog.setDepartment(user.getDepartment());
+        	loginLog.setUsername(user.getUsername());
+        	loginLog.setUser_id(user.getId());
+        	loginLog.setRealname(user.getRealname());
+        	loginLog.setProtocol(BljConstant.protocol(deviceRecord.getProtocol_id()));
+        	loginLog.setLogin_datetime(Long.toString(System.currentTimeMillis()/1000));
+        	loginLog.setStatus(1);
+        	loginLog.setLogin_type("web");
+        	loginLog.setResult("成功");
+        	loginLog.setDetails("登录测试");
+        	loginLogService.addLoginLog(loginLog);
         	
         	gConnection.setConnection_name(deviceAccount.getId()+"-"+deviceAccount.getDevice_id()+"-"+deviceAccount.getUsername());
         	if(!(deviceAccount.getProtocol_id()==5||deviceAccount.getProtocol_id()==6)) {
@@ -643,6 +688,20 @@ public class OperatorController {
         	apppubRecord.setProgram(apppubProgram.getName());
         	apppubRecord.setProgrampath(apppubProgram.getPath());
         	apppubRecordService.addApppubRecord(apppubRecord);
+        	
+        	LoginLog loginLog = new LoginLog();
+        	loginLog.setSource_ip(httpClient.getRemortIP(request)+":"+httpClient.getRemotePort(request));
+        	loginLog.setDepartment(user.getDepartment());
+        	loginLog.setUsername(user.getUsername());
+        	loginLog.setUser_id(user.getId());
+        	loginLog.setRealname(user.getRealname());
+        	loginLog.setProtocol("应用发布");
+        	loginLog.setLogin_datetime(Long.toString(System.currentTimeMillis()/1000));
+        	loginLog.setStatus(1);
+        	loginLog.setLogin_type("web");
+        	loginLog.setResult("成功");
+        	loginLog.setDetails("登录测试");
+        	loginLogService.addLoginLog(loginLog);
        
     		gConnection.setConnection_name(apppubRecord.getId()+"-"+apppubAccount.getId()+"-"+apppubAccount.getUsername());
     		gConnection.setProtocol("rdp");

@@ -253,20 +253,24 @@ public class ApppubProgramController {
 		}
 
 		System.out.println(res);
-		JSONArray apps = JSONArray.fromObject(res.substring(res.indexOf("[{")));
-
-		System.out.println(apps);
-		for(int i=0; i<apps.size(); i++) {
-			JSONObject app = apps.getJSONObject(i);
-			ApppubProgram apppubProgram = new ApppubProgram();
-			if(apppubProgramService.checkAppName(app.getString("name"))==null) {
-				apppubProgram.setApppub_server_id(apppubServer.getId());
-				apppubProgram.setName(app.getString("name"));
-				apppubProgram.setPath(app.getString("alias"));
-				apppubProgramService.addApppubProgram(apppubProgram);
+		if(!res.equals("")) {
+			JSONArray apps = JSONArray.fromObject(res.substring(res.indexOf("[{")));
+			System.out.println(apps);
+			for(int i=0; i<apps.size(); i++) {
+				JSONObject app = apps.getJSONObject(i);
+				ApppubProgram apppubProgram = new ApppubProgram();
+				if(apppubProgramService.checkAppName(app.getString("name"))==null) {
+					apppubProgram.setApppub_server_id(apppubServer.getId());
+					apppubProgram.setName(app.getString("name"));
+					apppubProgram.setPath(app.getString("alias"));
+					apppubProgramService.addApppubProgram(apppubProgram);
+				}
 			}
+			System.out.println(apps);
+		}else {
+			result.put("success",false);
+			result.put("msg", "更新失败");
 		}
-		System.out.println(apps);
 		return result;
 	}
 

@@ -7,10 +7,12 @@ import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -36,12 +38,15 @@ public class httpClient {
      * @return
      */
     public static JSONObject doGetStr(String url){
-        @SuppressWarnings("deprecation")
-		DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+		HttpClient client = HttpClientBuilder.create().build();
         HttpGet httpGet = new HttpGet(url);
         JSONObject jsonObject = null;
         try{
-            HttpResponse response = defaultHttpClient.execute(httpGet);
+			RequestConfig requestConfig = RequestConfig.custom()  
+			        .setConnectTimeout(5000).setConnectionRequestTimeout(5000)  
+			        .setSocketTimeout(5000).build();  
+			httpGet.setConfig(requestConfig);
+            HttpResponse response = client.execute(httpGet);
             HttpEntity entity = response.getEntity();
             if(entity != null){
                 String result = EntityUtils.toString(entity, "UTF-8");
@@ -71,7 +76,11 @@ public class httpClient {
             post.addHeader("Content-type","application/json; charset=utf-8");
             post.setHeader("Accept", "application/json");
             post.setEntity(new StringEntity(jsonObject.toString(), Charset.forName("UTF-8")));
-            
+			RequestConfig requestConfig = RequestConfig.custom()  
+			        .setConnectTimeout(5000).setConnectionRequestTimeout(5000)  
+			        .setSocketTimeout(5000).build();  
+			post.setConfig(requestConfig);
+			
             HttpResponse res = client.execute(post);
             if (res.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 HttpEntity entity = res.getEntity();
@@ -87,12 +96,15 @@ public class httpClient {
     public static String doPostResStr(String url, JSONObject jsonObject) {
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
-        JSONObject response = null;
         String result = "";
         try {
             post.addHeader("Content-type","application/json; charset=utf-8");
             post.setHeader("Accept", "application/json");
             post.setEntity(new StringEntity(jsonObject.toString(), Charset.forName("UTF-8")));
+			RequestConfig requestConfig = RequestConfig.custom()  
+			        .setConnectTimeout(5000).setConnectionRequestTimeout(5000)  
+			        .setSocketTimeout(5000).build();  
+			post.setConfig(requestConfig);
             
             HttpResponse res = client.execute(post);
             if (res.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -106,18 +118,24 @@ public class httpClient {
     }
     
     public static String doGetResStr(String url){
-        @SuppressWarnings("deprecation")
-		DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+		HttpClient client = HttpClientBuilder.create().build();
         HttpGet httpGet = new HttpGet(url);
         String result = "";
         try{
-            HttpResponse response = defaultHttpClient.execute(httpGet);
+
+			RequestConfig requestConfig = RequestConfig.custom()  
+			        .setConnectTimeout(5000).setConnectionRequestTimeout(5000)  
+			        .setSocketTimeout(5000).build();  
+			httpGet.setConfig(requestConfig);
+			
+            HttpResponse response = client.execute(httpGet);
             HttpEntity entity = response.getEntity();
             if(entity != null){
                 result = EntityUtils.toString(entity, "UTF-8");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        catch (IOException e) {
+            //e.printStackTrace();
         }
         return result;
     }
@@ -140,6 +158,11 @@ public class httpClient {
                 UrlEncodedFormEntity entity = new UrlEncodedFormEntity(list, charset);
                 httpPost.setEntity(entity);
             }
+			RequestConfig requestConfig = RequestConfig.custom()  
+			        .setConnectTimeout(5000).setConnectionRequestTimeout(5000)  
+			        .setSocketTimeout(5000).build();  
+			httpPost.setConfig(requestConfig);
+			
             HttpResponse response = httpClient.execute(httpPost);
             if (response != null) {
                 HttpEntity resEntity = response.getEntity();
@@ -180,6 +203,11 @@ public class httpClient {
         String content = null;  
         CloseableHttpResponse  httpResponse = null;  
         try {  
+
+			RequestConfig requestConfig = RequestConfig.custom()  
+			        .setConnectTimeout(5000).setConnectionRequestTimeout(5000)  
+			        .setSocketTimeout(5000).build();  
+			httpost.setConfig(requestConfig);
             //响应信息
             httpResponse = closeableHttpClient.execute(httpost);  
             HttpEntity entity = httpResponse.getEntity();  

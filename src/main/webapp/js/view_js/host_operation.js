@@ -126,7 +126,7 @@ function connectTest(ip,port){
 			port:port
 	    },
 	    success:function(data){
-	        if(data.msg.indexOf('open')){
+	        if(data.msg.indexOf('open')>0){
 				$("#modal-success .modal-title").text('成功');
                 $("#modal-success .modal-body").text('连接成功!');
                 $("#modal-success").modal();

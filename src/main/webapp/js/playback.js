@@ -268,71 +268,18 @@ var _commands = function(isapppub, record_id, field, value) {
 	    },
 	    success:function(data){
 			$('#commands').html('');
+			$('#commandsTotal').text(data.recordsTotal)
 			var data = data['data'];
 	    	for(key in data){
 	    		$('#commands').append('<dd><span><div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:70px;" onclick="setVideoPos('+data[key].relatime+')" data-html="true" data-toggle="tooltip" title="时间:'+data[key]._time+'">'+data[key]._time.substring(11)+'</div></span><span>'+data[key].command+'</span></dd>')
 	    	}
-	    	//$('.list-group .commands div').tooltip();
+	    	$('#commands div').tooltip();
 			page_start = page_start+page_length;
 	    },
 	    error:function(){
 
 	    }
 	})
-	/*
-    $('#commands')
-        .DataTable(
-            {
-                'paging' : true,
-                'lengthChange' : true,
-                'dom' : 't<"bottom"p<"clear">>',
-                'searching' : false,
-                'ordering' : true,
-                "pagingType": "simple",
-                'info' : true,
-                'autoWidth' : false,
-                "serverSide" : true,
-                "destroy" : true,
-                "ajax" : {
-                    "url" : "../recordCommand/listRecordCommand?is_apppub="+isapppub+"&record_id="+record_id,
-                    "data" : function(d) {
-                        for(var key in d){
-                            if(key.indexOf("columns")==0||key.indexOf("order")==0||key.indexOf("search")==0){ //以columns开头的参数删除
-                                delete d[key];
-                            }
-                        }
-                    	if(field!=null&&field!='')
-                    		eval('d.' + field + '="' + value + '"');
-
-                    }
-                },
-                "columns" : [
-                    {
-                        "data" : "_time",
-                        "render" : function(data, type,
-                                row, mata) {
-				                return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:70px;" onclick="setVideoPos('+row.relatime+')" data-html="true" data-toggle="tooltip" title="时间:'+data+'">'
-				                    + data.substring(11)
-				                    + '</div>';
-				
-				            }
-                    },
-                    {
-                        "data" : "command",
-                        "render" : function(data, type,
-                                row, mata) {
-                        		
-				                return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:90px;'+(window.parent.$('#command').val()!=""&&data.indexOf(window.parent.$('#command').val())>=0?'color:red':'')+'" data-html="true" data-toggle="tooltip" title="命令:'+data+'">'
-				                    + data
-				                    + '</div>';
-				
-				            }
-                    }],
-                "initComplete": function( settings, json ) {
-                    $('#commands div').tooltip();
-                }
-            });
-	*/
 }
 
 $("#sousuoId").click(function() {

@@ -389,7 +389,7 @@ public class ConfigNetworkController {
 			result.put("success", false);
 			return result;
 		}
-		String msgString = SystemCommandUtil.execCmd("tcping "+request.getParameter("ip")+" "+request.getParameter("port"));
+		String msgString = SystemCommandUtil.execCmd("tcping -t 3 "+request.getParameter("ip")+" "+request.getParameter("port"));
 		result.put("msg", msgString);
 		return result;
 	}
