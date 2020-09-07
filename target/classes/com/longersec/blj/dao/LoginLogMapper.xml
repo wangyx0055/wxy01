@@ -284,7 +284,7 @@
 			SELECT SQL_CALC_FOUND_ROWS date_format(FROM_UNIXTIME(login_datetime),"%Y-%m-%d") login_datetime, username,realname, SUM(ct) total,SUM(IF(protocol='web',ct,0)) web,SUM(IF(protocol='ssh',ct,0)) ssh,SUM(IF(protocol='rdp',ct,0)) rdp
 			,SUM(IF(protocol='telnet',ct,0)) telnet,SUM(IF(protocol='vnc',ct,0)) vnc,SUM(IF(protocol='apppub',ct,0)) apppub
 			FROM (
-			select 'web' protocol,login_datetime,count(*)ct, username, realname from lsblj_login_log
+			select 'web' protocol,count(*)ct,login_datetime, username, realname from lsblj_login_log
 			WHERE 1
 			<if test="start_date != null and start_date != ''">
 				AND login_datetime &gt;= #{start_date}

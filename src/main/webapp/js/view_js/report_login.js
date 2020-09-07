@@ -936,7 +936,7 @@ function login_log1(time) {
 			"url": "../../loginLog/listLoginLog1",
 			data:{
 				protocol:strs[1],
-				login_datetime:"",
+				login_datetime:strs[0],
 				username:strs[2],
 				time_format:"%Y-%m-%d",
 			}

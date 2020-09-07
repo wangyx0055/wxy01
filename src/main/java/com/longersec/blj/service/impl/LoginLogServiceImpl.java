@@ -84,8 +84,6 @@ public class LoginLogServiceImpl implements LoginLogService{
 	
 	@Override
 	public List<Object> selectByUser(String interval, String start_date, String end_date, int page_start, int page_length){
-		// TODO Auto-generated method stub
-		
 		return LoginLogDao.selectProtocolByUser(start_date, end_date, page_start, page_length);
 	}
 

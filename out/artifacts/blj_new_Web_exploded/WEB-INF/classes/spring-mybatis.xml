@@ -5,19 +5,17 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 定义数据源Bean -->
-
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
          <property name="url" value="jdbc:mysql://39.97.123.62:3306/lsblj?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;tinyInt1isBit=false&amp;zeroDateTimeBehavior=convertToNull" />
         <property name="username" value="lsblj" />
         <property name="password" value="lsblj" />
     </bean>
- <!--
-   <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+<!--   <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="url" value="jdbc:mysql://192.168.1.202:3306/lsblj?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true" />
         <property name="username" value="lsblj" />
         <property name="password" value="lsblj" />
-    </bean>
-
+    </bean>-->
+<!--
 <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/lsblj?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true" />
         <property name="username" value="lsblj" />

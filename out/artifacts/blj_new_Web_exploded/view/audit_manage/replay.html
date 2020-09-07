@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8" />
-    <title>回访详情</title>
+    <title>回放详情</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <!-- Tell the browser to be responsive to screen width -->
@@ -21,13 +20,18 @@
 <body>
 <div class="row-box">
     <div class="m-left">
-        <h3 class="tit">回访详情</h3>
+        <h3 class="tit">回放详情</h3>
         <div th:if="${isapppub} eq 0" class="test"  id="device_name" th:text="${record.device_name}">Linux测试机</div>
-        <div th:if="${isapppub} eq 1" class="test"  id="device_name" th:text="${record.device_name}">Linux测试机</div>
-        <div class="info">
+        <div th:if="${isapppub} eq 1" class="test"  id="app_name" th:text="${record.app_name}">Linux测试机</div>
+        <div th:if="${isapppub} eq 0" class="info">
             <p>登录协议：<span id="protocol" th:text="${record.protocol_name}"></span></p>
             <p>设备地址：<span id="device_ip" th:text="${record.device_ip}"></span></p>
             <p>设备账号：<span id="device_username" th:text="${record.device_username}"></span></p>
+        </div>
+        <div th:if="${isapppub} gt 0" class="info">
+            <p>登录协议：<span id="protocol">应用发布</span></p>
+            <p>服&nbsp;&nbsp;务&nbsp;&nbsp;器:：<span id="apppub_name" th:text="${record.server_ip}"></span></p>
+            <p>程序名称：<span id="apppub_program" th:text="${record.program}"></span></p>
         </div>
         <div class="info info-1">
             <p>运维用户：<span id="username" th:text="${record.username}"></span></p>
@@ -69,7 +73,7 @@
                     </dt>
                 </dl>
                 <div class="page">
-                    <span>共<em>00</em>条指令</span>
+                    <span>共<em id="commandsTotal">0</em>条指令</span>
                     <ul class="ul-arrow">
                         <li><a href=""><img src="../images/z-p4.png" alt=""></a></li>
                         <li><a href=""><img src="../images/z-p5.png" alt=""></a></li>
@@ -90,7 +94,7 @@
                     </dt>
                 </dl>
                 <div class="page">
-                    <span>共<em>00</em>条指令</span>
+                    <span>共<em>0</em>条指令</span>
                     <ul class="ul-arrow">
                         <li><a href=""><img src="../images/z-p4.png" alt=""></a></li>
                         <li><a href=""><img src="../images/z-p5.png" alt=""></a></li>
@@ -111,7 +115,7 @@
                     </dt>
                 </dl>
                 <div class="page">
-                    <span>共<em>00</em>条指令</span>
+                    <span>共<em>0</em>条指令</span>
                     <ul class="ul-arrow">
                         <li><a href=""><img src="../images/z-p4.png" alt=""></a></li>
                         <li><a href=""><img src="../images/z-p5.png" alt=""></a></li>
@@ -134,39 +138,31 @@
             </div>
 
             <div class="controls">
-               <!-- <input id="position-slider" type="range">-->
-                <div class="container" style="background-color: #f0f0f0;width: 100%;height: 5px;">
-                    <div class="skills js"></div>
-                </div>
+               <input id="position-slider" style="background-color: #f0f0f0;width: 100%;height: 5px;margin-top:7px;" type="range">
             </div>
+            
             <div id="play_cont">
                 <div style="float:left;margin-left: 10px;">
-                    <i class="fa fa-play" style="margin-right: 10px;"></i>
+                    <i id="play-pause" class="fa fa-play" style="margin-right: 10px;"></i>
                     <span id="position">00:00</span>
                     <span>/</span>
                     <span id="duration">00:00</span>
                 </div>
-                <div style="float: right;margin-right: 10px;" >
+                <div style="float: right;margin-right: 10px;">
                     <span style="margin-right: 10px;cursor: pointer">倍速</span>
                     <i class="fa fa-arrow-circle-down" style="margin-right: 5px;"></i>
                     <i class="fa   fa-cog" style="margin-right: 5px;"></i>
                     <i class="fa fa-arrows-alt"></i>
-
                 </div>
             </div>
-
         </div>
     </div>
-
     <!-- Guacamole recording player -->
-
-
 </div>
+</body>
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/plugins/jQueryUI/jquery-ui.min.js"></script>
 <script src="../js/common/common.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -184,6 +180,5 @@ if(location.href.indexOf('isapppub=1')>0){
 	_commands(0, [[${recordid}]],'','');
 }
 </script>
-</body>
 
 </html>

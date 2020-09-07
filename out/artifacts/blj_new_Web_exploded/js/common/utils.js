@@ -19,6 +19,11 @@ function UpperFirstLetter(str)
  });  
 }
 
+function testPort(v){
+	return parseInt(v)>0&&parseInt(v)<65535;
+}
+
+
 function _protocol(data) {
 
     if (data == 1) {
