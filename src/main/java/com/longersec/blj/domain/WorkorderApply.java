@@ -43,6 +43,10 @@ public class WorkorderApply {
 	private String command;
 	
 	private Integer isAudit;
+	
+	private String Deadline;
+	
+	private Integer record_id;
 
 
 
@@ -50,12 +54,30 @@ public class WorkorderApply {
 		super();
 	}
 
+	public Integer getRecord_id() {
+		return record_id;
+	}
+
+
+	public void setRecord_id(Integer record_id) {
+		this.record_id = record_id;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getDeadline() {
+		return Deadline;
+	}
+
+	public void setDeadline(String deadline) {
+		Deadline = deadline;
 	}
 
 	public Integer getIsAudit() {

@@ -137,6 +137,61 @@
               </div>
         </div>
 
+        <!--     命令列表         -->
+        <div class="modal modal-hides" id="modal-default444">
+            <div class="modal-dialog" style="width: 800px">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#f7f7f7;width: auto;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close1">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title" >命令集管理</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box-header" style="margin-top:-10px;">
+                            <ul class="mr-nav-like" style="margin-left: -30px;list-style-type:none;">
+                                <li ><div><span class="new-header">命令列表</span></div></li>
+                                <li style="display: inline;float: right;margin-top: -20px;"><button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-editCmdGroupCmd">添加命令</button></li>
+                            </ul>
+                        </div>
+                        <div class="box-body">
+                            <div class="input-group margin">
+                                <select class="form-control" id="Distinguish2" style="margin-left: -10px;">
+                                    <option value="1" selected>自动识别</option>
+                                    <option value="2" >命令名称</option>
+                                    <option value="3" >风险等级</option>
+                                    <option value="4" >处置策略</option>
+                                </select>
+                                <input type="text" class="form-control" id="searchId2">
+                                <span class="input-group-btn">
+                                <button type="button" class="btn newaddbtn" id="search2">搜索</button>
+                              </span>
+                            </div>
+                            <table id="cmdGroupcmd" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td style="width: 55px;padding-right: 10px;"><span>选择</span></td>
+                                    <td><span>命令</span></td>
+                                    <td><span>是否正则</span></td>
+                                    <td><span>风险等级</span></td>
+                                    <td><span>处置策略</span></td>
+                                    <td><span>风险描述</span></td>
+                                    <td><span>操作</span></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table><br>
+                            <form style="margin-top:-60px;">
+                                <input type="checkbox" class="禁用 解禁 删除" onclick="sel('chk_[]')">
+                                <button type="button" class="btn btn-default pull-left newaddbtn2"  data-toggle="modal" data-target="#modal-del2" style="margin-left: 30px;">删除</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </div>
         <!-- add -->
         <!--  命令集里的新建 -->
       <div class="modal modal-hides" id="modal-default3">
@@ -156,25 +211,172 @@
              </span>
             <span style="color: red;font-size: 12px" id="Vaddname"></span>
            </div>
-
            <p>长度1-64个汉字或字符，允许输入英文字母、数字、或“-_”</p>
-             <span style="display: inline-block;vertical-align: top;">
-            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
-             <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>
-           </span>
-             <textarea  id="add_cmd" maxlength="128" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>
-             <span style="color: red;font-size: 12px;" id="Vaddcmd" ></span>
-             <p>支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
+<!--             <span style="display: inline-block;vertical-align: top;">-->
+<!--            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>-->
+<!--             <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>-->
+<!--           </span>-->
+<!--             <textarea  id="add_cmd" maxlength="128" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>-->
+<!--             <span style="color: red;font-size: 12px;" id="Vaddcmd" ></span>-->
+<!--             <p>支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>-->
          </div>
          <br>
              <div class="modal-footer">
                  <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+<!--                 <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-primary7" data-dismiss="modal" id="next1">下一步</button>-->
                  <button id="addButton1" type="button" class="btn newaddbtn" >确定</button>
              </div>
 
               </div>
             </div>
       </div>
+        <!--下一步-->
+        <div class="modal modal-hides" id="modal-primary7">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">添加命令</span>
+                    </div>
+                    <div class="modal-body">
+                        <div style="margin-top: 10px">
+                         <span style="display: inline-block;vertical-align: top;">
+                        <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+                         <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>
+                         </span>
+                         <textarea  id="add_cmd1" maxlength="128" style="width: 300px;height: 60px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>
+                         <span style="color: red;font-size: 12px;" id="Vaddcmd1" ></span>
+<!--                         <p style="font-size: 12px;margin-left: 133px;color: #a4abb5;margin-top: 0px;width: 306px;">支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>-->
+                        </div>
+
+                        <div style="margin-top: 10px">
+                         <span style="display: inline-block;vertical-align: top;">
+                        <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;"></span>
+                         <span style="margin-left: 12px;font-size: 12px;color: #505050">是否正则：</span>
+                         </span>
+                            <input class="input" type="checkbox" id="add_regular1" style="margin-left:10px;margin-top: 0px"/>
+                        </div>
+
+                        <div style="margin-top: 10px">
+                         <span style="display: inline-block;vertical-align: top;">
+                        <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+                         <span style="margin-left: 2px;font-size: 12px;color: #505050">风险等级：</span>
+                         </span>
+                            <select  name="lo" id="add_risk_rating1" style="width: 300px;height: 25px;border-radius: 3px;margin-left: 3px;">
+                                <option value="0"  selected="selected" >默认</option>
+                                <option value="1" >高危</option>
+                                <option value="2" >非法</option>
+                            </select>&nbsp;&nbsp;<span id='Vaddriskrating1' style="color:red;font-size: 12px;"></span>
+                        </div>
+
+                        <div style="margin-top: 10px">
+                         <span style="display: inline-block;vertical-align: top;">
+                        <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+                         <span style="margin-left: 2px;font-size: 12px;color: #505050">处置策略：</span>
+                         </span>
+                            <select  name="lo" id="add_strategy1" style="width: 300px;height: 25px;border-radius: 3px;margin-left: 3px;">
+                                <option value="0"  selected="selected" >默认</option>
+                                <option value="1" >申请确认</option>
+                                <option value="2" >指令阻断</option>
+                                <option value="3" >会话阻断</option>
+                            </select>&nbsp;&nbsp;<span id='Vaddstrategy1' style="color:red;font-size: 12px;"></span>
+                        </div>
+
+                        <div style="margin-top: 10px">
+                         <span style="display: inline-block;vertical-align: top;">
+                        <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;"></span>
+                         <span style="margin-left: 12px;font-size: 12px;color: #505050">风险描述：</span>
+                         </span>
+                            <textarea  id="add_risk_desc1" maxlength="128" style="width: 300px;height: 60px;border-radius: 3px;border: 1px solid #ccc;resize : none;margin-left: 3px;"></textarea>
+                            <span style="color: red;font-size: 12px;" id="Vaddriskdesc1" ></span>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn newaddbtn" data-toggle="modal" data-target="#modal-default3" data-dismiss="modal">上一步</button>
+                        <button type="button" id="editcmdButton1" class="btn newaddbtn add-policy" >确定</button>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </div>
+        <!-- 命令集管理编辑新建-->
+        <div class="modal modal-hides" id="modal-editCmdGroupCmd">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close2">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">添加命令</span>
+                    </div>
+                    <div class="modal-body">
+                        <div style="margin-top: 10px">
+                            <span style="display: inline-block;vertical-align: top;">
+                            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+                            <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>
+                             </span>
+                                <textarea id="add_cmd" maxlength="128" style="width: 300px;height: 60px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>
+                                <span style="color: red;font-size: 12px;" id="Vaddcmd"></span>
+                                <!--                         <p style="font-size: 12px;margin-left: 133px;color: #a4abb5;margin-top: 0px;width: 306px;">支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>-->
+                        </div>
+
+                        <div style="margin-top: 10px">
+                            <span style="display: inline-block;vertical-align: top;">
+                            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;"></span>
+                            <span style="margin-left: 12px;font-size: 12px;color: #505050">是否正则：</span>
+                            </span>
+                                <input class="input" type="checkbox" id="add_regular" style="margin-left:10px;margin-top: 0px"/>
+                        </div>
+
+                        <div style="margin-top: 10px">
+                            <span style="display: inline-block;vertical-align: top;">
+                            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+                            <span style="margin-left: 2px;font-size: 12px;color: #505050">风险等级：</span>
+                            </span>
+                            <select name="lo" id="add_risk_rating" style="width: 300px;height: 25px;border-radius: 3px;margin-left: 3px;">
+                                <option value="0" selected="selected">&nbsp;&nbsp;默认</option>
+                                <option value="1">&nbsp;&nbsp;高危</option>
+                                <option value="2">&nbsp;&nbsp;非法</option>
+                            </select>&nbsp;&nbsp;<span id='Vaddriskrating' style="color:red;font-size: 12px;"></span>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <span style="display: inline-block;vertical-align: top;">
+                            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
+                            <span style="margin-left: 2px;font-size: 12px;color: #505050">处置策略：</span>
+                            </span>
+                            <select name="lo" id="add_strategy" style="width: 300px;height: 25px;border-radius: 3px;margin-left: 3px;">
+                                <option value="1">&nbsp;&nbsp;允许执行</option>
+                                <option value="2">&nbsp;&nbsp;动态授权</option>
+                                <option value="3">&nbsp;&nbsp;拒绝执行</option>
+                                <option value="4">&nbsp;&nbsp;断开连接</option>
+                            </select>&nbsp;&nbsp;<span id='Vaddstrategy' style="color:red;font-size: 12px;"></span>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <span style="display: inline-block;vertical-align: top;">
+                            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;"></span>
+                            <span style="margin-left: 12px;font-size: 12px;color: #505050">风险描述：</span>
+                            </span>
+                            <textarea id="add_risk_desc" maxlength="128" style="width: 300px;height: 60px;border-radius: 3px;border: 1px solid #ccc;resize : none;margin-left: 3px;"></textarea>
+                            <span style="color: red;font-size: 12px;" id="Vaddriskdesc"></span>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal" id="close3">取消</button>
+                        <button type="button" id="editcmdButton" class="btn newaddbtn add-policy">确定</button>
+
+                        <input type="hidden" id="_edit_cmd_id" value="0">
+                        <input type="hidden" id="_group_id" value="0">
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </div>
+
         <!-- first -->
         <!-- 新建策略里的新建  -->
       <div class="modal modal-hides" id="modal-default">
@@ -195,11 +397,11 @@
                    <p class="cc-policy-namedesc">长度1-64个汉字或字符，允许输入英文字母、数字、或“-”</p>
                   <div class="cc-policy-action">
                       <span>执行动作：</span>
-                      <select id="add_execute_action2" name="lo"> 
-                        <option value="1" selected>&nbsp;&nbsp;断开连接</option>
-                        <option value="2">&nbsp;&nbsp;拒绝执行</option>
-                        <!-- <option value="3">&nbsp;&nbsp;动态授权</option>
-                        <option value="4">&nbsp;&nbsp;允许执行</option> -->
+                      <select id="add_execute_action2" name="lo">
+                          <option value="1">&nbsp;&nbsp;允许执行</option>
+                          <option value="2">&nbsp;&nbsp;动态授权</option>
+                          <option value="3">&nbsp;&nbsp;拒绝执行</option>
+                          <option value="4">&nbsp;&nbsp;断开连接</option>
                       </select>
                   </div>
                     <div class="cc-policy-action">
@@ -303,25 +505,67 @@
               </div>
             </div>
       </div>
-                <div class="modal modal-hides" id="modal-control2">
-                    <div class="modal-dialog">
-                        <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
-                                <span class="modal-title">提示</span>
-                            </div>
-                            <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
-                                <p>您确定要删除所选命令集吗？</p>
-                            </div><br>
-                            <div class="modal-footer">
-                                <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
-                                <button id="delAllButton2" type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
-
-                            </div>
-                        </div>
+        <!--删除命令-->
+        <div class="modal modal-hides" id="modal-delCmdGroupCmd">
+            <div class="modal-dialog">
+                <div class="modal-content newdiv" style="width: 350px;margin-left: 80px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">提示</span>
+                    </div>
+                    <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                        <p>您确定要删除所选的账号吗？</p>
+                    </div><br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button" id="delButton1" class="btn newaddbtn">确定</button>
+                        <input type="hidden" id="del_cmd_id">
                     </div>
                 </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <div class="modal modal-hides" id="modal-del2">
+            <div class="modal-dialog">
+                <div class="modal-content newdiv" style="width: 350px;margin-left: 80px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">提示</span>
+                    </div>
+                    <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                        <p>您确定要删除所选的账号吗？</p>
+                    </div><br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button type="button" id="_delAllButton" class="btn newaddbtn">确定</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <div class="modal modal-hides" id="modal-control2">
+            <div class="modal-dialog">
+                <div class="modal-content newdiv" style="width: 350px;margin-left: 80px">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title">提示</span>
+                    </div>
+                    <div class="ug-delsure" style="margin-left: 90px;margin-top: 30px;">
+                        <p>您确定要删除所选命令集吗？</p>
+                    </div><br>
+                    <div class="modal-footer">
+                        <button  type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>
+                        <button id="delAllButton2" type="button" class="btn newaddbtn" data-dismiss="modal">确定</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- 新建策略里的关联用户   关联用户组  -->
       <div class="modal modal-hides" id="modal-primary33">
         <div class="modal-dialog">
@@ -1038,10 +1282,10 @@
             <div class="cc-policy-action">
             <span>执行动作：</span>
             <select name="lo" id="edit_execute_action777">
-              <option style="font-size: 13px" value="1" name="type777">&nbsp;&nbsp;断开连接</option>
-              <option style="font-size: 13px" value="2" name="type777">&nbsp;&nbsp;拒绝执行</option>
-              <!-- <option style="font-size: 13px" value="3" name="type777">&nbsp;&nbsp;动态授权</option>
-              <option style="font-size: 13px" value="4" name="type777">&nbsp;&nbsp;允许执行</option> -->
+                <option style="font-size: 13px" value="1" name="type777">&nbsp;&nbsp;允许执行</option>
+                <option style="font-size: 13px" value="2" name="type777">&nbsp;&nbsp;动态授权</option>
+                <option style="font-size: 13px" value="3" name="type777">&nbsp;&nbsp;拒绝执行</option>
+                <option style="font-size: 13px" value="4" name="type777">&nbsp;&nbsp;断开连接</option>
                </select>
              </div>
               <div class="cc-policy-action">
@@ -1099,13 +1343,13 @@
           <input type="text" id="edit_name1" size="30px"><span id="Veditname" style="color: red;font-size:12px;"></span></span></span>
       </div>
       <p>长度1-64个汉字或字符，允许输入英文字母、数字、或“-”</p>
-          <span style="display: inline-block;vertical-align: top;">
-            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>
-             <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>
-           </span>
-          <textarea  id="edit_cmd1" maxlength="128" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>
-          <span style="color: red;font-size: 12px;display: inline-block;vertical-align: top;" id="Vedit_cmd1" ></span>
-          <p>支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>
+<!--          <span style="display: inline-block;vertical-align: top;">-->
+<!--            <span style="color: red;font-size: 20px;vertical-align: -25%;margin-left: 55px;">*</span>-->
+<!--             <span style="margin-left: 2px;font-size: 12px;color: #505050">命令/参数：</span>-->
+<!--           </span>-->
+<!--          <textarea  id="edit_cmd1" maxlength="128" style="width: 300px;height: 90px;border-radius: 3px;border: 1px solid #ccc;resize : none;"></textarea>-->
+<!--          <span style="color: red;font-size: 12px;display: inline-block;vertical-align: top;" id="Vedit_cmd1" ></span>-->
+<!--          <p>支持通配符，*代表任意字符，?代表任意一个字符，[]代表匹配中括号内字符、范围或取反（使用!或^取反），每行输入一条命令</p>-->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default newaddbtn2" data-dismiss="modal">取消</button>

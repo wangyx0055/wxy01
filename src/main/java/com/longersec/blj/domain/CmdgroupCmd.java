@@ -8,7 +8,45 @@ public class CmdgroupCmd {
 
 	private String command;
 
+	private Integer risk_rating;
 
+	private Integer disposal_strategy;
+
+	private Integer regular;
+
+	private String risk_desc;
+
+	public Integer getRisk_rating() {
+		return risk_rating;
+	}
+
+	public void setRisk_rating(Integer risk_rating) {
+		this.risk_rating = risk_rating;
+	}
+
+	public Integer getDisposal_strategy() {
+		return disposal_strategy;
+	}
+
+	public void setDisposal_strategy(Integer disposal_strategy) {
+		this.disposal_strategy = disposal_strategy;
+	}
+
+	public Integer getRegular() {
+		return regular;
+	}
+
+	public void setRegular(Integer regular) {
+		this.regular = regular;
+	}
+
+	public String getRisk_desc() {
+		return risk_desc;
+	}
+
+	public void setRisk_desc(String risk_desc) {
+		this.risk_desc = risk_desc;
+	}
 
 	public CmdgroupCmd() {
 		super();
@@ -40,10 +78,14 @@ public class CmdgroupCmd {
 
 	@Override
 	public String toString() {
-		return "CmdgroupCmd{ "+
-			",id=" + id +
-			",group_id=" + group_id +
-			",command=" + command +
-			"";
+		return "CmdgroupCmd{" +
+				"id=" + id +
+				", group_id=" + group_id +
+				", command='" + command + '\'' +
+				", risk_rating=" + risk_rating +
+				", disposal_strategy=" + disposal_strategy +
+				", regular=" + regular +
+				", risk_desc='" + risk_desc + '\'' +
+				'}';
 	}
 }

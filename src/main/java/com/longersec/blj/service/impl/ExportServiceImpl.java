@@ -484,36 +484,7 @@ public class ExportServiceImpl implements ExportService {
         csvWriter.close();
         return tempFile;
     }
-    
-	@Override
-	public File createTempFile_reportProtocolLoginlog(String interval,String start_date, String end_date) throws IOException {
-		File tempFile = File.createTempFile("vehicle", ".csv");
-        CsvWriter csvWriter = new CsvWriter(tempFile.getCanonicalPath(), ',', Charset.forName("UTF-8"));
-        // 写表头
-        String[] headers = { "日期","SSH","RDP","TELNET","VNC","应用发布","前台","合计"};
-        csvWriter.writeRecord(headers);
-		ArrayList<Object> resultLoginLogs = new ArrayList<Object>();
-		ArrayList<Map<String, String>> loginLogs = new ArrayList<Map<String, String>>();
-        resultLoginLogs = (ArrayList<Object>)loginLogService.selectProtocolBydate(interval, start_date, end_date, 0, 10000);
-		if(CollectionUtils.isNotEmpty(resultLoginLogs)) {
-			loginLogs = (ArrayList<Map<String, String>>)resultLoginLogs.get(0);
-		}
-        for (Map<String, String> data : loginLogs) {
-            //这里如果数据不是String类型，请进行转换
-            csvWriter.write(data.get("interval"));
-            csvWriter.write(String.valueOf(data.get("ssh")));
-            csvWriter.write(String.valueOf(data.get("rdp")));
-            csvWriter.write(String.valueOf(data.get("telnet")));
-            csvWriter.write(String.valueOf(data.get("vnc")));
-            csvWriter.write(String.valueOf(data.get("apppub")));
-            csvWriter.write(String.valueOf(data.get("web")));
-            csvWriter.write(String.valueOf(data.get("total")));
-            csvWriter.endRecord();
-        }
-        csvWriter.close();
-        return tempFile;
-	}
-    
+
 	@Override
 	public File createTempFile_reportUserLoginlog(String interval,String start_date, String end_date) throws IOException {
 		File tempFile = File.createTempFile("vehicle", ".csv");

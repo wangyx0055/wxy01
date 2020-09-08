@@ -27,5 +27,9 @@ public interface WorkorderApplyService {
 
 	/** 命令工单的命令**/
 	String selectCmd(int id);
+	
+	Integer getDeviceIdByConnectId(int gconnectid);
+	
+	Integer getRecordIdByConnectId(int gconnectid);
 }
 

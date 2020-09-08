@@ -11,6 +11,7 @@
 		<result column="apply_realname" jdbcType="VARCHAR" property="apply_realname"/>
 		<result column="apply_username" jdbcType="VARCHAR" property="apply_username"/>
 		<result column="end" jdbcType="VARCHAR" property="end"/>
+		<result column="deadline" jdbcType="VARCHAR" property="deadline"/>
 		<result column="upload" jdbcType="INTEGER" property="upload"/>
 		<result column="download" jdbcType="INTEGER" property="download"/>
 		<result column="filemanage" jdbcType="INTEGER" property="filemanage"/>
@@ -20,7 +21,9 @@
 		<result column="description" jdbcType="VARCHAR" property="description"/>
 		<result column="result" jdbcType="INTEGER" property="result"/>
 		<result column="reason" jdbcType="VARCHAR" property="reason"/>
+		<result column="command" jdbcType="VARCHAR" property="command"/>
 		<result column="update_time" jdbcType="VARCHAR" property="update_time"/>
+		<result column="record_id" jdbcType="INTEGER" property="record_id"/>
 	</resultMap>
 
 	<resultMap id="workorderApplyRecordCounts" type="java.lang.Long">
@@ -34,8 +37,10 @@
 		INSERT INTO lsblj_workorder_apply
 		<set>
 			<if test="start != null">`start`=#{start},</if>
+			<if test="type != null">`type`=#{type},</if>
 			<if test="apply_user_id != null">`apply_user_id`=#{apply_user_id},</if>
 			<if test="end != null">`end`=#{end},</if>
+			<if test="deadline != null">`deadline`=#{deadline},</if>
 			<if test="name != null">`name`=#{name},</if>
 			<if test="apply_realname != null">`apply_realname`=#{apply_realname},</if>
 			<if test="apply_username != null">`apply_username`=#{apply_username},</if>
@@ -49,6 +54,8 @@
 			<if test="result != null">`result`=#{result},</if>
 			<if test="reason != null">`reason`=#{reason},</if>
 			<if test="update_time != null">`update_time`=#{update_time},</if>
+			<if test="command != null">`command`=#{command},</if>
+			<if test="record_id != null">`record_id`=#{record_id},</if>
 		</set>
 	</insert>
 
@@ -57,7 +64,9 @@
 		<set>
 			<if test="id != null">`id`=#{id},</if>
 			<if test="start != null">`start`=#{start},</if>
+			<if test="type != null">`type`=#{type},</if>
 			<if test="end != null">`end`=#{end},</if>
+			<if test="deadline != null">`deadline`=#{deadline},</if>
 			<if test="name != null">`name`=#{name},</if>
 			<if test="upload != null">`upload`=#{upload},</if>
 			<if test="download != null">`download`=#{download},</if>
@@ -69,6 +78,8 @@
 			<if test="result != null">`result`=#{result},</if>
 			<if test="reason != null">`reason`=#{reason},</if>
 			<if test="update_time != null">`update_time`=#{update_time},</if>
+			<if test="command != null">`command`=#{command},</if>
+			<if test="record_id != null">`record_id`=#{record_id},</if>
 		</set>
 		where id=#{id}
 	</update>
@@ -127,5 +138,13 @@
 
 	<select id="selectCmd" resultType="java.lang.String">
 		select command from `lsblj_workorder_apply` where id = #{id}
+	</select>
+	
+	<select id="getDeviceIdByConnectId" resultType="java.lang.Integer">
+		select parameter_value from lsblj_g_connection_parameter where parameter_name='device-account-id' and connection_id=#{gconnectid}
+	</select>
+	
+	<select id="getRecordIdByConnectId" resultType="java.lang.Integer">
+		select parameter_value from lsblj_g_connection_parameter where parameter_name='record-id' and connection_id=#{gconnectid}
 	</select>
 </mapper>

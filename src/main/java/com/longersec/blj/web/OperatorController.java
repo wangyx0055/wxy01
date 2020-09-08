@@ -868,6 +868,7 @@ public class OperatorController {
     	User user = (User) session.getAttribute("loginUser");
     	Config config = new Config();
 		this.addGConnParameter(gconnection_id, "record-id", deviceRecord.getId().toString());
+		this.addGConnParameter(gconnection_id, "device-account-id", deviceAccount.getId().toString());
 		//this.addGConnParameter(gconnection_id, "font-name", "DroidSansMono");
     	switch (deviceRecord.getProtocol_id()) {
 		case 1:

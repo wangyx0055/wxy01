@@ -15,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.longersec.blj.dao.DeviceDao;
 import com.longersec.blj.domain.Device;
 import com.longersec.blj.domain.DTO.Users;
+import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
 import com.longersec.blj.service.DeviceService;
+import com.longersec.blj.utils.Sm4Utils;
 
 
 @Transactional
@@ -27,6 +29,9 @@ public class DeviceServiceImpl implements DeviceService{
 
 	@Autowired
 	private DeviceAccountDao deviceAccountDao;
+	
+	@Autowired
+	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
 
 	@Override
 	public boolean editDevice(Device device) {
@@ -46,7 +51,7 @@ public class DeviceServiceImpl implements DeviceService{
 		deviceAccount.setDevice_id(device.getId());
 		deviceAccount.setLogin_method(device.getLogin_method());
 		deviceAccount.setUsername(device.getAccount());
-		deviceAccount.setPassword(device.getPassword());
+		deviceAccount.setPassword(Sm4Utils.encryptEcb(configPasswordEncryptKeyService.getKey(), device.getPassword()));
 		deviceAccount.setProtocol_id(device.getProtocol_id());
 		deviceAccount.setPort(device.getPort());
 		deviceAccount.setSsh_key(device.getSsh_key());

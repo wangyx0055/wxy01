@@ -14,6 +14,16 @@ public class Cmdgroup {
 
 	private String topName1;
 
+	private String cmdgroup_cmd;
+
+	public String getCmdgroup_cmd() {
+		return cmdgroup_cmd;
+	}
+
+	public void setCmdgroup_cmd(String cmdgroup_cmd) {
+		this.cmdgroup_cmd = cmdgroup_cmd;
+	}
+
 	public String getTopName1() {
 		return topName1;
 	}
@@ -76,6 +86,7 @@ public class Cmdgroup {
 				", department=" + department +
 				", depart_name='" + depart_name + '\'' +
 				", topName1='" + topName1 + '\'' +
+				", cmdgroup_cmd='" + cmdgroup_cmd + '\'' +
 				'}';
 	}
 }

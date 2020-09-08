@@ -1,12 +1,10 @@
 package com.longersec.blj.service;
 
-import com.longersec.blj.domain.*;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import com.longersec.blj.domain.ApppubAccount;
+import com.longersec.blj.domain.DeviceAccount;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public interface ExportService {
 
@@ -39,8 +37,6 @@ public interface ExportService {
     File createTempFile_ApppubProgram()throws IOException;
 
     File createTempFile_operation()throws IOException;
-    
-    File createTempFile_reportProtocolLoginlog(String interval,String start_date, String end_date) throws IOException;
     
     File createTempFile_reportUserLoginlog(String interval,String start_date, String end_date) throws IOException;
     

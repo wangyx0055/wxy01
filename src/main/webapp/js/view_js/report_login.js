@@ -111,9 +111,9 @@ $(function() {
 	$('#export').click(function(){
 		$('#modal-default1 .rl-type input').each(function(){
 			if($(this)[0].checked){
-				var interval = $('#modal-default1 .rl-show input[checked=checked]').attr('data-interval');
-				var url = '../../export/export'+UpperFirstLetter($(this).val())+'Loginlog?interval='+interval+'&start='+export_start_time+'&end='+export_end_time;
-				document.getElementById('hide_'+$(this).val()).src=url;
+				let interval = $('#modal-default1 .rl-show input[type=radio]:checked').attr('data-interval');
+				let file_type = $('#modal-default1 .rl-file input[type=radio]:checked').attr('data-file');
+				document.getElementById('hide_'+$(this).val()).src='../../export/export' + UpperFirstLetter($(this).val()) + 'Loginlog?interval=' + interval + '&start=' + export_start_time + '&end=' + export_end_time+'&file_type='+file_type;
 			}
 		})
 	})

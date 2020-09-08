@@ -4461,7 +4461,7 @@ table tr span {
   float: right;
 }
 .rl #modal-default1 .rl-time > div div {
-  height: 34px;
+  height: 35px;
   width: 20%;
 }
 .rl #modal-default1 .rl-time > div div i {
@@ -4489,12 +4489,12 @@ table tr span {
   margin-right: 7px;
 }
 .rl #modal-default1 .rl-type input:nth-of-type(2) {
-  margin-left: 20px;
+  margin-left: 15px;
   margin-top: -3px;
   margin-right: 7px;
 }
 .rl #modal-default1 .rl-type input:nth-of-type(3) {
-  margin-left: 20px;
+  margin-left: 18px;
   margin-top: -3px;
   margin-right: 7px;
 }
@@ -4523,7 +4523,7 @@ table tr span {
   margin-top: 20px;
 }
 .rl #modal-default1 .rl-file > input {
-  vertical-align: -2px;
+  vertical-align: -1px;
 }
 /*reports_sessions*/
 .rs .tab-content .output-table {
@@ -7181,7 +7181,7 @@ table tr span {
 }
 .cs_con #G #ad_edit_p .modal-body .box-body > span:nth-of-type(1) {
   font-size: 12px;
-  margin-left: 80px;
+  margin-left: 78px;
 }
 .cs_con #G #ad_edit_p .modal-body .box-body > span:nth-of-type(1) #ad_edit_username {
   width: 210px;
@@ -7211,7 +7211,7 @@ table tr span {
   font-size: 12px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  margin-left: 10px;
+  margin-left: 9px;
 }
 .cs_con #G #ad_edit_p .modal-body .box-body > span:nth-of-type(5) {
   font-size: 12px;
@@ -7241,7 +7241,7 @@ table tr span {
   font-size: 12px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  margin-left: 10px;
+  margin-left: 9px;
 }
 .cs_con #G #ad_edit_p .modal-body .box-body > p:nth-of-type(2) {
   font-size: 12px;
@@ -7259,7 +7259,7 @@ table tr span {
   font-size: 12px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  margin-left: 10px;
+  margin-left: 9px;
 }
 .cs_con #G #radius_button .modal-body > div:nth-of-type(1) > span:nth-of-type(1) {
   font-size: 12px;

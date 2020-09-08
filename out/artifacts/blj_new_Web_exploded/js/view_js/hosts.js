@@ -1018,6 +1018,7 @@ $("#newDevice").click(function(){
     $('#Vdevice_type').text('');
     $('#Vip').text('');
     $('#VdepartName').text('');
+    $('#edit_device_ip').attr("readOnly",false);
 });
 /*
 $('#modal-editdevice').on('show.bs.modal', function (event) {
@@ -1054,7 +1055,7 @@ $('#modal-editdevice').on('show.bs.modal', function (event) {
         $('#Vdevice_type').text('');
         $('#Vport').text('');
         $('#Vip').text('');
-        $('#edit_device_ip').attr("readOnly","true");
+        $('#edit_device_ip').attr("readOnly",true);
     }else{
     }
 });

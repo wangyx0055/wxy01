@@ -121,15 +121,15 @@ public class CmdgroupController {
 			operatorLog.setResult("成功");
 			operatorLogService.addOperatorLog(operatorLog);
 			Boolean r = cmdgroupService.addCmdgroup(cmdgroup);
-			if(cmdgroup.getId()>0) {
-				String[] cmds = cmdgroup.getCmd().split("\n");
-				for(int i=0; i<cmds.length; i++) {
-					CmdgroupCmd cmdgroupCmd = new CmdgroupCmd();
-					cmdgroupCmd.setGroup_id(cmdgroup.getId());
-					cmdgroupCmd.setCommand(cmds[i]);
-					cmdgroupCmdService.addCmdgroupCmd(cmdgroupCmd);
-				}
-			}
+//			if(cmdgroup.getId()>0) {
+//				String[] cmds = cmdgroup.getCmd().split("\n");
+//				for(int i=0; i<cmds.length; i++) {
+//					CmdgroupCmd cmdgroupCmd = new CmdgroupCmd();
+//					cmdgroupCmd.setGroup_id(cmdgroup.getId());
+//					cmdgroupCmd.setCommand(cmds[i]);
+//					cmdgroupCmdService.addCmdgroupCmd(cmdgroupCmd);
+//				}
+//			}
 			result.accumulate("success", r?true:false);
 		}else {
 			operatorLog.setResult("失败");

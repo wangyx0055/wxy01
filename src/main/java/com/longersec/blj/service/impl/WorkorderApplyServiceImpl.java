@@ -61,4 +61,16 @@ public class WorkorderApplyServiceImpl implements WorkorderApplyService{
 		return WorkorderApplyDao.selectDeadLine();
 	}
 
+	@Override
+	public Integer getDeviceIdByConnectId(int gconnectid) {
+		// TODO Auto-generated method stub
+		return WorkorderApplyDao.getDeviceIdByConnectId(gconnectid);
+	}
+
+	@Override
+	public Integer getRecordIdByConnectId(int gconnectid) {
+		// TODO Auto-generated method stub
+		return WorkorderApplyDao.getRecordIdByConnectId(gconnectid);
+	}
+
 }

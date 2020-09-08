@@ -1,9 +1,11 @@
 package com.longersec.blj.web;
 
 import com.longersec.blj.dao.WorkorderApplyDeviceAccountDao;
+import com.longersec.blj.domain.ConfigWorkorder;
 import com.longersec.blj.domain.OperatorLog;
 import com.longersec.blj.domain.User;
 import com.longersec.blj.domain.WorkorderApply;
+import com.longersec.blj.service.ConfigWorkorderService;
 import com.longersec.blj.service.OperatorLogService;
 import com.longersec.blj.service.WorkorderApplyService;
 import com.longersec.blj.service.WorkorderAuditLogService;
@@ -23,8 +25,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -42,6 +47,9 @@ public class WorkorderApplyController {
 	
 	@Autowired
 	private WorkorderAuditLogService workorderAuditLogService;
+	
+	@Autowired
+	private ConfigWorkorderService configWorkorderService;
 
 	JSONObject result = null;
 	@RequestMapping("/listWorkorderApply")
@@ -96,6 +104,49 @@ public class WorkorderApplyController {
 		operatorLog.setDetails("添加授权工单["+workorderApply.getName()+"]");
 		boolean r = workorderApplyService.addWorkorderApply(workorderApply);
 		boolean d = workorderApplyDeviceAccountDao.addWorkorderApplyDeviceAccount(workorderApply.getId(),Arrays.asList(_devices));
+		
+		result.put(BljConstant.SUCCESS, r && d);
+		operatorLog.setResult(r&& d?"成功":"失败");
+		operatorLogService.addOperatorLog(operatorLog);
+		return result;
+	}
+	
+	@RequestMapping("/addWorkorderCommandApply")
+	@ResponseBody
+	public JSONObject addWorkorderCommandApply(@RequestParam(value = "gconnectid") Integer gconnectid,@RequestParam(value = "command") String command,
+	                                    HttpServletRequest request, HttpSession session) {
+		//操作日志
+		OperatorLog operatorLog = Operator_log.log(request, session);
+		operatorLog.setModule("命令工单");
+		operatorLog.setContent("添加");
+		result = new JSONObject();
+		WorkorderApply workorderApply = new WorkorderApply();
+		//设置工单名称
+		workorderApply.setName(KeyUtil.workName());
+		ConfigWorkorder configWorkorder = configWorkorderService.getById(1);
+		//获取当前系统用户
+		User principal = (User)SecurityUtils.getSubject().getPrincipal();
+		workorderApply.setApply_user_id(principal.getId());
+		workorderApply.setApply_username(principal.getUsername());
+		workorderApply.setApply_realname(principal.getRealname());
+		workorderApply.setCommand(command);
+		workorderApply.setStart(new SimpleDateFormat ("YYYY-MM-dd hh:mm:ss").format(new Date()));
+		workorderApply.setEnd(new SimpleDateFormat ("YYYY-MM-dd hh:mm:ss").format(new Date(new Date().getTime()+configWorkorder.getDead_hours()*3600*1000)));
+		workorderApply.setDeadline(new SimpleDateFormat ("YYYY-MM-dd hh:mm:ss").format(new Date().getTime()+configWorkorder.getDead_hours()*3600*1000));
+		workorderApply.setRecord_id(workorderApplyService.getRecordIdByConnectId(gconnectid));
+		workorderApply.setType(1);
+		workorderApply.setResult(1);
+		operatorLog.setDetails("添加命令工单["+workorderApply.getName()+"]");
+		boolean r = workorderApplyService.addWorkorderApply(workorderApply);
+		Integer[] _devices = new Integer[1];
+		_devices[0]=workorderApplyService.getDeviceIdByConnectId(gconnectid);
+		boolean d = false;
+		if(_devices[0]>0) {
+			d = workorderApplyDeviceAccountDao.addWorkorderApplyDeviceAccount(workorderApply.getId(),Arrays.asList(_devices));
+			if(d) {
+				workorderAuditLogService.createWorkorderAuditLog(workorderApply.getId());
+			}
+		}
 		
 		result.put(BljConstant.SUCCESS, r && d);
 		operatorLog.setResult(r&& d?"成功":"失败");

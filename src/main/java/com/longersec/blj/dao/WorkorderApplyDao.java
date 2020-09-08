@@ -27,4 +27,8 @@ public interface WorkorderApplyDao {
 
 	/** 命令工单的命令**/
 	String selectCmd(@Param("id")int id);
+	
+	Integer getDeviceIdByConnectId(@Param("gconnectid")int gconnectid);
+	
+	Integer getRecordIdByConnectId(@Param("gconnectid")int gconnectid);
 }

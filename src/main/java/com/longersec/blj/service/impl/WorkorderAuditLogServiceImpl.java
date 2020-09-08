@@ -108,7 +108,7 @@ public class WorkorderAuditLogServiceImpl implements WorkorderAuditLogService{
 					workorderAuditLog.setWorkorder_apply_id(id);
 					workorderAuditLog.setDevice_account_id(deviceaccess.getDevice_account_id());
 					workorderAuditLog.setDepartment(0);
-					workorderAuditLog.setStep(i);
+					workorderAuditLog.setStep(i+1);
 					WorkorderAuditLogDao.addWorkorderAuditLog(workorderAuditLog);
 				}
 			}else if(department_id==1){

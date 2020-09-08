@@ -1,12 +1,9 @@
 package com.longersec.blj.web;
 
 import com.longersec.blj.domain.*;
-import com.longersec.blj.service.ApppubAccountService;
-import com.longersec.blj.service.ConfigPasswordEncryptKeyService;
-import com.longersec.blj.service.DeviceAccountService;
-import com.longersec.blj.service.ExportService;
-import com.longersec.blj.service.OperatorLogService;
-import com.longersec.blj.service.UserService;
+import com.longersec.blj.service.*;
+import com.longersec.blj.staticFactory.ExportProtocolFactory;
+import com.longersec.blj.staticFactory.ExportProtocolLoginlog;
 import com.longersec.blj.utils.Operator_log;
 import com.longersec.blj.utils.Sm4Utils;
 
@@ -39,13 +36,14 @@ public class ExportController {
     
     @Autowired
     private ApppubAccountService apppubAccountService;
-    
+
     @Autowired
     private OperatorLogService operatorLogService;
 	
 	@Autowired
 	private ConfigPasswordEncryptKeyService configPasswordEncryptKeyService;
-
+	@Autowired
+    private LoginLogService loginLogService;
 
     @RequestMapping(value = "/operatorLog", method = RequestMethod.GET)
     public void operatorLog( HttpServletResponse response, HttpSession session, HttpServletRequest request) throws IOException {
@@ -362,20 +360,8 @@ public void exprotApppubApp(HttpServletResponse response, HttpServletRequest req
     }
 
     @RequestMapping(value = "/exportProtocolLoginlog", method = RequestMethod.GET)
-    public void exportProtocolLoginlog(String interval,String start_date, String end_date, HttpServletResponse response, HttpServletRequest request) throws IOException {
-        Date t = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-        try {
-            //创建临时csv文件
-            File tempFile = exportService.createTempFile_reportProtocolLoginlog(interval, start_date, end_date);
-            String filename = "reportProtocolLoginlog-"+formatter.format(t)+".csv";
-            //输出csv流文件，提供给浏览器下载
-            outCsvStream(response, tempFile,filename);
-            //删除临时文件
-            deleteFile(tempFile);
-        } catch (IOException e) {
-            System.out.println("导出失败");
-        }
+    public void exportProtocolLoginlog(String interval,String start, String end, String file_type,HttpServletResponse response, HttpServletRequest request) throws Exception {
+        ExportProtocolFactory.excute(interval,start,end,file_type,loginLogService,response);
     }
 
     @RequestMapping(value = "/exportUserLoginlog", method = RequestMethod.GET)
@@ -620,10 +606,9 @@ public void exprotApppubApp(HttpServletResponse response, HttpServletRequest req
         }
 
     /**
-    /**
      * 写入csv结束，写出流
      */
-    public void outCsvStream(HttpServletResponse response,File tempFile ,String filename) throws IOException {
+    public static void outCsvStream(HttpServletResponse response,File tempFile ,String filename) throws IOException {
         java.io.OutputStream out = response.getOutputStream();
         byte[] b = new byte[10240];
         java.io.File fileLoad = new java.io.File(tempFile.getCanonicalPath());

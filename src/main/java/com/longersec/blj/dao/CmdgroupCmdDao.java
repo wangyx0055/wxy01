@@ -16,4 +16,5 @@ public interface CmdgroupCmdDao {
 
 	public List<Object> findAll(@Param("cmdgroupCmd")CmdgroupCmd cmdgroupCmd, @Param("page_start")int page_start, @Param("page_length")int page_length);
 
+	public List<Object> queryCmdGroupCmdByGroupId (@Param("group_id") int group_id,@Param("sname")String sname,@Param("type")Integer type,@Param("cmdgroupCmd") CmdgroupCmd cmdgroupCmd,@Param("page_start")int page_start, @Param("page_length")int page_length);
 }

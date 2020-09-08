@@ -53,7 +53,8 @@
 	<select id="findAll" resultMap="BaseResultMap, cmdgroupRecordCounts" resultType="java.lang.Object">
 		SELECT 
 		SQL_CALC_FOUND_ROWS
-		g.*,ld.name depart_name, GROUP_CONCAT(c.command SEPARATOR '\n') cmd FROM lsblj_cmdgroup g LEFT JOIN lsblj_cmdgroup_cmd c ON g.id=c.group_id
+		g.*,ld.name depart_name, GROUP_CONCAT(c.command SEPARATOR ',') cmdgroup_cmd FROM lsblj_cmdgroup g
+		LEFT JOIN lsblj_cmdgroup_cmd c ON g.id=c.group_id
 		LEFT JOIN lsblj_department ld ON g.department = ld.id
 		where 1
 		<if test="depart_ids!=null and depart_ids.size()>0">

@@ -303,14 +303,7 @@ $(function(){
 				{
 					"data": "execute_action",
 					"render":function(data,type,row,mata){
-						if(data==1)
-							return '断开连接';
-						else if(data==2)
-							return '拒绝执行';
-						else if(data==3)
-							return '动态授权';
-						else
-							return '允许执行';
+						return command_danger_level(data)
 					}
 				},
 				{"data":"status","render":function(data){
@@ -386,13 +379,14 @@ $(function(){
 				{"data": "depart_name","render":function (data,type, row, meta) {
 						return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 150px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+row.topName1+'">'+data+'</div>'
 					}},
-				{ "data": "cmd", "render" : function(data, type, row, mata) {
+				{ "data": "cmdgroup_cmd", "render" : function(data, type, row, mata) {
 						return '<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:500px;" data-html="true" data-toggle="tooltip" title="'+data+'">'
 						+data
 						+ '</div>';
 				}},
 				{ "data": "id", "render": function(data,type,row,meta){
-						return '<a data-row="'+meta.row+'" class="newcss1" data-toggle="modal" data-target="#modal-default99" style="cursor: pointer">编辑</a>'+
+						return '<a data-row="'+meta.row+'" class="newcss1" data-toggle="modal" data-target="#modal-default444" style="cursor: pointer;" onclick="cmdGroupCmdList('+row.id+')">管理</a>'+
+						'<a data-row="'+meta.row+'" class="newcss1" data-toggle="modal" data-target="#modal-default99" style="cursor: pointer;margin-left: 20px">编辑</a>'+
 						'<a data-row="'+meta.row+'" data-toggle="modal" class="newcss2" data-target="#modal-default11" style="cursor:pointer;margin-left: 20px">删除</a>'
 				}}
 			],
@@ -406,6 +400,283 @@ $(function(){
 		AutoSearch1();
 	})
 })
+
+function cmdGroupCmdList(group_id) {
+	$('#_group_id').val(group_id);
+	$('#cmdGroupcmd').DataTable({
+		'paging': true,
+		"iDisplayLength": 10,
+		'lengthChange': true,
+		"lengthMenu": [
+			[10, 25, 50, 100], ["10条/页", "25条/页", "50条/页", "100条/页"]
+		],
+		'dom': 't<"bottom"lifp<"clear">>',
+		'searching': false,
+		'ordering': true,
+		'info': true,
+		'autoWidth': false,
+		"serverSide": true,
+		"destroy": true,
+		"ajax": {
+			url: "../../cmdgroupCmd/queryCmdGroupCmdByGroupId",
+			type: "POST",
+			data: {
+				group_id: group_id,
+				type:$('#Distinguish2').val(),
+				sname:$('#searchId2').val().trim()
+			},
+		},
+		"columns": [
+			{
+				"data": "id", "render": function (data, type, row, meta) {
+					return '<input type="checkbox" name="chk_[]" value=' + data + '>';
+				}
+			},
+			{"data":"command","render":function (data) {
+					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+				}},
+			{"data":"regular",
+				"render":function(data,type,row,mata){
+					if(data==1){
+						return '<span>是</span>';
+					}else{
+						return '<span>否</span>';
+					}
+				}},
+			{"data":"risk_rating",
+				"render":function(data,type,row,mata){
+				if(data==1){
+					return '<span>高危</span>';
+				}else if(data==2){
+					return '<span>非法</span>';
+				}else{
+					return '<span>默认</span>';
+					}
+				}},
+			{"data":"disposal_strategy",
+				"render":function(data,type,row,mata){
+					// return command_danger_level(data);
+					if(data==1){
+						return '<span>允许执行</span>';
+					}else if(data==2){
+						return '<span>动态授权</span>';
+					}else if(data==3){
+						return '<span>拒绝执行</span>';
+					}else {
+						return '<span>断开连接</span>';
+					}
+
+				}},
+			{"data":"risk_desc","render":function (data) {
+					return '<div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100px;" data-html="true" data-placement="right" data-toggle="tooltip" title="'+data+'">'+data+'</div>'
+				}},
+			{
+				"data": "id", "render": function (data, type, row, meta) {
+					{
+						return '<a class="newcss1" data-row="' + meta.row + '" data-toggle="modal" data-target="#modal-editCmdGroupCmd" style="line-height: 2px;cursor: pointer" onclick="clearText()">编辑</a>' +
+							'<a class="newcss2" data-row="' + meta.row + '" data-toggle="modal" data-target="#modal-delCmdGroupCmd" style="line-height: 2px;margin-left: 10px;cursor: pointer">删除</a>';
+					}
+
+				}
+			}
+		],
+		"fnDrawCallback": function( settings, json ) {
+			$('#cmdGroupcmd div').tooltip();
+		}
+	});
+}
+$('#search2').click(function () {
+	cmdGroupCmdList($('#_group_id').val());
+})
+$(function () {
+	$("#close1").click(function() {
+		$('#searchId2').val('');
+	})
+})
+
+//管理界面添加和编辑的回显
+$('#modal-editCmdGroupCmd').off().on('show.bs.modal', function (event) {
+	$('#modal-default444').modal('hide');
+	$('#Vaddcmd').text("");
+	$('#Vaddriskdesc').text("");
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	let i = button.data('row');
+	if(button.data('row')!=undefined&&button.data('row')!=null){
+		$('#modal-editCmdGroupCmd .modal-title').text('编辑命令');
+		$('#_edit_cmd_id').val($('#cmdGroupcmd').DataTable().row('#' + i).nodes(i).data()[i].id);
+		$('#add_cmd').val($('#cmdGroupcmd').DataTable().row('#' + i).nodes(i).data()[i].command);
+		$('#add_regular').val($('#cmdGroupcmd').DataTable().row('#' + i).nodes(i).data()[i].regular);
+		if($('#add_regular').val()==1){
+			$('#add_regular').prop("checked", true)
+		} else {
+			$('#add_regular').prop("checked", false)
+		}
+		$('#add_risk_rating').val($('#cmdGroupcmd').DataTable().row('#' + i).nodes(i).data()[i].risk_rating);
+		$('#add_strategy').val($('#cmdGroupcmd').DataTable().row('#' + i).nodes(i).data()[i].disposal_strategy);
+		$('#add_risk_desc').val($('#cmdGroupcmd').DataTable().row('#' + i).nodes(i).data()[i].risk_desc);
+	}else {
+		$('#modal-editCmdGroupCmd .modal-title').text('添加命令');
+		$('#_edit_cmd_id').val('');
+		$('#add_cmd').val('');
+		$('#add_regular').prop("checked", false);
+		$('#add_risk_rating option:first').prop("selected",'selected');
+		$('#add_strategy option:first').prop("selected",'selected');
+		$('#add_risk_desc').val('');
+	}
+
+});
+//添加命令提交
+$('#editcmdButton').off().click(function(){
+	var url = "../../cmdgroupCmd/editCmdgroupCmd";
+	if($('#_edit_cmd_id').val()==""){
+		url = "../../cmdgroupCmd/addCmdgroupCmd";
+	}
+	if ($('#add_cmd').val()==""){
+		$('#Vaddcmd').text("请输入命令/参数");
+		return;
+	}else if (regexp.length.test($('#add_cmd').val())){
+		$('#Vaddcmd').text("输入格式不正确");
+		return;
+	}
+	if ($('#Vaddname').text()!="" || $('#Vaddcmd').text()!=""){
+		return;
+	}
+	$.ajax({
+		url:url,
+		type:"POST",
+		data:{
+			id:$('#_edit_cmd_id').val(),
+			group_id: $('#_group_id').val(),
+			command:$('#add_cmd').val(),
+			risk_rating:$('#add_risk_rating').val(),
+			disposal_strategy:$('#add_strategy').val(),
+			regular:$('#add_regular')[0].checked?1:0,
+			risk_desc:$('#add_risk_desc').val()
+		},
+		success:function(data){
+			if(data.success){
+				if ($('#_edit_cmd_id').val()== "") {
+					$('#modal-editCmdGroupCmd').modal('hide');
+					$("#modal-success .modal-title").text('成功');
+					$("#modal-success .modal-body").text('新建成功!');
+					$("#modal-success").modal();
+					$('#modal-default444').modal('show');
+					loadAJAX('#cmdGroupcmd');
+					loadAJAX('#example3');
+				}else{
+					$('#modal-editCmdGroupCmd').modal('hide');
+					$("#modal-success .modal-title").text('成功');
+					$("#modal-success .modal-body").text('编辑成功!');
+					$("#modal-success").modal();
+					$('#modal-default444').modal('show');
+					loadAJAX('#cmdGroupcmd');
+				}
+			}
+			else{
+				if ($('#_edit_cmd_id').val()== "") {
+					$("#modal-danger .modal-title").text('失败');
+					$("#modal-danger .modal-body").text('新建失败!');
+					$("#modal-danger").modal();
+					loadAJAX('#cmdGroupcmd');
+				}else{
+					$("#modal-danger .modal-title").text('失败');
+					$("#modal-danger .modal-body").text('编辑失败!');
+					$("#modal-danger").modal();
+					loadAJAX('#cmdGroupcmd');
+				}
+			}
+		},
+	})
+});
+$(function () {
+	$("#close2").click(function() {
+		$('#modal-default444').modal('show');
+	});
+	$("#close3").click(function() {
+		$('#modal-default444').modal('show');
+	})
+})
+//点击命令删除后的回显
+$('#modal-delCmdGroupCmd').off().on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget); // Button that triggered the modal
+	i = button.data('row');
+	$('#del_cmd_id').val($('#cmdGroupcmd').DataTable().row('#' + i).nodes(i).data()[i].id);
+});
+//命令列表多选删除
+$('#_delAllButton').off().on('click', function(){
+	var obj = document.getElementsByName('chk_[]');
+	console.log(obj);
+	var ids= new Array();
+	for (i in obj){
+		if(obj[i].checked)
+			ids.push(obj[i].value);
+	}
+	console.log(ids);
+	if(ids.length==0){
+		$("#modal-hint.modal-title").text('失败');
+		$("#modal-hint .modal-body").text('请选择要删除的信息');
+		$("#modal-hint").modal();
+		loadAJAX('#cmdGroupcmd');
+		return false;
+	}
+	$.ajax({
+		url:"../../cmdgroupCmd/delCmdgroupCmd",
+		type:"POST",
+		data:{
+			ids:ids
+		},
+		success:function(data){
+			if(data.success){
+				$("#modal-success .modal-title").text('成功');
+				$("#modal-success .modal-body").text('操作成功!');
+				$("#modal-success").modal();
+				$("#modal-del2").modal('hide');
+				loadAJAX('#cmdGroupcmd');
+			}
+			else{
+				$("#modal-danger .modal-title").text('失败');
+				$("#modal-danger .modal-body").text('操作失败!');
+				$("#modal-danger").modal();
+				loadAJAX('#cmdGroupcmd');
+			}
+		},
+		error:function(){
+			$("#modal-danger .modal-title").text('失败');
+			$("#modal-danger .modal-body").text('操作失败!');
+			$("#modal-danger").modal();
+		}
+	})
+});
+//命令列表删除
+$('#delButton1').off().on('click', function(){
+	$.ajax({
+		url:"../../cmdgroupCmd/delCmdgroupCmd",
+		type:"POST",
+		data:{
+			ids: new Array($('#del_cmd_id').val()),
+		},
+		success:function(data){
+			if(data.success){
+				$("#modal-delCmdGroupCmd").modal('hide');
+				$("#modal-success .modal-title").text('成功');
+				$("#modal-success .modal-body").text('操作成功!');
+				$("#modal-success").modal();
+				loadAJAX('#cmdGroupcmd');
+				loadAJAX('#example3');
+			}
+			else{
+				$("#modal-danger .modal-title").text('失败');
+				$("#modal-danger .modal-body").text('操作失败!');
+				$("#modal-danger").modal();
+				loadAJAX('#cmdGroupcmd');
+			}
+		},
+		error:function(){
+		}
+	})
+});
+
+
 //新建
 $('#modal-default').on('show.bs.modal', function (event) {
 });
@@ -1359,23 +1630,26 @@ $('#addButton1').click(function(){
 	}else{
 		checkname();
 	}
-	if ($('#add_cmd').val()==""){
-		$('#Vaddcmd').text("请输入命令/参数");
-		return;
-	}else if (regexp.length.test($('#add_cmd').val())){
-		$('#Vaddcmd').text("输入格式不正确");
+	if($('#Vaddname').text()!=""){
 		return;
 	}
-	if ($('#Vaddname').text()!="" || $('#Vaddcmd').text()!=""){
-		return;
-	}
+	// if ($('#add_cmd').val()==""){
+	// 	$('#Vaddcmd').text("请输入命令/参数");
+	// 	return;
+	// }else if (regexp.length.test($('#add_cmd').val())){
+	// 	$('#Vaddcmd').text("输入格式不正确");
+	// 	return;
+	// }
+	// if ($('#Vaddname').text()!="" || $('#Vaddcmd').text()!=""){
+	// 	return;
+	// }
 	$.ajax({
 		url:"../../cmdgroup/addCmdgroup",
 		type:"POST",
 		data:{
 			/*  id:$('#add_id').val(),*/
 			name:$('#add_name').val(),
-			cmd:$('#add_cmd').val(),
+			// cmd:$('#add_cmd').val(),
 		},
 		success:function(data){
 			if(data.success){
@@ -1397,6 +1671,9 @@ $('#addButton1').click(function(){
 		}
 	})
 });
+
+
+
 //导出
 $('#export').click(function(){
 	$.ajax({

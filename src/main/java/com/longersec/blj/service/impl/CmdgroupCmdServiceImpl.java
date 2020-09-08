@@ -44,4 +44,10 @@ public class CmdgroupCmdServiceImpl implements CmdgroupCmdService{
 		return CmdgroupCmdDao.findAll(cmdgroupCmd, page_start, page_length);
 	}
 
+	@Override
+	public List<Object> queryCmdGroupCmdByGroupId(int group_id, String sname, Integer type, CmdgroupCmd cmdgroupCmd, int page_start, int page_length) {
+		return CmdgroupCmdDao.queryCmdGroupCmdByGroupId(group_id, sname,type,cmdgroupCmd,page_start,page_length);
+	}
+
+
 }

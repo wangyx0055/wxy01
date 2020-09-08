@@ -41,6 +41,19 @@ function _protocol(data) {
     }
 }
 
+function command_danger_level(level) {
+
+    if (level == 1) {
+        return "允许执行";
+    } else if (level == 2) {
+        return "动态授权";
+    } else if (level == 3) {
+        return "拒绝执行";
+    } else if (level == 4) {
+        return "断开连接";
+    } 
+}
+
 function stripMilSeconds(data){
 	if(data!=null && data!=undefined && data.length>0){
 		return data.substring(0,data.indexOf('.'));

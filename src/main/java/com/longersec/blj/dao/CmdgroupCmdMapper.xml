@@ -6,6 +6,11 @@
 		<id column="id" jdbcType="INTEGER" property="id"/>
 		<result column="group_id" jdbcType="INTEGER" property="group_id"/>
 		<result column="command" jdbcType="VARCHAR" property="command"/>
+		<result column="risk_rating" jdbcType="INTEGER" property="risk_rating"/>
+		<result column="disposal_strategy" jdbcType="INTEGER" property="disposal_strategy"/>
+		<result column="regular" jdbcType="INTEGER" property="regular"/>
+		<result column="risk_desc" jdbcType="VARCHAR" property="risk_desc"/>
+
 	</resultMap>
 
 	<resultMap id="cmdgroupCmdRecordCounts" type="java.lang.Long">
@@ -17,6 +22,10 @@
 		<set>
 		<if test="group_id != null">`group_id`=#{group_id},</if>
 		<if test="command != null">`command`=#{command},</if>
+		<if test="risk_rating != null">`risk_rating`=#{risk_rating},</if>
+		<if test="disposal_strategy != null">`disposal_strategy`=#{disposal_strategy},</if>
+		<if test="regular != null">`regular`=#{regular},</if>
+		<if test="risk_desc != null">`risk_desc`=#{risk_desc},</if>
 		</set>
 	</insert>
 
@@ -25,6 +34,10 @@
 		<set>
 		<if test="group_id != null">`group_id`=#{group_id},</if>
 		<if test="command != null">`command`=#{command},</if>
+		<if test="risk_rating != null">`risk_rating`=#{risk_rating},</if>
+		<if test="disposal_strategy != null">`disposal_strategy`=#{disposal_strategy},</if>
+		<if test="regular != null">`regular`=#{regular},</if>
+		<if test="risk_desc != null">`risk_desc`=#{risk_desc},</if>
 		</set>
 		where id=#{id}
 	</update>
@@ -36,7 +49,7 @@
 	<delete id="delCmdgroupCmd" parameterType="java.util.List">
 		DELETE FROM lsblj_cmdgroup_cmd
 		where id IN (
-		<foreach collection="list" item="item" separator=",">
+		<foreach collection="list" item="item">
 		#{item},
 		</foreach>
 		0)
@@ -47,6 +60,26 @@
 		lsblj_cmdgroup_cmd FROM lsblj_cmdgroup_cmd 
 		<if test="page_start != null and page_length != null">
 		LIMIT #{page_start},#{page_length}
+		</if>
+		;SELECT found_rows() AS recordCounts;
+	</select>
+
+	<select id="queryCmdGroupCmdByGroupId" resultMap="BaseResultMap,apppubProgramRecordCounts" resultType="java.lang.Object">
+		SELECT 	SQL_CALC_FOUND_ROWS
+		* FROM lsblj_cmdgroup_cmd lcc
+		WHERE
+		group_id = #{group_id}
+		<if test="type==1">AND(
+			lcc.`command` like CONCAT('%',#{sname},'%')
+			or lcc.`risk_rating` like CONCAT('%',#{sname},'%')
+			or lcc.`disposal_strategy` like CONCAT('%',#{sname},'%')
+			)
+		</if>
+		<if test="type==2">AND lcc.`command` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==3">AND lcc.`risk_rating` like CONCAT('%',#{sname},'%')</if>
+		<if test="type==4">AND lcc.`disposal_strategy` like CONCAT('%',#{sname},'%')</if>
+		<if test="page_start != null and page_length != null">
+			LIMIT #{page_start},#{page_length}
 		</if>
 		;SELECT found_rows() AS recordCounts;
 	</select>

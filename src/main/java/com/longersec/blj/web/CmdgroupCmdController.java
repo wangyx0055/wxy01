@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,6 +86,30 @@ public class CmdgroupCmdController {
 			Boolean r = cmdgroupCmdService.delCmdgroupCmd(_ids);
 			result.accumulate("success", r);
 		}
+		return result;
+	}
+
+	@RequestMapping("/queryCmdGroupCmdByGroupId")
+	@ResponseBody
+	public JSONObject queryCmdGroupCmdByGroupId(@RequestParam(value = "group_id") Integer group_id,@RequestParam(value = "type") Integer type,
+												@RequestParam(value = "sname") String sname, CmdgroupCmd cmdgroupCmd,
+											 HttpServletRequest request, HttpSession session) {
+		int page_start = Integer.parseInt(request.getParameter("start"));
+		int page_length = Integer.parseInt(request.getParameter("length"));
+		ArrayList<Object> resultCmdgroupCmds = new ArrayList<Object>();
+		ArrayList<CmdgroupCmd> cmdgroupCmds  = new ArrayList<CmdgroupCmd>();
+		long total = 0;
+		resultCmdgroupCmds = (ArrayList<Object>)cmdgroupCmdService.queryCmdGroupCmdByGroupId(group_id,sname,type,cmdgroupCmd,page_start, page_length);
+		if(CollectionUtils.isNotEmpty(resultCmdgroupCmds)) {
+			cmdgroupCmds = (ArrayList<CmdgroupCmd>)resultCmdgroupCmds.get(0);
+			total = ((ArrayList<Long>) resultCmdgroupCmds.get(1)).get(0);
+		}
+		JSONArray jsonArray = JSONArray.fromObject(cmdgroupCmds);
+		JSONObject result = new JSONObject();
+		result.accumulate("success", true);
+		result.accumulate("recordsTotal", total);
+		result.accumulate("recordsFiltered", total);
+		result.accumulate("data", jsonArray);
 		return result;
 	}
 }

@@ -439,7 +439,7 @@
 							</div>
 							<div class="modal-body">
 								<div class="rl-time">
-									<span>时间：</span>
+									<span style="vertical-align: -7px;">时间：</span>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-calendar" style="color: #a1a6a1b5"></i>
@@ -454,7 +454,7 @@
 								<div class="rl-show">
 									<span>展示粒度：</span> 
 									<span>
-										<input type="radio" name="interval" data-interval="hour" checked="checked"> 按小时 &nbsp;&nbsp;&nbsp;
+										<input type="radio" checked="checked" name="interval" data-interval="hour"> 按小时 &nbsp;&nbsp;&nbsp;
 										<input type="radio" name="interval" data-interval="day"> 按天&nbsp;&nbsp;&nbsp;
 										<input type="radio" name="interval" data-interval="week"> 按周 &nbsp;&nbsp;&nbsp;
 										<input type="radio" name="interval" data-interval="month"> 按月
@@ -469,7 +469,10 @@
 								</div>
 								<div class="rl-file">
 									<span>文件格式：</span>
-									<input type="radio" checked="checked" data-interval="csv"> CSV 
+									<input type="radio" checked="checked" data-file="csv" name="file_type"> CSV
+									<input type="radio" data-file="pdf" name="file_type" style="margin-left: 18px;"> PDF
+									<input type="radio" data-file="word" name="file_type" style="margin-left: 18px;"> WORD
+									<input type="radio" data-file="html" name="file_type" style="margin-left: 18px;"> HTML
 								</div>
 								<br>
 								<br>

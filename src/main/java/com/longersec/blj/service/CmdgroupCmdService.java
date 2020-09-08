@@ -2,6 +2,7 @@ package com.longersec.blj.service;
 
 import java.util.List;
 import com.longersec.blj.domain.CmdgroupCmd;
+import org.apache.ibatis.annotations.Param;
 
 public interface CmdgroupCmdService {
 
@@ -14,6 +15,8 @@ public interface CmdgroupCmdService {
 	public boolean deletegroupcmd(Integer id);
 
 	public List<Object> findAll(CmdgroupCmd cmdgroupCmd, int page_start, int page_length);
+
+	public List<Object> queryCmdGroupCmdByGroupId (int group_id,String sname,Integer type, CmdgroupCmd cmdgroupCmd,int page_start,int page_length);
 
 }
 
